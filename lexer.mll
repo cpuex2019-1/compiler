@@ -5,12 +5,16 @@ open Type
 }
 
 (* 正規表現の略記 *)
-let space = [' ' '\t' '\n' '\r']
+let space = [' ' '\t' '\r']
+let eol = ['\n']
 let digit = ['0'-'9']
 let lower = ['a'-'z']
 let upper = ['A'-'Z']
 
 rule token = parse
+| eol 
+    { Lexing.new_line lexbuf;
+      token lexbuf }
 | space+
     { token lexbuf }
 | "(*"

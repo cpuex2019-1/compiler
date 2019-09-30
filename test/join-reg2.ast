@@ -1,0 +1,52 @@
+LetRec
+  fundef
+    f
+    Var
+      None
+    Tu1
+    Var
+      None
+    Int 123
+  LetRec
+    fundef
+      g
+      Var
+        None
+      Tu2
+      Var
+        None
+      Int 456
+    LetRec
+      fundef
+        h
+        Var
+          None
+        Tu3
+        Var
+          None
+        Int 789
+      Let
+        x
+        Var
+          None
+        App
+          Var f
+          Unit
+        App
+          Var print_int
+          Add
+            If
+              LE
+                Var x
+                Int 0
+              Add
+                App
+                  Var g
+                  Unit
+                Var x
+              Sub
+                App
+                  Var h
+                  Unit
+                Var x
+            Var x

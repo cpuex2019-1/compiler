@@ -1,0 +1,195 @@
+LetRec
+  fundef
+    f
+    Var
+      None
+    Tu1
+    Var
+      None
+    Int 12345
+  LetRec
+    fundef
+      g
+      Var
+        None
+      y
+      Var
+        None
+      Add
+        Var y
+        Int 1
+    Let
+      z
+      Var
+        None
+      Array
+        Int 10
+        Int 1
+      Let
+        x
+        Var
+          None
+        App
+          Var f
+          Unit
+        Let
+          y
+          Var
+            None
+          Int 67890
+          Let
+            z0
+            Var
+              None
+            Get
+              Var z
+              Int 0
+            Let
+              z1
+              Var
+                None
+              Add
+                Var z0
+                Var z0
+              Let
+                z2
+                Var
+                  None
+                Add
+                  Var z1
+                  Var z1
+                Let
+                  z3
+                  Var
+                    None
+                  Add
+                    Var z2
+                    Var z2
+                  Let
+                    z4
+                    Var
+                      None
+                    Add
+                      Var z3
+                      Var z3
+                    Let
+                      z5
+                      Var
+                        None
+                      Add
+                        Var z4
+                        Var z4
+                      Let
+                        z6
+                        Var
+                          None
+                        Add
+                          Var z5
+                          Var z5
+                        Let
+                          z7
+                          Var
+                            None
+                          Add
+                            Var z6
+                            Var z6
+                          Let
+                            z8
+                            Var
+                              None
+                            Add
+                              Var z7
+                              Var z7
+                            Let
+                              z9
+                              Var
+                                None
+                              Add
+                                Var z8
+                                Var z8
+                              Let
+                                z10
+                                Var
+                                  None
+                                Add
+                                  Var z9
+                                  Var z9
+                                Let
+                                  z11
+                                  Var
+                                    None
+                                  Add
+                                    Var z10
+                                    Var z10
+                                  Let
+                                    z12
+                                    Var
+                                      None
+                                    Add
+                                      Var z11
+                                      Var z11
+                                    Let
+                                      z13
+                                      Var
+                                        None
+                                      Add
+                                        Var z12
+                                        Var z12
+                                      Let
+                                        z14
+                                        Var
+                                          None
+                                        Add
+                                          Var z13
+                                          Var z13
+                                        Let
+                                          z15
+                                          Var
+                                            None
+                                          Add
+                                            Var z14
+                                            Var z14
+                                          App
+                                            Var print_int
+                                            If
+                                              Eq
+                                                Get
+                                                  Var z
+                                                  Int 1
+                                                Int 0
+                                              App
+                                                Var g
+                                                Var y
+                                              Add
+                                                Add
+                                                  Add
+                                                    Add
+                                                      Add
+                                                        Add
+                                                          Add
+                                                            Add
+                                                              Add
+                                                                Add
+                                                                  Add
+                                                                    Add
+                                                                      Add
+                                                                        Add
+                                                                          Add
+                                                                            Add
+                                                                              Var z0
+                                                                              Var z1
+                                                                            Var z2
+                                                                          Var z3
+                                                                        Var z4
+                                                                      Var z5
+                                                                    Var z6
+                                                                  Var z7
+                                                                Var z8
+                                                              Var z9
+                                                            Var z10
+                                                          Var z11
+                                                        Var z12
+                                                      Var z13
+                                                    Var z14
+                                                  Var z15
+                                                Var x

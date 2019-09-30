@@ -1,0 +1,37 @@
+LetRec
+  fundef
+    f
+    Var
+      None
+    n
+    Var
+      None
+    If
+      Not
+        LE
+          Int 0
+          Var n
+      Unit
+      Let
+        Tu1
+        Unit
+        App
+          Var print_int
+          Var n
+        Let
+          a
+          Var
+            None
+          Array
+            Int 1
+            Var f
+          App
+            Get
+              Var a
+              Int 0
+            Sub
+              Var n
+              Int 1
+  App
+    Var f
+    Int 9

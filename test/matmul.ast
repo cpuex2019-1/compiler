@@ -1,0 +1,400 @@
+LetRec
+  fundef
+    mul
+    Var
+      None
+    l
+    Var
+      None
+    m
+    Var
+      None
+    n
+    Var
+      None
+    a
+    Var
+      None
+    b
+    Var
+      None
+    c
+    Var
+      None
+    LetRec
+      fundef
+        loop1
+        Var
+          None
+        i
+        Var
+          None
+        If
+          Not
+            LE
+              Int 0
+              Var i
+          Unit
+          LetRec
+            fundef
+              loop2
+              Var
+                None
+              j
+              Var
+                None
+              If
+                Not
+                  LE
+                    Int 0
+                    Var j
+                Unit
+                LetRec
+                  fundef
+                    loop3
+                    Var
+                      None
+                    k
+                    Var
+                      None
+                    If
+                      Not
+                        LE
+                          Int 0
+                          Var k
+                      Unit
+                      Let
+                        Tu1
+                        Unit
+                        Put
+                          Get
+                            Var c
+                            Var i
+                          Var j
+                          FAdd
+                            Get
+                              Get
+                                Var c
+                                Var i
+                              Var j
+                            FMul
+                              Get
+                                Get
+                                  Var a
+                                  Var i
+                                Var k
+                              Get
+                                Get
+                                  Var b
+                                  Var k
+                                Var j
+                        App
+                          Var loop3
+                          Sub
+                            Var k
+                            Int 1
+                  Let
+                    Tu2
+                    Unit
+                    App
+                      Var loop3
+                      Sub
+                        Var m
+                        Int 1
+                    App
+                      Var loop2
+                      Sub
+                        Var j
+                        Int 1
+            Let
+              Tu3
+              Unit
+              App
+                Var loop2
+                Sub
+                  Var n
+                  Int 1
+              App
+                Var loop1
+                Sub
+                  Var i
+                  Int 1
+      App
+        Var loop1
+        Sub
+          Var l
+          Int 1
+  Let
+    dummy
+    Var
+      None
+    Array
+      Int 0
+      Float 0.000000
+    LetRec
+      fundef
+        make
+        Var
+          None
+        m
+        Var
+          None
+        n
+        Var
+          None
+        Let
+          mat
+          Var
+            None
+          Array
+            Var m
+            Var dummy
+          LetRec
+            fundef
+              init
+              Var
+                None
+              i
+              Var
+                None
+              If
+                Not
+                  LE
+                    Int 0
+                    Var i
+                Unit
+                Let
+                  Tu4
+                  Unit
+                  Put
+                    Var mat
+                    Var i
+                    Array
+                      Var n
+                      Float 0.000000
+                  App
+                    Var init
+                    Sub
+                      Var i
+                      Int 1
+            Let
+              Tu5
+              Unit
+              App
+                Var init
+                Sub
+                  Var m
+                  Int 1
+              Var mat
+      Let
+        a
+        Var
+          None
+        App
+          Var make
+          Int 2
+          Int 3
+        Let
+          b
+          Var
+            None
+          App
+            Var make
+            Int 3
+            Int 2
+          Let
+            c
+            Var
+              None
+            App
+              Var make
+              Int 2
+              Int 2
+            Let
+              Tu25
+              Unit
+              Put
+                Get
+                  Var a
+                  Int 0
+                Int 0
+                Float 1.000000
+              Let
+                Tu24
+                Unit
+                Put
+                  Get
+                    Var a
+                    Int 0
+                  Int 1
+                  Float 2.000000
+                Let
+                  Tu23
+                  Unit
+                  Put
+                    Get
+                      Var a
+                      Int 0
+                    Int 2
+                    Float 3.000000
+                  Let
+                    Tu22
+                    Unit
+                    Put
+                      Get
+                        Var a
+                        Int 1
+                      Int 0
+                      Float 4.000000
+                    Let
+                      Tu21
+                      Unit
+                      Put
+                        Get
+                          Var a
+                          Int 1
+                        Int 1
+                        Float 5.000000
+                      Let
+                        Tu20
+                        Unit
+                        Put
+                          Get
+                            Var a
+                            Int 1
+                          Int 2
+                          Float 6.000000
+                        Let
+                          Tu19
+                          Unit
+                          Put
+                            Get
+                              Var b
+                              Int 0
+                            Int 0
+                            Float 7.000000
+                          Let
+                            Tu18
+                            Unit
+                            Put
+                              Get
+                                Var b
+                                Int 0
+                              Int 1
+                              Float 8.000000
+                            Let
+                              Tu17
+                              Unit
+                              Put
+                                Get
+                                  Var b
+                                  Int 1
+                                Int 0
+                                Float 9.000000
+                              Let
+                                Tu16
+                                Unit
+                                Put
+                                  Get
+                                    Var b
+                                    Int 1
+                                  Int 1
+                                  Float 10.000000
+                                Let
+                                  Tu15
+                                  Unit
+                                  Put
+                                    Get
+                                      Var b
+                                      Int 2
+                                    Int 0
+                                    Float 11.000000
+                                  Let
+                                    Tu14
+                                    Unit
+                                    Put
+                                      Get
+                                        Var b
+                                        Int 2
+                                      Int 1
+                                      Float 12.000000
+                                    Let
+                                      Tu13
+                                      Unit
+                                      App
+                                        Var mul
+                                        Int 2
+                                        Int 3
+                                        Int 2
+                                        Var a
+                                        Var b
+                                        Var c
+                                      Let
+                                        Tu12
+                                        Unit
+                                        App
+                                          Var print_int
+                                          App
+                                            Var truncate
+                                            Get
+                                              Get
+                                                Var c
+                                                Int 0
+                                              Int 0
+                                        Let
+                                          Tu11
+                                          Unit
+                                          App
+                                            Var print_newline
+                                            Unit
+                                          Let
+                                            Tu10
+                                            Unit
+                                            App
+                                              Var print_int
+                                              App
+                                                Var truncate
+                                                Get
+                                                  Get
+                                                    Var c
+                                                    Int 0
+                                                  Int 1
+                                            Let
+                                              Tu9
+                                              Unit
+                                              App
+                                                Var print_newline
+                                                Unit
+                                              Let
+                                                Tu8
+                                                Unit
+                                                App
+                                                  Var print_int
+                                                  App
+                                                    Var truncate
+                                                    Get
+                                                      Get
+                                                        Var c
+                                                        Int 1
+                                                      Int 0
+                                                Let
+                                                  Tu7
+                                                  Unit
+                                                  App
+                                                    Var print_newline
+                                                    Unit
+                                                  Let
+                                                    Tu6
+                                                    Unit
+                                                    App
+                                                      Var print_int
+                                                      App
+                                                        Var truncate
+                                                        Get
+                                                          Get
+                                                            Var c
+                                                            Int 1
+                                                          Int 1
+                                                    App
+                                                      Var print_newline
+                                                      Unit

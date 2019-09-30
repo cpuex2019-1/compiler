@@ -1,0 +1,60 @@
+LetRec
+  fundef
+    inprod
+    Var
+      None
+    v1
+    Var
+      None
+    v2
+    Var
+      None
+    i
+    Var
+      None
+    If
+      Not
+        LE
+          Int 0
+          Var i
+      Float 0.000000
+      FAdd
+        FMul
+          Get
+            Var v1
+            Var i
+          Get
+            Var v2
+            Var i
+        App
+          Var inprod
+          Var v1
+          Var v2
+          Sub
+            Var i
+            Int 1
+  Let
+    v1
+    Var
+      None
+    Array
+      Int 3
+      Float 1.230000
+    Let
+      v2
+      Var
+        None
+      Array
+        Int 3
+        Float 4.560000
+      App
+        Var print_int
+        App
+          Var truncate
+          FMul
+            Float 1000000.000000
+            App
+              Var inprod
+              Var v1
+              Var v2
+              Int 2

@@ -26,128 +26,127 @@ type t = (* MinCamlの構文を表現するデータ型 (caml2html: syntax_t) *)
   | Put of t * t * t
 and fundef = { name : Id.t * Type.t; args : (Id.t * Type.t) list; body : t }
 
-let rec print_indent depth = 
+let rec print_indent depth outchan = 
   if depth = 0 
     then ()
-    else (print_string "  ";print_indent (depth-1))
+    else (Printf.fprintf outchan "  ";print_indent (depth-1) outchan)
 
 
-let rec print_syntax exp depth =
-  print_indent depth;
+let rec print_syntax exp depth outchan =
+  print_indent depth outchan;
   (
   match exp with
-  | Unit -> print_string "()\n"
-  | Bool x -> (print_string ((string_of_bool x)^"\n"))
-  | Int x -> (print_int x;print_string "\n")
-  | Float x -> (print_float x;print_string "\n")
+  | Unit -> Printf.fprintf outchan "Unit\n"
+  | Bool x -> (Printf.fprintf outchan "Bool %s\n" (string_of_bool x))
+  | Int x -> (Printf.fprintf outchan "Int %d\n" x)
+  | Float x -> (Printf.fprintf outchan "Float %f\n" x)
   | Not e 
-    -> ( print_string "Not\n";
-         print_syntax e (depth+1))
+    -> ( Printf.fprintf outchan "Not\n";
+         print_syntax e (depth+1) outchan)
   | Neg e
-    -> ( print_string "Neg\n";
-         print_syntax e (depth+1))
+    -> ( Printf.fprintf outchan "Neg\n";
+         print_syntax e (depth+1) outchan)
   | Add (e1,e2)
-    -> ( print_string "Add\n";
-         print_syntax e1 (depth+1);
-         print_syntax e2 (depth+1))
+    -> ( Printf.fprintf outchan "Add\n";
+         print_syntax e1 (depth+1) outchan;
+         print_syntax e2 (depth+1) outchan)
   | Sub (e1,e2)
-    -> ( print_string "Sub\n";
-         print_syntax e1 (depth+1);
-         print_syntax e2 (depth+1))
+    -> ( Printf.fprintf outchan "Sub\n";
+         print_syntax e1 (depth+1) outchan;
+         print_syntax e2 (depth+1) outchan)
   | FNeg e
-    -> ( print_string "FNeg\n";
-         print_syntax e (depth+1))
+    -> ( Printf.fprintf outchan "FNeg\n";
+         print_syntax e (depth+1) outchan)
   | FAdd (e1,e2)
-    -> ( print_string "FAdd\n";
-         print_syntax e1 (depth+1);
-         print_syntax e2 (depth+1))
+    -> ( Printf.fprintf outchan "FAdd\n";
+         print_syntax e1 (depth+1) outchan;
+         print_syntax e2 (depth+1) outchan)
   | FSub (e1,e2)
-    -> ( print_string "FSub\n";
-         print_syntax e1 (depth+1);
-         print_syntax e2 (depth+1))
+    -> ( Printf.fprintf outchan "FSub\n";
+         print_syntax e1 (depth+1) outchan;
+         print_syntax e2 (depth+1) outchan)
   | FMul (e1,e2)
-    -> ( print_string "FMul\n";
-         print_syntax e1 (depth+1);
-         print_syntax e2 (depth+1))
+    -> ( Printf.fprintf outchan "FMul\n";
+         print_syntax e1 (depth+1) outchan;
+         print_syntax e2 (depth+1) outchan)
   | FDiv (e1,e2)
-    -> ( print_string "FDiv\n";
-         print_syntax e1 (depth+1);
-         print_syntax e2 (depth+1))
+    -> ( Printf.fprintf outchan "FDiv\n";
+         print_syntax e1 (depth+1) outchan;
+         print_syntax e2 (depth+1) outchan)
   | Eq (e1,e2)
-    -> ( print_string "Eq\n";
-         print_syntax e1 (depth+1);
-         print_syntax e2 (depth+1))
+    -> ( Printf.fprintf outchan "Eq\n";
+         print_syntax e1 (depth+1) outchan;
+         print_syntax e2 (depth+1) outchan)
   | LE (e1,e2)
-    -> ( print_string "LE\n";
-         print_syntax e1 (depth+1);
-         print_syntax e2 (depth+1))
+    -> ( Printf.fprintf outchan "LE\n";
+         print_syntax e1 (depth+1) outchan;
+         print_syntax e2 (depth+1) outchan)
   | If (e1,e2,e3)
-    -> ( print_string "If\n";
-         print_syntax e1 (depth+1);
-         print_syntax e2 (depth+1);
-         print_syntax e3 (depth+1))
+    -> ( Printf.fprintf outchan "If\n";
+         print_syntax e1 (depth+1) outchan;
+         print_syntax e2 (depth+1) outchan;
+         print_syntax e3 (depth+1) outchan)
   | Let ((id,ty),e1,e2)
-    -> ( print_string ("Let\n");
-         print_id_type (id,ty) (depth+1);
-         print_syntax e1 (depth+1);
-         print_syntax e2 (depth+1))
+    -> ( Printf.fprintf outchan ("Let\n");
+         print_id_type (id,ty) (depth+1) outchan;
+         print_syntax e1 (depth+1) outchan;
+         print_syntax e2 (depth+1) outchan)
   | Var id
-    -> (print_string ("Var "^id^"\n"))
+    -> (Printf.fprintf outchan "Var %s\n" id)
   | LetRec (fd,e)
-    -> (print_string "LetRec\n";
-        print_fundef fd (depth+1);
-        print_syntax e (depth+1))
+    -> (Printf.fprintf outchan "LetRec\n";
+        print_fundef fd (depth+1) outchan;
+        print_syntax e (depth+1) outchan)
   | App (e,el)
-    -> (print_string "App\n";
-        print_syntax e (depth+1);
-        print_syntax_list el (depth+1))
+    -> (Printf.fprintf outchan "App\n";
+        print_syntax e (depth+1) outchan;
+        print_syntax_list el (depth+1) outchan)
   | Tuple (el) 
-    -> (print_string "Tuple\n";
-        print_syntax_list el (depth+1))
+    -> (Printf.fprintf outchan "Tuple\n";
+        print_syntax_list el (depth+1) outchan)
   | LetTuple (id_list,e1,e2)
-    -> (print_string ("LetTuple\n");
-        print_id_type_list id_list (depth+1);
-        print_syntax e1 (depth+1);
-        print_syntax e2 (depth+1))
+    -> (Printf.fprintf outchan ("LetTuple\n");
+        print_id_type_list id_list (depth+1) outchan;
+        print_syntax e1 (depth+1) outchan;
+        print_syntax e2 (depth+1) outchan)
   | Array (e1,e2)
-    -> (print_string "Array\n";
-        print_syntax e1 (depth+1);
-        print_syntax e2 (depth+1))
+    -> (Printf.fprintf outchan "Array\n";
+        print_syntax e1 (depth+1) outchan;
+        print_syntax e2 (depth+1) outchan)
   | Get (e1,e2)
-    -> (print_string "Get\n";
-        print_syntax e1 (depth+1);
-        print_syntax e2 (depth+1))
+    -> (Printf.fprintf outchan "Get\n";
+        print_syntax e1 (depth+1) outchan;
+        print_syntax e2 (depth+1) outchan)
   | Put (e1,e2,e3)
-    -> (print_string "Put\n";
-        print_syntax e1 (depth+1);
-        print_syntax e2 (depth+1);
-        print_syntax e3 (depth+1))
+    -> (Printf.fprintf outchan "Put\n";
+        print_syntax e1 (depth+1) outchan;
+        print_syntax e2 (depth+1) outchan;
+        print_syntax e3 (depth+1) outchan)
   )
 
-and print_syntax_list el depth = 
+and print_syntax_list el depth outchan = 
   match el with
   | [] -> ()
   | exp::rem 
-    -> (print_syntax exp depth;
-        print_syntax_list rem depth)
+    -> (print_syntax exp depth outchan;
+        print_syntax_list rem depth outchan)
 
-and print_id_type (id,ty) depth =
-  (print_indent depth;
-   print_string id;
-   print_string "\n";
-   Type.print_type ty depth)
+and print_id_type (id,ty) depth outchan =
+  (print_indent depth outchan;
+   Printf.fprintf outchan "%s\n" id;
+   Type.print_type ty depth outchan)
 
-and print_id_type_list idtyl depth = 
+and print_id_type_list idtyl depth outchan = 
   match idtyl with
   | [] -> ()
   | (idty::rem)
-    -> (print_id_type idty depth;
-        print_id_type_list rem depth) 
+    -> (print_id_type idty depth outchan;
+        print_id_type_list rem depth outchan) 
 
-and print_fundef fd depth = 
-  print_indent depth;
-  print_string "fundef\n";
-  print_id_type fd.name (depth+1);
-  print_id_type_list fd.args (depth+1);
-  print_syntax fd.body (depth+1);
+and print_fundef fd depth outchan = 
+  print_indent depth outchan;
+  Printf.fprintf outchan "fundef\n";
+  print_id_type fd.name (depth+1) outchan;
+  print_id_type_list fd.args (depth+1) outchan;
+  print_syntax fd.body (depth+1) outchan;
 

@@ -10,44 +10,44 @@ type t = (* MinCamlの型を表現するデータ型 (caml2html: type_t) *)
 
 let gentyp () = Var(ref None) (* 新しい型変数を作る *)
 
-let rec print_indent depth = 
+let rec print_indent depth outchan = 
   if depth = 0 
     then ()
-    else (print_string "  ";print_indent (depth-1))
+    else (Printf.fprintf outchan "  ";print_indent (depth-1) outchan)
 
-let rec print_type ty depth = 
-  print_indent depth;
+let rec print_type ty depth outchan = 
+  print_indent depth outchan;
   (
   match ty with
   | Unit
-    -> (print_string "Unit\n")
+    -> (Printf.fprintf outchan "Unit\n")
   | Bool
-    -> (print_string  "Bool\n")
+    -> (Printf.fprintf outchan "Bool\n")
   | Int
-    -> (print_string "Int\n")
+    -> (Printf.fprintf outchan "Int\n")
   | Float
-    -> (print_string "Float\n")
+    -> (Printf.fprintf outchan "Float\n")
   | Fun (tl,t)
-    -> (print_string "Fun\n";
-        print_type_list tl (depth+1);
-        print_type t (depth+1))
+    -> (Printf.fprintf outchan "Fun\n";
+        print_type_list tl (depth+1) outchan;
+        print_type t (depth+1) outchan)
   | Tuple tl
-    -> (print_string "Tuple\n";
-        print_type_list tl (depth+1))
+    -> (Printf.fprintf outchan "Tuple\n";
+        print_type_list tl (depth+1) outchan)
   | Array t
-    -> (print_string "Array\n";
-        print_type t (depth+1))
+    -> (Printf.fprintf outchan "Array\n";
+        print_type t (depth+1) outchan)
   | Var t
-    -> (print_string "Var\n";
+    -> (Printf.fprintf outchan "Var\n";
        (match !t with
-        | None -> (print_indent (depth+1);
-                   print_string "None\n")
-        | Some s -> print_type s (depth+1)))
+        | None -> (print_indent (depth+1) outchan;
+                   Printf.fprintf outchan "None\n")
+        | Some s -> print_type s (depth+1) outchan))
   )
   
-and print_type_list tl depth =
+and print_type_list tl depth outchan =
   match tl with
   | [] -> ()
   | t::rest
-    -> (print_type t depth;
-        print_type_list rest depth)
+    -> (print_type t depth outchan;
+        print_type_list rest depth outchan)

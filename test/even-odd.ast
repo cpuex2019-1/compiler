@@ -1,0 +1,73 @@
+Let
+  t
+  Var
+    None
+  Int 123
+  Let
+    f
+    Var
+      None
+    Int 456
+    LetRec
+      fundef
+        even
+        Var
+          None
+        x
+        Var
+          None
+        LetRec
+          fundef
+            odd
+            Var
+              None
+            x
+            Var
+              None
+            If
+              Not
+                LE
+                  Var x
+                  Int 0
+              App
+                Var even
+                Sub
+                  Var x
+                  Int 1
+              If
+                Not
+                  LE
+                    Int 0
+                    Var x
+                App
+                  Var even
+                  Add
+                    Var x
+                    Int 1
+                Var f
+          If
+            Not
+              LE
+                Var x
+                Int 0
+            App
+              Var odd
+              Sub
+                Var x
+                Int 1
+            If
+              Not
+                LE
+                  Int 0
+                  Var x
+              App
+                Var odd
+                Add
+                  Var x
+                  Int 1
+              Var t
+      App
+        Var print_int
+        App
+          Var even
+          Int 789

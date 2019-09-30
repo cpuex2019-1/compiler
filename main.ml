@@ -27,13 +27,15 @@ let print_syntax f  =
   Id.counter := 0;
   Typing.extenv := M.empty;
   let inchan = open_in (f ^ ".ml") in
+  let outchan = open_out (f ^ ".ast") in
   try
-    Syntax.print_syntax (Parser.exp Lexer.token (Lexing.from_channel inchan)) 0;
+    Syntax.print_syntax (Parser.exp Lexer.token (Lexing.from_channel inchan)) 0 outchan;
     close_in inchan;
-  with e -> (close_in inchan;raise e)
+    close_out outchan;
+  with e -> (close_in inchan; close_out outchan; raise e)
 
 let file f = (* ファイルをコンパイルしてファイルに出力する (caml2html: main_file) *)
-  (*print_string f;*)
+  print_syntax f;
   let inchan = open_in (f ^ ".ml") in
   let outchan = open_out (f ^ ".s") in
   try
@@ -43,7 +45,7 @@ let file f = (* ファイルをコンパイルしてファイルに出力する (caml2html: main_file
   with e -> (close_in inchan; close_out outchan; raise e)
 
 let () = (* ここからコンパイラの実行が開始される (caml2html: main_entry) *)
-  (* print_syntax "test/fib"; *)
+  (*print_syntax "test/fib"; *)
   let files = ref [] in
   Arg.parse
     [("-inline", Arg.Int(fun i -> Inline.threshold := i), "maximum size of functions inlined");

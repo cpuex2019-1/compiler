@@ -1,0 +1,25 @@
+LetRec
+  fundef
+    sum
+    Var
+      None
+    x
+    Var
+      None
+    If
+      LE
+        Var x
+        Int 0
+      Int 0
+      Add
+        App
+          Var sum
+          Sub
+            Var x
+            Int 1
+        Var x
+  App
+    Var print_int
+    App
+      Var sum
+      Int 10000

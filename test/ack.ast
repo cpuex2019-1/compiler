@@ -1,0 +1,45 @@
+LetRec
+  fundef
+    ack
+    Var
+      None
+    x
+    Var
+      None
+    y
+    Var
+      None
+    If
+      LE
+        Var x
+        Int 0
+      Add
+        Var y
+        Int 1
+      If
+        LE
+          Var y
+          Int 0
+        App
+          Var ack
+          Sub
+            Var x
+            Int 1
+          Int 1
+        App
+          Var ack
+          Sub
+            Var x
+            Int 1
+          App
+            Var ack
+            Var x
+            Sub
+              Var y
+              Int 1
+  App
+    Var print_int
+    App
+      Var ack
+      Int 3
+      Int 10

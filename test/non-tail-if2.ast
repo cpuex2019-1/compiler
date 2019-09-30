@@ -1,0 +1,39 @@
+LetRec
+  fundef
+    f
+    Var
+      None
+    Tu1
+    Var
+      None
+    Int 12345
+  Let
+    y
+    Var
+      None
+    Array
+      Int 10
+      Int 3
+    Let
+      x
+      Var
+        None
+      Int 67890
+      App
+        Var print_int
+        If
+          Eq
+            Get
+              Var y
+              Int 0
+            Int 3
+          Add
+            Add
+              App
+                Var f
+                Unit
+              Get
+                Var y
+                Int 1
+            Var x
+          Int 7

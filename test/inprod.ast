@@ -1,0 +1,110 @@
+LetRec
+  fundef
+    getx
+    Var
+      None
+    v
+    Var
+      None
+    LetTuple
+      x
+      Var
+        None
+      y
+      Var
+        None
+      z
+      Var
+        None
+      Var v
+      Var x
+  LetRec
+    fundef
+      gety
+      Var
+        None
+      v
+      Var
+        None
+      LetTuple
+        x
+        Var
+          None
+        y
+        Var
+          None
+        z
+        Var
+          None
+        Var v
+        Var y
+    LetRec
+      fundef
+        getz
+        Var
+          None
+        v
+        Var
+          None
+        LetTuple
+          x
+          Var
+            None
+          y
+          Var
+            None
+          z
+          Var
+            None
+          Var v
+          Var z
+      LetRec
+        fundef
+          inprod
+          Var
+            None
+          v1
+          Var
+            None
+          v2
+          Var
+            None
+          FAdd
+            FAdd
+              FMul
+                App
+                  Var getx
+                  Var v1
+                App
+                  Var getx
+                  Var v2
+              FMul
+                App
+                  Var gety
+                  Var v1
+                App
+                  Var gety
+                  Var v2
+            FMul
+              App
+                Var getz
+                Var v1
+              App
+                Var getz
+                Var v2
+        App
+          Var print_int
+          App
+            Var truncate
+            FMul
+              Float 1000000.000000
+              App
+                Var inprod
+                Tuple
+                  Float 1.000000
+                  Float 2.000000
+                  Float 3.000000
+                Tuple
+                  Float 4.000000
+                  Float 5.000000
+                  Float 6.000000
