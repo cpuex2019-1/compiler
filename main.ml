@@ -23,7 +23,17 @@ let lexbuf outchan l = (* バッファをコンパイルしてチャンネルへ出力する (caml2htm
 
 let string s = lexbuf stdout (Lexing.from_string s) (* 文字列をコンパイルして標準出力に表示する (caml2html: main_string) *)
 
+let print_syntax f  = 
+  Id.counter := 0;
+  Typing.extenv := M.empty;
+  let inchan = open_in (f ^ ".ml") in
+  try
+    Syntax.print_syntax (Parser.exp Lexer.token (Lexing.from_channel inchan)) 0;
+    close_in inchan;
+  with e -> (close_in inchan;raise e)
+
 let file f = (* ファイルをコンパイルしてファイルに出力する (caml2html: main_file) *)
+  (*print_string f;*)
   let inchan = open_in (f ^ ".ml") in
   let outchan = open_out (f ^ ".s") in
   try
@@ -33,6 +43,7 @@ let file f = (* ファイルをコンパイルしてファイルに出力する (caml2html: main_file
   with e -> (close_in inchan; close_out outchan; raise e)
 
 let () = (* ここからコンパイラの実行が開始される (caml2html: main_entry) *)
+  (* print_syntax "test/fib"; *)
   let files = ref [] in
   Arg.parse
     [("-inline", Arg.Int(fun i -> Inline.threshold := i), "maximum size of functions inlined");
