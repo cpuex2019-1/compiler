@@ -1,0 +1,87 @@
+LetRec
+  fundef
+    ack
+    Fun
+      Int
+      Int
+      Int
+    x
+    Int
+    y
+    Int
+    Let
+      Ti4
+      Int
+      Int 0
+      ifLE x Ti4
+        Let
+          Ti5
+          Int
+          Int 1
+          Add y Ti5
+        Let
+          Ti6
+          Int
+          Int 0
+          ifLE y Ti6
+            Let
+              Ti8
+              Int
+              Let
+                Ti7
+                Int
+                Int 1
+                Sub x Ti7
+              Let
+                Ti9
+                Int
+                Int 1
+                App ack
+                Args
+                  Ti8
+                  Ti9
+            Let
+              Ti11
+              Int
+              Let
+                Ti10
+                Int
+                Int 1
+                Sub x Ti10
+              Let
+                Ti14
+                Int
+                Let
+                  Ti13
+                  Int
+                  Let
+                    Ti12
+                    Int
+                    Int 1
+                    Sub y Ti12
+                  App ack
+                  Args
+                    x
+                    Ti13
+                App ack
+                Args
+                  Ti11
+                  Ti14
+  Let
+    Ti3
+    Int
+    Let
+      Ti1
+      Int
+      Int 3
+      Let
+        Ti2
+        Int
+        Int 10
+        App ack
+        Args
+          Ti1
+          Ti2
+    ExtFunApp print_int
+    Args
+      Ti3

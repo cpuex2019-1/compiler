@@ -1,0 +1,56 @@
+LetRec
+  fundef
+    fib
+    Fun
+      Int
+      Int
+    n
+    Int
+    Let
+      Ti3
+      Int
+      Int 1
+      ifLE n Ti3
+        Var n
+        Let
+          Ti6
+          Int
+          Let
+            Ti5
+            Int
+            Let
+              Ti4
+              Int
+              Int 1
+              Sub n Ti4
+            App fib
+            Args
+              Ti5
+          Let
+            Ti9
+            Int
+            Let
+              Ti8
+              Int
+              Let
+                Ti7
+                Int
+                Int 2
+                Sub n Ti7
+              App fib
+              Args
+                Ti8
+            Add Ti6 Ti9
+  Let
+    Ti2
+    Int
+    Let
+      Ti1
+      Int
+      Int 30
+      App fib
+      Args
+        Ti1
+    ExtFunApp print_int
+    Args
+      Ti2

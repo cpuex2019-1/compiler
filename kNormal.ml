@@ -1,4 +1,5 @@
 (* give names to intermediate values (K-normalization) *)
+open Printf
 
 type t = (* K正規化後の式 (caml2html: knormal_t) *)
   | Unit
@@ -177,3 +178,113 @@ let rec g env = function (* K正規化ルーチン本体 (caml2html: knormal_g) *)
                 (fun z -> Put(x, y, z), Type.Unit)))
 
 let f e = fst (g M.empty e)
+
+let rec print_indent depth outchan =
+  if depth = 0 then ()
+  else (fprintf outchan "  ";print_indent (depth-1) outchan)
+  
+let rec print_syntax exp depth outchan =
+  print_indent depth outchan;
+  (
+  match exp with
+  | Unit
+    -> (fprintf outchan "Unit\n")
+  | Int (x)
+    -> (fprintf outchan "Int %d\n" x) 
+  | Float (x)
+    -> (fprintf outchan "Float %f\n" x) 
+  | Neg (i1)
+    -> (fprintf outchan "Neg %s\n" i1) 
+  | Add (i1,i2)
+    -> (fprintf outchan "Add %s %s\n" i1 i2)
+  | Sub (i1,i2)
+    -> (fprintf outchan "Sub %s %s\n" i1 i2)
+  | FNeg (i1)
+    -> (fprintf outchan "FNeg %s\n" i1)
+  | FAdd (i1,i2)
+    -> (fprintf outchan "FAdd %s %s\n" i1 i2)
+  | FSub (i1,i2)
+    -> (fprintf outchan "FSub %s %s\n" i1 i2)
+  | FMul (i1,i2)
+    -> (fprintf outchan "FMul %s %s\n" i1 i2)
+  | FDiv (i1,i2)
+    -> (fprintf outchan "FDiv %s %s\n" i1 i2)
+  | IfEq (i1,i2,e1,e2)
+    -> (fprintf outchan "ifEq %s %s\n" i1 i2;
+        print_syntax e1 (depth+1) outchan;
+        print_syntax e2 (depth+1) outchan)
+  | IfLE (i1,i2,e1,e2)
+    -> (fprintf outchan "ifLE %s %s\n" i1 i2;
+        print_syntax e1 (depth+1) outchan;
+        print_syntax e2 (depth+1) outchan)
+  | Let ((id,ty),e1,e2)
+    -> (fprintf outchan "Let\n";
+        print_id_type (id,ty) (depth+1) outchan;
+        print_syntax e1 (depth+1) outchan;
+        print_syntax e2 (depth+1) outchan)
+  | Var (i1)
+    -> (fprintf outchan "Var %s\n" i1)
+  | LetRec (fd,e1)
+    -> (fprintf outchan "LetRec\n";
+        print_fundef fd (depth+1) outchan;
+        print_syntax e1 (depth+1) outchan)
+  | App (i1,il)
+    -> (fprintf outchan "App %s\n" i1;
+        print_indent depth outchan;
+        fprintf outchan "Args\n";
+        print_id_list il (depth+1) outchan)
+  | Tuple (il)
+    -> (fprintf outchan "Tuple\n";
+        print_id_list il (depth+1) outchan)
+  | LetTuple (idtyl,i1,e1)
+    -> (fprintf outchan "LetTuple\n";
+        print_id_type_list idtyl (depth+1) outchan;
+        print_indent (depth+1) outchan;
+        fprintf outchan "%s\n" i1;
+        print_syntax e1 (depth+1) outchan)
+  | Get (i1,i2)
+    -> (fprintf outchan "Get %s %s\n" i1 i2)
+  | Put (i1,i2,i3)
+    -> (fprintf outchan "Put %s %s %s\n" i1 i2 i3)
+  | ExtArray (i1)
+    -> (fprintf outchan "ExtArray %s\n" i1)
+  | ExtFunApp (i1,il)
+    -> (fprintf outchan "ExtFunApp %s\n" i1;
+        print_indent depth outchan;
+        fprintf outchan "Args\n";
+        print_id_list il (depth+1) outchan)
+  )
+ 
+and print_syntax_list el depth outchan = 
+  match el with
+  | [] -> ()
+  | exp::rem
+    -> (print_syntax exp depth outchan;
+        print_syntax_list rem depth outchan)
+
+and print_id_type (id,ty) depth outchan =
+  (print_indent depth outchan;
+   fprintf outchan "%s\n" id;
+   Type.print_type ty depth outchan)
+
+and print_id_type_list idtyl depth outchan = 
+  match idtyl with
+  | [] -> ()
+  | (idty::rem)
+    -> (print_id_type idty depth outchan;
+        print_id_type_list rem depth outchan) 
+
+and print_fundef fd depth outchan = 
+  print_indent depth outchan;
+  Printf.fprintf outchan "fundef\n";
+  print_id_type fd.name (depth+1) outchan;
+  print_id_type_list fd.args (depth+1) outchan;
+  print_syntax fd.body (depth+1) outchan
+
+and print_id_list il depth outchan = 
+  match il with
+  | [] -> ()
+  | (i::rest)
+    -> (print_indent depth outchan;
+        fprintf outchan "%s\n" i;
+        print_id_list rest depth outchan)

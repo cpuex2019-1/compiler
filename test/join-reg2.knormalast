@@ -1,0 +1,74 @@
+LetRec
+  fundef
+    f
+    Fun
+      Unit
+      Int
+    Tu1
+    Unit
+    Int 123
+  LetRec
+    fundef
+      g
+      Fun
+        Unit
+        Int
+      Tu2
+      Unit
+      Int 456
+    LetRec
+      fundef
+        h
+        Fun
+          Unit
+          Int
+        Tu3
+        Unit
+        Int 789
+      Let
+        x
+        Int
+        Let
+          Tu4
+          Unit
+          Unit
+          App f
+          Args
+            Tu4
+        Let
+          Ti11
+          Int
+          Let
+            Ti10
+            Int
+            Let
+              Ti5
+              Int
+              Int 0
+              ifLE x Ti5
+                Let
+                  Ti7
+                  Int
+                  Let
+                    Tu6
+                    Unit
+                    Unit
+                    App g
+                    Args
+                      Tu6
+                  Add Ti7 x
+                Let
+                  Ti9
+                  Int
+                  Let
+                    Tu8
+                    Unit
+                    Unit
+                    App h
+                    Args
+                      Tu8
+                  Sub Ti9 x
+            Add Ti10 x
+          ExtFunApp print_int
+          Args
+            Ti11

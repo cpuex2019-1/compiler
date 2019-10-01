@@ -1,0 +1,197 @@
+LetRec
+  fundef
+    h
+    Fun
+      Tuple
+        Int
+        Int
+        Int
+        Int
+        Int
+        Int
+        Int
+        Int
+        Int
+        Int
+      Int
+    p
+    Tuple
+      Int
+      Int
+      Int
+      Int
+      Int
+      Int
+      Int
+      Int
+      Int
+      Int
+    LetTuple
+      v1
+      Int
+      v2
+      Int
+      v3
+      Int
+      v4
+      Int
+      v5
+      Int
+      v6
+      Int
+      v7
+      Int
+      v8
+      Int
+      v9
+      Int
+      v10
+      Int
+      p
+      LetRec
+        fundef
+          g
+          Fun
+            Int
+            Int
+          z
+          Int
+          Let
+            r
+            Int
+            Let
+              Ti23
+              Int
+              Let
+                Ti22
+                Int
+                Let
+                  Ti21
+                  Int
+                  Let
+                    Ti20
+                    Int
+                    Let
+                      Ti19
+                      Int
+                      Let
+                        Ti18
+                        Int
+                        Let
+                          Ti17
+                          Int
+                          Let
+                            Ti16
+                            Int
+                            Add v1 v2
+                            Add Ti16 v3
+                          Add Ti17 v4
+                        Add Ti18 v5
+                      Add Ti19 v6
+                    Add Ti20 v7
+                  Add Ti21 v8
+                Add Ti22 v9
+              Add Ti23 v10
+            Let
+              Ti24
+              Int
+              Int 0
+              ifLE z Ti24
+                Let
+                  Ti25
+                  Int
+                  Neg z
+                  App g
+                  Args
+                    Ti25
+                Var r
+        Let
+          Ti15
+          Int
+          Int 1
+          App g
+          Args
+            Ti15
+  Let
+    Tu1
+    Unit
+    Let
+      Ti13
+      Int
+      Let
+        Tt12
+        Tuple
+          Int
+          Int
+          Int
+          Int
+          Int
+          Int
+          Int
+          Int
+          Int
+          Int
+        Let
+          Ti2
+          Int
+          Int 1
+          Let
+            Ti3
+            Int
+            Int 2
+            Let
+              Ti4
+              Int
+              Int 3
+              Let
+                Ti5
+                Int
+                Int 4
+                Let
+                  Ti6
+                  Int
+                  Int 5
+                  Let
+                    Ti7
+                    Int
+                    Int 6
+                    Let
+                      Ti8
+                      Int
+                      Int 7
+                      Let
+                        Ti9
+                        Int
+                        Int 8
+                        Let
+                          Ti10
+                          Int
+                          Int 9
+                          Let
+                            Ti11
+                            Int
+                            Int 10
+                            Tuple
+                              Ti2
+                              Ti3
+                              Ti4
+                              Ti5
+                              Ti6
+                              Ti7
+                              Ti8
+                              Ti9
+                              Ti10
+                              Ti11
+        App h
+        Args
+          Tt12
+      ExtFunApp print_int
+      Args
+        Ti13
+    Let
+      Tu14
+      Unit
+      Unit
+      ExtFunApp print_newline
+      Args
+        Tu14

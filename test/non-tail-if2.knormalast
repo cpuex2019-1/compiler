@@ -1,0 +1,72 @@
+LetRec
+  fundef
+    f
+    Fun
+      Unit
+      Int
+    Tu1
+    Unit
+    Int 12345
+  Let
+    y
+    Array
+      Int
+    Let
+      Ti2
+      Int
+      Int 10
+      Let
+        Ti3
+        Int
+        Int 3
+        ExtFunApp create_array
+        Args
+          Ti2
+          Ti3
+    Let
+      x
+      Int
+      Int 67890
+      Let
+        Ti12
+        Int
+        Let
+          Ti5
+          Int
+          Let
+            Ti4
+            Int
+            Int 0
+            Get y Ti4
+          Let
+            Ti6
+            Int
+            Int 3
+            ifEq Ti5 Ti6
+              Let
+                Ti11
+                Int
+                Let
+                  Ti8
+                  Int
+                  Let
+                    Tu7
+                    Unit
+                    Unit
+                    App f
+                    Args
+                      Tu7
+                  Let
+                    Ti10
+                    Int
+                    Let
+                      Ti9
+                      Int
+                      Int 1
+                      Get y Ti9
+                    Add Ti8 Ti10
+                Add Ti11 x
+              Int 7
+        ExtFunApp print_int
+        Args
+          Ti12

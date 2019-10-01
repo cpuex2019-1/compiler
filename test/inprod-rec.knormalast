@@ -1,0 +1,114 @@
+LetRec
+  fundef
+    inprod
+    Fun
+      Array
+        Float
+      Array
+        Float
+      Int
+      Float
+    v1
+    Array
+      Float
+    v2
+    Array
+      Float
+    i
+    Int
+    Let
+      Ti10
+      Int
+      Int 0
+      ifLE Ti10 i
+        Let
+          Td13
+          Float
+          Let
+            Td11
+            Float
+            Get v1 i
+            Let
+              Td12
+              Float
+              Get v2 i
+              FMul Td11 Td12
+          Let
+            Td16
+            Float
+            Let
+              Ti15
+              Int
+              Let
+                Ti14
+                Int
+                Int 1
+                Sub i Ti14
+              App inprod
+              Args
+                v1
+                v2
+                Ti15
+            FAdd Td13 Td16
+        Float 0.000000
+  Let
+    v1
+    Array
+      Float
+    Let
+      Ti1
+      Int
+      Int 3
+      Let
+        Td2
+        Float
+        Float 1.230000
+        ExtFunApp create_float_array
+        Args
+          Ti1
+          Td2
+    Let
+      v2
+      Array
+        Float
+      Let
+        Ti3
+        Int
+        Int 3
+        Let
+          Td4
+          Float
+          Float 4.560000
+          ExtFunApp create_float_array
+          Args
+            Ti3
+            Td4
+      Let
+        Ti9
+        Int
+        Let
+          Td8
+          Float
+          Let
+            Td5
+            Float
+            Float 1000000.000000
+            Let
+              Td7
+              Float
+              Let
+                Ti6
+                Int
+                Int 2
+                App inprod
+                Args
+                  v1
+                  v2
+                  Ti6
+              FMul Td5 Td7
+          ExtFunApp truncate
+          Args
+            Td8
+        ExtFunApp print_int
+        Args
+          Ti9

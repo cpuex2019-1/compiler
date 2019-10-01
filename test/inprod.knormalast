@@ -1,0 +1,213 @@
+LetRec
+  fundef
+    getx
+    Fun
+      Tuple
+        Float
+        Float
+        Float
+      Float
+    v
+    Tuple
+      Float
+      Float
+      Float
+    LetTuple
+      x
+      Float
+      y
+      Float
+      z
+      Float
+      v
+      Var x
+  LetRec
+    fundef
+      gety
+      Fun
+        Tuple
+          Float
+          Float
+          Float
+        Float
+      v
+      Tuple
+        Float
+        Float
+        Float
+      LetTuple
+        x
+        Float
+        y
+        Float
+        z
+        Float
+        v
+        Var y
+    LetRec
+      fundef
+        getz
+        Fun
+          Tuple
+            Float
+            Float
+            Float
+          Float
+        v
+        Tuple
+          Float
+          Float
+          Float
+        LetTuple
+          x
+          Float
+          y
+          Float
+          z
+          Float
+          v
+          Var z
+      LetRec
+        fundef
+          inprod
+          Fun
+            Tuple
+              Float
+              Float
+              Float
+            Tuple
+              Float
+              Float
+              Float
+            Float
+          v1
+          Tuple
+            Float
+            Float
+            Float
+          v2
+          Tuple
+            Float
+            Float
+            Float
+          Let
+            Td19
+            Float
+            Let
+              Td15
+              Float
+              Let
+                Td13
+                Float
+                App getx
+                Args
+                  v1
+                Let
+                  Td14
+                  Float
+                  App getx
+                  Args
+                    v2
+                  FMul Td13 Td14
+              Let
+                Td18
+                Float
+                Let
+                  Td16
+                  Float
+                  App gety
+                  Args
+                    v1
+                  Let
+                    Td17
+                    Float
+                    App gety
+                    Args
+                      v2
+                    FMul Td16 Td17
+                FAdd Td15 Td18
+            Let
+              Td22
+              Float
+              Let
+                Td20
+                Float
+                App getz
+                Args
+                  v1
+                Let
+                  Td21
+                  Float
+                  App getz
+                  Args
+                    v2
+                  FMul Td20 Td21
+              FAdd Td19 Td22
+        Let
+          Ti12
+          Int
+          Let
+            Td11
+            Float
+            Let
+              Td1
+              Float
+              Float 1000000.000000
+              Let
+                Td10
+                Float
+                Let
+                  Tt5
+                  Tuple
+                    Float
+                    Float
+                    Float
+                  Let
+                    Td2
+                    Float
+                    Float 1.000000
+                    Let
+                      Td3
+                      Float
+                      Float 2.000000
+                      Let
+                        Td4
+                        Float
+                        Float 3.000000
+                        Tuple
+                          Td2
+                          Td3
+                          Td4
+                  Let
+                    Tt9
+                    Tuple
+                      Float
+                      Float
+                      Float
+                    Let
+                      Td6
+                      Float
+                      Float 4.000000
+                      Let
+                        Td7
+                        Float
+                        Float 5.000000
+                        Let
+                          Td8
+                          Float
+                          Float 6.000000
+                          Tuple
+                            Td6
+                            Td7
+                            Td8
+                    App inprod
+                    Args
+                      Tt5
+                      Tt9
+                FMul Td1 Td10
+            ExtFunApp truncate
+            Args
+              Td11
+          ExtFunApp print_int
+          Args
+            Ti12

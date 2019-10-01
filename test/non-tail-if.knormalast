@@ -1,0 +1,75 @@
+Let
+  x
+  Int
+  Let
+    Td1
+    Float
+    Float 1.230000
+    ExtFunApp truncate
+    Args
+      Td1
+  Let
+    y
+    Int
+    Let
+      Td2
+      Float
+      Float 4.560000
+      ExtFunApp truncate
+      Args
+        Td2
+    Let
+      z
+      Int
+      Let
+        Td4
+        Float
+        Let
+          Td3
+          Float
+          Float 7.890000
+          FNeg Td3
+        ExtFunApp truncate
+        Args
+          Td4
+      Let
+        Ti12
+        Int
+        Let
+          Ti9
+          Int
+          Let
+            Ti6
+            Int
+            Let
+              Ti5
+              Int
+              Int 0
+              ifLE Ti5 z
+                Var x
+                Var y
+            Let
+              Ti8
+              Int
+              Let
+                Ti7
+                Int
+                Int 0
+                ifLE x Ti7
+                  Var y
+                  Var z
+              Add Ti6 Ti8
+          Let
+            Ti11
+            Int
+            Let
+              Ti10
+              Int
+              Int 0
+              ifLE Ti10 y
+                Var z
+                Var x
+            Add Ti9 Ti11
+        ExtFunApp print_int
+        Args
+          Ti12

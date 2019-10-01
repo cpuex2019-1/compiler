@@ -1,0 +1,49 @@
+LetRec
+  fundef
+    f
+    Fun
+      Int
+      Int
+    x
+    Int
+    Let
+      Ti5
+      Int
+      Int 123
+      Add x Ti5
+  LetRec
+    fundef
+      g
+      Fun
+        Int
+        Fun
+          Int
+          Int
+      y
+      Int
+      Var f
+    Let
+      Ti4
+      Int
+      Let
+        Tf2
+        Fun
+          Int
+          Int
+        Let
+          Ti1
+          Int
+          Int 456
+          App g
+          Args
+            Ti1
+        Let
+          Ti3
+          Int
+          Int 789
+          App Tf2
+          Args
+            Ti3
+      ExtFunApp print_int
+      Args
+        Ti4

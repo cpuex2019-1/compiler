@@ -1,0 +1,103 @@
+Let
+  t
+  Int
+  Int 123
+  Let
+    f
+    Int
+    Int 456
+    LetRec
+      fundef
+        even
+        Fun
+          Int
+          Int
+        x
+        Int
+        LetRec
+          fundef
+            odd
+            Fun
+              Int
+              Int
+            x
+            Int
+            Let
+              Ti9
+              Int
+              Int 0
+              ifLE x Ti9
+                Let
+                  Ti10
+                  Int
+                  Int 0
+                  ifLE Ti10 x
+                    Var f
+                    Let
+                      Ti12
+                      Int
+                      Let
+                        Ti11
+                        Int
+                        Int 1
+                        Add x Ti11
+                      App even
+                      Args
+                        Ti12
+                Let
+                  Ti14
+                  Int
+                  Let
+                    Ti13
+                    Int
+                    Int 1
+                    Sub x Ti13
+                  App even
+                  Args
+                    Ti14
+          Let
+            Ti3
+            Int
+            Int 0
+            ifLE x Ti3
+              Let
+                Ti4
+                Int
+                Int 0
+                ifLE Ti4 x
+                  Var t
+                  Let
+                    Ti6
+                    Int
+                    Let
+                      Ti5
+                      Int
+                      Int 1
+                      Add x Ti5
+                    App odd
+                    Args
+                      Ti6
+              Let
+                Ti8
+                Int
+                Let
+                  Ti7
+                  Int
+                  Int 1
+                  Sub x Ti7
+                App odd
+                Args
+                  Ti8
+      Let
+        Ti2
+        Int
+        Let
+          Ti1
+          Int
+          Int 789
+          App even
+          Args
+            Ti1
+        ExtFunApp print_int
+        Args
+          Ti2
