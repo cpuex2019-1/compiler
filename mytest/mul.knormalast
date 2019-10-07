@@ -1,0 +1,15 @@
+Let
+  Td3
+  Float
+  Let
+    Td1
+    Float
+    Float 3.000000
+    Let
+      Td2
+      Float
+      Float 4.500000
+      FMul Td1 Td2
+  ExtFunApp print_int
+  Args
+    Td3

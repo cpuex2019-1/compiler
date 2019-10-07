@@ -1,0 +1,76 @@
+toplevel fundef
+fundef
+name
+  f.6
+  Fun
+    Int
+    Int
+  x.7
+  Int
+formal_fv
+body
+  Let
+    Ti5.14
+    Int
+    Int 123
+    Add x.7 Ti5.14
+fundef
+name
+  g.8
+  Fun
+    Int
+    Fun
+      Int
+      Int
+  y.9
+  Int
+formal_fv
+  f.6
+  Fun
+    Int
+    Int
+body
+  Var f.6
+exp
+MakeCls
+  f.6
+  Fun
+    Int
+    Int
+  entry f.6
+  actual_fv
+  MakeCls
+    g.8
+    Fun
+      Int
+      Fun
+        Int
+        Int
+    entry g.8
+    actual_fv
+      f.6
+    Let
+      Ti1.13
+      Int
+      Int 456
+      Let
+        Tf2.11
+        Fun
+          Int
+          Int
+        AppCls g.8
+        Args
+          Ti1.13
+        Let
+          Ti3.12
+          Int
+          Int 789
+          Let
+            Ti4.10
+            Int
+            AppCls Tf2.11
+            Args
+              Ti3.12
+            AppDir min_caml_print_int
+            Args
+              Ti4.10

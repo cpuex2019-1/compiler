@@ -136,11 +136,13 @@ exp: /* (* ∞Ï»Ã§Œº∞ (caml2html: parser_exp) *) */
     %prec prec_app
     { Array($2, $3) }
 | error
-    { failwith
+    { let (st : Lexing.position) = Parsing.symbol_start_pos () in
+      let (ed : Lexing.position) = Parsing.symbol_end_pos () in
+      failwith
         (Printf.sprintf "parse error near line %d characters %d-%d"
-           ((Parsing.symbol_start_pos ()).pos_lnum)
-           ((Parsing.symbol_start_pos ()).pos_cnum - (Parsing.symbol_start_pos ()).pos_bol)
-           ((Parsing.symbol_end_pos ()).pos_cnum - (Parsing.symbol_end_pos ()).pos_bol)
+           (st.pos_lnum)
+           (st.pos_cnum - st.pos_bol)
+           (ed.pos_cnum - ed.pos_bol)
         )
     }
 

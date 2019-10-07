@@ -1,0 +1,91 @@
+toplevel fundef
+fundef
+name
+  ack.15
+  Fun
+    Int
+    Int
+    Int
+  x.16
+  Int
+  y.17
+  Int
+formal_fv
+body
+  Let
+    Ti4.21
+    Int
+    Int 0
+    ifLE x.16 Ti4.21
+      Let
+        Ti5.31
+        Int
+        Int 1
+        Add y.17 Ti5.31
+      Let
+        Ti6.22
+        Int
+        Int 0
+        ifLE y.17 Ti6.22
+          Let
+            Ti7.30
+            Int
+            Int 1
+            Let
+              Ti8.28
+              Int
+              Sub x.16 Ti7.30
+              Let
+                Ti9.29
+                Int
+                Int 1
+                AppDir ack.15
+                Args
+                  Ti8.28
+                  Ti9.29
+          Let
+            Ti10.27
+            Int
+            Int 1
+            Let
+              Ti11.23
+              Int
+              Sub x.16 Ti10.27
+              Let
+                Ti12.26
+                Int
+                Int 1
+                Let
+                  Ti13.25
+                  Int
+                  Sub y.17 Ti12.26
+                  Let
+                    Ti14.24
+                    Int
+                    AppDir ack.15
+                    Args
+                      x.16
+                      Ti13.25
+                    AppDir ack.15
+                    Args
+                      Ti11.23
+                      Ti14.24
+exp
+Let
+  Ti1.19
+  Int
+  Int 3
+  Let
+    Ti2.20
+    Int
+    Int 10
+    Let
+      Ti3.18
+      Int
+      AppDir ack.15
+      Args
+        Ti1.19
+        Ti2.20
+      AppDir min_caml_print_int
+      Args
+        Ti3.18

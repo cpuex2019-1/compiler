@@ -1,0 +1,35 @@
+LetRec
+  fundef
+    f
+    Var
+      None
+    x
+    Var
+      None
+    LetRec
+      fundef
+        g
+        Var
+          None
+        y
+        Var
+          None
+        a
+        Var
+          None
+        b
+        Var
+          None
+        Add
+          Var x
+          Var y
+      Var g
+  App
+    Var print_int
+    App
+      App
+        Var f
+        Int 2
+      Int 3
+      Int 100
+      Int 100

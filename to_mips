@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+ln -sf MIPS_sub/{*.ml{,i},libmincaml.S} .
+cd test; ln -sf MIPS_sub/{,too}manyargs.ml .; cd ..
+cd shootout; ln -sf MIPS_sub/Makefile .; cd ..
+cd bytemark; ln -sf MIPS_sub/Makefile .; cd ..
+cd min-rt; ln -sf MIPS_sub/globals.s .; cd ..

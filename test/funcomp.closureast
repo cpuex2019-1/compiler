@@ -1,0 +1,155 @@
+toplevel fundef
+fundef
+name
+  composed.22
+  Fun
+    Int
+    Int
+  x.23
+  Int
+formal_fv
+  f.8
+  Fun
+    Int
+    Int
+  g.9
+  Fun
+    Int
+    Int
+body
+  Let
+    Ti6.24
+    Int
+    AppCls f.8
+    Args
+      x.23
+    AppCls g.9
+    Args
+      Ti6.24
+fundef
+name
+  compose.7
+  Fun
+    Fun
+      Int
+      Int
+    Fun
+      Int
+      Int
+    Fun
+      Int
+      Int
+  f.8
+  Fun
+    Int
+    Int
+  g.9
+  Fun
+    Int
+    Int
+formal_fv
+body
+  MakeCls
+    composed.22
+    Fun
+      Int
+      Int
+    entry composed.22
+    actual_fv
+      f.8
+      g.9
+    Var composed.22
+fundef
+name
+  dbl.10
+  Fun
+    Int
+    Int
+  x.11
+  Int
+formal_fv
+body
+  Add x.11 x.11
+fundef
+name
+  inc.12
+  Fun
+    Int
+    Int
+  x.13
+  Int
+formal_fv
+body
+  Let
+    Ti5.21
+    Int
+    Int 1
+    Add x.13 Ti5.21
+fundef
+name
+  dec.14
+  Fun
+    Int
+    Int
+  x.15
+  Int
+formal_fv
+body
+  Let
+    Ti4.20
+    Int
+    Int 1
+    Sub x.15 Ti4.20
+exp
+MakeCls
+  dbl.10
+  Fun
+    Int
+    Int
+  entry dbl.10
+  actual_fv
+  MakeCls
+    inc.12
+    Fun
+      Int
+      Int
+    entry inc.12
+    actual_fv
+    MakeCls
+      dec.14
+      Fun
+        Int
+        Int
+      entry dec.14
+      actual_fv
+      Let
+        Tf1.19
+        Fun
+          Int
+          Int
+        AppDir compose.7
+        Args
+          dbl.10
+          dec.14
+        Let
+          h.16
+          Fun
+            Int
+            Int
+          AppDir compose.7
+          Args
+            inc.12
+            Tf1.19
+          Let
+            Ti2.18
+            Int
+            Int 123
+            Let
+              Ti3.17
+              Int
+              AppCls h.16
+              Args
+                Ti2.18
+              AppDir min_caml_print_int
+              Args
+                Ti3.17

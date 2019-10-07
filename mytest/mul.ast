@@ -1,0 +1,5 @@
+App
+  Var print_int
+  FMul
+    Float 3.000000
+    Float 4.500000

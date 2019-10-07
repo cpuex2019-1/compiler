@@ -1,0 +1,118 @@
+toplevel fundef
+fundef
+name
+  inprod.17
+  Fun
+    Array
+      Float
+    Array
+      Float
+    Int
+    Float
+  v1.18
+  Array
+    Float
+  v2.19
+  Array
+    Float
+  i.20
+  Int
+formal_fv
+body
+  Let
+    Ti10.32
+    Int
+    Int 0
+    ifLE Ti10.32 i.20
+      Let
+        Td11.37
+        Float
+        Get v1.18 i.20
+        Let
+          Td12.38
+          Float
+          Get v2.19 i.20
+          Let
+            Td13.33
+            Float
+            FMul Td11.37 Td12.38
+            Let
+              Ti14.36
+              Int
+              Int 1
+              Let
+                Ti15.35
+                Int
+                Sub i.20 Ti14.36
+                Let
+                  Td16.34
+                  Float
+                  AppDir inprod.17
+                  Args
+                    v1.18
+                    v2.19
+                    Ti15.35
+                  FAdd Td13.33 Td16.34
+      Float 0.000000
+exp
+Let
+  Ti1.30
+  Int
+  Int 3
+  Let
+    Td2.31
+    Float
+    Float 1.230000
+    Let
+      v1.21
+      Array
+        Float
+      AppDir min_caml_create_float_array
+      Args
+        Ti1.30
+        Td2.31
+      Let
+        Ti3.28
+        Int
+        Int 3
+        Let
+          Td4.29
+          Float
+          Float 4.560000
+          Let
+            v2.22
+            Array
+              Float
+            AppDir min_caml_create_float_array
+            Args
+              Ti3.28
+              Td4.29
+            Let
+              Td5.25
+              Float
+              Float 1000000.000000
+              Let
+                Ti6.27
+                Int
+                Int 2
+                Let
+                  Td7.26
+                  Float
+                  AppDir inprod.17
+                  Args
+                    v1.21
+                    v2.22
+                    Ti6.27
+                  Let
+                    Td8.24
+                    Float
+                    FMul Td5.25 Td7.26
+                    Let
+                      Ti9.23
+                      Int
+                      AppDir min_caml_truncate
+                      Args
+                        Td8.24
+                      AppDir min_caml_print_int
+                      Args
+                        Ti9.23
