@@ -32,15 +32,15 @@ let reg r =
 let load_label r label =
   let r' = reg r in
   Printf.sprintf
-    "\tlis\t%s, ha16(%s)\n\taddi\t%s, %s, lo16(%s)\n"
-    r' label r' r' label
+    "\taddi\t%s, %s, ha(%s)\n\tslli\t%s, %s, 16\n\tori\t%s, %s, lo(%s)\n"
+    r' (reg reg_zero) label r' r' r' r' label
 
 let load_imm oc target_reg c = 
   let n = c lsr 16 in (* upper 16bit *)
   let m = c lxor (n lsl 16) in (* lower 16bit *)
   let r = reg target_reg in
     Printf.fprintf oc "\taddi\t%s, %s, %d\n" r reg_zero n;
-    Printf.fprintf oc "\tsll\t%s, %s, %d\n" r r 16;
+    Printf.fprintf oc "\tslli\t%s, %s, %d\n" r r 16;
     Printf.fprintf oc "\tori\t%s, %s, %d\n" r r m
 
 (* 関数呼び出しのために引数を並べ替える(register shuffling) (caml2html: emit_shuffle) *)
@@ -68,7 +68,7 @@ let rec g oc = function (* 命令列のアセンブリ生成 (caml2html: emit_g) *)
 and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   (* 末尾でなかったら計算結果をdestにセット (caml2html: emit_nontail) *)
   | NonTail(_), Nop -> ()
-  | NonTail(x), Li(i) when -32768 <= i && i < 32768 -> Printf.fprintf oc "\tli\t%s, %d\n" (reg x) i
+  | NonTail(x), Li(i) when -32768 <= i && i < 32768 -> Printf.fprintf oc "\taddi\t%s, %s, %d\n" (reg x) (reg reg_zero) i
   | NonTail(x), Li(i) ->
       let n = i lsr 16 in (* upper 16bit *)
       let m = i lxor (n lsl 16) in (* lower 16bit *)
@@ -83,7 +83,6 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   | NonTail(x), SetL(Id.L(y)) ->
       let s = load_label x y in
       Printf.fprintf oc "%s" s
-      (* load float point value bound to label "y" to register x. *)
   | NonTail(x), Mr(y) when x = y -> ()
   | NonTail(x), Mr(y) -> Printf.fprintf oc "\tmov\t%s, %s\n" (reg x) (reg y)
   | NonTail(x), Neg(y) -> Printf.fprintf oc "\tmul\t%s, %s, %d\n" (reg x) (reg y) (-1)
@@ -100,7 +99,7 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
       (* oukyu shochi *)
       Printf.fprintf oc "\tadd %s, %s, %s\n" (reg reg_tmp) (reg y) (reg z);
       Printf.fprintf oc "\tsw\t%s, 0(%s)\n" (reg x) (reg reg_tmp)
-  | NonTail(_), Stw(x, y, C(z)) -> Printf.fprintf oc "\tst\t%s, %d(%s)\n" (reg x) z (reg y)
+  | NonTail(_), Stw(x, y, C(z)) -> Printf.fprintf oc "\tsw\t%s, %d(%s)\n" (reg x) z (reg y)
   (* floating point ha atode
   | NonTail(x), FMr(y) when x = y -> ()
   | NonTail(x), FMr(y) -> Printf.fprintf oc "\tfmr\t%s, %s\n" (reg x) (reg y)
@@ -203,7 +202,8 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   (* 関数呼び出しの仮想命令の実装 (caml2html: emit_call) *)
   | Tail, CallCls(x, ys, zs) -> (* 末尾呼び出し (caml2html: emit_tailcall) *)
       g'_args oc [(x, reg_cl)] ys zs;
-      Printf.fprintf oc "\tjr\t%s\n\t" (reg reg_cl);
+      Printf.fprintf oc "\tlw %s, 0(%s)\n" (reg reg_tmp) (reg reg_cl);
+      Printf.fprintf oc "\tjr\t%s\n" (reg reg_tmp);
   | Tail, CallDir(Id.L(x), ys, zs) -> (* 末尾呼び出し *)
       g'_args oc [] ys zs;
       Printf.fprintf oc "\tj\t%s\n" x
@@ -215,7 +215,8 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
       (* stacksizeは1余分にとってあるので-4 *)
       Printf.fprintf oc "\tsw\t%s, %d(%s)\n" (reg reg_tmp) (ss - 4) (reg reg_sp);
       Printf.fprintf oc "\taddi\t%s, %s, %d\n" (reg reg_sp) (reg reg_sp) ss;
-      Printf.fprintf oc "\tjalr\t%s\n" (reg reg_cl);
+      Printf.fprintf oc "\tlw %s, 0(%s)\n" (reg reg_tmp) (reg reg_cl);
+      Printf.fprintf oc "\tjalr\t%s, %s\n" (reg reg_lr) (reg reg_tmp);
       Printf.fprintf oc "\taddi\t%s, %s, %d\n" (reg reg_sp) (reg reg_sp) (-ss);
       (* link registerをもどす *)
       Printf.fprintf oc "\tlw\t%s, %d(%s)\n" (reg reg_lr) (ss - 4) (reg reg_sp);

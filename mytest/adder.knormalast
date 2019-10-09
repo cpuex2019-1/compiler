@@ -1,0 +1,45 @@
+LetRec
+  fundef
+    make_adder
+    Fun
+      Int
+      Fun
+        Int
+        Int
+    x
+    Int
+    LetRec
+      fundef
+        adder
+        Fun
+          Int
+          Int
+        y
+        Int
+        Add x y
+      Var adder
+  Let
+    Ti4
+    Int
+    Let
+      Tf2
+      Fun
+        Int
+        Int
+      Let
+        Ti1
+        Int
+        Int 3
+        App make_adder
+        Args
+          Ti1
+      Let
+        Ti3
+        Int
+        Int 7
+        App Tf2
+        Args
+          Ti3
+    ExtFunApp print_int
+    Args
+      Ti4

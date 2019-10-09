@@ -1,0 +1,5 @@
+App
+  Var print_int
+  Add
+    Int 1
+    Float 2.000000

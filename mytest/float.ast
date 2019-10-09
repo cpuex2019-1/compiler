@@ -1,0 +1,5 @@
+App
+  Var print_float
+  FAdd
+    Float 1.000000
+    Float 2.000000
