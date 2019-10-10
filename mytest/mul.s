@@ -27,5 +27,4 @@ _min_caml_start: # main entry point
 	lwz	r1, 0(r1)
 	lwz	r0, 8(r1)
 	mtlr	r0
-	lmw	r30, -8(r1)
 	blr
