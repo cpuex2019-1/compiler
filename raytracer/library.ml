@@ -133,7 +133,17 @@ external atan : float -> float = "atan_float" "atan" "float"
 
 let rec pow x n =
   if n = 0 then 1.0
-           else (x *. (pow x (n-1))) in 
+           else (x *. (pow x (n-1))) 
+in
+
+let rec fact_tail acc n =
+  if n = 1 then acc
+  else fact_tail (acc * n) (n-1)
+in
+
+let rec fact n = fact_tail 1 n
+in
+
 let rec sin x =
   (* tenuki *)
   x -. (pow x 3) /. 6.0 +. (pow x 5) /. 120.0 -. (pow x 7) /. 5040.0 +. (pow x 9) /. 362880.0 -. (pow x 11) /. 39916800.0 in
@@ -141,6 +151,10 @@ let rec sin x =
 let rec cos x =
   (* tenuki *)
   1.0 -. (pow x 2) /. 2.0 +. (pow x 4) /. 24.0 -. (pow x 6) /. 720.0 +. (pow x 8) /. 40320.0 -. (pow x 10) /. 3628800.0 in
+
+let rec atan x =
+  (* tenuki *)
+  x -. (pow x 3) /. 3.0 +. (pow x 5) /. 5.0 -. (pow x 7) /. 7.0 +. (pow x 9) /. 9.0 -. (pow x 11) /. 11.0 in
 (*
 external create_array : int -> 'a -> 'a array = "caml_make_vect"
 *)
