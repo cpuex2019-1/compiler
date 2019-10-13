@@ -57,9 +57,13 @@ let rec fabs x =
 let rec fneg x 
   -x in 
 
+let rec sqrt_sub iter x y =
+  if iter = 0 then x
+  else sqrt_sub (iter-1) (x-.(x*.x-.y)/.(2.0*.x)) y in
 let rec sqrt x = 
-  (* atode *) x in
+  (* atode *) sqrt_sub 20 x x in
 
+(* write assembly *)
 let rec floor x = 
   (* atode *) x in
 
@@ -68,6 +72,7 @@ external int_of_float : float -> int = "%intoffloat"
 external float_of_int : int -> float = "%floatofint"
 *)
 
+(* write assembly *)
 let rec int_of_float x =
   (* atode *) 1 in
 let rec float_of_int x =
@@ -81,16 +86,14 @@ external atan : float -> float = "atan_float" "atan" "float"
 
 let rec pow x n =
   if n = 0 then 1.0
-           else (x *. (pow x (n-1)))
-
+           else (x *. (pow x (n-1))) in 
 let rec sin x =
   (* tenuki *)
-  x -. (pow x 3) /. 6.0 +. (pow x 5)/120.0 in
+  x -. (pow x 3) /. 6.0 +. (pow x 5) /. 120.0 -. (pow x 7) /. 5040.0 +. (pow x 9) /. 362880.0 -. (pow x 11) /. 39916800.0 in
 
 let rec cos x =
   (* tenuki *)
-  1.0 -. (pow x 2) /. 2.0 +. (pow x 4)/24.0 in
-
+  1.0 -. (pow x 2) /. 2.0 +. (pow x 4) /. 24.0 -. (pow x 6) /. 720.0 +. (pow x 8) /. 40320.0 +. (pow x 10) /. 3628800.0 in
 (*
 external create_array : int -> 'a -> 'a array = "caml_make_vect"
 *)

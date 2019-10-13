@@ -117,4 +117,4 @@ in
 (* reflectionsの有効な要素数 *) 
 
 let n_reflections = Array.create 1 0
-in ()
+in 
