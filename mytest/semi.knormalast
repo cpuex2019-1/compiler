@@ -1,0 +1,17 @@
+Let
+  Tu1
+  Unit
+  Let
+    Ti2
+    Int
+    Int 3
+    ExtFunApp print_int
+    Args
+      Ti2
+  Let
+    Ti3
+    Int
+    Int 5
+    ExtFunApp print_int
+    Args
+      Ti3

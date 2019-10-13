@@ -1,0 +1,75 @@
+Let
+  x.13
+  Int
+  Let
+    Td1.27
+    Float
+    Float 1.230000
+    ExtFunApp truncate
+    Args
+      Td1.27
+  Let
+    y.14
+    Int
+    Let
+      Td2.26
+      Float
+      Float 4.560000
+      ExtFunApp truncate
+      Args
+        Td2.26
+    Let
+      z.15
+      Int
+      Let
+        Td4.24
+        Float
+        Let
+          Td3.25
+          Float
+          Float 7.890000
+          FNeg Td3.25
+        ExtFunApp truncate
+        Args
+          Td4.24
+      Let
+        Ti12.16
+        Int
+        Let
+          Ti9.17
+          Int
+          Let
+            Ti6.20
+            Int
+            Let
+              Ti5.23
+              Int
+              Int 0
+              ifLE Ti5.23 z.15
+                Var x.13
+                Var y.14
+            Let
+              Ti8.21
+              Int
+              Let
+                Ti7.22
+                Int
+                Int 0
+                ifLE x.13 Ti7.22
+                  Var y.14
+                  Var z.15
+              Add Ti6.20 Ti8.21
+          Let
+            Ti11.18
+            Int
+            Let
+              Ti10.19
+              Int
+              Int 0
+              ifLE Ti10.19 y.14
+                Var z.15
+                Var x.13
+            Add Ti9.17 Ti11.18
+        ExtFunApp print_int
+        Args
+          Ti12.16

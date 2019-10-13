@@ -45,6 +45,17 @@ let print_knormal_ast f  =
     close_out outchan;
   with e -> (close_in inchan; close_out outchan; raise e)
 
+let print_alpha_ast f  =
+  Id.counter := 0;
+  Typing.extenv := M.empty;
+  let inchan = open_in (f ^ ".ml") in
+  let outchan = open_out (f ^ ".alphaast") in
+  try
+    KNormal.print_syntax (Alpha.f (KNormal.f (Typing.f (Parser.exp Lexer.token (Lexing.from_channel inchan))))) 0 outchan;
+    close_in inchan;
+    close_out outchan;
+  with e -> (close_in inchan; close_out outchan; raise e)
+
 let print_closure_ast f  =
   Id.counter := 0;
   Typing.extenv := M.empty;
@@ -66,6 +77,7 @@ let print_closure_ast f  =
 let file f = (* ファイルをコンパイルしてファイルに出力する (caml2html: main_file) *)
   print_ast f;
   print_knormal_ast f;
+  print_alpha_ast f;
   print_closure_ast f;
   let inchan = open_in (f ^ ".ml") in
   let outchan = open_out (f ^ ".s") in

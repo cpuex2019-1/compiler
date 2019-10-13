@@ -1,0 +1,58 @@
+LetRec
+  fundef
+    x
+    Fun
+      Int
+      Int
+    x
+    Int
+    Let
+      x
+      Int
+      Let
+        x
+        Int
+        Let
+          Ti4
+          Int
+          Neg x
+          Sub x Ti4
+        Let
+          Ti6
+          Int
+          Let
+            x
+            Int
+            Neg x
+            Let
+              Ti5
+              Int
+              Neg x
+              Sub x Ti5
+          Sub x Ti6
+      Let
+        Ti7
+        Int
+        Neg x
+        Sub x Ti7
+  Let
+    x
+    Int
+    Let
+      Ti1
+      Int
+      Int 125
+      App x
+      Args
+        Ti1
+    Let
+      Ti3
+      Int
+      Let
+        Ti2
+        Int
+        Neg x
+        Sub x Ti2
+      ExtFunApp print_int
+      Args
+        Ti3

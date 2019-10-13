@@ -1,0 +1,39 @@
+Let
+  a
+  Array
+    Int
+  Let
+    Ti2
+    Int
+    Int 5
+    Let
+      Ti3
+      Int
+      Int 0
+      ExtFunApp create_array
+      Args
+        Ti2
+        Ti3
+  Let
+    Tu1
+    Unit
+    Let
+      Ti4
+      Int
+      Int 0
+      Let
+        Ti5
+        Int
+        Int 1
+        Put a Ti4 Ti5
+    Let
+      Ti7
+      Int
+      Let
+        Ti6
+        Int
+        Int 0
+        Get a Ti6
+      ExtFunApp print_int
+      Args
+        Ti7

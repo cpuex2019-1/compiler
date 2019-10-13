@@ -1,0 +1,46 @@
+Let
+  x.7
+  Int
+  Int 10
+  LetRec
+    fundef
+      f.8
+      Fun
+        Int
+        Int
+      y.9
+      Int
+      Let
+        Ti3.12
+        Int
+        Int 0
+        ifEq y.9 Ti3.12
+          Int 0
+          Let
+            Ti6.13
+            Int
+            Let
+              Ti5.14
+              Int
+              Let
+                Ti4.15
+                Int
+                Int 1
+                Sub y.9 Ti4.15
+              App f.8
+              Args
+                Ti5.14
+            Add x.7 Ti6.13
+    Let
+      Ti2.10
+      Int
+      Let
+        Ti1.11
+        Int
+        Int 123
+        App f.8
+        Args
+          Ti1.11
+      ExtFunApp print_int
+      Args
+        Ti2.10

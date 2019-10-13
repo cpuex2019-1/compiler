@@ -1,0 +1,41 @@
+toplevel fundef
+exp
+Let
+  Ti2.14
+  Int
+  Int 5
+  Let
+    Ti3.15
+    Int
+    Int 0
+    Let
+      a.8
+      Array
+        Int
+      AppDir min_caml_create_array
+      Args
+        Ti2.14
+        Ti3.15
+      Let
+        Ti4.12
+        Int
+        Int 0
+        Let
+          Ti5.13
+          Int
+          Int 1
+          Let
+            Tu1.9
+            Unit
+            Put a.8 Ti4.12 Ti5.13
+            Let
+              Ti6.11
+              Int
+              Int 0
+              Let
+                Ti7.10
+                Int
+                Get a.8 Ti6.11
+                AppDir min_caml_print_int
+                Args
+                  Ti7.10

@@ -1,0 +1,62 @@
+toplevel fundef
+fundef
+name
+  x.8
+  Fun
+    Int
+    Int
+  x.9
+  Int
+formal_fv
+body
+  Let
+    Ti4.20
+    Int
+    Neg x.9
+    Let
+      x.16
+      Int
+      Sub x.9 Ti4.20
+      Let
+        x.18
+        Int
+        Neg x.16
+        Let
+          Ti5.19
+          Int
+          Neg x.18
+          Let
+            Ti6.17
+            Int
+            Sub x.18 Ti5.19
+            Let
+              x.14
+              Int
+              Sub x.16 Ti6.17
+              Let
+                Ti7.15
+                Int
+                Neg x.14
+                Sub x.14 Ti7.15
+exp
+Let
+  Ti1.13
+  Int
+  Int 125
+  Let
+    x.10
+    Int
+    AppDir x.8
+    Args
+      Ti1.13
+    Let
+      Ti2.12
+      Int
+      Neg x.10
+      Let
+        Ti3.11
+        Int
+        Sub x.10 Ti2.12
+        AppDir min_caml_print_int
+        Args
+          Ti3.11

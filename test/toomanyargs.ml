@@ -1,1 +1,1 @@
-MIPS_sub/toomanyargs.ml
+x86/toomanyargs.ml

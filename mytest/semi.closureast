@@ -1,0 +1,19 @@
+toplevel fundef
+exp
+Let
+  Ti2.6
+  Int
+  Int 3
+  Let
+    Tu1.4
+    Unit
+    AppDir min_caml_print_int
+    Args
+      Ti2.6
+    Let
+      Ti3.5
+      Int
+      Int 5
+      AppDir min_caml_print_int
+      Args
+        Ti3.5

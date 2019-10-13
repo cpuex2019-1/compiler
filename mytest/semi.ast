@@ -1,0 +1,9 @@
+Let
+  Tu1
+  Unit
+  App
+    Var print_int
+    Int 3
+  App
+    Var print_int
+    Int 5

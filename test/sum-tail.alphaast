@@ -1,0 +1,51 @@
+LetRec
+  fundef
+    sum.8
+    Fun
+      Int
+      Int
+      Int
+    acc.9
+    Int
+    x.10
+    Int
+    Let
+      Ti4.14
+      Int
+      Int 0
+      ifLE x.10 Ti4.14
+        Var acc.9
+        Let
+          Ti5.15
+          Int
+          Add acc.9 x.10
+          Let
+            Ti7.16
+            Int
+            Let
+              Ti6.17
+              Int
+              Int 1
+              Sub x.10 Ti6.17
+            App sum.8
+            Args
+              Ti5.15
+              Ti7.16
+  Let
+    Ti3.11
+    Int
+    Let
+      Ti1.12
+      Int
+      Int 0
+      Let
+        Ti2.13
+        Int
+        Int 10000
+        App sum.8
+        Args
+          Ti1.12
+          Ti2.13
+    ExtFunApp print_int
+    Args
+      Ti3.11

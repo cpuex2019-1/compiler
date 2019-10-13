@@ -1,0 +1,49 @@
+LetRec
+  fundef
+    x
+    Var
+      None
+    x
+    Var
+      None
+    Let
+      x
+      Var
+        None
+      Let
+        x
+        Var
+          None
+        Sub
+          Var x
+          Neg
+            Var x
+        Sub
+          Var x
+          Let
+            x
+            Var
+              None
+            Neg
+              Var x
+            Sub
+              Var x
+              Neg
+                Var x
+      Sub
+        Var x
+        Neg
+          Var x
+  Let
+    x
+    Var
+      None
+    App
+      Var x
+      Int 125
+    App
+      Var print_int
+      Sub
+        Var x
+        Neg
+          Var x

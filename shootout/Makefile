@@ -1,1 +1,1 @@
-MIPS_sub/Makefile
+x86/Makefile

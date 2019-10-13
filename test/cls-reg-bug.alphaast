@@ -1,0 +1,197 @@
+LetRec
+  fundef
+    h.26
+    Fun
+      Tuple
+        Int
+        Int
+        Int
+        Int
+        Int
+        Int
+        Int
+        Int
+        Int
+        Int
+      Int
+    p.27
+    Tuple
+      Int
+      Int
+      Int
+      Int
+      Int
+      Int
+      Int
+      Int
+      Int
+      Int
+    LetTuple
+      v1.42
+      Int
+      v2.43
+      Int
+      v3.44
+      Int
+      v4.45
+      Int
+      v5.46
+      Int
+      v6.47
+      Int
+      v7.48
+      Int
+      v8.49
+      Int
+      v9.50
+      Int
+      v10.51
+      Int
+      p.27
+      LetRec
+        fundef
+          g.52
+          Fun
+            Int
+            Int
+          z.53
+          Int
+          Let
+            r.55
+            Int
+            Let
+              Ti23.58
+              Int
+              Let
+                Ti22.59
+                Int
+                Let
+                  Ti21.60
+                  Int
+                  Let
+                    Ti20.61
+                    Int
+                    Let
+                      Ti19.62
+                      Int
+                      Let
+                        Ti18.63
+                        Int
+                        Let
+                          Ti17.64
+                          Int
+                          Let
+                            Ti16.65
+                            Int
+                            Add v1.42 v2.43
+                            Add Ti16.65 v3.44
+                          Add Ti17.64 v4.45
+                        Add Ti18.63 v5.46
+                      Add Ti19.62 v6.47
+                    Add Ti20.61 v7.48
+                  Add Ti21.60 v8.49
+                Add Ti22.59 v9.50
+              Add Ti23.58 v10.51
+            Let
+              Ti24.56
+              Int
+              Int 0
+              ifLE z.53 Ti24.56
+                Let
+                  Ti25.57
+                  Int
+                  Neg z.53
+                  App g.52
+                  Args
+                    Ti25.57
+                Var r.55
+        Let
+          Ti15.54
+          Int
+          Int 1
+          App g.52
+          Args
+            Ti15.54
+  Let
+    Tu1.28
+    Unit
+    Let
+      Ti13.30
+      Int
+      Let
+        Tt12.31
+        Tuple
+          Int
+          Int
+          Int
+          Int
+          Int
+          Int
+          Int
+          Int
+          Int
+          Int
+        Let
+          Ti2.32
+          Int
+          Int 1
+          Let
+            Ti3.33
+            Int
+            Int 2
+            Let
+              Ti4.34
+              Int
+              Int 3
+              Let
+                Ti5.35
+                Int
+                Int 4
+                Let
+                  Ti6.36
+                  Int
+                  Int 5
+                  Let
+                    Ti7.37
+                    Int
+                    Int 6
+                    Let
+                      Ti8.38
+                      Int
+                      Int 7
+                      Let
+                        Ti9.39
+                        Int
+                        Int 8
+                        Let
+                          Ti10.40
+                          Int
+                          Int 9
+                          Let
+                            Ti11.41
+                            Int
+                            Int 10
+                            Tuple
+                              Ti2.32
+                              Ti3.33
+                              Ti4.34
+                              Ti5.35
+                              Ti6.36
+                              Ti7.37
+                              Ti8.38
+                              Ti9.39
+                              Ti10.40
+                              Ti11.41
+        App h.26
+        Args
+          Tt12.31
+      ExtFunApp print_int
+      Args
+        Ti13.30
+    Let
+      Tu14.29
+      Unit
+      Unit
+      ExtFunApp print_newline
+      Args
+        Tu14.29

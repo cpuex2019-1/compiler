@@ -1,0 +1,123 @@
+LetRec
+  fundef
+    inprod.18
+    Fun
+      Array
+        Float
+      Array
+        Float
+      Float
+      Int
+      Float
+    v1.19
+    Array
+      Float
+    v2.20
+    Array
+      Float
+    acc.21
+    Float
+    i.22
+    Int
+    Let
+      Ti11.35
+      Int
+      Int 0
+      ifLE Ti11.35 i.22
+        Let
+          Td15.36
+          Float
+          Let
+            Td14.39
+            Float
+            Let
+              Td12.40
+              Float
+              Get v1.19 i.22
+              Let
+                Td13.41
+                Float
+                Get v2.20 i.22
+                FMul Td12.40 Td13.41
+            FAdd acc.21 Td14.39
+          Let
+            Ti17.37
+            Int
+            Let
+              Ti16.38
+              Int
+              Int 1
+              Sub i.22 Ti16.38
+            App inprod.18
+            Args
+              v1.19
+              v2.20
+              Td15.36
+              Ti17.37
+        Var acc.21
+  Let
+    v1.23
+    Array
+      Float
+    Let
+      Ti1.33
+      Int
+      Int 3
+      Let
+        Td2.34
+        Float
+        Float 1.230000
+        ExtFunApp create_float_array
+        Args
+          Ti1.33
+          Td2.34
+    Let
+      v2.24
+      Array
+        Float
+      Let
+        Ti3.31
+        Int
+        Int 3
+        Let
+          Td4.32
+          Float
+          Float 4.560000
+          ExtFunApp create_float_array
+          Args
+            Ti3.31
+            Td4.32
+      Let
+        Ti10.25
+        Int
+        Let
+          Td9.26
+          Float
+          Let
+            Td5.27
+            Float
+            Float 1000000.000000
+            Let
+              Td8.28
+              Float
+              Let
+                Td6.29
+                Float
+                Float 0.000000
+                Let
+                  Ti7.30
+                  Int
+                  Int 2
+                  App inprod.18
+                  Args
+                    v1.23
+                    v2.24
+                    Td6.29
+                    Ti7.30
+              FMul Td5.27 Td8.28
+          ExtFunApp truncate
+          Args
+            Td9.26
+        ExtFunApp print_int
+        Args
+          Ti10.25

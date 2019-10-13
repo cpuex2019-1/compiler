@@ -1,0 +1,105 @@
+LetRec
+  fundef
+    compose.7
+    Fun
+      Fun
+        Int
+        Int
+      Fun
+        Int
+        Int
+      Fun
+        Int
+        Int
+    f.8
+    Fun
+      Int
+      Int
+    g.9
+    Fun
+      Int
+      Int
+    LetRec
+      fundef
+        composed.22
+        Fun
+          Int
+          Int
+        x.23
+        Int
+        Let
+          Ti6.24
+          Int
+          App f.8
+          Args
+            x.23
+          App g.9
+          Args
+            Ti6.24
+      Var composed.22
+  LetRec
+    fundef
+      dbl.10
+      Fun
+        Int
+        Int
+      x.11
+      Int
+      Add x.11 x.11
+    LetRec
+      fundef
+        inc.12
+        Fun
+          Int
+          Int
+        x.13
+        Int
+        Let
+          Ti5.21
+          Int
+          Int 1
+          Add x.13 Ti5.21
+      LetRec
+        fundef
+          dec.14
+          Fun
+            Int
+            Int
+          x.15
+          Int
+          Let
+            Ti4.20
+            Int
+            Int 1
+            Sub x.15 Ti4.20
+        Let
+          h.16
+          Fun
+            Int
+            Int
+          Let
+            Tf1.19
+            Fun
+              Int
+              Int
+            App compose.7
+            Args
+              dbl.10
+              dec.14
+            App compose.7
+            Args
+              inc.12
+              Tf1.19
+          Let
+            Ti3.17
+            Int
+            Let
+              Ti2.18
+              Int
+              Int 123
+              App h.16
+              Args
+                Ti2.18
+            ExtFunApp print_int
+            Args
+              Ti3.17

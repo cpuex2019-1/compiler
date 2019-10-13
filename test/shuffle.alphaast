@@ -1,0 +1,119 @@
+LetRec
+  fundef
+    foo.12
+    Fun
+      Int
+      Int
+      Int
+      Int
+      Int
+      Int
+      Unit
+    a.13
+    Int
+    b.14
+    Int
+    c.15
+    Int
+    d.16
+    Int
+    e.17
+    Int
+    f.18
+    Int
+    Let
+      Tu5.32
+      Unit
+      ExtFunApp print_int
+      Args
+        a.13
+      Let
+        Tu4.33
+        Unit
+        ExtFunApp print_int
+        Args
+          b.14
+        Let
+          Tu3.34
+          Unit
+          ExtFunApp print_int
+          Args
+            c.15
+          Let
+            Tu2.35
+            Unit
+            ExtFunApp print_int
+            Args
+              d.16
+            Let
+              Tu1.36
+              Unit
+              ExtFunApp print_int
+              Args
+                e.17
+              ExtFunApp print_int
+              Args
+                f.18
+  LetRec
+    fundef
+      bar.19
+      Fun
+        Int
+        Int
+        Int
+        Int
+        Int
+        Int
+        Unit
+      a.20
+      Int
+      b.21
+      Int
+      c.22
+      Int
+      d.23
+      Int
+      e.24
+      Int
+      f.25
+      Int
+      App foo.12
+      Args
+        b.21
+        a.20
+        d.23
+        e.24
+        f.25
+        c.22
+    Let
+      Ti6.26
+      Int
+      Int 1
+      Let
+        Ti7.27
+        Int
+        Int 2
+        Let
+          Ti8.28
+          Int
+          Int 3
+          Let
+            Ti9.29
+            Int
+            Int 4
+            Let
+              Ti10.30
+              Int
+              Int 5
+              Let
+                Ti11.31
+                Int
+                Int 6
+                App bar.19
+                Args
+                  Ti6.26
+                  Ti7.27
+                  Ti8.28
+                  Ti9.29
+                  Ti10.30
+                  Ti11.31

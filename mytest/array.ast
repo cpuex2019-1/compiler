@@ -1,0 +1,19 @@
+Let
+  a
+  Var
+    None
+  Array
+    Int 5
+    Int 0
+  Let
+    Tu1
+    Unit
+    Put
+      Var a
+      Int 0
+      Int 1
+    App
+      Var print_int
+      Get
+        Var a
+        Int 0

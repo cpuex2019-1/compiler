@@ -1,0 +1,74 @@
+Let
+  x.11
+  Int
+  Int 42
+  LetRec
+    fundef
+      f.12
+      Fun
+        Int
+        Int
+        Int
+        Int
+        Int
+        Unit
+      y1.13
+      Int
+      y2.14
+      Int
+      y3.15
+      Int
+      y4.16
+      Int
+      y5.17
+      Int
+      Let
+        Ti10.23
+        Int
+        Let
+          Ti9.24
+          Int
+          Let
+            Ti8.25
+            Int
+            Let
+              Ti7.26
+              Int
+              Let
+                Ti6.27
+                Int
+                Add x.11 y1.13
+                Add Ti6.27 y2.14
+              Add Ti7.26 y3.15
+            Add Ti8.25 y4.16
+          Add Ti9.24 y5.17
+        ExtFunApp print_int
+        Args
+          Ti10.23
+    Let
+      Ti1.18
+      Int
+      Int 1
+      Let
+        Ti2.19
+        Int
+        Int 2
+        Let
+          Ti3.20
+          Int
+          Int 3
+          Let
+            Ti4.21
+            Int
+            Int 4
+            Let
+              Ti5.22
+              Int
+              Int 5
+              App f.12
+              Args
+                Ti1.18
+                Ti2.19
+                Ti3.20
+                Ti4.21
+                Ti5.22

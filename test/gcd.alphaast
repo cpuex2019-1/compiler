@@ -1,0 +1,52 @@
+LetRec
+  fundef
+    gcd.7
+    Fun
+      Int
+      Int
+      Int
+    m.8
+    Int
+    n.9
+    Int
+    Let
+      Ti4.13
+      Int
+      Int 0
+      ifEq m.8 Ti4.13
+        Var n.9
+        ifLE m.8 n.9
+          Let
+            Ti5.15
+            Int
+            Sub n.9 m.8
+            App gcd.7
+            Args
+              m.8
+              Ti5.15
+          Let
+            Ti6.14
+            Int
+            Sub m.8 n.9
+            App gcd.7
+            Args
+              n.9
+              Ti6.14
+  Let
+    Ti3.10
+    Int
+    Let
+      Ti1.11
+      Int
+      Int 21600
+      Let
+        Ti2.12
+        Int
+        Int 337500
+        App gcd.7
+        Args
+          Ti1.11
+          Ti2.12
+    ExtFunApp print_int
+    Args
+      Ti3.10
