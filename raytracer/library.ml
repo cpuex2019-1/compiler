@@ -72,7 +72,6 @@ external int_of_float : float -> int = "%intoffloat"
 external float_of_int : int -> float = "%floatofint"
 *)
 
-(* write assembly *)
 let rec odd x =
   let h = x / 2 in
   if h*2 = x then false
@@ -80,24 +79,52 @@ let rec odd x =
 in
 
 let rec float_of_int_sub dig x = 
-  if dig = 0 then 0.0
+  if dig < 0 then 0.0
   else ( 
     let h = x / 2 in
     if odd x then (float_of_int_sub (dig-1) h) *. 2.0 +. 1.0 
     else (float_of_int_sub (dig-1) h) *. 2.0
   )
+in
 
 let rec float_of_int x =
-  if x = 2147483648 then 2147483648.0
+  if x = (-2147483648) then (-2147483648.0)
   else (
     if x > 0 then float_of_int_sub 30 x
-    else -1.0 *. (float_of_int_sub 30 (-x))
+    else (-1.0 *. (float_of_int_sub 30 (-x)))
+  )
+in
+
+(* to avoid overflow *)
+let medium x y = 
+  let a = (odd x) in
+  let b = (odd y) in
+  let hx = x / 2 in
+  let hy = y / 2 in
+  let c = (if ((a+b) = 2) then 1 else 0) in
+  hx + hy + c
+in
+
+let rec int_of_float_sub l r x = 
+  (* print_int l;
+  print_string " ";
+  print_int r;
+  print_string "\n"; *)
+  if (l+1) = r then l
+  else (
+    let mid = medium l r in
+    if (float_of_int mid) > x then int_of_float_sub l mid x
+    else int_of_float_sub mid r x
   )
 in
 
 let rec int_of_float x =
-  (* atode *) 1.0 in
-
+  let l = (-2147483648) in
+  let r = 2147483647 in
+  let a = int_of_float_sub l r x in
+  if x >= 2147483647.0 then r
+  else a
+in
 (*
 external cos : float -> float = "cos_float" "cos" "float"
 external sin : float -> float = "sin_float" "sin" "float"
@@ -113,7 +140,7 @@ let rec sin x =
 
 let rec cos x =
   (* tenuki *)
-  1.0 -. (pow x 2) /. 2.0 +. (pow x 4) /. 24.0 -. (pow x 6) /. 720.0 +. (pow x 8) /. 40320.0 +. (pow x 10) /. 3628800.0 in
+  1.0 -. (pow x 2) /. 2.0 +. (pow x 4) /. 24.0 -. (pow x 6) /. 720.0 +. (pow x 8) /. 40320.0 -. (pow x 10) /. 3628800.0 in
 (*
 external create_array : int -> 'a -> 'a array = "caml_make_vect"
 *)
@@ -122,8 +149,9 @@ let rec create_array n x =
 
 (* I/O *)
 
-let print_char x = Pervasives.print_char (char_of_int x)
-let print_int = Pervasives.print_int
+(* primitive command Out
+ * let print_char x = Pervasives.print_char (char_of_int x) 
+let print_int = Pervasives.print_int  *)
 
 let buf = Buffer.create 16
 
