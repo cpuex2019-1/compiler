@@ -4,3 +4,24 @@ let rec x1 x2 =
     let t3 = -x5 in x5 - t3) in x4 - t2 in
   let t4 = -x3 in x3 - t4 in
 let x6 = x1 125 in let t5 = -x6 in x6-t5;;
+
+let rec x x =
+  let x = let x = let t1 = -x in x-t1 in
+    let t2 = (let x = -x in
+    let t3 = -x in x - t3) in x - t2 in
+  let t4 = -x in x - t4 in
+let x = x 125 in let t5 = -x in x-t5
+
+let rec x1 x2 =
+  let t1 = -x2 in
+  let x4 = x2-t1 in
+  let x5 = -x4 in
+  let t3 = -x5 in
+  let t2 = x5-t3 in
+  let x3 = x4-t2 in
+  let t4 = -x3 in
+  x3-t4
+in
+let x6 = x1 125 in
+let t5 = -x6 in
+x6-t5
