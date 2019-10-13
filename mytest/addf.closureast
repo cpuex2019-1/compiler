@@ -1,0 +1,58 @@
+toplevel fundef
+fundef
+name
+  addf.8
+  Fun
+    Float
+    Float
+    Float
+  x.9
+  Float
+  y.10
+  Float
+formal_fv
+body
+  FAdd x.9 y.10
+exp
+Let
+  Ti1.17
+  Int
+  Int 2
+  Let
+    Td2.18
+    Float
+    Float 1.000000
+    Let
+      farr.11
+      Array
+        Float
+      AppDir min_caml_create_float_array
+      Args
+        Ti1.17
+        Td2.18
+      Let
+        Ti3.16
+        Int
+        Int 0
+        Let
+          Td4.13
+          Float
+          Get farr.11 Ti3.16
+          Let
+            Ti5.15
+            Int
+            Int 1
+            Let
+              Td6.14
+              Float
+              Get farr.11 Ti5.15
+              Let
+                Td7.12
+                Float
+                AppDir addf.8
+                Args
+                  Td4.13
+                  Td6.14
+                AppDir min_caml_print_float
+                Args
+                  Td7.12

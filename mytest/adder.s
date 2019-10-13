@@ -1,4 +1,3 @@
-  j Main
 adder.11:
 	lw	$5, 4($29)
 	add	$2, $5, $2
@@ -14,7 +13,6 @@ make_adder.5:
 	mov	$2, $5
 	jr $31
 #	main program starts
-Main:
 	addi	$2, $0, 3
 	mov	$30, $31
 	sw	$30, 4($3)
@@ -29,6 +27,12 @@ Main:
 	addi	$3, $3, 8
 	lw $30, 0($29)
 	jalr	$31, $30
+	addi	$3, $3, -8
+	lw	$31, 4($3)
+	mov	$30, $31
+	sw	$30, 4($3)
+	addi	$3, $3, 8
+	jal	min_caml_print_int
 	addi	$3, $3, -8
 	lw	$31, 4($3)
 #	main program ends

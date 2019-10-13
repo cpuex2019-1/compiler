@@ -1,0 +1,31 @@
+LetRec
+  fundef
+    addf
+    Var
+      None
+    x
+    Var
+      None
+    y
+    Var
+      None
+    FAdd
+      Var x
+      Var y
+  Let
+    farr
+    Var
+      None
+    Array
+      Int 2
+      Float 1.000000
+    App
+      Var print_float
+      App
+        Var addf
+        Get
+          Var farr
+          Int 0
+        Get
+          Var farr
+          Int 1

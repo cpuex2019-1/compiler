@@ -1,0 +1,3 @@
+min_caml_int_of_float:
+min_caml_float_of_int:
+min_caml_floor:
