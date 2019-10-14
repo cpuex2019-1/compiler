@@ -50,7 +50,7 @@ let regs = (* Array.init 27 (fun i -> Printf.sprintf "_R_%d" i) *)
      "$11"; "$12"; "$13"; "$14"; "$15"; "$16"; "$17"; "$18";
      "$19"; "$20"; "$21"; "$22"; "$23"; "$24"; "$25"; "$26";
      "$27"; "$28"|]
-let fregs = Array.init 32 (fun i -> Printf.sprintf "$f%d" i)
+let fregs = Array.init 31 (fun i -> Printf.sprintf "$f%d" i)
 let allregs = Array.to_list regs
 let allfregs = Array.to_list fregs
 let reg_cl = regs.(Array.length regs - 1) (* closure address (caml2html: sparcasm_regcl) *)
@@ -61,6 +61,7 @@ let reg_sp = "$3" (* stack pointer *)
 let reg_hp = "$4" (* heap pointer (caml2html: sparcasm_reghp) *)
 let reg_tmp = "$30" (* [XX] ad hoc *)
 let reg_tmp2 = "$29"
+let reg_ftmp = "$f31"
 let reg_lr = "$31" (* link register *)
 let is_reg x = (x.[0] = '$')
 

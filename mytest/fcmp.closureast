@@ -59,7 +59,7 @@ Let
                           Let
                             Ti11.17
                             Int
-                            ifEq a.15 b.16
+                            ifLE b.16 a.15
                               Int 1
                               Int 0
                             AppDir min_caml_print_int

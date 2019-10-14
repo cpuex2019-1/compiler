@@ -36,8 +36,8 @@ Let
           App
             Var print_int
             If
-              Eq
-                Var a
+              LE
                 Var b
+                Var a
               Int 1
               Int 0

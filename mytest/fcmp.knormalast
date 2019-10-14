@@ -57,7 +57,7 @@ Let
           Let
             Ti11
             Int
-            ifEq a b
+            ifLE b a
               Int 1
               Int 0
             ExtFunApp print_int

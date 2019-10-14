@@ -1,7 +1,7 @@
 open Asm
 
-external gethi : float -> int32 = "gethi"
-external getlo : float -> int32 = "getlo"
+external get : float -> int32 = "get"
+(* external getlo : float -> int32 = "getlo" *)
 
 let stackset = ref S.empty (* すでにSaveされた変数の集合 (caml2html: emit_stackset) *)
 let stackmap = ref [] (* Saveされた変数の、スタックにおける位置 (caml2html: emit_stackmap) *)
@@ -77,8 +77,13 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
       Printf.fprintf oc "\tsll\t%s, %s, %d\n" r r 16;
       Printf.fprintf oc "\tori\t%s, %s, %d\n" r r m
   | NonTail(x), FLi(Id.L(l)) ->
-      let s = load_label (reg reg_tmp) l in
-      Printf.fprintf oc "%s\tlfd\t%s, 0(%s)\n" s (reg x) (reg reg_tmp)
+      (* 苦肉の策、浮動小数点即値は関数呼び出し*)
+      Printf.fprintf oc "\tsw\t%s, 0(%s)\n" (reg reg_lr) (reg reg_sp);
+      (* 即値の関数はスタックを汚さないのでスタックポインタの上げ下げはしない *)
+      Printf.fprintf oc "\tjal\t%s\n" l;
+      (* ここでreg_ftmpに目的の即値が入っている *)
+      Printf.fprintf oc "\tlw\t%s, 0(%s)\n" (reg reg_lr) (reg reg_sp); 
+      Printf.fprintf oc "\tfmov\t%s, %s\n" (reg x) (reg reg_ftmp)
       (* load float point value bound to label "l" to register x. *)
   | NonTail(x), SetL(Id.L(y)) ->
       let s = load_label x y in
@@ -306,22 +311,48 @@ let h oc { name = Id.L(x); args = _; fargs = _; body = e; ret = _ } =
   stackmap := [];
   g oc (Tail, e)
 
+let rec arrange_float_imm oc data n = 
+  match data with
+  | [] -> ()
+  | ((Id.L(x),d)::rest) ->
+      (
+      Printf.fprintf oc "\taddi\t%s, %s, %d\n" (reg reg_tmp) (reg reg_zero) (Int32.to_int (get d));
+      Printf.fprintf oc "\tsw\t%s, 0(%s)\n" (reg reg_tmp) (reg reg_hp);
+      Printf.fprintf oc "\taddi\t%s, %s, 8\n" (reg reg_hp) (reg reg_hp);
+      arrange_float_imm oc rest (n+1)
+      )
+
+
 let f oc (Prog(data, fundefs, e)) =
   Format.eprintf "generating assembly...@.";
-  if data <> [] then
-    (Printf.fprintf oc "\t.data\n\t.literal8\n";
-     List.iter
-       (fun (Id.L(x), d) ->
-         Printf.fprintf oc "\t.align 3\n";
-         Printf.fprintf oc "%s:\t # %f\n" x d;
-         Printf.fprintf oc "\t.long\t%ld\n" (gethi d);
-         Printf.fprintf oc "\t.long\t%ld\n" (getlo d))
-       data);
+  Printf.fprintf oc "Init: # initialize float value and heap pointer\n";
+  (* initialize heap pointer *)
+  let hp_init = 10000 in
+  (
+    Printf.fprintf oc "\taddi\t%s, %s, %d\n" (reg reg_hp) (reg reg_zero) hp_init;
+    (* 浮動小数即値の初期化 *)
+    arrange_float_imm oc data 0;
+
+    Printf.fprintf oc "\tj Main\n";
+
+    let idx = ref 0 in
+    if data <> [] then
+      (List.iter
+         (fun (Id.L(x), d) ->
+           Printf.fprintf oc "%s:\t # %f\n" x d;
+           Printf.fprintf oc "\tlf\t%s, %d(%s)\n" (reg reg_ftmp) (8*(!idx)) (reg reg_zero);
+           Printf.fprintf oc "\tj\t%s\n" (reg reg_lr);
+           idx := !idx+1; ()
+         )
+         data )
+  );
+
   (*
   Printf.fprintf oc "\t.text\n";
   Printf.fprintf oc "\t.globl _min_caml_start\n";
   Printf.fprintf oc "\t.align 2\n";
   *)
+
   List.iter (fun fundef -> h oc fundef) fundefs;
   (*
   Printf.fprintf oc "_min_caml_start: # main entry point\n";
@@ -331,9 +362,11 @@ let f oc (Prog(data, fundefs, e)) =
   Printf.fprintf oc "\tstwu\tr1, -96(r1)\n";
   *)
   Printf.fprintf oc "#\tmain program starts\n";
+  Printf.fprintf oc "Main:\n";
   stackset := S.empty;
   stackmap := [];
   g oc (NonTail("_R_0"), e);
+  Printf.fprintf oc "\tj Exit\n";
   Printf.fprintf oc "#\tmain program ends\n";
   (* Printf.fprintf oc "\tmr\tr3, %s\n" regs.(0); *)
   (* atode
@@ -343,3 +376,4 @@ let f oc (Prog(data, fundefs, e)) =
   Printf.fprintf oc "\tlmw\tr30, -8(r1)\n";
   Printf.fprintf oc "\tblr\n"
   *)
+  Printf.fprintf oc "Exit:\n"
