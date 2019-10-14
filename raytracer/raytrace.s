@@ -289,48 +289,31 @@ l.6376:	 # 0.500000
 l.6375:	 # 0.000000
 	lf	$f31, 10376($0)
 	j	$31
-fless.2616:
-	fsub	$f0, $f1, $f0
-	mov	$30, $31
-	sw	$30, 4($3)
-	addi	$3, $3, 8
-	jal	min_caml_fispos
-	addi	$3, $3, -8
-	lw	$31, 4($3)
-	addi	$30, $0, 0
-	slli	$30, $30, 16
-	ori	$30, $30, 0
-	bne	$2, $30, eq_else.9085
-	addi	$2, $0, 0
-	jr $31
-eq_else.9085:
-	addi	$2, $0, 1
-	jr $31
-fispos.2619:
+fispos.2616:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
 	fmov	$f1, $f31
 	sltf	$30, $f1, $f0
+	bne	$30, $0, eq_else.9085
+	addi	$2, $0, 0
+	jr $31
+eq_else.9085:
+	addi	$2, $0, 1
+	jr $31
+fisneg.2618:
+	sw	$31, 0($3)
+	jal	l.6375
+	lw	$31, 0($3)
+	fmov	$f1, $f31
+	sltf	$30, $f0, $f1
 	bne	$30, $0, eq_else.9086
 	addi	$2, $0, 0
 	jr $31
 eq_else.9086:
 	addi	$2, $0, 1
 	jr $31
-fisneg.2621:
-	sw	$31, 0($3)
-	jal	l.6375
-	lw	$31, 0($3)
-	fmov	$f1, $f31
-	sltf	$30, $f0, $f1
-	bne	$30, $0, eq_else.9087
-	addi	$2, $0, 0
-	jr $31
-eq_else.9087:
-	addi	$2, $0, 1
-	jr $31
-fiszero.2623:
+fiszero.2620:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
@@ -339,11 +322,28 @@ fiszero.2623:
 	lw	$30, 0($4)
 	sf	$f1, 0($4)
 	lw	$29, 0($4)
-	bne	$30, $29, eq_else.9088
+	bne	$30, $29, eq_else.9087
 	addi	$2, $0, 1
 	jr $31
-eq_else.9088:
+eq_else.9087:
 	addi	$2, $0, 0
+	jr $31
+fless.2622:
+	fsub	$f0, $f1, $f0
+	mov	$30, $31
+	sw	$30, 4($3)
+	addi	$3, $3, 8
+	jal	fispos.2616
+	addi	$3, $3, -8
+	lw	$31, 4($3)
+	addi	$30, $0, 0
+	slli	$30, $30, 16
+	ori	$30, $30, 0
+	bne	$2, $30, eq_else.9088
+	addi	$2, $0, 0
+	jr $31
+eq_else.9088:
+	addi	$2, $0, 1
 	jr $31
 xor.2625:
 	addi	$30, $0, 0
@@ -377,7 +377,7 @@ fabs.2632:
 	mov	$30, $31
 	sw	$30, 12($3)
 	addi	$3, $3, 16
-	jal	fispos.2619
+	jal	fispos.2616
 	addi	$3, $3, -16
 	lw	$31, 12($3)
 	addi	$30, $0, 0
@@ -978,7 +978,7 @@ sgn.2676:
 	mov	$30, $31
 	sw	$30, 12($3)
 	addi	$3, $3, 16
-	jal	fiszero.2623
+	jal	fiszero.2620
 	addi	$3, $3, -16
 	lw	$31, 12($3)
 	addi	$30, $0, 0
@@ -989,7 +989,7 @@ sgn.2676:
 	mov	$30, $31
 	sw	$30, 12($3)
 	addi	$3, $3, 16
-	jal	fispos.2619
+	jal	fispos.2616
 	addi	$3, $3, -16
 	lw	$31, 12($3)
 	addi	$30, $0, 0
@@ -1100,7 +1100,7 @@ vecunit_sgn.2702:
 	mov	$30, $31
 	sw	$30, 36($3)
 	addi	$3, $3, 40
-	jal	fiszero.2623
+	jal	fiszero.2620
 	addi	$3, $3, -40
 	lw	$31, 36($3)
 	addi	$30, $0, 0
@@ -2029,7 +2029,7 @@ eq_else.9132:
 	mov	$30, $31
 	sw	$30, 36($3)
 	addi	$3, $3, 40
-	jal	fisneg.2621
+	jal	fisneg.2618
 	addi	$3, $3, -40
 	lw	$31, 36($3)
 	addi	$5, $0, 2
@@ -2223,7 +2223,7 @@ eq_cont.9136:
 	mov	$30, $31
 	sw	$30, 68($3)
 	addi	$3, $3, 72
-	jal	fiszero.2623
+	jal	fiszero.2620
 	addi	$3, $3, -72
 	lw	$31, 68($3)
 	addi	$30, $0, 0
@@ -2262,7 +2262,7 @@ eq_cont.9141:
 	mov	$30, $31
 	sw	$30, 84($3)
 	addi	$3, $3, 88
-	jal	fiszero.2623
+	jal	fiszero.2620
 	addi	$3, $3, -88
 	lw	$31, 84($3)
 	addi	$30, $0, 0
@@ -2301,7 +2301,7 @@ eq_cont.9143:
 	mov	$30, $31
 	sw	$30, 100($3)
 	addi	$3, $3, 104
-	jal	fiszero.2623
+	jal	fiszero.2620
 	addi	$3, $3, -104
 	lw	$31, 100($3)
 	addi	$30, $0, 0
@@ -2589,7 +2589,7 @@ lf	$f3, 0($30)
 	fmov	$f0, $f3
 	sw	$30, 60($3)
 	addi	$3, $3, 64
-	jal	fiszero.2623
+	jal	fiszero.2620
 	addi	$3, $3, -64
 	lw	$31, 60($3)
 	addi	$30, $0, 0
@@ -2621,7 +2621,7 @@ lf	$f0, 0($30)
 	mov	$30, $31
 	sw	$30, 68($3)
 	addi	$3, $3, 72
-	jal	fisneg.2621
+	jal	fisneg.2618
 	addi	$3, $3, -72
 	lw	$31, 68($3)
 	mov	$5, $2
@@ -2674,7 +2674,7 @@ lf	$f1, 0($30)
 	mov	$30, $31
 	sw	$30, 84($3)
 	addi	$3, $3, 88
-	jal	fless.2616
+	jal	fless.2622
 	addi	$3, $3, -88
 	lw	$31, 84($3)
 	addi	$30, $0, 0
@@ -2707,7 +2707,7 @@ lf	$f1, 0($30)
 	mov	$30, $31
 	sw	$30, 84($3)
 	addi	$3, $3, 88
-	jal	fless.2616
+	jal	fless.2622
 	addi	$3, $3, -88
 	lw	$31, 84($3)
 	addi	$30, $0, 0
@@ -2824,7 +2824,7 @@ solver_surface.2839:
 	mov	$30, $31
 	sw	$30, 52($3)
 	addi	$3, $3, 56
-	jal	fispos.2619
+	jal	fispos.2616
 	addi	$3, $3, -56
 	lw	$31, 52($3)
 	addi	$30, $0, 0
@@ -3137,7 +3137,7 @@ solver_second.2858:
 	mov	$30, $31
 	sw	$30, 52($3)
 	addi	$3, $3, 56
-	jal	fiszero.2623
+	jal	fiszero.2620
 	addi	$3, $3, -56
 	lw	$31, 52($3)
 	addi	$30, $0, 0
@@ -3211,7 +3211,7 @@ eq_cont.9180:
 	mov	$30, $31
 	sw	$30, 84($3)
 	addi	$3, $3, 88
-	jal	fispos.2619
+	jal	fispos.2616
 	addi	$3, $3, -88
 	lw	$31, 84($3)
 	addi	$30, $0, 0
@@ -3391,7 +3391,7 @@ solver_rect_fast.2868:
 	mov	$30, $31
 	sw	$30, 68($3)
 	addi	$3, $3, 72
-	jal	fless.2616
+	jal	fless.2622
 	addi	$3, $3, -72
 	lw	$31, 68($3)
 	addi	$30, $0, 0
@@ -3426,7 +3426,7 @@ eq_else.9188:
 	mov	$30, $31
 	sw	$30, 76($3)
 	addi	$3, $3, 80
-	jal	fless.2616
+	jal	fless.2622
 	addi	$3, $3, -80
 	lw	$31, 76($3)
 	addi	$30, $0, 0
@@ -3441,7 +3441,7 @@ eq_else.9190:
 	mov	$30, $31
 	sw	$30, 76($3)
 	addi	$3, $3, 80
-	jal	fiszero.2623
+	jal	fiszero.2620
 	addi	$3, $3, -80
 	lw	$31, 76($3)
 	addi	$30, $0, 0
@@ -3491,7 +3491,7 @@ eq_cont.9189:
 	mov	$30, $31
 	sw	$30, 92($3)
 	addi	$3, $3, 96
-	jal	fless.2616
+	jal	fless.2622
 	addi	$3, $3, -96
 	lw	$31, 92($3)
 	addi	$30, $0, 0
@@ -3526,7 +3526,7 @@ eq_else.9195:
 	mov	$30, $31
 	sw	$30, 100($3)
 	addi	$3, $3, 104
-	jal	fless.2616
+	jal	fless.2622
 	addi	$3, $3, -104
 	lw	$31, 100($3)
 	addi	$30, $0, 0
@@ -3541,7 +3541,7 @@ eq_else.9197:
 	mov	$30, $31
 	sw	$30, 100($3)
 	addi	$3, $3, 104
-	jal	fiszero.2623
+	jal	fiszero.2620
 	addi	$3, $3, -104
 	lw	$31, 100($3)
 	addi	$30, $0, 0
@@ -3591,7 +3591,7 @@ eq_cont.9196:
 	mov	$30, $31
 	sw	$30, 116($3)
 	addi	$3, $3, 120
-	jal	fless.2616
+	jal	fless.2622
 	addi	$3, $3, -120
 	lw	$31, 116($3)
 	addi	$30, $0, 0
@@ -3626,7 +3626,7 @@ eq_else.9202:
 	mov	$30, $31
 	sw	$30, 124($3)
 	addi	$3, $3, 128
-	jal	fless.2616
+	jal	fless.2622
 	addi	$3, $3, -128
 	lw	$31, 124($3)
 	addi	$30, $0, 0
@@ -3641,7 +3641,7 @@ eq_else.9204:
 	mov	$30, $31
 	sw	$30, 124($3)
 	addi	$3, $3, 128
-	jal	fiszero.2623
+	jal	fiszero.2620
 	addi	$3, $3, -128
 	lw	$31, 124($3)
 	addi	$30, $0, 0
@@ -3691,7 +3691,7 @@ solver_surface_fast.2875:
 	fmov	$f0, $f3
 	sw	$30, 36($3)
 	addi	$3, $3, 40
-	jal	fisneg.2621
+	jal	fisneg.2618
 	addi	$3, $3, -40
 	lw	$31, 36($3)
 	addi	$30, $0, 0
@@ -3731,7 +3731,7 @@ solver_second_fast.2881:
 	fmov	$f0, $f3
 	sw	$30, 52($3)
 	addi	$3, $3, 56
-	jal	fiszero.2623
+	jal	fiszero.2620
 	addi	$3, $3, -56
 	lw	$31, 52($3)
 	addi	$30, $0, 0
@@ -3801,7 +3801,7 @@ eq_cont.9216:
 	mov	$30, $31
 	sw	$30, 92($3)
 	addi	$3, $3, 96
-	jal	fispos.2619
+	jal	fispos.2616
 	addi	$3, $3, -96
 	lw	$31, 92($3)
 	addi	$30, $0, 0
@@ -3981,7 +3981,7 @@ solver_surface_fast2.2891:
 	mov	$30, $31
 	sw	$30, 12($3)
 	addi	$3, $3, 16
-	jal	fisneg.2621
+	jal	fisneg.2618
 	addi	$3, $3, -16
 	lw	$31, 12($3)
 	addi	$30, $0, 0
@@ -4015,7 +4015,7 @@ solver_second_fast2.2898:
 	fmov	$f0, $f3
 	sw	$30, 52($3)
 	addi	$3, $3, 56
-	jal	fiszero.2623
+	jal	fiszero.2620
 	addi	$3, $3, -56
 	lw	$31, 52($3)
 	addi	$30, $0, 0
@@ -4052,7 +4052,7 @@ solver_second_fast2.2898:
 	mov	$30, $31
 	sw	$30, 84($3)
 	addi	$3, $3, 88
-	jal	fispos.2619
+	jal	fispos.2616
 	addi	$3, $3, -88
 	lw	$31, 84($3)
 	addi	$30, $0, 0
@@ -4221,7 +4221,7 @@ setup_rect_table.2908:
 	mov	$30, $31
 	sw	$30, 12($3)
 	addi	$3, $3, 16
-	jal	fiszero.2623
+	jal	fiszero.2620
 	addi	$3, $3, -16
 	lw	$31, 12($3)
 	addi	$30, $0, 0
@@ -4241,7 +4241,7 @@ setup_rect_table.2908:
 	mov	$30, $31
 	sw	$30, 20($3)
 	addi	$3, $3, 24
-	jal	fisneg.2621
+	jal	fisneg.2618
 	addi	$3, $3, -24
 	lw	$31, 20($3)
 	mov	$5, $2
@@ -4292,7 +4292,7 @@ eq_cont.9234:
 	mov	$30, $31
 	sw	$30, 20($3)
 	addi	$3, $3, 24
-	jal	fiszero.2623
+	jal	fiszero.2620
 	addi	$3, $3, -24
 	lw	$31, 20($3)
 	addi	$30, $0, 0
@@ -4312,7 +4312,7 @@ eq_cont.9234:
 	mov	$30, $31
 	sw	$30, 28($3)
 	addi	$3, $3, 32
-	jal	fisneg.2621
+	jal	fisneg.2618
 	addi	$3, $3, -32
 	lw	$31, 28($3)
 	mov	$5, $2
@@ -4363,7 +4363,7 @@ eq_cont.9236:
 	mov	$30, $31
 	sw	$30, 28($3)
 	addi	$3, $3, 32
-	jal	fiszero.2623
+	jal	fiszero.2620
 	addi	$3, $3, -32
 	lw	$31, 28($3)
 	addi	$30, $0, 0
@@ -4383,7 +4383,7 @@ eq_cont.9236:
 	mov	$30, $31
 	sw	$30, 36($3)
 	addi	$3, $3, 40
-	jal	fisneg.2621
+	jal	fisneg.2618
 	addi	$3, $3, -40
 	lw	$31, 36($3)
 	mov	$5, $2
@@ -4494,7 +4494,7 @@ setup_surface_table.2911:
 	mov	$30, $31
 	sw	$30, 68($3)
 	addi	$3, $3, 72
-	jal	fispos.2619
+	jal	fispos.2616
 	addi	$3, $3, -72
 	lw	$31, 68($3)
 	addi	$30, $0, 0
@@ -4807,7 +4807,7 @@ eq_cont.9244:
 	mov	$30, $31
 	sw	$30, 148($3)
 	addi	$3, $3, 152
-	jal	fiszero.2623
+	jal	fiszero.2620
 	addi	$3, $3, -152
 	lw	$31, 148($3)
 	addi	$30, $0, 0
@@ -5122,7 +5122,7 @@ is_rect_outside.2927:
 	mov	$30, $31
 	sw	$30, 36($3)
 	addi	$3, $3, 40
-	jal	fless.2616
+	jal	fless.2622
 	addi	$3, $3, -40
 	lw	$31, 36($3)
 	addi	$30, $0, 0
@@ -5152,7 +5152,7 @@ eq_else.9262:
 	mov	$30, $31
 	sw	$30, 44($3)
 	addi	$3, $3, 48
-	jal	fless.2616
+	jal	fless.2622
 	addi	$3, $3, -48
 	lw	$31, 44($3)
 	addi	$30, $0, 0
@@ -5182,7 +5182,7 @@ eq_else.9264:
 	mov	$30, $31
 	sw	$30, 52($3)
 	addi	$3, $3, 56
-	jal	fless.2616
+	jal	fless.2622
 	addi	$3, $3, -56
 	lw	$31, 52($3)
 eq_cont.9265:
@@ -5243,7 +5243,7 @@ is_plane_outside.2932:
 	mov	$30, $31
 	sw	$30, 44($3)
 	addi	$3, $3, 48
-	jal	fisneg.2621
+	jal	fisneg.2618
 	addi	$3, $3, -48
 	lw	$31, 44($3)
 	mov	$5, $2
@@ -5306,7 +5306,7 @@ eq_cont.9272:
 	mov	$30, $31
 	sw	$30, 28($3)
 	addi	$3, $3, 32
-	jal	fisneg.2621
+	jal	fisneg.2618
 	addi	$3, $3, -32
 	lw	$31, 28($3)
 	mov	$5, $2
@@ -5490,7 +5490,7 @@ eq_else.9281:
 	mov	$30, $31
 	sw	$30, 52($3)
 	addi	$3, $3, 56
-	jal	fless.2616
+	jal	fless.2622
 	addi	$3, $3, -56
 	lw	$31, 52($3)
 eq_cont.9282:
@@ -5666,7 +5666,7 @@ eq_else.9291:
 	mov	$30, $31
 	sw	$30, 28($3)
 	addi	$3, $3, 32
-	jal	fless.2616
+	jal	fless.2622
 	addi	$3, $3, -32
 	lw	$31, 28($3)
 	addi	$30, $0, 0
@@ -5813,7 +5813,7 @@ eq_else.9301:
 	mov	$30, $31
 	sw	$30, 68($3)
 	addi	$3, $3, 72
-	jal	fless.2616
+	jal	fless.2622
 	addi	$3, $3, -72
 	lw	$31, 68($3)
 	addi	$30, $0, 0
@@ -5828,7 +5828,7 @@ eq_else.9304:
 	mov	$30, $31
 	sw	$30, 68($3)
 	addi	$3, $3, 72
-	jal	fless.2616
+	jal	fless.2622
 	addi	$3, $3, -72
 	lw	$31, 68($3)
 	addi	$30, $0, 0
@@ -6010,7 +6010,7 @@ eq_else.9316:
 	mov	$30, $31
 	sw	$30, 36($3)
 	addi	$3, $3, 40
-	jal	fless.2616
+	jal	fless.2622
 	addi	$3, $3, -40
 	lw	$31, 36($3)
 	addi	$30, $0, 0
@@ -6073,7 +6073,7 @@ judge_intersection.2974:
 	mov	$30, $31
 	sw	$30, 20($3)
 	addi	$3, $3, 24
-	jal	fless.2616
+	jal	fless.2622
 	addi	$3, $3, -24
 	lw	$31, 20($3)
 	addi	$30, $0, 0
@@ -6088,7 +6088,7 @@ eq_else.9321:
 	lw	$31, 0($3)
 	fmov	$f1, $f31
 	lf	$f0, 8($3)
-	j	fless.2616
+	j	fless.2622
 solve_each_element_fast.2976:
 	lw	$7, 36($28)
 	lw	$8, 32($28)
@@ -6181,7 +6181,7 @@ eq_else.9324:
 	mov	$30, $31
 	sw	$30, 76($3)
 	addi	$3, $3, 80
-	jal	fless.2616
+	jal	fless.2622
 	addi	$3, $3, -80
 	lw	$31, 76($3)
 	addi	$30, $0, 0
@@ -6196,7 +6196,7 @@ eq_else.9327:
 	mov	$30, $31
 	sw	$30, 76($3)
 	addi	$3, $3, 80
-	jal	fless.2616
+	jal	fless.2622
 	addi	$3, $3, -80
 	lw	$31, 76($3)
 	addi	$30, $0, 0
@@ -6374,7 +6374,7 @@ eq_else.9339:
 	mov	$30, $31
 	sw	$30, 36($3)
 	addi	$3, $3, 40
-	jal	fless.2616
+	jal	fless.2622
 	addi	$3, $3, -40
 	lw	$31, 36($3)
 	addi	$30, $0, 0
@@ -6437,7 +6437,7 @@ judge_intersection_fast.2988:
 	mov	$30, $31
 	sw	$30, 20($3)
 	addi	$3, $3, 24
-	jal	fless.2616
+	jal	fless.2622
 	addi	$3, $3, -24
 	lw	$31, 20($3)
 	addi	$30, $0, 0
@@ -6452,7 +6452,7 @@ eq_else.9344:
 	lw	$31, 0($3)
 	fmov	$f1, $f31
 	lf	$f0, 8($3)
-	j	fless.2616
+	j	fless.2622
 get_nvector_rect.2990:
 	lw	$5, 8($28)
 	lw	$6, 4($28)
@@ -6869,7 +6869,7 @@ utexture.2999:
 	mov	$30, $31
 	sw	$30, 36($3)
 	addi	$3, $3, 40
-	jal	fless.2616
+	jal	fless.2622
 	addi	$3, $3, -40
 	lw	$31, 36($3)
 	lw	$5, 0($3)
@@ -6913,7 +6913,7 @@ utexture.2999:
 	mov	$30, $31
 	sw	$30, 60($3)
 	addi	$3, $3, 64
-	jal	fless.2616
+	jal	fless.2622
 	addi	$3, $3, -64
 	lw	$31, 60($3)
 	lw	$5, 32($3)
@@ -7207,7 +7207,7 @@ eq_else.9363:
 	mov	$30, $31
 	sw	$30, 172($3)
 	addi	$3, $3, 176
-	jal	fless.2616
+	jal	fless.2622
 	addi	$3, $3, -176
 	lw	$31, 172($3)
 	addi	$30, $0, 0
@@ -7300,7 +7300,7 @@ eq_cont.9367:
 	mov	$30, $31
 	sw	$30, 212($3)
 	addi	$3, $3, 216
-	jal	fless.2616
+	jal	fless.2622
 	addi	$3, $3, -216
 	lw	$31, 212($3)
 	addi	$30, $0, 0
@@ -7389,7 +7389,7 @@ eq_cont.9369:
 	mov	$30, $31
 	sw	$30, 252($3)
 	addi	$3, $3, 256
-	jal	fisneg.2621
+	jal	fisneg.2618
 	addi	$3, $3, -256
 	lw	$31, 252($3)
 	addi	$30, $0, 0
@@ -7430,7 +7430,7 @@ add_light.3002:
 	mov	$30, $31
 	sw	$30, 36($3)
 	addi	$3, $3, 40
-	jal	fispos.2619
+	jal	fispos.2616
 	addi	$3, $3, -40
 	lw	$31, 36($3)
 	addi	$30, $0, 0
@@ -7453,7 +7453,7 @@ eq_cont.9375:
 	mov	$30, $31
 	sw	$30, 36($3)
 	addi	$3, $3, 40
-	jal	fispos.2619
+	jal	fispos.2616
 	addi	$3, $3, -40
 	lw	$31, 36($3)
 	addi	$30, $0, 0
@@ -7749,7 +7749,7 @@ eq_else.9392:
 	mov	$30, $31
 	sw	$30, 140($3)
 	addi	$3, $3, 144
-	jal	fispos.2619
+	jal	fispos.2616
 	addi	$3, $3, -144
 	lw	$31, 140($3)
 	addi	$30, $0, 0
@@ -7890,7 +7890,7 @@ eq_else.9391:
 	mov	$30, $31
 	sw	$30, 164($3)
 	addi	$3, $3, 168
-	jal	fless.2616
+	jal	fless.2622
 	addi	$3, $3, -168
 	lw	$31, 164($3)
 	addi	$30, $0, 0
@@ -8091,7 +8091,7 @@ eq_cont.9402:
 	mov	$30, $31
 	sw	$30, 196($3)
 	addi	$3, $3, 200
-	jal	fless.2616
+	jal	fless.2622
 	addi	$3, $3, -200
 	lw	$31, 196($3)
 	addi	$30, $0, 0
@@ -8259,7 +8259,7 @@ eq_else.9410:
 	mov	$30, $31
 	sw	$30, 76($3)
 	addi	$3, $3, 80
-	jal	fispos.2619
+	jal	fispos.2616
 	addi	$3, $3, -80
 	lw	$31, 76($3)
 	addi	$30, $0, 0
@@ -8324,7 +8324,7 @@ iter_trace_diffuse_rays.3020:
 	mov	$30, $31
 	sw	$30, 36($3)
 	addi	$3, $3, 40
-	jal	fisneg.2621
+	jal	fisneg.2618
 	addi	$3, $3, -40
 	lw	$31, 36($3)
 	addi	$30, $0, 0
@@ -10982,7 +10982,7 @@ setup_reflections.3155:
 	mov	$30, $31
 	sw	$30, 20($3)
 	addi	$3, $3, 24
-	jal	fless.2616
+	jal	fless.2622
 	addi	$3, $3, -24
 	lw	$31, 20($3)
 	addi	$30, $0, 0
