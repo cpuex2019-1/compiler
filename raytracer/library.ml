@@ -61,11 +61,10 @@ let rec sqrt_sub iter x y =
   if iter = 0 then x
   else sqrt_sub (iter-1) (x-.(x*.x-.y)/.(2.0*.x)) y in
 let rec sqrt x = 
-  (* atode *) sqrt_sub 20 x x in
+  (* tenuki *) sqrt_sub 20 x x in
 
 (* write assembly *)
-let rec floor x = 
-  (* atode *) x in
+(* let rec floor x  *)
 
 (*
 external int_of_float : float -> int = "%intoffloat"
@@ -157,15 +156,34 @@ let rec atan x =
   x -. (pow x 3) /. 3.0 +. (pow x 5) /. 5.0 -. (pow x 7) /. 7.0 +. (pow x 9) /. 9.0 -. (pow x 11) /. 11.0 in
 (*
 external create_array : int -> 'a -> 'a array = "caml_make_vect"
+write assembly
 *)
-let rec create_array n x =
-  in
 
 (* I/O *)
+let rec print_int_sub x = 
+  if x = 0 then ()
+  else (
+    let y = x / 10 in
+    let rem = x - y * 10 in
+    print_int_sub y;
+    print_char (48+rem)
+  )
+in
+
+let rec print_int x = 
+  if x = 0 then (print_char 48)
+  else (
+    let y = x / 10 in
+    let rem = x - y * 10 in
+    print_int_sub y;
+    print_char (48+rem)
+  )
+in
+
 
 (* primitive command Out
  * let print_char x = Pervasives.print_char (char_of_int x) 
-let print_int = Pervasives.print_int  *)
+let print_int = Pervasives.print_int  
 
 let buf = Buffer.create 16
 
@@ -198,4 +216,4 @@ let read_int () =
     int_of_string (Buffer.contents buf)
   with
     Failure _ -> failwith ((Buffer.contents buf) ^ ": int conversion failed.")
-
+*)

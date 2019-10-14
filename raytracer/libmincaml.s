@@ -83,3 +83,7 @@ min_caml_read_int:
 min_caml_read_float:
   inputf $f0
   jr $31
+
+#print_char
+min_caml_print_char:
+  outb $2
