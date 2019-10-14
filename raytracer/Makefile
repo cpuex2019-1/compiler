@@ -5,6 +5,12 @@ OCAMLOPT=$(OCAMLBASE)/ocamlopt
 
 all: native
 
+raytrace.ml: globals.ml library.ml minrt.ml
+	cp /dev/null raytrace.ml
+	cat globals.ml >> raytrace.ml
+	cat library.ml >> raytrace.ml
+	cat minrt.ml >> raytrace.ml
+
 clean:
 	rm -f *.cm? *.o
 

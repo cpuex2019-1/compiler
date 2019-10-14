@@ -1,17 +1,20 @@
 (* float (1) *)
-(*
-external fequal : float -> float -> bool = "%equal"
-external fless : float -> float -> bool = "%lessthan"
-*)
-let true = 1 in
-let false = 0 in
 
-let fispos x = x > 0.0 in
-let fisneg x = x < 0.0 in
-let fiszero x = (x = 0.0) in
+
+
+(* let true = 1 in
+let false = 0 in *)
+
+let rec fispos x = (if (x > 0.0) then true else false)
+in
+let rec fisneg x = (if (x < 0.0) then true else false)
+in
+let rec fiszero x = (if (x = 0.0) then true else false)
+in
 
 (* int *)
-(* external (=) : int -> int -> bool = "%equal"
+(* 
+external (=) : int -> int -> bool = "%equal"
 external (<>) : int -> int -> bool = "%notequal"
 external (<) : int -> int -> bool = "%lessthan"
 external (>) : int -> int -> bool = "%greaterthan"
@@ -29,14 +32,18 @@ external xor : bool -> bool -> bool = "%notequal"
 external not : bool -> bool = "%boolnot"
 *)
 
+(* let rec not x =
+  if x then false else true
+in *)
 let rec xor x y =
-  if x then not y else y in
-let rec not x =
-  if x then false else true in
+  if x then not y else y
+in
 
 (* float (2) *)
-let fhalf x = x *. 0.5
-let fsqr x = x *. x
+let rec fhalf x = x *. 0.5
+in
+let rec fsqr x = x *. x
+in
 (*
 external (+.) : float -> float -> float = "%addfloat"
 external (-.) : float -> float -> float = "%subfloat"
@@ -52,28 +59,26 @@ external floor : float -> float = "floor_float" "floor" "float"
 *)
 
 let rec fabs x =
-  if fispos x then x else -x in
+  if fispos x then x else -.x 
+in
 
-let rec fneg x 
-  -x in 
+let rec fneg x =
+  -.x 
+in 
 
 let rec sqrt_sub iter x y =
   if iter = 0 then x
-  else sqrt_sub (iter-1) (x-.(x*.x-.y)/.(2.0*.x)) y in
+  else sqrt_sub (iter-1) (x-.(x*.x-.y)/.(2.0*.x)) y 
+in
+
 let rec sqrt x = 
-  (* tenuki *) sqrt_sub 20 x x in
+  sqrt_sub 20 x x
+in
 
-(* write assembly *)
-(* let rec floor x  *)
-
-(*
-external int_of_float : float -> int = "%intoffloat"
-external float_of_int : int -> float = "%floatofint"
-*)
 
 let rec odd x =
   let h = x / 2 in
-  if h*2 = x then false
+  if h * 2 = x then false
   else true
 in
 
@@ -95,9 +100,9 @@ let rec float_of_int x =
 in
 
 (* to avoid overflow *)
-let medium x y = 
-  let a = (odd x) in
-  let b = (odd y) in
+let rec medium x y = 
+  let a = if (odd x) then 1 else 0 in
+  let b = if (odd y) then 1 else 0 in
   let hx = x / 2 in
   let hy = y / 2 in
   let c = (if ((a+b) = 2) then 1 else 0) in
@@ -179,41 +184,3 @@ let rec print_int x =
     print_char (48+rem)
   )
 in
-
-
-(* primitive command Out
- * let print_char x = Pervasives.print_char (char_of_int x) 
-let print_int = Pervasives.print_int  
-
-let buf = Buffer.create 16
-
-let rec read_token in_token =
-  try
-    let c = input_char stdin in
-    match c with
-      ' ' | '\t' | '\r' | '\n' ->
-	if in_token then ()
-	else read_token false
-    | _ ->
-	Buffer.add_char buf c;
-	read_token true
-  with
-    End_of_file ->
-      if in_token then () else raise End_of_file
-
-let read_float () = 
-  Buffer.clear buf;
-  read_token false;
-  try
-    float_of_string (Buffer.contents buf)
-  with
-    Failure _ -> failwith ((Buffer.contents buf) ^ ": float conversion failed.")
-
-let read_int () = 
-  Buffer.clear buf;
-  read_token false;
-  try
-    int_of_string (Buffer.contents buf)
-  with
-    Failure _ -> failwith ((Buffer.contents buf) ^ ": int conversion failed.")
-*)

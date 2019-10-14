@@ -1,0 +1,121 @@
+toplevel fundef
+fundef
+name
+  print_int_sub.17
+  Fun
+    Int
+    Unit
+  x.18
+  Int
+formal_fv
+body
+  Let
+    Ti11.32
+    Int
+    Int 0
+    ifEq x.18 Ti11.32
+      Unit
+      Let
+        Ti12.40
+        Int
+        Int 10
+        Let
+          y.33
+          Int
+          Div x.18 Ti12.40
+          Let
+            Ti13.39
+            Int
+            Int 10
+            Let
+              Ti14.38
+              Int
+              Mul y.33 Ti13.39
+              Let
+                rem.34
+                Int
+                Sub x.18 Ti14.38
+                Let
+                  Tu1.35
+                  Unit
+                  AppDir print_int_sub.17
+                  Args
+                    y.33
+                  Let
+                    Ti15.37
+                    Int
+                    Int 48
+                    Let
+                      Ti16.36
+                      Int
+                      Add Ti15.37 rem.34
+                      AppDir min_caml_print_char
+                      Args
+                        Ti16.36
+fundef
+name
+  print_int.19
+  Fun
+    Int
+    Unit
+  x.20
+  Int
+formal_fv
+body
+  Let
+    Ti4.22
+    Int
+    Int 0
+    ifEq x.20 Ti4.22
+      Let
+        Ti5.31
+        Int
+        Int 48
+        AppDir min_caml_print_char
+        Args
+          Ti5.31
+      Let
+        Ti6.30
+        Int
+        Int 10
+        Let
+          y.23
+          Int
+          Div x.20 Ti6.30
+          Let
+            Ti7.29
+            Int
+            Int 10
+            Let
+              Ti8.28
+              Int
+              Mul y.23 Ti7.29
+              Let
+                rem.24
+                Int
+                Sub x.20 Ti8.28
+                Let
+                  Tu2.25
+                  Unit
+                  AppDir print_int_sub.17
+                  Args
+                    y.23
+                  Let
+                    Ti9.27
+                    Int
+                    Int 48
+                    Let
+                      Ti10.26
+                      Int
+                      Add Ti9.27 rem.24
+                      AppDir min_caml_print_char
+                      Args
+                        Ti10.26
+exp
+Let
+  Ti3.21
+  Int
+  Int 124
+  AppDir print_int.19
+  Args
+    Ti3.21

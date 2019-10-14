@@ -1,3 +1,245 @@
+(* open MiniMLRuntime;; *)
+
+(**************** グローバル変数の宣言 ****************)
+
+(* オブジェクトの個数 *)
+let n_objects = Array.create 1 0
+in
+
+(* オブジェクトのデータを入れるベクトル（最大60個）*)
+let objects = 
+  let dummy = Array.create 0 0.0 in
+  Array.create 60 (0, 0, 0, 0, dummy, dummy, false, dummy, dummy, dummy, dummy)
+in
+
+(* Screen の中心座標 *)
+let screen = Array.create 3 0.0
+in
+(* 視点の座標 *)
+let viewpoint = Array.create 3 0.0
+in
+(* 光源方向ベクトル (単位ベクトル) *)
+let light = Array.create 3 0.0
+in
+(* 鏡面ハイライト強度 (標準=255) *)
+let beam = Array.create 1 255.0
+in
+(* AND ネットワークを保持 *)
+let and_net = Array.create 50 (Array.create 1 (-1))
+in
+(* OR ネットワークを保持 *)
+let or_net = Array.create 1 (Array.create 1 (and_net.(0)))
+in
+
+(* 以下、交差判定ルーチンの返り値格納用 *)
+(* solver の交点 の t の値 *)
+let solver_dist = Array.create 1 0.0
+in
+(* 交点の直方体表面での方向 *)
+let intsec_rectside = Array.create 1 0
+in
+(* 発見した交点の最小の t *)
+let tmin = Array.create 1 (1000000000.0)
+in
+(* 交点の座標 *)
+let intersection_point = Array.create 3 0.0
+in
+(* 衝突したオブジェクト番号 *)
+let intersected_object_id = Array.create 1 0
+in
+(* 法線ベクトル *)
+let nvector = Array.create 3 0.0
+in
+(* 交点の色 *)
+let texture_color = Array.create 3 0.0
+in
+
+(* 計算中の間接受光強度を保持 *)
+let diffuse_ray = Array.create 3 0.0
+in
+(* スクリーン上の点の明るさ *)
+let rgb = Array.create 3 0.0
+in
+
+(* 画像サイズ *)
+let image_size = Array.create 2 0
+in
+(* 画像の中心 = 画像サイズの半分 *)
+let image_center = Array.create 2 0
+in
+(* 3次元上のピクセル間隔 *)
+let scan_pitch = Array.create 1 0.0
+in
+
+(* judge_intersectionに与える光線始点 *)
+let startp = Array.create 3 0.0
+in
+(* judge_intersection_fastに与える光線始点 *)
+let startp_fast = Array.create 3 0.0
+in
+
+(* 画面上のx,y,z軸の3次元空間上の方向 *)
+let screenx_dir = Array.create 3 0.0
+in
+let screeny_dir = Array.create 3 0.0
+in
+let screenz_dir = Array.create 3 0.0
+in
+
+(* 直接光追跡で使う光方向ベクトル *)
+let ptrace_dirvec  = Array.create 3 0.0
+in
+
+(* 間接光サンプリングに使う方向ベクトル *)
+let dirvecs = 
+  let dummyf = Array.create 0 0.0 in
+  let dummyff = Array.create 0 dummyf in
+  let dummy_vs = Array.create 0 (dummyf, dummyff) in
+  Array.create 5 dummy_vs
+in
+
+(* 光源光の前処理済み方向ベクトル *)
+let light_dirvec =
+  let dummyf2 = Array.create 0 0.0 in
+  let v3 = Array.create 3 0.0 in
+  let consts = Array.create 60 dummyf2 in
+  (v3, consts)
+in
+
+(* 鏡平面の反射情報 *)
+let reflections =
+  let dummyf3 = Array.create 0 0.0 in
+  let dummyff3 = Array.create 0 dummyf3 in
+  let dummydv = (dummyf3, dummyff3) in
+  Array.create 180 (0, dummydv, 0.0)
+in
+
+(* reflectionsの有効な要素数 *) 
+
+let n_reflections = Array.create 1 0
+in 
+
+let rec fispos x = (if (x > 0.0) then true else false)
+in
+let rec fisneg x = (if (x < 0.0) then true else false)
+in
+let rec fiszero x = (if (x = 0.0) then true else false)
+in
+
+
+let rec xor x y =
+  if x then not y else y
+in
+
+let rec fhalf x = x *. 0.5
+in
+let rec fsqr x = x *. x
+in
+
+let rec fabs x =
+  if fispos x then x else -.x 
+in
+
+let rec fneg x =
+  -.x 
+in 
+
+let rec sqrt_sub iter x y =
+  if iter = 0 then x
+  else sqrt_sub (iter-1) (x-.(x*.x-.y)/.(2.0*.x)) y in
+
+let rec sqrt x = sqrt_sub 20 x x in
+
+let rec odd x =
+  let h = x / 2 in
+  if h * 2 = x then false
+  else true
+in
+
+let rec float_of_int_sub dig x = 
+  if dig < 0 then 0.0
+  else ( 
+    let h = x / 2 in
+    if odd x then (float_of_int_sub (dig-1) h) *. 2.0 +. 1.0 
+    else (float_of_int_sub (dig-1) h) *. 2.0
+  )
+in
+
+let rec float_of_int x =
+  if x = (-2147483648) then (-2147483648.0)
+  else (
+    if x > 0 then float_of_int_sub 30 x
+    else (-1.0 *. (float_of_int_sub 30 (-x)))
+  )
+in
+
+let rec medium x y = 
+  let a = if (odd x) then 1 else 0 in
+  let b = if (odd y) then 1 else 0 in
+  let hx = x / 2 in
+  let hy = y / 2 in
+  let c = (if ((a+b) = 2) then 1 else 0) in
+  hx + hy + c
+in
+
+let rec int_of_float_sub l r x = 
+  if (l+1) = r then l
+  else (
+    let mid = medium l r in
+    if (float_of_int mid) > x then int_of_float_sub l mid x
+    else int_of_float_sub mid r x
+  )
+in
+
+let rec int_of_float x =
+  let l = (-2147483648) in
+  let r = 2147483647 in
+  let a = int_of_float_sub l r x in
+  if x >= 2147483647.0 then r
+  else a
+in
+
+let rec pow x n =
+  if n = 0 then 1.0
+           else (x *. (pow x (n-1))) 
+in
+
+let rec fact_tail acc n =
+  if n = 1 then acc
+  else fact_tail (acc * n) (n-1)
+in
+
+let rec fact n = fact_tail 1 n
+in
+
+let rec sin x =
+  x -. (pow x 3) /. 6.0 +. (pow x 5) /. 120.0 -. (pow x 7) /. 5040.0 +. (pow x 9) /. 362880.0 -. (pow x 11) /. 39916800.0 in
+
+let rec cos x =
+  1.0 -. (pow x 2) /. 2.0 +. (pow x 4) /. 24.0 -. (pow x 6) /. 720.0 +. (pow x 8) /. 40320.0 -. (pow x 10) /. 3628800.0 in
+
+let rec atan x =
+  x -. (pow x 3) /. 3.0 +. (pow x 5) /. 5.0 -. (pow x 7) /. 7.0 +. (pow x 9) /. 9.0 -. (pow x 11) /. 11.0 in
+
+let rec print_int_sub x = 
+  if x = 0 then ()
+  else (
+    let y = x / 10 in
+    let rem = x - y * 10 in
+    print_int_sub y;
+    print_char (48+rem)
+  )
+in
+
+let rec print_int x = 
+  if x = 0 then (print_char 48)
+  else (
+    let y = x / 10 in
+    let rem = x - y * 10 in
+    print_int_sub y;
+    print_char (48+rem)
+  )
+in
 (****************************************************************)
 (*                                                              *)
 (* Ray Tracing Program for (Mini) Objective Caml                *)
@@ -9,11 +251,11 @@
 (*                                                              *)
 (****************************************************************)
 
-(*NOMINCAML open MiniMLRuntime;;
-NOMINCAML open Globals;;
-MINCAML let true = 1 in
-MINCAML let false = 0 in
-MINCAML let rec xor x y = if x then not y else y in *)
+(* NOMINCAML open MiniMLRuntime;;
+ NOMINCAML open Globals;;
+ MINCAML let true = 1 in
+ MINCAML let false = 0 in
+ MINCAML let rec xor x y = if x then not y else y in *)
 
 (******************************************************************************
    ユーティリティー
@@ -1305,7 +1547,6 @@ let rec solve_each_element iand_ofs and_group dirvec =
       if o_isinvert (objects.(iobj)) then
 	solve_each_element (iand_ofs + 1) and_group dirvec
       else ()
-
    )
 in
 

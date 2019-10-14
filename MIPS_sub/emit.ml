@@ -322,6 +322,17 @@ let rec arrange_float_imm oc data n =
       arrange_float_imm oc rest (n+1)
       )
 
+let rec file_to_string_list inchan sl = 
+  try
+    let line = input_line inchan in
+    file_to_string_list inchan (sl@[line])
+  with e -> (close_in inchan; sl)
+
+let file_to_string fname =
+  let inchan = open_in fname in
+  let sl = file_to_string_list inchan [] in
+  String.concat "\n" sl
+
 
 let f oc (Prog(data, fundefs, e)) =
   Format.eprintf "generating assembly...@.";
@@ -347,20 +358,9 @@ let f oc (Prog(data, fundefs, e)) =
          data )
   );
 
-  (*
-  Printf.fprintf oc "\t.text\n";
-  Printf.fprintf oc "\t.globl _min_caml_start\n";
-  Printf.fprintf oc "\t.align 2\n";
-  *)
 
   List.iter (fun fundef -> h oc fundef) fundefs;
-  (*
-  Printf.fprintf oc "_min_caml_start: # main entry point\n";
-  Printf.fprintf oc "\tmflr\tr0\n";
-  Printf.fprintf oc "\tstmw\tr30, -8(r1)\n";
-  Printf.fprintf oc "\tstw\tr0, 8(r1)\n";
-  Printf.fprintf oc "\tstwu\tr1, -96(r1)\n";
-  *)
+
   Printf.fprintf oc "#\tmain program starts\n";
   Printf.fprintf oc "Main:\n";
   stackset := S.empty;
@@ -368,12 +368,8 @@ let f oc (Prog(data, fundefs, e)) =
   g oc (NonTail("_R_0"), e);
   Printf.fprintf oc "\tj Exit\n";
   Printf.fprintf oc "#\tmain program ends\n";
-  (* Printf.fprintf oc "\tmr\tr3, %s\n" regs.(0); *)
-  (* atode
-  Printf.fprintf oc "\tlwz\tr1, 0(r1)\n";
-  Printf.fprintf oc "\tlwz\tr0, 8(r1)\n";
-  Printf.fprintf oc "\tmtlr\tr0\n";
-  Printf.fprintf oc "\tlmw\tr30, -8(r1)\n";
-  Printf.fprintf oc "\tblr\n"
-  *)
+
+  (* library *)
+  Printf.fprintf oc "%s" (file_to_string "./raytracer/libmincaml.s");
+
   Printf.fprintf oc "Exit:\n"

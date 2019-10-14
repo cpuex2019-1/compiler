@@ -1,3 +1,35 @@
+Init: # initialize float value and heap pointer
+	addi	$4, $0, 10000
+	addi	$30, $0, 1065353216
+	sw	$30, 0($4)
+	addi	$4, $4, 8
+	j Main
+l.7:	 # 1.000000
+	lf	$f31, 0($0)
+	j	$31
+fneg.3:
+	fneg	$f0, $f0
+	jr $31
+#	main program starts
+Main:
+	sw	$31, 0($3)
+	jal	l.7
+	lw	$31, 0($3)
+	fmov	$f0, $f31
+	mov	$30, $31
+	sw	$30, 4($3)
+	addi	$3, $3, 8
+	jal	fneg.3
+	addi	$3, $3, -8
+	lw	$31, 4($3)
+	mov	$30, $31
+	sw	$30, 4($3)
+	addi	$3, $3, 8
+	jal	min_caml_print_float
+	addi	$3, $3, -8
+	lw	$31, 4($3)
+	j Exit
+#	main program ends
 # floor
 
 min_caml_floor:
@@ -86,4 +118,4 @@ min_caml_read_float:
 #print_char
 min_caml_print_char:
   out $2
-  jr $31
+  jr $31Exit:

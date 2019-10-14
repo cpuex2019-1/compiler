@@ -1,0 +1,115 @@
+LetRec
+  fundef
+    print_int_sub
+    Fun
+      Int
+      Unit
+    x
+    Int
+    Let
+      Ti11
+      Int
+      Int 0
+      ifEq x Ti11
+        Unit
+        Let
+          y
+          Int
+          Let
+            Ti12
+            Int
+            Int 10
+            Div x Ti12
+          Let
+            rem
+            Int
+            Let
+              Ti14
+              Int
+              Let
+                Ti13
+                Int
+                Int 10
+                Mul y Ti13
+              Sub x Ti14
+            Let
+              Tu1
+              Unit
+              App print_int_sub
+              Args
+                y
+              Let
+                Ti16
+                Int
+                Let
+                  Ti15
+                  Int
+                  Int 48
+                  Add Ti15 rem
+                ExtFunApp print_char
+                Args
+                  Ti16
+  LetRec
+    fundef
+      print_int
+      Fun
+        Int
+        Unit
+      x
+      Int
+      Let
+        Ti4
+        Int
+        Int 0
+        ifEq x Ti4
+          Let
+            Ti5
+            Int
+            Int 48
+            ExtFunApp print_char
+            Args
+              Ti5
+          Let
+            y
+            Int
+            Let
+              Ti6
+              Int
+              Int 10
+              Div x Ti6
+            Let
+              rem
+              Int
+              Let
+                Ti8
+                Int
+                Let
+                  Ti7
+                  Int
+                  Int 10
+                  Mul y Ti7
+                Sub x Ti8
+              Let
+                Tu2
+                Unit
+                App print_int_sub
+                Args
+                  y
+                Let
+                  Ti10
+                  Int
+                  Let
+                    Ti9
+                    Int
+                    Int 48
+                    Add Ti9 rem
+                  ExtFunApp print_char
+                  Args
+                    Ti10
+    Let
+      Ti3
+      Int
+      Int 124
+      App print_int
+      Args
+        Ti3

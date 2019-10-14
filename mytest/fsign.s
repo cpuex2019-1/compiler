@@ -1,3 +1,60 @@
+Init: # initialize float value and heap pointer
+	addi	$4, $0, 10000
+	addi	$30, $0, 1077936128
+	sw	$30, 0($4)
+	addi	$4, $4, 8
+	addi	$30, $0, 1073741824
+	sw	$30, 0($4)
+	addi	$4, $4, 8
+	j Main
+l.32:	 # 3.000000
+	lf	$f31, 0($0)
+	j	$31
+l.31:	 # 2.000000
+	lf	$f31, 8($0)
+	j	$31
+sqrt_sub.13:
+	addi	$30, $0, 0
+	slli	$30, $30, 16
+	ori	$30, $30, 0
+	bne	$2, $30, eq_else.34
+	jr $31
+eq_else.34:
+	addi	$2, $2, -1
+	fmul	$f2, $f0, $f0
+	fsub	$f2, $f2, $f1
+	sw	$31, 0($3)
+	jal	l.31
+	lw	$31, 0($3)
+	fmov	$f3, $f31
+	fmul	$f3, $f3, $f0
+	fdiv	$f2, $f2, $f3
+	fsub	$f0, $f0, $f2
+	j	sqrt_sub.13
+sqrt.17:
+	addi	$2, $0, 20
+	fmov	$f1, $f0
+	j	sqrt_sub.13
+#	main program starts
+Main:
+	sw	$31, 0($3)
+	jal	l.32
+	lw	$31, 0($3)
+	fmov	$f0, $f31
+	mov	$30, $31
+	sw	$30, 4($3)
+	addi	$3, $3, 8
+	jal	sqrt.17
+	addi	$3, $3, -8
+	lw	$31, 4($3)
+	mov	$30, $31
+	sw	$30, 4($3)
+	addi	$3, $3, 8
+	jal	min_caml_print_float
+	addi	$3, $3, -8
+	lw	$31, 4($3)
+	j Exit
+#	main program ends
 # floor
 
 min_caml_floor:
@@ -86,4 +143,4 @@ min_caml_read_float:
 #print_char
 min_caml_print_char:
   out $2
-  jr $31
+  jr $31Exit:

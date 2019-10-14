@@ -145,8 +145,9 @@ exp: /* (* ∞Ï»Ã§Œº∞ (caml2html: parser_exp) *) */
     { let (st : Lexing.position) = Parsing.symbol_start_pos () in
       let (ed : Lexing.position) = Parsing.symbol_end_pos () in
       failwith
-        (Printf.sprintf "parse error near line %d characters %d-%d"
+        (Printf.sprintf "parse error near line %d-%d characters %d-%d"
            (st.pos_lnum)
+           (ed.pos_lnum)
            (st.pos_cnum - st.pos_bol)
            (ed.pos_cnum - ed.pos_bol)
         )
