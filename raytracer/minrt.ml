@@ -589,28 +589,28 @@ let rec read_nth_object n =
       let refltype = read_int () in
       let isrot_p = read_int () in
 
-      let abc = create_array 3 0.0 in
+      let abc = Array.create 3 0.0 in
       abc.(0) <- read_float ();
       abc.(1) <- read_float (); (* 5 *)
       abc.(2) <- read_float ();
 
-      let xyz = create_array 3 0.0 in
+      let xyz = Array.create 3 0.0 in
       xyz.(0) <- read_float ();
       xyz.(1) <- read_float ();
       xyz.(2) <- read_float ();
 
       let m_invert = fisneg (read_float ()) in (* 10 *)
 
-      let reflparam = create_array 2 0.0 in
+      let reflparam = Array.create 2 0.0 in
       reflparam.(0) <- read_float (); (* diffuse *)
       reflparam.(1) <- read_float (); (* hilight *)
 
-      let color = create_array 3 0.0 in
+      let color = Array.create 3 0.0 in
       color.(0) <- read_float ();
       color.(1) <- read_float ();
       color.(2) <- read_float (); (* 15 *)
 
-      let rotation = create_array 3 0.0 in
+      let rotation = Array.create 3 0.0 in
       if isrot_p <> 0 then
 	(
 	 rotation.(0) <- rad (read_float ());
@@ -623,7 +623,7 @@ let rec read_nth_object n =
 
       (* 注: 下記正規化 (form = 2) 参照 *)
       let m_invert2 = if form = 2 then true else m_invert in
-      let ctbl = create_array 4 0.0 in
+      let ctbl = Array.create 4 0.0 in
       (* ここからあとは abc と rotation しか操作しない。*)
       let obj =
 	(texture, form, refltype, isrot_p,
@@ -681,7 +681,7 @@ in
 (* ネットワーク1つを読み込みベクトルにして返す *)
 let rec read_net_item length =
   let item = read_int () in
-  if item = -1 then create_array (length + 1) (-1)
+  if item = -1 then Array.create (length + 1) (-1)
   else
     let v = read_net_item (length + 1) in
     (v.(length) <- item; v)
@@ -690,7 +690,7 @@ in
 let rec read_or_network length =
   let net = read_net_item 0 in
   if net.(0) = -1 then
-    create_array (length + 1) net
+    Array.create (length + 1) net
   else
     let v = read_or_network (length + 1) in
     (v.(length) <- net; v)
@@ -1000,7 +1000,7 @@ in
 
 (* 直方体オブジェクトに対する前処理 *)
 let rec setup_rect_table vec m =
-  let const = create_array 6 0.0 in
+  let const = Array.create 6 0.0 in
 
   if fiszero vec.(0) then (* YZ平面 *)
     const.(1) <- 0.0
@@ -1027,7 +1027,7 @@ in
 
 (* 平面オブジェクトに対する前処理 *)
 let rec setup_surface_table vec m =
-  let const = create_array 4 0.0 in
+  let const = Array.create 4 0.0 in
   let d =
     vec.(0) *. o_param_a m +. vec.(1) *. o_param_b m +. vec.(2) *. o_param_c m
   in
@@ -1046,7 +1046,7 @@ in
 
 (* 2次曲面に対する前処理 *)
 let rec setup_second_table v m =
-  let const = create_array 5 0.0 in
+  let const = Array.create 5 0.0 in
 
   let aa = quadratic m v.(0) v.(1) v.(2) in
   let c1 = fneg (v.(0) *. o_param_a m) in
@@ -2065,25 +2065,25 @@ in
 
 (* 3次元ベクトルの5要素配列を割り当て *)
 let rec create_float5x3array _ = (
-  let vec = create_array 3 0.0 in
-  let array = create_array 5 vec in
-  array.(1) <- create_array 3 0.0;
-  array.(2) <- create_array 3 0.0;
-  array.(3) <- create_array 3 0.0;
-  array.(4) <- create_array 3 0.0;
+  let vec = Array.create 3 0.0 in
+  let array = Array.create 5 vec in
+  array.(1) <- Array.create 3 0.0;
+  array.(2) <- Array.create 3 0.0;
+  array.(3) <- Array.create 3 0.0;
+  array.(4) <- Array.create 3 0.0;
   array
 )
 in
 
 (* ピクセルを表すtupleを割り当て *)
 let rec create_pixel _ =
-  let m_rgb = create_array 3 0.0 in
+  let m_rgb = Array.create 3 0.0 in
   let m_isect_ps = create_float5x3array() in
-  let m_sids = create_array 5 0 in
-  let m_cdif = create_array 5 false in
+  let m_sids = Array.create 5 0 in
+  let m_cdif = Array.create 5 false in
   let m_engy = create_float5x3array() in
   let m_r20p = create_float5x3array() in
-  let m_gid = create_array 1 0 in
+  let m_gid = Array.create 1 0 in
   let m_nvectors = create_float5x3array() in
   (m_rgb, m_isect_ps, m_sids, m_cdif, m_engy, m_r20p, m_gid, m_nvectors)
 in
@@ -2099,7 +2099,7 @@ in
 
 (* 横方向1ライン分のピクセル配列を作る *)
 let rec create_pixelline _ =
-  let line = create_array image_size.(0) (create_pixel()) in
+  let line = Array.create image_size.(0) (create_pixel()) in
   init_line_elements line (image_size.(0)-2)
 in
 
@@ -2175,8 +2175,8 @@ in
 
 
 let rec create_dirvec _ =
-  let v3 = create_array 3 0.0 in
-  let consts = create_array n_objects.(0) v3 in
+  let v3 = Array.create 3 0.0 in
+  let consts = Array.create n_objects.(0) v3 in
   (v3, consts)
 in
 
@@ -2189,7 +2189,7 @@ in
 
 let rec create_dirvecs index =
   if index >= 0 then (
-    dirvecs.(index) <- create_array 120 (create_dirvec());
+    dirvecs.(index) <- Array.create 120 (create_dirvec());
     create_dirvec_elements dirvecs.(index) 118;
     create_dirvecs (index-1)
    ) else ()
@@ -2307,4 +2307,4 @@ in
 
 let _ = rt 512 512
 
-in 0
+in ()

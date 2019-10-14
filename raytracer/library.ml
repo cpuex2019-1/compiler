@@ -5,6 +5,10 @@
 (* let true = 1 in
 let false = 0 in *)
 
+let rec fless x y = 
+  if fispos (y -. x) then true else false
+in
+
 let rec fispos x = (if (x > 0.0) then true else false)
 in
 let rec fisneg x = (if (x < 0.0) then true else false)

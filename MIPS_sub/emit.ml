@@ -370,6 +370,6 @@ let f oc (Prog(data, fundefs, e)) =
   Printf.fprintf oc "#\tmain program ends\n";
 
   (* library *)
-  Printf.fprintf oc "%s" (file_to_string "./raytracer/libmincaml.s");
+  Printf.fprintf oc "%s\n" (file_to_string "./raytracer/libmincaml.s");
 
   Printf.fprintf oc "Exit:\n"
