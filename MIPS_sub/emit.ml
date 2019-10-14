@@ -351,7 +351,7 @@ let f oc (Prog(data, fundefs, e)) =
       (List.iter
          (fun (Id.L(x), d) ->
            Printf.fprintf oc "%s:\t # %f\n" x d;
-           Printf.fprintf oc "\tlf\t%s, %d(%s)\n" (reg reg_ftmp) (8*(!idx)) (reg reg_zero);
+           Printf.fprintf oc "\tlf\t%s, %d(%s)\n" (reg reg_ftmp) (hp_init + 8*(!idx)) (reg reg_zero);
            Printf.fprintf oc "\tj\t%s\n" (reg reg_lr);
            idx := !idx+1; ()
          )
