@@ -1,0 +1,23 @@
+Let
+  a
+  Var
+    None
+  Int 2
+  Let
+    b
+    Var
+      None
+    Int 3
+    Let
+      Tu1
+      Unit
+      App
+        Var print_int
+        Mul
+          Var a
+          Var b
+      App
+        Var print_int
+        Div
+          Var a
+          Var b

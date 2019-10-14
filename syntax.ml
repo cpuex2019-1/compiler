@@ -7,6 +7,8 @@ type t = (* MinCamlの構文を表現するデータ型 (caml2html: syntax_t) *)
   | Neg of t
   | Add of t * t
   | Sub of t * t
+  | Mul of t * t
+  | Div of t * t
   | FNeg of t
   | FAdd of t * t
   | FSub of t * t
@@ -52,6 +54,14 @@ let rec print_syntax exp depth outchan =
          print_syntax e2 (depth+1) outchan)
   | Sub (e1,e2)
     -> ( Printf.fprintf outchan "Sub\n";
+         print_syntax e1 (depth+1) outchan;
+         print_syntax e2 (depth+1) outchan)
+  | Mul (e1,e2)
+    -> ( Printf.fprintf outchan "Mul\n";
+         print_syntax e1 (depth+1) outchan;
+         print_syntax e2 (depth+1) outchan)
+  | Div (e1,e2)
+    -> ( Printf.fprintf outchan "Div\n";
          print_syntax e1 (depth+1) outchan;
          print_syntax e2 (depth+1) outchan)
   | FNeg e
