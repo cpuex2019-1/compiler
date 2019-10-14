@@ -73,3 +73,13 @@ create_float_array_cont:
 	addi $5, $5, -1
 	addi $4, $4, 8
 	j	create_float_array_loop
+
+#read_int
+min_caml_read_int:
+  input $2
+  jr $31 
+
+#read_float
+min_caml_read_float:
+  inputf $f0
+  jr $31
