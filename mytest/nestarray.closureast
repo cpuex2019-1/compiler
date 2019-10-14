@@ -1,0 +1,100 @@
+toplevel fundef
+exp
+Let
+  Ti1.19
+  Int
+  Int 0
+  Let
+    Td2.20
+    Float
+    Float 0.000000
+    Let
+      dummy.11
+      Array
+        Float
+      AppDir min_caml_create_float_array
+      Args
+        Ti1.19
+        Td2.20
+      Let
+        Ti3.12
+        Int
+        Int 60
+        Let
+          Ti4.14
+          Int
+          Int 0
+          Let
+            Ti5.15
+            Int
+            Int 0
+            Let
+              Ti6.16
+              Int
+              Int 0
+              Let
+                Ti7.17
+                Int
+                Int 0
+                Let
+                  Ti8.18
+                  Int
+                  Int 0
+                  Let
+                    Tt9.13
+                    Tuple
+                      Int
+                      Int
+                      Int
+                      Int
+                      Array
+                        Float
+                      Array
+                        Float
+                      Int
+                      Array
+                        Float
+                      Array
+                        Float
+                      Array
+                        Float
+                      Array
+                        Float
+                    Tuple
+                      Ti4.14
+                      Ti5.15
+                      Ti6.16
+                      Ti7.17
+                      dummy.11
+                      dummy.11
+                      Ti8.18
+                      dummy.11
+                      dummy.11
+                      dummy.11
+                      dummy.11
+                    Let
+                      objects.10
+                      Array
+                        Tuple
+                          Int
+                          Int
+                          Int
+                          Int
+                          Array
+                            Float
+                          Array
+                            Float
+                          Bool
+                          Array
+                            Float
+                          Array
+                            Float
+                          Array
+                            Float
+                          Array
+                            Float
+                      AppDir min_caml_create_array
+                      Args
+                        Ti3.12
+                        Tt9.13
+                      Unit

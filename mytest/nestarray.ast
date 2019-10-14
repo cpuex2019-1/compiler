@@ -1,0 +1,26 @@
+Let
+  objects
+  Var
+    None
+  Let
+    dummy
+    Var
+      None
+    Array
+      Int 0
+      Float 0.000000
+    Array
+      Int 60
+      Tuple
+        Int 0
+        Int 0
+        Int 0
+        Int 0
+        Var dummy
+        Var dummy
+        Bool false
+        Var dummy
+        Var dummy
+        Var dummy
+        Var dummy
+  Unit

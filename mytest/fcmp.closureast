@@ -1,0 +1,67 @@
+toplevel fundef
+exp
+Let
+  Ti3.24
+  Int
+  Int 2
+  Let
+    Td4.25
+    Float
+    Float 0.000000
+    Let
+      farr.12
+      Array
+        Float
+      AppDir min_caml_create_float_array
+      Args
+        Ti3.24
+        Td4.25
+      Let
+        Ti5.22
+        Int
+        Int 0
+        Let
+          Td6.23
+          Float
+          Float 1.000000
+          Let
+            Tu2.13
+            Unit
+            Put farr.12 Ti5.22 Td6.23
+            Let
+              Ti7.20
+              Int
+              Int 1
+              Let
+                Td8.21
+                Float
+                Float 2.000000
+                Let
+                  Tu1.14
+                  Unit
+                  Put farr.12 Ti7.20 Td8.21
+                  Let
+                    Ti9.19
+                    Int
+                    Int 0
+                    Let
+                      a.15
+                      Float
+                      Get farr.12 Ti9.19
+                      Let
+                        Ti10.18
+                        Int
+                        Int 1
+                        Let
+                          b.16
+                          Float
+                          Get farr.12 Ti10.18
+                          Let
+                            Ti11.17
+                            Int
+                            ifEq a.15 b.16
+                              Int 1
+                              Int 0
+                            AppDir min_caml_print_int
+                            Args
+                              Ti11.17

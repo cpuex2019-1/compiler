@@ -169,14 +169,16 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
       load_imm oc reg_tmp y;
       Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg x) (reg reg_tmp);
       g'_tail_ifeq oc reg_tmp reg_zero e1 e2
-  (* 
   | Tail, IfFEq(x, y, e1, e2) ->
-      Printf.fprintf oc "\tfcmpu\tcr7, %s, %s\n" (reg x) (reg y);
-      g'_tail_if oc e1 e2 "beq" "bne"
+      (* heap領域を通じて整数レジスタに入れ直してから比較*)
+      Printf.fprintf oc "\tsf\t%s, 0(%s)\n" (reg x) (reg reg_hp);
+      Printf.fprintf oc "\tlw\t%s, 0(%s)\n" (reg reg_tmp) (reg reg_hp);
+      Printf.fprintf oc "\tsf\t%s, 0(%s)\n" (reg y) (reg reg_hp);
+      Printf.fprintf oc "\tlw\t%s, 0(%s)\n" (reg reg_tmp2) (reg reg_hp);
+      g'_tail_ifeq oc (reg reg_tmp) (reg reg_tmp2) e1 e2
   | Tail, IfFLE(x, y, e1, e2) ->
-      Printf.fprintf oc "\tfcmpu\tcr7, %s, %s\n" (reg x) (reg y);
-      g'_tail_if oc e1 e2 "ble" "bgt"
-   *)
+      Printf.fprintf oc "\tsltf\t%s, %s, %s\n" (reg reg_tmp) (reg y) (reg x);
+      g'_tail_ifeq oc reg_tmp reg_zero e1 e2
   | NonTail(z), IfEq(x, V(y), e1, e2) ->
       g'_non_tail_ifeq oc (NonTail(z)) x y e1 e2 
   | NonTail(z), IfEq(x, C(y), e1, e2) ->
@@ -195,15 +197,17 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   | NonTail(z), IfGE(x, C(y), e1, e2) ->
       load_imm oc reg_tmp y;
       Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg x) (reg reg_tmp);
-      g'_non_tail_ifeq oc (NonTail(z)) reg_tmp reg_zero e1 e2
-  (* 
+      g'_non_tail_ifeq oc (NonTail(z)) reg_tmp reg_zero e1 e2 
   | NonTail(z), IfFEq(x, y, e1, e2) ->
-      Printf.fprintf oc "\tfcmpu\tcr7, %s, %s\n" (reg x) (reg y);
-      g'_non_tail_if oc (NonTail(z)) e1 e2 "beq" "bne"
+      (* heap領域を通じて整数レジスタに入れ直してから比較*)
+      Printf.fprintf oc "\tsf\t%s, 0(%s)\n" (reg x) (reg reg_hp);
+      Printf.fprintf oc "\tlw\t%s, 0(%s)\n" (reg reg_tmp) (reg reg_hp);
+      Printf.fprintf oc "\tsf\t%s, 0(%s)\n" (reg y) (reg reg_hp);
+      Printf.fprintf oc "\tlw\t%s, 0(%s)\n" (reg reg_tmp2) (reg reg_hp);
+      g'_non_tail_ifeq oc (NonTail(z)) (reg reg_tmp) (reg reg_tmp2) e1 e2
   | NonTail(z), IfFLE(x, y, e1, e2) ->
-      Printf.fprintf oc "\tfcmpu\tcr7, %s, %s\n" (reg x) (reg y);
-      g'_non_tail_if oc (NonTail(z)) e1 e2 "ble" "bgt"
-   *)
+      Printf.fprintf oc "\tsltf\t%s, %s, %s\n" (reg reg_tmp) (reg y) (reg x);
+      g'_non_tail_ifeq oc (NonTail(z)) reg_tmp reg_zero e1 e2
 
   (* 関数呼び出しの仮想命令の実装 (caml2html: emit_call) *)
   | Tail, CallCls(x, ys, zs) -> (* 末尾呼び出し (caml2html: emit_tailcall) *)
@@ -247,6 +251,14 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
         Printf.fprintf oc "\tfmov\t%s, %s\n" (reg a) (reg fregs.(0));
 and g'_tail_ifeq oc x y e1 e2  =
   let b_else = Id.genid ("eq_else") in
+  Printf.fprintf oc "\tbne\t%s, %s, %s\n" (reg x) (reg y) b_else;
+  let stackset_back = !stackset in
+  g oc (Tail, e1);
+  Printf.fprintf oc "%s:\n" b_else;
+  stackset := stackset_back;
+  g oc (Tail, e2)
+and g'_tail_iffeq oc x y e1 e2  =
+  let b_else = Id.genid ("feq_else") in
   Printf.fprintf oc "\tbne\t%s, %s, %s\n" (reg x) (reg y) b_else;
   let stackset_back = !stackset in
   g oc (Tail, e1);
