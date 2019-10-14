@@ -1,3 +1,5 @@
+# floor
+
 min_caml_floor:
   sf $f0 0($4)
   lw $2 0($4)
@@ -10,11 +12,11 @@ min_caml_floor:
   slt $6, $5, $7
   bne $6, $0, floor_main # A < 23
 floor_end:
-  blr
+  jr $31
 floor_tiny:
   sw $0, 0($4)
   lf $f0, 0($4)
-  b floor_end
+  j floor_end
 floor_main:
   addi $6, $5, -23
   addi $7, $0, -1
@@ -26,14 +28,14 @@ floor_main:
   or $10, $9, $7
   sw $10, 0($4)
   lf $f0, 0($4)
-  b floor_end
+  j floor_end
 floor_neg: # kai bit tattetara kiriage
   bne $5, $7, floor_ceil
   or $10, $9, $7
   or $10, $10, $8
   sw $10, 0($4)
   lf $f0, 0($4)
-  b floor_end
+  j floor_end
 floor_ceil:
   addi $10, $0, 1
   sll $10, $10, $6
@@ -42,4 +44,32 @@ floor_ceil:
   or $10, $10, $8
   sw $10, 0($4)
   lf $f0, 0($4)
-  b floor_end 
+  j floor_end 
+
+#	create_array
+min_caml_create_array:	
+	mov	$6, $2
+	mov	$2, $4
+create_array_loop:
+	bne	$0, $6 create_array_cont
+	j	create_array_exit
+create_array_exit:
+	jr $31
+create_array_cont:
+	sw $5, 0($4)
+	addi $6, $6, -1
+	addi $4, $4, 4
+	j	create_array_loop
+
+#	create_float_array
+min_caml_create_float_array:
+	mov $5, $2
+	mov	$2, $4
+create_float_array_loop:
+	bne	$5, $0, create_float_array_cont
+	jr $31
+create_float_array_cont:
+	sf f0, 0($4)
+	addi $5, $5, -1
+	addi $4, $4, 8
+	j	create_float_array_loop
