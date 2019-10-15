@@ -1,0 +1,6 @@
+touch __tmp__
+cp /dev/null __tmp__
+cat ./raytracer/library.ml >> __tmp__
+cat $1 >> __tmp__
+cp __tmp__ $1
+rm -rf __tmp__

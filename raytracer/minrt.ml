@@ -1386,7 +1386,7 @@ let rec solve_each_element_fast iand_ofs and_group dirvec =
 		tmin.(0) <- t;
 		vecset intersection_point q0 q1 q2;
 		intersected_object_id.(0) <- iobj;
-		intsec_rectside.(0) <- t0;
+		intsec_rectside.(0) <- t0
 	       )
 	    else ()
 	   )
@@ -1665,7 +1665,7 @@ let rec trace_ray nref energy dirvec pixel dist =
 	veccpy energya.(nref) texture_color;
 	vecscale energya.(nref) ((1.0 /. 256.0) *. diffuse);
 	let nvectors = p_nvectors pixel in
-	veccpy nvectors.(nref) nvector;
+	veccpy nvectors.(nref) nvector
        );
 
       let w = (-2.0) *. veciprod dirvec nvector in
@@ -1695,7 +1695,7 @@ let rec trace_ray nref energy dirvec pixel dist =
 	if m_surface = 2 then (   (* 完全鏡面反射 *)
 	  let energy2 = energy *. (1.0 -. o_diffuse obj) in
 	  trace_ray (nref+1) energy2 dirvec pixel (dist +. tmin.(0))
-	 ) else ();
+	 ) else ()
 
        ) else ()
 
@@ -1720,7 +1720,6 @@ let rec trace_ray nref energy dirvec pixel dist =
      )
    ) else ()
 in
-
 
 (******************************************************************************
    間接光を追跡する
@@ -2054,7 +2053,7 @@ let rec scan_line y prev cur next group_id = (
       pretrace_line next (y + 1) group_id
     else ();
     scan_pixel 0 y prev cur next;
-    scan_line (y + 1) cur next prev (add_mod5 group_id 2);
+    scan_line (y + 1) cur next prev (add_mod5 group_id 2)
    ) else ()
 )
 in

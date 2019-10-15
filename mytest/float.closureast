@@ -1,9 +1,0 @@
-toplevel fundef
-exp
-Let
-  Td3.4
-  Float
-  Float 3.000000
-  AppDir min_caml_print_float
-  Args
-    Td3.4
