@@ -1,3 +1,39 @@
+Init: # initialize float value and heap pointer
+	addi	$4, $0, 10000
+	ori	$30, $0, 17731
+	slli	$30, $30, 16
+	ori	$30, $30, 5043
+	sw	$30, 0($4)
+	addi	$4, $4, 8
+	j Main
+l.14:	 # 3121.231300
+	lf	$f31, 10000($0)
+	jr	$31
+#	main program starts
+Main:
+	addi	$2, $0, 2
+	addi	$5, $0, 0
+	mov	$30, $31
+	sw	$30, 4($3)
+	addi	$3, $3, 8
+	jal	min_caml_create_array
+	addi	$3, $3, -8
+	lw	$31, 4($3)
+	sw	$31, 0($3)
+	jal	l.14
+	lw	$31, 0($3)
+	movf	$f0, $f31
+	sw	$2, 0($3)
+	mov	$30, $31
+	sw	$30, 4($3)
+	addi	$3, $3, 8
+	jal	min_caml_floor
+	addi	$3, $3, -8
+	lw	$31, 4($3)
+	lw	$5, 0($3)
+	sw	$2, 0($5)
+	j Exit
+#	main program ends
 # floor
 
 min_caml_floor:
@@ -98,3 +134,4 @@ min_caml_print_float:
 min_caml_print_char:
   outb $2
   jr $31
+Exit:

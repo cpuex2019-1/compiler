@@ -1,299 +1,395 @@
 Init: # initialize float value and heap pointer
 	addi	$4, $0, 10000
-	addi	$30, $0, 1124073472
+	addi	$30, $0, 17152
+	slli	$30, $30, 16
+	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1063675494
+	addi	$30, $0, 16230
+	slli	$30, $30, 16
+	ori	$30, $30, 26214
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1045220557
+	addi	$30, $0, 15948
+	slli	$30, $30, 16
+	ori	$30, $30, 52429
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1125515264
+	addi	$30, $0, 17174
+	slli	$30, $30, 16
+	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, -1021968384
+	addi	$30, $0, 140737488339734
+	slli	$30, $30, 16
+	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1036831949
+	addi	$30, $0, 15820
+	slli	$30, $30, 16
+	ori	$30, $30, 52429
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, -1073741824
+	addi	$30, $0, 140737488338944
+	slli	$30, $30, 16
+	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 998244352
+	addi	$30, $0, 15232
+	slli	$30, $30, 16
+	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1101004800
+	addi	$30, $0, 16800
+	slli	$30, $30, 16
+	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1028443341
+	addi	$30, $0, 15692
+	slli	$30, $30, 16
+	ori	$30, $30, 52429
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1048576000
+	addi	$30, $0, 16000
+	slli	$30, $30, 16
+	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1092616192
+	addi	$30, $0, 16672
+	slli	$30, $30, 16
+	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1050253722
+	addi	$30, $0, 16025
+	slli	$30, $30, 16
+	ori	$30, $30, 39322
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1132396544
+	addi	$30, $0, 17279
+	slli	$30, $30, 16
+	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1041865114
+	addi	$30, $0, 15897
+	slli	$30, $30, 16
+	ori	$30, $30, 39322
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1078530011
+	addi	$30, $0, 16457
+	slli	$30, $30, 16
+	ori	$30, $30, 4059
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1106247680
+	addi	$30, $0, 16880
+	slli	$30, $30, 16
+	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1097859072
+	addi	$30, $0, 16752
+	slli	$30, $30, 16
+	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 953267991
+	addi	$30, $0, 14545
+	slli	$30, $30, 16
+	ori	$30, $30, 46871
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1287568416
+	addi	$30, $0, 19646
+	slli	$30, $30, 16
+	ori	$30, $30, 48160
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1315859240
+	addi	$30, $0, 20078
+	slli	$30, $30, 16
+	ori	$30, $30, 27432
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, -1110651699
+	addi	$30, $0, 140737488338380
+	slli	$30, $30, 16
+	ori	$30, $30, 52429
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1008981770
+	addi	$30, $0, 15395
+	slli	$30, $30, 16
+	ori	$30, $30, 55050
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, -1102263091
+	addi	$30, $0, 140737488338508
+	slli	$30, $30, 16
+	ori	$30, $30, 52429
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, -1018691584
+	addi	$30, $0, 140737488339784
+	slli	$30, $30, 16
+	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1128792064
+	addi	$30, $0, 17224
+	slli	$30, $30, 16
+	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1016003125
+	addi	$30, $0, 15502
+	slli	$30, $30, 16
+	ori	$30, $30, 64053
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1093664768
+	addi	$30, $0, 16688
+	slli	$30, $30, 16
+	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1091567616
+	addi	$30, $0, 16656
+	slli	$30, $30, 16
+	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1088421888
+	addi	$30, $0, 16608
+	slli	$30, $30, 16
+	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1084227584
+	addi	$30, $0, 16544
+	slli	$30, $30, 16
+	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1077936128
+	addi	$30, $0, 16448
+	slli	$30, $30, 16
+	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1247640576
+	addi	$30, $0, 19037
+	slli	$30, $30, 16
+	ori	$30, $30, 31744
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1193115648
+	addi	$30, $0, 18205
+	slli	$30, $30, 16
+	ori	$30, $30, 32768
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1144258560
+	addi	$30, $0, 17460
+	slli	$30, $30, 16
+	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1103101952
+	addi	$30, $0, 16832
+	slli	$30, $30, 16
+	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1276659008
+	addi	$30, $0, 19480
+	slli	$30, $30, 16
+	ori	$30, $30, 17728
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1219571712
+	addi	$30, $0, 18609
+	slli	$30, $30, 16
+	ori	$30, $30, 12288
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1167949824
+	addi	$30, $0, 17821
+	slli	$30, $30, 16
+	ori	$30, $30, 32768
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1123024896
+	addi	$30, $0, 17136
+	slli	$30, $30, 16
+	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1086324736
+	addi	$30, $0, 16576
+	slli	$30, $30, 16
+	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1325400064
+	addi	$30, $0, 20224
+	slli	$30, $30, 16
+	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, -822083584
+	addi	$30, $0, 140737488342784
+	slli	$30, $30, 16
+	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, -1082130432
+	addi	$30, $0, 140737488338816
+	slli	$30, $30, 16
+	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1065353216
+	addi	$30, $0, 16256
+	slli	$30, $30, 16
+	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1073741824
+	addi	$30, $0, 16384
+	slli	$30, $30, 16
+	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	addi	$30, $0, 1056964608
+	addi	$30, $0, 16128
+	slli	$30, $30, 16
+	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
 	addi	$30, $0, 0
+	slli	$30, $30, 16
+	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
 	j Main
 l.6982:	 # 128.000000
 	lf	$f31, 10000($0)
-	j	$31
+	jr	$31
 l.6949:	 # 0.900000
 	lf	$f31, 10008($0)
-	j	$31
+	jr	$31
 l.6948:	 # 0.200000
 	lf	$f31, 10016($0)
-	j	$31
+	jr	$31
 l.6854:	 # 150.000000
 	lf	$f31, 10024($0)
-	j	$31
+	jr	$31
 l.6852:	 # -150.000000
 	lf	$f31, 10032($0)
-	j	$31
+	jr	$31
 l.6836:	 # 0.100000
 	lf	$f31, 10040($0)
-	j	$31
+	jr	$31
 l.6833:	 # -2.000000
 	lf	$f31, 10048($0)
-	j	$31
+	jr	$31
 l.6831:	 # 0.003906
 	lf	$f31, 10056($0)
-	j	$31
+	jr	$31
 l.6809:	 # 20.000000
 	lf	$f31, 10064($0)
-	j	$31
+	jr	$31
 l.6808:	 # 0.050000
 	lf	$f31, 10072($0)
-	j	$31
+	jr	$31
 l.6804:	 # 0.250000
 	lf	$f31, 10080($0)
-	j	$31
+	jr	$31
 l.6800:	 # 10.000000
 	lf	$f31, 10088($0)
-	j	$31
+	jr	$31
 l.6796:	 # 0.300000
 	lf	$f31, 10096($0)
-	j	$31
+	jr	$31
 l.6795:	 # 255.000000
 	lf	$f31, 10104($0)
-	j	$31
+	jr	$31
 l.6794:	 # 0.150000
 	lf	$f31, 10112($0)
-	j	$31
+	jr	$31
 l.6792:	 # 3.141593
 	lf	$f31, 10120($0)
-	j	$31
+	jr	$31
 l.6791:	 # 30.000000
 	lf	$f31, 10128($0)
-	j	$31
+	jr	$31
 l.6790:	 # 15.000000
 	lf	$f31, 10136($0)
-	j	$31
+	jr	$31
 l.6789:	 # 0.000100
 	lf	$f31, 10144($0)
-	j	$31
+	jr	$31
 l.6746:	 # 100000000.000000
 	lf	$f31, 10152($0)
-	j	$31
+	jr	$31
 l.6742:	 # 1000000000.000000
 	lf	$f31, 10160($0)
-	j	$31
+	jr	$31
 l.6722:	 # -0.100000
 	lf	$f31, 10168($0)
-	j	$31
+	jr	$31
 l.6709:	 # 0.010000
 	lf	$f31, 10176($0)
-	j	$31
+	jr	$31
 l.6708:	 # -0.200000
 	lf	$f31, 10184($0)
-	j	$31
+	jr	$31
 l.6484:	 # -200.000000
 	lf	$f31, 10192($0)
-	j	$31
+	jr	$31
 l.6482:	 # 200.000000
 	lf	$f31, 10200($0)
-	j	$31
+	jr	$31
 l.6478:	 # 0.017453
 	lf	$f31, 10208($0)
-	j	$31
+	jr	$31
 l.6395:	 # 11.000000
 	lf	$f31, 10216($0)
-	j	$31
+	jr	$31
 l.6394:	 # 9.000000
 	lf	$f31, 10224($0)
-	j	$31
+	jr	$31
 l.6393:	 # 7.000000
 	lf	$f31, 10232($0)
-	j	$31
+	jr	$31
 l.6392:	 # 5.000000
 	lf	$f31, 10240($0)
-	j	$31
+	jr	$31
 l.6391:	 # 3.000000
 	lf	$f31, 10248($0)
-	j	$31
+	jr	$31
 l.6390:	 # 3628800.000000
 	lf	$f31, 10256($0)
-	j	$31
+	jr	$31
 l.6389:	 # 40320.000000
 	lf	$f31, 10264($0)
-	j	$31
+	jr	$31
 l.6388:	 # 720.000000
 	lf	$f31, 10272($0)
-	j	$31
+	jr	$31
 l.6387:	 # 24.000000
 	lf	$f31, 10280($0)
-	j	$31
+	jr	$31
 l.6386:	 # 39916800.000000
 	lf	$f31, 10288($0)
-	j	$31
+	jr	$31
 l.6385:	 # 362880.000000
 	lf	$f31, 10296($0)
-	j	$31
+	jr	$31
 l.6384:	 # 5040.000000
 	lf	$f31, 10304($0)
-	j	$31
+	jr	$31
 l.6383:	 # 120.000000
 	lf	$f31, 10312($0)
-	j	$31
+	jr	$31
 l.6382:	 # 6.000000
 	lf	$f31, 10320($0)
-	j	$31
+	jr	$31
 l.6381:	 # 2147483647.000000
 	lf	$f31, 10328($0)
-	j	$31
+	jr	$31
 l.6380:	 # -2147483648.000000
 	lf	$f31, 10336($0)
-	j	$31
+	jr	$31
 l.6379:	 # -1.000000
 	lf	$f31, 10344($0)
-	j	$31
+	jr	$31
 l.6378:	 # 1.000000
 	lf	$f31, 10352($0)
-	j	$31
+	jr	$31
 l.6377:	 # 2.000000
 	lf	$f31, 10360($0)
-	j	$31
+	jr	$31
 l.6376:	 # 0.500000
 	lf	$f31, 10368($0)
-	j	$31
+	jr	$31
 l.6375:	 # 0.000000
 	lf	$f31, 10376($0)
-	j	$31
+	jr	$31
 fispos.2616:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	sltf	$30, $f1, $f0
 	bne	$30, $0, eq_else.9085
 	addi	$2, $0, 0
@@ -305,7 +401,7 @@ fisneg.2618:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	sltf	$30, $f0, $f1
 	bne	$30, $0, eq_else.9086
 	addi	$2, $0, 0
@@ -317,7 +413,7 @@ fiszero.2620:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	sf	$f0, 0($4)
 	lw	$30, 0($4)
 	sf	$f1, 0($4)
@@ -366,7 +462,7 @@ fhalf.2628:
 	sw	$31, 0($3)
 	jal	l.6376
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fmul	$f0, $f0, $f1
 	jr $31
 fsqr.2630:
@@ -406,14 +502,14 @@ eq_else.9092:
 	sw	$31, 0($3)
 	jal	l.6377
 	lw	$31, 0($3)
-	fmov	$f3, $f31
+	movf	$f3, $f31
 	fmul	$f3, $f3, $f0
 	fdiv	$f2, $f2, $f3
 	fsub	$f0, $f0, $f2
 	j	sqrt_sub.2636
 sqrt.2640:
 	addi	$2, $0, 20
-	fmov	$f1, $f0
+	movf	$f1, $f0
 	j	sqrt_sub.2636
 odd.2642:
 	addi	$5, $0, 2
@@ -459,7 +555,7 @@ float_of_int_sub.2644:
 	sw	$31, 0($3)
 	jal	l.6377
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fmul	$f0, $f0, $f1
 	jr $31
 eq_else.9095:
@@ -475,19 +571,19 @@ eq_else.9095:
 	sw	$31, 0($3)
 	jal	l.6377
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fmul	$f0, $f0, $f1
 	sw	$31, 0($3)
 	jal	l.6378
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fadd	$f0, $f0, $f1
 	jr $31
 eq_else.9094:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	jr $31
 float_of_int.2647:
 	addi	$5, $0, 140737488322560
@@ -497,7 +593,7 @@ float_of_int.2647:
 	sw	$31, 0($3)
 	jal	l.6380
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	jr $31
 eq_else.9096:
 	addi	$30, $0, 0
@@ -508,7 +604,7 @@ eq_else.9096:
 	sw	$31, 0($3)
 	jal	l.6379
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	addi	$5, $0, 30
 	mul	$2, $2, -1
 	sf	$f0, 0($3)
@@ -612,12 +708,12 @@ eq_else.9104:
 	bne	$30, $0, eq_else.9105
 	lw	$2, 16($3)
 	lw	$5, 4($3)
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	j	int_of_float_sub.2652
 eq_else.9105:
 	lw	$2, 0($3)
 	lw	$5, 16($3)
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	j	int_of_float_sub.2652
 int_of_float.2656:
 	addi	$2, $0, 140737488322560
@@ -636,7 +732,7 @@ int_of_float.2656:
 	sw	$31, 0($3)
 	jal	l.6381
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	lf	$f1, 0($3)
 	sltf	$30, $f1, $f0
 	bne	$30, $0, eq_else.9106
@@ -654,7 +750,7 @@ pow.2658:
 	sw	$31, 0($3)
 	jal	l.6378
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	jr $31
 eq_else.9107:
 	addi	$2, $2, -1
@@ -680,14 +776,14 @@ sin.2666:
 	sw	$31, 0($3)
 	jal	l.6382
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fdiv	$f0, $f0, $f1
 	lf	$f1, 0($3)
 	fsub	$f0, $f1, $f0
 	addi	$2, $0, 5
 	sf	$f0, 8($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 20($3)
 	addi	$3, $3, 24
 	jal	pow.2658
@@ -696,7 +792,7 @@ sin.2666:
 	sw	$31, 0($3)
 	jal	l.6383
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fdiv	$f0, $f0, $f1
 	lf	$f1, 8($3)
 	fadd	$f0, $f1, $f0
@@ -704,7 +800,7 @@ sin.2666:
 	lf	$f1, 0($3)
 	sf	$f0, 16($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 28($3)
 	addi	$3, $3, 32
 	jal	pow.2658
@@ -713,7 +809,7 @@ sin.2666:
 	sw	$31, 0($3)
 	jal	l.6384
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fdiv	$f0, $f0, $f1
 	lf	$f1, 16($3)
 	fsub	$f0, $f1, $f0
@@ -721,7 +817,7 @@ sin.2666:
 	lf	$f1, 0($3)
 	sf	$f0, 24($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 36($3)
 	addi	$3, $3, 40
 	jal	pow.2658
@@ -730,7 +826,7 @@ sin.2666:
 	sw	$31, 0($3)
 	jal	l.6385
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fdiv	$f0, $f0, $f1
 	lf	$f1, 24($3)
 	fadd	$f0, $f1, $f0
@@ -738,7 +834,7 @@ sin.2666:
 	lf	$f1, 0($3)
 	sf	$f0, 32($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 44($3)
 	addi	$3, $3, 48
 	jal	pow.2658
@@ -747,7 +843,7 @@ sin.2666:
 	sw	$31, 0($3)
 	jal	l.6386
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fdiv	$f0, $f0, $f1
 	lf	$f1, 32($3)
 	fsub	$f0, $f1, $f0
@@ -756,7 +852,7 @@ cos.2668:
 	sw	$31, 0($3)
 	jal	l.6378
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	addi	$2, $0, 2
 	sf	$f0, 0($3)
 	sf	$f1, 8($3)
@@ -769,7 +865,7 @@ cos.2668:
 	sw	$31, 0($3)
 	jal	l.6377
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fdiv	$f0, $f0, $f1
 	lf	$f1, 8($3)
 	fsub	$f0, $f1, $f0
@@ -777,7 +873,7 @@ cos.2668:
 	lf	$f1, 0($3)
 	sf	$f0, 16($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 28($3)
 	addi	$3, $3, 32
 	jal	pow.2658
@@ -786,7 +882,7 @@ cos.2668:
 	sw	$31, 0($3)
 	jal	l.6387
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fdiv	$f0, $f0, $f1
 	lf	$f1, 16($3)
 	fadd	$f0, $f1, $f0
@@ -794,7 +890,7 @@ cos.2668:
 	lf	$f1, 0($3)
 	sf	$f0, 24($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 36($3)
 	addi	$3, $3, 40
 	jal	pow.2658
@@ -803,7 +899,7 @@ cos.2668:
 	sw	$31, 0($3)
 	jal	l.6388
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fdiv	$f0, $f0, $f1
 	lf	$f1, 24($3)
 	fsub	$f0, $f1, $f0
@@ -811,7 +907,7 @@ cos.2668:
 	lf	$f1, 0($3)
 	sf	$f0, 32($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 44($3)
 	addi	$3, $3, 48
 	jal	pow.2658
@@ -820,7 +916,7 @@ cos.2668:
 	sw	$31, 0($3)
 	jal	l.6389
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fdiv	$f0, $f0, $f1
 	lf	$f1, 32($3)
 	fadd	$f0, $f1, $f0
@@ -828,7 +924,7 @@ cos.2668:
 	lf	$f1, 0($3)
 	sf	$f0, 40($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 52($3)
 	addi	$3, $3, 56
 	jal	pow.2658
@@ -837,7 +933,7 @@ cos.2668:
 	sw	$31, 0($3)
 	jal	l.6390
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fdiv	$f0, $f0, $f1
 	lf	$f1, 40($3)
 	fsub	$f0, $f1, $f0
@@ -854,14 +950,14 @@ atan.2670:
 	sw	$31, 0($3)
 	jal	l.6391
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fdiv	$f0, $f0, $f1
 	lf	$f1, 0($3)
 	fsub	$f0, $f1, $f0
 	addi	$2, $0, 5
 	sf	$f0, 8($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 20($3)
 	addi	$3, $3, 24
 	jal	pow.2658
@@ -870,7 +966,7 @@ atan.2670:
 	sw	$31, 0($3)
 	jal	l.6392
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fdiv	$f0, $f0, $f1
 	lf	$f1, 8($3)
 	fadd	$f0, $f1, $f0
@@ -878,7 +974,7 @@ atan.2670:
 	lf	$f1, 0($3)
 	sf	$f0, 16($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 28($3)
 	addi	$3, $3, 32
 	jal	pow.2658
@@ -887,7 +983,7 @@ atan.2670:
 	sw	$31, 0($3)
 	jal	l.6393
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fdiv	$f0, $f0, $f1
 	lf	$f1, 16($3)
 	fsub	$f0, $f1, $f0
@@ -895,7 +991,7 @@ atan.2670:
 	lf	$f1, 0($3)
 	sf	$f0, 24($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 36($3)
 	addi	$3, $3, 40
 	jal	pow.2658
@@ -904,7 +1000,7 @@ atan.2670:
 	sw	$31, 0($3)
 	jal	l.6394
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fdiv	$f0, $f0, $f1
 	lf	$f1, 24($3)
 	fadd	$f0, $f1, $f0
@@ -912,7 +1008,7 @@ atan.2670:
 	lf	$f1, 0($3)
 	sf	$f0, 32($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 44($3)
 	addi	$3, $3, 48
 	jal	pow.2658
@@ -921,7 +1017,7 @@ atan.2670:
 	sw	$31, 0($3)
 	jal	l.6395
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fdiv	$f0, $f0, $f1
 	lf	$f1, 32($3)
 	fsub	$f0, $f1, $f0
@@ -999,19 +1095,19 @@ sgn.2676:
 	sw	$31, 0($3)
 	jal	l.6379
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	jr $31
 eq_else.9112:
 	sw	$31, 0($3)
 	jal	l.6378
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	jr $31
 eq_else.9111:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	jr $31
 fneg_cond.2678:
 	addi	$30, $0, 0
@@ -1046,7 +1142,7 @@ vecbzero.2692:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	j	vecfill.2689
 veccpy.2694:
 	lf	$f0, 0($5)
@@ -1070,7 +1166,7 @@ vecunit_sgn.2702:
 	lf	$f1, 8($2)
 	sf	$f0, 8($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 20($3)
 	addi	$3, $3, 24
 	jal	fsqr.2630
@@ -1082,7 +1178,7 @@ vecunit_sgn.2702:
 	lf	$f1, 16($2)
 	sf	$f0, 16($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 28($3)
 	addi	$3, $3, 32
 	jal	fsqr.2630
@@ -1115,7 +1211,7 @@ vecunit_sgn.2702:
 	sw	$31, 0($3)
 	jal	l.6378
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	lf	$f1, 24($3)
 	fdiv	$f0, $f0, $f1
 	j	eq_cont.9121
@@ -1123,7 +1219,7 @@ eq_else.9120:
 	sw	$31, 0($3)
 	jal	l.6379
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	lf	$f1, 24($3)
 	fdiv	$f0, $f0, $f1
 eq_cont.9121:
@@ -1132,7 +1228,7 @@ eq_else.9118:
 	sw	$31, 0($3)
 	jal	l.6378
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 eq_cont.9119:
 	lw	$2, 4($3)
 	lf	$f1, 0($2)
@@ -1355,7 +1451,7 @@ rad.2801:
 	sw	$31, 0($3)
 	jal	l.6478
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fmul	$f0, $f0, $f1
 	jr $31
 read_screen_settings.2803:
@@ -1415,7 +1511,7 @@ read_screen_settings.2803:
 	lf	$f1, 24($3)
 	sf	$f0, 32($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 44($3)
 	addi	$3, $3, 48
 	jal	sin.2666
@@ -1444,7 +1540,7 @@ read_screen_settings.2803:
 	lf	$f1, 48($3)
 	sf	$f0, 56($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 68($3)
 	addi	$3, $3, 72
 	jal	sin.2666
@@ -1455,14 +1551,14 @@ read_screen_settings.2803:
 	sw	$31, 0($3)
 	jal	l.6482
 	lw	$31, 0($3)
-	fmov	$f3, $f31
+	movf	$f3, $f31
 	fmul	$f2, $f2, $f3
 	lw	$2, 12($3)
 	sf	$f2, 0($2)
 	sw	$31, 0($3)
 	jal	l.6484
 	lw	$31, 0($3)
-	fmov	$f2, $f31
+	movf	$f2, $f31
 	lf	$f3, 40($3)
 	fmul	$f2, $f3, $f2
 	sf	$f2, 8($2)
@@ -1471,7 +1567,7 @@ read_screen_settings.2803:
 	sw	$31, 0($3)
 	jal	l.6482
 	lw	$31, 0($3)
-	fmov	$f5, $f31
+	movf	$f5, $f31
 	fmul	$f4, $f4, $f5
 	sf	$f4, 16($2)
 	lw	$5, 8($3)
@@ -1479,7 +1575,7 @@ read_screen_settings.2803:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f4, $f31
+	movf	$f4, $f31
 	sf	$f4, 8($5)
 	sf	$f0, 64($3)
 	mov	$30, $31
@@ -1590,7 +1686,7 @@ read_light.2805:
 	lf	$f1, 8($3)
 	sf	$f0, 16($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 28($3)
 	addi	$3, $3, 32
 	jal	cos.2668
@@ -1599,7 +1695,7 @@ read_light.2805:
 	lf	$f1, 16($3)
 	sf	$f0, 24($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 36($3)
 	addi	$3, $3, 40
 	jal	sin.2666
@@ -1643,7 +1739,7 @@ rotate_quadratic_matrix.2807:
 	lf	$f1, 0($2)
 	sf	$f0, 8($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 20($3)
 	addi	$3, $3, 24
 	jal	sin.2666
@@ -1653,7 +1749,7 @@ rotate_quadratic_matrix.2807:
 	lf	$f1, 8($2)
 	sf	$f0, 16($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 28($3)
 	addi	$3, $3, 32
 	jal	cos.2668
@@ -1663,7 +1759,7 @@ rotate_quadratic_matrix.2807:
 	lf	$f1, 8($2)
 	sf	$f0, 24($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 36($3)
 	addi	$3, $3, 40
 	jal	sin.2666
@@ -1673,7 +1769,7 @@ rotate_quadratic_matrix.2807:
 	lf	$f1, 16($2)
 	sf	$f0, 32($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 44($3)
 	addi	$3, $3, 48
 	jal	cos.2668
@@ -1683,7 +1779,7 @@ rotate_quadratic_matrix.2807:
 	lf	$f1, 16($2)
 	sf	$f0, 40($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 52($3)
 	addi	$3, $3, 56
 	jal	sin.2666
@@ -1719,7 +1815,7 @@ rotate_quadratic_matrix.2807:
 	sf	$f9, 80($3)
 	sf	$f3, 88($3)
 	mov	$30, $31
-	fmov	$f0, $f4
+	movf	$f0, $f4
 	sw	$30, 100($3)
 	addi	$3, $3, 104
 	jal	fneg.2634
@@ -1742,7 +1838,7 @@ rotate_quadratic_matrix.2807:
 	sf	$f4, 128($3)
 	sf	$f3, 136($3)
 	mov	$30, $31
-	fmov	$f0, $f6
+	movf	$f0, $f6
 	sw	$30, 148($3)
 	addi	$3, $3, 152
 	jal	fsqr.2630
@@ -1753,7 +1849,7 @@ rotate_quadratic_matrix.2807:
 	lf	$f2, 80($3)
 	sf	$f0, 144($3)
 	mov	$30, $31
-	fmov	$f0, $f2
+	movf	$f0, $f2
 	sw	$30, 156($3)
 	addi	$3, $3, 160
 	jal	fsqr.2630
@@ -1766,7 +1862,7 @@ rotate_quadratic_matrix.2807:
 	lf	$f2, 120($3)
 	sf	$f0, 152($3)
 	mov	$30, $31
-	fmov	$f0, $f2
+	movf	$f0, $f2
 	sw	$30, 164($3)
 	addi	$3, $3, 168
 	jal	fsqr.2630
@@ -1790,7 +1886,7 @@ rotate_quadratic_matrix.2807:
 	lf	$f2, 64($3)
 	sf	$f0, 160($3)
 	mov	$30, $31
-	fmov	$f0, $f2
+	movf	$f0, $f2
 	sw	$30, 172($3)
 	addi	$3, $3, 176
 	jal	fsqr.2630
@@ -1803,7 +1899,7 @@ rotate_quadratic_matrix.2807:
 	lf	$f2, 104($3)
 	sf	$f0, 168($3)
 	mov	$30, $31
-	fmov	$f0, $f2
+	movf	$f0, $f2
 	sw	$30, 180($3)
 	addi	$3, $3, 184
 	jal	fsqr.2630
@@ -1827,7 +1923,7 @@ rotate_quadratic_matrix.2807:
 	lf	$f2, 48($3)
 	sf	$f0, 176($3)
 	mov	$30, $31
-	fmov	$f0, $f2
+	movf	$f0, $f2
 	sw	$30, 188($3)
 	addi	$3, $3, 192
 	jal	fsqr.2630
@@ -1840,7 +1936,7 @@ rotate_quadratic_matrix.2807:
 	lf	$f2, 96($3)
 	sf	$f0, 184($3)
 	mov	$30, $31
-	fmov	$f0, $f2
+	movf	$f0, $f2
 	sw	$30, 196($3)
 	addi	$3, $3, 200
 	jal	fsqr.2630
@@ -1855,7 +1951,7 @@ rotate_quadratic_matrix.2807:
 	sw	$31, 0($3)
 	jal	l.6377
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	lf	$f2, 72($3)
 	lf	$f3, 136($3)
 	fmul	$f4, $f3, $f2
@@ -1878,7 +1974,7 @@ rotate_quadratic_matrix.2807:
 	sw	$31, 0($3)
 	jal	l.6377
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	lf	$f4, 88($3)
 	fmul	$f10, $f3, $f4
 	fmul	$f5, $f10, $f5
@@ -1895,7 +1991,7 @@ rotate_quadratic_matrix.2807:
 	sw	$31, 0($3)
 	jal	l.6377
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	fmul	$f3, $f3, $f4
 	fmul	$f2, $f3, $f2
 	fmul	$f3, $f7, $f10
@@ -1949,7 +2045,7 @@ eq_else.9132:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$2, 20($3)
 	mov	$30, $31
 	mov	$2, $5
@@ -1987,7 +2083,7 @@ eq_else.9132:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	mov	$30, $31
 	mov	$2, $5
 	sw	$30, 28($3)
@@ -2036,7 +2132,7 @@ eq_else.9132:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$2, 32($3)
 	mov	$30, $31
 	mov	$2, $5
@@ -2066,7 +2162,7 @@ eq_else.9132:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	mov	$30, $31
 	mov	$2, $5
 	sw	$30, 44($3)
@@ -2103,7 +2199,7 @@ eq_else.9132:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	mov	$30, $31
 	mov	$2, $5
 	sw	$30, 44($3)
@@ -2176,7 +2272,7 @@ eq_cont.9136:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$6, 48($3)
 	sw	$2, 44($3)
 	mov	$30, $31
@@ -2240,7 +2336,7 @@ eq_cont.9136:
 	lf	$f1, 56($3)
 	sf	$f0, 64($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 76($3)
 	addi	$3, $3, 80
 	jal	fsqr.2630
@@ -2253,7 +2349,7 @@ eq_else.9140:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 eq_cont.9141:
 	lw	$2, 24($3)
 	sf	$f0, 0($2)
@@ -2279,7 +2375,7 @@ eq_cont.9141:
 	lf	$f1, 72($3)
 	sf	$f0, 80($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 92($3)
 	addi	$3, $3, 96
 	jal	fsqr.2630
@@ -2292,7 +2388,7 @@ eq_else.9142:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 eq_cont.9143:
 	lw	$2, 24($3)
 	sf	$f0, 8($2)
@@ -2318,7 +2414,7 @@ eq_cont.9143:
 	lf	$f1, 88($3)
 	sf	$f0, 96($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 108($3)
 	addi	$3, $3, 112
 	jal	fsqr.2630
@@ -2331,7 +2427,7 @@ eq_else.9144:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 eq_cont.9145:
 	lw	$2, 24($3)
 	sf	$f0, 16($2)
@@ -2586,7 +2682,7 @@ lf	$f3, 0($30)
 	sw	$6, 52($3)
 	sw	$2, 56($3)
 	mov	$30, $31
-	fmov	$f0, $f3
+	movf	$f0, $f3
 	sw	$30, 60($3)
 	addi	$3, $3, 64
 	jal	fiszero.2620
@@ -2660,7 +2756,7 @@ lf	$f1, 0($30)
 	fadd	$f1, $f1, $f2
 	sf	$f0, 72($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 84($3)
 	addi	$3, $3, 88
 	jal	fabs.2632
@@ -2880,7 +2976,7 @@ quadratic.2845:
 	lf	$f1, 16($3)
 	sf	$f0, 40($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 52($3)
 	addi	$3, $3, 56
 	jal	fsqr.2630
@@ -2901,7 +2997,7 @@ quadratic.2845:
 	lf	$f1, 8($3)
 	sf	$f0, 56($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 68($3)
 	addi	$3, $3, 72
 	jal	fsqr.2630
@@ -3125,9 +3221,9 @@ solver_second.2858:
 	sw	$2, 32($3)
 	sw	$5, 36($3)
 	mov	$30, $31
-	fmov	$f2, $f5
-	fmov	$f1, $f4
-	fmov	$f0, $f3
+	movf	$f2, $f5
+	movf	$f1, $f4
+	movf	$f0, $f3
 	sw	$30, 44($3)
 	addi	$3, $3, 48
 	jal	quadratic.2845
@@ -3164,9 +3260,9 @@ solver_second.2858:
 	lw	$2, 32($3)
 	sf	$f0, 48($3)
 	mov	$30, $31
-	fmov	$f0, $f1
-	fmov	$f1, $f2
-	fmov	$f2, $f3
+	movf	$f0, $f1
+	movf	$f1, $f2
+	movf	$f2, $f3
 	sw	$30, 60($3)
 	addi	$3, $3, 64
 	jal	quadratic.2845
@@ -3187,7 +3283,7 @@ solver_second.2858:
 	sw	$31, 0($3)
 	jal	l.6378
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	lf	$f1, 56($3)
 	fsub	$f0, $f1, $f0
 	j	eq_cont.9180
@@ -3197,7 +3293,7 @@ eq_cont.9180:
 	lf	$f1, 48($3)
 	sf	$f0, 64($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 76($3)
 	addi	$3, $3, 80
 	jal	fsqr.2630
@@ -3372,7 +3468,7 @@ solver_rect_fast.2868:
 	sw	$5, 48($3)
 	sw	$2, 52($3)
 	mov	$30, $31
-	fmov	$f0, $f4
+	movf	$f0, $f4
 	sw	$30, 60($3)
 	addi	$3, $3, 64
 	jal	fabs.2632
@@ -3386,7 +3482,7 @@ solver_rect_fast.2868:
 	jal	o_param_b.2742
 	addi	$3, $3, -72
 	lw	$31, 68($3)
-	fmov	$f1, $f0
+	movf	$f1, $f0
 	lf	$f0, 56($3)
 	mov	$30, $31
 	sw	$30, 68($3)
@@ -3421,7 +3517,7 @@ eq_else.9188:
 	jal	o_param_c.2744
 	addi	$3, $3, -80
 	lw	$31, 76($3)
-	fmov	$f1, $f0
+	movf	$f1, $f0
 	lf	$f0, 64($3)
 	mov	$30, $31
 	sw	$30, 76($3)
@@ -3472,7 +3568,7 @@ eq_cont.9189:
 	fadd	$f2, $f2, $f3
 	sf	$f0, 72($3)
 	mov	$30, $31
-	fmov	$f0, $f2
+	movf	$f0, $f2
 	sw	$30, 84($3)
 	addi	$3, $3, 88
 	jal	fabs.2632
@@ -3486,7 +3582,7 @@ eq_cont.9189:
 	jal	o_param_a.2740
 	addi	$3, $3, -96
 	lw	$31, 92($3)
-	fmov	$f1, $f0
+	movf	$f1, $f0
 	lf	$f0, 80($3)
 	mov	$30, $31
 	sw	$30, 92($3)
@@ -3521,7 +3617,7 @@ eq_else.9195:
 	jal	o_param_c.2744
 	addi	$3, $3, -104
 	lw	$31, 100($3)
-	fmov	$f1, $f0
+	movf	$f1, $f0
 	lf	$f0, 88($3)
 	mov	$30, $31
 	sw	$30, 100($3)
@@ -3572,7 +3668,7 @@ eq_cont.9196:
 	fadd	$f1, $f1, $f2
 	sf	$f0, 96($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 108($3)
 	addi	$3, $3, 112
 	jal	fabs.2632
@@ -3586,7 +3682,7 @@ eq_cont.9196:
 	jal	o_param_a.2740
 	addi	$3, $3, -120
 	lw	$31, 116($3)
-	fmov	$f1, $f0
+	movf	$f1, $f0
 	lf	$f0, 104($3)
 	mov	$30, $31
 	sw	$30, 116($3)
@@ -3621,7 +3717,7 @@ eq_else.9202:
 	jal	o_param_b.2742
 	addi	$3, $3, -128
 	lw	$31, 124($3)
-	fmov	$f1, $f0
+	movf	$f1, $f0
 	lf	$f0, 112($3)
 	mov	$30, $31
 	sw	$30, 124($3)
@@ -3688,7 +3784,7 @@ solver_surface_fast.2875:
 	sf	$f0, 24($3)
 	sw	$5, 32($3)
 	mov	$30, $31
-	fmov	$f0, $f3
+	movf	$f0, $f3
 	sw	$30, 36($3)
 	addi	$3, $3, 40
 	jal	fisneg.2618
@@ -3728,7 +3824,7 @@ solver_second_fast.2881:
 	sf	$f0, 40($3)
 	sw	$5, 48($3)
 	mov	$30, $31
-	fmov	$f0, $f3
+	movf	$f0, $f3
 	sw	$30, 52($3)
 	addi	$3, $3, 56
 	jal	fiszero.2620
@@ -3754,9 +3850,9 @@ solver_second_fast.2881:
 	sf	$f0, 56($3)
 	mov	$30, $31
 	mov	$2, $5
-	fmov	$f2, $f4
-	fmov	$f0, $f1
-	fmov	$f1, $f3
+	movf	$f2, $f4
+	movf	$f0, $f1
+	movf	$f1, $f3
 	sw	$30, 68($3)
 	addi	$3, $3, 72
 	jal	quadratic.2845
@@ -3777,7 +3873,7 @@ solver_second_fast.2881:
 	sw	$31, 0($3)
 	jal	l.6378
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	lf	$f1, 64($3)
 	fsub	$f0, $f1, $f0
 	j	eq_cont.9216
@@ -3787,7 +3883,7 @@ eq_cont.9216:
 	lf	$f1, 56($3)
 	sf	$f0, 72($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 84($3)
 	addi	$3, $3, 88
 	jal	fsqr.2630
@@ -4012,7 +4108,7 @@ solver_second_fast2.2898:
 	sf	$f0, 40($3)
 	sw	$5, 48($3)
 	mov	$30, $31
-	fmov	$f0, $f3
+	movf	$f0, $f3
 	sw	$30, 52($3)
 	addi	$3, $3, 56
 	jal	fiszero.2620
@@ -4205,7 +4301,7 @@ setup_rect_table.2908:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$5, 0($3)
 	sw	$2, 4($3)
 	mov	$30, $31
@@ -4273,7 +4369,7 @@ setup_rect_table.2908:
 	sw	$31, 0($3)
 	jal	l.6378
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	lw	$5, 4($3)
 	lf	$f1, 0($5)
 	fdiv	$f0, $f0, $f1
@@ -4283,7 +4379,7 @@ eq_else.9233:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	lw	$2, 8($3)
 	sf	$f0, 8($2)
 eq_cont.9234:
@@ -4344,7 +4440,7 @@ eq_cont.9234:
 	sw	$31, 0($3)
 	jal	l.6378
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	lw	$5, 4($3)
 	lf	$f1, 8($5)
 	fdiv	$f0, $f0, $f1
@@ -4354,7 +4450,7 @@ eq_else.9235:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	lw	$2, 8($3)
 	sf	$f0, 24($2)
 eq_cont.9236:
@@ -4415,7 +4511,7 @@ eq_cont.9236:
 	sw	$31, 0($3)
 	jal	l.6378
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	lw	$5, 4($3)
 	lf	$f1, 16($5)
 	fdiv	$f0, $f0, $f1
@@ -4425,7 +4521,7 @@ eq_else.9237:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	lw	$2, 8($3)
 	sf	$f0, 40($2)
 eq_cont.9238:
@@ -4435,7 +4531,7 @@ setup_surface_table.2911:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$5, 0($3)
 	sw	$2, 4($3)
 	mov	$30, $31
@@ -4504,7 +4600,7 @@ setup_surface_table.2911:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	lw	$2, 8($3)
 	sf	$f0, 0($2)
 	j	eq_cont.9241
@@ -4512,7 +4608,7 @@ eq_else.9240:
 	sw	$31, 0($3)
 	jal	l.6379
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	lf	$f1, 56($3)
 	fdiv	$f0, $f0, $f1
 	lw	$2, 8($3)
@@ -4578,7 +4674,7 @@ setup_second_table.2914:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$5, 0($3)
 	sw	$2, 4($3)
 	mov	$30, $31
@@ -4817,7 +4913,7 @@ eq_cont.9244:
 	sw	$31, 0($3)
 	jal	l.6378
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	lf	$f1, 16($3)
 	fdiv	$f0, $f0, $f1
 	lw	$2, 8($3)
@@ -5059,7 +5155,7 @@ eq_else.9256:
 	sw	$31, 0($3)
 	jal	l.6378
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fsub	$f0, $f0, $f1
 	j	eq_cont.9259
 eq_else.9258:
@@ -5117,7 +5213,7 @@ is_rect_outside.2927:
 	jal	o_param_a.2740
 	addi	$3, $3, -40
 	lw	$31, 36($3)
-	fmov	$f1, $f0
+	movf	$f1, $f0
 	lf	$f0, 24($3)
 	mov	$30, $31
 	sw	$30, 36($3)
@@ -5147,7 +5243,7 @@ eq_else.9262:
 	jal	o_param_b.2742
 	addi	$3, $3, -48
 	lw	$31, 44($3)
-	fmov	$f1, $f0
+	movf	$f1, $f0
 	lf	$f0, 32($3)
 	mov	$30, $31
 	sw	$30, 44($3)
@@ -5177,7 +5273,7 @@ eq_else.9264:
 	jal	o_param_c.2744
 	addi	$3, $3, -56
 	lw	$31, 52($3)
-	fmov	$f1, $f0
+	movf	$f1, $f0
 	lf	$f0, 40($3)
 	mov	$30, $31
 	sw	$30, 52($3)
@@ -5286,7 +5382,7 @@ is_second_outside.2937:
 	sw	$31, 0($3)
 	jal	l.6378
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	lf	$f1, 8($3)
 	fsub	$f0, $f1, $f0
 	j	eq_cont.9272
@@ -5486,7 +5582,7 @@ eq_else.9281:
 	sw	$31, 0($3)
 	jal	l.6708
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	mov	$30, $31
 	sw	$30, 52($3)
 	addi	$3, $3, 56
@@ -5525,7 +5621,7 @@ eq_else.9283:
 	sw	$31, 0($3)
 	jal	l.6709
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	lf	$f1, 40($3)
 	fadd	$f0, $f1, $f0
 	lw	$2, 8($3)
@@ -5546,10 +5642,10 @@ eq_else.9283:
 	lw	$5, 12($3)
 	lw	$28, 0($3)
 	mov	$30, $31
-	fmov	$f30, $f2
-	fmov	$f2, $f0
-	fmov	$f0, $f1
-	fmov	$f1, $f30
+	movf	$f30, $f2
+	movf	$f2, $f0
+	movf	$f0, $f1
+	movf	$f1, $f30
 	sw	$30, 52($3)
 	addi	$3, $3, 56
 	lw $30, 0($28)
@@ -5662,7 +5758,7 @@ eq_else.9291:
 	sw	$31, 0($3)
 	jal	l.6722
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	mov	$30, $31
 	sw	$30, 28($3)
 	addi	$3, $3, 32
@@ -5807,7 +5903,7 @@ eq_else.9301:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$2, 52($3)
 	sf	$f1, 56($3)
 	mov	$30, $31
@@ -5840,7 +5936,7 @@ eq_else.9306:
 	sw	$31, 0($3)
 	jal	l.6709
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	lf	$f1, 56($3)
 	fadd	$f0, $f1, $f0
 	lw	$2, 28($3)
@@ -5867,9 +5963,9 @@ eq_else.9306:
 	mov	$30, $31
 	mov	$2, $5
 	mov	$5, $6
-	fmov	$f0, $f1
-	fmov	$f1, $f2
-	fmov	$f2, $f3
+	movf	$f0, $f1
+	movf	$f1, $f2
+	movf	$f2, $f3
 	sw	$30, 100($3)
 	addi	$3, $3, 104
 	lw $30, 0($28)
@@ -6047,7 +6143,7 @@ judge_intersection.2974:
 	sw	$31, 0($3)
 	jal	l.6742
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sf	$f0, 0($6)
 	addi	$8, $0, 0
 	lw	$7, 0($7)
@@ -6068,7 +6164,7 @@ judge_intersection.2974:
 	sw	$31, 0($3)
 	jal	l.6722
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sf	$f1, 8($3)
 	mov	$30, $31
 	sw	$30, 20($3)
@@ -6086,7 +6182,7 @@ eq_else.9321:
 	sw	$31, 0($3)
 	jal	l.6746
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	lf	$f0, 8($3)
 	j	fless.2622
 solve_each_element_fast.2976:
@@ -6175,7 +6271,7 @@ eq_else.9324:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$2, 60($3)
 	sf	$f1, 64($3)
 	mov	$30, $31
@@ -6208,7 +6304,7 @@ eq_else.9329:
 	sw	$31, 0($3)
 	jal	l.6709
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	lf	$f1, 64($3)
 	fadd	$f0, $f1, $f0
 	lw	$2, 52($3)
@@ -6233,9 +6329,9 @@ eq_else.9329:
 	sf	$f1, 88($3)
 	sf	$f0, 96($3)
 	mov	$30, $31
-	fmov	$f0, $f1
-	fmov	$f1, $f2
-	fmov	$f2, $f3
+	movf	$f0, $f1
+	movf	$f1, $f2
+	movf	$f2, $f3
 	sw	$30, 108($3)
 	addi	$3, $3, 112
 	lw $30, 0($28)
@@ -6411,7 +6507,7 @@ judge_intersection_fast.2988:
 	sw	$31, 0($3)
 	jal	l.6742
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sf	$f0, 0($6)
 	addi	$8, $0, 0
 	lw	$7, 0($7)
@@ -6432,7 +6528,7 @@ judge_intersection_fast.2988:
 	sw	$31, 0($3)
 	jal	l.6722
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sf	$f1, 8($3)
 	mov	$30, $31
 	sw	$30, 20($3)
@@ -6450,7 +6546,7 @@ eq_else.9344:
 	sw	$31, 0($3)
 	jal	l.6746
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	lf	$f0, 8($3)
 	j	fless.2622
 get_nvector_rect.2990:
@@ -6845,11 +6941,11 @@ utexture.2999:
 	sw	$31, 0($3)
 	jal	l.6808
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fmul	$f1, $f0, $f1
 	sf	$f0, 24($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 36($3)
 	addi	$3, $3, 40
 	jal	min_caml_floor
@@ -6858,14 +6954,14 @@ utexture.2999:
 	sw	$31, 0($3)
 	jal	l.6809
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fmul	$f0, $f0, $f1
 	lf	$f1, 24($3)
 	fsub	$f0, $f1, $f0
 	sw	$31, 0($3)
 	jal	l.6800
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	mov	$30, $31
 	sw	$30, 36($3)
 	addi	$3, $3, 40
@@ -6889,11 +6985,11 @@ utexture.2999:
 	sw	$31, 0($3)
 	jal	l.6808
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fmul	$f1, $f0, $f1
 	sf	$f0, 48($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 60($3)
 	addi	$3, $3, 64
 	jal	min_caml_floor
@@ -6902,14 +6998,14 @@ utexture.2999:
 	sw	$31, 0($3)
 	jal	l.6809
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fmul	$f0, $f0, $f1
 	lf	$f1, 48($3)
 	fsub	$f0, $f1, $f0
 	sw	$31, 0($3)
 	jal	l.6800
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	mov	$30, $31
 	sw	$30, 60($3)
 	addi	$3, $3, 64
@@ -6928,13 +7024,13 @@ utexture.2999:
 	sw	$31, 0($3)
 	jal	l.6795
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	j	eq_cont.9357
 eq_else.9356:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 eq_cont.9357:
 	j	eq_cont.9355
 eq_else.9354:
@@ -6945,13 +7041,13 @@ eq_else.9354:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	j	eq_cont.9359
 eq_else.9358:
 	sw	$31, 0($3)
 	jal	l.6795
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 eq_cont.9359:
 eq_cont.9355:
 	lw	$2, 4($3)
@@ -6967,7 +7063,7 @@ eq_else.9352:
 	sw	$31, 0($3)
 	jal	l.6804
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fmul	$f0, $f0, $f1
 	mov	$30, $31
 	sw	$30, 60($3)
@@ -6984,18 +7080,18 @@ eq_else.9352:
 	sw	$31, 0($3)
 	jal	l.6795
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fmul	$f1, $f1, $f0
 	lw	$2, 4($3)
 	sf	$f1, 0($2)
 	sw	$31, 0($3)
 	jal	l.6795
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	sw	$31, 0($3)
 	jal	l.6378
 	lw	$31, 0($3)
-	fmov	$f2, $f31
+	movf	$f2, $f31
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
 	sf	$f0, 8($2)
@@ -7034,7 +7130,7 @@ eq_else.9361:
 	lf	$f1, 64($3)
 	sf	$f0, 80($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 92($3)
 	addi	$3, $3, 96
 	jal	fsqr.2630
@@ -7043,7 +7139,7 @@ eq_else.9361:
 	lf	$f1, 80($3)
 	sf	$f0, 88($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 100($3)
 	addi	$3, $3, 104
 	jal	fsqr.2630
@@ -7060,7 +7156,7 @@ eq_else.9361:
 	sw	$31, 0($3)
 	jal	l.6800
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fdiv	$f0, $f0, $f1
 	sf	$f0, 96($3)
 	mov	$30, $31
@@ -7074,7 +7170,7 @@ eq_else.9361:
 	sw	$31, 0($3)
 	jal	l.6792
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fmul	$f0, $f0, $f1
 	mov	$30, $31
 	sw	$30, 108($3)
@@ -7091,19 +7187,19 @@ eq_else.9361:
 	sw	$31, 0($3)
 	jal	l.6795
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fmul	$f1, $f0, $f1
 	lw	$2, 4($3)
 	sf	$f1, 8($2)
 	sw	$31, 0($3)
 	jal	l.6378
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fsub	$f0, $f1, $f0
 	sw	$31, 0($3)
 	jal	l.6795
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fmul	$f0, $f0, $f1
 	sf	$f0, 16($2)
 	jr $31
@@ -7174,7 +7270,7 @@ eq_else.9363:
 	lf	$f1, 120($3)
 	sf	$f0, 144($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 156($3)
 	addi	$3, $3, 160
 	jal	fsqr.2630
@@ -7183,7 +7279,7 @@ eq_else.9363:
 	lf	$f1, 144($3)
 	sf	$f0, 152($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 164($3)
 	addi	$3, $3, 168
 	jal	fsqr.2630
@@ -7194,7 +7290,7 @@ eq_else.9363:
 	lf	$f1, 120($3)
 	sf	$f0, 160($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 172($3)
 	addi	$3, $3, 176
 	jal	fabs.2632
@@ -7203,7 +7299,7 @@ eq_else.9363:
 	sw	$31, 0($3)
 	jal	l.6789
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	mov	$30, $31
 	sw	$30, 172($3)
 	addi	$3, $3, 176
@@ -7232,19 +7328,19 @@ eq_else.9363:
 	sw	$31, 0($3)
 	jal	l.6791
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fmul	$f0, $f0, $f1
 	sw	$31, 0($3)
 	jal	l.6792
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fdiv	$f0, $f0, $f1
 	j	eq_cont.9367
 eq_else.9366:
 	sw	$31, 0($3)
 	jal	l.6790
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 eq_cont.9367:
 	sf	$f0, 168($3)
 	mov	$30, $31
@@ -7287,7 +7383,7 @@ eq_cont.9367:
 	lf	$f1, 160($3)
 	sf	$f0, 200($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 212($3)
 	addi	$3, $3, 216
 	jal	fabs.2632
@@ -7296,7 +7392,7 @@ eq_cont.9367:
 	sw	$31, 0($3)
 	jal	l.6789
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	mov	$30, $31
 	sw	$30, 212($3)
 	addi	$3, $3, 216
@@ -7325,19 +7421,19 @@ eq_cont.9367:
 	sw	$31, 0($3)
 	jal	l.6791
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fmul	$f0, $f0, $f1
 	sw	$31, 0($3)
 	jal	l.6792
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fdiv	$f0, $f0, $f1
 	j	eq_cont.9369
 eq_else.9368:
 	sw	$31, 0($3)
 	jal	l.6790
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 eq_cont.9369:
 	sf	$f0, 208($3)
 	mov	$30, $31
@@ -7351,17 +7447,17 @@ eq_cont.9369:
 	sw	$31, 0($3)
 	jal	l.6794
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	sw	$31, 0($3)
 	jal	l.6376
 	lw	$31, 0($3)
-	fmov	$f2, $f31
+	movf	$f2, $f31
 	lf	$f3, 176($3)
 	fsub	$f2, $f2, $f3
 	sf	$f0, 216($3)
 	sf	$f1, 224($3)
 	mov	$30, $31
-	fmov	$f0, $f2
+	movf	$f0, $f2
 	sw	$30, 236($3)
 	addi	$3, $3, 240
 	jal	fsqr.2630
@@ -7372,12 +7468,12 @@ eq_cont.9369:
 	sw	$31, 0($3)
 	jal	l.6376
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	lf	$f2, 216($3)
 	fsub	$f1, $f1, $f2
 	sf	$f0, 232($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 244($3)
 	addi	$3, $3, 248
 	jal	fsqr.2630
@@ -7402,17 +7498,17 @@ eq_else.9370:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 eq_cont.9371:
 	sw	$31, 0($3)
 	jal	l.6795
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fmul	$f0, $f1, $f0
 	sw	$31, 0($3)
 	jal	l.6796
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fdiv	$f0, $f0, $f1
 	lw	$2, 4($3)
 	sf	$f0, 16($2)
@@ -7886,7 +7982,7 @@ eq_else.9391:
 	sw	$31, 0($3)
 	jal	l.6376
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	mov	$30, $31
 	sw	$30, 164($3)
 	addi	$3, $3, 168
@@ -7930,7 +8026,7 @@ eq_else.9391:
 	sw	$31, 0($3)
 	jal	l.6831
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	lf	$f1, 152($3)
 	fmul	$f0, $f0, $f1
 	mov	$30, $31
@@ -7970,7 +8066,7 @@ eq_cont.9400:
 	sw	$31, 0($3)
 	jal	l.6833
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	lw	$2, 112($3)
 	lw	$5, 44($3)
 	sf	$f0, 168($3)
@@ -8046,7 +8142,7 @@ eq_cont.9400:
 	jal	fneg.2634
 	addi	$3, $3, -200
 	lw	$31, 196($3)
-	fmov	$f1, $f0
+	movf	$f1, $f0
 	lf	$f0, 184($3)
 	lf	$f2, 176($3)
 	lw	$28, 32($3)
@@ -8086,7 +8182,7 @@ eq_cont.9402:
 	sw	$31, 0($3)
 	jal	l.6836
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	lf	$f1, 96($3)
 	mov	$30, $31
 	sw	$30, 196($3)
@@ -8123,7 +8219,7 @@ eq_cont.9406:
 	sw	$31, 0($3)
 	jal	l.6378
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	lw	$5, 140($3)
 	sf	$f0, 192($3)
 	mov	$30, $31
@@ -8269,7 +8365,7 @@ eq_else.9410:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	j	eq_cont.9415
 eq_else.9414:
 	lf	$f0, 64($3)
@@ -8338,7 +8434,7 @@ iter_trace_diffuse_rays.3020:
 	sw	$31, 0($3)
 	jal	l.6854
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	lf	$f1, 24($3)
 	fdiv	$f0, $f1, $f0
 	lw	$28, 8($3)
@@ -8360,7 +8456,7 @@ eq_else.9418:
 	sw	$31, 0($3)
 	jal	l.6852
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	lf	$f1, 24($3)
 	fdiv	$f0, $f1, $f0
 	lw	$28, 8($3)
@@ -9391,7 +9487,7 @@ pretrace_pixels.3074:
 	sw	$31, 0($3)
 	jal	l.6378
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	lw	$5, 20($3)
 	slli	$6, $5, 2
 	lw	$7, 16($3)
@@ -9399,7 +9495,7 @@ pretrace_pixels.3074:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	lw	$8, 56($3)
 	lw	$28, 12($3)
 	mov	$30, $31
@@ -9525,10 +9621,10 @@ pretrace_line.3081:
 	lw	$2, 4($3)
 	lw	$6, 0($3)
 	lw	$28, 8($3)
-	fmov	$f30, $f2
-	fmov	$f2, $f0
-	fmov	$f0, $f1
-	fmov	$f1, $f30
+	movf	$f30, $f2
+	movf	$f2, $f0
+	movf	$f0, $f1
+	movf	$f1, $f30
 	lw $30, 0($28)
 	jr	$30
 scan_pixel.3085:
@@ -9708,7 +9804,7 @@ create_float5x3array.3097:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	mov	$30, $31
 	sw	$30, 4($3)
 	addi	$3, $3, 8
@@ -9727,7 +9823,7 @@ create_float5x3array.3097:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$2, 0($3)
 	mov	$30, $31
 	mov	$2, $5
@@ -9742,7 +9838,7 @@ create_float5x3array.3097:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	mov	$30, $31
 	sw	$30, 4($3)
 	addi	$3, $3, 8
@@ -9755,7 +9851,7 @@ create_float5x3array.3097:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	mov	$30, $31
 	sw	$30, 4($3)
 	addi	$3, $3, 8
@@ -9768,7 +9864,7 @@ create_float5x3array.3097:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	mov	$30, $31
 	sw	$30, 4($3)
 	addi	$3, $3, 8
@@ -9784,7 +9880,7 @@ create_pixel.3099:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	mov	$30, $31
 	sw	$30, 4($3)
 	addi	$3, $3, 8
@@ -9929,7 +10025,7 @@ tan.3106:
 	lf	$f1, 0($3)
 	sf	$f0, 8($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 20($3)
 	addi	$3, $3, 24
 	jal	cos.2668
@@ -9943,7 +10039,7 @@ adjust_position.3108:
 	sw	$31, 0($3)
 	jal	l.6836
 	lw	$31, 0($3)
-	fmov	$f2, $f31
+	movf	$f2, $f31
 	fadd	$f0, $f0, $f2
 	sf	$f1, 0($3)
 	mov	$30, $31
@@ -9955,11 +10051,11 @@ adjust_position.3108:
 	sw	$31, 0($3)
 	jal	l.6378
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fdiv	$f1, $f1, $f0
 	sf	$f0, 8($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 20($3)
 	addi	$3, $3, 24
 	jal	atan.2670
@@ -9997,7 +10093,7 @@ calc_dirvec.3111:
 	lf	$f1, 24($3)
 	sf	$f0, 32($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 44($3)
 	addi	$3, $3, 48
 	jal	fsqr.2630
@@ -10008,7 +10104,7 @@ calc_dirvec.3111:
 	sw	$31, 0($3)
 	jal	l.6378
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fadd	$f0, $f0, $f1
 	mov	$30, $31
 	sw	$30, 44($3)
@@ -10023,7 +10119,7 @@ calc_dirvec.3111:
 	sw	$31, 0($3)
 	jal	l.6378
 	lw	$31, 0($3)
-	fmov	$f3, $f31
+	movf	$f3, $f31
 	fdiv	$f0, $f3, $f0
 	lw	$2, 8($3)
 	slli	$2, $2, 2
@@ -10072,7 +10168,7 @@ calc_dirvec.3111:
 	jal	fneg.2634
 	addi	$3, $3, -80
 	lw	$31, 76($3)
-	fmov	$f2, $f0
+	movf	$f2, $f0
 	lf	$f0, 64($3)
 	lf	$f1, 48($3)
 	lw	$2, 72($3)
@@ -10105,13 +10201,13 @@ calc_dirvec.3111:
 	lf	$f1, 56($3)
 	sf	$f0, 80($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 92($3)
 	addi	$3, $3, 96
 	jal	fneg.2634
 	addi	$3, $3, -96
 	lw	$31, 92($3)
-	fmov	$f2, $f0
+	movf	$f2, $f0
 	lf	$f0, 48($3)
 	lf	$f1, 80($3)
 	lw	$2, 76($3)
@@ -10144,7 +10240,7 @@ calc_dirvec.3111:
 	lf	$f1, 56($3)
 	sf	$f0, 96($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 108($3)
 	addi	$3, $3, 112
 	jal	fneg.2634
@@ -10153,13 +10249,13 @@ calc_dirvec.3111:
 	lf	$f1, 48($3)
 	sf	$f0, 104($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 116($3)
 	addi	$3, $3, 120
 	jal	fneg.2634
 	addi	$3, $3, -120
 	lw	$31, 116($3)
-	fmov	$f2, $f0
+	movf	$f2, $f0
 	lf	$f0, 96($3)
 	lf	$f1, 104($3)
 	lw	$2, 88($3)
@@ -10192,13 +10288,13 @@ calc_dirvec.3111:
 	lf	$f1, 48($3)
 	sf	$f0, 120($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 132($3)
 	addi	$3, $3, 136
 	jal	fneg.2634
 	addi	$3, $3, -136
 	lw	$31, 132($3)
-	fmov	$f1, $f0
+	movf	$f1, $f0
 	lf	$f0, 120($3)
 	lf	$f2, 56($3)
 	lw	$2, 112($3)
@@ -10239,8 +10335,8 @@ eq_else.9476:
 	sf	$f3, 152($3)
 	sw	$2, 160($3)
 	mov	$30, $31
-	fmov	$f0, $f1
-	fmov	$f1, $f2
+	movf	$f0, $f1
+	movf	$f1, $f2
 	sw	$30, 164($3)
 	addi	$3, $3, 168
 	jal	adjust_position.3108
@@ -10257,7 +10353,7 @@ eq_else.9476:
 	jal	adjust_position.3108
 	addi	$3, $3, -184
 	lw	$31, 180($3)
-	fmov	$f1, $f0
+	movf	$f1, $f0
 	lf	$f0, 168($3)
 	lf	$f2, 136($3)
 	lf	$f3, 152($3)
@@ -10289,22 +10385,22 @@ calc_dirvecs.3119:
 	sw	$31, 0($3)
 	jal	l.6948
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fmul	$f0, $f0, $f1
 	sw	$31, 0($3)
 	jal	l.6949
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fsub	$f2, $f0, $f1
 	addi	$2, $0, 0
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	lf	$f3, 8($3)
 	lw	$5, 20($3)
 	lw	$6, 16($3)
@@ -10326,22 +10422,22 @@ calc_dirvecs.3119:
 	sw	$31, 0($3)
 	jal	l.6948
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fmul	$f0, $f0, $f1
 	sw	$31, 0($3)
 	jal	l.6836
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fadd	$f2, $f0, $f1
 	addi	$2, $0, 0
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	lw	$5, 16($3)
 	addi	$6, $5, 2
 	lf	$f3, 8($3)
@@ -10397,12 +10493,12 @@ calc_dirvec_rows.3124:
 	sw	$31, 0($3)
 	jal	l.6948
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fmul	$f0, $f0, $f1
 	sw	$31, 0($3)
 	jal	l.6949
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	fsub	$f0, $f0, $f1
 	addi	$2, $0, 4
 	lw	$5, 12($3)
@@ -10442,7 +10538,7 @@ create_dirvec.3128:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$2, 0($3)
 	mov	$30, $31
 	mov	$2, $5
@@ -10711,7 +10807,7 @@ setup_rect_reflection.3149:
 	sw	$31, 0($3)
 	jal	l.6378
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$6, 0($3)
 	sw	$9, 4($3)
 	sw	$8, 8($3)
@@ -10731,7 +10827,7 @@ setup_rect_reflection.3149:
 	lf	$f1, 0($2)
 	sf	$f0, 32($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 44($3)
 	addi	$3, $3, 48
 	jal	fneg.2634
@@ -10741,7 +10837,7 @@ setup_rect_reflection.3149:
 	lf	$f1, 8($2)
 	sf	$f0, 40($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 52($3)
 	addi	$3, $3, 56
 	jal	fneg.2634
@@ -10751,13 +10847,13 @@ setup_rect_reflection.3149:
 	lf	$f1, 16($2)
 	sf	$f0, 48($3)
 	mov	$30, $31
-	fmov	$f0, $f1
+	movf	$f0, $f1
 	sw	$30, 60($3)
 	addi	$3, $3, 64
 	jal	fneg.2634
 	addi	$3, $3, -64
 	lw	$31, 60($3)
-	fmov	$f3, $f0
+	movf	$f3, $f0
 	lw	$2, 12($3)
 	addi	$5, $2, 1
 	lw	$6, 16($3)
@@ -10829,7 +10925,7 @@ setup_surface_reflection.3152:
 	sw	$31, 0($3)
 	jal	l.6378
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$6, 0($3)
 	sw	$2, 4($3)
 	sw	$9, 8($3)
@@ -10865,7 +10961,7 @@ setup_surface_reflection.3152:
 	sw	$31, 0($3)
 	jal	l.6377
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	lw	$2, 20($3)
 	sf	$f0, 40($3)
 	sf	$f1, 48($3)
@@ -10885,7 +10981,7 @@ setup_surface_reflection.3152:
 	sw	$31, 0($3)
 	jal	l.6377
 	lw	$31, 0($3)
-	fmov	$f2, $f31
+	movf	$f2, $f31
 	lw	$5, 20($3)
 	sf	$f0, 56($3)
 	sf	$f2, 64($3)
@@ -10906,7 +11002,7 @@ setup_surface_reflection.3152:
 	sw	$31, 0($3)
 	jal	l.6377
 	lw	$31, 0($3)
-	fmov	$f2, $f31
+	movf	$f2, $f31
 	lw	$5, 20($3)
 	sf	$f0, 72($3)
 	sf	$f2, 80($3)
@@ -10978,7 +11074,7 @@ setup_reflections.3155:
 	sw	$31, 0($3)
 	jal	l.6378
 	lw	$31, 0($3)
-	fmov	$f1, $f31
+	movf	$f1, $f31
 	mov	$30, $31
 	sw	$30, 20($3)
 	addi	$3, $3, 24
@@ -11049,7 +11145,7 @@ rt.3157:
 	sw	$31, 0($3)
 	jal	l.6982
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$10, 0($3)
 	sw	$12, 4($3)
 	sw	$7, 8($3)
@@ -11191,7 +11287,7 @@ Main:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$2, 0($3)
 	mov	$30, $31
 	mov	$2, $5
@@ -11233,7 +11329,7 @@ Main:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$2, 4($3)
 	mov	$30, $31
 	mov	$2, $5
@@ -11246,7 +11342,7 @@ Main:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$2, 8($3)
 	mov	$30, $31
 	mov	$2, $5
@@ -11259,7 +11355,7 @@ Main:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$2, 12($3)
 	mov	$30, $31
 	mov	$2, $5
@@ -11272,7 +11368,7 @@ Main:
 	sw	$31, 0($3)
 	jal	l.6795
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$2, 16($3)
 	mov	$30, $31
 	mov	$2, $5
@@ -11327,7 +11423,7 @@ Main:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$2, 36($3)
 	mov	$30, $31
 	mov	$2, $5
@@ -11351,7 +11447,7 @@ Main:
 	sw	$31, 0($3)
 	jal	l.6742
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$2, 44($3)
 	mov	$30, $31
 	mov	$2, $5
@@ -11364,7 +11460,7 @@ Main:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$2, 48($3)
 	mov	$30, $31
 	mov	$2, $5
@@ -11388,7 +11484,7 @@ Main:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$2, 56($3)
 	mov	$30, $31
 	mov	$2, $5
@@ -11401,7 +11497,7 @@ Main:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$2, 60($3)
 	mov	$30, $31
 	mov	$2, $5
@@ -11414,7 +11510,7 @@ Main:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$2, 64($3)
 	mov	$30, $31
 	mov	$2, $5
@@ -11427,7 +11523,7 @@ Main:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$2, 68($3)
 	mov	$30, $31
 	mov	$2, $5
@@ -11462,7 +11558,7 @@ Main:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$2, 80($3)
 	mov	$30, $31
 	mov	$2, $5
@@ -11475,7 +11571,7 @@ Main:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$2, 84($3)
 	mov	$30, $31
 	mov	$2, $5
@@ -11488,7 +11584,7 @@ Main:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$2, 88($3)
 	mov	$30, $31
 	mov	$2, $5
@@ -11501,7 +11597,7 @@ Main:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$2, 92($3)
 	mov	$30, $31
 	mov	$2, $5
@@ -11514,7 +11610,7 @@ Main:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$2, 96($3)
 	mov	$30, $31
 	mov	$2, $5
@@ -11527,7 +11623,7 @@ Main:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$2, 100($3)
 	mov	$30, $31
 	mov	$2, $5
@@ -11540,7 +11636,7 @@ Main:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$2, 104($3)
 	mov	$30, $31
 	mov	$2, $5
@@ -11553,7 +11649,7 @@ Main:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$2, 108($3)
 	mov	$30, $31
 	mov	$2, $5
@@ -11599,7 +11695,7 @@ Main:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$2, 116($3)
 	mov	$30, $31
 	mov	$2, $5
@@ -11612,7 +11708,7 @@ Main:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$2, 120($3)
 	mov	$30, $31
 	mov	$2, $5
@@ -11642,7 +11738,7 @@ Main:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	sw	$2, 128($3)
 	mov	$30, $31
 	mov	$2, $5
@@ -11671,7 +11767,7 @@ Main:
 	sw	$31, 0($3)
 	jal	l.6375
 	lw	$31, 0($3)
-	fmov	$f0, $f31
+	movf	$f0, $f31
 	mov	$7, $4
 	addi	$4, $4, 16
 	sf	$f0, 8($7)
@@ -12426,9 +12522,11 @@ Main:
 # floor
 
 min_caml_floor:
-  sf $f0 0($4)
-  lw $2 0($4)
-  andi $9, $2, 2139095040
+  sf $f0, 0($4)
+  lw $2, 0($4)
+  addi $10, $0, 32640
+  slli $10, $10, 16
+  and $9, $2, $10
   srli $5, $9, 23
   addi $5, $5, -127 # sisubu A
   slt $6, $5, $0
@@ -12475,7 +12573,7 @@ min_caml_create_array:
 	mov	$6, $2
 	mov	$2, $4
 create_array_loop:
-	bne	$0, $6 create_array_cont
+	bne	$0, $6, create_array_cont
 	j	create_array_exit
 create_array_exit:
 	jr $31
@@ -12493,14 +12591,14 @@ create_float_array_loop:
 	bne	$5, $0, create_float_array_cont
 	jr $31
 create_float_array_cont:
-	sf f0, 0($4)
+	sf $f0, 0($4)
 	addi $5, $5, -1
 	addi $4, $4, 8
 	j	create_float_array_loop
 
 #read_int
 min_caml_read_int:
-  inw $2
+  in $2
   jr $31 
 
 #read_float
@@ -12508,8 +12606,12 @@ min_caml_read_float:
   inf $f0
   jr $31
 
+min_caml_print_float:
+  outf $f0
+  jr $31
+
 #print_char
 min_caml_print_char:
-  out $2
+  outb $2
   jr $31
 Exit:

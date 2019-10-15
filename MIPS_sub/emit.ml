@@ -32,14 +32,15 @@ let reg r =
 let load_label r label =
   let r' = reg r in
   Printf.sprintf
-    "\taddi\t%s, %s, ha(%s)\n\tslli\t%s, %s, 16\n\tori\t%s, %s, lo(%s)\n"
+    "\tori\t%s, %s, ha(%s)\n\tslli\t%s, %s, 16\n\tori\t%s, %s, lo(%s)\n"
     r' (reg reg_zero) label r' r' r' r' label
 
 let load_imm oc target_reg c = 
+  let c = c land 0xffffffff in
   let n = c lsr 16 in (* upper 16bit *)
   let m = c lxor (n lsl 16) in (* lower 16bit *)
   let r = reg target_reg in
-    Printf.fprintf oc "\taddi\t%s, %s, %d\n" r reg_zero n;
+    Printf.fprintf oc "\tori\t%s, %s, %d\n" r reg_zero n;
     Printf.fprintf oc "\tslli\t%s, %s, %d\n" r r 16;
     Printf.fprintf oc "\tori\t%s, %s, %d\n" r r m
 
@@ -83,7 +84,7 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
       Printf.fprintf oc "\tjal\t%s\n" l;
       (* ここでreg_ftmpに目的の即値が入っている *)
       Printf.fprintf oc "\tlw\t%s, 0(%s)\n" (reg reg_lr) (reg reg_sp); 
-      Printf.fprintf oc "\tfmov\t%s, %s\n" (reg x) (reg reg_ftmp)
+      Printf.fprintf oc "\tmovf\t%s, %s\n" (reg x) (reg reg_ftmp)
       (* load float point value bound to label "l" to register x. *)
   | NonTail(x), SetL(Id.L(y)) ->
       let s = load_label x y in
@@ -112,7 +113,7 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
       Printf.fprintf oc "\tsw\t%s, 0(%s)\n" (reg x) (reg reg_tmp)
   | NonTail(_), Stw(x, y, C(z)) -> Printf.fprintf oc "\tsw\t%s, %d(%s)\n" (reg x) z (reg y)
   | NonTail(x), FMr(y) when x = y -> ()
-  | NonTail(x), FMr(y) -> Printf.fprintf oc "\tfmov\t%s, %s\n" (reg x) (reg y)
+  | NonTail(x), FMr(y) -> Printf.fprintf oc "\tmovf\t%s, %s\n" (reg x) (reg y)
   | NonTail(x), FNeg(y) -> Printf.fprintf oc "\tfneg\t%s, %s\n" (reg x) (reg y)
   | NonTail(x), FAdd(y, z) -> Printf.fprintf oc "\tfadd\t%s, %s, %s\n" (reg x) (reg y) (reg z)
   | NonTail(x), FSub(y, z) -> Printf.fprintf oc "\tfsub\t%s, %s, %s\n" (reg x) (reg y) (reg z)
@@ -239,7 +240,7 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
       if List.mem a allregs && a <> regs.(0) then
         Printf.fprintf oc "\tmov\t%s, %s\n" (reg a) (reg regs.(0))
       else if List.mem a allfregs && a <> fregs.(0) then
-        Printf.fprintf oc "\tfmov\t%s, %s\n" (reg a) (reg fregs.(0));
+        Printf.fprintf oc "\tmovf\t%s, %s\n" (reg a) (reg fregs.(0));
   | (NonTail(a), CallDir(Id.L(x), ys, zs)) ->
       (* link registerを退避 *)
       Printf.fprintf oc "\tmov\t%s, %s\n" (reg reg_tmp) (reg reg_lr);
@@ -253,7 +254,7 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
       if List.mem a allregs && a <> regs.(0) then
         Printf.fprintf oc "\tmov\t%s, %s\n" (reg a) (reg regs.(0))
       else if List.mem a allfregs && a <> fregs.(0) then
-        Printf.fprintf oc "\tfmov\t%s, %s\n" (reg a) (reg fregs.(0));
+        Printf.fprintf oc "\tmovf\t%s, %s\n" (reg a) (reg fregs.(0));
 and g'_tail_ifeq oc x y e1 e2  =
   let b_else = Id.genid ("eq_else") in
   Printf.fprintf oc "\tbne\t%s, %s, %s\n" (reg x) (reg y) b_else;
@@ -301,7 +302,7 @@ and g'_args oc x_reg_cl ys zs =
       (0, [])
       zs in
   List.iter
-    (fun (z, fr) -> Printf.fprintf oc "\tfmov\t%s, %s\n" (reg fr) (reg z))
+    (fun (z, fr) -> Printf.fprintf oc "\tmovf\t%s, %s\n" (reg fr) (reg z))
     (shuffle reg_fsw zfrs)
 
 (* fundef用 *)
@@ -316,7 +317,8 @@ let rec arrange_float_imm oc data n =
   | [] -> ()
   | ((Id.L(x),d)::rest) ->
       (
-      Printf.fprintf oc "\taddi\t%s, %s, %d\n" (reg reg_tmp) (reg reg_zero) (Int32.to_int (get d));
+        Printf.eprintf "%f %d\n" d (Int32.to_int (get d));
+      load_imm oc reg_tmp (Int32.to_int (get d));
       Printf.fprintf oc "\tsw\t%s, 0(%s)\n" (reg reg_tmp) (reg reg_hp);
       Printf.fprintf oc "\taddi\t%s, %s, 8\n" (reg reg_hp) (reg reg_hp);
       arrange_float_imm oc rest (n+1)
@@ -352,7 +354,7 @@ let f oc (Prog(data, fundefs, e)) =
          (fun (Id.L(x), d) ->
            Printf.fprintf oc "%s:\t # %f\n" x d;
            Printf.fprintf oc "\tlf\t%s, %d(%s)\n" (reg reg_ftmp) (hp_init + 8*(!idx)) (reg reg_zero);
-           Printf.fprintf oc "\tj\t%s\n" (reg reg_lr);
+           Printf.fprintf oc "\tjr\t%s\n" (reg reg_lr);
            idx := !idx+1; ()
          )
          data )
