@@ -71,11 +71,12 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   | NonTail(_), Nop -> ()
   | NonTail(x), Li(i) when -32768 <= i && i < 32768 -> Printf.fprintf oc "\taddi\t%s, %s, %d\n" (reg x) (reg reg_zero) i
   | NonTail(x), Li(i) ->
+      let i = i land 0xffffffff in
       let n = i lsr 16 in (* upper 16bit *)
       let m = i lxor (n lsl 16) in (* lower 16bit *)
       let r = reg x in
-      Printf.fprintf oc "\taddi\t%s, %s, %d\n" r reg_zero n;
-      Printf.fprintf oc "\tsll\t%s, %s, %d\n" r r 16;
+      Printf.fprintf oc "\tori\t%s, %s, %d\n" r reg_zero n;
+      Printf.fprintf oc "\tslli\t%s, %s, %d\n" r r 16;
       Printf.fprintf oc "\tori\t%s, %s, %d\n" r r m
   | NonTail(x), FLi(Id.L(l)) ->
       (* 苦肉の策、浮動小数点即値は関数呼び出し*)
@@ -91,7 +92,9 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
       Printf.fprintf oc "%s" s
   | NonTail(x), Mr(y) when x = y -> ()
   | NonTail(x), Mr(y) -> Printf.fprintf oc "\tmov\t%s, %s\n" (reg x) (reg y)
-  | NonTail(x), Neg(y) -> Printf.fprintf oc "\tmul\t%s, %s, %d\n" (reg x) (reg y) (-1)
+  | NonTail(x), Neg(y) 
+  -> load_imm oc reg_tmp (-1);
+     Printf.fprintf oc "\tmul\t%s, %s, %s\n" (reg x) (reg y) (reg reg_tmp)
   | NonTail(x), Add(y, V(z)) -> Printf.fprintf oc "\tadd\t%s, %s, %s\n" (reg x) (reg y) (reg z)
   | NonTail(x), Add(y, C(z)) -> Printf.fprintf oc "\taddi\t%s, %s, %d\n" (reg x) (reg y) z
   | NonTail(x), Sub(y, V(z)) -> Printf.fprintf oc "\tsub\t%s, %s, %s\n" (reg x) (reg y) (reg z)
@@ -317,7 +320,6 @@ let rec arrange_float_imm oc data n =
   | [] -> ()
   | ((Id.L(x),d)::rest) ->
       (
-        Printf.eprintf "%f %d\n" d (Int32.to_int (get d));
       load_imm oc reg_tmp (Int32.to_int (get d));
       Printf.fprintf oc "\tsw\t%s, 0(%s)\n" (reg reg_tmp) (reg reg_hp);
       Printf.fprintf oc "\taddi\t%s, %s, 8\n" (reg reg_hp) (reg reg_hp);

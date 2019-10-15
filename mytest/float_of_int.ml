@@ -20,7 +20,6 @@ let rec float_of_int x =
     else (-1.0 *. (float_of_int_sub 30 (-x)))
   )
 in
-print_float (float_of_int (-2147483647));
-print_string "\n";
-print_float (float_of_int (2147483647))
+let a = float_of_int 12 in ();
+()
 
