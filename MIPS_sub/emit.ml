@@ -3,6 +3,10 @@ open Asm
 external get : float -> int32 = "get"
 (* external getlo : float -> int32 = "getlo" *)
 
+let int_max =  2147483647
+let int_min = -2147483648
+exception Out_of_range of int
+
 let stackset = ref S.empty (* すでにSaveされた変数の集合 (caml2html: emit_stackset) *)
 let stackmap = ref [] (* Saveされた変数の、スタックにおける位置 (caml2html: emit_stackmap) *)
 let save x =
@@ -36,6 +40,8 @@ let load_label r label =
     r' (reg reg_zero) label r' r' r' r' label
 
 let load_imm oc target_reg c = 
+  (if (c > int_max) then raise (Out_of_range c));
+  (if (c < int_min) then raise (Out_of_range c));
   let c = c land 0xffffffff in
   let n = c lsr 16 in (* upper 16bit *)
   let m = c lxor (n lsl 16) in (* lower 16bit *)
@@ -71,9 +77,11 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   | NonTail(_), Nop -> ()
   | NonTail(x), Li(i) when -32768 <= i && i < 32768 -> Printf.fprintf oc "\taddi\t%s, %s, %d\n" (reg x) (reg reg_zero) i
   | NonTail(x), Li(i) ->
-      let i = i land 0xffffffff in
-      let n = i lsr 16 in (* upper 16bit *)
-      let m = i lxor (n lsl 16) in (* lower 16bit *)
+      (if (i > int_max) then raise (Out_of_range i));
+      (if (i < int_min) then raise (Out_of_range i));
+      let i2 = i land 0xffffffff in (* 符号拡張を修正 *)
+      let n = i2 lsr 16 in (* upper 16bit *)
+      let m = i2 lxor (n lsl 16) in (* lower 16bit *)
       let r = reg x in
       Printf.fprintf oc "\tori\t%s, %s, %d\n" r reg_zero n;
       Printf.fprintf oc "\tslli\t%s, %s, %d\n" r r 16;
@@ -106,9 +114,11 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   | NonTail(x), Div(y, C(z))
     -> Printf.fprintf oc "\taddi\t%s, %s, %d\n\tdiv\t%s, %s, %s\n" (reg reg_tmp) (reg reg_zero) z (reg x) (reg y) (reg reg_tmp)
   | NonTail(x), Slw(y, V(z)) -> 
-      Printf.fprintf oc "\tsllv\t%s, %s, %s\n" (reg x) (reg y) (reg z)
+      Printf.fprintf oc "\tsll\t%s, %s, %s\n" (reg x) (reg y) (reg z)
   | NonTail(x), Slw(y, C(z)) -> Printf.fprintf oc "\tslli\t%s, %s, %d\n" (reg x) (reg y) z
-  | NonTail(x), Lwz(y, V(z)) -> Printf.fprintf oc "\tsll\t%s, %s, %s\n" (reg x) (reg y) (reg z)
+  | NonTail(x), Lwz(y, V(z)) 
+    -> Printf.fprintf oc "\tadd\t%s, %s, %s\n" (reg reg_tmp) (reg y) (reg z);
+       Printf.fprintf oc "\tlw\t%s, 0(%s)\n" (reg x) (reg reg_tmp)
   | NonTail(x), Lwz(y, C(z)) -> Printf.fprintf oc "\tlw\t%s, %d(%s)\n" (reg x) z (reg y)
   | NonTail(_), Stw(x, y, V(z)) -> 
       (* oukyu shochi *)
