@@ -1,56 +1,140 @@
-	.text
-	.globl _min_caml_start
-	.align 2
-g.15:
-	lwz	r5, 4(r30)
-	add	r2, r5, r2
-	blr
-f.7:
-	mr	r5, r4
-	addi	r4, r4, 8
-	lis	r6, ha16(g.15)
-	addi	r6, r6, lo16(g.15)
-	stw	r6, 0(r5)
-	stw	r2, 4(r5)
-	mr	r2, r5
-	blr
-_min_caml_start: # main entry point
-	mflr	r0
-	stmw	r30, -8(r1)
-	stw	r0, 8(r1)
-	stwu	r1, -96(r1)
+Init: # initialize float value and heap pointer
+	addi	$4, $0, 10000
+	j Main
+i.8:
+	jr $31
+f.11:
+	addi	$2, $0, -1
+	j	i.8
 #	main program starts
-	li	r2, 2
-	mflr	r31
-	stw	r31, 4(r3)
-	addi	r3, r3, 8
-	bl	f.7
-	subi	r3, r3, 8
-	lwz	r31, 4(r3)
-	mr	r30, r2
-	mtlr	r31
-	li	r2, 3
-	li	r5, 100
-	li	r6, 100
-	mflr	r31
-	stw	r31, 4(r3)
-	addi	r3, r3, 8
-	lwz	r31, 0(r30)
-	mtctr	r31
-	bctrl
-	subi	r3, r3, 8
-	lwz	r31, 4(r3)
-	mtlr	r31
-	mflr	r31
-	stw	r31, 4(r3)
-	addi	r3, r3, 8
-	bl	min_caml_print_int
-	subi	r3, r3, 8
-	lwz	r31, 4(r3)
-	mtlr	r31
+Main:
+	mov	$2, $4
+	addi	$4, $4, 8
+	ori	$5, $0, ha(i.8)
+	slli	$5, $5, 16
+	ori	$5, $5, lo(i.8)
+	sw	$5, 0($2)
+	addi	$5, $0, 7
+	sw	$2, 0($3)
+	mov	$30, $31
+	mov	$2, $5
+	sw	$30, 4($3)
+	addi	$3, $3, 8
+	jal	f.11
+	addi	$3, $3, -8
+	lw	$31, 4($3)
+	mov	$5, $4
+	addi	$4, $4, 8
+	sw	$2, 4($5)
+	lw	$2, 0($3)
+	sw	$2, 0($5)
+	mov	$2, $5
+	mov	$30, $31
+	sw	$30, 4($3)
+	addi	$3, $3, 8
+	jal	min_caml_print_int
+	addi	$3, $3, -8
+	lw	$31, 4($3)
+	j Exit
 #	main program ends
-	lwz	r1, 0(r1)
-	lwz	r0, 8(r1)
-	mtlr	r0
-	lmw	r30, -8(r1)
-	blr
+# floor
+
+min_caml_floor:
+  sf $f0, 0($4)
+  lw $2, 0($4)
+  ori $10, $0, 32640 # sisubu mask
+  slli $10, $10, 16
+  ori $11, $0, 127 # kasubu mask
+  slli $11, $11, 16
+  ori $11, $11, 65535
+  and $9, $2, $10 # formal sisubu
+  srli $5, $9, 23
+  addi $5, $5, -127 # actual sisubu A
+  and $12, $2, $11 # kasubu
+  slt $6, $5, $0
+  bne $6, $0, floor_tiny # A < 0
+  addi $7, $0, 23
+  slt $6, $5, $7
+  bne $6, $0, floor_main # A < 23
+floor_end:
+  jr $31
+floor_tiny:
+  sw $0, 0($4)
+  lf $f0, 0($4)
+  j floor_end
+floor_main:
+  addi $7, $0, 23
+  sub $6, $7, $5 # 23-A
+  srl $7, $12, $6
+  sll $7, $7, $6
+  srli $8, $2, 31 # sgn
+  bne $8, $0, floor_neg
+  or $10, $9, $7
+  sw $10, 0($4)
+  lf $f0, 0($4)
+  j floor_end
+floor_neg: # kai bit tattetara kiriage
+  slli $8, $8, 31
+  bne $12, $7, floor_ceil
+  or $10, $9, $7
+  or $10, $10, $8
+  sw $10, 0($4)
+  lf $f0, 0($4)
+  j floor_end
+floor_ceil:
+  ori $10, $0, 1
+  sll $10, $10, $6
+  add $7, $7, $10
+  or $10, $9, $7
+  or $10, $10, $8
+  sw $10, 0($4)
+  lf $f0, 0($4)
+  j floor_end 
+
+#	create_array
+min_caml_create_array:	
+	mov	$6, $2
+	mov	$2, $4
+create_array_loop:
+	bne	$0, $6, create_array_cont
+	j	create_array_exit
+create_array_exit:
+	jr $31
+create_array_cont:
+	sw $5, 0($4)
+	addi $6, $6, -1
+	addi $4, $4, 4
+	j	create_array_loop
+
+#	create_float_array
+min_caml_create_float_array:
+	mov $5, $2
+	mov	$2, $4
+create_float_array_loop:
+	bne	$5, $0, create_float_array_cont
+	jr $31
+create_float_array_cont:
+	sf $f0, 0($4)
+	addi $5, $5, -1
+	addi $4, $4, 8
+	j	create_float_array_loop
+
+#read_int
+min_caml_read_int:
+  in $2
+  jr $31 
+
+#read_float
+min_caml_read_float:
+  inf $f0
+  jr $31
+
+min_caml_print_float:
+  outf $f0
+  jr $31
+
+#print_char
+min_caml_print_char:
+  outb $2
+  jr $31
+Exit:
