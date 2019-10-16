@@ -1,0 +1,35 @@
+Let
+  a
+  Var
+    None
+  Array
+    Int 1
+    Int 0
+  LetRec
+    fundef
+      f
+      Var
+        None
+      x
+      Var
+        None
+      y
+      Var
+        None
+      App
+        Var f
+        Var y
+        Var x
+    App
+      Var print_int
+      If
+        Eq
+          Get
+            Var a
+            Int 0
+          Int 0
+        Int 1
+        App
+          Var f
+          Int 0
+          Int 1

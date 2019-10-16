@@ -1,0 +1,67 @@
+toplevel fundef
+fundef
+name
+  f.10
+  Fun
+    Int
+    Int
+    Int
+  x.11
+  Int
+  y.12
+  Int
+formal_fv
+body
+  AppDir f.10
+  Args
+    x.11
+    y.12
+exp
+Let
+  Ti1.19
+  Int
+  Int 1
+  Let
+    Ti2.20
+    Int
+    Int 0
+    Let
+      a.9
+      Array
+        Int
+      AppDir min_caml_create_array
+      Args
+        Ti1.19
+        Ti2.20
+      Let
+        Ti3.18
+        Int
+        Int 0
+        Let
+          Ti4.14
+          Int
+          Get a.9 Ti3.18
+          Let
+            Ti5.15
+            Int
+            Int 0
+            Let
+              Ti8.13
+              Int
+              ifEq Ti4.14 Ti5.15
+                Int 1
+                Let
+                  Ti6.16
+                  Int
+                  Int 0
+                  Let
+                    Ti7.17
+                    Int
+                    Int 1
+                    AppDir f.10
+                    Args
+                      Ti7.17
+                      Ti6.16
+              AppDir min_caml_print_int
+              Args
+                Ti8.13

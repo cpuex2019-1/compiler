@@ -1,0 +1,31 @@
+Let
+  x.4
+  Int
+  Let
+    Ti1.9
+    Int
+    Int 12
+    Let
+      Ti2.10
+      Int
+      Int 32
+      Add Ti1.9 Ti2.10
+  Let
+    y.5
+    Int
+    Add x.4 x.4
+    Let
+      a.6
+      Int
+      Add x.4 y.5
+      Let
+        b.7
+        Int
+        Var a.6
+        Let
+          Ti3.8
+          Int
+          Add a.6 b.7
+          ExtFunApp print_int
+          Args
+            Ti3.8

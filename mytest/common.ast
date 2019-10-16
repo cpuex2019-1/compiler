@@ -1,0 +1,33 @@
+Let
+  x
+  Var
+    None
+  Add
+    Int 12
+    Int 32
+  Let
+    y
+    Var
+      None
+    Add
+      Var x
+      Var x
+    Let
+      a
+      Var
+        None
+      Add
+        Var x
+        Var y
+      Let
+        b
+        Var
+          None
+        Add
+          Var x
+          Var y
+        App
+          Var print_int
+          Add
+            Var a
+            Var b
