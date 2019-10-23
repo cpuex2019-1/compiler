@@ -1,3 +1,5 @@
+toplevel fundef
+exp
 Let
   Tu2.9
   Unit
@@ -5,7 +7,7 @@ Let
     Ti3.16
     Int
     Int 123
-    ExtFunApp print_int
+    App min_caml_print_int
     Args
       Ti3.16
   Let
@@ -19,7 +21,7 @@ Let
         Int
         Int 456
         Neg Ti4.15
-      ExtFunApp print_int
+      App min_caml_print_int
       Args
         Ti5.14
     Let
@@ -34,6 +36,6 @@ Let
           Int
           Int 0
           Add Ti6.12 Ti7.13
-      ExtFunApp print_int
+      App min_caml_print_int
       Args
         Ti8.11

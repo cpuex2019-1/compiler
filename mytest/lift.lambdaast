@@ -1,0 +1,65 @@
+toplevel fundef
+fundef
+name
+  f.7
+  Fun
+    Int
+    Int
+    Int
+  z.5
+  Int
+  x.8
+  Int
+body
+  Add x.8 z.5
+fundef
+name
+  g.9
+  Fun
+    Int
+    Int
+    Int
+    Int
+  a.6
+  Int
+  z.5
+  Int
+  y.10
+  Int
+body
+  Let
+    Ti4.14
+    Int
+    Add z.5 y.10
+    Add Ti4.14 a.6
+exp
+Let
+  z.5
+  Int
+  Int 4
+  Let
+    a.6
+    Int
+    Int 3
+    Let
+      Ti3.11
+      Int
+      Let
+        Ti2.12
+        Int
+        Let
+          Ti1.13
+          Int
+          Int 2
+          App g.9
+          Args
+            a.6
+            z.5
+            Ti1.13
+        App f.7
+        Args
+          z.5
+          Ti2.12
+      App min_caml_print_int
+      Args
+        Ti3.11

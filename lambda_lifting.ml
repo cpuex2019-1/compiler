@@ -1,5 +1,7 @@
 open Printf
 
+exception LiftingError
+
 type t = (* lambda lifting後の式 *)
   | Unit
   | Int of int
@@ -36,6 +38,9 @@ let rec fv_of_func exp =
   | KNormal.Add(x, y) | KNormal.Sub(x, y) | KNormal.Mul(x, y) | KNormal.Div(x, y) | KNormal.FAdd(x, y) | KNormal.FSub(x, y) | KNormal.FMul(x, y) | KNormal.FDiv(x, y) | KNormal.Get(x, y) -> S.of_list [x; y]
   | KNormal.IfEq(x, y, e1, e2)| KNormal.IfLE(x, y, e1, e2) -> S.add x (S.add y (S.union (fv_of_func e1) (fv_of_func e2)))
   | KNormal.Let((x, t), e1, e2) -> S.union (fv_of_func e1) (S.remove x (fv_of_func e2))
+  | KNormal.LetRec({ KNormal.name = (x, t); KNormal.args = yts; KNormal.body = e1 }, e2) 
+    -> S.union (S.diff (fv_of_func e1) (S.of_list (x::(List.map fst yts)))) (fv_of_func e2)
+      
   | KNormal.Var(x) -> S.singleton x
   | KNormal.App(x, ys) -> S.of_list (x :: ys)
   | KNormal.Tuple xs -> S.of_list(xs)
@@ -46,6 +51,7 @@ let rec fv_of_func exp =
 let extend_func_type ts ft =
   match ft with
   | Type.Fun(tl,t) -> Type.Fun ((ts@tl),t)
+  | _ -> raise LiftingError
 
 
 let toplevel : fundef list ref = ref []
@@ -72,14 +78,15 @@ let rec g env extend_func_list = function (* lambda liftingルーチン本体 (caml2ht
       let extend_args = S.elements (S.diff (fv_of_func e1) (S.of_list (List.map fst yts))) in
       let extend_argts = List.map (fun z -> (M.find z env)) extend_args in
       let extend_argxts = List.map (fun z -> (z, M.find z env)) extend_args in
-      let extend_fundef = { name = (x,(extend_func_type extend_argts t)); args = (extend_argxts@yts); body = e1}
       let new_extend_func_list = ((x,extend_args)::extend_func_list) in
+      let e1' = g env new_extend_func_list e1 in
+      let extend_fundef = { name = ((Id.L x),(extend_func_type extend_argts t)); args = (extend_argxts@yts); body = e1'} in
       toplevel := extend_fundef::(!toplevel);
       g env new_extend_func_list e2
 
   | KNormal.App(f, xs) -> 
-      let extend_args = List.assoc extend_func_list f in
-      App (f,(extend_args@args))
+      let extend_args = List.assoc f extend_func_list in
+      App ((Id.L f),(extend_args@xs))
   | KNormal.Tuple(xs) -> Tuple(xs)
   | KNormal.LetTuple(xts, y, e) -> LetTuple(xts, y, g (M.add_list xts env) extend_func_list e)
   | KNormal.Get(x, y) -> Get(x, y)
@@ -191,9 +198,6 @@ and print_fundef fd depth outchan =
   print_id_type ((string_of_label label),ty) (depth+1) outchan;
   print_id_type_list fd.args (depth+1) outchan;
   print_indent depth outchan;
-  fprintf outchan "formal_fv\n";
-  print_id_type_list fd.formal_fv (depth+1) outchan;
-  print_indent depth outchan;
   fprintf outchan "body\n";
   print_syntax fd.body (depth+1) outchan
 
@@ -204,13 +208,6 @@ and print_id_list il depth outchan =
     -> (print_indent depth outchan;
         fprintf outchan "%s\n" i;
         print_id_list rest depth outchan)
-
-and print_closure cl depth outchan = 
-  print_indent depth outchan;
-  fprintf outchan "entry %s\n" (string_of_label cl.entry);
-  print_indent depth outchan;
-  fprintf outchan "actual_fv\n";
-  print_id_list cl.actual_fv (depth+1) outchan
   
 and print_fundef_list fdl outchan = 
   match fdl with 

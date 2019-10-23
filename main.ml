@@ -1,4 +1,5 @@
 let limit = ref 1000
+(*
 
 let rec iter n e = (* 最適化処理をくりかえす (caml2html: main_iter) *)
   Format.eprintf "iteration %d@." n;
@@ -6,21 +7,17 @@ let rec iter n e = (* 最適化処理をくりかえす (caml2html: main_iter) *)
   let e' = Elim.f (ConstFold.f (Inline.f (Assoc.f (Beta.f e)))) in
   if e = e' then e else
   iter (n - 1) e'
-
+*)
 let lexbuf outchan l = (* バッファをコンパイルしてチャンネルへ出力する (caml2html: main_lexbuf) *)
   Id.counter := 0;
   Typing.extenv := M.empty;
-  Emit.f outchan
-    (RegAlloc.f
-       (Simm.f
-          (Virtual.f
-             (Closure.f
-                (iter !limit
-                   (Alpha.f
+                  (Lambda_lifting.f
+                    (Alpha.f
                       (KNormal.f
                          (Typing.f
-                            (Parser.exp Lexer.token l)))))))))
+                            (Parser.exp Lexer.token l)))))
 
+(*
 let string s = lexbuf stdout (Lexing.from_string s) (* 文字列をコンパイルして標準出力に表示する (caml2html: main_string) *)
 
 let print_ast f  =
@@ -33,6 +30,7 @@ let print_ast f  =
     close_in inchan;
     close_out outchan;
   with e -> (close_in inchan; close_out outchan; raise e)
+*)
 
 let print_knormal_ast f  =
   Id.counter := 0;
@@ -40,7 +38,7 @@ let print_knormal_ast f  =
   let inchan = open_in (f ^ ".ml") in
   let outchan = open_out (f ^ ".knormalast") in
   try
-    KNormal.print_syntax (KNormal.f (Typing.f (Parser.exp Lexer.token (Lexing.from_channel inchan)))) 0 outchan;
+    KNormal.print_syntax (Alpha.f (KNormal.f (Typing.f (Parser.exp Lexer.token (Lexing.from_channel inchan))))) 0 outchan;
     close_in inchan;
     close_out outchan;
   with e -> (close_in inchan; close_out outchan; raise e)
@@ -49,28 +47,27 @@ let print_closure_ast f  =
   Id.counter := 0;
   Typing.extenv := M.empty;
   let inchan = open_in (f ^ ".ml") in
-  let outchan = open_out (f ^ ".closureast") in
+  let outchan = open_out (f ^ ".lambdaast") in
   try
-    Closure.print_prog
-    (Closure.f 
-      (iter !limit
+    Lambda_lifting.print_prog
+    (Lambda_lifting.f 
         (Alpha.f 
           (KNormal.f
             (Typing.f
               (Parser.exp
-                Lexer.token (Lexing.from_channel inchan))))))) 0 outchan;
+                Lexer.token (Lexing.from_channel inchan)))))) 0 outchan;
     close_in inchan;
     close_out outchan;
   with e -> (close_in inchan; close_out outchan; raise e)
 
 let file f = (* ファイルをコンパイルしてファイルに出力する (caml2html: main_file) *)
-  (* print_ast f; 
+  (* print_ast f;  *)
   print_knormal_ast f;
-  print_closure_ast f; *)
+  print_closure_ast f;
   let inchan = open_in (f ^ ".ml") in
   let outchan = open_out (f ^ ".s") in
   try
-    lexbuf outchan (Lexing.from_channel inchan);
+    (*lexbuf outchan (Lexing.from_channel inchan);*)
     close_in inchan;
     close_out outchan;
   with e -> (close_in inchan; close_out outchan; raise e)
