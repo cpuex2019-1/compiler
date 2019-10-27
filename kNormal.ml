@@ -52,6 +52,8 @@ let insert_let (e, t) k = (* letを挿入する補助関数 (caml2html: knormal_insert) *
       let e', t' = k x in
       Let((x, t), e, e'), t'
 
+exception ArrayTypeError
+
 let rec g env = function (* K正規化ルーチン本体 (caml2html: knormal_g) *)
   | Syntax.Unit -> Unit, Type.Unit
   | Syntax.Bool(b) -> Int(if b then 1 else 0), Type.Int (* 論理値true, falseを整数1, 0に変換 (caml2html: knormal_bool) *)
@@ -172,7 +174,8 @@ let rec g env = function (* K正規化ルーチン本体 (caml2html: knormal_g) *)
               let l =
                 match t2 with
                 | Type.Float -> "create_float_array"
-                | _ -> "create_array" in
+                | _ -> "create_array"  in
+                (*| _ -> (raise ArrayTypeError) in *)
               ExtFunApp(l, [x; y]), Type.Array(t2)))
   | Syntax.Get(e1, e2) ->
       (match g env e1 with

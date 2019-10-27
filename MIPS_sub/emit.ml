@@ -88,11 +88,11 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
       Printf.fprintf oc "\tori\t%s, %s, %d\n" r r m
   | NonTail(x), FLi(Id.L(l)) ->
       (* 苦肉の策、浮動小数点即値は関数呼び出し*)
-      Printf.fprintf oc "\tsw\t%s, 0(%s)\n" (reg reg_lr) (reg reg_sp);
+      Printf.fprintf oc "\tmov\t%s, %s\n" (reg reg_tmp) (reg reg_lr);
       (* 即値の関数はスタックを汚さないのでスタックポインタの上げ下げはしない *)
       Printf.fprintf oc "\tjal\t%s\n" l;
       (* ここでreg_ftmpに目的の即値が入っている *)
-      Printf.fprintf oc "\tlw\t%s, 0(%s)\n" (reg reg_lr) (reg reg_sp); 
+      Printf.fprintf oc "\tmov\t%s, %s\n" (reg reg_lr) (reg reg_tmp); 
       Printf.fprintf oc "\tmovf\t%s, %s\n" (reg x) (reg reg_ftmp)
       (* load float point value bound to label "l" to register x. *)
   | NonTail(x), SetL(Id.L(y)) ->

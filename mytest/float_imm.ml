@@ -187,7 +187,8 @@ let rec print_int x =
     print_char (48+rem)
   )
 in
-let rec app f x = f x in
-let z = 4 in
- let rec f x = x+z in
- print_int (app f 2)
+let rec fmul a b =
+  a *. b in
+let a = 1.2 in
+let b = 5.0 in
+print_float (fmul a b)

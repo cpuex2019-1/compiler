@@ -1,94 +1,47 @@
 Init: # initialize float value and heap pointer
 	addi	$4, $0, 10000
-	ori	$30, $0, 0
+	ori	$30, $0, 16256
 	slli	$30, $30, 16
 	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
 	j Main
-l.425:	 # 0.000000
+l.417:	 # 1.000000
 	lf	$f31, 10000($0)
 	jr	$31
-print_int_sub.225:
-	ori	$30, $0, 0
-	slli	$30, $30, 16
-	ori	$30, $30, 0
-	bne	$2, $30, eq_else.444
-	jr $31
-eq_else.444:
-	addi	$5, $0, 10
-	div	$5, $2, $5
-	addi	$6, $0, 10
-	mul	$6, $5, $6
-	sub	$2, $2, $6
-	sw	$2, 0($3)
-	mov	$30, $31
-	mov	$2, $5
-	sw	$30, 4($3)
-	addi	$3, $3, 8
-	jal	print_int_sub.225
-	addi	$3, $3, -8
-	lw	$31, 4($3)
-	lw	$2, 0($3)
-	addi	$2, $2, 48
-	j	min_caml_print_char
-print_int.227:
-	ori	$30, $0, 0
-	slli	$30, $30, 16
-	ori	$30, $30, 0
-	bne	$2, $30, eq_else.446
-	addi	$2, $0, 48
-	j	min_caml_print_char
-eq_else.446:
-	addi	$5, $0, 10
-	div	$5, $2, $5
-	addi	$6, $0, 10
-	mul	$6, $5, $6
-	sub	$2, $2, $6
-	sw	$2, 0($3)
-	mov	$30, $31
-	mov	$2, $5
-	sw	$30, 4($3)
-	addi	$3, $3, 8
-	jal	print_int_sub.225
-	addi	$3, $3, -8
-	lw	$31, 4($3)
-	lw	$2, 0($3)
-	addi	$2, $2, 48
-	j	min_caml_print_char
 #	main program starts
 Main:
-	addi	$2, $0, 0
+	addi	$2, $0, 12
 	sw	$31, 0($3)
-	jal	l.425
+	jal	l.417
 	lw	$31, 0($3)
 	movf	$f0, $f31
+	addi	$5, $0, 2
+	addi	$6, $0, 0
+	mov	$7, $4
+	addi	$4, $4, 16
+	sw	$6, 12($7)
+	sw	$5, 8($7)
+	sf	$f0, 0($7)
+	mov	$5, $7
 	mov	$30, $31
 	sw	$30, 4($3)
 	addi	$3, $3, 8
-	jal	min_caml_create_float_array
+	jal	min_caml_create_array
 	addi	$3, $3, -8
 	lw	$31, 4($3)
-	addi	$5, $0, 60
-	addi	$6, $0, 0
-	addi	$7, $0, 0
-	addi	$8, $0, 3
-	addi	$9, $0, 0
-	addi	$10, $0, 0
-	mov	$11, $4
-	addi	$4, $4, 48
-	sw	$2, 40($11)
-	sw	$2, 36($11)
-	sw	$2, 32($11)
-	sw	$2, 28($11)
-	sw	$10, 24($11)
-	sw	$2, 20($11)
-	sw	$2, 16($11)
-	sw	$9, 12($11)
-	sw	$8, 8($11)
-	sw	$7, 4($11)
-	sw	$6, 0($11)
-	mov	$2, $11
+	addi	$5, $0, 5
+	sw	$31, 0($3)
+	jal	l.417
+	lw	$31, 0($3)
+	movf	$f0, $f31
+	addi	$6, $0, 1
+	mov	$7, $4
+	addi	$4, $4, 16
+	sw	$6, 12($7)
+	sw	$2, 8($7)
+	sf	$f0, 0($7)
+	mov	$2, $7
 	mov	$30, $31
 	mov	$27, $5
 	mov	$5, $2
@@ -99,11 +52,11 @@ Main:
 	addi	$3, $3, -8
 	lw	$31, 4($3)
 	lw	$2, 0($2)
-	lw	$2, 8($2)
+	lf	$f0, 0($2)
 	mov	$30, $31
 	sw	$30, 4($3)
 	addi	$3, $3, 8
-	jal	print_int.227
+	jal	min_caml_print_float
 	addi	$3, $3, -8
 	lw	$31, 4($3)
 	j Exit

@@ -187,7 +187,7 @@ let rec print_int x =
     print_char (48+rem)
   )
 in
-let rec app f x = f x in
-let z = 4 in
- let rec f x = x+z in
- print_int (app f 2)
+let a = Array.create 12 (1.0, 2, false) in
+let b = Array.create 5 (1.0, a, true) in
+let (c,d,e) = b.(0) in
+print_float c
