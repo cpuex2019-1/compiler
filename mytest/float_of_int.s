@@ -1,11 +1,13 @@
 Init: # initialize float value and heap pointer
-	addi	$4, $0, 10000
-	ori	$30, $0, 20224
+	ori	$4, $0, 1
+	slli	$4, $4, 16
+	ori	$4, $4, 34464
+	ori	$30, $0, 49024
 	slli	$30, $30, 16
 	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	ori	$30, $0, 49024
+	ori	$30, $0, 52992
 	slli	$30, $30, 16
 	ori	$30, $30, 0
 	sw	$30, 0($4)
@@ -26,39 +28,24 @@ Init: # initialize float value and heap pointer
 	sw	$30, 0($4)
 	addi	$4, $4, 8
 	j Main
-l.67:	 # 2147483648.000000
-	lf	$f31, 10000($0)
-	jr	$31
-l.66:	 # -1.000000
-	lf	$f31, 10008($0)
-	jr	$31
-l.65:	 # 1.000000
-	lf	$f31, 10016($0)
-	jr	$31
-l.64:	 # 2.000000
-	lf	$f31, 10024($0)
-	jr	$31
-l.63:	 # 0.000000
-	lf	$f31, 10032($0)
-	jr	$31
-odd.27:
-	ori	$5, $0, 2
+odd.186:
+	addi	$5, $0, 2
 	div	$5, $2, $5
-	ori	$6, $0, 2
+	addi	$6, $0, 2
 	mul	$5, $5, $6
-	bne	$5, $2, eq_else.72
-	ori	$2, $0, 0
+	bne	$5, $2, eq_else.403
+	addi	$2, $0, 0
 	jr $31
-eq_else.72:
-	ori	$2, $0, 1
+eq_else.403:
+	addi	$2, $0, 1
 	jr $31
-float_of_int_sub.29:
+float_of_int_sub.188:
 	ori	$30, $0, 0
 	slli	$30, $30, 16
 	ori	$30, $30, 0
 	slt	$30, $2, $30
-	bne	$30, $0, eq_else.73
-	ori	$6, $0, 2
+	bne	$30, $0, eq_else.404
+	addi	$6, $0, 2
 	div	$6, $5, $6
 	sw	$6, 0($3)
 	sw	$2, 4($3)
@@ -66,76 +53,71 @@ float_of_int_sub.29:
 	mov	$2, $5
 	sw	$30, 12($3)
 	addi	$3, $3, 16
-	jal	odd.27
+	jal	odd.186
 	addi	$3, $3, -16
 	lw	$31, 12($3)
 	ori	$30, $0, 0
 	slli	$30, $30, 16
 	ori	$30, $30, 0
-	bne	$2, $30, eq_else.74
+	bne	$2, $30, eq_else.405
 	lw	$2, 4($3)
 	addi	$2, $2, -1
 	lw	$5, 0($3)
 	mov	$30, $31
 	sw	$30, 12($3)
 	addi	$3, $3, 16
-	jal	float_of_int_sub.29
+	jal	float_of_int_sub.188
 	addi	$3, $3, -16
 	lw	$31, 12($3)
-	sw	$31, 0($3)
-	jal	l.64
-	lw	$31, 0($3)
-	movf	$f1, $f31
+	ori	$30, $0, 1
+	slli	$30, $30, 16
+	ori	$30, $30, 34488
+	lf	$f1, 0($30) # 2.000000
 	fmul	$f0, $f0, $f1
 	jr $31
-eq_else.74:
+eq_else.405:
 	lw	$2, 4($3)
 	addi	$2, $2, -1
 	lw	$5, 0($3)
 	mov	$30, $31
 	sw	$30, 12($3)
 	addi	$3, $3, 16
-	jal	float_of_int_sub.29
+	jal	float_of_int_sub.188
 	addi	$3, $3, -16
 	lw	$31, 12($3)
-	sw	$31, 0($3)
-	jal	l.64
-	lw	$31, 0($3)
-	movf	$f1, $f31
+	ori	$30, $0, 1
+	slli	$30, $30, 16
+	ori	$30, $30, 34488
+	lf	$f1, 0($30) # 2.000000
 	fmul	$f0, $f0, $f1
-	sw	$31, 0($3)
-	jal	l.65
-	lw	$31, 0($3)
-	movf	$f1, $f31
+	ori	$30, $0, 1
+	slli	$30, $30, 16
+	ori	$30, $30, 34480
+	lf	$f1, 0($30) # 1.000000
 	fadd	$f0, $f0, $f1
 	jr $31
-eq_else.73:
-	sw	$31, 0($3)
-	jal	l.63
-	lw	$31, 0($3)
-	movf	$f0, $f31
+eq_else.404:
+	ori	$30, $0, 1
+	slli	$30, $30, 16
+	ori	$30, $30, 34496
+	lf	$f0, 0($30) # 0.000000
 	jr $31
-float_of_int.32:
+float_of_int.191:
 	ori	$5, $0, 32768
 	slli	$5, $5, 16
-	ori	$5, $5, 0
-	bne	$2, $5, eq_else.75
-	sw	$31, 0($3)
-	jal	l.67
-	lw	$31, 0($3)
-	movf	$f0, $f31
-	jr $31
-eq_else.75:
+	ori	$5, $5, 1
+	slt	$30, $2, $5
+	bne	$30, $0, eq_else.406
 	ori	$30, $0, 0
 	slli	$30, $30, 16
 	ori	$30, $30, 0
 	slt	$30, $30, $2
-	bne	$30, $0, eq_else.76
-	sw	$31, 0($3)
-	jal	l.66
-	lw	$31, 0($3)
-	movf	$f0, $f31
-	ori	$5, $0, 30
+	bne	$30, $0, eq_else.407
+	ori	$30, $0, 1
+	slli	$30, $30, 16
+	ori	$30, $30, 34464
+	lf	$f0, 0($30) # -1.000000
+	addi	$5, $0, 30
 	ori	$30, $0, 65535
 	slli	$30, $30, 16
 	ori	$30, $30, 65535
@@ -147,25 +129,39 @@ eq_else.75:
 	mov	$2, $27
 	sw	$30, 12($3)
 	addi	$3, $3, 16
-	jal	float_of_int_sub.29
+	jal	float_of_int_sub.188
 	addi	$3, $3, -16
 	lw	$31, 12($3)
 	lf	$f1, 0($3)
 	fmul	$f0, $f1, $f0
 	jr $31
-eq_else.76:
-	ori	$5, $0, 30
+eq_else.407:
+	addi	$5, $0, 30
 	mov	$27, $5
 	mov	$5, $2
 	mov	$2, $27
-	j	float_of_int_sub.29
+	j	float_of_int_sub.188
+eq_else.406:
+	ori	$30, $0, 1
+	slli	$30, $30, 16
+	ori	$30, $30, 34472
+	lf	$f0, 0($30) # -2147483648.000000
+	jr $31
 #	main program starts
 Main:
-	ori	$2, $0, 12
+	ori	$2, $0, 32767
+	slli	$2, $2, 16
+	ori	$2, $2, 65535
 	mov	$30, $31
 	sw	$30, 4($3)
 	addi	$3, $3, 8
-	jal	float_of_int.32
+	jal	float_of_int.191
+	addi	$3, $3, -8
+	lw	$31, 4($3)
+	mov	$30, $31
+	sw	$30, 4($3)
+	addi	$3, $3, 8
+	jal	min_caml_print_float
 	addi	$3, $3, -8
 	lw	$31, 4($3)
 	j Exit

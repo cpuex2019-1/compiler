@@ -376,4 +376,4 @@ let rec print_int x =
     print_char (48+rem)
   )
 in
-print_int (int_of_float 134.2)
+print_int (int_of_float 2147480000.213)

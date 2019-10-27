@@ -1,5 +1,7 @@
 Init: # initialize float value and heap pointer
-	addi	$4, $0, 10000
+	ori	$4, $0, 1
+	slli	$4, $4, 16
+	ori	$4, $4, 34464
 	ori	$30, $0, 16544
 	slli	$30, $30, 16
 	ori	$30, $30, 0
@@ -11,25 +13,19 @@ Init: # initialize float value and heap pointer
 	sw	$30, 0($4)
 	addi	$4, $4, 8
 	j Main
-l.398:	 # 5.000000
-	lf	$f31, 10000($0)
-	jr	$31
-l.397:	 # 1.200000
-	lf	$f31, 10008($0)
-	jr	$31
 fmul.219:
 	fmul	$f0, $f0, $f1
 	jr $31
 #	main program starts
 Main:
-	mov	$30, $31
-	jal	l.397
-	mov	$31, $30
-	movf	$f0, $f31
-	mov	$30, $31
-	jal	l.398
-	mov	$31, $30
-	movf	$f1, $f31
+	ori	$30, $0, 1
+	slli	$30, $30, 16
+	ori	$30, $30, 34472
+	lf	$f0, 0($30) # 1.200000
+	ori	$30, $0, 1
+	slli	$30, $30, 16
+	ori	$30, $30, 34464
+	lf	$f1, 0($30) # 5.000000
 	mov	$30, $31
 	sw	$30, 4($3)
 	addi	$3, $3, 8

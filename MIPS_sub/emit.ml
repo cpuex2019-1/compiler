@@ -7,6 +7,9 @@ let int_max =  2147483647
 let int_min = -2147483648
 exception Out_of_range of int
 
+let hp_init = 100000
+let float_imm_data = ref []
+
 let stackset = ref S.empty (* すでにSaveされた変数の集合 (caml2html: emit_stackset) *)
 let stackmap = ref [] (* Saveされた変数の、スタックにおける位置 (caml2html: emit_stackmap) *)
 let save x =
@@ -50,6 +53,14 @@ let load_imm oc target_reg c =
     Printf.fprintf oc "\tslli\t%s, %s, %d\n" r r 16;
     Printf.fprintf oc "\tori\t%s, %s, %d\n" r r m
 
+exception Invalid_float_immidiate
+let rec get_float_imm_address label data_list idx =
+  match data_list with
+  | [] -> raise Invalid_float_immidiate
+  | (Id.L(x),d)::rest ->
+      (if x = label then (hp_init+8*idx,d)
+       else get_float_imm_address label rest (idx+1))
+
 (* 関数呼び出しのために引数を並べ替える(register shuffling) (caml2html: emit_shuffle) *)
 (* 引数は計算されてレジスタにあるはずということ？*)
 let rec shuffle sw xys =
@@ -87,13 +98,21 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
       Printf.fprintf oc "\tslli\t%s, %s, %d\n" r r 16;
       Printf.fprintf oc "\tori\t%s, %s, %d\n" r r m
   | NonTail(x), FLi(Id.L(l)) ->
-      (* 苦肉の策、浮動小数点即値は関数呼び出し*)
-      Printf.fprintf oc "\tmov\t%s, %s\n" (reg reg_tmp) (reg reg_lr);
-      (* 即値の関数はスタックを汚さないのでスタックポインタの上げ下げはしない *)
-      Printf.fprintf oc "\tjal\t%s\n" l;
-      (* ここでreg_ftmpに目的の即値が入っている *)
-      Printf.fprintf oc "\tmov\t%s, %s\n" (reg reg_lr) (reg reg_tmp); 
-      Printf.fprintf oc "\tmovf\t%s, %s\n" (reg x) (reg reg_ftmp)
+      (*
+        (* 苦肉の策、浮動小数点即値は関数呼び出し*)
+        Printf.fprintf oc "\tmov\t%s, %s\n" (reg reg_tmp) (reg reg_lr);
+        (* 即値の関数はスタックを汚さないのでスタックポインタの上げ下げはしない *)
+        Printf.fprintf oc "\tjal\t%s\n" l;
+        (* ここでreg_ftmpに目的の即値が入っている *)
+        Printf.fprintf oc "\tmov\t%s, %s\n" (reg reg_lr) (reg reg_tmp); 
+        Printf.fprintf oc "\tmovf\t%s, %s\n" (reg x) (reg reg_ftmp)
+      *)
+      let (addr,d) = get_float_imm_address l (!float_imm_data) 0 in
+      (
+        load_imm oc (reg reg_tmp) addr;
+        Printf.fprintf oc "\tlf\t%s, 0(%s) # %f\n" (reg x) (reg reg_tmp) d 
+      )
+
       (* load float point value bound to label "l" to register x. *)
   | NonTail(x), SetL(Id.L(y)) ->
       let s = load_label x y in
@@ -352,24 +371,26 @@ let f oc (Prog(data, fundefs, e)) =
   Format.eprintf "generating assembly...@.";
   Printf.fprintf oc "Init: # initialize float value and heap pointer\n";
   (* initialize heap pointer *)
-  let hp_init = 10000 in
   (
-    Printf.fprintf oc "\taddi\t%s, %s, %d\n" (reg reg_hp) (reg reg_zero) hp_init;
+    load_imm oc (reg reg_hp) hp_init;
     (* 浮動小数即値の初期化 *)
     arrange_float_imm oc data 0;
+    float_imm_data := data;
 
     Printf.fprintf oc "\tj Main\n";
 
-    let idx = ref 0 in
-    if data <> [] then
-      (List.iter
-         (fun (Id.L(x), d) ->
-           Printf.fprintf oc "%s:\t # %f\n" x d;
-           Printf.fprintf oc "\tlf\t%s, %d(%s)\n" (reg reg_ftmp) (hp_init + 8*(!idx)) (reg reg_zero);
-           Printf.fprintf oc "\tjr\t%s\n" (reg reg_lr);
-           idx := !idx+1; ()
-         )
-         data )
+    (*
+      let idx = ref 0 in 
+      if data <> [] then
+        (List.iter
+           (fun (Id.L(x), d) ->
+             Printf.fprintf oc "%s:\t # %f\n" x d;
+             Printf.fprintf oc "\tlf\t%s, %d(%s)\n" (reg reg_ftmp) (hp_init + 8*(!idx)) (reg reg_zero);
+             Printf.fprintf oc "\tjr\t%s\n" (reg reg_lr);
+             idx := !idx+1; ()
+           )
+           data ) 
+    *)
   );
 
 

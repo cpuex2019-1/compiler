@@ -209,8 +209,8 @@ let rec float_of_int_sub dig x =
   if dig < 0 then 0.0
   else ( 
     let h = x / 2 in
-    if odd x then (float_of_int_sub (dig-1) h) *. 2.0 +. 1.0 
-    else (float_of_int_sub (dig-1) h) *. 2.0
+    if odd x then ((float_of_int_sub (dig-1) h) *. 2.0 +. 1.0) 
+    else ((float_of_int_sub (dig-1) h) *. 2.0)
   )
 in
 
@@ -240,8 +240,8 @@ let rec int_of_float_sub l r x =
   if (l+1) = r then l
   else (
     let mid = medium l r in
-    if (float_of_int mid) > x then int_of_float_sub l mid x
-    else int_of_float_sub mid r x
+    if (float_of_int mid) > x then (int_of_float_sub l mid x)
+    else (int_of_float_sub mid r x)
   )
 in
 
@@ -2613,6 +2613,6 @@ let rec rt size_x size_y =
 )
 in
 
-let _ = rt 512 512
+let _ = rt 2 2
 
 in ()
