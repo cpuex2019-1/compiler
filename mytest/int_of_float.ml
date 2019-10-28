@@ -336,4 +336,4 @@ let rec print_int x =
     )
  )
 in
-print_int (int_of_float (4.9))
+print_float (float_of_int (-128))
