@@ -2,150 +2,55 @@ Init: # initialize float value and heap pointer
 	ori	$4, $0, 1
 	slli	$4, $4, 16
 	ori	$4, $4, 34464
-	ori	$30, $0, 49024
-	slli	$30, $30, 16
-	ori	$30, $30, 0
-	sw	$30, 0($4)
-	addi	$4, $4, 8
-	ori	$30, $0, 52992
-	slli	$30, $30, 16
-	ori	$30, $30, 0
-	sw	$30, 0($4)
-	addi	$4, $4, 8
-	ori	$30, $0, 16256
-	slli	$30, $30, 16
-	ori	$30, $30, 0
-	sw	$30, 0($4)
-	addi	$4, $4, 8
-	ori	$30, $0, 16384
-	slli	$30, $30, 16
-	ori	$30, $30, 0
-	sw	$30, 0($4)
-	addi	$4, $4, 8
-	ori	$30, $0, 0
+	ori	$30, $0, 19200
 	slli	$30, $30, 16
 	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
 	j Main
-odd.186:
-	addi	$5, $0, 2
-	div	$5, $2, $5
-	addi	$6, $0, 2
-	mul	$5, $5, $6
-	bne	$5, $2, eq_else.403
-	addi	$2, $0, 0
+float_of_int_sub.205:
+	ori	$5, $0, 128
+	slli	$5, $5, 16
+	ori	$5, $5, 0
+	slt	$30, $2, $5
+	bne	$30, $0, eq_else.487
+	ori	$5, $0, 128
+	slli	$5, $5, 16
+	ori	$5, $5, 0
+	sub	$2, $2, $5
+	mov	$30, $31
+	sw	$30, 4($3)
+	addi	$3, $3, 8
+	jal	float_of_int_sub.205
+	addi	$3, $3, -8
+	lw	$31, 4($3)
+	ori	$30, $0, 1
+	slli	$30, $30, 16
+	ori	$30, $30, 34464
+	lf	$f1, 0($30) # 8388608.000000
+	fadd	$f0, $f0, $f1
 	jr $31
-eq_else.403:
-	addi	$2, $0, 1
-	jr $31
-float_of_int_sub.188:
+eq_else.487:
+	j	min_caml_float_of_int_kernel
+float_of_int.207:
 	ori	$30, $0, 0
 	slli	$30, $30, 16
 	ori	$30, $30, 0
 	slt	$30, $2, $30
-	bne	$30, $0, eq_else.404
-	addi	$6, $0, 2
-	div	$6, $5, $6
-	sw	$6, 0($3)
-	sw	$2, 4($3)
-	mov	$30, $31
-	mov	$2, $5
-	sw	$30, 12($3)
-	addi	$3, $3, 16
-	jal	odd.186
-	addi	$3, $3, -16
-	lw	$31, 12($3)
-	ori	$30, $0, 0
-	slli	$30, $30, 16
-	ori	$30, $30, 0
-	bne	$2, $30, eq_else.405
-	lw	$2, 4($3)
-	addi	$2, $2, -1
-	lw	$5, 0($3)
-	mov	$30, $31
-	sw	$30, 12($3)
-	addi	$3, $3, 16
-	jal	float_of_int_sub.188
-	addi	$3, $3, -16
-	lw	$31, 12($3)
-	ori	$30, $0, 1
-	slli	$30, $30, 16
-	ori	$30, $30, 34488
-	lf	$f1, 0($30) # 2.000000
-	fmul	$f0, $f0, $f1
-	jr $31
-eq_else.405:
-	lw	$2, 4($3)
-	addi	$2, $2, -1
-	lw	$5, 0($3)
-	mov	$30, $31
-	sw	$30, 12($3)
-	addi	$3, $3, 16
-	jal	float_of_int_sub.188
-	addi	$3, $3, -16
-	lw	$31, 12($3)
-	ori	$30, $0, 1
-	slli	$30, $30, 16
-	ori	$30, $30, 34488
-	lf	$f1, 0($30) # 2.000000
-	fmul	$f0, $f0, $f1
-	ori	$30, $0, 1
-	slli	$30, $30, 16
-	ori	$30, $30, 34480
-	lf	$f1, 0($30) # 1.000000
-	fadd	$f0, $f0, $f1
-	jr $31
-eq_else.404:
-	ori	$30, $0, 1
-	slli	$30, $30, 16
-	ori	$30, $30, 34496
-	lf	$f0, 0($30) # 0.000000
-	jr $31
-float_of_int.191:
-	ori	$5, $0, 32768
-	slli	$5, $5, 16
-	ori	$5, $5, 1
-	slt	$30, $2, $5
-	bne	$30, $0, eq_else.406
-	ori	$30, $0, 0
-	slli	$30, $30, 16
-	ori	$30, $30, 0
-	slt	$30, $30, $2
-	bne	$30, $0, eq_else.407
-	ori	$30, $0, 1
-	slli	$30, $30, 16
-	ori	$30, $30, 34464
-	lf	$f0, 0($30) # -1.000000
-	addi	$5, $0, 30
+	bne	$30, $0, eq_else.488
+	j	float_of_int_sub.205
+eq_else.488:
 	ori	$30, $0, 65535
 	slli	$30, $30, 16
 	ori	$30, $30, 65535
 	mul	$2, $2, $30
-	sf	$f0, 0($3)
 	mov	$30, $31
-	mov	$27, $5
-	mov	$5, $2
-	mov	$2, $27
-	sw	$30, 12($3)
-	addi	$3, $3, 16
-	jal	float_of_int_sub.188
-	addi	$3, $3, -16
-	lw	$31, 12($3)
-	lf	$f1, 0($3)
-	fmul	$f0, $f1, $f0
-	jr $31
-eq_else.407:
-	addi	$5, $0, 30
-	mov	$27, $5
-	mov	$5, $2
-	mov	$2, $27
-	j	float_of_int_sub.188
-eq_else.406:
-	ori	$30, $0, 1
-	slli	$30, $30, 16
-	ori	$30, $30, 34472
-	lf	$f0, 0($30) # -2147483648.000000
+	sw	$30, 4($3)
+	addi	$3, $3, 8
+	jal	float_of_int_sub.205
+	addi	$3, $3, -8
+	lw	$31, 4($3)
+	fneg	$f0, $f0
 	jr $31
 #	main program starts
 Main:
@@ -155,7 +60,7 @@ Main:
 	mov	$30, $31
 	sw	$30, 4($3)
 	addi	$3, $3, 8
-	jal	float_of_int.191
+	jal	float_of_int.207
 	addi	$3, $3, -8
 	lw	$31, 4($3)
 	mov	$30, $31
@@ -171,37 +76,73 @@ Main:
 min_caml_floor:
   sf $f0, 0($4)
   lw $2, 0($4)
-  ori $10, $0, 32640 # sisubu mask
+  ori $10, $0, 32640 # sisubu mask $10
   slli $10, $10, 16
-  ori $11, $0, 127 # kasubu mask
+  ori $11, $0, 127 # kasubu mask $11
   slli $11, $11, 16
   ori $11, $11, 65535
-  and $9, $2, $10 # formal sisubu
+  and $9, $2, $10 # formal sisubu $9
   srli $5, $9, 23
-  addi $5, $5, -127 # actual sisubu A
-  and $12, $2, $11 # kasubu
+  addi $5, $5, -127 # actual sisubu A $5
+  and $12, $2, $11 # kasubu $12
+  srli $8, $2, 31 # sgn $8
   slt $6, $5, $0
   bne $6, $0, floor_tiny # A < 0
+  beq $5, $0, floor_exp_zero # A = 0
   addi $7, $0, 23
   slt $6, $5, $7
   bne $6, $0, floor_main # A < 23
+
 floor_end:
   jr $31
+
 floor_tiny:
-  sw $0, 0($4)
+  bne $8, $0, floor_tiny_neg
+  sw $0, 0($4)  # return 0.0
   lf $f0, 0($4)
   j floor_end
+
+floor_tiny_neg:
+  ori $13, $0, 49024
+  slli $13, $13, 16 # return -1.0
+  sw $13, 0($4)
+  lf $f0, 0($4)
+  j floor_end
+
+floor_exp_zero:
+  bne $8, $0, floor_exp_zero_neg
+  ori $13, $0, 16256  
+  slli $13, $13, 16 # return 1.0
+  sw $13, 0($4)
+  lf $f0, 0($4)
+  j floor_end
+
+floor_exp_zero_neg:
+  beq $12, $0, floor_exp_zero_neg_just
+  ori $13, $0, 49152   
+  slli $13, $13, 16 # return -2.0
+  sw $13, 0($4)
+  lf $f0, 0($4)
+  j floor_end
+
+floor_exp_zero_neg_just:
+  ori $13, $0, 49024  
+  slli $13, $13, 16 # return -1.0
+  sw $13, 0($4)
+  lf $f0, 0($4)
+  j floor_end
+
 floor_main:
   addi $7, $0, 23
   sub $6, $7, $5 # 23-A
   srl $7, $12, $6
   sll $7, $7, $6
-  srli $8, $2, 31 # sgn
   bne $8, $0, floor_neg
   or $10, $9, $7
   sw $10, 0($4)
   lf $f0, 0($4)
   j floor_end
+
 floor_neg: # kai bit tattetara kiriage
   slli $8, $8, 31
   bne $12, $7, floor_ceil
@@ -210,6 +151,7 @@ floor_neg: # kai bit tattetara kiriage
   sw $10, 0($4)
   lf $f0, 0($4)
   j floor_end
+
 floor_ceil:
   ori $10, $0, 1
   sll $10, $10, $6
@@ -219,6 +161,20 @@ floor_ceil:
   sw $10, 0($4)
   lf $f0, 0($4)
   j floor_end 
+
+
+# float_of_int (less than 8388608)
+
+min_caml_float_of_int_kernel:
+  ori $5, $0, 19200
+  slli $5, $5, 16 # 8388608
+  sw $5, 0($4)
+  add $5, $5, $2
+  sw $5, 4($4)
+  lf $f0, 4($4)
+  lf $f1, 0($4)
+  fsub $f0, $f0, $f1
+  jr $31
 
 #	create_array
 min_caml_create_array:	

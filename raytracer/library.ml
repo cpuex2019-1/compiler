@@ -85,6 +85,7 @@ let rec odd x =
   else true
 in
 
+(*
 let rec float_of_int_sub dig x = 
   if dig < 0 then 0.0
   else ( 
@@ -101,6 +102,31 @@ let rec float_of_int x =
     else (-1.0 *. (float_of_int_sub 30 (-x)))
   )
 in
+*)
+
+let rec float_of_int_sub x =
+  if x >= 8388608 then
+    (float_of_int_sub (x-8388608)) +. 8388608.0
+  else
+    float_of_int_kernel x
+in
+
+let rec float_of_int x =
+  if x < 0 then (-.(float_of_int_sub (-x)))
+  else float_of_int_sub x
+in
+
+let rec int_of_float_sub x =
+  if x >= 8388608.0 then (int_of_float_sub (x -. 8388608.0) + 8388608)
+  else int_of_float_kernel x
+in
+
+let rec int_of_float x =
+  if x < 0.0 then (-(int_of_float_sub (-. x)))
+  else int_of_float_sub x
+in
+
+(* old implementation of int_of_float
 
 (* to avoid overflow *)
 let rec medium x y = 
@@ -117,7 +143,7 @@ let rec int_of_float_sub iter l r x =
   print_string " ";
   print_int r;
   print_string "\n"; *)
-  if iter > 31 then l
+  if iter > 32 then l
   else (
     let mid = medium l r in
     if (float_of_int mid) > x then int_of_float_sub (iter+1) l mid x
@@ -132,6 +158,9 @@ let rec int_of_float x =
   if x >= 2147483647.0 then r
   else a
 in
+
+*)
+
 (*
 external cos : float -> float = "cos_float" "cos" "float"
 external sin : float -> float = "sin_float" "sin" "float"

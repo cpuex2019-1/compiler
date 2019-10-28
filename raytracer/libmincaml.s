@@ -3,37 +3,73 @@
 min_caml_floor:
   sf $f0, 0($4)
   lw $2, 0($4)
-  ori $10, $0, 32640 # sisubu mask
+  ori $10, $0, 32640 # sisubu mask $10
   slli $10, $10, 16
-  ori $11, $0, 127 # kasubu mask
+  ori $11, $0, 127 # kasubu mask $11
   slli $11, $11, 16
   ori $11, $11, 65535
-  and $9, $2, $10 # formal sisubu
+  and $9, $2, $10 # formal sisubu $9
   srli $5, $9, 23
-  addi $5, $5, -127 # actual sisubu A
-  and $12, $2, $11 # kasubu
+  addi $5, $5, -127 # actual sisubu A $5
+  and $12, $2, $11 # kasubu $12
+  srli $8, $2, 31 # sgn $8
   slt $6, $5, $0
   bne $6, $0, floor_tiny # A < 0
+  beq $5, $0, floor_exp_zero # A = 0
   addi $7, $0, 23
   slt $6, $5, $7
   bne $6, $0, floor_main # A < 23
+
 floor_end:
   jr $31
+
 floor_tiny:
-  sw $0, 0($4)
+  bne $8, $0, floor_tiny_neg
+  sw $0, 0($4)  # return 0.0
   lf $f0, 0($4)
   j floor_end
+
+floor_tiny_neg:
+  ori $13, $0, 49024
+  slli $13, $13, 16 # return -1.0
+  sw $13, 0($4)
+  lf $f0, 0($4)
+  j floor_end
+
+floor_exp_zero:
+  bne $8, $0, floor_exp_zero_neg
+  ori $13, $0, 16256  
+  slli $13, $13, 16 # return 1.0
+  sw $13, 0($4)
+  lf $f0, 0($4)
+  j floor_end
+
+floor_exp_zero_neg:
+  beq $12, $0, floor_exp_zero_neg_just
+  ori $13, $0, 49152   
+  slli $13, $13, 16 # return -2.0
+  sw $13, 0($4)
+  lf $f0, 0($4)
+  j floor_end
+
+floor_exp_zero_neg_just:
+  ori $13, $0, 49024  
+  slli $13, $13, 16 # return -1.0
+  sw $13, 0($4)
+  lf $f0, 0($4)
+  j floor_end
+
 floor_main:
   addi $7, $0, 23
   sub $6, $7, $5 # 23-A
   srl $7, $12, $6
   sll $7, $7, $6
-  srli $8, $2, 31 # sgn
   bne $8, $0, floor_neg
   or $10, $9, $7
   sw $10, 0($4)
   lf $f0, 0($4)
   j floor_end
+
 floor_neg: # kai bit tattetara kiriage
   slli $8, $8, 31
   bne $12, $7, floor_ceil
@@ -42,6 +78,7 @@ floor_neg: # kai bit tattetara kiriage
   sw $10, 0($4)
   lf $f0, 0($4)
   j floor_end
+
 floor_ceil:
   ori $10, $0, 1
   sll $10, $10, $6
@@ -51,6 +88,31 @@ floor_ceil:
   sw $10, 0($4)
   lf $f0, 0($4)
   j floor_end 
+
+
+# float_of_int (less than 8388608)
+
+min_caml_float_of_int_kernel:
+  ori $5, $0, 19200
+  slli $5, $5, 16 # 8388608.0
+  sw $5, 0($4)
+  add $5, $5, $2
+  sw $5, 4($4)
+  lf $f0, 4($4)
+  lf $f1, 0($4)
+  fsub $f0, $f0, $f1
+  jr $31
+
+min_caml_int_of_float_kernel:
+  ori $5, $0, 19200
+  slli $5, $5, 16 # 8388608.0
+  sw $5, 0($4)
+  lf $f1, 0($4)
+  fadd $f0, $f0, $f1
+  sf $f0, 0($4)
+  lw $2, 0($4)
+  sub $2, $2, $5
+  jr $31
 
 #	create_array
 min_caml_create_array:	
