@@ -1,7 +1,9 @@
 Init: # initialize float value and heap pointer
-	addi	$4, $0, 10000
+	ori	$4, $0, 1
+	slli	$4, $4, 16
+	ori	$4, $4, 34464
 	j Main
-print_int_sub.223:
+print_int_sub.224:
 	ori	$30, $0, 0
 	slli	$30, $30, 16
 	ori	$30, $30, 0
@@ -18,13 +20,13 @@ eq_else.417:
 	mov	$2, $5
 	sw	$30, 4($3)
 	addi	$3, $3, 8
-	jal	print_int_sub.223
+	jal	print_int_sub.224
 	addi	$3, $3, -8
 	lw	$31, 4($3)
 	lw	$2, 0($3)
 	addi	$2, $2, 48
 	j	min_caml_print_char
-print_int.225:
+print_int.226:
 	ori	$30, $0, 0
 	slli	$30, $30, 16
 	ori	$30, $30, 0
@@ -32,37 +34,43 @@ print_int.225:
 	addi	$2, $0, 48
 	j	min_caml_print_char
 eq_else.419:
-	addi	$5, $0, 10
-	div	$5, $2, $5
-	addi	$6, $0, 10
-	mul	$6, $5, $6
-	sub	$2, $2, $6
+	ori	$30, $0, 0
+	slli	$30, $30, 16
+	ori	$30, $30, 0
+	slt	$30, $30, $2
+	bne	$30, $0, eq_else.420
+	addi	$5, $0, 45
 	sw	$2, 0($3)
 	mov	$30, $31
 	mov	$2, $5
 	sw	$30, 4($3)
 	addi	$3, $3, 8
-	jal	print_int_sub.223
+	jal	min_caml_print_char
 	addi	$3, $3, -8
 	lw	$31, 4($3)
 	lw	$2, 0($3)
-	addi	$2, $2, 48
-	j	min_caml_print_char
-fib.227:
+	ori	$30, $0, 65535
+	slli	$30, $30, 16
+	ori	$30, $30, 65535
+	mul	$2, $2, $30
+	j	print_int_sub.224
+eq_else.420:
+	j	print_int_sub.224
+fib.228:
 	ori	$30, $0, 0
 	slli	$30, $30, 16
 	ori	$30, $30, 1
 	slt	$30, $30, $2
-	bne	$30, $0, eq_else.420
+	bne	$30, $0, eq_else.421
 	jr $31
-eq_else.420:
+eq_else.421:
 	addi	$5, $2, -1
 	sw	$2, 0($3)
 	mov	$30, $31
 	mov	$2, $5
 	sw	$30, 4($3)
 	addi	$3, $3, 8
-	jal	fib.227
+	jal	fib.228
 	addi	$3, $3, -8
 	lw	$31, 4($3)
 	lw	$5, 0($3)
@@ -72,7 +80,7 @@ eq_else.420:
 	mov	$2, $5
 	sw	$30, 12($3)
 	addi	$3, $3, 16
-	jal	fib.227
+	jal	fib.228
 	addi	$3, $3, -16
 	lw	$31, 12($3)
 	lw	$5, 4($3)
@@ -84,13 +92,17 @@ Main:
 	mov	$30, $31
 	sw	$30, 4($3)
 	addi	$3, $3, 8
-	jal	fib.227
+	jal	fib.228
 	addi	$3, $3, -8
 	lw	$31, 4($3)
+	ori	$30, $0, 65535
+	slli	$30, $30, 16
+	ori	$30, $30, 65535
+	mul	$2, $2, $30
 	mov	$30, $31
 	sw	$30, 4($3)
 	addi	$3, $3, 8
-	jal	print_int.225
+	jal	print_int.226
 	addi	$3, $3, -8
 	lw	$31, 4($3)
 	j Exit

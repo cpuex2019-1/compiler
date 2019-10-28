@@ -89,13 +89,13 @@ let rec float_of_int_sub dig x =
   if dig < 0 then 0.0
   else ( 
     let h = x / 2 in
-    if odd x then ((float_of_int_sub (dig-1) h) *. 2.0 +. 1.0)
-    else ((float_of_int_sub (dig-1) h) *. 2.0)
+    if odd x then (float_of_int_sub (dig-1) h) *. 2.0 +. 1.0 
+    else (float_of_int_sub (dig-1) h) *. 2.0
   )
 in
 
 let rec float_of_int x =
-  if x < (-2147483647) then (-2147483648.0)
+  if x = (-2147483647-1) then (-2147483648.0)
   else (
     if x > 0 then float_of_int_sub 30 x
     else (-1.0 *. (float_of_int_sub 30 (-x)))
@@ -181,14 +181,18 @@ in
 let rec print_int x = 
   if x = 0 then (print_char 48)
   else (
-    if x > 0 then print_int_sub x
-    else (
-      print_char 45;
-      print_int_sub (-x)
-    )
- )
+    let y = x / 10 in
+    let rem = x - y * 10 in
+    print_int_sub y;
+    print_char (48+rem)
+  )
 in
 let rec fib n =
-  if n <= 1 then n else
-  fib (n- 1) + fib (n - 2) in
-print_int (-(fib 30))
+  if n = 0 then 0.0
+  else (
+    if n = 1 then 1.0
+    else
+      fib (n - 1) +. fib (n - 2)
+  )
+in
+print_float (fib 30)

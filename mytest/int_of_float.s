@@ -2,22 +2,17 @@ Init: # initialize float value and heap pointer
 	ori	$4, $0, 1
 	slli	$4, $4, 16
 	ori	$4, $4, 34464
-	ori	$30, $0, 20223
-	slli	$30, $30, 16
-	ori	$30, $30, 65508
-	sw	$30, 0($4)
-	addi	$4, $4, 8
 	ori	$30, $0, 20224
 	slli	$30, $30, 16
 	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	ori	$30, $0, 52992
+	ori	$30, $0, 49024
 	slli	$30, $30, 16
 	ori	$30, $30, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 8
-	ori	$30, $0, 49024
+	ori	$30, $0, 52992
 	slli	$30, $30, 16
 	ori	$30, $30, 0
 	sw	$30, 0($4)
@@ -38,23 +33,23 @@ Init: # initialize float value and heap pointer
 	sw	$30, 0($4)
 	addi	$4, $4, 8
 	j Main
-odd.403:
+odd.190:
 	addi	$5, $0, 2
 	div	$5, $2, $5
 	addi	$6, $0, 2
 	mul	$5, $5, $6
-	bne	$5, $2, eq_else.807
+	bne	$5, $2, eq_else.425
 	addi	$2, $0, 0
 	jr $31
-eq_else.807:
+eq_else.425:
 	addi	$2, $0, 1
 	jr $31
-float_of_int_sub.405:
+float_of_int_sub.192:
 	ori	$30, $0, 0
 	slli	$30, $30, 16
 	ori	$30, $30, 0
 	slt	$30, $2, $30
-	bne	$30, $0, eq_else.808
+	bne	$30, $0, eq_else.426
 	addi	$6, $0, 2
 	div	$6, $5, $6
 	sw	$6, 0($3)
@@ -63,74 +58,69 @@ float_of_int_sub.405:
 	mov	$2, $5
 	sw	$30, 12($3)
 	addi	$3, $3, 16
-	jal	odd.403
+	jal	odd.190
 	addi	$3, $3, -16
 	lw	$31, 12($3)
 	ori	$30, $0, 0
 	slli	$30, $30, 16
 	ori	$30, $30, 0
-	bne	$2, $30, eq_else.809
+	bne	$2, $30, eq_else.427
 	lw	$2, 4($3)
 	addi	$2, $2, -1
 	lw	$5, 0($3)
 	mov	$30, $31
 	sw	$30, 12($3)
 	addi	$3, $3, 16
-	jal	float_of_int_sub.405
+	jal	float_of_int_sub.192
 	addi	$3, $3, -16
 	lw	$31, 12($3)
-	ori	$30, $0, 1
-	slli	$30, $30, 16
-	ori	$30, $30, 34504
-	lf	$f1, 0($30) # 2.000000
-	fmul	$f0, $f0, $f1
-	jr $31
-eq_else.809:
-	lw	$2, 4($3)
-	addi	$2, $2, -1
-	lw	$5, 0($3)
-	mov	$30, $31
-	sw	$30, 12($3)
-	addi	$3, $3, 16
-	jal	float_of_int_sub.405
-	addi	$3, $3, -16
-	lw	$31, 12($3)
-	ori	$30, $0, 1
-	slli	$30, $30, 16
-	ori	$30, $30, 34504
-	lf	$f1, 0($30) # 2.000000
-	fmul	$f0, $f0, $f1
 	ori	$30, $0, 1
 	slli	$30, $30, 16
 	ori	$30, $30, 34496
+	lf	$f1, 0($30) # 2.000000
+	fmul	$f0, $f0, $f1
+	jr $31
+eq_else.427:
+	lw	$2, 4($3)
+	addi	$2, $2, -1
+	lw	$5, 0($3)
+	mov	$30, $31
+	sw	$30, 12($3)
+	addi	$3, $3, 16
+	jal	float_of_int_sub.192
+	addi	$3, $3, -16
+	lw	$31, 12($3)
+	ori	$30, $0, 1
+	slli	$30, $30, 16
+	ori	$30, $30, 34496
+	lf	$f1, 0($30) # 2.000000
+	fmul	$f0, $f0, $f1
+	ori	$30, $0, 1
+	slli	$30, $30, 16
+	ori	$30, $30, 34488
 	lf	$f1, 0($30) # 1.000000
 	fadd	$f0, $f0, $f1
 	jr $31
-eq_else.808:
+eq_else.426:
 	ori	$30, $0, 1
 	slli	$30, $30, 16
-	ori	$30, $30, 34512
+	ori	$30, $30, 34504
 	lf	$f0, 0($30) # 0.000000
 	jr $31
-float_of_int.408:
+float_of_int.195:
 	ori	$5, $0, 32768
 	slli	$5, $5, 16
-	ori	$5, $5, 0
-	bne	$2, $5, eq_else.810
-	ori	$30, $0, 1
-	slli	$30, $30, 16
-	ori	$30, $30, 34480
-	lf	$f0, 0($30) # -2147483648.000000
-	jr $31
-eq_else.810:
+	ori	$5, $5, 1
+	slt	$30, $2, $5
+	bne	$30, $0, eq_else.428
 	ori	$30, $0, 0
 	slli	$30, $30, 16
 	ori	$30, $30, 0
 	slt	$30, $30, $2
-	bne	$30, $0, eq_else.811
+	bne	$30, $0, eq_else.429
 	ori	$30, $0, 1
 	slli	$30, $30, 16
-	ori	$30, $30, 34488
+	ori	$30, $30, 34472
 	lf	$f0, 0($30) # -1.000000
 	addi	$5, $0, 30
 	ori	$30, $0, 65535
@@ -144,54 +134,60 @@ eq_else.810:
 	mov	$2, $27
 	sw	$30, 12($3)
 	addi	$3, $3, 16
-	jal	float_of_int_sub.405
+	jal	float_of_int_sub.192
 	addi	$3, $3, -16
 	lw	$31, 12($3)
 	lf	$f1, 0($3)
 	fmul	$f0, $f1, $f0
 	jr $31
-eq_else.811:
+eq_else.429:
 	addi	$5, $0, 30
 	mov	$27, $5
 	mov	$5, $2
 	mov	$2, $27
-	j	float_of_int_sub.405
-medium.410:
+	j	float_of_int_sub.192
+eq_else.428:
+	ori	$30, $0, 1
+	slli	$30, $30, 16
+	ori	$30, $30, 34480
+	lf	$f0, 0($30) # -2147483648.000000
+	jr $31
+medium.197:
 	sw	$2, 0($3)
 	sw	$5, 4($3)
 	mov	$30, $31
 	sw	$30, 12($3)
 	addi	$3, $3, 16
-	jal	odd.403
+	jal	odd.190
 	addi	$3, $3, -16
 	lw	$31, 12($3)
 	ori	$30, $0, 0
 	slli	$30, $30, 16
 	ori	$30, $30, 0
-	bne	$2, $30, eq_else.812
+	bne	$2, $30, eq_else.430
 	addi	$2, $0, 0
-	j	eq_cont.813
-eq_else.812:
+	j	eq_cont.431
+eq_else.430:
 	addi	$2, $0, 1
-eq_cont.813:
+eq_cont.431:
 	lw	$5, 4($3)
 	sw	$2, 8($3)
 	mov	$30, $31
 	mov	$2, $5
 	sw	$30, 12($3)
 	addi	$3, $3, 16
-	jal	odd.403
+	jal	odd.190
 	addi	$3, $3, -16
 	lw	$31, 12($3)
 	ori	$30, $0, 0
 	slli	$30, $30, 16
 	ori	$30, $30, 0
-	bne	$2, $30, eq_else.814
+	bne	$2, $30, eq_else.432
 	addi	$2, $0, 0
-	j	eq_cont.815
-eq_else.814:
+	j	eq_cont.433
+eq_else.432:
 	addi	$2, $0, 1
-eq_cont.815:
+eq_cont.433:
 	addi	$5, $0, 2
 	lw	$6, 0($3)
 	div	$5, $6, $5
@@ -203,82 +199,94 @@ eq_cont.815:
 	ori	$30, $0, 0
 	slli	$30, $30, 16
 	ori	$30, $30, 2
-	bne	$2, $30, eq_else.816
+	bne	$2, $30, eq_else.434
 	addi	$2, $0, 1
-	j	eq_cont.817
-eq_else.816:
+	j	eq_cont.435
+eq_else.434:
 	addi	$2, $0, 0
-eq_cont.817:
+eq_cont.435:
 	add	$5, $5, $6
 	add	$2, $5, $2
 	jr $31
-int_of_float_sub.413:
-	addi	$6, $2, 1
-	bne	$6, $5, eq_else.818
-	jr $31
-eq_else.818:
-	sw	$2, 0($3)
-	sw	$5, 4($3)
-	sf	$f0, 8($3)
+int_of_float_sub.200:
+	ori	$30, $0, 0
+	slli	$30, $30, 16
+	ori	$30, $30, 31
+	slt	$30, $30, $2
+	bne	$30, $0, eq_else.436
+	sw	$5, 0($3)
+	sw	$6, 4($3)
+	sw	$2, 8($3)
+	sf	$f0, 16($3)
 	mov	$30, $31
-	sw	$30, 20($3)
-	addi	$3, $3, 24
-	jal	medium.410
-	addi	$3, $3, -24
-	lw	$31, 20($3)
-	sw	$2, 16($3)
+	mov	$2, $5
+	mov	$5, $6
+	sw	$30, 28($3)
+	addi	$3, $3, 32
+	jal	medium.197
+	addi	$3, $3, -32
+	lw	$31, 28($3)
+	sw	$2, 24($3)
 	mov	$30, $31
-	sw	$30, 20($3)
-	addi	$3, $3, 24
-	jal	float_of_int.408
-	addi	$3, $3, -24
-	lw	$31, 20($3)
-	lf	$f1, 8($3)
+	sw	$30, 28($3)
+	addi	$3, $3, 32
+	jal	float_of_int.195
+	addi	$3, $3, -32
+	lw	$31, 28($3)
+	lf	$f1, 16($3)
 	sltf	$30, $f1, $f0
-	bne	$30, $0, eq_else.819
-	lw	$2, 16($3)
-	lw	$5, 4($3)
+	bne	$30, $0, eq_else.438
+	lw	$2, 8($3)
+	addi	$2, $2, 1
+	lw	$5, 24($3)
+	lw	$6, 4($3)
 	movf	$f0, $f1
-	j	int_of_float_sub.413
-eq_else.819:
-	lw	$2, 0($3)
-	lw	$5, 16($3)
+	j	int_of_float_sub.200
+eq_else.438:
+	lw	$2, 8($3)
+	addi	$2, $2, 1
+	lw	$5, 0($3)
+	lw	$6, 24($3)
 	movf	$f0, $f1
-	j	int_of_float_sub.413
-int_of_float.417:
-	ori	$2, $0, 32768
-	slli	$2, $2, 16
-	ori	$2, $2, 0
-	ori	$5, $0, 32767
+	j	int_of_float_sub.200
+eq_else.436:
+	mov	$2, $5
+	jr $31
+int_of_float.205:
+	ori	$5, $0, 32768
 	slli	$5, $5, 16
-	ori	$5, $5, 65535
+	ori	$5, $5, 0
+	ori	$6, $0, 32767
+	slli	$6, $6, 16
+	ori	$6, $6, 65535
+	addi	$2, $0, 0
 	sf	$f0, 0($3)
 	mov	$30, $31
 	sw	$30, 12($3)
 	addi	$3, $3, 16
-	jal	int_of_float_sub.413
+	jal	int_of_float_sub.200
 	addi	$3, $3, -16
 	lw	$31, 12($3)
 	ori	$30, $0, 1
 	slli	$30, $30, 16
-	ori	$30, $30, 34472
+	ori	$30, $30, 34464
 	lf	$f0, 0($30) # 2147483647.000000
 	lf	$f1, 0($3)
 	sltf	$30, $f1, $f0
-	bne	$30, $0, eq_else.820
+	bne	$30, $0, eq_else.439
 	ori	$2, $0, 32767
 	slli	$2, $2, 16
 	ori	$2, $2, 65535
 	jr $31
-eq_else.820:
+eq_else.439:
 	jr $31
-print_int_sub.433:
+print_int_sub.221:
 	ori	$30, $0, 0
 	slli	$30, $30, 16
 	ori	$30, $30, 0
-	bne	$2, $30, eq_else.821
+	bne	$2, $30, eq_else.440
 	jr $31
-eq_else.821:
+eq_else.440:
 	addi	$5, $0, 10
 	div	$5, $2, $5
 	addi	$6, $0, 10
@@ -289,52 +297,58 @@ eq_else.821:
 	mov	$2, $5
 	sw	$30, 4($3)
 	addi	$3, $3, 8
-	jal	print_int_sub.433
+	jal	print_int_sub.221
 	addi	$3, $3, -8
 	lw	$31, 4($3)
 	lw	$2, 0($3)
 	addi	$2, $2, 48
 	j	min_caml_print_char
-print_int.435:
+print_int.223:
 	ori	$30, $0, 0
 	slli	$30, $30, 16
 	ori	$30, $30, 0
-	bne	$2, $30, eq_else.823
+	bne	$2, $30, eq_else.442
 	addi	$2, $0, 48
 	j	min_caml_print_char
-eq_else.823:
-	addi	$5, $0, 10
-	div	$5, $2, $5
-	addi	$6, $0, 10
-	mul	$6, $5, $6
-	sub	$2, $2, $6
+eq_else.442:
+	ori	$30, $0, 0
+	slli	$30, $30, 16
+	ori	$30, $30, 0
+	slt	$30, $30, $2
+	bne	$30, $0, eq_else.443
+	addi	$5, $0, 45
 	sw	$2, 0($3)
 	mov	$30, $31
 	mov	$2, $5
 	sw	$30, 4($3)
 	addi	$3, $3, 8
-	jal	print_int_sub.433
+	jal	min_caml_print_char
 	addi	$3, $3, -8
 	lw	$31, 4($3)
 	lw	$2, 0($3)
-	addi	$2, $2, 48
-	j	min_caml_print_char
+	ori	$30, $0, 65535
+	slli	$30, $30, 16
+	ori	$30, $30, 65535
+	mul	$2, $2, $30
+	j	print_int_sub.221
+eq_else.443:
+	j	print_int_sub.221
 #	main program starts
 Main:
 	ori	$30, $0, 1
 	slli	$30, $30, 16
-	ori	$30, $30, 34464
-	lf	$f0, 0($30) # 2147480000.213000
+	ori	$30, $30, 34504
+	lf	$f0, 0($30) # 0.000000
 	mov	$30, $31
 	sw	$30, 4($3)
 	addi	$3, $3, 8
-	jal	int_of_float.417
+	jal	int_of_float.205
 	addi	$3, $3, -8
 	lw	$31, 4($3)
 	mov	$30, $31
 	sw	$30, 4($3)
 	addi	$3, $3, 8
-	jal	print_int.435
+	jal	print_int.223
 	addi	$3, $3, -8
 	lw	$31, 4($3)
 	j Exit

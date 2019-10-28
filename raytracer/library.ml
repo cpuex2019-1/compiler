@@ -112,23 +112,23 @@ let rec medium x y =
   hx + hy + c
 in
 
-let rec int_of_float_sub l r x = 
+let rec int_of_float_sub iter l r x = 
   (* print_int l;
   print_string " ";
   print_int r;
   print_string "\n"; *)
-  if (l+1) = r then l
+  if iter > 31 then l
   else (
     let mid = medium l r in
-    if (float_of_int mid) > x then int_of_float_sub l mid x
-    else int_of_float_sub mid r x
+    if (float_of_int mid) > x then int_of_float_sub (iter+1) l mid x
+    else int_of_float_sub (iter+1) mid r x
   )
 in
 
 let rec int_of_float x =
-  let l = (-2147483648) in
+  let l = (-2147483647-1) in
   let r = 2147483647 in
-  let a = int_of_float_sub l r x in
+  let a = int_of_float_sub 0 l r x in
   if x >= 2147483647.0 then r
   else a
 in
@@ -181,9 +181,10 @@ in
 let rec print_int x = 
   if x = 0 then (print_char 48)
   else (
-    let y = x / 10 in
-    let rem = x - y * 10 in
-    print_int_sub y;
-    print_char (48+rem)
-  )
+    if x > 0 then print_int_sub x
+    else (
+      print_char 45;
+      print_int_sub (-x)
+    )
+ )
 in

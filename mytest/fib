@@ -181,14 +181,10 @@ in
 let rec print_int x = 
   if x = 0 then (print_char 48)
   else (
-    if x > 0 then print_int_sub x
+    if x < 0 then print_int_sub x
     else (
-      print_char 45;
+      print_char 77;
       print_int_sub (-x)
     )
  )
 in
-let rec fib n =
-  if n <= 1 then n else
-  fib (n- 1) + fib (n - 2) in
-print_int (-(fib 30))
