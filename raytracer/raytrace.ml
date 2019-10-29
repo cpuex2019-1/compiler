@@ -195,7 +195,7 @@ let rec sqrt_sub iter x y =
 in
 
 let rec sqrt x = 
-  sqrt_sub 20 x x
+  sqrt_sub 40 x x
 in
 
 
@@ -245,6 +245,17 @@ let rec int_of_float x =
   if x < 0.0 then (-(int_of_float_sub (-. x)))
   else int_of_float_sub x
 in
+
+let rec floor_sub x =
+  if x >= 8388608.0 then x
+  else float_of_int (int_of_float x)
+in
+
+let rec floor x =
+  let y = floor_sub x in
+  if y > x then y -. 1.0
+  else y
+in 
 
 (* old implementation of int_of_float
 
@@ -2762,6 +2773,6 @@ let rec rt size_x size_y =
 )
 in
 
-let _ = rt 128 128
+let _ = rt 512 512
 
 in ()

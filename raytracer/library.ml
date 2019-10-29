@@ -126,6 +126,17 @@ let rec int_of_float x =
   else int_of_float_sub x
 in
 
+let rec floor_sub x =
+  if x >= 8388608.0 then x
+  else float_of_int (int_of_float x)
+in
+
+let rec floor x =
+  let y = floor_sub x in
+  if y > x then y -. 1.0
+  else y
+in 
+
 (* old implementation of int_of_float
 
 (* to avoid overflow *)
