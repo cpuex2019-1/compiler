@@ -377,6 +377,15 @@ let file_to_string fname =
 let f oc (Prog(data, fundefs, e)) =
   Format.eprintf "generating assembly...@.";
   Printf.fprintf oc "Init: # initialize float value and heap pointer\n";
+
+  (* initialize special integer registers *)
+  load_imm oc (reg reg_sp) 0;
+  load_imm oc (reg reg_tmp) 170; (* for output 0xaa required by atsunobu *) 
+  load_imm oc (reg reg_tmp2) 0;
+  load_imm oc (reg reg_lr) 0;
+  Printf.fprintf oc "\toutb\t%s # atsunobu request\n" (reg reg_tmp) ;
+ 
+  
   (* initialize heap pointer *)
   (
     load_imm oc (reg reg_hp) hp_init;
