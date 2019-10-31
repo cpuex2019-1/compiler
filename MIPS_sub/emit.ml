@@ -238,6 +238,7 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
       Printf.fprintf oc "\tj\t%s\n" x
   | NonTail(a), CallCls(x, ys, zs) ->
       (* link registerを退避 *)
+      (* muda *)
       Printf.fprintf oc "\tmov\t%s, %s\n" (reg reg_tmp) (reg reg_lr);
       g'_args oc [(x, reg_cl)] ys zs;
       let ss = stacksize () in
