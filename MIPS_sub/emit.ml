@@ -45,13 +45,23 @@ let load_label r label =
 let load_imm oc target_reg c = 
   (if (c > int_max) then raise (Out_of_range c));
   (if (c < int_min) then raise (Out_of_range c));
-  let c = c land 0xffffffff in
-  let n = c lsr 16 in (* upper 16bit *)
-  let m = c lxor (n lsl 16) in (* lower 16bit *)
   let r = reg target_reg in
-    Printf.fprintf oc "\tori\t%s, %s, %d\n" r reg_zero n;
-    Printf.fprintf oc "\tslli\t%s, %s, %d\n" r r 16;
-    Printf.fprintf oc "\tori\t%s, %s, %d\n" r r m
+  let c = c land 0xffffffff in
+  if c = 0 then
+    Printf.fprintf oc "\tori\t%s, %s, %d\n" r reg_zero 0
+  else (
+    let n = c lsr 16 in (* upper 16bit *)
+    let m = c lxor (n lsl 16) in (* lower 16bit *)
+    if m = 0 then (
+      Printf.fprintf oc "\tori\t%s, %s, %d\n" r reg_zero n;
+      Printf.fprintf oc "\tslli\t%s, %s, %d\n" r r 16
+    )
+    else (
+      Printf.fprintf oc "\tori\t%s, %s, %d\n" r reg_zero n;
+      Printf.fprintf oc "\tslli\t%s, %s, %d\n" r r 16;
+      Printf.fprintf oc "\tori\t%s, %s, %d\n" r r m
+    )
+ )
 
 exception Invalid_float_immidiate
 let rec get_float_imm_address label data_list idx =
@@ -88,6 +98,7 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   | NonTail(_), Nop -> ()
   | NonTail(x), Li(i) when -32768 <= i && i < 32768 -> Printf.fprintf oc "\taddi\t%s, %s, %d\n" (reg x) (reg reg_zero) i
   | NonTail(x), Li(i) ->
+      (*
       (if (i > int_max) then raise (Out_of_range i));
       (if (i < int_min) then raise (Out_of_range i));
       let i2 = i land 0xffffffff in (* 符号拡張を修正 *)
@@ -97,15 +108,11 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
       Printf.fprintf oc "\tori\t%s, %s, %d\n" r reg_zero n;
       Printf.fprintf oc "\tslli\t%s, %s, %d\n" r r 16;
       Printf.fprintf oc "\tori\t%s, %s, %d\n" r r m
+      *)
+      load_imm oc x i
   | NonTail(x), FLi(Id.L(l)) ->
       (*
-        (* 苦肉の策、浮動小数点即値は関数呼び出し*)
-        Printf.fprintf oc "\tmov\t%s, %s\n" (reg reg_tmp) (reg reg_lr);
-        (* 即値の関数はスタックを汚さないのでスタックポインタの上げ下げはしない *)
-        Printf.fprintf oc "\tjal\t%s\n" l;
-        (* ここでreg_ftmpに目的の即値が入っている *)
-        Printf.fprintf oc "\tmov\t%s, %s\n" (reg reg_lr) (reg reg_tmp); 
-        Printf.fprintf oc "\tmovf\t%s, %s\n" (reg x) (reg reg_ftmp)
+       * calculate absolute address of float immeditate table in heap area.
       *)
       let (addr,d) = get_float_imm_address l (!float_imm_data) 0 in
       (
