@@ -264,11 +264,10 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
       Printf.fprintf oc "\tj\t%s\n" x
   | NonTail(a), CallCls(x, ys, zs) ->
       (* link registerを退避 *)
-      Printf.fprintf oc "\tmov\t%s, %s\n" (reg reg_tmp) (reg reg_lr);
       g'_args oc [(x, reg_cl)] ys zs;
       let ss = stacksize () in
       (* stacksizeは1余分にとってあるので-4 *)
-      Printf.fprintf oc "\tsw\t%s, %d(%s)\n" (reg reg_tmp) (ss - 4) (reg reg_sp);
+      Printf.fprintf oc "\tsw\t%s, %d(%s)\n" (reg reg_lr) (ss - 4) (reg reg_sp);
       Printf.fprintf oc "\taddi\t%s, %s, %d\n" (reg reg_sp) (reg reg_sp) ss;
       Printf.fprintf oc "\tlw %s, 0(%s)\n" (reg reg_tmp) (reg reg_cl);
       Printf.fprintf oc "\tjalr\t%s, %s\n" (reg reg_lr) (reg reg_tmp);
@@ -282,10 +281,9 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
         Printf.fprintf oc "\tmovf\t%s, %s\n" (reg a) (reg fregs.(0));
   | (NonTail(a), CallDir(Id.L(x), ys, zs)) ->
       (* link registerを退避 *)
-      Printf.fprintf oc "\tmov\t%s, %s\n" (reg reg_tmp) (reg reg_lr);
       g'_args oc [] ys zs;
       let ss = stacksize () in
-      Printf.fprintf oc "\tsw\t%s, %d(%s)\n" (reg reg_tmp) (ss - 4) (reg reg_sp);
+      Printf.fprintf oc "\tsw\t%s, %d(%s)\n" (reg reg_lr) (ss - 4) (reg reg_sp);
       Printf.fprintf oc "\taddi\t%s, %s, %d\n" (reg reg_sp) (reg reg_sp) ss;
       Printf.fprintf oc "\tjal\t%s\n" x;
       Printf.fprintf oc "\taddi\t%s, %s, %d\n" (reg reg_sp) (reg reg_sp) (-ss);
@@ -383,7 +381,7 @@ let f oc (Prog(data, fundefs, e)) =
   load_imm oc (reg reg_tmp) 170; (* for output 0xaa required by atsunobu *) 
   load_imm oc (reg reg_tmp2) 0;
   load_imm oc (reg reg_lr) 0;
-  Printf.fprintf oc "\toutb\t%s # atsunobu request\n" (reg reg_tmp) ;
+  Printf.fprintf oc "#\toutb\t%s # atsunobu request\n" (reg reg_tmp) ;
  
   
   (* initialize heap pointer *)
