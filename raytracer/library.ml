@@ -75,7 +75,7 @@ let rec sqrt_sub iter x y =
 in
 
 let rec sqrt x = 
-  sqrt_sub 40 x x
+  sqrt_sub 20 x x
 in
 
 

@@ -344,7 +344,7 @@ eq_else.9248:
 	fsub	$f0, $f0, $f2
 	j	sqrt_sub.2644
 sqrt.2648:
-	addi	$2, $0, 40
+	addi	$2, $0, 20
 	movf	$f1, $f0
 	j	sqrt_sub.2644
 float_of_int_sub.2652:
