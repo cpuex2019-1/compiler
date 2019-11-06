@@ -29,7 +29,7 @@ clean:: nobackup
 #closure.mli closure.ml asm.mli asm.ml virtual.mli virtual.ml \
 #simm.mli simm.ml regAlloc.mli regAlloc.ml emit.mli emit.ml \
 #main.mli main.ml
-SOURCES = type.ml id.ml m.ml s.ml syntax.ml parser.mly lexer.mll typing.mli typing.ml kNormal.mli kNormal.ml alpha.mli alpha.ml inline.mli inline.ml lambda_lifting.mli lambda_lifting.ml main.mli main.ml
+SOURCES = type.ml id.ml m.ml s.ml syntax.ml parser.mly lexer.mll typing.mli typing.ml kNormal.mli kNormal.ml alpha.mli alpha.ml inline.mli inline.ml main.mli main.ml
 
 # ↓テストプログラムが増えたら、これも増やす
 TESTS = print sum-tail gcd sum fib ack even-odd \
