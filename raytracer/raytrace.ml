@@ -195,7 +195,7 @@ let rec sqrt_sub iter x y =
 in
 
 let rec sqrt x = 
-  sqrt_sub 20 x x
+  sqrt_sub 6 x x
 in
 
 
@@ -2773,6 +2773,6 @@ let rec rt size_x size_y =
 )
 in
 
-let _ = rt 64 64
+let _ = rt 512 512
 
 in ()
