@@ -45,12 +45,13 @@ main.mli main.ml
 # inprod inprod-rec inprod-loop matmul matmul-flat \
 # manyargs
 
-TESTS = lambda
+TESTS = ex1 ex2 ex3 ex4 ex5
 
 do_test: $(TESTS:%=test/%.cmp)
 
 .PRECIOUS: test/%.s test/% test/%.res test/%.ans test/%.cmp
 TRASH = $(TESTS:%=test/%.s) $(TESTS:%=test/%) $(TESTS:%=test/%.res) $(TESTS:%=test/%.ans) $(TESTS:%=test/%.cmp)
+	
 
 test/%.s: $(RESULT) test/%.ml
 	./$(RESULT) test/$*

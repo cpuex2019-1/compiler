@@ -1,7 +1,28 @@
 %{
 (* parserが利用する変数、関数、型などの定義 *)
 open Syntax
+
 let addtyp x = (x, Type.gentyp ())
+
+let rec make_app l acc =
+  match l with
+  | [] -> acc
+  | x::rest -> make_app rest (App (acc,[x]))
+
+(* (fundef,name) *)
+let rec make_fundef nam arg bod = 
+  match arg with
+  | x::[] -> (
+      {name = (addtyp nam); args = [x]; body = bod}
+    )
+  | x::rest -> (
+      let fn = Id.genid "lambda" in
+      let fd = make_fundef fn rest bod in
+      let nfd = {name = (addtyp nam);args = [x];body = (LetRec(fd,Var(fn)))} in
+      nfd
+    )  
+  | [] -> (failwith "invalid argument")
+
 %}
 
 /* (* 字句を表すデータ型の定義 (caml2html: parser_token) *) */
@@ -132,7 +153,9 @@ exp: /* (* 一般の式 (caml2html: parser_exp) *) */
     { LetRec($3, $5) }
 | simple_exp actual_args
     %prec prec_app
-    { App($1, $2) }
+    {
+      make_app $2 $1
+    }
 | elems
     %prec prec_tuple
     { Tuple($1) }
@@ -162,13 +185,16 @@ exp: /* (* 一般の式 (caml2html: parser_exp) *) */
 
 fundef:
 | IDENT formal_args EQUAL exp
-    { { name = addtyp $1; args = $2; body = $4 } }
+    { 
+      make_fundef $1 $2 $4
+    }
 
 lambda:
 | FUN formal_args ARROW exp
     {
       let fname = Id.genid "lambda" in
-      LetRec ({ name = addtyp (fname); args = $2; body = $4 }, Var(fname)) 
+      let fd = make_fundef fname $2 $4 in
+      LetRec (fd, Var(fname))
     } 
     
 

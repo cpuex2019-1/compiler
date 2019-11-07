@@ -120,19 +120,22 @@ let rec g env e =
         let et = expr_type env e in
         (
           match et with
-          | Type.Fun (tl,t) -> 
+          | Type.Fun (tl,Type.Fun(a,b)) -> 
              (
-               if (List.length tl) > (List.length es) then
+               if List.length tl > List.length es then
+               (
                  (* Partial Application *)
                  let arg_rem = (List.length tl) - (List.length es) in
                  let (fixed,args_type) = split tl (List.length es) in
                  let fname = Id.genid "lambda" in
                  let yts = generate_yts args_type in
                  let ys = List.map (fun (x,_) -> (Var x)) yts in
-                 LetRec({name = (fname,(Type.Fun(args_type,t))); args = yts; body = (App(e,(es@ys)))},(Var fname))
+                 LetRec({name = (fname,(Type.Fun(args_type,Type.Fun(a,b)))); args = yts; body = (App(e,(es@ys)))},(Var fname))
+               )
                else 
-                 App(e, es)
+                 (App(e,es))
              )
+          | Type.Fun (tl,t) -> (App(e,es))
           | _ -> (raise MustBeFunction)
         )
     | Tuple(es) -> Tuple(List.map (g env) es)

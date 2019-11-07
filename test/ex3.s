@@ -74,7 +74,7 @@ _min_caml_start: # for cygwin
 	call	app.12
 	subl	$8, %ebp
 	movl	%eax, %edi
-	movl	$1, %eax
+	movl	$3, %eax
 	addl	$8, %ebp
 	call	*(%edi)
 	subl	$8, %ebp
@@ -85,7 +85,7 @@ _min_caml_start: # for cygwin
 	addl	$16, %ebp
 	call	*(%edi)
 	subl	$16, %ebp
-	movl	$2, %ebx
+	movl	$4, %ebx
 	movl	8(%ebp), %edi
 	movl	%eax, 12(%ebp)
 	movl	%ebx, %eax

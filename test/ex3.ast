@@ -1,33 +1,19 @@
 LetRec
   fundef
     app
-    Fun
-      Fun
-        Int
-        Fun
-          Int
-          Int
-      Fun
-        Int
-        Fun
-          Int
-          Int
+    Var
+      None
     f
-    Fun
-      Int
-      Fun
-        Int
-        Int
+    Var
+      None
     LetRec
       fundef
         lambda.1
-        Fun
-          Int
-          Fun
-            Int
-            Int
+        Var
+          None
         x
-        Int
+        Var
+          None
         App
           Var f
           Var x
@@ -35,21 +21,19 @@ LetRec
   LetRec
     fundef
       f
-      Fun
-        Int
-        Fun
-          Int
-          Int
+      Var
+        None
       x
-      Int
+      Var
+        None
       LetRec
         fundef
           lambda.2
-          Fun
-            Int
-            Int
+          Var
+            None
           y
-          Int
+          Var
+            None
           Add
             Var x
             Var y
@@ -57,30 +41,27 @@ LetRec
     LetRec
       fundef
         g
-        Fun
-          Int
-          Fun
-            Int
-            Int
+        Var
+          None
         x
-        Int
+        Var
+          None
         LetRec
           fundef
             h
-            Fun
-              Int
-              Int
+            Var
+              None
             y
-            Int
+            Var
+              None
             Add
               Var x
               Var y
           Var h
       Let
         f
-        Fun
-          Int
-          Int
+        Var
+          None
         App
           App
             Var app
@@ -88,14 +69,13 @@ LetRec
           Int 1
         Let
           g
-          Fun
-            Int
-            Int
+          Var
+            None
           App
             App
               Var app
               Var g
-            Int 1
+            Int 3
           App
             Var print_int
             Add
@@ -104,4 +84,4 @@ LetRec
                 Int 2
               App
                 Var g
-                Int 2
+                Int 4

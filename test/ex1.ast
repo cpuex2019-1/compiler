@@ -1,0 +1,55 @@
+LetRec
+  fundef
+    f
+    Var
+      None
+    x
+    Var
+      None
+    LetRec
+      fundef
+        lambda.1
+        Var
+          None
+        y
+        Var
+          None
+        LetRec
+          fundef
+            lambda.2
+            Var
+              None
+            z
+            Var
+              None
+            Add
+              Add
+                Var x
+                Var y
+              Var z
+          Var lambda.2
+      Var lambda.1
+  Let
+    f
+    Var
+      None
+    App
+      Var f
+      Int 1
+    Let
+      f
+      Var
+        None
+      App
+        Var f
+        Int 2
+      Let
+        f
+        Var
+          None
+        App
+          Var f
+          Int 3
+        App
+          Var print_int
+          Var f

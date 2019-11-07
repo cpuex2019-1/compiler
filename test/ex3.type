@@ -95,7 +95,7 @@ LetRec
             App
               Var app
               Var g
-            Int 1
+            Int 3
           App
             Var print_int
             Add
@@ -104,4 +104,4 @@ LetRec
                 Int 2
               App
                 Var g
-                Int 2
+                Int 4

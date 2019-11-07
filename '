@@ -77,16 +77,12 @@ let rec unify t1 t2 = (* 型が合うように、型変数への代入をする (caml2html: typing
   match t1, t2 with
   | Type.Unit, Type.Unit | Type.Bool, Type.Bool | Type.Int, Type.Int | Type.Float, Type.Float -> ()
   | Type.Fun(t1s, t1'), Type.Fun(t2s, t2') ->
-      List.iter2 unify t1s t2s;
-      unify t1' t2'
       (*
       Printf.printf "unify\n";
       Type.print_type t1 0 stdout;
       Printf.printf "\n";
       Type.print_type t2 0 stdout;
       *)
-      (*
-      
       (try 
         (*
         Printf.printf "t1s\n";
@@ -108,11 +104,7 @@ let rec unify t1 t2 = (* 型が合うように、型変数への代入をする (caml2html: typing
             )
           else 
             (
-              Printf.eprintf "unify\n";
-              Type.print_type (Type.Fun(t2'_args,t1')) 0 stderr;
-              Printf.eprintf "\n";
-              Type.print_type t2' 0 stderr;
-              Printf.eprintf "\n";
+
               unify (Type.Fun(t2'_args,t1')) t2'
             )
           )
@@ -120,8 +112,6 @@ let rec unify t1 t2 = (* 型が合うように、型変数への代入をする (caml2html: typing
       with 
       | Invalid_argument(_) -> raise (Unify(t1, t2))
       | TypingError -> raise TypingError)
-
-      *)
   | Type.Tuple(t1s), Type.Tuple(t2s) ->
       (try List.iter2 unify t1s t2s
       with Invalid_argument(_) -> raise (Unify(t1, t2)))

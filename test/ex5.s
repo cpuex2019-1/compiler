@@ -1,37 +1,50 @@
 .data
 .balign	8
 .text
-lambda.1.33:
+lambda.1.38:
 	movl	4(%edi), %edi
 	jmp	*(%edi)
-app.12:
+app.15:
 	movl	min_caml_hp, %ebx
 	addl	$8, min_caml_hp
-	movl	$lambda.1.33, %ecx
+	movl	$lambda.1.38, %ecx
 	movl	%ecx, 0(%ebx)
 	movl	%eax, 4(%ebx)
 	movl	%ebx, %eax
 	ret
-lambda.2.31:
-	movl	4(%edi), %ebx
-	addl	%ebx, %eax
-	ret
-f.14:
+lambda.2.36:
+	movl	4(%edi), %edi
+	jmp	*(%edi)
+app2.17:
 	movl	min_caml_hp, %ebx
 	addl	$8, min_caml_hp
-	movl	$lambda.2.31, %ecx
+	movl	$lambda.2.36, %ecx
 	movl	%ecx, 0(%ebx)
 	movl	%eax, 4(%ebx)
 	movl	%ebx, %eax
 	ret
-h.29:
-	movl	4(%edi), %ebx
-	addl	%ebx, %eax
+lambda.4.31:
+	movl	8(%edi), %ebx
+	movl	4(%edi), %ecx
+	addl	%ebx, %ecx
+	addl	%eax, %ecx
+	movl	%ecx, %eax
+	addl	$4, %eax
 	ret
-g.16:
+lambda.3.29:
+	movl	4(%edi), %ebx
+	movl	min_caml_hp, %ecx
+	addl	$16, min_caml_hp
+	movl	$lambda.4.31, %edx
+	movl	%edx, 0(%ecx)
+	movl	%eax, 8(%ecx)
+	movl	%ebx, 4(%ecx)
+	movl	%ecx, %eax
+	ret
+f.20:
 	movl	min_caml_hp, %ebx
 	addl	$8, min_caml_hp
-	movl	$h.29, %ecx
+	movl	$lambda.3.29, %ecx
 	movl	%ecx, 0(%ebx)
 	movl	%eax, 4(%ebx)
 	movl	%ebx, %eax
@@ -52,51 +65,32 @@ _min_caml_start: # for cygwin
 	movl	%eax,min_caml_hp
 	movl	min_caml_hp, %eax
 	addl	$8, min_caml_hp
-	movl	$f.14, %ebx
+	movl	$app.15, %ebx
 	movl	%ebx, 0(%eax)
-	movl	min_caml_hp, %ebx
-	addl	$8, min_caml_hp
-	movl	$g.16, %ecx
-	movl	%ecx, 0(%ebx)
-	movl	%ebx, 0(%ebp)
+	call	app2.17
+	movl	$1, %ebx
+	movl	%eax, 0(%ebp)
+	movl	%ebx, %eax
 	addl	$8, %ebp
-	call	app.12
+	call	f.20
 	subl	$8, %ebp
 	movl	%eax, %edi
-	movl	$1, %eax
+	movl	$2, %eax
 	addl	$8, %ebp
 	call	*(%edi)
 	subl	$8, %ebp
-	movl	0(%ebp), %ebx
-	movl	%eax, 4(%ebp)
-	movl	%ebx, %eax
+	movl	0(%ebp), %edi
 	addl	$8, %ebp
-	call	app.12
+	call	*(%edi)
 	subl	$8, %ebp
 	movl	%eax, %edi
-	movl	$1, %eax
+	movl	$3, %eax
 	addl	$8, %ebp
 	call	*(%edi)
 	subl	$8, %ebp
-	movl	$2, %ebx
-	movl	4(%ebp), %edi
-	movl	%eax, 8(%ebp)
-	movl	%ebx, %eax
-	addl	$16, %ebp
-	call	*(%edi)
-	subl	$16, %ebp
-	movl	$2, %ebx
-	movl	8(%ebp), %edi
-	movl	%eax, 12(%ebp)
-	movl	%ebx, %eax
-	addl	$16, %ebp
-	call	*(%edi)
-	subl	$16, %ebp
-	movl	12(%ebp), %ebx
-	addl	%ebx, %eax
-	addl	$16, %ebp
+	addl	$8, %ebp
 	call	min_caml_print_int
-	subl	$16, %ebp
+	subl	$8, %ebp
 	popl	%ebp
 	popl	%edi
 	popl	%esi
