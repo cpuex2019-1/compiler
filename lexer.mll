@@ -76,6 +76,12 @@ rule token = parse
     { REC }
 | ','
     { COMMA }
+
+| "fun"
+    { FUN }
+| "->"
+    { ARROW }
+
 | '_'
     { IDENT(Id.gentmp Type.Unit) }
 | "Array.create" | "Array.make" (* [XX] ad hoc *)

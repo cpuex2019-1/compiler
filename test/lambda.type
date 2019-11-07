@@ -1,0 +1,60 @@
+LetRec
+  fundef
+    app
+    Fun
+      Fun
+        Int
+        Fun
+          Int
+          Int
+      Int
+      Fun
+        Int
+        Int
+    f
+    Fun
+      Int
+      Fun
+        Int
+        Int
+    x
+    Int
+    App
+      Var f
+      Var x
+  LetRec
+    fundef
+      f
+      Fun
+        Int
+        Fun
+          Int
+          Int
+      x
+      Int
+      LetRec
+        fundef
+          lambda.1
+          Fun
+            Int
+            Int
+          y
+          Int
+          Add
+            Var x
+            Var y
+        Var lambda.1
+    Let
+      f
+      Fun
+        Int
+        Int
+      App
+        Var app
+        Var f
+        Int 1
+      App
+        Var print_int
+        App
+          Var f
+          Int 2

@@ -1,7 +1,0 @@
-Let
-  Ti1.2
-  Int
-  Int 123
-  ExtFunApp print_int
-  Args
-    Ti1.2

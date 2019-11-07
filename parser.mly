@@ -30,6 +30,10 @@ let addtyp x = (x, Type.gentyp ())
 %token LET
 %token IN
 %token REC
+
+%token FUN
+%token ARROW
+
 %token COMMA
 %token ARRAY_CREATE
 %token DOT
@@ -141,6 +145,8 @@ exp: /* (* 一般の式 (caml2html: parser_exp) *) */
 | ARRAY_CREATE simple_exp simple_exp
     %prec prec_app
     { Array($2, $3) }
+| lambda 
+    { $1 }
 | error
     { let (st : Lexing.position) = Parsing.symbol_start_pos () in
       let (ed : Lexing.position) = Parsing.symbol_end_pos () in
@@ -153,9 +159,18 @@ exp: /* (* 一般の式 (caml2html: parser_exp) *) */
         )
     }
 
+
 fundef:
 | IDENT formal_args EQUAL exp
     { { name = addtyp $1; args = $2; body = $4 } }
+
+lambda:
+| FUN formal_args ARROW exp
+    {
+      let fname = Id.genid "lambda" in
+      LetRec ({ name = addtyp (fname); args = $2; body = $4 }, Var(fname)) 
+    } 
+    
 
 formal_args:
 | IDENT formal_args

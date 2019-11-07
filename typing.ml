@@ -4,6 +4,7 @@ open Syntax
 
 exception Unify of Type.t * Type.t
 exception Error of t * Type.t * Type.t
+exception TypingError
 
 let extenv = ref M.empty
 
@@ -60,13 +61,66 @@ let rec occur r1 = function (* occur check (caml2html: typing_occur) *)
   | Type.Var({ contents = Some(t2) }) -> occur r1 t2
   | _ -> false
 
+let rec split l n = 
+  Printf.eprintf "n: %d, List.length l: %d\n" n (List.length l);
+  if n > (List.length l) then (raise TypingError)
+  else (
+    if n = 0 then ([],l)
+    else (
+      match l with
+      | [] -> ([],[])
+      | x::rest -> (let (a,b) = split rest (n-1) in ((x::a),b))
+    )
+  )
+
 let rec unify t1 t2 = (* 型が合うように、型変数への代入をする (caml2html: typing_unify) *)
   match t1, t2 with
   | Type.Unit, Type.Unit | Type.Bool, Type.Bool | Type.Int, Type.Int | Type.Float, Type.Float -> ()
   | Type.Fun(t1s, t1'), Type.Fun(t2s, t2') ->
-      (try List.iter2 unify t1s t2s
-      with Invalid_argument(_) -> raise (Unify(t1, t2)));
-      unify t1' t2'
+      (try 
+        Printf.printf "t1s\n";
+        Type.print_type_list t1s 0 stdout;
+        Printf.printf "t1'\n";
+        Type.print_type t1' 0 stdout;
+        Printf.printf "t2s\n";
+        Type.print_type_list t2s 0 stdout;
+        Printf.printf "t2'\n";
+        Type.print_type t2' 0 stdout;
+        if List.length t1s > List.length t2s then
+        (
+          let (actual_t1s,t2'_args) = split t1s (List.length t2s) in
+          (
+            List.iter2 unify actual_t1s t2s; 
+            (
+            if t2'_args = [] then
+              (
+                unify t1' t2'
+              )
+            else 
+              (
+                unify (Type.Fun(t2'_args,t1')) t2'
+              )
+            )
+          ) 
+        ) else (
+          let (actual_t2s,t1'_args) = split t2s (List.length t1s) in
+          (
+            List.iter2 unify actual_t2s t1s; 
+            (
+            if t1'_args = [] then
+              (
+                unify t2' t1'
+              )
+            else 
+              (
+                unify (Type.Fun(t1'_args,t2')) t1'
+              )
+            )
+          ) 
+        )
+      with 
+      | Invalid_argument(_) -> raise (Unify(t1, t2))
+      | TypingError -> raise TypingError)
   | Type.Tuple(t1s), Type.Tuple(t2s) ->
       (try List.iter2 unify t1s t2s
       with Invalid_argument(_) -> raise (Unify(t1, t2)))

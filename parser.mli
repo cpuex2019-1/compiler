@@ -24,6 +24,8 @@ type token =
   | LET
   | IN
   | REC
+  | FUN
+  | ARROW
   | COMMA
   | ARRAY_CREATE
   | DOT
