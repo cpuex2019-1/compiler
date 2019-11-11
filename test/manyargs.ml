@@ -1,1 +1,1 @@
-x86/manyargs.ml
+MIPS_sub/manyargs.ml

@@ -1,1 +1,1 @@
-x86/globals.s
+MIPS_sub/globals.s
