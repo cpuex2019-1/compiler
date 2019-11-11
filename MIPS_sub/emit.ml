@@ -136,9 +136,20 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   | NonTail(x), Mul(y, V(z)) -> Printf.fprintf oc "\tmul\t%s, %s, %s\n" (reg x) (reg y) (reg z)
   | NonTail(x), Mul(y, C(z)) 
     -> Printf.fprintf oc "\taddi\t%s, %s, %d\n\tmul\t%s, %s, %s\n" (reg reg_tmp) (reg reg_zero) z (reg x) (reg y) (reg reg_tmp)
-  | NonTail(x), Div(y, V(z)) -> Printf.fprintf oc "\tdiv\t%s, %s, %s\n" (reg x) (reg y) (reg z)
+  | NonTail(x), Div(y, V(z)) -> (*Printf.fprintf oc "\tdiv\t%s, %s, %s\n" (reg x) (reg y) (reg z) *)
+      (
+          Printf.eprintf "Division by register value is not supported.";
+          failwith "Div error";
+      )
   | NonTail(x), Div(y, C(z))
-    -> Printf.fprintf oc "\taddi\t%s, %s, %d\n\tdiv\t%s, %s, %s\n" (reg reg_tmp) (reg reg_zero) z (reg x) (reg y) (reg reg_tmp)
+    -> (* Printf.fprintf oc "\taddi\t%s, %s, %d\n\tdiv\t%s, %s, %s\n" (reg reg_tmp) (reg reg_zero) z (reg x) (reg y) (reg reg_tmp) *)
+       (
+         match z with 
+         | 2 -> Printf.fprintf oc "\tsrai\t%s, %s, 1\n" (reg x) (reg y)
+         | 10 -> Printf.fprintf oc "\tdiv10\t%s, %s\n" (reg x) (reg y)
+         | x -> (Printf.eprintf "found: %d, Division is supported by 2 or 10 only.";
+                 failwith "Div error")
+       )
   | NonTail(x), Slw(y, V(z)) -> 
       Printf.fprintf oc "\tsll\t%s, %s, %s\n" (reg x) (reg y) (reg z)
   | NonTail(x), Slw(y, C(z)) -> Printf.fprintf oc "\tslli\t%s, %s, %d\n" (reg x) (reg y) z
