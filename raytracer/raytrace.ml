@@ -195,7 +195,7 @@ let rec sqrt_sub iter x y =
 in
 
 let rec sqrt x = 
-  sqrt_sub 6 x x
+  sqrt_sub 13 x x
 in
 
 (*
