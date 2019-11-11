@@ -198,14 +198,13 @@ let rec sqrt x =
   sqrt_sub 6 x x
 in
 
-
+(*
 let rec odd x =
   let h = x / 2 in
   if h * 2 = x then false
   else true
 in
 
-(*
 let rec float_of_int_sub dig x = 
   if dig < 0 then 0.0
   else ( 
