@@ -1,1 +1,1 @@
-MIPS_sub/libmincaml.S
+x86/libmincaml.S
