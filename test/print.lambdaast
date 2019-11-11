@@ -1,9 +1,0 @@
-toplevel fundef
-exp
-Let
-  Ti1.2
-  Int
-  Int 123
-  App min_caml_print_int
-  Args
-    Ti1.2
