@@ -145,7 +145,7 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
     -> (* Printf.fprintf oc "\taddi\t%s, %s, %d\n\tdiv\t%s, %s, %s\n" (reg reg_tmp) (reg reg_zero) z (reg x) (reg y) (reg reg_tmp) *)
        (
          match z with 
-         | 2 -> Printf.fprintf oc "\tsrai\t%s, %s, 1\n" (reg x) (reg y)
+         | 2 -> Printf.fprintf oc "\tsrli\t%s, %s, 1\n" (reg x) (reg y)
          | 10 -> Printf.fprintf oc "\tdiv10\t%s, %s\n" (reg x) (reg y)
          | x -> (Printf.eprintf "found: %d, Division is supported by 2 or 10 only.";
                  failwith "Div error")
