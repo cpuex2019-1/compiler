@@ -45,7 +45,7 @@ main.mli main.ml
 # inprod inprod-rec inprod-loop matmul matmul-flat \
 # manyargs
 
-TESTS = ex1 ex2 ex3 ex4 ex5
+TESTS = ex1 ex2 ex3 ex4 ex5 ack_cps ack
 
 do_test: $(TESTS:%=test/%.cmp)
 
