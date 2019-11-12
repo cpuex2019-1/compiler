@@ -351,3 +351,4 @@ let rec print_int x =
     )
  )
 in
+print_int (int_of_float ((atan 1.0) +. (cos 0.75) +. (sin 0.75)))
