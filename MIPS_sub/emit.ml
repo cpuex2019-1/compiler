@@ -152,7 +152,7 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
          match z with 
          | 2 -> Printf.fprintf oc "\tsrai\t%s, %s, 1\n" (reg x) (reg y)
          | 10 -> Printf.fprintf oc "\tdiv10\t%s, %s\n" (reg x) (reg y)
-         | x -> (Printf.eprintf "found: %d, Division is supported by 2 or 10 only.";
+         | x -> (Printf.eprintf "found: %d, Division is supported by 2 or 10 only." x;
                  failwith "Div error")
        )
   | NonTail(x), Slw(y, V(z)) -> 

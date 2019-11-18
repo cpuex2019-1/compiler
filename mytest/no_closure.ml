@@ -1,6 +1,4 @@
-let a =
-  let b = Array.create 4 0 in
-  Array.create 5 b
+let a = Array.create 10 3
 in
 let rec print_int_sub x = 
   if x = 0 then ()
@@ -22,10 +20,7 @@ let rec print_int x =
     )
  )
 in
-let rec f x y z=
-  (a.(x)).(y) <- z
+let rec f u =
+  a.(2)
 in
-let rec g x y = 
-  (a.(x)).(y)
-in
-print_int ((f 2 3 4);(f 3 1 2);(g 2 3))
+print_int (f ())

@@ -24,6 +24,7 @@ type t = (* K正規化後の式 (caml2html: knormal_t) *)
   | LetRec of fundef * t
   | App of Id.t * Id.t list
   | Tuple of Id.t list
+  | GlobalTuple of int * Id.t list (* address *)
   | LetTuple of (Id.t * Type.t) list * Id.t * t
   | Get of Id.t * Id.t
   | Put of Id.t * Id.t * Id.t
@@ -42,7 +43,7 @@ let rec fv = function (* 式に出現する（自由な）変数 (caml2html: knormal_fv) *)
       let zs = S.diff (fv e1) (S.of_list (List.map fst yts)) in
       S.diff (S.union zs (fv e2)) (S.singleton x)
   | App(x, ys) -> S.of_list (x :: ys)
-  | Tuple(xs) | ExtFunApp(_, xs) -> S.of_list xs
+  | Tuple(xs) | GlobalTuple(_,xs) | ExtFunApp(_, xs) -> S.of_list xs
   | Put(x, y, z) -> S.of_list [x; y; z]
   | LetTuple(xs, y, e) -> S.add y (S.diff (fv e) (S.of_list (List.map fst xs)))
 
@@ -53,6 +54,13 @@ let insert_let (e, t) k = (* letを挿入する補助関数 (caml2html: knormal_insert) *
       let x = Id.gentmp t in
       let e', t' = k x in
       Let((x, t), e, e'), t'
+
+let rec size ts =
+  match ts with
+  | [] -> 0
+  | (Type.Unit)::rest -> size rest
+  | (Type.Float)::rest -> (size rest)+8
+  | (_)::rest -> (size rest)+4
 
 exception ArrayTypeError
 
@@ -162,6 +170,19 @@ let rec g env = function (* K正規化ルーチン本体 (caml2html: knormal_g) *)
             insert_let g_e
               (fun x -> bind (xs @ [x]) (ts @ [t]) es) in
       bind [] [] es
+  | Syntax.GlobalTuple(es) ->
+      let rec bind xs ts = function (* "xs" and "ts" are identifiers and types for the elements *)
+        | [] -> (
+          let sz = size ts in
+          let addr = !hp_init in
+          (hp_init := !hp_init+sz;
+           GlobalTuple(addr,xs), Type.Tuple(ts))
+        )
+        | e :: es ->
+            let _, t as g_e = g env e in
+            insert_let g_e
+              (fun x -> bind (xs @ [x]) (ts @ [t]) es) in
+      bind [] [] es
   | Syntax.LetTuple(xts, e1, e2) ->
       insert_let (g env e1)
         (fun y ->
@@ -202,7 +223,6 @@ let rec g env = function (* K正規化ルーチン本体 (caml2html: knormal_g) *)
               (
               hp_init := !hp_init+(sz*len);
               let addvar = Id.gentmp Type.Int in
-              let tmp = Id.gentmp Type.Int in
               Let((addvar,Type.Int),Int(address),ExtFunApp(l, [addvar; x; y])), Type.Array(t2)
               )))
   | Syntax.Get(e1, e2) ->
@@ -280,6 +300,9 @@ let rec print_syntax exp depth outchan =
         print_id_list il (depth+1) outchan)
   | Tuple (il)
     -> (fprintf outchan "Tuple\n";
+        print_id_list il (depth+1) outchan)
+  | GlobalTuple (_,il)
+    -> (fprintf outchan "GlobalTuple\n";
         print_id_list il (depth+1) outchan)
   | LetTuple (idtyl,i1,e1)
     -> (fprintf outchan "LetTuple\n";

@@ -47,7 +47,7 @@ let rec load_global ys env exp =
   | [] -> exp
   | y::rest -> ( if M.mem y env then load_global rest env exp
                  else (
-                   let (addr,ty) = List.assoc y !(SetGlobalArray.global_arrays) in
+                   let (addr,_) = List.assoc y !(SetGlobalArray.global_arrays) in
                    Let((y,Type.Int),Li(addr),(load_global rest env exp))
                  )
                )
@@ -141,6 +141,18 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
           Let((reg_hp, Type.Int), Add(reg_hp, C(align offset)),
               store))
       ) with Not_found -> (failwith (Printf.sprintf "tuple was not found." )))
+  | Closure.GlobalTuple(addr,xs) ->
+      (
+      let y = Id.genid "t" in
+      let (offset, store) =
+        expand
+          (List.map (fun x -> (x, M.find x env)) xs)
+          (0, Ans(Mr(y)))
+          (fun x offset store -> seq(Stfd(x, y, C(offset)), store))
+          (fun x _ offset store -> seq(Stw(x, y, C(offset)), store))  in
+      Let((y, Type.Tuple(List.map (fun x -> M.find x env) xs)), Li(addr),
+              store)
+      )
   | Closure.LetTuple(xts, y, e2) ->
       let s = Closure.fv e2 in
       let (offset, load) =
@@ -153,7 +165,12 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
           (fun x t offset load ->
             if not (S.mem x s) then load else (* [XX] a little ad hoc optimization *)
             Let((x, t), Lwz(y, C(offset)), load)) in
-      load
+      load_global [y] env load
+
+  (* attention 
+   * if an error "xxxxx was not saved" occur, use load_global to load global variable
+   * (global variable should not be (infinite) register name (must be converted to constant) *)
+
   | Closure.Get(x, y) -> (* 配列の読み出し (caml2html: virtual_get) *)
       let offset = Id.genid "o" in
       let absaddr = Id.genid "o" in
@@ -182,6 +199,7 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
       let absaddr = Id.genid "o" in
       (match M.find_opt x env with
       | None ->
+          load_global [z] env
           (let (addr,ty) = List.assoc x !(SetGlobalArray.global_arrays) in
            match ty with
            | Type.Float -> Let((offset, Type.Int),Slw(y,C(3)),
@@ -192,13 +210,15 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
                                Ans(Stw(z,reg_zero,V(absaddr)))))
            | _ -> assert false
           )
-      | Some(Type.Array(Type.Unit)) -> Ans(Nop)
+      | Some(Type.Array(Type.Unit)) -> (load_global [z] env (Ans(Nop)))
       | Some(Type.Array(Type.Float)) ->
-          Let((offset, Type.Int), Slw(y, C(3)),
-              Ans(Stfd(z, x, V(offset))))
+          load_global [z] env 
+          (Let((offset, Type.Int), Slw(y, C(3)),
+              Ans(Stfd(z, x, V(offset)))))
       | Some(Type.Array(_)) ->
-          Let((offset, Type.Int), Slw(y, C(2)),
-              Ans(Stw(z, x, V(offset))))
+          load_global [z] env
+          (Let((offset, Type.Int), Slw(y, C(2)),
+              Ans(Stw(z, x, V(offset)))))
       | _ -> assert false)
   | Closure.ExtArray(Id.L(x)) -> Ans(SetL(Id.L("min_caml_" ^ x)))
 

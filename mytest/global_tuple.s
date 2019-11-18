@@ -8,76 +8,56 @@ Init: # initialize float value and heap pointer
 #	outb	$30 # atsunobu request
 	ori	$4, $0, 0
 	slli	$4, $4, 16
-	ori	$4, $4, 3040
+	ori	$4, $4, 3020
 	j Main
-print_int_sub.22:
-	ori	$30, $0, 0
-	bne	$2, $30, eq_else.56
-	jr $31
-eq_else.56:
-	div10	$5, $2
-	addi	$6, $0, 10
-	mul	$6, $5, $6
-	sub	$2, $2, $6
-	sw	$2, 0($3)
-	mov	$2, $5
-	sw	$31, 4($3)
-	addi	$3, $3, 8
-	jal	print_int_sub.22
-	addi	$3, $3, -8
-	lw	$31, 4($3)
-	lw	$2, 0($3)
-	addi	$2, $2, 48
-	j	min_caml_print_char
-print_int.24:
-	ori	$30, $0, 0
-	bne	$2, $30, eq_else.58
-	addi	$2, $0, 48
-	j	min_caml_print_char
-eq_else.58:
-	ori	$30, $0, 0
-	slt	$30, $30, $2
-	bne	$30, $0, eq_else.59
-	addi	$5, $0, 45
-	sw	$2, 0($3)
-	mov	$2, $5
-	sw	$31, 4($3)
-	addi	$3, $3, 8
-	jal	min_caml_print_char
-	addi	$3, $3, -8
-	lw	$31, 4($3)
-	lw	$2, 0($3)
-	ori	$30, $0, 65535
-	slli	$30, $30, 16
-	ori	$30, $30, 65535
-	mul	$2, $2, $30
-	j	print_int_sub.22
-eq_else.59:
-	j	print_int_sub.22
-f.26:
-	addi	$2, $0, 8
-	addi	$2, $2, 3000
-	add	$30, $0, $2
+f.12:
+	addi	$5, $0, 3012
+	lw	$5, 0($5)
+	slli	$2, $2, 2
+	add	$30, $5, $2
 	lw	$2, 0($30)
 	jr $31
 #	main program starts
 Main:
-	addi	$5, $0, 10
-	addi	$6, $0, 3
+	addi	$5, $0, 3
+	addi	$6, $0, 2
 	addi	$2, $0, 3000
 	sw	$31, 4($3)
 	addi	$3, $3, 8
 	jal	min_caml_create_global_array
 	addi	$3, $3, -8
 	lw	$31, 4($3)
+	addi	$2, $0, 3
+	addi	$5, $0, 5
 	sw	$31, 4($3)
 	addi	$3, $3, 8
-	jal	f.26
+	jal	min_caml_create_array
+	addi	$3, $3, -8
+	lw	$31, 4($3)
+	addi	$5, $0, 2
+	addi	$6, $0, 5
+	sw	$2, 0($3)
+	mov	$2, $5
+	mov	$5, $6
+	sw	$31, 4($3)
+	addi	$3, $3, 8
+	jal	min_caml_create_array
+	addi	$3, $3, -8
+	lw	$31, 4($3)
+	addi	$5, $0, 3012
+	sw	$2, 4($5)
+	lw	$2, 0($3)
+	sw	$2, 0($5)
+	mov	$2, $5
+	addi	$2, $0, 1
+	sw	$31, 4($3)
+	addi	$3, $3, 8
+	jal	f.12
 	addi	$3, $3, -8
 	lw	$31, 4($3)
 	sw	$31, 4($3)
 	addi	$3, $3, 8
-	jal	print_int.24
+	jal	min_caml_print_int
 	addi	$3, $3, -8
 	lw	$31, 4($3)
 	j Exit
