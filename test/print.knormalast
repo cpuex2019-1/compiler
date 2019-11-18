@@ -1,39 +1,39 @@
 Let
-  Tu2
+  Tu2.9
   Unit
   Let
-    Ti3
+    Ti3.16
     Int
     Int 123
     ExtFunApp print_int
     Args
-      Ti3
+      Ti3.16
   Let
-    Tu1
+    Tu1.10
     Unit
     Let
-      Ti5
+      Ti5.14
       Int
       Let
-        Ti4
+        Ti4.15
         Int
         Int 456
-        Neg Ti4
+        Neg Ti4.15
       ExtFunApp print_int
       Args
-        Ti5
+        Ti5.14
     Let
-      Ti8
+      Ti8.11
       Int
       Let
-        Ti6
+        Ti6.12
         Int
         Int 789
         Let
-          Ti7
+          Ti7.13
           Int
           Int 0
-          Add Ti6 Ti7
+          Add Ti6.12 Ti7.13
       ExtFunApp print_int
       Args
-        Ti8
+        Ti8.11

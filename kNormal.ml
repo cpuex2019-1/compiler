@@ -1,6 +1,8 @@
 (* give names to intermediate values (K-normalization) *)
 open Printf
 
+let hp_init = ref 3000
+
 type t = (* K正規化後の式 (caml2html: knormal_t) *)
   | Unit
   | Int of int
@@ -177,6 +179,32 @@ let rec g env = function (* K正規化ルーチン本体 (caml2html: knormal_g) *)
                 | _ -> "create_array"  in
                 (*| _ -> (raise ArrayTypeError) in *)
               ExtFunApp(l, [x; y]), Type.Array(t2)))
+  | Syntax.GlobalArray(e1,e2) ->
+      insert_let (g env e1)
+        (fun x ->
+          let _, t2 as g_e2 = g env e2 in
+          insert_let g_e2
+            (fun y ->
+              let l =
+                match t2 with
+                | Type.Float -> "create_global_float_array"
+                | _ -> "create_global_array"  in
+                (*| _ -> (raise ArrayTypeError) in *)
+              let sz = (match t2 with
+                        | Type.Float -> 8
+                        | _ -> 4
+                       ) in
+              let len = (match e1 with
+                         | Syntax.Int(x) -> x
+                         | _ -> (raise ArrayTypeError)
+                        ) in
+              let address = !hp_init in
+              (
+              hp_init := !hp_init+(sz*len);
+              let addvar = Id.gentmp Type.Int in
+              let tmp = Id.gentmp Type.Int in
+              Let((addvar,Type.Int),Int(address),ExtFunApp(l, [addvar; x; y])), Type.Array(t2)
+              )))
   | Syntax.Get(e1, e2) ->
       (match g env e1 with
       |        _, Type.Array(t) as g_e1 ->

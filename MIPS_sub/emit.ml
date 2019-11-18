@@ -7,7 +7,6 @@ let int_max =  2147483647
 let int_min = -2147483648
 exception Out_of_range of int
 
-let hp_init = 100000
 let float_imm_data = ref []
 
 let stackset = ref S.empty (* すでにSaveされた変数の集合 (caml2html: emit_stackset) *)
@@ -28,7 +27,13 @@ let locate x =
     | y :: zs when x = y -> 0 :: List.map succ (loc zs)
     | y :: zs -> List.map succ (loc zs) in
   loc !stackmap
-let offset x = 4 * List.hd (locate x)
+
+let offset x = 
+  let pos = locate x in
+  match pos with
+  | [] -> (failwith (x^" was not saved"))
+  | _ -> 4 * (List.hd pos)
+
 let stacksize () = align ((List.length !stackmap + 1) * 4)
 
 let reg r =
@@ -68,7 +73,7 @@ let rec get_float_imm_address label data_list idx =
   match data_list with
   | [] -> raise Invalid_float_immidiate
   | (Id.L(x),d)::rest ->
-      (if x = label then (hp_init+8*idx,d)
+      (if x = label then (!(KNormal.hp_init)+8*idx,d)
        else get_float_imm_address label rest (idx+1))
 
 (* 関数呼び出しのために引数を並べ替える(register shuffling) (caml2html: emit_shuffle) *)
@@ -397,7 +402,7 @@ let f oc (Prog(data, fundefs, e)) =
   
   (* initialize heap pointer *)
   (
-    load_imm oc (reg reg_hp) hp_init;
+    load_imm oc (reg reg_hp) !(KNormal.hp_init);
     (* 浮動小数即値の初期化 *)
     arrange_float_imm oc data 0;
     float_imm_data := data;

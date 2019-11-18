@@ -24,6 +24,7 @@ type t = (* MinCamlの構文を表現するデータ型 (caml2html: syntax_t) *)
   | Tuple of t list
   | LetTuple of (Id.t * Type.t) list * t * t
   | Array of t * t
+  | GlobalArray of t * t
   | Get of t * t
   | Put of t * t * t
 and fundef = { name : Id.t * Type.t; args : (Id.t * Type.t) list; body : t }
@@ -121,6 +122,10 @@ let rec print_syntax exp depth outchan =
         print_syntax e2 (depth+1) outchan)
   | Array (e1,e2)
     -> (Printf.fprintf outchan "Array\n";
+        print_syntax e1 (depth+1) outchan;
+        print_syntax e2 (depth+1) outchan)
+  | GlobalArray (e1,e2)
+    -> (Printf.fprintf outchan "GlobalArray\n";
         print_syntax e1 (depth+1) outchan;
         print_syntax e2 (depth+1) outchan)
   | Get (e1,e2)

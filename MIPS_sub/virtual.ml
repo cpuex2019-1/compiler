@@ -31,6 +31,27 @@ let expand xts ini addf addi =
     (fun (offset, acc) x t ->
       (offset + 4, addi x t offset acc))
 
+(* All global variables are converted to constant value in virtual machine code. *)
+(* add x when x is not global variable only *)
+let madd x t env = 
+  if List.mem_assoc x !(SetGlobalArray.global_arrays) then env
+  else M.add x t env
+
+let rec madd_list xts env =
+  match xts with
+  | [] -> env
+  | (x,t)::rest -> (if List.mem_assoc x !(SetGlobalArray.global_arrays) then (madd_list rest env)
+                    else M.add x t (madd_list rest env))
+let rec load_global ys env exp = 
+  match ys with
+  | [] -> exp
+  | y::rest -> ( if M.mem y env then load_global rest env exp
+                 else (
+                   let (addr,ty) = List.assoc y !(SetGlobalArray.global_arrays) in
+                   Let((y,Type.Int),Li(addr),(load_global rest env exp))
+                 )
+               )
+
 let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
   | Closure.Unit -> Ans(Nop)
   | Closure.Int(i) -> Ans(Li(i))
@@ -56,27 +77,34 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
   | Closure.FMul(x, y) -> Ans(FMul(x, y))
   | Closure.FDiv(x, y) -> Ans(FDiv(x, y))
   | Closure.IfEq(x, y, e1, e2) ->
+      (try
       (match M.find x env with
       | Type.Bool | Type.Int -> Ans(IfEq(x, V(y), g env e1, g env e2))
       | Type.Float -> Ans(IfFEq(x, y, g env e1, g env e2))
       | _ -> failwith "equality supported only for bool, int, and float")
+      with Not_found -> (failwith (Printf.sprintf "variable %s was not found." x)))
   | Closure.IfLE(x, y, e1, e2) ->
+      (try
       (match M.find x env with
       | Type.Bool | Type.Int -> Ans(IfLE(x, V(y), g env e1, g env e2))
       | Type.Float -> Ans(IfFLE(x, y, g env e1, g env e2))
       | _ -> failwith "inequality supported only for bool, int, and float")
+      with Not_found -> (failwith (Printf.sprintf "variable %s was not found." x)))
   | Closure.Let((x, t1), e1, e2) ->
       let e1' = g env e1 in
-      let e2' = g (M.add x t1 env) e2 in
+      let e2' = g (madd x t1 env) e2 in
       concat e1' (x, t1) e2'
   | Closure.Var(x) ->
-      (match M.find x env with
-      | Type.Unit -> Ans(Nop)
-      | Type.Float -> Ans(FMr(x))
+      (match M.find_opt x env with
+      | None -> (let (addr,ty) = List.assoc x !(SetGlobalArray.global_arrays) in
+                 Ans(Li(addr)))
+      | Some(Type.Unit) -> Ans(Nop)
+      | Some(Type.Float) -> Ans(FMr(x))
       | _ -> Ans(Mr(x)))
   | Closure.MakeCls((x, t), { Closure.entry = l; Closure.actual_fv = ys }, e2) -> (* クロージャの生成 (caml2html: virtual_makecls) *)
       (* Closureのアドレスをセットしてから、自由変数の値をストア *)
-      let e2' = g (M.add x t env) e2 in
+      (try(
+      let e2' = g (madd x t env) e2 in
       let offset, store_fv =
         expand
           (List.map (fun y -> (y, M.find y env)) ys)
@@ -89,13 +117,19 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
               Let((z, Type.Int), SetL(l),
                   seq(Stw(z, x, C(0)),
                       store_fv))))
+      ) with Not_found -> (failwith (Printf.sprintf "variable %s was not found.(MakeCls)" x)))
   | Closure.AppCls(x, ys) ->
-      let (int, float) = separate (List.map (fun y -> (y, M.find y env)) ys) in
-      Ans(CallCls(x, int, float))
+      (try(
+      let (int, float) = separate (List.map (fun y -> (y, (try M.find y env with Not_found -> Type.Int(* Not_found is because of global Array *)))) ys) in
+      load_global ys env (Ans(CallCls(x, int, float)))
+      ) with Not_found -> (failwith (Printf.sprintf "variable %s was not found.(AppCls)" x)))
   | Closure.AppDir(Id.L(x), ys) ->
-      let (int, float) = separate (List.map (fun y -> (y, M.find y env)) ys) in
-      Ans(CallDir(Id.L(x), int, float))
+      (try(
+      let (int, float) = separate (List.map (fun y -> (y, (try M.find y env with Not_found -> Type.Int))) ys) in
+      load_global ys env (Ans(CallDir(Id.L(x), int, float)))
+      ) with Not_found -> (failwith (Printf.sprintf "variable %s was not found.(AppDir)" x)))
   | Closure.Tuple(xs) -> (* 組の生成 (caml2html: virtual_tuple) *)
+      (try  (
       let y = Id.genid "t" in
       let (offset, store) =
         expand
@@ -106,12 +140,13 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
       Let((y, Type.Tuple(List.map (fun x -> M.find x env) xs)), Mr(reg_hp),
           Let((reg_hp, Type.Int), Add(reg_hp, C(align offset)),
               store))
+      ) with Not_found -> (failwith (Printf.sprintf "tuple was not found." )))
   | Closure.LetTuple(xts, y, e2) ->
       let s = Closure.fv e2 in
       let (offset, load) =
         expand
           xts
-          (0, g (M.add_list xts env) e2)
+          (0, g (madd_list xts env) e2)
           (fun x offset load ->
             if not (S.mem x s) then load else (* [XX] a little ad hoc optimization *)
             fletd(x, Lfd(y, C(offset)), load))
@@ -121,23 +156,47 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
       load
   | Closure.Get(x, y) -> (* 配列の読み出し (caml2html: virtual_get) *)
       let offset = Id.genid "o" in
-      (match M.find x env with
-      | Type.Array(Type.Unit) -> Ans(Nop)
-      | Type.Array(Type.Float) ->
+      let absaddr = Id.genid "o" in
+      (match M.find_opt x env with
+      | None ->
+          (let (addr,ty) = List.assoc x !(SetGlobalArray.global_arrays) in
+           match ty with
+           | Type.Float -> Let((offset, Type.Int),Slw(y,C(3)),
+                             Let((absaddr,Type.Int),Add(offset,C(addr)),
+                               Ans(Lfd(reg_zero,V(absaddr)))))
+           | Type.Int -> Let((offset, Type.Int),Slw(y,C(2)),
+                             Let((absaddr,Type.Int),Add(offset,C(addr)),
+                               Ans(Lwz(reg_zero,V(absaddr)))))
+           | _ -> assert false
+          )
+      | Some(Type.Array(Type.Unit)) -> Ans(Nop)
+      | Some(Type.Array(Type.Float)) ->
           Let((offset, Type.Int), Slw(y, C(3)),
               Ans(Lfd(x, V(offset))))
-      | Type.Array(_) ->
+      | Some(Type.Array(_)) ->
           Let((offset, Type.Int), Slw(y, C(2)),
               Ans(Lwz(x, V(offset))))
       | _ -> assert false)
   | Closure.Put(x, y, z) ->
       let offset = Id.genid "o" in
-      (match M.find x env with
-      | Type.Array(Type.Unit) -> Ans(Nop)
-      | Type.Array(Type.Float) ->
+      let absaddr = Id.genid "o" in
+      (match M.find_opt x env with
+      | None ->
+          (let (addr,ty) = List.assoc x !(SetGlobalArray.global_arrays) in
+           match ty with
+           | Type.Float -> Let((offset, Type.Int),Slw(y,C(3)),
+                             Let((absaddr,Type.Int),Add(offset,C(addr)),
+                               Ans(Stfd(z,reg_zero,V(absaddr)))))
+           | Type.Int -> Let((offset, Type.Int),Slw(y,C(2)),
+                             Let((absaddr,Type.Int),Add(offset,C(addr)),
+                               Ans(Stw(z,reg_zero,V(absaddr)))))
+           | _ -> assert false
+          )
+      | Some(Type.Array(Type.Unit)) -> Ans(Nop)
+      | Some(Type.Array(Type.Float)) ->
           Let((offset, Type.Int), Slw(y, C(3)),
               Ans(Stfd(z, x, V(offset))))
-      | Type.Array(_) ->
+      | Some(Type.Array(_)) ->
           Let((offset, Type.Int), Slw(y, C(2)),
               Ans(Stw(z, x, V(offset))))
       | _ -> assert false)
@@ -149,7 +208,7 @@ let h { Closure.name = (Id.L(x), t); Closure.args = yts; Closure.formal_fv = zts
   let (offset, load) =
     expand
       zts
-      (4, g (M.add x t (M.add_list yts (M.add_list zts M.empty))) e)
+      (4, g (madd x t (madd_list yts (madd_list zts M.empty))) e)
       (fun z offset load -> fletd(z, Lfd(x, C(offset)), load))
       (fun z t offset load -> Let((z, t), Lwz(x, C(offset)), load)) in
   match t with

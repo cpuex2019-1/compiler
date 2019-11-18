@@ -141,6 +141,36 @@ create_float_array_cont:
 	addi $5, $5, -1
 	addi $4, $4, 8
 	j	create_float_array_loop
+  
+#	create_global_array
+# $2 addr, $5 length, $6 element
+min_caml_create_global_array:	
+	mov	$7, $2
+create_global_array_loop:
+	bne	$0, $5, create_global_array_cont
+	j	create_array_exit
+create_global_array_exit:
+	jr $31
+create_global_array_cont:
+	sw $6, 0($7)
+	addi $5, $5, -1
+	addi $7, $7, 4
+	j	create_global_array_loop
+
+#	create_global_float_array
+# $2 addr, $5 length, $f0 element
+min_caml_create_global_float_array:	
+	mov	$7, $2
+create_global_float_array_loop:
+	bne	$0, $5, create_global_float_array_cont
+	j	create_array_exit
+create_global_float_array_exit:
+	jr $31
+create_global_float_array_cont:
+	sf $f0, 0($7)
+	addi $5, $5, -1
+	addi $7, $7, 8
+	j	create_global_float_array_loop
 
 #read_int
 min_caml_read_int:
