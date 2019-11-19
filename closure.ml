@@ -59,7 +59,7 @@ let rec fv = function
   | MakeCls((x, t), { entry = l; actual_fv = ys }, e) -> S.diff (S.union (fv_sub_list ys) (fv e)) (fv_sub x)
   | AppCls(x, ys) -> fv_sub_list (x :: ys)
   | AppDir(_, xs) | Tuple(xs) -> fv_sub_list xs
-  | GlobalTuple(_,xs) -> S.empty
+  | GlobalTuple(_,xs) -> fv_sub_list xs
   | LetTuple(xts, y, e) -> S.union (fv_sub y) (S.diff (fv e) (fv_sub_list (List.map fst xts)))
   | Get(x,y) -> fv_sub_list [x; y]
   | Put(x, y, z) -> fv_sub_list [x;y;z]
