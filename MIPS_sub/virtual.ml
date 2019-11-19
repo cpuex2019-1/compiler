@@ -150,6 +150,7 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
           (0, Ans(Mr(y)))
           (fun x offset store -> seq(Stfd(x, y, C(offset)), store))
           (fun x _ offset store -> seq(Stw(x, y, C(offset)), store))  in
+      (* assert(offset = (KNormal.tuple_size (List.map (fun x -> M.find x env) xs))); *)
       Let((y, Type.Tuple(List.map (fun x -> M.find x env) xs)), Li(addr),
               store)
       )

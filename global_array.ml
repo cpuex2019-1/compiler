@@ -35,6 +35,7 @@ let rec g  = function
         let tp = is_global_tuple e1 in
         (if tp = 1 then 
           Let((x,t),(subst_global_tuple e1),(g e2))
+          (*Let((x,t),e1,(g e2)) *)
          else
           Let((x,t),e1,(g e2))
         )

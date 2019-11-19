@@ -28,6 +28,7 @@ type t =
 and fundef = { name : Id.t * Type.t; args : (Id.t * Type.t) list; body : t }
 
 val hp_init : int ref
+val tuple_size : Type.t list -> int
 
 val fv : t -> S.t
 val f : Syntax.t -> t

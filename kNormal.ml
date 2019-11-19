@@ -55,12 +55,17 @@ let insert_let (e, t) k = (* letを挿入する補助関数 (caml2html: knormal_insert) *
       let e', t' = k x in
       Let((x, t), e, e'), t'
 
-let rec size ts =
-  match ts with
-  | [] -> 0
-  | (Type.Unit)::rest -> size rest
-  | (Type.Float)::rest -> (size rest)+8
-  | (_)::rest -> (size rest)+4
+let align i = (if i mod 8 = 0 then i else i + 4)
+
+let calc_size sz t =
+  match t with
+  | Type.Unit -> sz
+  | Type.Float -> (align sz)+8
+  | _ -> sz+4
+
+let tuple_size ts =
+  align (List.fold_left calc_size 0 ts)
+
 
 exception ArrayTypeError
 
@@ -173,7 +178,7 @@ let rec g env = function (* K正規化ルーチン本体 (caml2html: knormal_g) *)
   | Syntax.GlobalTuple(es) ->
       let rec bind xs ts = function (* "xs" and "ts" are identifiers and types for the elements *)
         | [] -> (
-          let sz = size ts in
+          let sz = tuple_size ts in
           let addr = !hp_init in
           (hp_init := !hp_init+sz;
            GlobalTuple(addr,xs), Type.Tuple(ts))
