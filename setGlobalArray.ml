@@ -1,6 +1,5 @@
 
 let global_arrays = ref []
-let global_tuples = ref []
 
 let rec is_global_array = function
   | KNormal.Let((_,Type.Int),KNormal.Int(addr),KNormal.ExtFunApp("create_global_float_array",_)) -> ((*print_int addr;*)(addr,Type.Float))
