@@ -4,6 +4,8 @@ open Asm
 
 let data = ref [] (* 浮動小数点数の定数テーブル (caml2html: virtual_data) *)
 
+let global_env = ref []
+
 let classify xts ini addf addi =
   List.fold_left
     (fun acc (x, t) ->
@@ -18,8 +20,7 @@ let separate xts =
   classify
     xts
     ([], [])
-    (fun (int, float) x -> (int, float @ [x]))
-    (fun (int, float) x _ -> (int @ [x], float))
+    (fun (int, float) x -> (int, float @ [x])) (fun (int, float) x _ -> (int @ [x], float))
 
 let expand xts ini addf addi =
   classify
@@ -40,15 +41,34 @@ let madd x t env =
 let rec madd_list xts env =
   match xts with
   | [] -> env
-  | (x,t)::rest -> (if List.mem_assoc x !(SetGlobalArray.global_arrays) then (madd_list rest env)
-                    else M.add x t (madd_list rest env))
+  | (x,t)::rest -> 
+      (if List.mem_assoc x !(SetGlobalArray.global_arrays) 
+         then (madd_list rest env)
+       else M.add x t (madd_list rest env))
+
+let mfind x env = 
+  try 
+    M.find x env
+  with
+  | Not_found -> Type.Int
+
 let rec load_global ys env exp = 
   match ys with
   | [] -> exp
-  | y::rest -> ( if M.mem y env then load_global rest env exp
+  | y::rest -> ( if M.mem y env then
+                   load_global rest env exp
                  else (
-                   let (addr,_) = List.assoc y !(SetGlobalArray.global_arrays) in
-                   Let((y,Type.Int),Li(addr),(load_global rest env exp))
+                   if List.mem y (!global_env) then
+                     (* This global variable has already loaded. *)
+                     load_global rest env exp
+                   else (
+                     if List.mem_assoc y !(SetGlobalArray.global_arrays) then  
+                       let (addr,_) = List.assoc y !(SetGlobalArray.global_arrays) in
+                       global_env := y::(!global_env);
+                       Let((y,Type.Int),Li(addr),(load_global rest env exp))
+                     else 
+                       load_global rest env exp
+                   )
                  )
                )
 
@@ -92,8 +112,12 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
       with Not_found -> (failwith (Printf.sprintf "variable %s was not found." x)))
   | Closure.Let((x, t1), e1, e2) ->
       let e1' = g env e1 in
-      let e2' = g (madd x t1 env) e2 in
-      concat e1' (x, t1) e2'
+      (
+        (if List.mem_assoc x (!SetGlobalArray.global_arrays) then
+          global_env := x::(!global_env));
+        let e2' = g (madd x t1 env) e2 in
+        concat e1' (x, t1) e2'
+      )
   | Closure.Var(x) ->
       (match M.find_opt x env with
       | None -> (let (addr,ty) = List.assoc x !(SetGlobalArray.global_arrays) in
@@ -107,7 +131,7 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
       let e2' = g (madd x t env) e2 in
       let offset, store_fv =
         expand
-          (List.map (fun y -> (y, M.find y env)) ys)
+          (List.map (fun y -> (y, mfind y env)) ys)
           (4, e2')
           (fun y offset store_fv -> seq(Stfd(y, x, C(offset)), store_fv))
           (fun y _ offset store_fv -> seq(Stw(y, x, C(offset)), store_fv)) in
@@ -133,11 +157,11 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
       let y = Id.genid "t" in
       let (offset, store) =
         expand
-          (List.map (fun x -> (x, M.find x env)) xs)
+          (List.map (fun x -> (x, mfind x env)) xs)
           (0, Ans(Mr(y)))
           (fun x offset store -> seq(Stfd(x, y, C(offset)), store))
           (fun x _ offset store -> seq(Stw(x, y, C(offset)), store))  in
-      Let((y, Type.Tuple(List.map (fun x -> M.find x env) xs)), Mr(reg_hp),
+      Let((y, Type.Tuple(List.map (fun x -> mfind x env) xs)), Mr(reg_hp),
           Let((reg_hp, Type.Int), Add(reg_hp, C(align offset)),
               store))
       ) with Not_found -> (failwith (Printf.sprintf "tuple was not found." )))
@@ -146,7 +170,7 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
       let y = Id.genid "t" in
       let (offset, store) =
         expand
-          (List.map (fun x -> (x, M.find x env)) xs)
+          (List.map (fun x -> (x, mfind x env)) xs)
           (0, Ans(Mr(y)))
           (fun x offset store -> seq(Stfd(x, y, C(offset)), store))
           (fun x _ offset store -> seq(Stw(x, y, C(offset)), store))  in
@@ -161,10 +185,10 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
           xts
           (0, g (madd_list xts env) e2)
           (fun x offset load ->
-            if not (S.mem x s) then load else (* [XX] a little ad hoc optimization *)
+            (* if not (S.mem x s) then load else (* [XX] a little ad hoc optimization *) *)
             fletd(x, Lfd(y, C(offset)), load))
           (fun x t offset load ->
-            if not (S.mem x s) then load else (* [XX] a little ad hoc optimization *)
+            (* if not (S.mem x s) then load else (* [XX] a little ad hoc optimization *) *)
             Let((x, t), Lwz(y, C(offset)), load)) in
       load_global [y] env load
 
@@ -225,21 +249,33 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
 
 (* 関数の仮想マシンコード生成 (caml2html: virtual_h) *)
 let h { Closure.name = (Id.L(x), t); Closure.args = yts; Closure.formal_fv = zts; Closure.body = e } =
-  let (int, float) = separate yts in
-  let (offset, load) =
-    expand
-      zts
-      (4, g (madd x t (madd_list yts (madd_list zts M.empty))) e)
-      (fun z offset load -> fletd(z, Lfd(x, C(offset)), load))
-      (fun z t offset load -> Let((z, t), Lwz(x, C(offset)), load)) in
-  match t with
-  | Type.Fun(_, t2) ->
-      { name = Id.L(x); args = int; fargs = float; body = load; ret = t2 }
-  | _ -> assert false
+  (* initialize global env*)
+  global_env := [];
+  (
+    let (int, float) = separate yts in
+    let (offset, load) =
+      expand
+        zts
+        (4, g (madd x t (madd_list yts (madd_list zts M.empty))) e)
+        (fun z offset load -> fletd(z, Lfd(x, C(offset)), load))
+        (fun z t offset load -> Let((z, t), Lwz(x, C(offset)), load)) in
+    (* print_syntax stdout load; *)
+    match t with
+    | Type.Fun(_, t2) ->
+        { name = Id.L(x); args = int; fargs = float; body = load; ret = t2 }
+    | _ -> assert false
+  )
 
 (* プログラム全体の仮想マシンコード生成 (caml2html: virtual_f) *)
 let f (Closure.Prog(fundefs, e)) =
   data := [];
   let fundefs = List.map h fundefs in
-  let e = g M.empty e in
-  Prog(!data, fundefs, e)
+  (
+    (* initialize global env *)
+    global_env := [];
+    (
+      let e = g M.empty e in
+      (* print_syntax stdout e; *)
+      Prog(!data, fundefs, e)
+    )
+  )

@@ -204,8 +204,8 @@ let rec print_syntax exp depth outchan =
   | Tuple (il)
     -> (fprintf outchan "Tuple\n";
         print_id_list il (depth+1) outchan)
-  | GlobalTuple (_,il)
-    -> (fprintf outchan "GlobalTuple\n";
+  | GlobalTuple (addr,il)
+    -> (fprintf outchan "GlobalTuple %d\n" addr;
         print_id_list il (depth+1) outchan)
   | LetTuple (idtyl,i1,e1)
     -> (fprintf outchan "LetTuple\n";

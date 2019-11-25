@@ -4,6 +4,27 @@ open KNormal
 
 let find x env = try M.find x env with Not_found -> x
 
+let madd x t env = 
+  if List.mem_assoc x !(SetGlobalArray.global_arrays) then env
+  else M.add x t env
+
+let rec madd_list xts env =
+  match xts with
+  | [] -> env
+  | (x,t)::rest -> 
+      (if List.mem_assoc x !(SetGlobalArray.global_arrays) 
+         then (madd_list rest env)
+       else M.add x t (madd_list rest env))
+
+let rec madd_list2 xs ts env =
+  match (xs,ts) with
+  | ([],[]) -> env
+  | ((x::rx),(t::rt)) -> 
+      (if List.mem_assoc x !(SetGlobalArray.global_arrays)
+         then (madd_list2 rx rt env)
+       else M.add x t (madd_list2 rx rt env))
+  | _ -> failwith "Alpha"
+
 let rec g env = function (* α変換ルーチン本体 (caml2html: alpha_g) *)
   | Unit -> Unit
   | Int(i) -> Int(i)
@@ -27,7 +48,7 @@ let rec g env = function (* α変換ルーチン本体 (caml2html: alpha_g) *)
   | LetRec({ name = (x, t); args = yts; body = e1 }, e2) -> (* let recのα変換 (caml2html: alpha_letrec) *)
       let env = M.add x (Id.genid x) env in
       let ys = List.map fst yts in
-      let env' = M.add_list2 ys (List.map Id.genid ys) env in
+      let env' = madd_list2 ys (List.map Id.genid ys) env in
       LetRec({ name = (find x env, t);
                args = List.map (fun (y, t) -> (find y env', t)) yts;
                body = g env' e1 },
@@ -37,7 +58,7 @@ let rec g env = function (* α変換ルーチン本体 (caml2html: alpha_g) *)
   | GlobalTuple(addr,xs) -> GlobalTuple(addr,List.map (fun x -> find x env) xs)
   | LetTuple(xts, y, e) -> (* LetTupleのα変換 (caml2html: alpha_lettuple) *)
       let xs = List.map fst xts in
-      let env' = M.add_list2 xs (List.map Id.genid xs) env in
+      let env' = madd_list2 xs (List.map Id.genid xs) env in
       LetTuple(List.map (fun (x, t) -> (find x env', t)) xts,
                find y env,
                g env' e)

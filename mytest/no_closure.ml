@@ -1,5 +1,9 @@
-let a = Array.create 10 3
+let v =
+  let a = Array.create 3 1 in
+  let b = Array.create 2 1.0 in
+  (a,b)
 in
+
 let rec print_int_sub x = 
   if x = 0 then ()
   else (
@@ -20,7 +24,11 @@ let rec print_int x =
     )
  )
 in
-let rec f u =
-  a.(2)
+
+let rec g x = 
+  let (c,d) = v in
+  c.(x)
 in
-print_int (f ())
+
+print_int (g 1)
+  
