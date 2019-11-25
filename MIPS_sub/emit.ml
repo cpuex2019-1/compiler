@@ -424,7 +424,10 @@ let f oc (Prog(data, fundefs, e)) =
   );
 
 
+  Printf.eprintf "processing fundef\n";
   List.iter (fun fundef -> h oc fundef) fundefs;
+
+  Printf.eprintf "processing main program\n";
 
   Printf.fprintf oc "#\tmain program starts\n";
   Printf.fprintf oc "Main:\n";
