@@ -461,7 +461,7 @@ let rec print_int_sub x =
   )
 in
 
-let rec print_int x = 
+(*let rec print_int x = 
   if x = 0 then (print_char 48)
   else (
     if x > 0 then print_int_sub x
@@ -469,8 +469,25 @@ let rec print_int x =
       print_char 45;
       print_int_sub (-x)
     )
- )
+  )
 in
+*)
+
+let rec print_int_ascii x = 
+  if x = 0 then (print_char 48)
+  else (
+    if x > 0 then print_int_sub x
+    else (
+      print_char 45;
+      print_int_sub (-x)
+    )
+  )
+in
+
+let rec print_int x =
+  print_char x
+in
+
 (****************************************************************)
 (*                                                              *)
 (* Ray Tracing Program for (Mini) Objective Caml                *)
@@ -2393,13 +2410,13 @@ in
 let rec write_ppm_header _ =
   (
     print_char 80; (* 'P' *)
-    print_char (48 + 3); (* +6 if binary *) (* 48 = '0' *)
+    print_char (48 + 6); (* +6 if binary *) (* 48 = '0' *)
     print_char 10;
-    print_int image_size.(0);
+    print_int_ascii image_size.(0);
     print_char 32;
-    print_int image_size.(1);
+    print_int_ascii image_size.(1);
     print_char 32;
-    print_int 255;
+    print_int_ascii 255;
     print_char 10
   )
 in
@@ -2412,11 +2429,12 @@ in
 
 let rec write_rgb _ =
    write_rgb_element rgb.(0); (* Red   *)
-   print_char 32;
+   (*print_char 32;*)
    write_rgb_element rgb.(1); (* Green *)
-   print_char 32;
+   (*print_char 32;*)
    write_rgb_element rgb.(2); (* Blue  *)
-   print_char 10
+   (*print_char 10*)
+   ()
 in
 
 (******************************************************************************
@@ -2777,6 +2795,6 @@ let rec rt size_x size_y =
 )
 in
 
-let _ = rt 128 128
+let _ = rt 64 64
 
 in ()
