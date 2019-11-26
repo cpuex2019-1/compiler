@@ -38,16 +38,20 @@ let mfind x env =
   with
   | Not_found -> Type.Int
 
-let rec load_global ys env exp = 
-  match ys with
-  | [] -> exp
+let rec rename_global l = 
+  match l with
+  | [] -> []
   | y::rest -> (
-    if M.mem y env then (
-      load_global rest env exp
-    ) else (
-      let (addr,_) = List.assoc y !(SetGlobalArray.global_arrays) in
-      Let((y,Type.Int),Li(addr),(load_global rest (M.add y Type.Int env) exp))
-    )
+    if List.mem_assoc y !(SetGlobalArray.global_arrays) then
+      (
+        let (addr,_) = List.assoc y !(SetGlobalArray.global_arrays) in
+        let yt = Id.genid "g" in
+        (yt,addr)::(rename_global rest)
+      )
+    else
+      (
+        (y,-1)::(rename_global rest)
+      )
   )
 
 let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
@@ -119,12 +123,18 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
   | Closure.AppCls(x, ys) ->
       (try(
       let (int, float) = separate (List.map (fun y -> (y, (try M.find y env with Not_found -> Type.Int(* Not_found is because of global Array *)))) ys) in
-      load_global ys env (Ans(CallCls(x, int, float)))
+      let nint = rename_global int in
+      List.fold_right (fun (name,addr) exp -> if addr >=0 then Let((name,Type.Int),Li(addr),exp) 
+                                        else exp) nint
+      (Ans(CallCls(x, (List.map (fun (a,b) -> a) nint), float)))
       ) with Not_found -> (failwith (Printf.sprintf "variable %s was not found.(AppCls)" x)))
   | Closure.AppDir(Id.L(x), ys) ->
       (try(
       let (int, float) = separate (List.map (fun y -> (y, (try M.find y env with Not_found -> Type.Int))) ys) in
-      load_global ys env (Ans(CallDir(Id.L(x), int, float)))
+      let nint = rename_global int in
+      List.fold_right (fun (name,addr) exp -> if addr >=0 then Let((name,Type.Int),Li(addr),exp) 
+                                        else exp) nint
+      (Ans(CallDir(Id.L(x), (List.map (fun (a,b) -> a) nint), float)))
       ) with Not_found -> (failwith (Printf.sprintf "variable %s was not found.(AppDir)" x)))
   | Closure.Tuple(xs) -> (* 組の生成 (caml2html: virtual_tuple) *)
       (try  (
@@ -153,21 +163,37 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
               store)
       )
   | Closure.LetTuple(xts, y, e2) ->
-      let s = Closure.fv e2 in
+      (* let s = Closure.fv e2 in *)
       let env' = (match M.mem y env with
                   | false -> M.add y Type.Int (M.add_list xts env)
                   | true -> M.add_list xts env) in
-      let (offset, load) =
-        expand
-          xts
-          (0, g env' e2)
-          (fun x offset load ->
-            (* if not (S.mem x s) then load else (* [XX] a little ad hoc optimization *) *)
-            fletd(x, Lfd(y, C(offset)), load))
-          (fun x t offset load ->
-            (* if not (S.mem x s) then load else (* [XX] a little ad hoc optimization *) *)
-            Let((x, t), Lwz(y, C(offset)), load)) in
-      load_global [y] env load
+      if List.mem_assoc y (!SetGlobalArray.global_arrays) then (
+        let y' = Id.genid "lt" in
+        let (addr,ty) = List.assoc y !(SetGlobalArray.global_arrays) in
+        let (offset, load) =
+          expand
+            xts
+            (0, g env' e2)
+            (fun x offset load ->
+              (* if not (S.mem x s) then load else (* [XX] a little ad hoc optimization *) *)
+              fletd(x, Lfd(y', C(offset)), load))
+            (fun x t offset load ->
+              (* if not (S.mem x s) then load else (* [XX] a little ad hoc optimization *) *)
+              Let((x, t), Lwz(y', C(offset)), load)) in
+        Let((y',Type.Int),Li(addr),load)
+      ) else (
+        let (offset, load) =
+          expand
+            xts
+            (0, g env' e2)
+            (fun x offset load ->
+              (* if not (S.mem x s) then load else (* [XX] a little ad hoc optimization *) *)
+              fletd(x, Lfd(y, C(offset)), load))
+            (fun x t offset load ->
+              (* if not (S.mem x s) then load else (* [XX] a little ad hoc optimization *) *)
+              Let((x, t), Lwz(y, C(offset)), load)) in
+        load
+      )
 
   (* attention 
    * if an error "xxxxx was not saved" occur, use load_global to load global variable
@@ -176,8 +202,8 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
   | Closure.Get(x, y) -> (* 配列の読み出し (caml2html: virtual_get) *)
       let offset = Id.genid "o" in
       let absaddr = Id.genid "o" in
-      (match M.find_opt x env with
-      | None ->
+      (match List.mem_assoc x (!SetGlobalArray.global_arrays) with
+      | true ->
           (let (addr,ty) = List.assoc x !(SetGlobalArray.global_arrays) in
            match ty with
            | Type.Float -> Let((offset, Type.Int),Slw(y,C(3)),
@@ -188,40 +214,87 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
                                Ans(Lwz(reg_zero,V(absaddr)))))
            | _ -> assert false
           )
-      | Some(Type.Array(Type.Unit)) -> Ans(Nop)
-      | Some(Type.Array(Type.Float)) ->
-          Let((offset, Type.Int), Slw(y, C(3)),
-              Ans(Lfd(x, V(offset))))
-      | Some(Type.Array(_)) ->
-          Let((offset, Type.Int), Slw(y, C(2)),
-              Ans(Lwz(x, V(offset))))
-      | _ -> assert false)
+      | false ->
+          (match M.find x env with
+           | Type.Array(Type.Unit) -> Ans(Nop)
+           | Type.Array(Type.Float) ->
+               Let((offset, Type.Int), Slw(y, C(3)),
+                   Ans(Lfd(x, V(offset))))
+           | Type.Array(_) ->
+               Let((offset, Type.Int), Slw(y, C(2)),
+                   Ans(Lwz(x, V(offset))))
+           | _ -> assert false)
+      )
   | Closure.Put(x, y, z) ->
       let offset = Id.genid "o" in
       let absaddr = Id.genid "o" in
-      (match M.find_opt x env with
-      | None ->
-          load_global [z] env
-          (let (addr,ty) = List.assoc x !(SetGlobalArray.global_arrays) in
-           match ty with
-           | Type.Float -> Let((offset, Type.Int),Slw(y,C(3)),
-                             Let((absaddr,Type.Int),Add(offset,C(addr)),
-                               Ans(Stfd(z,reg_zero,V(absaddr)))))
-           | Type.Int -> Let((offset, Type.Int),Slw(y,C(2)),
-                             Let((absaddr,Type.Int),Add(offset,C(addr)),
-                               Ans(Stw(z,reg_zero,V(absaddr)))))
-           | _ -> assert false
+      (match List.mem_assoc x (!SetGlobalArray.global_arrays) with
+      | true ->
+          (
+           match List.mem_assoc z (!SetGlobalArray.global_arrays) with
+           | true ->
+               (
+                 let (addrz,tyz) = List.assoc z !(SetGlobalArray.global_arrays) in
+                 let z' = Id.genid "g" in
+                 Let((z',Type.Int),Li(addrz),
+                   (
+                     let (addr,ty) = List.assoc x !(SetGlobalArray.global_arrays) in
+                     match ty with
+                     | Type.Float -> Let((offset, Type.Int),Slw(y,C(3)),
+                                       Let((absaddr,Type.Int),Add(offset,C(addr)),
+                                         Ans(Stfd(z',reg_zero,V(absaddr)))))
+                     | Type.Int -> Let((offset, Type.Int),Slw(y,C(2)),
+                                       Let((absaddr,Type.Int),Add(offset,C(addr)),
+                                         Ans(Stw(z',reg_zero,V(absaddr)))))
+                     | _ -> assert false
+                   ))
+               )
+                 
+           | false ->
+               (
+                 let (addr,ty) = List.assoc x !(SetGlobalArray.global_arrays) in
+                 match ty with
+                 | Type.Float -> Let((offset, Type.Int),Slw(y,C(3)),
+                                   Let((absaddr,Type.Int),Add(offset,C(addr)),
+                                     Ans(Stfd(z,reg_zero,V(absaddr)))))
+                 | Type.Int -> Let((offset, Type.Int),Slw(y,C(2)),
+                                   Let((absaddr,Type.Int),Add(offset,C(addr)),
+                                     Ans(Stw(z,reg_zero,V(absaddr)))))
+                 | _ -> assert false
+               )
           )
-      | Some(Type.Array(Type.Unit)) -> (load_global [z] env (Ans(Nop)))
-      | Some(Type.Array(Type.Float)) ->
-          load_global [z] env 
-          (Let((offset, Type.Int), Slw(y, C(3)),
-              Ans(Stfd(z, x, V(offset)))))
-      | Some(Type.Array(_)) ->
-          load_global [z] env
-          (Let((offset, Type.Int), Slw(y, C(2)),
-              Ans(Stw(z, x, V(offset)))))
-      | _ -> assert false)
+      | false ->
+          (
+           match List.mem_assoc z (!SetGlobalArray.global_arrays) with
+           | true ->
+               (
+                 let (addrz,tyz) = List.assoc z !(SetGlobalArray.global_arrays) in
+                 let z' = Id.genid "g" in
+                 Let((z',Type.Int),Li(addrz),
+                   (match M.find x env with
+                    | Type.Array(Type.Unit) -> ((Ans(Nop)))
+                    | Type.Array(Type.Float) ->
+                        (Let((offset, Type.Int), Slw(y, C(3)),
+                            Ans(Stfd(z', x, V(offset)))))
+                    | Type.Array(_) ->
+                        (Let((offset, Type.Int), Slw(y, C(2)),
+                            Ans(Stw(z', x, V(offset)))))
+                    | _ -> assert false
+                   ))
+               )
+           | false ->
+               (match M.find x env with
+                | Type.Array(Type.Unit) -> ((Ans(Nop)))
+                | Type.Array(Type.Float) ->
+                    (Let((offset, Type.Int), Slw(y, C(3)),
+                        Ans(Stfd(z, x, V(offset)))))
+                | Type.Array(_) ->
+                    (Let((offset, Type.Int), Slw(y, C(2)),
+                        Ans(Stw(z, x, V(offset)))))
+                | _ -> assert false
+               )
+          )
+      )
   | Closure.ExtArray(Id.L(x)) -> Ans(SetL(Id.L("min_caml_" ^ x)))
 
 (* 関数の仮想マシンコード生成 (caml2html: virtual_h) *)
