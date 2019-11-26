@@ -297,9 +297,25 @@ external sin : float -> float = "sin_float" "sin" "float"
 external atan : float -> float = "atan_float" "atan" "float"
 *)
 
+(*
 let rec pow x n =
   if n = 0 then 1.0
-           else (x *. (pow x (n-1))) 
+  else (
+    x *. pow x (n-1)
+ )
+in
+*)
+
+let rec pow x n =
+  if n = 0 then 1.0
+  else (
+    let h = n / 2 in
+    let y = pow x h in
+    if h * 2 = n then
+      y *. y
+    else
+      x *. y *. y
+ )
 in
 
 let rec fact_tail acc n =
@@ -461,18 +477,6 @@ let rec print_int_sub x =
   )
 in
 
-(*let rec print_int x = 
-  if x = 0 then (print_char 48)
-  else (
-    if x > 0 then print_int_sub x
-    else (
-      print_char 45;
-      print_int_sub (-x)
-    )
-  )
-in
-*)
-
 let rec print_int_ascii x = 
   if x = 0 then (print_char 48)
   else (
@@ -481,13 +485,12 @@ let rec print_int_ascii x =
       print_char 45;
       print_int_sub (-x)
     )
-  )
+ )
 in
 
 let rec print_int x =
   print_char x
 in
-
 (****************************************************************)
 (*                                                              *)
 (* Ray Tracing Program for (Mini) Objective Caml                *)
@@ -2429,11 +2432,11 @@ in
 
 let rec write_rgb _ =
    write_rgb_element rgb.(0); (* Red   *)
-   (*print_char 32;*)
+   (* print_char 32; *)
    write_rgb_element rgb.(1); (* Green *)
-   (*print_char 32;*)
+   (* print_char 32; *)
    write_rgb_element rgb.(2); (* Blue  *)
-   (*print_char 10*)
+   (* print_char 10 *)
    ()
 in
 

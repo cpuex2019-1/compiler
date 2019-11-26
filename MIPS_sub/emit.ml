@@ -57,14 +57,19 @@ let load_imm oc target_reg c =
   else (
     let n = c lsr 16 in (* upper 16bit *)
     let m = c lxor (n lsl 16) in (* lower 16bit *)
+
     if m = 0 then (
       Printf.fprintf oc "\tori\t%s, %s, %d\n" r reg_zero n;
       Printf.fprintf oc "\tslli\t%s, %s, %d\n" r r 16
     )
     else (
-      Printf.fprintf oc "\tori\t%s, %s, %d\n" r reg_zero n;
-      Printf.fprintf oc "\tslli\t%s, %s, %d\n" r r 16;
-      Printf.fprintf oc "\tori\t%s, %s, %d\n" r r m
+      if n = 0 then (
+        Printf.fprintf oc "\tori\t%s, %s, %d\n" r reg_zero m
+      ) else (
+        Printf.fprintf oc "\tori\t%s, %s, %d\n" r reg_zero n;
+        Printf.fprintf oc "\tslli\t%s, %s, %d\n" r r 16;
+        Printf.fprintf oc "\tori\t%s, %s, %d\n" r r m
+      )
     )
  )
 
@@ -178,7 +183,7 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   -> Printf.fprintf oc "\tadd\t%s, %s, %s\nlf\t%s, 0(%s)\n" (reg reg_tmp) (reg y) (reg z) (reg x) (reg reg_tmp)
   | NonTail(x), Lfd(y, C(z)) -> Printf.fprintf oc "\tlf\t%s, %d(%s)\n" (reg x) z (reg y)
   | NonTail(_), Stfd(x, y, V(z))
-  -> Printf.fprintf oc "\tadd\t%s, %s, %s\nsf\t%s, 0(%s)\n" (reg reg_tmp) (reg y) (reg z) (reg x) (reg reg_tmp)
+  -> Printf.fprintf oc "\tadd\t%s, %s, %s\n\tsf\t%s, 0(%s)\n" (reg reg_tmp) (reg y) (reg z) (reg x) (reg reg_tmp)
   | NonTail(_), Stfd(x, y, C(z)) -> Printf.fprintf oc "\tsf\t%s, %d(%s)\n" (reg x) z (reg y)
   | NonTail(_), Comment(s) -> Printf.fprintf oc "#\t%s\n" s
   (* 退避の仮想命令の実装 (caml2html: emit_save) *)

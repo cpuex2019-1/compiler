@@ -1,14 +1,10 @@
 Init: # initialize float value and heap pointer
 	ori	$3, $0, 0
-	ori	$30, $0, 0
-	slli	$30, $30, 16
-	ori	$30, $30, 170
+	ori	$30, $0, 170
 	ori	$29, $0, 0
 	ori	$31, $0, 0
 #	outb	$30 # atsunobu request
-	ori	$4, $0, 0
-	slli	$4, $4, 16
-	ori	$4, $4, 3048
+	ori	$4, $0, 3048
 	ori	$30, $0, 16384
 	slli	$30, $30, 16
 	sw	$30, 0($4)
@@ -18,12 +14,23 @@ Init: # initialize float value and heap pointer
 	sw	$30, 0($4)
 	addi	$4, $4, 8
 	j Main
+prod.26:
+	lf	$f0, 0($2)
+	lf	$f1, 0($5)
+	fmul	$f0, $f0, $f1
+	lf	$f1, 8($2)
+	lf	$f2, 8($5)
+	fmul	$f1, $f1, $f2
+	fadd	$f0, $f0, $f1
+	lf	$f1, 16($2)
+	lf	$f2, 16($5)
+	fmul	$f1, $f1, $f2
+	fadd	$f0, $f0, $f1
+	jr $31
 #	main program starts
 Main:
 	addi	$5, $0, 3
-	ori	$30, $0, 0
-	slli	$30, $30, 16
-	ori	$30, $30, 3056
+	ori	$30, $0, 3056
 	lf	$f0, 0($30) # 1.000000
 	addi	$2, $0, 3000
 	sw	$31, 4($3)
@@ -32,9 +39,7 @@ Main:
 	addi	$3, $3, -8
 	lw	$31, 4($3)
 	addi	$5, $0, 3
-	ori	$30, $0, 0
-	slli	$30, $30, 16
-	ori	$30, $30, 3048
+	ori	$30, $0, 3048
 	lf	$f0, 0($30) # 2.000000
 	addi	$6, $0, 3024
 	sw	$2, 0($3)
@@ -44,18 +49,13 @@ Main:
 	jal	min_caml_create_global_float_array
 	addi	$3, $3, -8
 	lw	$31, 4($3)
-	lw	$5, 0($3)
-	lf	$f0, 0($5)
-	lf	$f1, 0($2)
-	fmul	$f0, $f0, $f1
-	lf	$f1, 8($5)
-	lf	$f2, 8($2)
-	fmul	$f1, $f1, $f2
-	fadd	$f0, $f0, $f1
-	lf	$f1, 16($5)
-	lf	$f2, 16($2)
-	fmul	$f1, $f1, $f2
-	fadd	$f0, $f0, $f1
+	mov	$5, $2
+	lw	$2, 0($3)
+	sw	$31, 4($3)
+	addi	$3, $3, 8
+	jal	prod.26
+	addi	$3, $3, -8
+	lw	$31, 4($3)
 	sw	$31, 4($3)
 	addi	$3, $3, 8
 	jal	min_caml_print_float
