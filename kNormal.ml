@@ -64,9 +64,10 @@ let rec g env = function (* K正規化ルーチン本体 (caml2html: knormal_g) *)
       insert_let (g env e)
         (fun x -> Neg(x), Type.Int)
   | Syntax.Add(e1, e2) -> (* 足し算のK正規化 (caml2html: knormal_add) *)
-      insert_let (g env e1)
+      let (e1',t1) = (g env e1) in
+      insert_let (e1',t1)
         (fun x -> insert_let (g env e2)
-            (fun y -> Add(x, y), Type.Int))
+            (fun y -> Add(x, y), t1))
   | Syntax.Sub(e1, e2) ->
       insert_let (g env e1)
         (fun x -> insert_let (g env e2)
