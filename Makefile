@@ -31,12 +31,13 @@ simm.mli simm.ml regAlloc.mli regAlloc.ml emit.mli emit.ml \
 main.mli main.ml
 
 # ↓テストプログラムが増えたら、これも増やす
-TESTS = print sum-tail gcd sum fib even-odd \
-adder funcomp cls-rec cls-bug cls-bug2 cls-reg-bug \
-shuffle spill spill2 spill3 join-stack join-stack2 join-stack3 \
-join-reg join-reg2 non-tail-if non-tail-if2 \
-inprod inprod-rec inprod-loop matmul matmul-flat \
-manyargs ack
+TESTS = ex1
+# print sum-tail gcd sum fib even-odd \
+# adder funcomp cls-rec cls-bug cls-bug2 cls-reg-bug \
+# shuffle spill spill2 spill3 join-stack join-stack2 join-stack3 \
+# join-reg join-reg2 non-tail-if non-tail-if2 \
+# inprod inprod-rec inprod-loop matmul matmul-flat \
+# manyargs ack
 
 do_test: $(TESTS:%=test/%.cmp)
 
@@ -50,9 +51,9 @@ test/%: test/%.s libmincaml.S stub.c
 test/%.res: test/%
 	$< > $@
 test/%.ans: test/%.ml
-	ocaml $< > $@
+	#ocaml $< > $@
 test/%.cmp: test/%.res test/%.ans
-	diff $^ > $@
+	#diff $^ > $@
 
 min-caml.html: main.mli main.ml id.ml m.ml s.ml \
 		syntax.ml type.ml parser.mly lexer.mll typing.mli typing.ml kNormal.mli kNormal.ml \

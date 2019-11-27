@@ -82,6 +82,18 @@ min_caml_prerr_float:
 	movl	%ebp, %esp
 	popl	%ebp
 	ret
+.globl min_caml_print_float
+min_caml_print_float:
+	pushl	%ebp
+	movl	%esp, %ebp
+	ALIGNSTACK0
+	subl	$8, %esp
+	movsd	%xmm0, (%esp)
+	pushl	$format_float
+	call	U(printf)
+	movl	%ebp, %esp
+	popl	%ebp
+	ret
 .globl min_caml_read_int
 min_caml_read_int:
 	pushl	%ebp

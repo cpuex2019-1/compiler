@@ -47,7 +47,10 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
       let x = Id.genid "l" in
       Let((x, Type.Int), SetL(l), Ans(LdDF(x, C(0), 1)))
   | Closure.Neg(x) -> Ans(Neg(x))
-  | Closure.Add(x, y) -> Ans(Add(x, V(y)))
+  | Closure.Add(x, y) -> 
+      (match M.find x env with
+      | Type.Float -> Ans(FAddD(x,y))
+      | _ -> Ans(Add(x,V(y))))
   | Closure.Sub(x, y) -> Ans(Sub(x, V(y)))
   | Closure.FNeg(x) -> Ans(FNegD(x))
   | Closure.FAdd(x, y) -> Ans(FAddD(x, y))
