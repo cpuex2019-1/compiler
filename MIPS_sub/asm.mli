@@ -63,3 +63,4 @@ val concat : t -> Id.t * Type.t -> t -> t
 
 val align : int -> int
 val print_syntax : out_channel -> t -> unit
+val print_prog : out_channel -> prog -> unit

@@ -196,10 +196,9 @@ let rec print_exp outchan e =
       )
   | IfGE (x,ioi,e1,e2) ->
       (
-        Printf.fprintf outchan "IfGE %s ";
+        Printf.fprintf outchan "IfGE %s " x;
         print_id_or_imm outchan ioi;
-        Printf.fprintf outchan "\n";
-        print_syntax outchan e1;
+        Printf.fprintf outchan "\n"; print_syntax outchan e1;
         print_syntax  outchan e2
       )
   | IfFEq (x,y,e1,e2) ->
@@ -241,3 +240,10 @@ and print_syntax outchan exp =
     print_exp outchan e;
     print_syntax outchan sy
   )
+and print_fundef outchan { name = Id.L(n); args = al; fargs = fal; body = exp; ret = r } =
+  Printf.printf "fundef name %s\n" n;
+  print_syntax outchan exp
+and print_prog outchan (Prog(data, fundefs, e)) =
+  List.iter (fun fd -> print_fundef outchan fd) fundefs;
+  Printf.fprintf outchan "main program\n";
+  print_syntax outchan e
