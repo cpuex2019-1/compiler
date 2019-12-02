@@ -1,3 +1,31 @@
+Init: # initialize float value and heap pointer
+	ori	$3, $0, 0
+	ori	$30, $0, 170
+	ori	$29, $0, 0
+	ori	$31, $0, 0
+#	outb	$30 # atsunobu request
+	ori	$4, $0, 3000
+	ori	$30, $0, 16384
+	slli	$30, $30, 16
+	sw	$30, 0($4)
+	addi	$4, $4, 8
+	j Main
+#	main program starts
+Main:
+	ori	$30, $0, 3000
+	lf	$f0, 0($30) # 2.000000
+	sw	$31, 4($3)
+	addi	$3, $3, 8
+	jal	min_caml_sqrt
+	addi	$3, $3, -8
+	lw	$31, 4($3)
+	sw	$31, 4($3)
+	addi	$3, $3, 8
+	jal	min_caml_print_float
+	addi	$3, $3, -8
+	lw	$31, 4($3)
+	j Exit
+#	main program ends
 # floor
 
 #  min_caml_floor:
@@ -97,19 +125,15 @@
 
 min_caml_sqrt:
   sqrt $f0, $f0
-  jr $31
 
-min_caml_float_of_int:
-  itof $f0, $2
-  jr $31
-
-min_caml_int_of_float:
-  ftoi $2, $f0
-  jr $31
-
-min_caml_floor:
-  floor $f0, $f0
-  jr $31
+# min_caml_float_of_int:
+#   itof $f0, $2
+# 
+# min_caml_int_of_float:
+#   ftoi $2, $f0
+# 
+# min_caml_floor:
+#   floor $f0, $f0
 
 
 
@@ -213,3 +237,4 @@ min_caml_print_float:
 min_caml_print_char:
   outb $2
   jr $31
+Exit:

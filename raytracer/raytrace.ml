@@ -189,6 +189,7 @@ let rec fneg x =
   -.x 
 in 
 
+(* use SQRT  
 let rec sqrt_sub iter x y =
   if iter = 0 then x
   else sqrt_sub (iter-1) (x-.(x*.x-.y)/.(2.0*.x)) y 
@@ -197,6 +198,7 @@ in
 let rec sqrt x = 
   sqrt_sub 10 x x
 in
+*)
 
 (*
 let rec odd x =
@@ -222,6 +224,8 @@ let rec float_of_int x =
   )
 in
 *)
+
+(* use 2nd 
 
 let rec float_of_int_sub x =
   if x >= 8388608 then
@@ -255,6 +259,8 @@ let rec floor x =
   if y > x then y -. 1.0
   else y
 in 
+
+*)
 
 (* old implementation of int_of_float
 
