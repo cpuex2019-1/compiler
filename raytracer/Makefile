@@ -11,6 +11,11 @@ raytrace.ml: globals.ml library.ml minrt.ml
 	cat library.ml >> raytrace.ml
 	cat minrt.ml >> raytrace.ml
 
+mandelbrot_linked.ml: library.ml mandelbrot.ml
+	cp /dev/null mandelbrot_linked.ml
+	cat library.ml >> mandelbrot_linked.ml
+	cat mandelbrot.ml >> mandelbrot_linked.ml
+
 clean:
 	rm -f *.cm? *.o
 
