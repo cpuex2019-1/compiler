@@ -36,6 +36,54 @@ let rec h com =
           let e2' = g e2 in
           IfFLE(y,ioi,e1',e2')
         )
+    | Lwz(y,V(z)) when z = reg_zero ->
+        (
+          opt_count := !opt_count+1;
+          Printf.eprintf "[peephole] zero optimization(Lwz)\n";
+          Lwz(y,C(0))
+        )
+    | Lwz(y,V(z)) when y = reg_zero ->
+        (
+          opt_count := !opt_count+1;
+          Printf.eprintf "[peephole] zero optimization(Lwz)\n";
+          Lwz(z,C(0))
+        )
+    | Stw(x,y,V(z)) when z = reg_zero ->
+        (
+          opt_count := !opt_count+1;
+          Printf.eprintf "[peephole] zero optimization(Stw)\n";
+          Stw(x,y,C(0))
+        )
+    | Stw(x,y,V(z)) when y = reg_zero ->
+        (
+          opt_count := !opt_count+1;
+          Printf.eprintf "[peephole] zero optimization(Stw)\n";
+          Stw(x,z,C(0))
+        )
+    | Stfd(x,y,V(z)) when z = reg_zero ->
+        (
+          opt_count := !opt_count+1;
+          Printf.eprintf "[peephole] zero optimization(Stfd)\n";
+          Stfd(x,y,C(0))
+        )
+    | Stfd(x,y,V(z)) when y = reg_zero ->
+        (
+          opt_count := !opt_count+1;
+          Printf.eprintf "[peephole] zero optimization(Stfd)\n";
+          Stfd(x,z,C(0))
+        )
+    | Lfd(y,V(z)) when z = reg_zero ->
+        (
+          opt_count := !opt_count+1;
+          Printf.eprintf "[peephole] zero optimization(Lfd)\n";
+          Lfd(y,C(0))
+        )
+    | Lfd(y,V(z)) when y = reg_zero ->
+        (
+          opt_count := !opt_count+1;
+          Printf.eprintf "[peephole] zero optimization(Lfd)\n";
+          Lfd(z,C(0))
+        )
     | _ -> com
   )
 (* for Asm.t *)
@@ -85,7 +133,6 @@ and g exp =
           Let((x,t),com',e2')
         )
     | Ans(com) -> Ans(h com)
-    | _ -> exp
   )
   
 let h { name = Id.L(x); args = ys; fargs = zs; body = e; ret = t } = 
