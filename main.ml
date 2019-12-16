@@ -12,15 +12,15 @@ let lexbuf outchan l = (* バッファをコンパイルしてチャンネルへ出力する (caml2htm
   Typing.extenv := M.empty;
   Emit.f outchan
    (Peephole.f
-    (RegAlloc.f
-     (Elim_asm.f
-       (Simm.f
+     (RegAlloc.f
+      (Elim_asm.f
+        (Simm.f
           (Virtual.f
              (Closure.f
-                (iter !limit
-                  (SetGlobalArray.f
+               (iter !limit
+                 (SetGlobalArray.f
                    (Alpha.f
-                      (KNormal.f
+                     (KNormal.f
                        (Global_array.f
                          (Typing.f
                             (Parser.exp Lexer.token l)))))))))))))
