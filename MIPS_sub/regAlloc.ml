@@ -218,4 +218,5 @@ let f (Prog(data, fundefs, e)) = (* プログラム全体のレジスタ割り当て (caml2html:
   Format.eprintf "register allocation: may take some time (up to a few minutes, depending on the size of functions)@.";
   let fundefs' = List.map h fundefs in
   let e', regenv' = g (Id.gentmp Type.Unit, Type.Unit) (Ans(Nop)) M.empty e in
+  (* print_syntax stdout e'; *)
   Prog(data, fundefs', e')

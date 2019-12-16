@@ -7,7 +7,6 @@ let int_max =  2147483647
 let int_min = -2147483648
 exception Out_of_range of int
 
-let hp_init = 100000
 let float_imm_data = ref []
 
 let stackset = ref S.empty (* すでにSaveされた変数の集合 (caml2html: emit_stackset) *)
@@ -28,7 +27,13 @@ let locate x =
     | y :: zs when x = y -> 0 :: List.map succ (loc zs)
     | y :: zs -> List.map succ (loc zs) in
   loc !stackmap
-let offset x = 4 * List.hd (locate x)
+
+let offset x = 
+  let pos = locate x in
+  match pos with
+  | [] -> (failwith (x^" was not saved"))
+  | _ -> 4 * (List.hd pos)
+
 let stacksize () = align ((List.length !stackmap + 1) * 4)
 
 let reg r =
@@ -52,14 +57,19 @@ let load_imm oc target_reg c =
   else (
     let n = c lsr 16 in (* upper 16bit *)
     let m = c lxor (n lsl 16) in (* lower 16bit *)
+
     if m = 0 then (
       Printf.fprintf oc "\tori\t%s, %s, %d\n" r reg_zero n;
       Printf.fprintf oc "\tslli\t%s, %s, %d\n" r r 16
     )
     else (
-      Printf.fprintf oc "\tori\t%s, %s, %d\n" r reg_zero n;
-      Printf.fprintf oc "\tslli\t%s, %s, %d\n" r r 16;
-      Printf.fprintf oc "\tori\t%s, %s, %d\n" r r m
+      if n = 0 then (
+        Printf.fprintf oc "\tori\t%s, %s, %d\n" r reg_zero m
+      ) else (
+        Printf.fprintf oc "\tori\t%s, %s, %d\n" r reg_zero n;
+        Printf.fprintf oc "\tslli\t%s, %s, %d\n" r r 16;
+        Printf.fprintf oc "\tori\t%s, %s, %d\n" r r m
+      )
     )
  )
 
@@ -68,7 +78,7 @@ let rec get_float_imm_address label data_list idx =
   match data_list with
   | [] -> raise Invalid_float_immidiate
   | (Id.L(x),d)::rest ->
-      (if x = label then (hp_init+8*idx,d)
+      (if x = label then (!(KNormal.hp_init)+8*idx,d)
        else get_float_imm_address label rest (idx+1))
 
 (* 関数呼び出しのために引数を並べ替える(register shuffling) (caml2html: emit_shuffle) *)
@@ -116,8 +126,13 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
       *)
       let (addr,d) = get_float_imm_address l (!float_imm_data) 0 in
       (
-        load_imm oc (reg reg_tmp) addr;
-        Printf.fprintf oc "\tlf\t%s, 0(%s) # %f\n" (reg x) (reg reg_tmp) d 
+        if addr < 32768 then
+          Printf.fprintf oc "\tlf\t%s, %d(%s) # %f\n" (reg x) addr (reg reg_zero) d
+        else
+        (
+          load_imm oc (reg reg_tmp) addr;
+          Printf.fprintf oc "\tlf\t%s, 0(%s) # %f\n" (reg x) (reg reg_tmp) d 
+        )
       )
 
       (* load float point value bound to label "l" to register x. *)
@@ -136,9 +151,20 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   | NonTail(x), Mul(y, V(z)) -> Printf.fprintf oc "\tmul\t%s, %s, %s\n" (reg x) (reg y) (reg z)
   | NonTail(x), Mul(y, C(z)) 
     -> Printf.fprintf oc "\taddi\t%s, %s, %d\n\tmul\t%s, %s, %s\n" (reg reg_tmp) (reg reg_zero) z (reg x) (reg y) (reg reg_tmp)
-  | NonTail(x), Div(y, V(z)) -> Printf.fprintf oc "\tdiv\t%s, %s, %s\n" (reg x) (reg y) (reg z)
+  | NonTail(x), Div(y, V(z)) -> (*Printf.fprintf oc "\tdiv\t%s, %s, %s\n" (reg x) (reg y) (reg z) *)
+      (
+          Printf.eprintf "Division by register value is not supported.";
+          failwith "Div error";
+      )
   | NonTail(x), Div(y, C(z))
-    -> Printf.fprintf oc "\taddi\t%s, %s, %d\n\tdiv\t%s, %s, %s\n" (reg reg_tmp) (reg reg_zero) z (reg x) (reg y) (reg reg_tmp)
+    -> (* Printf.fprintf oc "\taddi\t%s, %s, %d\n\tdiv\t%s, %s, %s\n" (reg reg_tmp) (reg reg_zero) z (reg x) (reg y) (reg reg_tmp) *)
+       (
+         match z with 
+         | 2 -> Printf.fprintf oc "\tsrai\t%s, %s, 1\n" (reg x) (reg y)
+         | 10 -> Printf.fprintf oc "\tdiv10\t%s, %s\n" (reg x) (reg y)
+         | x -> (Printf.eprintf "found: %d, Division is supported by 2 or 10 only." x;
+                 failwith "Div error")
+       )
   | NonTail(x), Slw(y, V(z)) -> 
       Printf.fprintf oc "\tsll\t%s, %s, %s\n" (reg x) (reg y) (reg z)
   | NonTail(x), Slw(y, C(z)) -> Printf.fprintf oc "\tslli\t%s, %s, %d\n" (reg x) (reg y) z
@@ -159,10 +185,10 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   | NonTail(x), FMul(y, z) -> Printf.fprintf oc "\tfmul\t%s, %s, %s\n" (reg x) (reg y) (reg z)
   | NonTail(x), FDiv(y, z) -> Printf.fprintf oc "\tfdiv\t%s, %s, %s\n" (reg x) (reg y) (reg z)
   | NonTail(x), Lfd(y, V(z)) 
-  -> Printf.fprintf oc "\tadd\t%s, %s, %s\nlf\t%s, 0(%s)\n" (reg reg_tmp) (reg y) (reg z) (reg x) (reg reg_tmp)
+  -> Printf.fprintf oc "\tadd\t%s, %s, %s\n\tlf\t%s, 0(%s)\n" (reg reg_tmp) (reg y) (reg z) (reg x) (reg reg_tmp)
   | NonTail(x), Lfd(y, C(z)) -> Printf.fprintf oc "\tlf\t%s, %d(%s)\n" (reg x) z (reg y)
   | NonTail(_), Stfd(x, y, V(z))
-  -> Printf.fprintf oc "\tadd\t%s, %s, %s\nsf\t%s, 0(%s)\n" (reg reg_tmp) (reg y) (reg z) (reg x) (reg reg_tmp)
+  -> Printf.fprintf oc "\tadd\t%s, %s, %s\n\tsf\t%s, 0(%s)\n" (reg reg_tmp) (reg y) (reg z) (reg x) (reg reg_tmp)
   | NonTail(_), Stfd(x, y, C(z)) -> Printf.fprintf oc "\tsf\t%s, %d(%s)\n" (reg x) z (reg y)
   | NonTail(_), Comment(s) -> Printf.fprintf oc "#\t%s\n" s
   (* 退避の仮想命令の実装 (caml2html: emit_save) *)
@@ -198,28 +224,56 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   | Tail, IfEq(x, V(y), e1, e2) ->
       g'_tail_ifeq oc x y e1 e2 
   | Tail, IfEq(x, C(y), e1, e2) ->
-      load_imm oc reg_tmp y;
-      g'_tail_ifeq oc x reg_tmp e1 e2
+      if y = 0 then
+      (
+        g'_tail_ifeq oc x reg_zero e1 e2
+      )
+      else
+      (
+        load_imm oc reg_tmp y;
+        g'_tail_ifeq oc x reg_tmp e1 e2
+      )
   | Tail, IfLE(x, V(y), e1, e2) ->
       Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg y) (reg x);
       g'_tail_ifeq oc reg_tmp reg_zero e1 e2
   | Tail, IfLE(x, C(y), e1, e2) ->
-      load_imm oc reg_tmp y;
-      Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg reg_tmp) (reg x);
-      g'_tail_ifeq oc reg_tmp reg_zero e1 e2
+      if y = 0 then
+      (
+        Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg reg_zero) (reg x);
+        g'_tail_ifeq oc reg_tmp reg_zero e1 e2
+      )
+      else 
+      (
+        load_imm oc reg_tmp y;
+        Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg reg_tmp) (reg x);
+        g'_tail_ifeq oc reg_tmp reg_zero e1 e2
+      )
   | Tail, IfGE(x, V(y), e1, e2) ->
       Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg x) (reg y);
       g'_tail_ifeq oc reg_tmp reg_zero e1 e2
   | Tail, IfGE(x, C(y), e1, e2) ->
-      load_imm oc reg_tmp y;
-      Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg x) (reg reg_tmp);
-      g'_tail_ifeq oc reg_tmp reg_zero e1 e2
+      if y = 0 then
+      (
+        Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg x) (reg reg_zero);
+        g'_tail_ifeq oc reg_tmp reg_zero e1 e2
+      )
+      else
+      (
+        load_imm oc reg_tmp y;
+        Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg x) (reg reg_tmp);
+        g'_tail_ifeq oc reg_tmp reg_zero e1 e2
+      )
   | Tail, IfFEq(x, y, e1, e2) ->
       (* heap領域を通じて整数レジスタに入れ直してから比較*)
+      (*
       Printf.fprintf oc "\tsf\t%s, 0(%s)\n" (reg x) (reg reg_hp);
       Printf.fprintf oc "\tlw\t%s, 0(%s)\n" (reg reg_tmp) (reg reg_hp);
       Printf.fprintf oc "\tsf\t%s, 0(%s)\n" (reg y) (reg reg_hp);
       Printf.fprintf oc "\tlw\t%s, 0(%s)\n" (reg reg_tmp2) (reg reg_hp);
+      g'_tail_ifeq oc (reg reg_tmp) (reg reg_tmp2) e1 e2
+      *)
+      Printf.fprintf oc "\tsltf\t%s, %s, %s\n" (reg reg_tmp) (reg y) (reg x);
+      Printf.fprintf oc "\tsltf\t%s, %s, %s\n" (reg reg_tmp2) (reg x) (reg y);
       g'_tail_ifeq oc (reg reg_tmp) (reg reg_tmp2) e1 e2
   | Tail, IfFLE(x, y, e1, e2) ->
       Printf.fprintf oc "\tsltf\t%s, %s, %s\n" (reg reg_tmp) (reg y) (reg x);
@@ -227,28 +281,57 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   | NonTail(z), IfEq(x, V(y), e1, e2) ->
       g'_non_tail_ifeq oc (NonTail(z)) x y e1 e2 
   | NonTail(z), IfEq(x, C(y), e1, e2) ->
-      load_imm oc reg_tmp y;
-      g'_non_tail_ifeq oc (NonTail(z)) x reg_tmp e1 e2
+      if y = 0 then
+      (
+        g'_non_tail_ifeq oc (NonTail(z)) x reg_zero e1 e2
+      )
+      else
+      (
+        load_imm oc reg_tmp y;
+        g'_non_tail_ifeq oc (NonTail(z)) x reg_tmp e1 e2
+      )
   | NonTail(z), IfLE(x, V(y), e1, e2) ->
       Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg y) (reg x);
       g'_non_tail_ifeq oc (NonTail(z)) reg_tmp reg_zero e1 e2
   | NonTail(z), IfLE(x, C(y), e1, e2) ->
-      load_imm oc reg_tmp y;
-      Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg reg_tmp) (reg x);
-      g'_non_tail_ifeq oc (NonTail(z)) reg_tmp reg_zero e1 e2
+      if y = 0 then
+      (
+        Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg reg_zero) (reg x);
+        g'_non_tail_ifeq oc (NonTail(z)) reg_tmp reg_zero e1 e2
+      )
+      else
+      (
+        load_imm oc reg_tmp y;
+        Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg reg_tmp) (reg x);
+        g'_non_tail_ifeq oc (NonTail(z)) reg_tmp reg_zero e1 e2
+      )
   | NonTail(z), IfGE(x, V(y), e1, e2) ->
       Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg x) (reg y);
       g'_non_tail_ifeq oc (NonTail(z)) reg_tmp reg_zero e1 e2
   | NonTail(z), IfGE(x, C(y), e1, e2) ->
-      load_imm oc reg_tmp y;
-      Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg x) (reg reg_tmp);
-      g'_non_tail_ifeq oc (NonTail(z)) reg_tmp reg_zero e1 e2 
+      if y = 0 then
+      (
+        load_imm oc reg_tmp y;
+        Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg x) (reg reg_tmp);
+        g'_non_tail_ifeq oc (NonTail(z)) reg_tmp reg_zero e1 e2 
+      )
+      else
+      (
+        load_imm oc reg_tmp y;
+        Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg x) (reg reg_tmp);
+        g'_non_tail_ifeq oc (NonTail(z)) reg_tmp reg_zero e1 e2 
+      )
   | NonTail(z), IfFEq(x, y, e1, e2) ->
       (* heap領域を通じて整数レジスタに入れ直してから比較*)
+      (*
       Printf.fprintf oc "\tsf\t%s, 0(%s)\n" (reg x) (reg reg_hp);
       Printf.fprintf oc "\tlw\t%s, 0(%s)\n" (reg reg_tmp) (reg reg_hp);
       Printf.fprintf oc "\tsf\t%s, 0(%s)\n" (reg y) (reg reg_hp);
       Printf.fprintf oc "\tlw\t%s, 0(%s)\n" (reg reg_tmp2) (reg reg_hp);
+      g'_non_tail_ifeq oc (NonTail(z)) (reg reg_tmp) (reg reg_tmp2) e1 e2
+      *)
+      Printf.fprintf oc "\tsltf\t%s, %s, %s\n" (reg reg_tmp) (reg y) (reg x);
+      Printf.fprintf oc "\tsltf\t%s, %s, %s\n" (reg reg_tmp2) (reg x) (reg y);
       g'_non_tail_ifeq oc (NonTail(z)) (reg reg_tmp) (reg reg_tmp2) e1 e2
   | NonTail(z), IfFLE(x, y, e1, e2) ->
       Printf.fprintf oc "\tsltf\t%s, %s, %s\n" (reg reg_tmp) (reg y) (reg x);
@@ -373,6 +456,7 @@ let file_to_string fname =
 
 
 let f oc (Prog(data, fundefs, e)) =
+  (*print_prog stdout (Prog(data,fundefs,e)); *)
   Format.eprintf "generating assembly...@.";
   Printf.fprintf oc "Init: # initialize float value and heap pointer\n";
 
@@ -386,7 +470,7 @@ let f oc (Prog(data, fundefs, e)) =
   
   (* initialize heap pointer *)
   (
-    load_imm oc (reg reg_hp) hp_init;
+    load_imm oc (reg reg_hp) !(KNormal.hp_init);
     (* 浮動小数即値の初期化 *)
     arrange_float_imm oc data 0;
     float_imm_data := data;
@@ -408,7 +492,10 @@ let f oc (Prog(data, fundefs, e)) =
   );
 
 
+  Printf.eprintf "processing fundef\n";
   List.iter (fun fundef -> h oc fundef) fundefs;
+
+  Printf.eprintf "processing main program\n";
 
   Printf.fprintf oc "#\tmain program starts\n";
   Printf.fprintf oc "Main:\n";

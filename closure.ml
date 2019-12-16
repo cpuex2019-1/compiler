@@ -23,6 +23,7 @@ type t = (* クロージャ変換後の式 (caml2html: closure_t) *)
   | AppCls of Id.t * Id.t list
   | AppDir of Id.l * Id.t list
   | Tuple of Id.t list
+  | GlobalTuple of int * Id.t list
   | LetTuple of (Id.t * Type.t) list * Id.t * t
   | Get of Id.t * Id.t
   | Put of Id.t * Id.t * Id.t
@@ -33,22 +34,38 @@ type fundef = { name : Id.l * Type.t;
                 body : t }
 type prog = Prog of fundef list * t
 
+
+let fv_sub x =
+  if List.mem_assoc x !(SetGlobalArray.global_arrays) then 
+    (
+    (*print_string "Global array is found.\n";*)
+    S.empty)
+  else S.singleton x
+
+let rec fv_sub_list l = 
+  match l with 
+  | [] -> S.empty
+  | x::rest -> S.union (fv_sub x) (fv_sub_list rest)
+
+
 let rec fv = function
   | Unit | Int(_) | Float(_) | ExtArray(_) -> S.empty
-  | Neg(x) | FNeg(x) -> S.singleton x
+  | Neg(x) | FNeg(x) -> fv_sub x
   (*| Add(x, y) | Sub(x, y) | Mul(x, y) | Div(x, y) | FAdd(x, y) | FSub(x, y) | FMul(x, y) | FDiv(x, y) | Get(x, y) -> S.of_list [x; y] *)
-  | Add(x, y) | Sub(x, y) | Mul(x, y) | Div(x, y) | FAdd(x, y) | FSub(x, y) | FMul(x, y) | FDiv(x, y) -> S.of_list [x; y]
-  | IfEq(x, y, e1, e2)| IfLE(x, y, e1, e2) -> S.add x (S.add y (S.union (fv e1) (fv e2)))
-  | Let((x, t), e1, e2) -> S.union (fv e1) (S.remove x (fv e2))
-  | Var(x) -> S.singleton x
-  | MakeCls((x, t), { entry = l; actual_fv = ys }, e) -> S.remove x (S.union (S.of_list ys) (fv e))
-  | AppCls(x, ys) -> S.of_list (x :: ys)
-  | AppDir(_, xs) | Tuple(xs) -> S.of_list xs
-  | LetTuple(xts, y, e) -> S.add y (S.diff (fv e) (S.of_list (List.map fst xts)))
-  | Get(x,y) -> S.of_list [x; y]
-  | Put(x, y, z) -> S.of_list [x; y; z]
+  | Add(x, y) | Sub(x, y) | Mul(x, y) | Div(x, y) | FAdd(x, y) | FSub(x, y) | FMul(x, y) | FDiv(x, y) -> S.union (fv_sub x) (fv_sub y)
+  | IfEq(x, y, e1, e2)| IfLE(x, y, e1, e2) -> S.union (fv_sub x) (S.union (fv_sub y) (S.union (fv e1) (fv e2)))
+  | Let((x, t), e1, e2) -> S.union (fv e1) (S.diff (fv e2) (fv_sub x))
+  | Var(x) -> fv_sub x
+  | MakeCls((x, t), { entry = l; actual_fv = ys }, e) -> S.diff (S.union (fv_sub_list ys) (fv e)) (fv_sub x)
+  | AppCls(x, ys) -> fv_sub_list (x :: ys)
+  | AppDir(_, xs) | Tuple(xs) -> fv_sub_list xs
+  | GlobalTuple(_,xs) -> fv_sub_list xs
+  | LetTuple(xts, y, e) -> S.union (fv_sub y) (S.diff (fv e) (fv_sub_list (List.map fst xts)))
+  | Get(x,y) -> fv_sub_list [x; y]
+  | Put(x, y, z) -> fv_sub_list [x;y;z]
 
 let toplevel : fundef list ref = ref []
+
 
 let rec g env known = function (* クロージャ変換ルーチン本体 (caml2html: closure_g) *)
   | KNormal.Unit -> Unit
@@ -79,7 +96,7 @@ let rec g env known = function (* クロージャ変換ルーチン本体 (caml2html: closure
       (* 本当に自由変数がなかったか、変換結果e1'を確認する *)
       (* 注意: e1'にx自身が変数として出現する場合はclosureが必要!
          (thanks to nuevo-namasute and azounoman; test/cls-bug2.ml参照) *)
-      let zs = S.diff (fv e1') (S.of_list (List.map fst yts)) in
+      let zs = S.diff (fv e1') (fv_sub_list (List.map fst yts)) in
       let known', e1' =
         if S.is_empty zs then known', e1' else
         (* 駄目だったら状態(toplevelの値)を戻して、クロージャ変換をやり直す *)
@@ -102,14 +119,21 @@ let rec g env known = function (* クロージャ変換ルーチン本体 (caml2html: closure
       AppDir(Id.L(x), ys)
   | KNormal.App(f, xs) -> AppCls(f, xs)
   | KNormal.Tuple(xs) -> Tuple(xs)
+  | KNormal.GlobalTuple(addr,xs) -> GlobalTuple(addr,xs)
   | KNormal.LetTuple(xts, y, e) -> LetTuple(xts, y, g (M.add_list xts env) known e)
   | KNormal.Get(x, y) -> Get(x, y)
   | KNormal.Put(x, y, z) -> Put(x, y, z)
   | KNormal.ExtArray(x) -> ExtArray(Id.L(x))
   | KNormal.ExtFunApp(x, ys) -> AppDir(Id.L("min_caml_" ^ x), ys)
 
+let rec print_global l =
+  match l with
+  | [] -> ()
+  | (x,(addr,ty))::rest -> (print_string (x^" : address");print_int addr;print_string "\n";print_global rest)
+
 let f e =
   toplevel := [];
+  (* KNormal.print_syntax e 0 stdout; *)
   let e' = g M.empty S.empty e in
   Prog(List.rev !toplevel, e')
 
@@ -179,6 +203,9 @@ let rec print_syntax exp depth outchan =
         print_id_list il (depth+1) outchan)
   | Tuple (il)
     -> (fprintf outchan "Tuple\n";
+        print_id_list il (depth+1) outchan)
+  | GlobalTuple (addr,il)
+    -> (fprintf outchan "GlobalTuple %d\n" addr;
         print_id_list il (depth+1) outchan)
   | LetTuple (idtyl,i1,e1)
     -> (fprintf outchan "LetTuple\n";

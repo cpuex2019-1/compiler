@@ -1,0 +1,32 @@
+  t3 = fsqr v0
+  t4 = o_param_a m
+  t5 = FMul t3 t4
+  t6 = fsqr v1
+  t7 = o_param_b m
+  t8 = FMul t6 t7
+  t9 = FAdd t5 t8
+  t10 = fsqr v2
+  t11 = o_param_c m
+  t12 = FMul t10 t11
+  t13 = FAdd t9 t12
+  t14 = o_isrot m
+  t26 = Li 0
+  bne t14 t26 else
+  r1 = FMr t13
+  r = Mr r1
+  jr [$31]
+else :
+  t15 = FMul v1 v2
+  t16 = o_param_r1 m
+  t17 = FMul t15 t16
+  t18 = FAdd t13 t17
+  t19 = FMul v2 v0
+  t20 = o_param_r2 m
+  t21 = FMul t19 t20
+  t22 = FAdd t18 t21
+  t23 = FMul v0 v1
+  t24 = o_param_r3 m
+  t25 = FMul t23 t24
+  r2 = FAdd t22 t25
+  r = Mr r2
+  jr [$31]

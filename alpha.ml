@@ -4,6 +4,27 @@ open KNormal
 
 let find x env = try M.find x env with Not_found -> x
 
+let madd x t env = 
+  if List.mem_assoc x !(SetGlobalArray.global_arrays) then env
+  else M.add x t env
+
+let rec madd_list xts env =
+  match xts with
+  | [] -> env
+  | (x,t)::rest -> 
+      (if List.mem_assoc x !(SetGlobalArray.global_arrays) 
+         then (madd_list rest env)
+       else M.add x t (madd_list rest env))
+
+let rec madd_list2 xs ts env =
+  match (xs,ts) with
+  | ([],[]) -> env
+  | ((x::rx),(t::rt)) -> 
+      (if List.mem_assoc x !(SetGlobalArray.global_arrays)
+         then (madd_list2 rx rt env)
+       else M.add x t (madd_list2 rx rt env))
+  | _ -> failwith "Alpha"
+
 let rec g env = function (* α変換ルーチン本体 (caml2html: alpha_g) *)
   | Unit -> Unit
   | Int(i) -> Int(i)
@@ -34,6 +55,7 @@ let rec g env = function (* α変換ルーチン本体 (caml2html: alpha_g) *)
              g env e2)
   | App(x, ys) -> App(find x env, List.map (fun y -> find y env) ys)
   | Tuple(xs) -> Tuple(List.map (fun x -> find x env) xs)
+  | GlobalTuple(addr,xs) -> GlobalTuple(addr,List.map (fun x -> find x env) xs)
   | LetTuple(xts, y, e) -> (* LetTupleのα変換 (caml2html: alpha_lettuple) *)
       let xs = List.map fst xts in
       let env' = M.add_list2 xs (List.map Id.genid xs) env in

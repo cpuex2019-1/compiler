@@ -19,12 +19,16 @@ type t =
   | LetRec of fundef * t
   | App of Id.t * Id.t list
   | Tuple of Id.t list
+  | GlobalTuple of int * Id.t list
   | LetTuple of (Id.t * Type.t) list * Id.t * t
   | Get of Id.t * Id.t
   | Put of Id.t * Id.t * Id.t
   | ExtArray of Id.t
   | ExtFunApp of Id.t * Id.t list
 and fundef = { name : Id.t * Type.t; args : (Id.t * Type.t) list; body : t }
+
+val hp_init : int ref
+val tuple_size : Type.t list -> int
 
 val fv : t -> S.t
 val f : Syntax.t -> t

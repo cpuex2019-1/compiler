@@ -62,3 +62,6 @@ val fv : t -> Id.t list
 val concat : t -> Id.t * Type.t -> t -> t
 
 val align : int -> int
+val print_fundef : out_channel -> fundef -> unit
+val print_syntax : out_channel -> t -> unit
+val print_prog : out_channel -> prog -> unit

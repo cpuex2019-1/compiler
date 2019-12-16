@@ -1,0 +1,176 @@
+toplevel fundef
+fundef
+name
+  print_int_sub.21
+  Fun
+    Int
+    Unit
+  x.22
+  Int
+formal_fv
+body
+  Let
+    Ti14.39
+    Int
+    Int 0
+    ifEq x.22 Ti14.39
+      Unit
+      Let
+        Ti15.47
+        Int
+        Int 10
+        Let
+          y.40
+          Int
+          Div x.22 Ti15.47
+          Let
+            Ti16.46
+            Int
+            Int 10
+            Let
+              Ti17.45
+              Int
+              Mul y.40 Ti16.46
+              Let
+                rem.41
+                Int
+                Sub x.22 Ti17.45
+                Let
+                  Tu1.42
+                  Unit
+                  AppDir print_int_sub.21
+                  Args
+                    y.40
+                  Let
+                    Ti18.44
+                    Int
+                    Int 48
+                    Let
+                      Ti19.43
+                      Int
+                      Add Ti18.44 rem.41
+                      AppDir min_caml_print_char
+                      Args
+                        Ti19.43
+fundef
+name
+  print_int.23
+  Fun
+    Int
+    Unit
+  x.24
+  Int
+formal_fv
+body
+  Let
+    Ti9.33
+    Int
+    Int 0
+    ifEq x.24 Ti9.33
+      Let
+        Ti10.38
+        Int
+        Int 48
+        AppDir min_caml_print_char
+        Args
+          Ti10.38
+      Let
+        Ti11.34
+        Int
+        Int 0
+        ifLE x.24 Ti11.34
+          Let
+            Ti12.37
+            Int
+            Int 45
+            Let
+              Tu2.35
+              Unit
+              AppDir min_caml_print_char
+              Args
+                Ti12.37
+              Let
+                Ti13.36
+                Int
+                Neg x.24
+                AppDir print_int_sub.21
+                Args
+                  Ti13.36
+          AppDir print_int_sub.21
+          Args
+            x.24
+fundef
+name
+  g.25
+  Fun
+    Int
+    Int
+  x.26
+  Int
+formal_fv
+body
+  LetTuple
+    c.31
+    Array
+      Int
+    d.32
+    Array
+      Float
+    v.20
+    Get c.31 x.26
+exp
+Let
+  Ti3.52
+  Int
+  Int 3
+  Let
+    Ti4.53
+    Int
+    Int 1
+    Let
+      a.48
+      Array
+        Int
+      AppDir min_caml_create_array
+      Args
+        Ti3.52
+        Ti4.53
+      Let
+        Ti5.50
+        Int
+        Int 2
+        Let
+          Td6.51
+          Float
+          Float 1.000000
+          Let
+            b.49
+            Array
+              Float
+            AppDir min_caml_create_float_array
+            Args
+              Ti5.50
+              Td6.51
+            Let
+              v.20
+              Tuple
+                Array
+                  Int
+                Array
+                  Float
+              GlobalTuple
+                a.48
+                b.49
+              Let
+                Ti7.30
+                Int
+                Int 1
+                Let
+                  Ti8.29
+                  Int
+                  AppDir g.25
+                  Args
+                    Ti7.30
+                  AppDir print_int.23
+                  Args
+                    Ti8.29

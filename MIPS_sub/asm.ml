@@ -97,3 +97,158 @@ let rec concat e1 xt e2 =
   | Let(yt, exp, e1') -> Let(yt, exp, concat e1' xt e2)
 
 let align i = (if i mod 8 = 0 then i else i + 4)
+
+
+
+
+
+let print_id_or_imm outchan ioi = 
+  match ioi with
+  | (V r) -> Printf.fprintf outchan "V %s" r
+  | (C i) -> Printf.fprintf outchan "C %d" i
+
+let rec print_id_list outchan tl = 
+  match tl with 
+  | [] -> ()
+  | t::rest -> (
+    Printf.fprintf outchan "  %s\n" t;
+    print_id_list outchan rest
+  )
+
+let rec print_exp outchan e =
+  match e with
+  | Nop -> ()
+  | Li(i) -> Printf.fprintf outchan "Li %d\n" i
+  | FLi(Id.L(l)) -> Printf.fprintf outchan "Fli %s\n" l
+  | SetL(Id.L(l)) -> Printf.fprintf outchan "SetL %s\n" l
+  | Mr(x) -> Printf.fprintf outchan "Mr %s\n" x
+  | Neg(x) -> Printf.fprintf outchan "Neg %s\n" x
+  | Add(x,ioi) -> (
+      Printf.fprintf outchan "Add %s " x;
+      print_id_or_imm outchan ioi;
+      Printf.fprintf outchan "\n"
+    )
+  | Sub(x,ioi) -> (
+      Printf.fprintf outchan "Sub %s " x;
+      print_id_or_imm outchan ioi;
+      Printf.fprintf outchan "\n"
+    )
+  | Mul(x,ioi) -> (
+      Printf.fprintf outchan "Mul %s " x;
+      print_id_or_imm outchan ioi;
+      Printf.fprintf outchan "\n"
+    )
+  | Div(x,ioi) -> (
+      Printf.fprintf outchan "Div %s " x;
+      print_id_or_imm outchan ioi;
+      Printf.fprintf outchan "\n"
+    )
+  | Slw(x,ioi) -> (
+      Printf.fprintf outchan "Slw %s " x;
+      print_id_or_imm outchan ioi;
+      Printf.fprintf outchan "\n"
+    )
+  | Lwz(x,ioi) -> (
+      Printf.fprintf outchan "Lwz %s " x;
+      print_id_or_imm outchan ioi;
+      Printf.fprintf outchan "\n"
+    )
+  | Stw(x,y,ioi) -> (
+      Printf.fprintf outchan "Stw %s %s " x y;
+      print_id_or_imm outchan ioi;
+      Printf.fprintf outchan "\n"
+    )
+  | FMr(x) -> Printf.fprintf outchan "FMr %s\n" x
+  | FNeg(x) -> Printf.fprintf outchan "FNeg %s\n" x
+  | FAdd(x,y) -> Printf.fprintf outchan "FAdd %s %s\n" x y
+  | FSub(x,y) -> Printf.fprintf outchan "FSub %s %s\n" x y
+  | FMul(x,y) -> Printf.fprintf outchan "FMul %s %s\n" x y
+  | FDiv(x,y) -> Printf.fprintf outchan "FDiv %s %s\n" x y
+  | Lfd(x,ioi) -> (
+      Printf.fprintf outchan "Lfd %s " x;
+      print_id_or_imm outchan ioi;
+      Printf.fprintf outchan "\n"
+    )
+  | Stfd(x,y,ioi) -> (
+      Printf.fprintf outchan "Stfd %s %s " x y;
+      print_id_or_imm outchan ioi;
+      Printf.fprintf outchan "\n"
+    )
+  | Comment(s) -> (
+      Printf.fprintf outchan "%s\n" s
+    )
+  (* virtual instructions *)
+  | IfEq (x,ioi,e1,e2) ->
+      (
+        Printf.fprintf outchan "IfEq %s " x;
+        print_id_or_imm outchan ioi;
+        Printf.fprintf outchan "\n";
+        print_syntax outchan e1;
+        print_syntax outchan e2
+      )
+  | IfLE (x,ioi,e1,e2) ->
+      (
+        Printf.fprintf outchan "IfLE %s " x;
+        print_id_or_imm outchan ioi;
+        Printf.fprintf outchan "\n";
+        print_syntax outchan e1;
+        print_syntax outchan e2
+      )
+  | IfGE (x,ioi,e1,e2) ->
+      (
+        Printf.fprintf outchan "IfGE %s " x;
+        print_id_or_imm outchan ioi;
+        Printf.fprintf outchan "\n"; print_syntax outchan e1;
+        print_syntax  outchan e2
+      )
+  | IfFEq (x,y,e1,e2) ->
+      (
+        Printf.fprintf outchan "IfFEq %s %s\n" x y;
+        print_syntax outchan e1;
+        print_syntax outchan e2
+      )
+  | IfFLE (x,y,e1,e2) ->
+      (
+        Printf.fprintf outchan "IfFLE %s %s\n" x y;
+        print_syntax outchan e1;
+        print_syntax outchan e2
+      )
+  | CallDir (Id.L(l),xl,yl) ->
+      (
+        Printf.fprintf outchan "CallDir %s\n" l;
+        Printf.fprintf outchan "int args\n";
+        print_id_list outchan xl;
+        Printf.fprintf outchan "float args\n";
+        print_id_list outchan yl
+      )
+
+  | _ -> Printf.fprintf outchan "others\n"
+  (* 
+  | CallCls of Id.t * Id.t list * Id.t list
+  | CallDir of Id.l * Id.t list * Id.t list
+  | Save of Id.t * Id.t 
+  | Restore of Id.t *)
+and print_syntax outchan exp =
+  match exp with
+  | Ans (e) -> (
+    Printf.fprintf outchan "Ans\n";
+    print_exp outchan e
+  )
+  | Let ((x,t),e,sy) -> (
+    Printf.fprintf outchan "Let\n";
+    Printf.fprintf outchan "%s\n" x;
+    print_exp outchan e;
+    print_syntax outchan sy
+  )
+and print_fundef outchan { name = Id.L(n); args = al; fargs = fal; body = exp; ret = r } =
+  Printf.printf "fundef name %s\n" n;
+  Printf.printf "args\n";
+  List.map (fun n -> (Printf.printf "%s\n" n)) al;
+  Printf.printf "fargs\n";
+  List.map (fun n -> (Printf.printf "%s\n" n)) fal;
+  Printf.printf "body\n"; 
+  print_syntax outchan exp
+and print_prog outchan (Prog(data, fundefs, e)) =
+  List.iter (fun fd -> print_fundef outchan fd) fundefs;
+  Printf.fprintf outchan "main program\n";
+  print_syntax outchan e

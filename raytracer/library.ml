@@ -69,23 +69,24 @@ let rec fneg x =
   -.x 
 in 
 
+(* use SQRT  
 let rec sqrt_sub iter x y =
   if iter = 0 then x
   else sqrt_sub (iter-1) (x-.(x*.x-.y)/.(2.0*.x)) y 
 in
 
 let rec sqrt x = 
-  sqrt_sub 6 x x
+  sqrt_sub 10 x x
 in
+*)
 
-
+(*
 let rec odd x =
   let h = x / 2 in
   if h * 2 = x then false
   else true
 in
 
-(*
 let rec float_of_int_sub dig x = 
   if dig < 0 then 0.0
   else ( 
@@ -103,6 +104,8 @@ let rec float_of_int x =
   )
 in
 *)
+
+(* use 2nd 
 
 let rec float_of_int_sub x =
   if x >= 8388608 then
@@ -136,6 +139,8 @@ let rec floor x =
   if y > x then y -. 1.0
   else y
 in 
+
+*)
 
 (* old implementation of int_of_float
 
@@ -178,9 +183,25 @@ external sin : float -> float = "sin_float" "sin" "float"
 external atan : float -> float = "atan_float" "atan" "float"
 *)
 
+(*
 let rec pow x n =
   if n = 0 then 1.0
-           else (x *. (pow x (n-1))) 
+  else (
+    x *. pow x (n-1)
+ )
+in
+*)
+
+let rec pow x n =
+  if n = 0 then 1.0
+  else (
+    let h = n / 2 in
+    let y = pow x h in
+    if h * 2 = n then
+      y *. y
+    else
+      x *. y *. y
+ )
 in
 
 let rec fact_tail acc n =
@@ -191,14 +212,13 @@ in
 let rec fact n = fact_tail 1 n
 in
 
-let pi = 3.1415926535 in
-
 let rec pow_upper p x =
   if x >= p then pow_upper (p *. 2.0) x
   else p
 in
 
 let rec reduction_2pi_sub x p =
+  let pi = 3.1415926535 in
   if x >= (pi *. 2.0) then
     (
       if x >= p then
@@ -220,29 +240,29 @@ let rec rev_sgn x =
 in
 
 let rec reduction_2pi x =
+  let pi = 3.1415926535 in
   let p = pi *. 2.0 in
   let p = pow_upper p x in
     reduction_2pi_sub x p
 in
 
-(* constants for sin cos *)
-let s3 = 0.16666668 in
-let s5 = 0.008332824 in
-let s7 = 0.00019587841 in
-let c2 = 0.5 in
-let c4 = 0.04166368 in
-let c6 = 0.0013695068 in
-
    
 let rec kernel_sin x =
+  let s3 = 0.16666668 in
+  let s5 = 0.008332824 in
+  let s7 = 0.00019587841 in
   x -. (pow x 3) *. s3 +. (pow x 5) *. s5 -. (pow x 7) *. s7 
 in
 
 let rec kernel_cos x =
+  let c2 = 0.5 in
+  let c4 = 0.04166368 in
+  let c6 = 0.0013695068 in
   1.0 -. (pow x 2) *. c2 +. (pow x 4) *. c4 -. (pow x 6) *. c6
 in
 
 let rec sin_sub3 sgn x =
+  let pi = 3.1415926535 in
   if x <= (pi /. 4.0) then
     sgn *. (kernel_sin x)
   else
@@ -250,6 +270,7 @@ let rec sin_sub3 sgn x =
 in
 
 let rec sin_sub2 sgn x =
+  let pi = 3.1415926535 in
   if x >= (pi /. 2.0) then
     let x = pi -. x in
     sin_sub3 sgn x
@@ -258,6 +279,7 @@ let rec sin_sub2 sgn x =
 in
 
 let rec sin_sub1 sgn x =
+  let pi = 3.1415926535 in
   if x >= pi then
     let x = x-.pi in
     let new_sgn = rev_sgn sgn in
@@ -274,6 +296,7 @@ let rec sin x =
 in
 
 let rec cos_sub3 sgn x = 
+  let pi = 3.1415926535 in
   if x <= (pi /. 4.0) then 
     sgn *. (kernel_cos x)
   else
@@ -281,6 +304,7 @@ let rec cos_sub3 sgn x =
 in
 
 let rec cos_sub2 sgn x =
+  let pi = 3.1415926535 in
   if x >= (pi /. 2.0) then
     let x = pi -. x in
     let new_sgn = rev_sgn sgn in
@@ -290,6 +314,7 @@ let rec cos_sub2 sgn x =
 in
 
 let rec cos_sub1 sgn x =
+  let pi = 3.1415926535 in
   if x >= pi then
     let x = x -. pi in
     let new_sgn = rev_sgn sgn in
@@ -309,6 +334,7 @@ let rec kernel_atan x =
   x -. (pow x 3) *. 0.3333333 +. (pow x 5) *. 0.2 -. (pow x 7) *. 0.142857142 +. (pow x 9) *. 0.111111104 -. (pow x 11) *. 0.08976446 +. (pow x 13) *. 0.060035485 in
 
 let rec atan x = 
+  let pi = 3.1415926535 in
   let sgn = fsgn x in
   let x = sgn *. x in
   if x < 0.4375 then
@@ -337,7 +363,7 @@ let rec print_int_sub x =
   )
 in
 
-let rec print_int x = 
+let rec print_int_ascii x = 
   if x = 0 then (print_char 48)
   else (
     if x > 0 then print_int_sub x
@@ -346,4 +372,8 @@ let rec print_int x =
       print_int_sub (-x)
     )
  )
+in
+
+let rec print_int x =
+  print_char x
 in
