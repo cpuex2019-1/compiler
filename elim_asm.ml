@@ -1,4 +1,39 @@
 open Asm
+(*
+  | Nop
+  | Li of int
+  | FLi of Id.l
+  | SetL of Id.l
+  | Mr of Id.t
+  | Neg of Id.t
+  | Add of Id.t * id_or_imm
+  | Sub of Id.t * id_or_imm
+  | Mul of Id.t * id_or_imm
+  | Div of Id.t * id_or_imm
+  | Slw of Id.t * id_or_imm
+  | Lwz of Id.t * id_or_imm
+  | Stw of Id.t * Id.t * id_or_imm
+  | FMr of Id.t
+  | FNeg of Id.t
+  | FAdd of Id.t * Id.t
+  | FSub of Id.t * Id.t
+  | FMul of Id.t * Id.t
+  | FDiv of Id.t * Id.t
+  | Lfd of Id.t * id_or_imm
+  | Stfd of Id.t * Id.t * id_or_imm
+  | Comment of string
+  (* virtual instructions *)
+  | IfEq of Id.t * id_or_imm * t * t
+  | IfLE of Id.t * id_or_imm * t * t
+  | IfGE of Id.t * id_or_imm * t * t (* 左右対称ではないので必要 *)
+  | IfFEq of Id.t * Id.t * t * t
+  | IfFLE of Id.t * Id.t * t * t
+  (* closure address, integer arguments, and float arguments *)
+  | CallCls of Id.t * Id.t list * Id.t list
+  | CallDir of Id.l * Id.t list * Id.t list
+  | Save of Id.t * Id.t (* レジスタ変数の値をスタック変数へ保存 (caml2html: sparcasm_save) *)
+  | Restore of Id.t (* スタック変数から値を復元 (caml2html: sparcasm_restore) *)
+*)
 
 (* for Asm.exp *)
 let rec fv_h com = 
@@ -25,7 +60,8 @@ let rec fv_h com =
   | IfFLE(x,y,e1,e2)   -> S.add x (S.add y (S.union (fv_g e1) (fv_g e2)))
   | CallDir(_,il,fl) -> S.union (S.of_list il) (S.of_list fl)
   | CallCls(x,il,fl) -> S.add x (S.union (S.of_list il) (S.of_list fl))
-  | _ -> S.empty
+  | Save(x,y) -> S.of_list [x;y]
+  | Restore(x) -> S.singleton x
 (* for Asm.t *)
 and fv_g exp = 
   match exp with
@@ -34,7 +70,7 @@ and fv_g exp =
 
 let rec effect_h com =
   match com with
-  | Stw(_) | Stfd(_) | SetL(_) | CallCls(_) | CallDir(_) -> true
+  | Stw(_) | Stfd(_) | SetL(_) | CallCls(_) | CallDir(_) | Save(_) | Restore(_) -> true
   | IfEq(_,_,e1,e2) -> (effect_g e1) || (effect_g e2)
   | IfLE(_,_,e1,e2) -> (effect_g e1) || (effect_g e2)
   | IfGE(_,_,e1,e2) -> (effect_g e1) || (effect_g e2)
@@ -43,8 +79,8 @@ let rec effect_h com =
   | _ -> false
 and effect_g exp =
   match exp with
-  | Ans(com) -> effect_h com
-  | Let((x,t),com,e) -> (effect_h com) || (effect_g e)
+  | Ans(com) -> true
+  | Let((x,t),com,e) -> (((effect_h com) || (effect_g e)) || S.mem x (fv_h com))
   
 
 let rec h' exp =
@@ -63,7 +99,7 @@ and g' exp =
      (
      let e' = g' e in
      let com' = h' com in
-     if (effect_h com') || S.mem x (fv_g e') then
+     if (((effect_h com') || S.mem x (fv_g e')) || (is_reg x)) then
        Let((x,t),com',e')
      else
        (
@@ -77,10 +113,9 @@ let h { name = Id.L(x); args = ys; fargs = zs; body = e; ret = t } =
   { name = Id.L(x); args = ys; fargs = zs; body = e'; ret = t }
 
 let f (Prog(data, fundefs, e)) = 
+  print_prog stdout (Prog(data,fundefs,e));
   Printf.eprintf "eliminate asm!\n";
-  (*
   let fds = List.map h fundefs in
   let e' = g' e in
   Prog(data,fds,e')
-  *)
-  Prog(data,fundefs,e)
+  (*Prog(data,fundefs,e)*)

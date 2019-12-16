@@ -132,7 +132,6 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
         (
           load_imm oc (reg reg_tmp) addr;
           Printf.fprintf oc "\tlf\t%s, 0(%s) # %f\n" (reg x) (reg reg_tmp) d 
-        )
       )
 
       (* load float point value bound to label "l" to register x. *)
@@ -224,56 +223,28 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   | Tail, IfEq(x, V(y), e1, e2) ->
       g'_tail_ifeq oc x y e1 e2 
   | Tail, IfEq(x, C(y), e1, e2) ->
-      if y = 0 then
-      (
-        g'_tail_ifeq oc x reg_zero e1 e2
-      )
-      else
-      (
-        load_imm oc reg_tmp y;
-        g'_tail_ifeq oc x reg_tmp e1 e2
-      )
+      load_imm oc reg_tmp y;
+      g'_tail_ifeq oc x reg_tmp e1 e2
   | Tail, IfLE(x, V(y), e1, e2) ->
       Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg y) (reg x);
       g'_tail_ifeq oc reg_tmp reg_zero e1 e2
   | Tail, IfLE(x, C(y), e1, e2) ->
-      if y = 0 then
-      (
-        Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg reg_zero) (reg x);
-        g'_tail_ifeq oc reg_tmp reg_zero e1 e2
-      )
-      else 
-      (
-        load_imm oc reg_tmp y;
-        Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg reg_tmp) (reg x);
-        g'_tail_ifeq oc reg_tmp reg_zero e1 e2
-      )
+      load_imm oc reg_tmp y;
+      Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg reg_tmp) (reg x);
+      g'_tail_ifeq oc reg_tmp reg_zero e1 e2
   | Tail, IfGE(x, V(y), e1, e2) ->
       Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg x) (reg y);
       g'_tail_ifeq oc reg_tmp reg_zero e1 e2
   | Tail, IfGE(x, C(y), e1, e2) ->
-      if y = 0 then
-      (
-        Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg x) (reg reg_zero);
-        g'_tail_ifeq oc reg_tmp reg_zero e1 e2
-      )
-      else
-      (
-        load_imm oc reg_tmp y;
-        Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg x) (reg reg_tmp);
-        g'_tail_ifeq oc reg_tmp reg_zero e1 e2
-      )
+      load_imm oc reg_tmp y;
+      Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg x) (reg reg_tmp);
+      g'_tail_ifeq oc reg_tmp reg_zero e1 e2
   | Tail, IfFEq(x, y, e1, e2) ->
       (* heap領域を通じて整数レジスタに入れ直してから比較*)
-      (*
       Printf.fprintf oc "\tsf\t%s, 0(%s)\n" (reg x) (reg reg_hp);
       Printf.fprintf oc "\tlw\t%s, 0(%s)\n" (reg reg_tmp) (reg reg_hp);
       Printf.fprintf oc "\tsf\t%s, 0(%s)\n" (reg y) (reg reg_hp);
       Printf.fprintf oc "\tlw\t%s, 0(%s)\n" (reg reg_tmp2) (reg reg_hp);
-      g'_tail_ifeq oc (reg reg_tmp) (reg reg_tmp2) e1 e2
-      *)
-      Printf.fprintf oc "\tsltf\t%s, %s, %s\n" (reg reg_tmp) (reg y) (reg x);
-      Printf.fprintf oc "\tsltf\t%s, %s, %s\n" (reg reg_tmp2) (reg x) (reg y);
       g'_tail_ifeq oc (reg reg_tmp) (reg reg_tmp2) e1 e2
   | Tail, IfFLE(x, y, e1, e2) ->
       Printf.fprintf oc "\tsltf\t%s, %s, %s\n" (reg reg_tmp) (reg y) (reg x);
@@ -281,57 +252,28 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   | NonTail(z), IfEq(x, V(y), e1, e2) ->
       g'_non_tail_ifeq oc (NonTail(z)) x y e1 e2 
   | NonTail(z), IfEq(x, C(y), e1, e2) ->
-      if y = 0 then
-      (
-        g'_non_tail_ifeq oc (NonTail(z)) x reg_zero e1 e2
-      )
-      else
-      (
-        load_imm oc reg_tmp y;
-        g'_non_tail_ifeq oc (NonTail(z)) x reg_tmp e1 e2
-      )
+      load_imm oc reg_tmp y;
+      g'_non_tail_ifeq oc (NonTail(z)) x reg_tmp e1 e2
   | NonTail(z), IfLE(x, V(y), e1, e2) ->
       Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg y) (reg x);
       g'_non_tail_ifeq oc (NonTail(z)) reg_tmp reg_zero e1 e2
   | NonTail(z), IfLE(x, C(y), e1, e2) ->
-      if y = 0 then
-      (
-        Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg reg_zero) (reg x);
-        g'_non_tail_ifeq oc (NonTail(z)) reg_tmp reg_zero e1 e2
-      )
-      else
-      (
-        load_imm oc reg_tmp y;
-        Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg reg_tmp) (reg x);
-        g'_non_tail_ifeq oc (NonTail(z)) reg_tmp reg_zero e1 e2
-      )
+      load_imm oc reg_tmp y;
+      Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg reg_tmp) (reg x);
+      g'_non_tail_ifeq oc (NonTail(z)) reg_tmp reg_zero e1 e2
   | NonTail(z), IfGE(x, V(y), e1, e2) ->
       Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg x) (reg y);
       g'_non_tail_ifeq oc (NonTail(z)) reg_tmp reg_zero e1 e2
   | NonTail(z), IfGE(x, C(y), e1, e2) ->
-      if y = 0 then
-      (
-        load_imm oc reg_tmp y;
-        Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg x) (reg reg_tmp);
-        g'_non_tail_ifeq oc (NonTail(z)) reg_tmp reg_zero e1 e2 
-      )
-      else
-      (
-        load_imm oc reg_tmp y;
-        Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg x) (reg reg_tmp);
-        g'_non_tail_ifeq oc (NonTail(z)) reg_tmp reg_zero e1 e2 
-      )
+      load_imm oc reg_tmp y;
+      Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg x) (reg reg_tmp);
+      g'_non_tail_ifeq oc (NonTail(z)) reg_tmp reg_zero e1 e2 
   | NonTail(z), IfFEq(x, y, e1, e2) ->
       (* heap領域を通じて整数レジスタに入れ直してから比較*)
-      (*
       Printf.fprintf oc "\tsf\t%s, 0(%s)\n" (reg x) (reg reg_hp);
       Printf.fprintf oc "\tlw\t%s, 0(%s)\n" (reg reg_tmp) (reg reg_hp);
       Printf.fprintf oc "\tsf\t%s, 0(%s)\n" (reg y) (reg reg_hp);
       Printf.fprintf oc "\tlw\t%s, 0(%s)\n" (reg reg_tmp2) (reg reg_hp);
-      g'_non_tail_ifeq oc (NonTail(z)) (reg reg_tmp) (reg reg_tmp2) e1 e2
-      *)
-      Printf.fprintf oc "\tsltf\t%s, %s, %s\n" (reg reg_tmp) (reg y) (reg x);
-      Printf.fprintf oc "\tsltf\t%s, %s, %s\n" (reg reg_tmp2) (reg x) (reg y);
       g'_non_tail_ifeq oc (NonTail(z)) (reg reg_tmp) (reg reg_tmp2) e1 e2
   | NonTail(z), IfFLE(x, y, e1, e2) ->
       Printf.fprintf oc "\tsltf\t%s, %s, %s\n" (reg reg_tmp) (reg y) (reg x);
@@ -456,7 +398,7 @@ let file_to_string fname =
 
 
 let f oc (Prog(data, fundefs, e)) =
-  (*print_prog stdout (Prog(data,fundefs,e)); *)
+  (* print_prog stdout (Prog(data,fundefs,e)); *)
   Format.eprintf "generating assembly...@.";
   Printf.fprintf oc "Init: # initialize float value and heap pointer\n";
 

@@ -242,6 +242,11 @@ and print_syntax outchan exp =
   )
 and print_fundef outchan { name = Id.L(n); args = al; fargs = fal; body = exp; ret = r } =
   Printf.printf "fundef name %s\n" n;
+  Printf.printf "args\n";
+  List.map (fun n -> (Printf.printf "%s\n" n)) al;
+  Printf.printf "fargs\n";
+  List.map (fun n -> (Printf.printf "%s\n" n)) fal;
+  Printf.printf "body\n"; 
   print_syntax outchan exp
 and print_prog outchan (Prog(data, fundefs, e)) =
   List.iter (fun fd -> print_fundef outchan fd) fundefs;
