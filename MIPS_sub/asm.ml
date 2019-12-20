@@ -222,6 +222,8 @@ let rec print_exp outchan e =
         print_id_list outchan yl
       )
 
+  | Save(x,y) -> Printf.fprintf outchan "Save %s %s\n" x y
+  | Restore(x) -> Printf.fprintf outchan "Restore %s\n" x
   | _ -> Printf.fprintf outchan "others\n"
   (* 
   | CallCls of Id.t * Id.t list * Id.t list

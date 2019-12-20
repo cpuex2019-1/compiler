@@ -312,6 +312,7 @@ let rec pow x n =
 in
 *)
 
+(* n < 16 *)
 let rec pow x n =
   if n = 0 then 1.0
   else (

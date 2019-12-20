@@ -32,20 +32,32 @@ type t = (* K正規化後の式 (caml2html: knormal_t) *)
   | ExtFunApp of Id.t * Id.t list
 and fundef = { name : Id.t * Type.t; args : (Id.t * Type.t) list; body : t }
 
-let rec fv = function (* 式に出現する（自由な）変数 (caml2html: knormal_fv) *)
-  | Unit | Int(_) | Float(_) | ExtArray(_) -> S.empty
-  | Neg(x) | FNeg(x) -> S.singleton x
-  | Add(x, y) | Sub(x, y) | Mul(x, y) | Div(x, y) | FAdd(x, y) | FSub(x, y) | FMul(x, y) | FDiv(x, y) | Get(x, y) -> S.of_list [x; y]
-  | IfEq(x, y, e1, e2) | IfLE(x, y, e1, e2) -> S.add x (S.add y (S.union (fv e1) (fv e2)))
-  | Let((x, t), e1, e2) -> S.union (fv e1) (S.remove x (fv e2))
-  | Var(x) -> S.singleton x
-  | LetRec({ name = (x, t); args = yts; body = e1 }, e2) ->
-      let zs = S.diff (fv e1) (S.of_list (List.map fst yts)) in
-      S.diff (S.union zs (fv e2)) (S.singleton x)
-  | App(x, ys) -> S.of_list (x :: ys)
-  | Tuple(xs) | GlobalTuple(_,xs) | ExtFunApp(_, xs) -> S.of_list xs
-  | Put(x, y, z) -> S.of_list [x; y; z]
-  | LetTuple(xs, y, e) -> S.add y (S.diff (fv e) (S.of_list (List.map fst xs)))
+let fv_hash = Hashtbl.create 1000000
+
+let rec fv exp =  (* 式に出現する（自由な）変数 (caml2html: knormal_fv) *)
+  try 
+    Hashtbl.find fv_hash exp
+  with
+  | Not_found -> (
+    let res =
+    match exp with
+    | Unit | Int(_) | Float(_) | ExtArray(_) -> S.empty
+    | Neg(x) | FNeg(x) -> S.singleton x
+    | Add(x, y) | Sub(x, y) | Mul(x, y) | Div(x, y) | FAdd(x, y) | FSub(x, y) | FMul(x, y) | FDiv(x, y) | Get(x, y) -> S.of_list [x; y]
+    | IfEq(x, y, e1, e2) | IfLE(x, y, e1, e2) -> S.add x (S.add y (S.union (fv e1) (fv e2)))
+    | Let((x, t), e1, e2) -> S.union (fv e1) (S.remove x (fv e2))
+    | Var(x) -> S.singleton x
+    | LetRec({ name = (x, t); args = yts; body = e1 }, e2) ->
+        let zs = S.diff (fv e1) (S.of_list (List.map fst yts)) in
+        S.diff (S.union zs (fv e2)) (S.singleton x)
+    | App(x, ys) -> S.of_list (x :: ys)
+    | Tuple(xs) | GlobalTuple(_,xs) | ExtFunApp(_, xs) -> S.of_list xs
+    | Put(x, y, z) -> S.of_list [x; y; z]
+    | LetTuple(xs, y, e) -> S.add y (S.diff (fv e) (S.of_list (List.map fst xs)))
+    in
+    (Hashtbl.add fv_hash exp res;
+     res)
+  )
 
 let insert_let (e, t) k = (* letを挿入する補助関数 (caml2html: knormal_insert) *)
   match e with
