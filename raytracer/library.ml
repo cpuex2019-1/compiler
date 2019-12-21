@@ -192,6 +192,7 @@ let rec pow x n =
 in
 *)
 
+(*
 let rec pow x n =
   if n = 0 then 1.0
   else (
@@ -202,6 +203,29 @@ let rec pow x n =
     else
       x *. y *. y
  )
+in
+*)
+let rec pow x n = 
+  if n = 0 then 1.0
+  else if n = 1 then x
+  else
+    let x2 = x *. x in
+    let x4 = x2 *. x2 in
+    let x8 = x4 *. x4 in
+    if n = 2 then x2
+    else if n = 3 then x *. x2
+    else if n = 4 then x4
+    else if n = 5 then x *. x4
+    else if n = 6 then x2 *. x4
+    else if n = 7 then x *. x2 *. x4
+    else if n = 8 then x8
+    else if n = 9 then x *. x8
+    else if n = 10 then x8 *. x2
+    else if n = 11 then x8 *. x *. x2
+    else if n = 12 then x8 *. x4
+    else if n = 13 then x8 *. x *. x4
+    else if n = 14 then x8 *. x2 *. x4
+    else x8 *. x *. x2 *. x4
 in
 
 let rec fact_tail acc n =

@@ -161,8 +161,10 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
        (
          match z with 
          | 2 -> Printf.fprintf oc "\tsrai\t%s, %s, 1\n" (reg x) (reg y)
+         | 4 -> Printf.fprintf oc "\tsrai\t%s, %s, 2\n" (reg x) (reg y)
+         | 8 -> Printf.fprintf oc "\tsrai\t%s, %s, 3\n" (reg x) (reg y)
          | 10 -> Printf.fprintf oc "\tdiv10\t%s, %s\n" (reg x) (reg y)
-         | x -> (Printf.eprintf "found: %d, Division is supported by 2 or 10 only." x;
+         | x -> (Printf.eprintf "found: %d, Division is supported by 2,4,8,and 10 only." x;
                  failwith "Div error")
        )
   | NonTail(x), Slw(y, V(z)) -> 
@@ -226,7 +228,12 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   | Tail, IfEq(x, C(y), e1, e2) ->
       if y = 0 then
       (
-        g'_tail_ifeq oc x reg_zero e1 e2
+        if x = reg_zero then
+        (
+          Printf.eprintf "dummy branch\n";
+          g oc (Tail,e1)
+        )
+        else g'_tail_ifeq oc x reg_zero e1 e2
       )
       else
       (
@@ -283,7 +290,12 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   | NonTail(z), IfEq(x, C(y), e1, e2) ->
       if y = 0 then
       (
-        g'_non_tail_ifeq oc (NonTail(z)) x reg_zero e1 e2
+        if x = reg_zero then
+        (
+          Printf.eprintf "dummy branch\n";
+          g oc (NonTail(z),e1)
+        )
+        else g'_non_tail_ifeq oc (NonTail(z)) x reg_zero e1 e2
       )
       else
       (

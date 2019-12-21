@@ -1,4 +1,5 @@
 let limit = ref 1000
+let limit_asm = ref 100
 
 let rec iter n e = (* 最適化処理をくりかえす (caml2html: main_iter) *)
   Format.eprintf "iteration %d@." n;
@@ -7,13 +8,27 @@ let rec iter n e = (* 最適化処理をくりかえす (caml2html: main_iter) *)
   if e = e' then e else
   iter (n - 1) e'
 
+let rec iter_asm n e = (* 最適化処理をくりかえす (caml2html: main_iter) *)
+  Format.eprintf "iteration[asm] %d@." n;
+  if n = 0 then e else
+  let e' = Peephole.f (Elim_asm.f (ConstFoldAsm.f e)) in
+  if e = e' then e else
+  iter_asm (n - 1) e'
+
+let rec iter_asm2 n e = (* 最適化処理をくりかえす (caml2html: main_iter) *)
+  Format.eprintf "iteration[asm] %d@." n;
+  if n = 0 then e else
+  let e' = Peephole.f (Elim_asm.f e) in
+  if e = e' then e else
+  iter_asm2 (n - 1) e'
+
 let lexbuf outchan l = (* バッファをコンパイルしてチャンネルへ出力する (caml2html: main_lexbuf) *)
   Id.counter := 0;
   Typing.extenv := M.empty;
   Emit.f outchan
-   (Peephole.f
+   (iter_asm2 !limit_asm
      (RegAlloc.f
-      (Elim_asm.f
+      (iter_asm !limit_asm
         (Simm.f
           (Virtual.f
              (Closure.f

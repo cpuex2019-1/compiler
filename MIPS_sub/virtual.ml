@@ -320,6 +320,7 @@ let h { Closure.name = (Id.L(x), t); Closure.args = yts; Closure.formal_fv = zts
 
 (* プログラム全体の仮想マシンコード生成 (caml2html: virtual_f) *)
 let f (Closure.Prog(fundefs, e)) =
+  Printf.eprintf "[virtual]\n";
   data := [];
   let fundefs = List.map h fundefs in
   (

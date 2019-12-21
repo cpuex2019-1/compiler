@@ -68,7 +68,7 @@ and g' exp =
        Let((x,t),com',e')
      else
        (
-         Printf.eprintf "[elim_asm.ml] eliminate variable %s\n" x;
+         (*Printf.eprintf "[elim_asm.ml] eliminate variable %s\n" x;*)
          e'
        )
      )

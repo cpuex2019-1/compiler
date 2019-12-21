@@ -39,49 +39,49 @@ let rec h com =
     | Lwz(y,V(z)) when z = reg_zero ->
         (
           opt_count := !opt_count+1;
-          Printf.eprintf "[peephole] zero optimization(Lwz)\n";
+          (*Printf.eprintf "[peephole] zero optimization(Lwz)\n";*)
           Lwz(y,C(0))
         )
     | Lwz(y,V(z)) when y = reg_zero ->
         (
           opt_count := !opt_count+1;
-          Printf.eprintf "[peephole] zero optimization(Lwz)\n";
+          (*Printf.eprintf "[peephole] zero optimization(Lwz)\n";*)
           Lwz(z,C(0))
         )
     | Stw(x,y,V(z)) when z = reg_zero ->
         (
           opt_count := !opt_count+1;
-          Printf.eprintf "[peephole] zero optimization(Stw)\n";
+          (*Printf.eprintf "[peephole] zero optimization(Stw)\n";*)
           Stw(x,y,C(0))
         )
     | Stw(x,y,V(z)) when y = reg_zero ->
         (
           opt_count := !opt_count+1;
-          Printf.eprintf "[peephole] zero optimization(Stw)\n";
+          (*Printf.eprintf "[peephole] zero optimization(Stw)\n";*)
           Stw(x,z,C(0))
         )
     | Stfd(x,y,V(z)) when z = reg_zero ->
         (
           opt_count := !opt_count+1;
-          Printf.eprintf "[peephole] zero optimization(Stfd)\n";
+          (*Printf.eprintf "[peephole] zero optimization(Stfd)\n";*)
           Stfd(x,y,C(0))
         )
     | Stfd(x,y,V(z)) when y = reg_zero ->
         (
           opt_count := !opt_count+1;
-          Printf.eprintf "[peephole] zero optimization(Stfd)\n";
+          (*Printf.eprintf "[peephole] zero optimization(Stfd)\n";*)
           Stfd(x,z,C(0))
         )
     | Lfd(y,V(z)) when z = reg_zero ->
         (
           opt_count := !opt_count+1;
-          Printf.eprintf "[peephole] zero optimization(Lfd)\n";
+          (*Printf.eprintf "[peephole] zero optimization(Lfd)\n";*)
           Lfd(y,C(0))
         )
     | Lfd(y,V(z)) when y = reg_zero ->
         (
           opt_count := !opt_count+1;
-          Printf.eprintf "[peephole] zero optimization(Lfd)\n";
+          (*Printf.eprintf "[peephole] zero optimization(Lfd)\n";*)
           Lfd(z,C(0))
         )
     | _ -> com
