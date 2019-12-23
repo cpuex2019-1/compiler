@@ -37,6 +37,7 @@ let addtyp x = (x, Type.gentyp ())
 %token SEMICOLON
 %token LPAREN
 %token RPAREN
+%token ASM
 %token EOF
 /* (* 優先順位とassociativityの定義（低い方から高い方へ） (caml2html: parser_prior) *) */
 %nonassoc IN
@@ -129,6 +130,9 @@ exp: /* (* 一般の式 (caml2html: parser_exp) *) */
 | simple_exp actual_args
     %prec prec_app
     { App($1, $2) }
+| ASM IDENT actual_args
+    %prec prec_app
+    { Asm($2, $3) }
 | elems
     %prec prec_tuple
     { Tuple($1) }

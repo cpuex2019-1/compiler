@@ -199,6 +199,29 @@ let rec sqrt x =
   sqrt_sub 10 x x
 in
 *)
+let rec sqrt x =
+  Asm sqrt x
+in
+
+let rec int_of_float x = 
+  Asm ftoi x
+in
+
+let rec float_of_int x = 
+  Asm itof x
+in
+
+let rec floor x =
+  Asm floor x
+in
+
+let rec print_char x =
+  Asm outb x
+in
+
+let rec read_int _ =
+  Asm input _
+in
 
 (*
 let rec odd x =

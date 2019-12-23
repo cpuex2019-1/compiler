@@ -22,6 +22,12 @@ and exp =
   | FSub of Id.t * Id.t
   | FMul of Id.t * Id.t
   | FDiv of Id.t * Id.t
+  | Sqrt of Id.t
+  | Ftoi of Id.t
+  | Floor of Id.t
+  | Itof of Id.t
+  | Outb of Id.t
+  | In
   | Lfd of Id.t * id_or_imm
   | Stfd of Id.t * Id.t * id_or_imm
   | Comment of string

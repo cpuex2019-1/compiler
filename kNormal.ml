@@ -23,6 +23,7 @@ type t = (* K正規化後の式 (caml2html: knormal_t) *)
   | Var of Id.t
   | LetRec of fundef * t
   | App of Id.t * Id.t list
+  | Asm of Id.t * Id.t list
   | Tuple of Id.t list
   | GlobalTuple of int * Id.t list (* address *)
   | LetTuple of (Id.t * Type.t) list * Id.t * t
@@ -50,7 +51,8 @@ let rec fv exp =  (* 式に出現する（自由な）変数 (caml2html: knormal_fv) *)
     | LetRec({ name = (x, t); args = yts; body = e1 }, e2) ->
         let zs = S.diff (fv e1) (S.of_list (List.map fst yts)) in
         S.diff (S.union zs (fv e2)) (S.singleton x)
-    | App(x, ys) -> S.of_list (x :: ys)
+    | App(x, ys) -> S.of_list (x :: ys) 
+    | Asm(x, ys) -> S.of_list ys
     | Tuple(xs) | GlobalTuple(_,xs) | ExtFunApp(_, xs) -> S.of_list xs
     | Put(x, y, z) -> S.of_list [x; y; z]
     | LetTuple(xs, y, e) -> S.add y (S.diff (fv e) (S.of_list (List.map fst xs)))
@@ -77,6 +79,15 @@ let calc_size sz t =
 
 let tuple_size ts =
   align (List.fold_left calc_size 0 ts)
+
+let asm_res_type op_name = 
+  match op_name with
+  | "sqrt" -> Type.Float
+  | "ftoi" -> Type.Int
+  | "itof" -> Type.Float 
+  | "floor"-> Type.Float  
+  | "outb" -> Type.Unit
+  | _ -> raise Not_found
 
 
 exception ArrayTypeError
@@ -179,6 +190,21 @@ let rec g env = function (* K正規化ルーチン本体 (caml2html: knormal_g) *)
                       (fun x -> bind (xs @ [x]) e2s) in
               bind [] e2s) (* left-to-right evaluation *)
       | _ -> assert false)
+
+  | Syntax.Asm("input", _) ->
+      Asm("input",[]),Type.Int
+  | Syntax.Asm(e1, e2s) ->
+        let t = asm_res_type e1 in
+        (
+          let res = 
+          let rec bind xs = function (* "xs" are identifiers for the arguments *)
+            | [] -> Asm(e1, xs), t
+            | e2 :: e2s ->
+                insert_let (g env e2)
+                  (fun x -> bind (xs @ [x]) e2s) in
+          bind [] e2s (* left-to-right evaluation *)
+          in (res)
+        )
   | Syntax.Tuple(es) ->
       let rec bind xs ts = function (* "xs" and "ts" are identifiers and types for the elements *)
         | [] -> Tuple(xs), Type.Tuple(ts)
@@ -255,7 +281,12 @@ let rec g env = function (* K正規化ルーチン本体 (caml2html: knormal_g) *)
             (fun y -> insert_let (g env e3)
                 (fun z -> Put(x, y, z), Type.Unit)))
 
-let f e = fst (g M.empty e)
+let f e = 
+  (*
+  Printf.printf "kNormal\n";
+  Syntax.print_syntax e 0 stdout;
+  *)
+  fst (g M.empty e)
 
 let rec print_indent depth outchan =
   if depth = 0 then ()
@@ -310,6 +341,11 @@ let rec print_syntax exp depth outchan =
     -> (fprintf outchan "LetRec\n";
         print_fundef fd (depth+1) outchan;
         print_syntax e1 (depth+1) outchan)
+  | Asm (i1,il)
+    -> (fprintf outchan "Asm %s\n" i1;
+        print_indent depth outchan;
+        fprintf outchan "Operands\n";
+        print_id_list il (depth+1) outchan)
   | App (i1,il)
     -> (fprintf outchan "App %s\n" i1;
         print_indent depth outchan;

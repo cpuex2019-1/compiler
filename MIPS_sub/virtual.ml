@@ -54,6 +54,16 @@ let rec rename_global l =
       )
   )
 
+let to_constructor inst_name = 
+  match inst_name with
+  | "sqrt" -> (fun [x] -> Sqrt(x))
+  | "ftoi" -> (fun [x] -> Ftoi(x))
+  | "itof" -> (fun [x] -> Itof(x))
+  | "floor" -> (fun [x] -> Floor(x))
+  | "outb" -> (fun [x] -> Outb(x))
+  | "input" -> (fun [] -> In)
+  | _ -> raise Not_found
+
 let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
   | Closure.Unit -> Ans(Nop)
   | Closure.Int(i) -> Ans(Li(i))
@@ -136,6 +146,8 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
                                         else exp) nint
       (Ans(CallDir(Id.L(x), (List.map (fun (a,b) -> a) nint), float)))
       ) with Not_found -> (failwith (Printf.sprintf "variable %s was not found.(AppDir)" x)))
+  | Closure.Asm(x,ys) ->
+      (Ans((to_constructor x) ys))
   | Closure.Tuple(xs) -> (* 組の生成 (caml2html: virtual_tuple) *)
       (try  (
       let y = Id.genid "t" in
@@ -328,8 +340,8 @@ let f (Closure.Prog(fundefs, e)) =
     (
       let e = g M.empty e in
       (*
-      print_string "\n-----\n";
-      print_syntax stdout e;
+      Printf.eprintf "\n-----\n";
+      print_syntax stderr e;
       *)
       Prog(!data, fundefs, e)
     )

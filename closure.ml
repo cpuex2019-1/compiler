@@ -22,6 +22,7 @@ type t = (* クロージャ変換後の式 (caml2html: closure_t) *)
   | MakeCls of (Id.t * Type.t) * closure * t
   | AppCls of Id.t * Id.t list
   | AppDir of Id.l * Id.t list
+  | Asm of Id.t * Id.t list
   | Tuple of Id.t list
   | GlobalTuple of int * Id.t list
   | LetTuple of (Id.t * Type.t) list * Id.t * t
@@ -47,22 +48,37 @@ let rec fv_sub_list l =
   | [] -> S.empty
   | x::rest -> S.union (fv_sub x) (fv_sub_list rest)
 
+let fv_hash = Hashtbl.create 1000000
 
-let rec fv = function
-  | Unit | Int(_) | Float(_) | ExtArray(_) -> S.empty
-  | Neg(x) | FNeg(x) -> fv_sub x
-  (*| Add(x, y) | Sub(x, y) | Mul(x, y) | Div(x, y) | FAdd(x, y) | FSub(x, y) | FMul(x, y) | FDiv(x, y) | Get(x, y) -> S.of_list [x; y] *)
-  | Add(x, y) | Sub(x, y) | Mul(x, y) | Div(x, y) | FAdd(x, y) | FSub(x, y) | FMul(x, y) | FDiv(x, y) -> S.union (fv_sub x) (fv_sub y)
-  | IfEq(x, y, e1, e2)| IfLE(x, y, e1, e2) -> S.union (fv_sub x) (S.union (fv_sub y) (S.union (fv e1) (fv e2)))
-  | Let((x, t), e1, e2) -> S.union (fv e1) (S.diff (fv e2) (fv_sub x))
-  | Var(x) -> fv_sub x
-  | MakeCls((x, t), { entry = l; actual_fv = ys }, e) -> S.diff (S.union (fv_sub_list ys) (fv e)) (fv_sub x)
-  | AppCls(x, ys) -> fv_sub_list (x :: ys)
-  | AppDir(_, xs) | Tuple(xs) -> fv_sub_list xs
-  | GlobalTuple(_,xs) -> fv_sub_list xs
-  | LetTuple(xts, y, e) -> S.union (fv_sub y) (S.diff (fv e) (fv_sub_list (List.map fst xts)))
-  | Get(x,y) -> fv_sub_list [x; y]
-  | Put(x, y, z) -> fv_sub_list [x;y;z]
+let rec fv exp = 
+  try 
+    Hashtbl.find fv_hash exp
+  with
+  | Not_found ->
+    (
+      let res =
+      match exp with
+      | Unit | Int(_) | Float(_) | ExtArray(_) -> S.empty
+      | Neg(x) | FNeg(x) -> fv_sub x
+      (*| Add(x, y) | Sub(x, y) | Mul(x, y) | Div(x, y) | FAdd(x, y) | FSub(x, y) | FMul(x, y) | FDiv(x, y) | Get(x, y) -> S.of_list [x; y] *)
+      | Add(x, y) | Sub(x, y) | Mul(x, y) | Div(x, y) | FAdd(x, y) | FSub(x, y) | FMul(x, y) | FDiv(x, y) -> S.union (fv_sub x) (fv_sub y)
+      | IfEq(x, y, e1, e2)| IfLE(x, y, e1, e2) -> S.union (fv_sub x) (S.union (fv_sub y) (S.union (fv e1) (fv e2)))
+      | Let((x, t), e1, e2) -> S.union (fv e1) (S.diff (fv e2) (fv_sub x))
+      | Var(x) -> fv_sub x
+      | MakeCls((x, t), { entry = l; actual_fv = ys }, e) -> S.diff (S.union (fv_sub_list ys) (fv e)) (fv_sub x)
+      | AppCls(x, ys) -> fv_sub_list (x :: ys)
+      | AppDir(_, xs) | Tuple(xs) -> fv_sub_list xs
+      | Asm(_,xs) -> fv_sub_list xs
+      | GlobalTuple(_,xs) -> fv_sub_list xs
+      | LetTuple(xts, y, e) -> S.union (fv_sub y) (S.diff (fv e) (fv_sub_list (List.map fst xts)))
+      | Get(x,y) -> fv_sub_list [x; y]
+      | Put(x, y, z) -> fv_sub_list [x;y;z]
+      in
+      (Hashtbl.add fv_hash exp res;
+       res)
+    )
+
+    
 
 let toplevel : fundef list ref = ref []
 
@@ -118,6 +134,7 @@ let rec g env known = function (* クロージャ変換ルーチン本体 (caml2html: closure
       Format.eprintf "directly applying %s@." x;
       AppDir(Id.L(x), ys)
   | KNormal.App(f, xs) -> AppCls(f, xs)
+  | KNormal.Asm(f, xs) -> Asm(f, xs)
   | KNormal.Tuple(xs) -> Tuple(xs)
   | KNormal.GlobalTuple(addr,xs) -> GlobalTuple(addr,xs)
   | KNormal.LetTuple(xts, y, e) -> LetTuple(xts, y, g (M.add_list xts env) known e)
@@ -133,7 +150,10 @@ let rec print_global l =
 
 let f e =
   toplevel := [];
-  (* KNormal.print_syntax e 0 stdout; *)
+  (*
+  Printf.printf "prev Closure\n";
+  KNormal.print_syntax e 0 stdout;
+  *)
   let e' = g M.empty S.empty e in
   Prog(List.rev !toplevel, e')
 
@@ -200,6 +220,11 @@ let rec print_syntax exp depth outchan =
     -> (fprintf outchan "AppDir %s\n" (string_of_label i1);
         print_indent depth outchan;
         fprintf outchan "Args\n";
+        print_id_list il (depth+1) outchan)
+  | Asm (i1,il)
+    -> (fprintf outchan "Asm %s\n" (i1);
+        print_indent depth outchan;
+        fprintf outchan "operands\n";
         print_id_list il (depth+1) outchan)
   | Tuple (il)
     -> (fprintf outchan "Tuple\n";

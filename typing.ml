@@ -44,6 +44,7 @@ let rec deref_term = function
                body = deref_term e1 },
              deref_term e2)
   | App(e, es) -> App(deref_term e, List.map deref_term es)
+  | Asm(e, es) -> Asm(e, List.map deref_term es)
   | Tuple(es) -> Tuple(List.map deref_term es)
   | LetTuple(xts, e1, e2) -> LetTuple(List.map deref_id_typ xts, deref_term e1, deref_term e2)
   | Array(e1, e2) -> Array(deref_term e1, deref_term e2)
@@ -133,6 +134,45 @@ let rec g env e = (* 型推論ルーチン (caml2html: typing_g) *)
         let t = Type.gentyp () in
         unify (g env e) (Type.Fun(List.map (g env) es, t));
         t
+    | Asm(e,es) ->
+        (match e with
+         | "sqrt" ->
+             (
+               assert ((List.length es) = 1);
+               unify (g env (List.hd es)) Type.Float;
+               Type.Float
+             )
+         | "ftoi" -> 
+             (
+               assert((List.length es) = 1);
+               unify (g env (List.hd es)) Type.Float;
+               Type.Int
+             )
+         | "itof" -> 
+             (
+               assert((List.length es) = 1);
+               unify (g env (List.hd es)) Type.Int;
+               Type.Float
+             )
+         | "floor" -> 
+             (
+               assert((List.length es) = 1);
+               unify (g env (List.hd es)) Type.Float;
+               Type.Float
+             )
+         | "outb" ->
+             (
+               assert((List.length es) = 1);
+               unify (g env (List.hd es)) Type.Int;
+               Type.Unit
+             )
+         | "input" ->
+             (
+               assert((List.length es) = 1);
+               Type.Int
+             )
+         | _ -> raise Not_found
+       )
     | Tuple(es) -> Type.Tuple(List.map (g env) es)
     | LetTuple(xts, e1, e2) ->
         unify (Type.Tuple(List.map snd xts)) (g env e1);

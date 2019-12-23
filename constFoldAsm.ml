@@ -28,7 +28,7 @@ let rec g' e env = (* for Asm.exp *)
   | Li(i) -> Li(i)
   | FLi(f) -> FLi(f)
   | Add(x,C(y)) when M.mem x env -> 
-      (Printf.eprintf "fold %d+%d\n" (findi x env) y);
+      (*(Printf.eprintf "fold %d+%d\n" (findi x env) y);*)
       Li((findi x env)+y)
   | Sub(x,C(y)) when M.mem x env -> Li((findi x env)-y)
   | Mul(x,C(y)) when M.mem x env -> Li((findi x env)*y)

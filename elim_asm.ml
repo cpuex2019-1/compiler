@@ -27,6 +27,8 @@ let rec fv_h com =
   | CallCls(x,il,fl) -> S.add x (S.union (S.of_list il) (S.of_list fl))
   | Save(x,y) -> S.of_list [x;y]
   | Restore(x) -> S.singleton x
+  | Sqrt(x) | Ftoi(x) | Itof(x) | Floor(x) | Outb(x) -> S.singleton x
+  | In -> S.empty
 (* for Asm.t *)
 and fv_g exp = 
   match exp with
@@ -35,7 +37,7 @@ and fv_g exp =
 
 let rec effect_h com =
   match com with
-  | Stw(_) | Stfd(_) | SetL(_) | CallCls(_) | CallDir(_) | Save(_) | Restore(_) -> true
+  | Stw(_) | Stfd(_) | SetL(_) | CallCls(_) | CallDir(_) | Save(_) | Restore(_) | Outb(_) | In -> true
   | IfEq(_,_,e1,e2) -> (effect_g e1) || (effect_g e2)
   | IfLE(_,_,e1,e2) -> (effect_g e1) || (effect_g e2)
   | IfGE(_,_,e1,e2) -> (effect_g e1) || (effect_g e2)
@@ -68,7 +70,7 @@ and g' exp =
        Let((x,t),com',e')
      else
        (
-         (*Printf.eprintf "[elim_asm.ml] eliminate variable %s\n" x;*)
+         (* Printf.eprintf "[elim_asm.ml] eliminate variable %s\n" x; *)
          e'
        )
      )
@@ -81,6 +83,6 @@ let f (Prog(data, fundefs, e)) =
   Printf.eprintf "eliminate asm!\n";
   let fds = List.map h fundefs in
   let e' = g' e in
-  print_prog stdout (Prog(data,fds,e'));
+  (* print_prog stderr (Prog(data,fds,e')); *)
   Prog(data,fds,e')
   (*Prog(data,fundefs,e)*)

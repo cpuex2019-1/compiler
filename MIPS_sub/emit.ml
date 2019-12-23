@@ -207,6 +207,19 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   | NonTail(x), Restore(y) ->
       assert (List.mem x allfregs);
       Printf.fprintf oc "\tlf\t%s, %d(%s)\n" (reg x) (offset y) (reg reg_sp)
+  | NonTail(x), Sqrt(y) ->
+      Printf.fprintf oc "\tsqrt\t%s, %s\n" (reg x) (reg y)
+  | NonTail(x), Ftoi(y) ->
+      Printf.fprintf oc "\tftoi\t%s, %s\n" (reg x) (reg y)
+  | NonTail(x), Itof(y) ->
+      Printf.fprintf oc "\titof\t%s, %s\n" (reg x) (reg y)
+  | NonTail(x), Floor(y) ->
+      Printf.fprintf oc "\tfloor\t%s, %s\n" (reg x) (reg y)
+  | NonTail(x), Outb(y) ->
+      (*Printf.eprintf "NonTail out\n"; *)
+      Printf.fprintf oc "\toutb\t%s\n" (reg y)
+  | NonTail(x), In ->
+      Printf.fprintf oc "\tin\t%s\n" (reg x)
   (* 末尾だったら計算結果を第一レジスタにセットしてリターン (caml2html: emit_tailret) *)
   | Tail, (Nop | Stw _ | Stfd _ | Comment _ | Save _ as exp) ->
       g' oc (NonTail(Id.gentmp Type.Unit), exp);
@@ -285,6 +298,19 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   | Tail, IfFLE(x, y, e1, e2) ->
       Printf.fprintf oc "\tsltf\t%s, %s, %s\n" (reg reg_tmp) (reg y) (reg x);
       g'_tail_ifeq oc reg_tmp reg_zero e1 e2
+(* new instructions *)
+  | Tail, (Sqrt _ | Floor _ | Itof _  as exp) ->
+      g' oc (NonTail(fregs.(0)), exp);
+      Printf.fprintf oc "\tjr %s\n" (reg reg_lr);
+  | Tail, (Ftoi _  as exp) ->
+      g' oc (NonTail(regs.(0)), exp);
+      Printf.fprintf oc "\tjr %s\n" (reg reg_lr);
+  | Tail, (Outb _ as exp) ->
+      g' oc (NonTail(Id.gentmp Type.Unit), exp);
+      Printf.fprintf oc "\tjr %s\n" (reg reg_lr);
+  | Tail, (In as exp) ->
+      g' oc (NonTail(regs.(0)), exp);
+      Printf.fprintf oc "\tjr %s\n" (reg reg_lr);
   | NonTail(z), IfEq(x, V(y), e1, e2) ->
       g'_non_tail_ifeq oc (NonTail(z)) x y e1 e2 
   | NonTail(z), IfEq(x, C(y), e1, e2) ->
@@ -468,7 +494,8 @@ let file_to_string fname =
 
 
 let f oc (Prog(data, fundefs, e)) =
-  print_prog stdout (Prog(data,fundefs,e)); 
+  Printf.eprintf "[emit]\n";
+  (*print_prog stderr (Prog(data,fundefs,e));*)
   Format.eprintf "generating assembly...@.";
   Printf.fprintf oc "Init: # initialize float value and heap pointer\n";
 
