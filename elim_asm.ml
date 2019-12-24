@@ -1,5 +1,7 @@
 open Asm
 
+let elim_count = ref 0
+
 (* for Asm.exp *)
 let rec fv_h com = 
   match com with
@@ -38,7 +40,7 @@ and fv_g exp =
 
 let rec effect_h com =
   match com with
-  | Stw(_) | Stfd(_) | SetL(_) | CallCls(_) | CallDir(_) | Save(_) | Restore(_) | Outb(_) | In | Inf -> true
+  | Stw(_) | Stfd(_) | CallCls(_) | CallDir(_) | Save(_) (*| Restore(_) *) | Outb(_) | In | Inf -> true
   | IfEq(_,_,e1,e2) -> (effect_g e1) || (effect_g e2)
   | IfLE(_,_,e1,e2) -> (effect_g e1) || (effect_g e2)
   | IfGE(_,_,e1,e2) -> (effect_g e1) || (effect_g e2)
@@ -71,7 +73,8 @@ and g' exp =
        Let((x,t),com',e')
      else
        (
-         (* Printf.eprintf "[elim_asm.ml] eliminate variable %s\n" x; *)
+         (*Printf.eprintf "[elim_asm.ml] eliminate variable %s\n" x;*)
+         elim_count := !elim_count + 1;
          e'
        )
      )
@@ -85,5 +88,6 @@ let f (Prog(data, fundefs, e)) =
   let fds = List.map h fundefs in
   let e' = g' e in
   (* print_prog stderr (Prog(data,fds,e')); *)
+  Printf.eprintf "elim count %d\n" !elim_count;
   Prog(data,fds,e')
   (*Prog(data,fundefs,e)*)
