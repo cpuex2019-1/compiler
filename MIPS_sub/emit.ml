@@ -50,28 +50,35 @@ let load_label r label =
 let load_imm oc target_reg c = 
   (if (c > int_max) then raise (Out_of_range c));
   (if (c < int_min) then raise (Out_of_range c));
-  let r = reg target_reg in
-  let c = c land 0xffffffff in
-  if c = 0 then
-    Printf.fprintf oc "\tori\t%s, %s, %d\n" r reg_zero 0
-  else (
-    let n = c lsr 16 in (* upper 16bit *)
-    let m = c lxor (n lsl 16) in (* lower 16bit *)
-
-    if m = 0 then (
-      Printf.fprintf oc "\tori\t%s, %s, %d\n" r reg_zero n;
-      Printf.fprintf oc "\tslli\t%s, %s, %d\n" r r 16
-    )
+  if -32768 <= c && c < 32768 then
+  (
+    Printf.fprintf oc "\taddi\t%s, %s, %d\n" (reg target_reg) reg_zero c
+  )
+  else
+  (
+    let r = reg target_reg in
+    let c = c land 0xffffffff in
+    if c = 0 then
+      Printf.fprintf oc "\tori\t%s, %s, %d\n" r reg_zero 0
     else (
-      if n = 0 then (
-        Printf.fprintf oc "\tori\t%s, %s, %d\n" r reg_zero m
-      ) else (
+      let n = c lsr 16 in (* upper 16bit *)
+      let m = c lxor (n lsl 16) in (* lower 16bit *)
+
+      if m = 0 then (
         Printf.fprintf oc "\tori\t%s, %s, %d\n" r reg_zero n;
-        Printf.fprintf oc "\tslli\t%s, %s, %d\n" r r 16;
-        Printf.fprintf oc "\tori\t%s, %s, %d\n" r r m
+        Printf.fprintf oc "\tslli\t%s, %s, %d\n" r r 16
+      )
+      else (
+        if n = 0 then (
+          Printf.fprintf oc "\tori\t%s, %s, %d\n" r reg_zero m
+        ) else (
+          Printf.fprintf oc "\tori\t%s, %s, %d\n" r reg_zero n;
+          Printf.fprintf oc "\tslli\t%s, %s, %d\n" r r 16;
+          Printf.fprintf oc "\tori\t%s, %s, %d\n" r r m
+        )
       )
     )
- )
+  )
 
 exception Invalid_float_immidiate
 let rec get_float_imm_address label data_list idx =
@@ -220,6 +227,8 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
       Printf.fprintf oc "\toutb\t%s\n" (reg y)
   | NonTail(x), In ->
       Printf.fprintf oc "\tin\t%s\n" (reg x)
+  | NonTail(x), Inf ->
+      Printf.fprintf oc "\tinf\t%s\n" (reg x)
   (* 末尾だったら計算結果を第一レジスタにセットしてリターン (caml2html: emit_tailret) *)
   | Tail, (Nop | Stw _ | Stfd _ | Comment _ | Save _ as exp) ->
       g' oc (NonTail(Id.gentmp Type.Unit), exp);
@@ -311,6 +320,9 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   | Tail, (In as exp) ->
       g' oc (NonTail(regs.(0)), exp);
       Printf.fprintf oc "\tjr %s\n" (reg reg_lr);
+  | Tail, (Inf as exp) ->
+      g' oc (NonTail(fregs.(0)), exp);
+      Printf.fprintf oc "\tjr %s\n" (reg reg_lr);
   | NonTail(z), IfEq(x, V(y), e1, e2) ->
       g'_non_tail_ifeq oc (NonTail(z)) x y e1 e2 
   | NonTail(z), IfEq(x, C(y), e1, e2) ->
@@ -349,8 +361,7 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   | NonTail(z), IfGE(x, C(y), e1, e2) ->
       if y = 0 then
       (
-        load_imm oc reg_tmp y;
-        Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg x) (reg reg_tmp);
+        Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg x) (reg reg_zero);
         g'_non_tail_ifeq oc (NonTail(z)) reg_tmp reg_zero e1 e2 
       )
       else

@@ -193,6 +193,8 @@ let rec g env = function (* K正規化ルーチン本体 (caml2html: knormal_g) *)
 
   | Syntax.Asm("input", _) ->
       Asm("input",[]),Type.Int
+  | Syntax.Asm("inf", _) ->
+      Asm("inf",[]),Type.Int
   | Syntax.Asm(e1, e2s) ->
         let t = asm_res_type e1 in
         (

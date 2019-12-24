@@ -28,6 +28,7 @@ and exp =
   | Itof of Id.t
   | Outb of Id.t
   | In
+  | Inf
   | Lfd of Id.t * id_or_imm
   | Stfd of Id.t * Id.t * id_or_imm
   | Comment of string

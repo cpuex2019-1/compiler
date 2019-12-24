@@ -171,6 +171,11 @@ let rec g env e = (* 型推論ルーチン (caml2html: typing_g) *)
                assert((List.length es) = 1);
                Type.Int
              )
+         | "inf" ->
+             (
+               assert((List.length es) = 1);
+               Type.Float
+             )
          | _ -> raise Not_found
        )
     | Tuple(es) -> Type.Tuple(List.map (g env) es)

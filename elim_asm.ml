@@ -29,6 +29,7 @@ let rec fv_h com =
   | Restore(x) -> S.singleton x
   | Sqrt(x) | Ftoi(x) | Itof(x) | Floor(x) | Outb(x) -> S.singleton x
   | In -> S.empty
+  | Inf -> S.empty
 (* for Asm.t *)
 and fv_g exp = 
   match exp with
@@ -37,7 +38,7 @@ and fv_g exp =
 
 let rec effect_h com =
   match com with
-  | Stw(_) | Stfd(_) | SetL(_) | CallCls(_) | CallDir(_) | Save(_) | Restore(_) | Outb(_) | In -> true
+  | Stw(_) | Stfd(_) | SetL(_) | CallCls(_) | CallDir(_) | Save(_) | Restore(_) | Outb(_) | In | Inf -> true
   | IfEq(_,_,e1,e2) -> (effect_g e1) || (effect_g e2)
   | IfLE(_,_,e1,e2) -> (effect_g e1) || (effect_g e2)
   | IfGE(_,_,e1,e2) -> (effect_g e1) || (effect_g e2)

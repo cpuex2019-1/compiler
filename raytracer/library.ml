@@ -103,6 +103,10 @@ let rec read_int _ =
   Asm input _
 in
 
+let rec read_float _ =
+  Asm inf _
+in
+
 (*
 let rec odd x =
   let h = x / 2 in
@@ -251,6 +255,7 @@ let rec pow x n =
     else x8 *. x *. x2 *. x4
 in
 
+(*
 let rec fact_tail acc n =
   if n = 1 then acc
   else fact_tail (acc * n) (n-1)
@@ -258,8 +263,9 @@ in
 
 let rec fact n = fact_tail 1 n
 in
+*)
 
-let rec pow_upper p x =
+(*let rec pow_upper p x =
   if x >= p then pow_upper (p *. 2.0) x
   else p
 in
@@ -276,6 +282,7 @@ let rec reduction_2pi_sub x p =
   else
     x
 in
+*)
 
 let rec fsgn x = 
   if x > 0.0 then 1.0
@@ -289,8 +296,12 @@ in
 let rec reduction_2pi x =
   let pi = 3.1415926535 in
   let p = pi *. 2.0 in
+  (*
   let p = pow_upper p x in
     reduction_2pi_sub x p
+  *)
+  let quo = (Asm floor (x /. p)) in
+  x -. quo *. p
 in
 
    
@@ -400,6 +411,7 @@ write assembly
 *)
 
 (* I/O *)
+(*
 let rec print_int_sub x = 
   if x = 0 then ()
   else (
@@ -419,6 +431,42 @@ let rec print_int_ascii x =
       print_int_sub (-x)
     )
  )
+in
+*)
+
+let rec print_int_sub3 x = 
+  if x = 0 then ()
+  else (
+    let y = x / 10 in
+    let rem = x - y * 10 in
+    print_char (48+rem)
+ )
+in
+
+let rec print_int_sub2 x = 
+  if x = 0 then ()
+  else (
+    let y = x / 10 in
+    let rem = x - y * 10 in
+    print_int_sub3 y;
+    print_char (48+rem)
+ )
+in
+
+let rec print_int_sub1 x = 
+  if x = 0 then ()
+  else (
+    let y = x / 10 in
+    let rem = x - y * 10 in
+    print_int_sub2 y;
+    print_char (48+rem)
+ )
+in
+
+(* only for [0,1000) *)
+let rec print_int_ascii x = 
+  if x = 0 then (print_char 48)
+  else print_int_sub1 x
 in
 
 let rec print_int x =

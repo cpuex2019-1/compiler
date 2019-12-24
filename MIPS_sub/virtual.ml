@@ -62,6 +62,7 @@ let to_constructor inst_name =
   | "floor" -> (fun [x] -> Floor(x))
   | "outb" -> (fun [x] -> Outb(x))
   | "input" -> (fun [] -> In)
+  | "inf" -> (fun [] -> Inf)
   | _ -> raise Not_found
 
 let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
@@ -138,7 +139,22 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
                                         else exp) nint
       (Ans(CallCls(x, (List.map (fun (a,b) -> a) nint), float)))
       ) with Not_found -> (failwith (Printf.sprintf "variable %s was not found.(AppCls)" x)))
-  | Closure.AppDir(Id.L(x), ys) ->
+  | Closure.AppDir(Id.L(x), ys) as exp ->
+      (*
+      match exp with 
+      | Closure.AppDir(Id.L("min_caml_create_array"),[Closure.Int(n);elem]) ->
+          let rec make_fill n elem = 
+            if n = 0 then (fun x -> Ans(x))
+            else 
+              let f = make_fill (n-1) elem in
+              (fun x -> Let(((Id.gentmp Type.Unit), Type.Unit),Stw(elem,reg_hp,C(4*(n-1)),(f x))))
+          in
+          let fill = make_fill n elem in
+          fill (Let((reg_hp,Type.Int),Add(reg_hp,C(4*n)),Ans(reg_hp)))
+      | _ ->
+          *)
+          (
+        
       (try(
       let (int, float) = separate (List.map (fun y -> (y, (try M.find y env with Not_found -> Type.Int))) ys) in
       let nint = rename_global int in
@@ -146,6 +162,7 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
                                         else exp) nint
       (Ans(CallDir(Id.L(x), (List.map (fun (a,b) -> a) nint), float)))
       ) with Not_found -> (failwith (Printf.sprintf "variable %s was not found.(AppDir)" x)))
+          )
   | Closure.Asm(x,ys) ->
       (Ans((to_constructor x) ys))
   | Closure.Tuple(xs) -> (* 組の生成 (caml2html: virtual_tuple) *)
