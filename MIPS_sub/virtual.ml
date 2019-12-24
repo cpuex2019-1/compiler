@@ -192,7 +192,7 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
               store)
       )
   | Closure.LetTuple(xts, y, e2) ->
-      (* let s = Closure.fv e2 in *)
+      let s = Closure.fv e2 in 
       let env' = (match M.mem y env with
                   | false -> M.add y Type.Int (M.add_list xts env)
                   | true -> M.add_list xts env) in
@@ -204,10 +204,10 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
             xts
             (0, g env' e2)
             (fun x offset load ->
-              (* if not (S.mem x s) then load else (* [XX] a little ad hoc optimization *) *)
+              if not (S.mem x s) then load else (* [XX] a little ad hoc optimization *) 
               fletd(x, Lfd(y', C(offset)), load))
             (fun x t offset load ->
-              (* if not (S.mem x s) then load else (* [XX] a little ad hoc optimization *) *)
+              if not (S.mem x s) then load else (* [XX] a little ad hoc optimization *) 
               Let((x, t), Lwz(y', C(offset)), load)) in
         Let((y',Type.Int),Li(addr),load)
       ) else (
@@ -216,10 +216,10 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
             xts
             (0, g env' e2)
             (fun x offset load ->
-              (* if not (S.mem x s) then load else (* [XX] a little ad hoc optimization *) *)
+              if not (S.mem x s) then load else (* [XX] a little ad hoc optimization *) 
               fletd(x, Lfd(y, C(offset)), load))
             (fun x t offset load ->
-              (* if not (S.mem x s) then load else (* [XX] a little ad hoc optimization *) *)
+              if not (S.mem x s) then load else (* [XX] a little ad hoc optimization *) 
               Let((x, t), Lwz(y, C(offset)), load)) in
         load
       )

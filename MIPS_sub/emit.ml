@@ -263,34 +263,28 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
         g'_tail_ifeq oc x reg_tmp e1 e2
       )
   | Tail, IfLE(x, V(y), e1, e2) ->
-      Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg y) (reg x);
-      g'_tail_ifeq oc reg_tmp reg_zero e1 e2
+      g'_tail_ifle oc x y e1 e2
   | Tail, IfLE(x, C(y), e1, e2) ->
       if y = 0 then
       (
-        Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg reg_zero) (reg x);
-        g'_tail_ifeq oc reg_tmp reg_zero e1 e2
+        g'_tail_ifle oc x reg_zero e1 e2
       )
       else 
       (
         load_imm oc reg_tmp y;
-        Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg reg_tmp) (reg x);
-        g'_tail_ifeq oc reg_tmp reg_zero e1 e2
+        g'_tail_ifle oc x reg_tmp e1 e2
       )
   | Tail, IfGE(x, V(y), e1, e2) ->
-      Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg x) (reg y);
-      g'_tail_ifeq oc reg_tmp reg_zero e1 e2
+      g'_tail_ifge oc x y e1 e2
   | Tail, IfGE(x, C(y), e1, e2) ->
       if y = 0 then
       (
-        Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg x) (reg reg_zero);
-        g'_tail_ifeq oc reg_tmp reg_zero e1 e2
+        g'_tail_ifge oc x reg_zero e1 e2
       )
       else
       (
         load_imm oc reg_tmp y;
-        Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg x) (reg reg_tmp);
-        g'_tail_ifeq oc reg_tmp reg_zero e1 e2
+        g'_tail_ifge oc x reg_tmp e1 e2
       )
   | Tail, IfFEq(x, y, e1, e2) ->
       (* heap領域を通じて整数レジスタに入れ直してから比較*)
@@ -341,34 +335,28 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
         g'_non_tail_ifeq oc (NonTail(z)) x reg_tmp e1 e2
       )
   | NonTail(z), IfLE(x, V(y), e1, e2) ->
-      Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg y) (reg x);
-      g'_non_tail_ifeq oc (NonTail(z)) reg_tmp reg_zero e1 e2
+      g'_non_tail_ifle oc (NonTail(z)) x y e1 e2
   | NonTail(z), IfLE(x, C(y), e1, e2) ->
       if y = 0 then
       (
-        Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg reg_zero) (reg x);
-        g'_non_tail_ifeq oc (NonTail(z)) reg_tmp reg_zero e1 e2
+        g'_non_tail_ifle oc (NonTail(z)) x reg_zero e1 e2
       )
       else
       (
         load_imm oc reg_tmp y;
-        Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg reg_tmp) (reg x);
-        g'_non_tail_ifeq oc (NonTail(z)) reg_tmp reg_zero e1 e2
+        g'_non_tail_ifle oc (NonTail(z)) x reg_tmp e1 e2
       )
   | NonTail(z), IfGE(x, V(y), e1, e2) ->
-      Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg x) (reg y);
-      g'_non_tail_ifeq oc (NonTail(z)) reg_tmp reg_zero e1 e2
+      g'_non_tail_ifge oc (NonTail(z)) x y e1 e2
   | NonTail(z), IfGE(x, C(y), e1, e2) ->
       if y = 0 then
       (
-        Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg x) (reg reg_zero);
-        g'_non_tail_ifeq oc (NonTail(z)) reg_tmp reg_zero e1 e2 
+        g'_non_tail_ifge oc (NonTail(z)) x reg_zero e1 e2 
       )
       else
       (
         load_imm oc reg_tmp y;
-        Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg reg_tmp) (reg x) (reg reg_tmp);
-        g'_non_tail_ifeq oc (NonTail(z)) reg_tmp reg_zero e1 e2 
+        g'_non_tail_ifge oc (NonTail(z)) x reg_tmp e1 e2 
       )
   | NonTail(z), IfFEq(x, y, e1, e2) ->
       (* heap領域を通じて整数レジスタに入れ直してから比較*)
@@ -432,6 +420,22 @@ and g'_tail_ifeq oc x y e1 e2  =
   Printf.fprintf oc "%s:\n" b_else;
   stackset := stackset_back;
   g oc (Tail, e2)
+and g'_tail_ifle oc x y e1 e2  =
+  let b_le = Id.genid ("le") in
+  Printf.fprintf oc "\tble\t%s, %s, %s\n" (reg x) (reg y) b_le;
+  let stackset_back = !stackset in
+  g oc (Tail, e2);
+  Printf.fprintf oc "%s:\n" b_le;
+  stackset := stackset_back;
+  g oc (Tail, e1)
+and g'_tail_ifge oc x y e1 e2  =
+  let b_ge = Id.genid ("ge") in
+  Printf.fprintf oc "\tbge\t%s, %s, %s\n" (reg x) (reg y) b_ge;
+  let stackset_back = !stackset in
+  g oc (Tail, e2);
+  Printf.fprintf oc "%s:\n" b_ge;
+  stackset := stackset_back;
+  g oc (Tail, e1)
 and g'_tail_iffeq oc x y e1 e2  =
   let b_else = Id.genid ("feq_else") in
   Printf.fprintf oc "\tbne\t%s, %s, %s\n" (reg x) (reg y) b_else;
@@ -451,6 +455,34 @@ and g'_non_tail_ifeq oc dest x y e1 e2 =
   Printf.fprintf oc "%s:\n" b_else;
   stackset := stackset_back;
   g oc (dest, e2);
+  Printf.fprintf oc "%s:\n" b_cont;
+  let stackset2 = !stackset in
+  stackset := S.inter stackset1 stackset2
+and g'_non_tail_ifle oc dest x y e1 e2 =
+  let b_le = Id.genid ("le_else") in
+  let b_cont = Id.genid ("le_cont") in
+  Printf.fprintf oc "\tble\t%s, %s, %s\n" (reg x) (reg y) b_le;
+  let stackset_back = !stackset in
+  g oc (dest, e2);
+  let stackset1 = !stackset in
+  Printf.fprintf oc "\tj\t%s\n" b_cont;
+  Printf.fprintf oc "%s:\n" b_le;
+  stackset := stackset_back;
+  g oc (dest, e1);
+  Printf.fprintf oc "%s:\n" b_cont;
+  let stackset2 = !stackset in
+  stackset := S.inter stackset1 stackset2
+and g'_non_tail_ifge oc dest x y e1 e2 =
+  let b_ge = Id.genid ("ge_else") in
+  let b_cont = Id.genid ("ge_cont") in
+  Printf.fprintf oc "\tbge\t%s, %s, %s\n" (reg x) (reg y) b_ge;
+  let stackset_back = !stackset in
+  g oc (dest, e2);
+  let stackset1 = !stackset in
+  Printf.fprintf oc "\tj\t%s\n" b_cont;
+  Printf.fprintf oc "%s:\n" b_ge;
+  stackset := stackset_back;
+  g oc (dest, e1);
   Printf.fprintf oc "%s:\n" b_cont;
   let stackset2 = !stackset in
   stackset := S.inter stackset1 stackset2
