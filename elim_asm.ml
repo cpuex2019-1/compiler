@@ -47,7 +47,7 @@ let rec effect_h com =
   | _ -> false
 and effect_g exp =
   match exp with
-  | Ans(com) -> true
+  | Ans(com) -> effect_h com
   | Let((x,t),com,e) -> (((effect_h com) || (effect_g e)) || S.mem x (fv_h com))
   
 
