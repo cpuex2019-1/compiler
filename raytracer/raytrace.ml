@@ -131,8 +131,7 @@ let rec fisneg x = (if (x < 0.0) then true else false)
 in
 let rec fiszero x = (if (x = 0.0) then true else false)
 in
-let rec fless x y = 
-  if fispos (y -. x) then true else false
+let rec fless x y = fispos (y -. x)
 in
 
 (* int *)
@@ -159,7 +158,8 @@ external not : bool -> bool = "%boolnot"
   if x then false else true
 in *)
 let rec xor x y =
-  if x then not y else y
+  (* if x then not y else y *)
+  Asm xor x y
 in
 
 (* float (2) *)

@@ -124,6 +124,13 @@ and g exp =
           opt_count := !opt_count+1;
           g (Let((x2,t2),Li(i1+i2),e1))
         )
+    | Let((x,tx),Add(y,C(c1)),Let((z,tz),Lwz(x2,C(c2)),exp))
+      when (x = x2 && z <> x && z <> y && abs(c1+c2)<32768 ) ->
+        (
+          opt_count := !opt_count+1;
+          Printf.eprintf "fold global array access\n";
+          g (Let((z,tz),Lwz(y,C(c1+c2)),Let((x,tx),Add(y,C(c1)),exp)))
+        )
     | Let((x,t),com,e2) ->
         (
           let e2' = g e2 in

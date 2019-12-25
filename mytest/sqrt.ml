@@ -12,7 +12,7 @@ let rec ftoi x =
   Asm ftoi x
 in
 let rec print_int x = 
-  Asm out x
+  Asm outb x
 in
 print_int (ftoi (sqrt 4.0))
 

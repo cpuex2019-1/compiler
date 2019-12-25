@@ -7,8 +7,8 @@ let rec fv_h com =
   match com with
   | Nop | Li(_) | FLi(_) | SetL(_) | Comment(_) -> S.empty
   | Mr(x) | Neg(x) -> S.singleton x
-  | Add(x,C(y)) | Sub(x,C(y)) | Mul(x,C(y)) | Div(x,C(y)) | Slw(x,C(y)) | Lwz(x,C(y)) -> S.singleton x
-  | Add(x,V(y)) | Sub(x,V(y)) | Mul(x,V(y)) | Div(x,V(y)) | Slw(x,V(y)) | Lwz(x,V(y)) -> S.of_list [x;y]
+  | Add(x,C(y)) | Sub(x,C(y)) | Mul(x,C(y)) | Div(x,C(y)) | Slw(x,C(y)) | Xor(x,C(y)) | Lwz(x,C(y)) -> S.singleton x
+  | Add(x,V(y)) | Sub(x,V(y)) | Mul(x,V(y)) | Div(x,V(y)) | Slw(x,V(y)) | Xor(x,V(y)) | Lwz(x,V(y)) -> S.of_list [x;y]
   | Stw(x,y,C(z)) -> S.of_list [x;y]
   | Stw(x,y,V(z)) -> S.of_list [x;y;z]
   | FMr(x) | FNeg(x) -> S.singleton x

@@ -1,21 +1,42 @@
 Init: # initialize float value and heap pointer
-	ori	$3, $0, 0
-	ori	$30, $0, 170
-	ori	$29, $0, 0
-	ori	$31, $0, 0
+	addi	$3, $0, 0
+	addi	$30, $0, 170
+	addi	$29, $0, 0
+	addi	$31, $0, 0
 #	outb	$30 # atsunobu request
-	ori	$4, $0, 3000
+	addi	$4, $0, 3000
 	ori	$30, $0, 16512
 	slli	$30, $30, 16
 	sw	$30, 0($4)
 	addi	$4, $4, 8
 	j Main
+sqrt.4:
+	sqrt	$f0, $f0
+	jr $31
+ftoi.6:
+	ftoi	$2, $f0
+	jr $31
+print_int.8:
+	outb	$2
+	jr $31
 #	main program starts
 Main:
 	lf	$f0, 3000($0) # 4.000000
-	sqrt	$f0, $f0
-	ftoi	$2, $f0
-	out	$2
+	sw	$31, 4($3)
+	addi	$3, $3, 8
+	jal	sqrt.4
+	addi	$3, $3, -8
+	lw	$31, 4($3)
+	sw	$31, 4($3)
+	addi	$3, $3, 8
+	jal	ftoi.6
+	addi	$3, $3, -8
+	lw	$31, 4($3)
+	sw	$31, 4($3)
+	addi	$3, $3, 8
+	jal	print_int.8
+	addi	$3, $3, -8
+	lw	$31, 4($3)
 	j Exit
 #	main program ends
 # floor

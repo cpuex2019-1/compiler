@@ -40,6 +40,7 @@ let h { name = l; args = xs; fargs = ys; body = e; ret = t } = (* トップレベル関
 
 let f (Prog(data, fundefs, e)) = (* プログラム全体の16bit即値最適化 *)
   Printf.eprintf "[simm]\n";
+  (*
   let e' = g M.empty e in
-  (* print_syntax stderr e';*)
+  print_syntax stderr e';*)
   Prog(data, List.map h fundefs, g M.empty e)

@@ -87,6 +87,8 @@ let asm_res_type op_name =
   | "itof" -> Type.Float 
   | "floor"-> Type.Float  
   | "outb" -> Type.Unit
+  | "in" -> Type.Unit
+  | "xor" -> Type.Bool
   | _ -> raise Not_found
 
 
@@ -284,8 +286,8 @@ let rec g env = function (* K正規化ルーチン本体 (caml2html: knormal_g) *)
                 (fun z -> Put(x, y, z), Type.Unit)))
 
 let f e = 
+  Printf.eprintf "[kNormal] start\n";
   (*
-  Printf.printf "kNormal\n";
   Syntax.print_syntax e 0 stdout;
   *)
   fst (g M.empty e)

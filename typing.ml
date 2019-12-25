@@ -176,7 +176,14 @@ let rec g env e = (* 型推論ルーチン (caml2html: typing_g) *)
                assert((List.length es) = 1);
                Type.Float
              )
-         | _ -> raise Not_found
+         | "xor" ->
+             (
+               assert((List.length es) = 2);
+               unify (g env (List.nth es 0)) Type.Bool;
+               unify (g env (List.nth es 1)) Type.Bool;
+               Type.Bool
+             )
+         | _ -> (failwith "unknown asm in typing")
        )
     | Tuple(es) -> Type.Tuple(List.map (g env) es)
     | LetTuple(xts, e1, e2) ->
@@ -200,6 +207,7 @@ let rec g env e = (* 型推論ルーチン (caml2html: typing_g) *)
 
 let f e =
   extenv := M.empty;
+  Printf.eprintf "typing\n";
 (*
   (match deref_typ (g M.empty e) with
   | Type.Unit -> ()

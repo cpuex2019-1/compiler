@@ -63,6 +63,7 @@ let to_constructor inst_name =
   | "outb" -> (fun [x] -> Outb(x))
   | "input" -> (fun [] -> In)
   | "inf" -> (fun [] -> Inf)
+  | "xor" -> (fun [x;y] -> Xor(x,V(y)))
   | _ -> raise Not_found
 
 let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
@@ -139,7 +140,7 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
                                         else exp) nint
       (Ans(CallCls(x, (List.map (fun (a,b) -> a) nint), float)))
       ) with Not_found -> (failwith (Printf.sprintf "variable %s was not found.(AppCls)" x)))
-  | Closure.AppDir(Id.L(x), ys) as exp ->
+  | Closure.AppDir(Id.L(x), ys) ->
       (*
       match exp with 
       | Closure.AppDir(Id.L("min_caml_create_array"),[Closure.Int(n);elem]) ->

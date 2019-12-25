@@ -150,6 +150,7 @@ let rec print_global l =
 
 let f e =
   toplevel := [];
+  Printf.eprintf "closure\n";
   (*
   Printf.printf "prev Closure\n";
   KNormal.print_syntax e 0 stdout;
