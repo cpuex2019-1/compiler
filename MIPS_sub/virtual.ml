@@ -64,7 +64,7 @@ let to_constructor inst_name =
   | "input" -> (fun [] -> In)
   | "inf" -> (fun [] -> Inf)
   | "xor" -> (fun [x;y] -> Xor(x,V(y)))
-  | _ -> raise Not_found
+  | _ -> failwith "unknown asm keyworn found in virtual.ml"
 
 let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
   | Closure.Unit -> Ans(Nop)

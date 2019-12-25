@@ -5,13 +5,13 @@
 (* let true = 1 in
 let false = 0 in *)
 
-let rec fispos x = (if (x > 0.0) then true else false)
+let rec fispos x = (x > 0.0)
 in
-let rec fisneg x = (if (x < 0.0) then true else false)
+let rec fisneg x = (x < 0.0)
 in
-let rec fiszero x = (if (x = 0.0) then true else false)
+let rec fiszero x = (x = 0.0)
 in
-let rec fless x y = fispos (y -. x)
+let rec fless x y = (x < y)
 in
 
 (* int *)
@@ -62,7 +62,7 @@ external floor : float -> float = "floor_float" "floor" "float"
 *)
 
 let rec fabs x =
-  if fispos x then x else -.x 
+  if x > 0.0 then x else -.x 
 in
 
 let rec fneg x =

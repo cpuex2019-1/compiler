@@ -128,7 +128,7 @@ and g exp =
       when (x = x2 && z <> x && z <> y && abs(c1+c2)<32768 ) ->
         (
           opt_count := !opt_count+1;
-          Printf.eprintf "fold global array access\n";
+          (* Printf.eprintf "fold global array access\n"; *)
           g (Let((z,tz),Lwz(y,C(c1+c2)),Let((x,tx),Add(y,C(c1)),exp)))
         )
     | Let((x,t),com,e2) ->

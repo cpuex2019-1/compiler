@@ -80,7 +80,7 @@ let calc_size sz t =
 let tuple_size ts =
   align (List.fold_left calc_size 0 ts)
 
-let asm_res_type op_name = 
+let asm_res_type op_name args = 
   match op_name with
   | "sqrt" -> Type.Float
   | "ftoi" -> Type.Int
@@ -197,8 +197,23 @@ let rec g env = function (* K正規化ルーチン本体 (caml2html: knormal_g) *)
       Asm("input",[]),Type.Int
   | Syntax.Asm("inf", _) ->
       Asm("inf",[]),Type.Int
+  | Syntax.Asm("beqf", [e1;e2;e3;e4]) ->
+      insert_let (g env e1)
+        (fun x -> insert_let (g env e2)
+            (fun y ->
+              let e3', t3 = g env e3 in
+              let e4', t4 = g env e4 in
+              IfEq(x, y, e3', e4'), t3))
+  | Syntax.Asm("bltf", [e1;e2;e3;e4]) ->
+      (* if e1 < e2 then e3 else e4 <=> if e2 <= e1 then e4 else e3 *)
+      insert_let (g env e1)
+        (fun x -> insert_let (g env e2)
+            (fun y ->
+              let e3', t3 = g env e3 in
+              let e4', t4 = g env e4 in
+              IfLE(y, x, e4', e3'), t3))
   | Syntax.Asm(e1, e2s) ->
-        let t = asm_res_type e1 in
+        let t = asm_res_type e1 e2s in
         (
           let res = 
           let rec bind xs = function (* "xs" are identifiers for the arguments *)

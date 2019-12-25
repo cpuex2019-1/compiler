@@ -15,8 +15,7 @@ let rec deref_typ = function (* 型変数を中身でおきかえる関数 (caml2html: typing_
   | Type.Var({ contents = None } as r) ->
       Format.eprintf "uninstantiated type variable detected; assuming int@.";
       r := Some(Type.Int);
-      Type.Int
-  | Type.Var({ contents = Some(t) } as r) ->
+      Type.Int | Type.Var({ contents = Some(t) } as r) ->
       let t' = deref_typ t in
       r := Some(t');
       t'
@@ -182,6 +181,22 @@ let rec g env e = (* 型推論ルーチン (caml2html: typing_g) *)
                unify (g env (List.nth es 0)) Type.Bool;
                unify (g env (List.nth es 1)) Type.Bool;
                Type.Bool
+             )
+         | "beqf" ->
+             (
+               assert((List.length es) = 4);
+               unify (g env (List.nth es 0)) Type.Float;
+               unify (g env (List.nth es 1)) Type.Float;
+               unify (g env (List.nth es 2)) (g env (List.nth es 3));
+               g env (List.nth es 2)
+             )
+         | "bltf" ->
+             (
+               assert((List.length es) = 4);
+               unify (g env (List.nth es 0)) Type.Float;
+               unify (g env (List.nth es 1)) Type.Float;
+               unify (g env (List.nth es 2)) (g env (List.nth es 3));
+               g env (List.nth es 2)
              )
          | _ -> (failwith "unknown asm in typing")
        )
