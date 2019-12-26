@@ -23,6 +23,8 @@ and exp =
   | FSub of Id.t * Id.t
   | FMul of Id.t * Id.t
   | FDiv of Id.t * Id.t
+  | Sltf of Id.t * Id.t
+  | Slt of Id.t * Id.t
   | Sqrt of Id.t
   | Ftoi of Id.t
   | Floor of Id.t

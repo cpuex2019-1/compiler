@@ -12,7 +12,7 @@ let rec fv_h com =
   | Stw(x,y,C(z)) -> S.of_list [x;y]
   | Stw(x,y,V(z)) -> S.of_list [x;y;z]
   | FMr(x) | FNeg(x) -> S.singleton x
-  | FAdd(x,y) | FSub(x,y) | FMul(x,y) | FDiv(x,y) -> S.of_list [x;y]
+  | FAdd(x,y) | FSub(x,y) | FMul(x,y) | FDiv(x,y) | Sltf(x,y) | Slt(x,y) -> S.of_list [x;y]
   | Lfd(x,C(y)) -> S.singleton x
   | Lfd(x,V(y)) -> S.of_list [x;y]
   | Stfd(x,y,C(z)) -> S.of_list [x;y]

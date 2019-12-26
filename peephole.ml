@@ -131,6 +131,34 @@ and g exp =
           (* Printf.eprintf "fold global array access\n"; *)
           g (Let((z,tz),Lwz(y,C(c1+c2)),Let((x,tx),Add(y,C(c1)),exp)))
         )
+    | Let((x,tx),IfFLE(y,z,Ans(Li(0)),Ans(Li(1))),exp) ->
+        (* if y <= z then 0 else 1 <=> if z < y then 1 else 0 *)
+        (
+          opt_count := !opt_count+1;
+          Printf.eprintf "redundant iffle found.\n";
+          g (Let((x,tx),Sltf(z,y),exp))
+        )
+    | Let((x,tx),IfFLE(y,z,Ans(Li(1)),Ans(Li(0))),exp) ->
+        (* if y <= z then 1 else 0 <=> if z < y then 0 else 1 *)
+        (
+          opt_count := !opt_count+1;
+          Printf.eprintf "redundant iffle found.(inv)\n";
+          g (Let((x,tx),Sltf(z,y),Let((x,tx),Xor(x,C(1)),exp)))
+        )
+    | Let((x,tx),IfLE(y,V(z),Ans(Li(0)),Ans(Li(1))),exp) ->
+        (* if y <= z then 0 else 1 <=> if z < y then 1 else 0 *)
+        (
+          opt_count := !opt_count+1;
+          Printf.eprintf "redundant ifle found.(int)\n";
+          g (Let((x,tx),Slt(z,y),exp))
+        )
+    | Let((x,tx),IfLE(y,C(0),Ans(Li(0)),Ans(Li(1))),exp) ->
+        (* if y <= 0 then 0 else 1 <=> if 0 < y then 1 else 0 *)
+        (
+          opt_count := !opt_count+1;
+          Printf.eprintf "redundant ifle found.(zero)\n";
+          g (Let((x,tx),Slt(reg_zero,y),exp))
+        )
     | Let((x,t),com,e2) ->
         (
           let e2' = g e2 in
