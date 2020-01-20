@@ -3,7 +3,6 @@ open Asm
 (* for register coalescing *)
 (* [XXX] Callがあったら、そこから先は無意味というか逆効果なので追わない。
          そのために「Callがあったかどうか」を返り値の第1要素に含める。 *)
-let library_func = ["sqrt";"floor";"int_of_float";"float_of_int"]
 
 let rec target' src (dest, t) = function
   | Mr(x) when x = src && is_reg dest ->

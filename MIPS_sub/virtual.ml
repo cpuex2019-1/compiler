@@ -77,8 +77,7 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
           l
         with Not_found ->
           let l = Id.L(Id.genid "l") in
-          data := (l, d) :: !data;
-          l in
+          data := (l, d) :: !data; l in
       Ans(FLi(l))
   | Closure.Neg(x) -> Ans(Neg(x))
   | Closure.Add(x, y) -> Ans(Add(x, V(y)))
@@ -339,8 +338,8 @@ let h { Closure.name = (Id.L(x), t); Closure.args = yts; Closure.formal_fv = zts
         (fun z offset load -> fletd(z, Lfd(x, C(offset)), load))
         (fun z t offset load -> Let((z, t), Lwz(x, C(offset)), load)) in
     
-    (*Printf.printf "\n----\n%s\n" x;
-    print_fundef stdout { name = Id.L(x); args = int; fargs = float; body = load; ret = Type.Unit };*)
+    Printf.printf "\n----\n%s\n" x;
+    print_fundef stdout { name = Id.L(x); args = int; fargs = float; body = load; ret = Type.Unit };
 
     match t with
     | Type.Fun(_, t2) ->
@@ -357,10 +356,10 @@ let f (Closure.Prog(fundefs, e)) =
     (* initialize global env *)
     (
       let e = g M.empty e in
-      (*
+      
       Printf.eprintf "\n-----\n";
       print_syntax stderr e;
-      *)
+      
       Prog(!data, fundefs, e)
     )
   )

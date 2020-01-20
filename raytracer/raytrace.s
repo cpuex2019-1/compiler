@@ -7366,10 +7366,10 @@ eq_cont.157550:
 	bne	$6, $0, eq_else.157577
 	addi	$6, $0, 2
 	mov	$2, $6
-	movf	$f30, $f2
+	movf	$f29, $f2
 	movf	$f2, $f0
 	movf	$f0, $f1
-	movf	$f1, $f30
+	movf	$f1, $f29
 	sw	$31, 12($3)
 	addi	$3, $3, 16
 	jal	check_all_inside.2982
@@ -7889,10 +7889,10 @@ eq_cont.157647:
 	bne	$6, $0, eq_else.157674
 	addi	$6, $0, 3
 	mov	$2, $6
-	movf	$f30, $f2
+	movf	$f29, $f2
 	movf	$f2, $f0
 	movf	$f0, $f1
-	movf	$f1, $f30
+	movf	$f1, $f29
 	sw	$31, 12($3)
 	addi	$3, $3, 16
 	jal	check_all_inside.2982
@@ -8616,10 +8616,10 @@ eq_cont.157779:
 	addi	$5, $0, 2
 	mov	$2, $5
 	mov	$5, $6
-	movf	$f30, $f2
+	movf	$f29, $f2
 	movf	$f2, $f0
 	movf	$f0, $f1
-	movf	$f1, $f30
+	movf	$f1, $f29
 	sw	$31, 20($3)
 	addi	$3, $3, 24
 	jal	check_all_inside.2982
@@ -9361,10 +9361,10 @@ eq_cont.157915:
 	addi	$7, $0, 2
 	mov	$5, $6
 	mov	$2, $7
-	movf	$f30, $f2
+	movf	$f29, $f2
 	movf	$f2, $f0
 	movf	$f0, $f1
-	movf	$f1, $f30
+	movf	$f1, $f29
 	sw	$31, 12($3)
 	addi	$3, $3, 16
 	jal	check_all_inside.2982
@@ -9817,10 +9817,10 @@ eq_else.158016:
 	addi	$7, $0, 0
 	sw	$5, 20($3)
 	mov	$2, $7
-	movf	$f30, $f2
+	movf	$f29, $f2
 	movf	$f2, $f0
 	movf	$f0, $f1
-	movf	$f1, $f30
+	movf	$f1, $f29
 	sw	$31, 28($3)
 	addi	$3, $3, 32
 	jal	check_all_inside.2982
@@ -10645,10 +10645,10 @@ eq_else.158164:
 	addi	$6, $0, 0
 	sw	$5, 12($3)
 	mov	$2, $6
-	movf	$f30, $f2
+	movf	$f29, $f2
 	movf	$f2, $f0
 	movf	$f0, $f1
-	movf	$f1, $f30
+	movf	$f1, $f29
 	sw	$31, 20($3)
 	addi	$3, $3, 24
 	jal	check_all_inside.2982
@@ -11469,10 +11469,10 @@ eq_else.158314:
 	sw	$7, 24($3)
 	mov	$5, $7
 	mov	$2, $8
-	movf	$f30, $f2
+	movf	$f29, $f2
 	movf	$f2, $f0
 	movf	$f0, $f1
-	movf	$f1, $f30
+	movf	$f1, $f29
 	sw	$31, 28($3)
 	addi	$3, $3, 32
 	jal	check_all_inside.2982
@@ -11937,10 +11937,10 @@ eq_else.158397:
 	addi	$6, $0, 0
 	sw	$5, 28($3)
 	mov	$2, $6
-	movf	$f30, $f2
+	movf	$f29, $f2
 	movf	$f2, $f0
 	movf	$f0, $f1
-	movf	$f1, $f30
+	movf	$f1, $f29
 	sw	$31, 36($3)
 	addi	$3, $3, 40
 	jal	check_all_inside.2982
@@ -12416,10 +12416,10 @@ eq_else.158482:
 	addi	$6, $0, 0
 	sw	$5, 32($3)
 	mov	$2, $6
-	movf	$f30, $f2
+	movf	$f29, $f2
 	movf	$f2, $f0
 	movf	$f0, $f1
-	movf	$f1, $f30
+	movf	$f1, $f29
 	sw	$31, 36($3)
 	addi	$3, $3, 40
 	jal	check_all_inside.2982
@@ -13231,10 +13231,10 @@ eq_else.158630:
 	sw	$7, 44($3)
 	mov	$5, $7
 	mov	$2, $8
-	movf	$f30, $f2
+	movf	$f29, $f2
 	movf	$f2, $f0
 	movf	$f0, $f1
-	movf	$f1, $f30
+	movf	$f1, $f29
 	sw	$31, 52($3)
 	addi	$3, $3, 56
 	jal	check_all_inside.2982
@@ -13699,10 +13699,10 @@ eq_else.158713:
 	addi	$6, $0, 0
 	sw	$5, 48($3)
 	mov	$2, $6
-	movf	$f30, $f2
+	movf	$f29, $f2
 	movf	$f2, $f0
 	movf	$f0, $f1
-	movf	$f1, $f30
+	movf	$f1, $f29
 	sw	$31, 52($3)
 	addi	$3, $3, 56
 	jal	check_all_inside.2982
@@ -27562,10 +27562,10 @@ eq_else.161150:
 	sw	$7, 48($3)
 	mov	$5, $7
 	mov	$2, $8
-	movf	$f30, $f2
+	movf	$f29, $f2
 	movf	$f2, $f0
 	movf	$f0, $f1
-	movf	$f1, $f30
+	movf	$f1, $f29
 	sw	$31, 52($3)
 	addi	$3, $3, 56
 	jal	check_all_inside.2982
@@ -28034,10 +28034,10 @@ eq_else.161234:
 	addi	$6, $0, 0
 	sw	$5, 52($3)
 	mov	$2, $6
-	movf	$f30, $f2
+	movf	$f29, $f2
 	movf	$f2, $f0
 	movf	$f0, $f1
-	movf	$f1, $f30
+	movf	$f1, $f29
 	sw	$31, 60($3)
 	addi	$3, $3, 64
 	jal	check_all_inside.2982
@@ -31274,10 +31274,10 @@ eq_else.161660:
 	addi	$6, $0, 0
 	sw	$5, 76($3)
 	mov	$2, $6
-	movf	$f30, $f2
+	movf	$f29, $f2
 	movf	$f2, $f0
 	movf	$f0, $f1
-	movf	$f1, $f30
+	movf	$f1, $f29
 	sw	$31, 84($3)
 	addi	$3, $3, 88
 	jal	check_all_inside.2982
@@ -33903,10 +33903,10 @@ eq_else.161998:
 	sw	$7, 24($3)
 	mov	$5, $7
 	mov	$2, $8
-	movf	$f30, $f2
+	movf	$f29, $f2
 	movf	$f2, $f0
 	movf	$f0, $f1
-	movf	$f1, $f30
+	movf	$f1, $f29
 	sw	$31, 28($3)
 	addi	$3, $3, 32
 	jal	check_all_inside.2982
@@ -34375,10 +34375,10 @@ eq_else.162082:
 	addi	$6, $0, 0
 	sw	$5, 28($3)
 	mov	$2, $6
-	movf	$f30, $f2
+	movf	$f29, $f2
 	movf	$f2, $f0
 	movf	$f0, $f1
-	movf	$f1, $f30
+	movf	$f1, $f29
 	sw	$31, 36($3)
 	addi	$3, $3, 40
 	jal	check_all_inside.2982
@@ -54983,10 +54983,10 @@ scan_line.3126:
 	mov	$6, $8
 	mov	$5, $9
 	mov	$2, $7
-	movf	$f30, $f2
+	movf	$f29, $f2
 	movf	$f2, $f0
 	movf	$f0, $f1
-	movf	$f1, $f30
+	movf	$f1, $f29
 	sw	$31, 20($3)
 	addi	$3, $3, 24
 	jal	pretrace_pixels.3109
@@ -61104,10 +61104,10 @@ fle_cont.164334:
 	sw	$6, 16($3)
 	sw	$2, 20($3)
 	mov	$2, $7
-	movf	$f30, $f3
+	movf	$f29, $f3
 	movf	$f3, $f0
 	movf	$f0, $f1
-	movf	$f1, $f30
+	movf	$f1, $f29
 	sw	$31, 28($3)
 	addi	$3, $3, 32
 	jal	calc_dirvec.3146
