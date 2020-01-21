@@ -1,4 +1,5 @@
-let rec fib n =
-  if n <= 1 then n else
-  fib (n- 1) + fib (n - 2) in
-print_int (fib 30)
+let rec fib n a b =
+  if n = 1 then a else
+  fib (n-1) (a+b) a
+in
+print_int (fib 30 1 0)

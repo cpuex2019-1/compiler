@@ -46,7 +46,7 @@ type t = (* 一つ一つの命令に対応する式 (caml2html: sparcasm_exp) *)
   | Restore of (Id.t * Type.t) *  Id.t (* スタック変数から値を復元 (caml2html: sparcasm_restore) *)
 type block = { id : int; insts : t list ref; edge_to: int list ref }
 type funbody = block list
-type fundef = { name : Id.l; args : Id.t list; fargs : Id.t list; funbody : t; ret : Type.t }
+type fundef = { name : Id.l; args : Id.t list; fargs : Id.t list; body : funbody ; ret : Type.t }
 (* プログラム全体 = 浮動小数点数テーブル + トップレベル関数 + メインの式 (caml2html: sparcasm_prog) *)
 type prog = Prog of (Id.l * float) list * fundef list * funbody
 
@@ -54,3 +54,5 @@ type prog = Prog of (Id.l * float) list * fundef list * funbody
 val get_def : t -> S.t
 val get_use : t -> S.t
 val get_def_use : t -> S.t * S.t
+
+val print_prog : out_channel -> prog -> unit

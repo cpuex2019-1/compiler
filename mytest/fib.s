@@ -6,37 +6,26 @@ Init: # initialize float value and heap pointer
 #	outb	$30 # atsunobu request
 	addi	$4, $0, 3000
 	j Main
-fib.10:
+fib.9:
 	addi	$30, $0, 1
-	ble	$2, $30, le.24
-	addi	$5, $2, -1
-	sw	$2, 0($3)
+	bne	$2, $30, eq_else.24
 	mov	$2, $5
-	sw	$31, 4($3)
-	addi	$3, $3, 8
-	jal	fib.10
-	addi	$3, $3, -8
-	lw	$31, 4($3)
-	lw	$5, 0($3)
-	addi	$5, $5, -2
-	sw	$2, 4($3)
-	mov	$2, $5
-	sw	$31, 12($3)
-	addi	$3, $3, 16
-	jal	fib.10
-	addi	$3, $3, -16
-	lw	$31, 12($3)
-	lw	$5, 4($3)
-	add	$2, $5, $2
 	jr $31
-le.24:
-	jr $31
+eq_else.24:
+	addi	$2, $2, -1
+	add	$6, $5, $6
+	mov	$27, $6
+	mov	$6, $5
+	mov	$5, $27
+	j	fib.9
 #	main program starts
 Main:
 	addi	$2, $0, 30
+	addi	$5, $0, 1
+	addi	$6, $0, 0
 	sw	$31, 4($3)
 	addi	$3, $3, 8
-	jal	fib.10
+	jal	fib.9
 	addi	$3, $3, -8
 	lw	$31, 4($3)
 	sw	$31, 4($3)
