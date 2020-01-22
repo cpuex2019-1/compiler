@@ -1,3 +1,83 @@
+Init:
+# initialize float value and heap pointer
+	addi $3, $0, 0
+	addi $30, $0, 170
+	addi $29, $0, 0
+	ori  $31, $0, ha(Exit)
+	slli $31, $31, 16
+	ori  $31, $31, lo(Exit)
+	ori  $4, $0, 1
+	slli $4, $4, 16
+	ori  $4, $4, 34464
+	j     Main
+f.10:
+block_id_0:
+	add  $2, $2, $5
+	jr    $31
+g.13:
+block_id_1:
+	sw    $2, 0($3)
+	sw    $5, 4($3)
+	ble   $2, $5, block_id_2
+block_id_3:
+	addi $6, $0, 1
+	mov   $5, $6
+	sw    $31, 12($3)
+	addi $3, $3, 16
+	jal   f.10
+	addi $3, $3, -16
+	lw    $31, 12($3)
+	j     block_id_4
+block_id_2:
+	addi $6, $0, 2
+	mov   $5, $6
+	sw    $31, 12($3)
+	addi $3, $3, 16
+	jal   f.10
+	addi $3, $3, -16
+	lw    $31, 12($3)
+block_id_4:
+	lw    $5, 0($3)
+	lw    $6, 4($3)
+	sw    $2, 8($3)
+	ble   $6, $5, block_id_5
+block_id_6:
+	addi $5, $0, 1
+	mov   $2, $6
+	sw    $31, 12($3)
+	addi $3, $3, 16
+	jal   f.10
+	addi $3, $3, -16
+	lw    $31, 12($3)
+	j     block_id_7
+block_id_5:
+	addi $5, $0, 2
+	mov   $2, $6
+	sw    $31, 12($3)
+	addi $3, $3, 16
+	jal   f.10
+	addi $3, $3, -16
+	lw    $31, 12($3)
+block_id_7:
+	lw    $5, 8($3)
+	add  $2, $5, $2
+	jr    $31
+# main program starts
+Main:
+block_id_8:
+	in   $2
+	in   $5
+	sw    $31, 4($3)
+	addi $3, $3, 8
+	jal   g.13
+	addi $3, $3, -8
+	lw    $31, 4($3)
+	addi $30, $0, 48
+	add  $2, $2, $30
+	outb $2
+	jr    $31
+	j     Exit
+# main program ends
 # floor
 
 #  min_caml_floor:
@@ -211,3 +291,4 @@ min_caml_print_float:
 min_caml_print_char:
   outb $2
   jr $31
+Exit:

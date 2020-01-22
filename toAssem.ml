@@ -133,27 +133,43 @@ let rec g_inst inst edge_to last_inst =
   | Block.Mr     ((x,t),y)     -> if x = y then () else add (Mov(x,y))
   | Block.Neg    ((x,t),y)     -> add (Sub(x,Asm.reg_zero,y))
 
-  | Block.Add    ((x,t),y,Block.V z) -> add (Add(x,y,z))
-  | Block.Add    ((x,t),y,Block.C z) -> add (Addi(x,y,z))
-  | Block.Sub    ((x,t),y,Block.V z) -> add (Sub(x,y,z))
-  | Block.Sub    ((x,t),y,Block.C z) -> add (Addi(x,y,-z))
-  | Block.Mul    ((x,t),y,Block.V z) -> add (Mul(x,y,z))
-  | Block.Mul    ((x,t),y,Block.C z) -> add (Addi(Asm.reg_tmp,Asm.reg_zero,z));
-                                        add (Mul(x,y,Asm.reg_tmp))
-  | Block.Div    ((x,t),y,Block.V z) -> failwith "[toAssem] Div"
-  | Block.Div    ((x,t),y,Block.C z) -> assert (z = 10);
-                                        add (Div10(x,y))
-  | Block.Slw    ((x,t),y,Block.V z) -> add (Sll(x,y,z))
-  | Block.Slw    ((x,t),y,Block.C z) -> add (Slli(x,y,z))
-  | Block.Xor    ((x,t),y,Block.V z) -> add (Xor(x,y,z))
-  | Block.Xor    ((x,t),y,Block.C z) -> add (Xori(x,y,z))
+  | Block.Add    ((x,t),y,Block.V z) ->  add (Add(x,y,z))
+  | Block.Add    ((x,t),y,Block.C z) ->  load_imm Asm.reg_tmp z;
+                                         add (Add(x,y,Asm.reg_tmp))
+  | Block.Sub    ((x,t),y,Block.V z) ->  add (Sub(x,y,z))
+  | Block.Sub    ((x,t),y,Block.C z) ->  load_imm Asm.reg_tmp z;
+                                         add (Sub(x,y,Asm.reg_tmp))
+  | Block.Mul    ((x,t),y,Block.V z) ->  add (Mul(x,y,z))
+  | Block.Mul    ((x,t),y,Block.C z) ->  load_imm Asm.reg_tmp z;
+                                         add (Mul(x,y,Asm.reg_tmp))
+  | Block.Div    ((x,t),y,Block.V z) ->  failwith "[toAssem] Div"
 
-  | Block.Lwz    ((x,t),y,Block.V z) -> add (Add(Asm.reg_tmp,y,z));
-                                  add (Lw(x,0,Asm.reg_tmp))
-  | Block.Lwz    ((x,t),y,Block.C z) -> add (Lw(x,z,y))
-  | Block.Stw    (_,x,y,Block.V z)   -> add (Add(Asm.reg_tmp,y,z));
-                                        add (Sw(x,0,Asm.reg_tmp))
-  | Block.Stw    (_,x,y,Block.C z)   -> add (Sw(x,z,y))
+  | Block.Div    ((x,t),y,Block.C 2) ->  add (Srai(x,y,1))
+  | Block.Div    ((x,t),y,Block.C 10)->  add (Div10(x,y))
+  | Block.Div    (_) -> assert false
+  | Block.Slw    ((x,t),y,Block.V z) ->  add (Sll(x,y,z))
+  | Block.Slw    ((x,t),y,Block.C z) ->  add (Slli(x,y,z))
+  | Block.Xor    ((x,t),y,Block.V z) ->  add (Xor(x,y,z))
+  | Block.Xor    ((x,t),y,Block.C z) ->  add (Xori(x,y,z))
+
+  | Block.Lwz    ((x,t),y,Block.V z) ->  add (Add(Asm.reg_tmp,y,z));
+                                         add (Lw(x,0,Asm.reg_tmp))
+  | Block.Lwz    ((x,t),y,Block.C z) -> (
+      if (-32768 <= z && z < 32768) then add (Lw(x,z,y))
+      else (                             load_imm Asm.reg_tmp z;
+                                         add (Add(Asm.reg_tmp,Asm.reg_tmp,y));
+                                         add (Lw(x,0,Asm.reg_tmp))
+      )
+    )
+  | Block.Stw    (_,x,y,Block.V z)   ->  add (Add(Asm.reg_tmp,y,z));
+                                         add (Sw(x,0,Asm.reg_tmp))
+  | Block.Stw   (_,x,y,Block.C z)   -> (
+      if (-32768 <= z && z < 32768) then add (Sw(x,z,y))
+      else (                             load_imm Asm.reg_tmp z;
+                                         add (Add(Asm.reg_tmp,Asm.reg_tmp,y));
+                                         add (Sw(x,0,Asm.reg_tmp))
+      )
+    )
 
   | Block.FMr    ((x,t),y)     -> if x = y then () else add (Movf(x,y))
   | Block.FNeg   ((x,t),y)     -> add (Fneg(x,y))
@@ -174,14 +190,26 @@ let rec g_inst inst edge_to last_inst =
   | Block.In     (x,t)         -> add (In(x))
   | Block.Inf    (x,t)         -> add (Inf(x))
 
-  | Block.Lfd    ((x,t),y,Block.V z) -> add (Add(Asm.reg_tmp,y,z));
-                                        add (Lf(x,0,Asm.reg_tmp))
-  | Block.Lfd    ((x,t),y,Block.C z) -> add (Lf(x,z,y))
-  | Block.Stfd   (_,x,y,Block.V z)   -> add (Add(Asm.reg_tmp,y,z));
-                                        add (Sf(x,0,Asm.reg_tmp))
-  | Block.Stfd   (_,x,y,Block.C z)   -> add (Sf(x,z,y))
+  | Block.Lfd    ((x,t),y,Block.V z) ->  add (Add(Asm.reg_tmp,y,z));
+                                         add (Lf(x,0,Asm.reg_tmp))
+  | Block.Lfd    ((x,t),y,Block.C z) -> (
+      if (-32768 <= z && z < 32768) then add (Lf(x,z,y))
+      else (                             load_imm Asm.reg_tmp z;
+                                         add (Add(Asm.reg_tmp,Asm.reg_tmp,y));
+                                         add (Lf(x,0,Asm.reg_tmp))
+      )
+    )
+  | Block.Stfd   (_,x,y,Block.V z)   ->  add (Add(Asm.reg_tmp,y,z));
+                                         add (Sf(x,0,Asm.reg_tmp))
+  | Block.Stfd   (_,x,y,Block.C z)   -> (
+      if (-32768 <= z && z < 32768) then add (Sf(x,z,y))
+      else (                             load_imm Asm.reg_tmp z;
+                                         add (Add(Asm.reg_tmp,Asm.reg_tmp,y));
+                                         add (Sf(x,0,Asm.reg_tmp))
+      )
+    )
   | Block.Comment((x,t),com)         -> add (Comment(com))
-  | Block.Save   (_,x,y) when List.mem x Asm.allregs && not (S.mem y !stackset) 
+  | Block.Save   (_,x,y) when List.mem x Asm.allregs && not (S.mem y !stackset)  
                                -> save y;
                                   add (Sw(x,(offset y),Asm.reg_sp))
   | Block.Save   (_,x,y) when List.mem x Asm.allfregs && not (S.mem y !stackset) 
@@ -205,19 +233,99 @@ let rec g_inst inst edge_to last_inst =
                                   add (Jal(l));
                                   add (Addi(Asm.reg_sp,Asm.reg_sp,-ss));
                                   add (Lw(Asm.reg_lr,ss-4,Asm.reg_sp));
-                                  if t = Type.Int && x <> Asm.regs.(0) then
+                                  if List.mem x Asm.allregs && x <> Asm.regs.(0) then
                                     add (Mov(x,Asm.regs.(0)))
                                   else (
-                                    if t = Type.Float && x <> Asm.fregs.(0) then 
+                                    if List.mem x Asm.allfregs && x <> Asm.fregs.(0) then 
                                       add (Movf(x,Asm.fregs.(0)))
                                     else ()
                                   )
-  | Block.IfEq((x,t),y,Block.V(z),Some(m)) -> g_non_tail_ifeq y z m edge_to
-  | Block.IfEq((x,t),y,Block.C(z),Some(m)) -> load_imm Asm.reg_tmp z; (* atode zero reg optimization *)
-                                              g_non_tail_ifeq y Asm.reg_tmp m edge_to
-  | Block.IfEq((x,t),y,Block.V(z),None) -> g_tail_ifeq y z edge_to
-  | Block.IfEq((x,t),y,Block.C(z),None) -> load_imm Asm.reg_tmp z;
-                                           g_tail_ifeq y Asm.reg_tmp edge_to
+  | Block.IfEq((x,t),y,Block.V(z),Some(m)) -> (
+      let a = List.nth edge_to 0 in
+      let b = List.nth edge_to 1 in
+      g_non_tail_if y z m a b (fun y z l -> Bne(y,z,l))
+    )
+  | Block.IfEq((x,t),y,Block.C(z),Some(m)) -> (
+      load_imm Asm.reg_tmp z; (* atode zero reg optimization *)
+      let a = List.nth edge_to 0 in
+      let b = List.nth edge_to 1 in
+      g_non_tail_if y Asm.reg_tmp m a b (fun y z l -> Bne(y,z,l))
+    )
+  | Block.IfEq((x,t),y,Block.V(z),None) -> (
+      let a = List.nth edge_to 0 in
+      let b = List.nth edge_to 1 in
+      g_tail_if y z a b (fun y z l -> Bne(y,z,l))
+    )
+  | Block.IfEq((x,t),y,Block.C(z),None) -> (
+      let a = List.nth edge_to 0 in
+      let b = List.nth edge_to 1 in
+      load_imm Asm.reg_tmp z;
+      g_tail_if y Asm.reg_tmp a b (fun y z l -> Bne(y,z,l))
+    )
+  | Block.IfLE((x,t),y,Block.V(z),Some(m)) -> (
+      let a = List.nth edge_to 0 in
+      let b = List.nth edge_to 1 in
+      g_non_tail_if y z m b a (fun y z l -> Ble(y,z,l))
+    )
+  | Block.IfLE((x,t),y,Block.C(z),Some(m)) -> (
+      let a = List.nth edge_to 0 in
+      let b = List.nth edge_to 1 in
+      load_imm Asm.reg_tmp z; (* atode zero reg optimization *)
+      g_non_tail_if y Asm.reg_tmp m b a (fun y z l -> Ble(y,z,l))
+    )
+  | Block.IfLE((x,t),y,Block.V(z),None) -> (
+      let a = List.nth edge_to 0 in
+      let b = List.nth edge_to 1 in
+      g_tail_if y z b a (fun y z l -> Ble(y,z,l))
+    )
+  | Block.IfLE((x,t),y,Block.C(z),None) -> (
+      let a = List.nth edge_to 0 in
+      let b = List.nth edge_to 1 in
+      load_imm Asm.reg_tmp z;
+      g_tail_if y Asm.reg_tmp b a (fun y z l -> Bne(y,z,l))
+    )
+  | Block.IfGE((x,t),y,Block.V(z),Some(m)) -> (
+      let a = List.nth edge_to 0 in
+      let b = List.nth edge_to 1 in
+      g_non_tail_if y z m b a (fun y z l -> Bge(y,z,l))
+    )
+  | Block.IfGE((x,t),y,Block.C(z),Some(m)) -> (
+      let a = List.nth edge_to 0 in
+      let b = List.nth edge_to 1 in
+      load_imm Asm.reg_tmp z; (* atode zero reg optimization *)
+      g_non_tail_if y Asm.reg_tmp m b a (fun y z l -> Bge(y,z,l))
+    )
+  | Block.IfGE((x,t),y,Block.V(z),None) -> (
+      let a = List.nth edge_to 0 in
+      let b = List.nth edge_to 1 in
+      g_tail_if y z b a (fun y z l -> Bge(y,z,l))
+    )
+  | Block.IfGE((x,t),y,Block.C(z),None) -> (
+      let a = List.nth edge_to 0 in
+      let b = List.nth edge_to 1 in
+      load_imm Asm.reg_tmp z;
+      g_tail_if y Asm.reg_tmp b a (fun y z l -> Bge(y,z,l))
+    )
+  | Block.IfFEq((x,t),y,z,Some(m)) -> (
+      let a = List.nth edge_to 0 in
+      let b = List.nth edge_to 1 in
+      g_non_tail_if y z m b a (fun y z l -> Beqf(y,z,l))
+    )
+  | Block.IfFEq((x,t),y,z,None) -> (
+      let a = List.nth edge_to 0 in
+      let b = List.nth edge_to 1 in
+      g_tail_if y z b a (fun y z l -> Beqf(y,z,l))
+    )
+  | Block.IfFLE((x,t),y,z,Some(m)) -> (
+      let a = List.nth edge_to 0 in
+      let b = List.nth edge_to 1 in
+      g_non_tail_if z y m a b (fun y z l -> Bltf(y,z,l))
+    )
+  | Block.IfFLE((x,t),y,z,None) -> (
+      let a = List.nth edge_to 0 in
+      let b = List.nth edge_to 1 in
+      g_tail_if z y a b (fun y z l -> Bltf(y,z,l))
+    )
   | _ -> assert false
 
 and g_insts insts edge_to =
@@ -231,16 +339,17 @@ and g_block_id block_id =
   g_block (Hashtbl.find block_info block_id)
 
 and g_block {Block.id = id; Block.insts = insts; Block.edge_to = edge_to; } =
-  g_insts (!insts) (!edge_to)
+  add (Label(get_block_label id));
+  g_insts (!insts) (!edge_to);
+  if (!edge_to = []) then 
+    add (Jr(Asm.reg_lr))
+  else ()
 
-and g_non_tail_ifeq y z m edge_to = 
-  let   yes_block_id = List.nth edge_to 0 in
-  let    no_block_id = List.nth edge_to 1 in
-  let merge_block_id = m in
+and g_non_tail_if y z merge_block_id yes_block_id no_block_id constr_neg_cond = 
   let   yes_label    = get_block_label   yes_block_id in
   let    no_label    = get_block_label    no_block_id in
   let merge_label    = get_block_label merge_block_id in
-  add (Bne(y,z,no_label));
+  add (constr_neg_cond y z no_label);
   let stackset_back = !stackset in
   g_block_id yes_block_id;
   let stackset1 = !stackset in
@@ -251,12 +360,10 @@ and g_non_tail_ifeq y z m edge_to =
   stackset := S.inter stackset1 stackset2;
   g_block_id merge_block_id
 
-and g_tail_ifeq y z edge_to = 
-  let   yes_block_id = List.nth edge_to 0 in
-  let    no_block_id = List.nth edge_to 1 in
+and g_tail_if y z yes_block_id no_block_id constr_neg_cond = 
   let   yes_label    = get_block_label   yes_block_id in
   let    no_label    = get_block_label    no_block_id in
-  add (Bne(y,z,no_label));
+  add (constr_neg_cond y z no_label);
   let stackset_back = !stackset in
   g_block_id yes_block_id;
   stackset := stackset_back;
@@ -301,11 +408,20 @@ let rec arrange_float_imm data n =
       arrange_float_imm rest (n+1)
     )
 
-let add_library _ = ()
-
 let add_block_info block = 
   match block with
   | {Block.id = id ; Block.insts = _ ; Block.edge_to = _; } -> Hashtbl.add block_info id block
+
+let rec file_to_string_list inchan sl = 
+  try
+    let line = input_line inchan in
+    file_to_string_list inchan (sl@[line])
+  with e -> (close_in inchan; sl)
+
+let file_to_string fname =
+  let inchan = open_in fname in
+  let sl = file_to_string_list inchan [] in
+  String.concat "\n" sl
 
 let initialize fundefs e =
   inst_list := [];
@@ -326,10 +442,14 @@ let f (Block.Prog(data, fundefs, e)) =
   load_imm (Asm.reg_sp) 0;
   load_imm (Asm.reg_tmp) 170; (* for output 0xaa required by atsunobu *) 
   load_imm (Asm.reg_tmp2) 0;
-  load_imm (Asm.reg_lr) 0;
 
+  add (OriLabel(Asm.reg_lr,Asm.reg_zero,Id.L("ha(Exit)")));
+  add (Slli(Asm.reg_lr,Asm.reg_lr,16));
+  add (OriLabel(Asm.reg_lr,Asm.reg_lr,Id.L("lo(Exit)")));
+
+  (*
   add (Outb(Asm.reg_tmp));
-  add (Comment("atsunobu request"));
+  add (Comment("atsunobu request")); *)
  
   
   (* initialize heap pointer *)
@@ -358,7 +478,7 @@ let f (Block.Prog(data, fundefs, e)) =
   add (J(Id.L("Exit")));
   add (Comment("main program ends"));
 
-  add_library ();
+  add (Library(file_to_string "./raytracer/libmincaml.s"));
 
   add (Label(Id.L("Exit")));
-  !inst_list
+  List.rev (!inst_list)

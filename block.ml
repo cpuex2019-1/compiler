@@ -329,7 +329,7 @@ let rec print_exp outchan e =
       Printf.fprintf outchan "%s Inf\n" x;
 
   | Save(_,x,y) -> Printf.fprintf outchan "Save %s %s\n" x y
-  | Restore(_,x) -> Printf.fprintf outchan "Restore %s\n" x
+  | Restore((x,t),y) -> Printf.fprintf outchan "%s Restore %s\n" x y
   | _ -> assert false
   (* 
   | CallCls of Id.t * Id.t list * Id.t list

@@ -1,3 +1,49 @@
+Init:
+# initialize float value and heap pointer
+	addi $3, $0, 0
+	addi $30, $0, 170
+	addi $29, $0, 0
+	ori  $31, $0, ha(Exit)
+	slli $31, $31, 16
+	ori  $31, $31, lo(Exit)
+	addi $4, $0, 3024
+	j     Main
+# main program starts
+Main:
+block_id_0:
+	addi $5, $0, 1
+	addi $6, $0, 2
+	addi $2, $0, 3000
+	sw    $31, 4($3)
+	addi $3, $3, 8
+	jal   min_caml_create_global_array
+	addi $3, $3, -8
+	lw    $31, 4($3)
+	addi $2, $0, 1
+	addi $5, $0, 1
+	sw    $31, 4($3)
+	addi $3, $3, 8
+	jal   min_caml_create_array
+	addi $3, $3, -8
+	lw    $31, 4($3)
+	mov   $6, $2
+	addi $5, $0, 5
+	addi $2, $0, 3004
+	sw    $31, 4($3)
+	addi $3, $3, 8
+	jal   min_caml_create_global_array
+	addi $3, $3, -8
+	lw    $31, 4($3)
+	lw    $2, 3012($0)
+	lw    $2, 0($2)
+	lw    $5, 3000($0)
+	add  $2, $2, $5
+	addi $30, $0, 48
+	add  $2, $2, $30
+	outb $2
+	jr    $31
+	j     Exit
+# main program ends
 # floor
 
 #  min_caml_floor:
@@ -211,3 +257,4 @@ min_caml_print_float:
 min_caml_print_char:
   outb $2
   jr $31
+Exit:

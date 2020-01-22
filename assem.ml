@@ -59,4 +59,5 @@ type t =
 
   | Label of Id.l
   | Comment of string
-
+  | OriLabel of Id.t * Id.t * Id.l
+  | Library of string

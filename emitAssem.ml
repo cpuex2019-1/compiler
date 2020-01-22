@@ -1,8 +1,7 @@
 open Assem
 open Printf
 
-let g outchan = function
-  | Nop          -> ()
+let g outchan = function | Nop          -> ()
   | Add  (x,y,z) -> fprintf outchan "\tadd  %s, %s, %s\n" x y z 
   | Addi (x,y,z) -> fprintf outchan "\taddi %s, %s, %d\n" x y z 
   | Sub  (x,y,z) -> fprintf outchan "\tsub  %s, %s, %s\n" x y z 
@@ -62,7 +61,12 @@ let g outchan = function
   | In   (x)     -> fprintf outchan "\tin   %s\n" x
   | Inf  (x)     -> fprintf outchan "\tinf  %s\n" x
   | Outb (x)     -> fprintf outchan "\toutb %s\n" x
+
+  | OriLabel (x,y,Id.L(z)) -> fprintf outchan "\tori  %s, %s, %s\n" x y z 
+  | Library(s) -> fprintf outchan "%s\n" s
+
   | _ -> assert false
 
 let f outchan prog =
+  Printf.eprintf "[emitAssem]\n";
   List.iter (fun e -> g outchan e) prog

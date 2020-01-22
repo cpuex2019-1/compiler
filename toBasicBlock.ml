@@ -140,24 +140,33 @@ let make_new_blocks xt e =
   blocks_ref := [];
   make_new_block [] xt e
 
+
 let h { Asm.name = Id.L x; Asm.args = ys; Asm.fargs = zs; Asm.body = e; Asm.ret = t } =
+  (*
   let retvar = Id.gentmp t in
   ret_var_env := M.add x retvar !ret_var_env;
+  *)
+  let retvar = if t = Type.Float then Asm.fregs.(0) else (
+               if t = Type.Unit then Id.gentmp Type.Unit 
+               else Asm.regs.(0) ) in
   make_new_blocks (retvar, t) e;
   current_id := !next_id;
   next_id := !next_id+1;
   { name = Id.L x; args = ys; fargs = zs; body = List.rev !blocks_ref; ret = t }
 
 let f (Asm.Prog(data, fundefs, e)) =
-  Printf.eprintf "[toBasicBlock]";
+  Printf.eprintf "[toBasicBlock]\n";
   block_ref := [];
   blocks_ref := [];
   ret_var_env := M.empty;
   current_id := 0;
   next_id := 1;
   let fundefs' = List.map h fundefs in
+  (*
   let retvar = Id.gentmp Type.Unit in
   ret_var_env := M.add "min_caml_start" retvar !ret_var_env;
+  *)
+  let retvar = Id.gentmp Type.Unit in
   make_new_blocks (retvar, Type.Unit) e;
   let res = Prog(data, fundefs', List.rev !blocks_ref) in
   print_prog stdout res;
