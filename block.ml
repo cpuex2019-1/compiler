@@ -43,11 +43,11 @@ type t = (* 一つ一つの命令に対応する式 (caml2html: sparcasm_exp) *)
   | Stfd    of (Id.t * Type.t) *  Id.t * Id.t * id_or_imm
   | Comment of (Id.t * Type.t) *  string
   (* virtual instructions *)
-  | IfEq    of (Id.t * Type.t) *  Id.t * id_or_imm 
-  | IfLE    of (Id.t * Type.t) *  Id.t * id_or_imm 
-  | IfGE    of (Id.t * Type.t) *  Id.t * id_or_imm  (* 左右対称ではないので必要 *)
-  | IfFEq   of (Id.t * Type.t) *  Id.t * Id.t 
-  | IfFLE   of (Id.t * Type.t) *  Id.t * Id.t 
+  | IfEq    of (Id.t * Type.t) *  Id.t * id_or_imm * int option (* last elem is id of gouryuu node (this is needed in toAssem) *)
+  | IfLE    of (Id.t * Type.t) *  Id.t * id_or_imm * int option 
+  | IfGE    of (Id.t * Type.t) *  Id.t * id_or_imm * int option  (* 左右対称ではないので必要 *)
+  | IfFEq   of (Id.t * Type.t) *  Id.t * Id.t * int option
+  | IfFLE   of (Id.t * Type.t) *  Id.t * Id.t * int option
   (* closure address, integer arguments, and float arguments *)
   | CallCls of (Id.t * Type.t) *  Id.t * Id.t list * Id.t list
   | CallDir of (Id.t * Type.t) *  Id.l * Id.t list * Id.t list
@@ -103,12 +103,12 @@ let get_def = function
 
   | Lfd     (xt, y, z) -> S.singleton (fst xt)
 
-  | IfEq    (xt, y, z)
-  | IfLE    (xt, y, z)
-  | IfGE    (xt, y, z) -> S.singleton (fst xt)
+  | IfEq    (xt, y, z, _)
+  | IfLE    (xt, y, z, _)
+  | IfGE    (xt, y, z, _) -> S.singleton (fst xt)
 
-  | IfFEq   (xt, y, z)
-  | IfFLE   (xt, y, z) -> S.singleton (fst xt)
+  | IfFEq   (xt, y, z, _)
+  | IfFLE   (xt, y, z, _) -> S.singleton (fst xt)
 
   | CallCls (xt, _, ys, zs) 
   | CallDir (xt, _, ys, zs) -> S.singleton (fst xt)
@@ -169,16 +169,16 @@ let get_use = function
   | Lfd     (xt, y, V(z)) -> S.of_list [y;z]
   | Lfd     (xt, y, C(z)) -> S.singleton y
 
-  | IfEq    (xt, y, V(z))
-  | IfLE    (xt, y, V(z))
-  | IfGE    (xt, y, V(z)) -> S.of_list [y;z]
+  | IfEq    (xt, y, V(z), _)
+  | IfLE    (xt, y, V(z), _)
+  | IfGE    (xt, y, V(z), _) -> S.of_list [y;z]
 
-  | IfEq    (xt, y, C(z))
-  | IfLE    (xt, y, C(z))
-  | IfGE    (xt, y, C(z)) -> S.singleton y
+  | IfEq    (xt, y, C(z), _)
+  | IfLE    (xt, y, C(z), _)
+  | IfGE    (xt, y, C(z), _) -> S.singleton y
 
-  | IfFEq   (xt, y, z)
-  | IfFLE   (xt, y, z) -> S.of_list [y;z]
+  | IfFEq   (xt, y, z, _)
+  | IfFLE   (xt, y, z, _) -> S.of_list [y;z]
 
   | CallCls (xt, _, ys, zs) 
   | CallDir (xt, _, ys, zs) -> S.of_list (ys @ zs)
@@ -271,29 +271,37 @@ let rec print_exp outchan e =
       Printf.fprintf outchan "%s\n" s
     )
   (* virtual instructions *)
-  | IfEq (_,x,ioi) ->
+  | IfEq (_,x,ioi,Some(m)) ->
       (
         Printf.fprintf outchan "IfEq %s " x;
         print_id_or_imm outchan ioi;
+        Printf.fprintf outchan " [Merge block id] : %d" m;
         Printf.fprintf outchan "\n";
       )
-  | IfLE (_,x,ioi) ->
+  | IfEq (_,x,ioi,None) ->
+      (
+        Printf.fprintf outchan "IfEq %s " x;
+        print_id_or_imm outchan ioi;
+        Printf.fprintf outchan " [Merge block id] : None";
+        Printf.fprintf outchan "\n";
+      )
+  | IfLE (_,x,ioi,_) ->
       (
         Printf.fprintf outchan "IfLE %s " x;
         print_id_or_imm outchan ioi;
         Printf.fprintf outchan "\n";
       )
-  | IfGE (_,x,ioi) ->
+  | IfGE (_,x,ioi,_) ->
       (
         Printf.fprintf outchan "IfGE %s " x;
         print_id_or_imm outchan ioi;
         Printf.fprintf outchan "\n";
       )
-  | IfFEq (_,x,y) ->
+  | IfFEq (_,x,y,_) ->
       (
         Printf.fprintf outchan "IfFEq %s %s\n" x y;
       )
-  | IfFLE (_,x,y) ->
+  | IfFLE (_,x,y,_) ->
       (
         Printf.fprintf outchan "IfFLE %s %s\n" x y;
       )

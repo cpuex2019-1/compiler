@@ -6,7 +6,7 @@ let ret_var_env = ref M.empty
 let current_id = ref 0
 let next_id = ref 1
 
-let change xt = function
+let change xt merge_id = function
 | Asm.Nop     -> Nop xt
 | Asm.Li i    -> Li(xt, i)
 | Asm.FLi l   -> FLi(xt, l)
@@ -72,21 +72,21 @@ let change xt = function
 | Asm.Save(x, y) -> Save(xt, x, y)
 | Asm.Restore x -> Restore(xt, x)
 
-| Asm.IfEq(x, Asm.V y, e1, e2) -> IfEq(xt, x, V y)
-| Asm.IfEq(x, Asm.C y, e1, e2) -> IfEq(xt, x, C y)
-| Asm.IfLE(x, Asm.V y, e1, e2) -> IfLE(xt, x, V y)
-| Asm.IfLE(x, Asm.C y, e1, e2) -> IfLE(xt, x, C y)
-| Asm.IfGE(x, Asm.V y, e1, e2) -> IfGE(xt, x, V y)
-| Asm.IfGE(x, Asm.C y, e1, e2) -> IfGE(xt, x, C y)
-| Asm.IfFEq(x, y, e1, e2) -> IfFEq(xt, x, y)
-| Asm.IfFLE(x, y, e1, e2) -> IfFLE(xt, x, y)
+| Asm.IfEq(x, Asm.V y, e1, e2) -> IfEq (xt, x, V y, merge_id)
+| Asm.IfEq(x, Asm.C y, e1, e2) -> IfEq (xt, x, C y, merge_id)
+| Asm.IfLE(x, Asm.V y, e1, e2) -> IfLE (xt, x, V y, merge_id)
+| Asm.IfLE(x, Asm.C y, e1, e2) -> IfLE (xt, x, C y, merge_id)
+| Asm.IfGE(x, Asm.V y, e1, e2) -> IfGE (xt, x, V y, merge_id)
+| Asm.IfGE(x, Asm.C y, e1, e2) -> IfGE (xt, x, C y, merge_id)
+| Asm.IfFEq(x, y, e1, e2)      -> IfFEq(xt, x,   y, merge_id)
+| Asm.IfFLE(x, y, e1, e2)      -> IfFLE(xt, x,   y, merge_id)
 
 | _ -> assert false
 
 
 let rec finish cont xt = function
 | Asm.IfEq(_, _, e1, e2) | Asm.IfLE(_, _, e1, e2) | Asm.IfGE(_, _, e1, e2) | Asm.IfFEq(_, _, e1, e2) | Asm.IfFLE(_, _, e1, e2) as exp ->
-    let exp' = change xt exp in
+    let exp' = change xt None exp in
     let block = exp' :: !block_ref in
     blocks_ref := (
       { id = (!current_id) ;
@@ -100,7 +100,7 @@ let rec finish cont xt = function
     current_id := next_id_backup + 1;
     make_new_block cont xt e2;
 | exp ->
-    let exp' = change xt exp in
+    let exp' = change xt None exp in
     let block = exp' :: !block_ref in
     blocks_ref := { id = !current_id ;
                     insts = ref (List.rev block) ;
@@ -108,7 +108,7 @@ let rec finish cont xt = function
 
 and continue cont xt e yt = function
 | Asm.IfEq(_, _, e1, e2) | Asm.IfLE(_, _, e1, e2) | Asm.IfGE(_, _, e1, e2) | Asm.IfFEq(_, _, e1, e2) | Asm.IfFLE(_, _, e1, e2) as exp ->
-    let exp' = change yt exp in
+    let exp' = change yt (Some(!next_id+2)) exp in
     let block = exp' :: !block_ref in
     blocks_ref := { id = !current_id ;
                     insts =  ref (List.rev block) ;
@@ -122,7 +122,7 @@ and continue cont xt e yt = function
     current_id := next_id_backup + 2;
     make_new_block cont xt e;
 | exp ->
-    let exp' = change yt exp in
+    let exp' = change yt (Some(!next_id+2)) exp in
     block_ref := exp' :: !block_ref;
     make_block cont xt e
 

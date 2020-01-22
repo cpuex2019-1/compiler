@@ -1,12 +1,13 @@
 open Assem
 open Printf
 
-let g outchan e = 
+let g outchan = function
   | Nop          -> ()
   | Add  (x,y,z) -> fprintf outchan "\tadd  %s, %s, %s\n" x y z 
   | Addi (x,y,z) -> fprintf outchan "\taddi %s, %s, %d\n" x y z 
   | Sub  (x,y,z) -> fprintf outchan "\tsub  %s, %s, %s\n" x y z 
   | Mul  (x,y,z) -> fprintf outchan "\tmul  %s, %s, %s\n" x y z 
+  | Div10(x,y)   -> fprintf outchan "\tdiv10 %s, %s\n" x y
   | Slt  (x,y,z) -> fprintf outchan "\tslt  %s, %s, %s\n" x y z 
   | And  (x,y,z) -> fprintf outchan "\tand  %s, %s, %s\n" x y z 
   | Andi (x,y,z) -> fprintf outchan "\tandi %s, %s, %d\n" x y z 
@@ -42,20 +43,25 @@ let g outchan e =
   | Sf   (x,y,z) -> fprintf outchan "\tsf    %s, %d(%s)\n" x y z
   | Movf (x,y)   -> fprintf outchan "\tmovf  %s, %s\n" x y
 
-  | Beq  (x,y,z) -> fprintf outchan "\tbeq   %s, %s, %s\n" x y z
-  | Bne  (x,y,z) -> fprintf outchan "\tbne   %s, %s, %s\n" x y z
-  | Ble  (x,y,z) -> fprintf outchan "\tble   %s, %s, %s\n" x y z
-  | Bge  (x,y,z) -> fprintf outchan "\tbge   %s, %s, %s\n" x y z
+  | Beq  (x,y,Id.L(z)) -> fprintf outchan "\tbeq   %s, %s, %s\n" x y z
+  | Bne  (x,y,Id.L(z)) -> fprintf outchan "\tbne   %s, %s, %s\n" x y z
+  | Ble  (x,y,Id.L(z)) -> fprintf outchan "\tble   %s, %s, %s\n" x y z
+  | Bge  (x,y,Id.L(z)) -> fprintf outchan "\tbge   %s, %s, %s\n" x y z
 
-  | J    (x)     -> fprintf outchan "\tj     %s\n" x
+  | J    (Id.L(x))     -> fprintf outchan "\tj     %s\n" x
   | Jr   (x)     -> fprintf outchan "\tjr    %s\n" x
-  | Jal  (x)     -> fprintf outchan "\tjal   %s\n" x
+  | Jal  (Id.L(x))     -> fprintf outchan "\tjal   %s\n" x
   | Jalr (x,y)   -> fprintf outchan "\tjalr  %s, %s\n" x y
 
-  | Bltf (x,y,z) -> fprintf outchan "\tbltf  %s, %s, %s\n" x y z
-  | Beqf (x,y,z) -> fprintf outchan "\tbeqf  %s, %s, %s\n" x y z
+  | Bltf (x,y,Id.L(z)) -> fprintf outchan "\tbltf  %s, %s, %s\n" x y z
+  | Beqf (x,y,Id.L(z)) -> fprintf outchan "\tbeqf  %s, %s, %s\n" x y z
 
-  | Label (x)    -> fprintf outchan "%s:\n" x
+  | Label (Id.L(x))    -> fprintf outchan "%s:\n" x
+  | Comment (x)  -> fprintf outchan "# %s\n" x
+
+  | In   (x)     -> fprintf outchan "\tin   %s\n" x
+  | Inf  (x)     -> fprintf outchan "\tinf  %s\n" x
+  | Outb (x)     -> fprintf outchan "\toutb %s\n" x
   | _ -> assert false
 
 let f outchan prog =

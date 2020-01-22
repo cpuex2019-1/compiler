@@ -27,7 +27,7 @@ syntax.ml parser.mly lexer.mll typing.mli typing.ml global_array.mli global_arra
 setGlobalArray.mli setGlobalArray.ml alpha.mli alpha.ml  beta.mli beta.ml assoc.mli assoc.ml \
 inline.mli inline.ml constFold.mli constFold.ml elim.mli elim.ml \
 closure.mli closure.ml asm.mli asm.ml virtual.mli virtual.ml \
-block.mli block.ml toBasicBlock.mli toBasicBlock.ml simm.mli simm.ml elim_asm.mli elim_asm.ml constFoldAsm.mli constFoldAsm.ml regAlloc.mli regAlloc.ml peephole.mli peephole.ml emit.mli emit.ml \
+block.mli block.ml toBasicBlock.mli toBasicBlock.ml assem.mli assem.ml toAssem.mli toAssem.ml emitAssem.mli emitAssem.ml simm.mli simm.ml elim_asm.mli elim_asm.ml constFoldAsm.mli constFoldAsm.ml regAlloc.mli regAlloc.ml peephole.mli peephole.ml emit.mli emit.ml \
 main.mli main.ml
 
 # ↓テストプログラムが増えたら、これも増やす

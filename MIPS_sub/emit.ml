@@ -149,8 +149,7 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   | NonTail(x), Mr(y) when x = y -> ()
   | NonTail(x), Mr(y) -> Printf.fprintf oc "\tmov\t%s, %s\n" (reg x) (reg y)
   | NonTail(x), Neg(y) 
-  -> load_imm oc reg_tmp (-1);
-     Printf.fprintf oc "\tmul\t%s, %s, %s\n" (reg x) (reg y) (reg reg_tmp)
+  -> Printf.fprintf oc "\tsub\t%s, %s, %s\n" (reg x) (reg reg_zero) (reg y)
   | NonTail(x), Add(y, V(z)) -> Printf.fprintf oc "\tadd\t%s, %s, %s\n" (reg x) (reg y) (reg z)
   | NonTail(x), Add(y, C(z)) -> Printf.fprintf oc "\taddi\t%s, %s, %d\n" (reg x) (reg y) z
   | NonTail(x), Sub(y, V(z)) -> Printf.fprintf oc "\tsub\t%s, %s, %s\n" (reg x) (reg y) (reg z)

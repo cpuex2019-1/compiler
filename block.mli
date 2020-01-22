@@ -34,11 +34,11 @@ type t = (* 一つ一つの命令に対応する式 (caml2html: sparcasm_exp) *)
   | Stfd    of (Id.t * Type.t) *  Id.t * Id.t * id_or_imm
   | Comment of (Id.t * Type.t) *  string
   (* virtual instructions *)
-  | IfEq    of (Id.t * Type.t) *  Id.t * id_or_imm 
-  | IfLE    of (Id.t * Type.t) *  Id.t * id_or_imm 
-  | IfGE    of (Id.t * Type.t) *  Id.t * id_or_imm  (* 左右対称ではないので必要 *)
-  | IfFEq   of (Id.t * Type.t) *  Id.t * Id.t 
-  | IfFLE   of (Id.t * Type.t) *  Id.t * Id.t 
+  | IfEq    of (Id.t * Type.t) *  Id.t * id_or_imm * int option (* last elem is id of gouryuu node (this is needed in toAssem) *)
+  | IfLE    of (Id.t * Type.t) *  Id.t * id_or_imm * int option 
+  | IfGE    of (Id.t * Type.t) *  Id.t * id_or_imm * int option  (* 左右対称ではないので必要 *)
+  | IfFEq   of (Id.t * Type.t) *  Id.t * Id.t * int option
+  | IfFLE   of (Id.t * Type.t) *  Id.t * Id.t * int option
   (* closure address, integer arguments, and float arguments *)
   | CallCls of (Id.t * Type.t) *  Id.t * Id.t list * Id.t list
   | CallDir of (Id.t * Type.t) *  Id.l * Id.t list * Id.t list
