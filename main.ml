@@ -25,7 +25,7 @@ let rec iter_asm2 n e = (* 最適化処理をくりかえす (caml2html: main_iter) *)
 let lexbuf outchan l = (* バッファをコンパイルしてチャンネルへ出力する (caml2html: main_lexbuf) *)
   Id.counter := 0;
   Typing.extenv := M.empty;
-  (* 
+  (*  
   Emit.f outchan
    (iter_asm2 !limit_asm
      (RegAlloc.f
@@ -40,15 +40,15 @@ let lexbuf outchan l = (* バッファをコンパイルしてチャンネルへ出力する (caml2htm
                        (Global_array.f
                          (Typing.f
                             (Parser.exp Lexer.token l)))))))))))))
-    *)
+     *)
 
-  (* *)
-  EmitAssem.f outchan
-    (ToAssem.f
+  (*  *) 
+   Emit.f outchan
+    (ToAsm.f
       (ToBasicBlock.f
        (iter_asm2 !limit_asm
          (RegAlloc.f
-          (iter_asm !limit_asm
+           (iter_asm !limit_asm
             (Simm.f
               (Virtual.f
                  (Closure.f
@@ -59,7 +59,7 @@ let lexbuf outchan l = (* バッファをコンパイルしてチャンネルへ出力する (caml2htm
                            (Global_array.f
                              (Typing.f
                                 (Parser.exp Lexer.token l)))))))))))))))
-  (* *)
+  (* *) 
 
 
 let string s = lexbuf stdout (Lexing.from_string s) (* 文字列をコンパイルして標準出力に表示する (caml2html: main_string) *)

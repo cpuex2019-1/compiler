@@ -209,10 +209,10 @@ let rec g_inst inst edge_to last_inst =
       )
     )
   | Block.Comment((x,t),com)         -> add (Comment(com))
-  | Block.Save   (_,x,y) when List.mem x Asm.allregs && not (S.mem y !stackset)  
+  | Block.Save   (_,x,y) when List.mem x Asm.allregs  && not (S.mem y !stackset) 
                                -> save y;
                                   add (Sw(x,(offset y),Asm.reg_sp))
-  | Block.Save   (_,x,y) when List.mem x Asm.allfregs && not (S.mem y !stackset) 
+  | Block.Save   (_,x,y) when List.mem x Asm.allfregs  && not (S.mem y !stackset) 
                                -> savef y;
                                   add (Sf(x,(offset y),Asm.reg_sp))
   | Block.Save   (_,x,y)       -> assert (S.mem y !stackset); ()
@@ -227,7 +227,8 @@ let rec g_inst inst edge_to last_inst =
                                   add (J(l))
   | Block.CallDir((x,t),l,ys,zs) ->
                                   g_args [] ys zs;
-                                  let ss = stacksize () in
+                                  (* let ss = stacksize () in *)
+                                  let ss = 60 in
                                   add (Sw(Asm.reg_lr,ss-4,Asm.reg_sp));
                                   add (Addi(Asm.reg_sp,Asm.reg_sp,ss));
                                   add (Jal(l));
@@ -241,87 +242,103 @@ let rec g_inst inst edge_to last_inst =
                                     else ()
                                   )
   | Block.IfEq((x,t),y,Block.V(z),Some(m)) -> (
+      assert last_inst;
       let a = List.nth edge_to 0 in
       let b = List.nth edge_to 1 in
       g_non_tail_if y z m a b (fun y z l -> Bne(y,z,l))
     )
   | Block.IfEq((x,t),y,Block.C(z),Some(m)) -> (
+      assert last_inst;
       load_imm Asm.reg_tmp z; (* atode zero reg optimization *)
       let a = List.nth edge_to 0 in
       let b = List.nth edge_to 1 in
       g_non_tail_if y Asm.reg_tmp m a b (fun y z l -> Bne(y,z,l))
     )
   | Block.IfEq((x,t),y,Block.V(z),None) -> (
+      assert last_inst;
       let a = List.nth edge_to 0 in
       let b = List.nth edge_to 1 in
       g_tail_if y z a b (fun y z l -> Bne(y,z,l))
     )
   | Block.IfEq((x,t),y,Block.C(z),None) -> (
+      assert last_inst;
       let a = List.nth edge_to 0 in
       let b = List.nth edge_to 1 in
       load_imm Asm.reg_tmp z;
       g_tail_if y Asm.reg_tmp a b (fun y z l -> Bne(y,z,l))
     )
   | Block.IfLE((x,t),y,Block.V(z),Some(m)) -> (
+      assert last_inst;
       let a = List.nth edge_to 0 in
       let b = List.nth edge_to 1 in
       g_non_tail_if y z m b a (fun y z l -> Ble(y,z,l))
     )
   | Block.IfLE((x,t),y,Block.C(z),Some(m)) -> (
+      assert last_inst;
       let a = List.nth edge_to 0 in
       let b = List.nth edge_to 1 in
       load_imm Asm.reg_tmp z; (* atode zero reg optimization *)
       g_non_tail_if y Asm.reg_tmp m b a (fun y z l -> Ble(y,z,l))
     )
   | Block.IfLE((x,t),y,Block.V(z),None) -> (
+      assert last_inst;
       let a = List.nth edge_to 0 in
       let b = List.nth edge_to 1 in
       g_tail_if y z b a (fun y z l -> Ble(y,z,l))
     )
   | Block.IfLE((x,t),y,Block.C(z),None) -> (
+      assert last_inst;
       let a = List.nth edge_to 0 in
       let b = List.nth edge_to 1 in
       load_imm Asm.reg_tmp z;
       g_tail_if y Asm.reg_tmp b a (fun y z l -> Bne(y,z,l))
     )
   | Block.IfGE((x,t),y,Block.V(z),Some(m)) -> (
+      assert last_inst;
       let a = List.nth edge_to 0 in
       let b = List.nth edge_to 1 in
       g_non_tail_if y z m b a (fun y z l -> Bge(y,z,l))
     )
   | Block.IfGE((x,t),y,Block.C(z),Some(m)) -> (
+      assert last_inst;
       let a = List.nth edge_to 0 in
       let b = List.nth edge_to 1 in
       load_imm Asm.reg_tmp z; (* atode zero reg optimization *)
       g_non_tail_if y Asm.reg_tmp m b a (fun y z l -> Bge(y,z,l))
     )
   | Block.IfGE((x,t),y,Block.V(z),None) -> (
+      assert last_inst;
       let a = List.nth edge_to 0 in
       let b = List.nth edge_to 1 in
       g_tail_if y z b a (fun y z l -> Bge(y,z,l))
     )
   | Block.IfGE((x,t),y,Block.C(z),None) -> (
+      assert last_inst;
       let a = List.nth edge_to 0 in
       let b = List.nth edge_to 1 in
       load_imm Asm.reg_tmp z;
       g_tail_if y Asm.reg_tmp b a (fun y z l -> Bge(y,z,l))
     )
   | Block.IfFEq((x,t),y,z,Some(m)) -> (
+      assert last_inst;
       let a = List.nth edge_to 0 in
       let b = List.nth edge_to 1 in
       g_non_tail_if y z m b a (fun y z l -> Beqf(y,z,l))
     )
   | Block.IfFEq((x,t),y,z,None) -> (
+      assert last_inst;
       let a = List.nth edge_to 0 in
       let b = List.nth edge_to 1 in
       g_tail_if y z b a (fun y z l -> Beqf(y,z,l))
     )
   | Block.IfFLE((x,t),y,z,Some(m)) -> (
+      assert last_inst;
       let a = List.nth edge_to 0 in
       let b = List.nth edge_to 1 in
       g_non_tail_if z y m a b (fun y z l -> Bltf(y,z,l))
     )
   | Block.IfFLE((x,t),y,z,None) -> (
+      assert last_inst;
       let a = List.nth edge_to 0 in
       let b = List.nth edge_to 1 in
       g_tail_if z y a b (fun y z l -> Bltf(y,z,l))

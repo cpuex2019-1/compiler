@@ -1,7 +1,8 @@
 open Assem
 open Printf
 
-let g outchan = function | Nop          -> ()
+let g outchan = function
+  | Nop          -> ()
   | Add  (x,y,z) -> fprintf outchan "\tadd  %s, %s, %s\n" x y z 
   | Addi (x,y,z) -> fprintf outchan "\taddi %s, %s, %d\n" x y z 
   | Sub  (x,y,z) -> fprintf outchan "\tsub  %s, %s, %s\n" x y z 

@@ -1,7 +1,7 @@
 (* give names to intermediate values (K-normalization) *)
 open Printf
 
-let hp_init = ref 10000
+let hp_init = ref 3000
 
 type t = (* K正規化後の式 (caml2html: knormal_t) *)
   | Unit
