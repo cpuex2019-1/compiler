@@ -44,11 +44,11 @@ let lexbuf outchan l = (* バッファをコンパイルしてチャンネルへ出力する (caml2htm
 
   (*  *) 
    Emit.f outchan
-    (ToAsm.f
-      (ToBasicBlock.f
-       (iter_asm2 !limit_asm
-         (RegAlloc.f
-           (iter_asm !limit_asm
+    (RegAlloc.f
+      (ToAsm.f
+       (InterferenceGraph.f
+         (Liveness.f
+           (ToBasicBlock.f
             (Simm.f
               (Virtual.f
                  (Closure.f

@@ -8,8 +8,10 @@ NCSUFFIX = .opt
 CC = gcc
 CFLAGS = -g -O2 -Wall
 OCAMLLDFLAGS=-warn-error -31
+PACKS = ocamlgraph
 
-default: debug-code top $(RESULT) do_test
+# default: debug-code top $(RESULT) do_test
+default : native-code
 $(RESULT): debug-code top
 ## [自分（住井）用の注]
 ## ・OCamlMakefileや古いGNU Makeのバグ(?)で上のような定義が必要(??)
@@ -27,7 +29,7 @@ syntax.ml parser.mly lexer.mll typing.mli typing.ml global_array.mli global_arra
 setGlobalArray.mli setGlobalArray.ml alpha.mli alpha.ml  beta.mli beta.ml assoc.mli assoc.ml \
 inline.mli inline.ml constFold.mli constFold.ml elim.mli elim.ml \
 closure.mli closure.ml asm.mli asm.ml virtual.mli virtual.ml \
-block.mli block.ml toBasicBlock.mli toBasicBlock.ml assem.mli assem.ml toAssem.mli toAssem.ml toAsm.mli toAsm.ml emitAssem.mli emitAssem.ml simm.mli simm.ml elim_asm.mli elim_asm.ml constFoldAsm.mli constFoldAsm.ml regAlloc.mli regAlloc.ml peephole.mli peephole.ml emit.mli emit.ml \
+block.mli block.ml toBasicBlock.mli toBasicBlock.ml liveness.mli liveness.ml interferenceGraph.mli interferenceGraph.ml assem.mli assem.ml toAssem.mli toAssem.ml toAsm.mli toAsm.ml emitAssem.mli emitAssem.ml simm.mli simm.ml elim_asm.mli elim_asm.ml constFoldAsm.mli constFoldAsm.ml regAlloc.mli regAlloc.ml peephole.mli peephole.ml emit.mli emit.ml \
 main.mli main.ml
 
 # ↓テストプログラムが増えたら、これも増やす
@@ -72,5 +74,10 @@ min-caml.html: main.mli main.ml id.ml m.ml s.ml \
 release: min-caml.html
 	rm -fr tmp ; mkdir tmp ; cd tmp ; cvs -d:ext:sumii@min-caml.cvs.sf.net://cvsroot/min-caml export -Dtomorrow min-caml ; tar cvzf ../min-caml.tar.gz min-caml ; cd .. ; rm -fr tmp
 	cp Makefile stub.c SPARC/libmincaml.S min-caml.html min-caml.tar.gz ../htdocs/
+
+igraph: color.ml
+	ocamlfind ocamlopt -package ocamlgraph -linkpkg color.ml -o color
+	./color
+	dot -T svg igraph.dot -o igraph.svg
 
 include OCamlMakefile

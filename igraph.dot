@@ -1,0 +1,23 @@
+digraph G {
+  Ti1_14 [shape=ellipse, fillcolor="#0DBBA0", style="filled", ];
+  Ti2_15 [shape=ellipse, fillcolor="#0927C0", style="filled", ];
+  Ti3_16 [shape=ellipse, fillcolor="#0493E0", style="filled", ];
+  Ti7_18 [shape=ellipse, fillcolor="#124F80", style="filled", ];
+  Ti8_19 [shape=ellipse, fillcolor="#0493E0", style="filled", ];
+  a_11 [shape=ellipse, fillcolor="#0DBBA0", style="filled", ];
+  b_12 [shape=ellipse, fillcolor="#0927C0", style="filled", ];
+  n_10 [shape=ellipse, fillcolor="#0493E0", style="filled", ];
+  
+  
+  Ti2_15 -> Ti1_14 [dir=none, label="", ];
+  Ti3_16 -> Ti1_14 [dir=none, label="", ];
+  Ti3_16 -> Ti2_15 [dir=none, label="", ];
+  Ti8_19 -> Ti7_18 [dir=none, label="", ];
+  a_11 -> Ti7_18 [dir=none, label="", ];
+  a_11 -> Ti8_19 [dir=none, label="", ];
+  b_12 -> Ti7_18 [dir=none, label="", ];
+  b_12 -> a_11 [dir=none, label="", ];
+  n_10 -> a_11 [dir=none, label="", ];
+  n_10 -> b_12 [dir=none, label="", ];
+  
+  }

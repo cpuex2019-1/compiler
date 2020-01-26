@@ -441,6 +441,7 @@ let file_to_string fname =
   String.concat "\n" sl
 
 let initialize fundefs e =
+  Hashtbl.clear block_info;
   inst_list := [];
   List.iter (fun {Block.body = e} -> List.iter (fun block -> add_block_info block) e) fundefs;
   List.iter (fun block -> add_block_info block) e

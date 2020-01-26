@@ -5,6 +5,7 @@ let blocks_ref = ref []
 let ret_var_env = ref M.empty
 let current_id = ref 0
 let next_id = ref 1
+let type_env = Hashtbl.create 1000
 
 let change xt merge_id = function
 | Asm.Nop     -> Nop xt
@@ -83,9 +84,11 @@ let change xt merge_id = function
 
 | _ -> assert false
 
+let add_type_env (x,t) = if not (Hashtbl.mem type_env x) then Hashtbl.add type_env x t else ()
 
 let rec finish cont xt = function
 | Asm.IfEq(_, _, e1, e2) | Asm.IfLE(_, _, e1, e2) | Asm.IfGE(_, _, e1, e2) | Asm.IfFEq(_, _, e1, e2) | Asm.IfFLE(_, _, e1, e2) as exp ->
+    add_type_env xt;
     let exp' = change xt None exp in
     let block = exp' :: !block_ref in
     blocks_ref := (
@@ -100,6 +103,7 @@ let rec finish cont xt = function
     current_id := next_id_backup + 1;
     make_new_block cont xt e2;
 | exp ->
+    add_type_env xt;
     let exp' = change xt None exp in
     let block = exp' :: !block_ref in
     blocks_ref := { id = !current_id ;
@@ -108,6 +112,7 @@ let rec finish cont xt = function
 
 and continue cont xt e yt = function
 | Asm.IfEq(_, _, e1, e2) | Asm.IfLE(_, _, e1, e2) | Asm.IfGE(_, _, e1, e2) | Asm.IfFEq(_, _, e1, e2) | Asm.IfFLE(_, _, e1, e2) as exp ->
+    add_type_env yt;
     let exp' = change yt (Some(!next_id+2)) exp in
     let block = exp' :: !block_ref in
     blocks_ref := { id = !current_id ;
@@ -122,6 +127,7 @@ and continue cont xt e yt = function
     current_id := next_id_backup + 2;
     make_new_block cont xt e;
 | exp ->
+    add_type_env yt;
     let exp' = change yt (Some(!next_id+2)) exp in
     block_ref := exp' :: !block_ref;
     make_block cont xt e
@@ -142,32 +148,41 @@ let make_new_blocks xt e =
 
 
 let h { Asm.name = Id.L x; Asm.args = ys; Asm.fargs = zs; Asm.body = e; Asm.ret = t } =
-  (*
   let retvar = Id.gentmp t in
   ret_var_env := M.add x retvar !ret_var_env;
-  *)
+  List.iter (fun y -> Hashtbl.add type_env y Type.Int) ys;
+  List.iter (fun z -> Hashtbl.add type_env z Type.Float) zs;
+  (*
   let retvar = if t = Type.Float then Asm.fregs.(0) else (
                if t = Type.Unit then Id.gentmp Type.Unit 
                else Asm.regs.(0) ) in
+  *)
   make_new_blocks (retvar, t) e;
   current_id := !next_id;
   next_id := !next_id+1;
   { name = Id.L x; args = ys; fargs = zs; body = List.rev !blocks_ref; ret = t }
+
+let print_xt oc x t =
+  if t = Type.Float then Printf.fprintf oc "%s : Float\n" x
+  else begin
+    if t = Type.Int then Printf.fprintf oc "%s : Int\n" x
+    else Printf.fprintf oc "%s : Unit\n" x
+  end
 
 let f (Asm.Prog(data, fundefs, e)) =
   Printf.eprintf "[toBasicBlock]\n";
   block_ref := [];
   blocks_ref := [];
   ret_var_env := M.empty;
+  Hashtbl.clear type_env;
   current_id := 0;
   next_id := 1;
   let fundefs' = List.map h fundefs in
-  (*
   let retvar = Id.gentmp Type.Unit in
   ret_var_env := M.add "min_caml_start" retvar !ret_var_env;
-  *)
-  let retvar = Id.gentmp Type.Unit in
+  (* let retvar = Id.gentmp Type.Unit in *)
   make_new_blocks (retvar, Type.Unit) e;
   let res = Prog(data, fundefs', List.rev !blocks_ref) in
   print_prog stdout res;
+  Hashtbl.iter (print_xt stdout) type_env;
   res

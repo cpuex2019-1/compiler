@@ -7,6 +7,7 @@ let add_block_info block =
   | {Block.id = id ; Block.insts = _ ; Block.edge_to = _; } -> Hashtbl.add block_info id block
 
 let initialize fundefs e =
+  Hashtbl.clear block_info;
   List.iter (fun {Block.body = e} -> List.iter (fun block -> add_block_info block) e) fundefs;
   List.iter (fun block -> add_block_info block) e
 

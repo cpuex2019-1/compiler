@@ -590,7 +590,7 @@ let file_to_string fname =
 
 
 let f oc (Prog(data, fundefs, e)) = 
-  let _ = ToBasicBlock.f (Prog(data, fundefs, e)) in
+  (* let _ = ToBasicBlock.f (Prog(data, fundefs, e)) in *)
   Printf.eprintf "[emit]\n";
   (* print_prog stdout (Prog(data,fundefs,e)); *)
   Format.eprintf "generating assembly...@.";
