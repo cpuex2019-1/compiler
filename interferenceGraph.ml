@@ -11,6 +11,10 @@ module Color = Graph.Coloring.Make(G)
 
 let int_graph = ref G.empty 
 let float_graph = ref G.empty
+
+let int_reg_color_map = ref (Color.H.create 1)
+let float_reg_color_map = ref (Color.H.create 1)
+
 let temp_g = ref G.empty (* temporary for print dot file *)
 
 let rec add_clique g xl = 
@@ -30,6 +34,7 @@ let rec escape_string str =
 
 module Dot = Graph.Graphviz.Dot(struct
    include G (* use the graph module from above *)
+   let graph_attributes _ = [`Rankdir `TopToBottom; `Pagedir `TopToBottom; `Page (200.0,300.0)]
    let edge_attributes _ = [`Label ""; `Dir `None]
    let default_edge_attributes _ = []
    let get_subgraph _ = None
@@ -45,13 +50,28 @@ let make_dot _ =
   let file = open_out_bin "igraph.dot" in
   Dot.output_graph file !temp_g
 
+let is_reg x = 
+  (Bytes.get x 0 = '$')
+
 let int_reg_filter x =
-  let t = Hashtbl.find (ToBasicBlock.type_env) x in
-  (t = Type.Int)
+  try
+    if is_reg x then false
+    else begin
+      let t = Hashtbl.find (ToBasicBlock.type_env) x in
+      (t = Type.Int)
+    end
+  with
+  | Not_found -> false (* (failwith ("Not found type of "^x)) *)
   
 let float_reg_filter x =
-  let t = Hashtbl.find (ToBasicBlock.type_env) x in
-  (t = Type.Float)
+  try
+    if is_reg x then false
+    else begin
+      let t = Hashtbl.find (ToBasicBlock.type_env) x in
+      (t = Type.Float)
+    end
+  with
+  | Not_found -> false (* (failwith ("Not found type of %s"^x)) *)
 
 let g' live_in_ref live_out_ref =
   let live_in_int   = List.filter   int_reg_filter (S.elements (!live_in_ref)) in
@@ -75,5 +95,7 @@ let f (Block.Prog(data,fundefs,e)) =
   List.iter (fun {Block.body = e} -> (h e)) fundefs;
   let _ = h e in
   temp_g := !int_graph;
-  make_dot ();
+  (* make_dot (); *)
+  int_reg_color_map := Color.coloring !int_graph (Array.length Asm.regs);
+  float_reg_color_map := Color.coloring !float_graph (Array.length Asm.fregs);
   Block.Prog(data,fundefs,e)
