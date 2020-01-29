@@ -1,14 +1,16 @@
 open Asm
 
+let   int_color_to_id = ref (fun x -> x)
+let float_color_to_id = ref (fun x -> x)
 (* auxiliary functions for g' *)
 let find x t =
   if is_reg x then x
   else begin
     match t with
-    | Type.Int   -> let reg_id = InterferenceGraph.Color.H.find x !(int_reg_color_map) in
-                  Asm.regs(reg_id)
-    | Type.Float -> let freg_id = InterferenceGraph.Color.H.find x !(float_reg_color_map) in
-                  Asm.fregs(freg_id)
+    | Type.Int   -> let reg_color = InterferenceGraph.Color.H.find x !(int_reg_color_map) in
+                  Asm.regs(!int_color_to_id reg_color)
+    | Type.Float -> let freg_color = InterferenceGraph.Color.H.find x !(float_reg_color_map) in
+                  Asm.fregs(!float_color_to_id freg_color)
     | _ -> assert false
   end
 
@@ -16,6 +18,14 @@ let find' x' =
   match x' with
   | V(x) -> V(find x Type.Int)
   | c -> c
+
+let find_without_type x =
+  try
+    find x Type.Int
+  with
+  | Not_found -> find x Type.Float
+
+let find_type = 
 
 let rec g dest cont = function (* 命令列のレジスタ割り当て (caml2html: regalloc_g) *)
   | Ans(exp) -> g' dest cont exp
@@ -80,9 +90,17 @@ and g'_if dest cont exp constr e1 e2 = (* ifのレジスタ割り当て (caml2html: regal
   Ans(constr e1' e2')
 
 and g'_call dest cont exp constr ys zs = (* 関数呼び出しのレジスタ割り当て (caml2html: regalloc_call) *)
-     (Ans(constr
-            (List.map (fun y -> find y Type.Int) ys)
-            (List.map (fun z -> find z Type.Float) zs)))
+  (* todo : Save *)
+  let xrs = List.map (fun x -> (x,find_without_type x)) 
+              (List.filter (fun x -> (x<>dest)) (fv cont)) in (* registers to be saved *)
+  let save_call =
+    (List.fold_left
+       (fun e (x,r) -> seq (Save(r,x)) e)
+       (Ans(constr
+              (List.map (fun y -> find y Type.Int) ys)
+              (List.map (fun z -> find z Type.Float) zs)))
+       rs) in
+  
 
 let h { name = Id.L(x); args = ys; fargs = zs; body = e; ret = t } = (* 関数のレジスタ割り当て (caml2html: regalloc_h) *)
   let regenv = M.add x reg_cl M.empty in

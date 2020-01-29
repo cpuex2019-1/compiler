@@ -156,4 +156,9 @@ let f (Prog(data,fundefs, e)) =
   initialize fundefs e;
   let fundefs' = List.map h fundefs in
   let e' = blocks_to_asm e in
-  Asm.Prog(data, fundefs', e')
+  let p' = Asm.Prog(data, fundefs', e') in
+  (*
+  Printf.fprintf stdout "[toAsm]\n";
+  Asm.print_prog stdout p';
+  *)
+  p'

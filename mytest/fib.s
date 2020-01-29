@@ -6,29 +6,77 @@ Init: # initialize float value and heap pointer
 #	outb	$30 # atsunobu request
 	addi	$4, $0, 3000
 	j Main
-fib.9:
-	addi	$30, $0, 1
-	bne	$2, $30, eq_else.24
-	mov	$2, $5
+print_int_sub.23:
+	bne	$2, $0, eq_else.63
 	jr $31
-eq_else.24:
-	addi	$2, $2, -1
-	add	$6, $5, $6
-	mov	$27, $6
-	mov	$6, $5
-	mov	$5, $27
-	j	fib.9
-#	main program starts
-Main:
-	addi	$2, $0, 30
-	addi	$5, $0, 1
-	addi	$6, $0, 0
+eq_else.63:
+	div10	$5, $2
+	addi	$6, $0, 10
+	mul	$6, $5, $6
+	sub	$2, $2, $6
+	sw	$2, 0($3)
+	mov	$2, $5
 	sw	$31, 4($3)
 	addi	$3, $3, 8
-	jal	fib.9
+	jal	print_int_sub.23
 	addi	$3, $3, -8
 	lw	$31, 4($3)
+	lw	$2, 0($3)
+	addi	$5, $2, 48
+	outb	$5
+	jr $31
+print_int.25:
+	bne	$2, $0, eq_else.66
+	addi	$2, $0, 48
 	outb	$2
+	jr $31
+eq_else.66:
+	ble	$2, $0, le.68
+	j	print_int_sub.23
+le.68:
+	addi	$5, $0, 45
+	outb	$5
+	sub	$2, $0, $2
+	j	print_int_sub.23
+fib.27:
+	addi	$30, $0, 2
+	ble	$2, $30, le.69
+	addi	$5, $2, -1
+	sw	$2, 0($3)
+	mov	$2, $5
+	sw	$31, 4($3)
+	addi	$3, $3, 8
+	jal	fib.27
+	addi	$3, $3, -8
+	lw	$31, 4($3)
+	mov	$5, $2
+	lw	$2, 0($3)
+	addi	$2, $2, -2
+	sw	$5, 4($3)
+	sw	$31, 12($3)
+	addi	$3, $3, 16
+	jal	fib.27
+	addi	$3, $3, -16
+	lw	$31, 12($3)
+	lw	$5, 4($3)
+	add	$2, $5, $2
+	jr $31
+le.69:
+	addi	$2, $0, 1
+	jr $31
+#	main program starts
+Main:
+	addi	$2, $0, 29
+	sw	$31, 4($3)
+	addi	$3, $3, 8
+	jal	fib.27
+	addi	$3, $3, -8
+	lw	$31, 4($3)
+	sw	$31, 4($3)
+	addi	$3, $3, 8
+	jal	print_int.25
+	addi	$3, $3, -8
+	lw	$31, 4($3)
 	j Exit
 #	main program ends
 # floor

@@ -40,26 +40,28 @@ let lexbuf outchan l = (* バッファをコンパイルしてチャンネルへ出力する (caml2htm
                        (Global_array.f
                          (Typing.f
                             (Parser.exp Lexer.token l)))))))))))))
-     *)
+      *)
 
   (*  *) 
    Emit.f outchan
-    (RegAlloc.f
-      (ToAsm.f
-       (InterferenceGraph.f
-         (Liveness.f
-           (ToBasicBlock.f
-            (Simm.f
-              (Virtual.f
-                 (Closure.f
-                   (iter !limit
-                     (SetGlobalArray.f
-                       (Alpha.f
-                         (KNormal.f
-                           (Global_array.f
-                             (Typing.f
-                                (Parser.exp Lexer.token l)))))))))))))))
-  (* *) 
+    (iter_asm2 !limit_asm
+      (RegAllocByColor.f
+        (ToAsm.f
+          (InterferenceGraph.f
+            (Liveness.f
+              (ToBasicBlock.f
+                (iter_asm !limit_asm
+                  (Simm.f
+                    (Virtual.f
+                      (Closure.f
+                        (iter !limit
+                          (SetGlobalArray.f
+                            (Alpha.f
+                              (KNormal.f
+                                (Global_array.f
+                                  (Typing.f
+                                    (Parser.exp Lexer.token l)))))))))))))))))
+   (* *) 
 
 
 let string s = lexbuf stdout (Lexing.from_string s) (* 文字列をコンパイルして標準出力に表示する (caml2html: main_string) *)

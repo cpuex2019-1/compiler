@@ -107,5 +107,6 @@ let f (Prog(data,fundefs,e)) =
   List.iter (fun fundef -> h fundef) fundefs;
   let {id = id} = List.hd e in
   let _ = analyze_in_block id in
+  Printf.fprintf stdout "[Liveness]\n";
   print_prog stdout (Prog(data,fundefs,e));
   Prog(data,fundefs,e)

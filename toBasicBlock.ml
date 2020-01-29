@@ -161,13 +161,18 @@ let h { Asm.name = Id.L x; Asm.args = ys; Asm.fargs = zs; Asm.body = e; Asm.ret 
   current_id := !next_id;
   next_id := !next_id+1;
   { name = Id.L x; args = ys; fargs = zs; body = List.rev !blocks_ref; ret = t }
+ 
+exception UnknownType of Type.t
 
 let print_xt oc x t =
-  if t = Type.Float then Printf.fprintf oc "%s : Float\n" x
-  else begin
-    if t = Type.Int then Printf.fprintf oc "%s : Int\n" x
-    else Printf.fprintf oc "%s : Unit\n" x
-  end
+  match t with
+  | Type.Float -> Printf.fprintf oc "%s : Float\n" x
+  | Type.Int   -> Printf.fprintf oc "%s : Int\n" x
+  | Type.Unit  -> Printf.fprintf oc "%s : Unit\n" x
+  | Type.Bool  -> Printf.fprintf oc "%s : Bool\n" x
+  | Type.Array(_) -> Printf.fprintf oc "%s : Array\n" x
+  | Type.Tuple(_) -> Printf.fprintf oc "%s : Tuple\n" x
+  | _ -> assert false
 
 let f (Asm.Prog(data, fundefs, e)) =
   Printf.eprintf "[toBasicBlock]\n";
@@ -183,6 +188,8 @@ let f (Asm.Prog(data, fundefs, e)) =
   (* let retvar = Id.gentmp Type.Unit in *)
   make_new_blocks (retvar, Type.Unit) e;
   let res = Prog(data, fundefs', List.rev !blocks_ref) in
+  Printf.fprintf stdout "[toBasicBlock]\n";
   print_prog stdout res;
+  Printf.fprintf stdout "[toBasicBlock]\n";
   Hashtbl.iter (print_xt stdout) type_env;
   res

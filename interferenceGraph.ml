@@ -9,6 +9,9 @@ module G = Graph.Persistent.Graph.Concrete(Node)
 
 module Color = Graph.Coloring.Make(G)
 
+include G
+include Color
+
 let int_graph = ref G.empty 
 let float_graph = ref G.empty
 
@@ -29,8 +32,7 @@ let rec escape_string str =
     let idx = Bytes.index str '.' in
     Bytes.set str idx '_';
     escape_string str
-  with
-  | Not_found -> str
+  with | Not_found -> str 
 
 module Dot = Graph.Graphviz.Dot(struct
    include G (* use the graph module from above *)
@@ -58,7 +60,7 @@ let int_reg_filter x =
     if is_reg x then false
     else begin
       let t = Hashtbl.find (ToBasicBlock.type_env) x in
-      (t = Type.Int)
+      (t <> Type.Unit && t <> Type.Float)
     end
   with
   | Not_found -> false (* (failwith ("Not found type of "^x)) *)
@@ -87,15 +89,30 @@ let g' live_in_ref live_out_ref =
 let g live_in_ref_list live_out_ref_list =
   List.iter2 g' live_in_ref_list live_out_ref_list
 
+let initialize_graph _ =
+  Hashtbl.iter
+    (fun x t -> 
+       match t with
+       | Type.Float -> float_graph := G.add_vertex !float_graph x
+       | Type.Unit  -> ()
+       | _          -> int_graph := G.add_vertex !int_graph x
+    )
+    ToBasicBlock.type_env
+
 let h blocks =
   List.iter (fun {Block.id = id} -> g (Hashtbl.find Liveness.live_in id) (Hashtbl.find Liveness.live_out id)) blocks
 
 let f (Block.Prog(data,fundefs,e)) = 
   Printf.eprintf "[Interference Graph]\n";
-  List.iter (fun {Block.body = e} -> (h e)) fundefs;
+  initialize_graph ();
+  List.iter (fun {Block.args = ys; Block.fargs = zs; Block.body = e} -> 
+               int_graph := add_clique (!int_graph) ys; (* to allocate different registers for each args  (same register may be allocated to different args when there are unused args ) *)
+               float_graph := add_clique (!float_graph) zs;
+               (h e)) fundefs;
   let _ = h e in
   temp_g := !int_graph;
   (* make_dot (); *)
   int_reg_color_map := Color.coloring !int_graph (Array.length Asm.regs);
   float_reg_color_map := Color.coloring !float_graph (Array.length Asm.fregs);
+  Color.H.iter (fun x col -> Printf.fprintf stdout "%s -> %d\n" x (col-1)) !int_reg_color_map;
   Block.Prog(data,fundefs,e)
