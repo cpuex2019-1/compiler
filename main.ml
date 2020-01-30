@@ -25,6 +25,32 @@ let rec iter_asm2 n e = (* 最適化処理をくりかえす (caml2html: main_iter) *)
 let lexbuf outchan l = (* バッファをコンパイルしてチャンネルへ出力する (caml2html: main_lexbuf) *)
   Id.counter := 0;
   Typing.extenv := M.empty;
+
+  let opt_asm =
+      iter_asm !limit_asm
+        (Simm.f
+          (Virtual.f
+             (Closure.f
+               (iter !limit
+                 (SetGlobalArray.f
+                   (Alpha.f
+                     (KNormal.f
+                       (Global_array.f
+                         (Typing.f
+                            (Parser.exp Lexer.token l)))))))))) in
+  let _ = InterferenceGraph.f
+            (Liveness.f
+              (ToBasicBlock.f opt_asm)) in
+  if !InterferenceGraph.exist_coloring then 
+    Emit.f outchan
+      (iter_asm2 !limit_asm
+        (RegAllocByColor.f opt_asm))
+  else begin
+    Emit.f outchan
+      (iter_asm2 !limit_asm
+        (RegAlloc.f opt_asm))
+  end
+
   (*  
   Emit.f outchan
    (iter_asm2 !limit_asm
@@ -40,9 +66,9 @@ let lexbuf outchan l = (* バッファをコンパイルしてチャンネルへ出力する (caml2htm
                        (Global_array.f
                          (Typing.f
                             (Parser.exp Lexer.token l)))))))))))))
-      *)
+       *)
 
-  (*  *) 
+  (*  
    Emit.f outchan
     (iter_asm2 !limit_asm
       (RegAllocByColor.f
@@ -50,7 +76,7 @@ let lexbuf outchan l = (* バッファをコンパイルしてチャンネルへ出力する (caml2htm
           (InterferenceGraph.f
             (Liveness.f
               (ToBasicBlock.f
-                (iter_asm !limit_asm
+                (iter_asm !limit_asm 
                   (Simm.f
                     (Virtual.f
                       (Closure.f
@@ -61,7 +87,7 @@ let lexbuf outchan l = (* バッファをコンパイルしてチャンネルへ出力する (caml2htm
                                 (Global_array.f
                                   (Typing.f
                                     (Parser.exp Lexer.token l)))))))))))))))))
-   (* *) 
+    *) 
 
 
 let string s = lexbuf stdout (Lexing.from_string s) (* 文字列をコンパイルして標準出力に表示する (caml2html: main_string) *)

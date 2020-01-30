@@ -142,9 +142,10 @@ and g'_if dest cont regenv exp constr e1 e2 = (* ifのレジスタ割り当て (caml2html
       (fv cont) in
   (List.fold_left
      (fun e x ->
-       if x = fst dest || not (M.mem x regenv) || M.mem x regenv' then e else
-       seq(Save(M.find x regenv, x), e)) (* そうでない変数は分岐直前にセーブ *)
-     (Ans(constr e1' e2'))
+       if x = fst dest || not (M.mem x regenv) || M.mem x regenv' then e
+       else (
+         seq(Save(M.find x regenv, x), e))) (* そうでない変数は分岐直前にセーブ *)
+       (Ans(constr e1' e2'))
      (fv cont),
    regenv')
 

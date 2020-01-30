@@ -1,14 +1,34 @@
 digraph G {
-  Tb3_14 [shape=ellipse, fillcolor="#0493E0", style="filled", ];
-  Ti5_17 [shape=ellipse, fillcolor="#0493E0", style="filled", ];
-  Ti6_16 [shape=ellipse, fillcolor="#0493E0", style="filled", ];
-  x_10 [shape=ellipse, fillcolor="#0927C0", style="filled", ];
-  x_12 [shape=ellipse, fillcolor="#0927C0", style="filled", ];
-  y_11 [shape=ellipse, fillcolor="#0493E0", style="filled", ];
-  y_13 [shape=ellipse, fillcolor="#0493E0", style="filled", ];
+  Ti10_34 [shape=ellipse, fillcolor="#0493E0", style="filled", ];
+  Ti11_33 [shape=ellipse, fillcolor="#0493E0", style="filled", ];
+  Ti13_43 [shape=ellipse, fillcolor="#0493E0", style="filled", ];
+  Ti15_42 [shape=ellipse, fillcolor="#0927C0", style="filled", ];
+  Ti16_41 [shape=ellipse, fillcolor="#0493E0", style="filled", ];
+  Ti19_51 [shape=ellipse, fillcolor="#0DBBA0", style="filled", ];
+  Ti20_50 [shape=ellipse, fillcolor="#0DBBA0", style="filled", ];
+  Ti22_48 [shape=ellipse, fillcolor="#0493E0", style="filled", ];
+  Ti3_30 [shape=ellipse, fillcolor="#0493E0", style="filled", ];
+  Ti4_29 [shape=ellipse, fillcolor="#0493E0", style="filled", ];
+  Ti55 [shape=ellipse, fillcolor="#0493E0", style="filled", ];
+  Ti7_36 [shape=ellipse, fillcolor="#0927C0", style="filled", ];
+  Ti8_32 [shape=ellipse, fillcolor="#0927C0", style="filled", ];
+  n_28 [shape=ellipse, fillcolor="#0493E0", style="filled", ];
+  rem_46 [shape=ellipse, fillcolor="#0927C0", style="filled", ];
+  x_24 [shape=ellipse, fillcolor="#0927C0", style="filled", ];
+  x_26 [shape=ellipse, fillcolor="#0493E0", style="filled", ];
+  y_45 [shape=ellipse, fillcolor="#0493E0", style="filled", ];
   
   
-  y_11 -> x_10 [dir=none, label="", ];
-  y_13 -> x_12 [dir=none, label="", ];
+  Ti8_32 -> Ti10_34 [dir=none, label="", ];
+  Ti8_32 -> Ti11_33 [dir=none, label="", ];
+  n_28 -> Ti7_36 [dir=none, label="", ];
+  n_28 -> Ti8_32 [dir=none, label="", ];
+  x_24 -> Ti19_51 [dir=none, label="", ];
+  x_24 -> Ti20_50 [dir=none, label="", ];
+  x_26 -> Ti15_42 [dir=none, label="", ];
+  y_45 -> Ti19_51 [dir=none, label="", ];
+  y_45 -> Ti20_50 [dir=none, label="", ];
+  y_45 -> rem_46 [dir=none, label="", ];
+  y_45 -> x_24 [dir=none, label="", ];
   
   }
