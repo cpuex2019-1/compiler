@@ -225,6 +225,8 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
       Printf.fprintf oc "\titof\t%s, %s\n" (reg x) (reg y)
   | NonTail(x), Floor(y) ->
       Printf.fprintf oc "\tfloor\t%s, %s\n" (reg x) (reg y)
+  | NonTail(x), FAbs(y) ->
+      Printf.fprintf oc "\tfabs\t%s, %s\n" (reg x) (reg y)
   | NonTail(x), Outb(y) ->
       (*Printf.eprintf "NonTail out\n"; *)
       Printf.fprintf oc "\toutb\t%s\n" (reg y)
@@ -311,7 +313,7 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
       *)
       g'_tail_iffle oc x y e1 e2
 (* new instructions *)
-  | Tail, (Sqrt _ | Floor _ | Itof _  as exp) ->
+  | Tail, (Sqrt _ | Floor _ | Itof _ | FAbs _ as exp) ->
       g' oc (NonTail(fregs.(0)), exp);
       Printf.fprintf oc "\tjr %s\n" (reg reg_lr);
   | Tail, (Ftoi _  as exp) ->

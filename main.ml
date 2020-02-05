@@ -35,17 +35,17 @@ let lexbuf outchan l = (* バッファをコンパイルしてチャンネルへ出力する (caml2htm
                  (SetGlobalArray.f
                    (Alpha.f
                      (KNormal.f
-                       (Global_array.f
+                       (GlobalArray.f
                          (Typing.f
                             (Parser.exp Lexer.token l)))))))))) in
-  let _ = InterferenceGraph.f
+  (* let _ = InterferenceGraph.f
             (Liveness.f
               (ToBasicBlock.f opt_asm)) in
   if !InterferenceGraph.exist_coloring then 
     Emit.f outchan
       (iter_asm2 !limit_asm
         (RegAllocByColor.f opt_asm))
-  else begin
+  else *) begin
     Emit.f outchan
       (iter_asm2 !limit_asm
         (RegAlloc.f opt_asm))
@@ -111,7 +111,7 @@ let print_knormal_ast f  =
   try
     KNormal.print_syntax (Alpha.f
                            (KNormal.f
-                             (Global_array.f
+                             (GlobalArray.f
                                (Typing.f
                                  (Parser.exp Lexer.token (Lexing.from_channel inchan)))))) 0 outchan;
     close_in inchan;
@@ -130,7 +130,7 @@ let print_closure_ast f  =
        (SetGlobalArray.f
         (Alpha.f 
           (KNormal.f
-           (Global_array.f
+           (GlobalArray.f
             (Typing.f
               (Parser.exp
                 Lexer.token (Lexing.from_channel inchan))))))))) 0 outchan;

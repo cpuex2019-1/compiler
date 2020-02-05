@@ -29,7 +29,7 @@ let rec fv_h com =
   | CallCls(x,il,fl) -> S.add x (S.union (S.of_list il) (S.of_list fl))
   | Save(x,y) -> S.of_list [x;y]
   | Restore(x) -> S.singleton x
-  | Sqrt(x) | Ftoi(x) | Itof(x) | Floor(x) | Outb(x) -> S.singleton x
+  | Sqrt(x) | Ftoi(x) | Itof(x) | Floor(x) | Outb(x) | FAbs(x) -> S.singleton x
   | In -> S.empty
   | Inf -> S.empty
 (* for Asm.t *)

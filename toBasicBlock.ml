@@ -40,7 +40,7 @@ let change xt merge_id = function
 | Asm.Stw(x, y, Asm.C z) -> Stw(xt, x, y, C z)
 
 | Asm.FMr x -> FMr(xt, x)
-(*| Asm.FAbs x -> FAbs(xt, x) *)
+| Asm.FAbs x -> FAbs(xt, x)
 | Asm.FNeg x -> FNeg(xt, x)
 | Asm.FAdd(x, y) -> FAdd(xt, x, y)
 | Asm.FSub(x, y) -> FSub(xt, x, y)

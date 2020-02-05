@@ -251,6 +251,7 @@ let rec print_exp outchan e =
     )
   | FMr ((y,t), x)  -> Printf.fprintf outchan "%s FMr  %s\n" y x
   | FNeg((y,t), x)  -> Printf.fprintf outchan "%s FNeg %s\n" y x
+  | FAbs((y,t), x)  -> Printf.fprintf outchan "%s FAbs %s\n" y x
   | FAdd((z,t),x,y) -> Printf.fprintf outchan "%s FAdd %s %s\n" z x y
   | FSub((z,t),x,y) -> Printf.fprintf outchan "%s FSub %s %s\n" z x y
   | FMul((z,t),x,y) -> Printf.fprintf outchan "%s FMul %s %s\n" z x y

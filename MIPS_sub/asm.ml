@@ -21,6 +21,7 @@ and exp = (* 一つ一つの命令に対応する式 (caml2html: sparcasm_exp) *)
   | Stw of Id.t * Id.t * id_or_imm
   | FMr of Id.t
   | FNeg of Id.t
+  | FAbs of Id.t
   | FAdd of Id.t * Id.t
   | FSub of Id.t * Id.t
   | FMul of Id.t * Id.t
@@ -91,7 +92,7 @@ let rec fv_exp = function
   | Xor(x,y') -> x :: fv_id_or_imm y'
   | Stw(x, y, z') | Stfd(x, y, z') -> x :: y :: fv_id_or_imm z'
   | FAdd(x, y) | FSub(x, y) | FMul(x, y) | FDiv(x, y) | Sltf(x,y) -> [x; y]
-  | Sqrt(x) | Ftoi(x) | Itof(x) | Floor(x) | Outb(x) -> [x]
+  | Sqrt(x) | Ftoi(x) | Itof(x) | Floor(x) | Outb(x) | FAbs(x) -> [x]
   | In | Inf -> []
   | IfEq(x, y', e1, e2) | IfLE(x, y', e1, e2) | IfGE(x, y', e1, e2) ->  x :: fv_id_or_imm y' @ remove_and_uniq S.empty (fv e1 @ fv e2) (* uniq here just for efficiency *)
   | IfFEq(x, y, e1, e2) | IfFLE(x, y, e1, e2) -> x :: y :: remove_and_uniq S.empty (fv e1 @ fv e2) (* uniq here just for efficiency *)
@@ -174,6 +175,7 @@ let rec print_exp outchan e =
     )
   | FMr(x) -> Printf.fprintf outchan "FMr %s\n" x
   | FNeg(x) -> Printf.fprintf outchan "FNeg %s\n" x
+  | FAbs(x) -> Printf.fprintf outchan "FAbs %s\n" x
   | FAdd(x,y) -> Printf.fprintf outchan "FAdd %s %s\n" x y
   | FSub(x,y) -> Printf.fprintf outchan "FSub %s %s\n" x y
   | FMul(x,y) -> Printf.fprintf outchan "FMul %s %s\n" x y

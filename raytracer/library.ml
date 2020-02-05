@@ -62,7 +62,8 @@ external floor : float -> float = "floor_float" "floor" "float"
 *)
 
 let rec fabs x =
-  if x > 0.0 then x else -.x 
+  (* if x > 0.0 then x else -.x *)
+  Asm fabs x
 in
 
 let rec fneg x =

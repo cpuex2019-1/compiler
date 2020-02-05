@@ -1,0 +1,1 @@
+globalArray.cmi : syntax.cmo

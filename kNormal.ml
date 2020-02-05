@@ -89,6 +89,7 @@ let asm_res_type op_name args =
   | "outb" -> Type.Unit
   | "in" -> Type.Unit
   | "xor" -> Type.Bool
+  | "fabs" -> Type.Float
   | _ -> raise Not_found
 
 

@@ -159,6 +159,12 @@ let rec g env e = (* 型推論ルーチン (caml2html: typing_g) *)
                unify (g env (List.hd es)) Type.Float;
                Type.Float
              )
+         | "fabs" -> 
+             (
+               assert((List.length es) = 1);
+               unify (g env (List.hd es)) Type.Float;
+               Type.Float
+             )
          | "outb" ->
              (
                assert((List.length es) = 1);
