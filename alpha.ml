@@ -33,7 +33,9 @@ let rec g env = function (* α変換ルーチン本体 (caml2html: alpha_g) *)
                body = g env' e1 },
              g env e2)
   | App(x, ys) -> App(find x env, List.map (fun y -> find y env) ys)
+  | Asm(x, ys) -> Asm(x, List.map (fun y -> find y env) ys)
   | Tuple(xs) -> Tuple(List.map (fun x -> find x env) xs)
+  | GlobalTuple(addr,xs) -> GlobalTuple(addr,List.map (fun x -> find x env) xs)
   | LetTuple(xts, y, e) -> (* LetTupleのα変換 (caml2html: alpha_lettuple) *)
       let xs = List.map fst xts in
       let env' = M.add_list2 xs (List.map Id.genid xs) env in
@@ -45,4 +47,6 @@ let rec g env = function (* α変換ルーチン本体 (caml2html: alpha_g) *)
   | ExtArray(x) -> ExtArray(x)
   | ExtFunApp(x, ys) -> ExtFunApp(x, List.map (fun y -> find y env) ys)
 
-let f = g M.empty
+let f e = 
+  (*KNormal.print_syntax e 0 stdout;*)
+  g M.empty e

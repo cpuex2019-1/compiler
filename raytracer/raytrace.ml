@@ -189,6 +189,7 @@ let rec fneg x =
   -.x 
 in 
 
+(* use SQRT  
 let rec sqrt_sub iter x y =
   if iter = 0 then x
   else sqrt_sub (iter-1) (x-.(x*.x-.y)/.(2.0*.x)) y 
@@ -196,6 +197,34 @@ in
 
 let rec sqrt x = 
   sqrt_sub 10 x x
+in
+*)
+let rec sqrt x =
+  Asm sqrt x
+in
+
+let rec int_of_float x = 
+  Asm ftoi x
+in
+
+let rec float_of_int x = 
+  Asm itof x
+in
+
+let rec floor x =
+  Asm floor x
+in
+
+let rec print_char x =
+  Asm outb x
+in
+
+let rec read_int _ =
+  Asm input _
+in
+
+let rec read_float _ =
+  Asm inf _
 in
 
 (*
@@ -222,6 +251,8 @@ let rec float_of_int x =
   )
 in
 *)
+
+(* use 2nd 
 
 let rec float_of_int_sub x =
   if x >= 8388608 then
@@ -255,6 +286,8 @@ let rec floor x =
   if y > x then y -. 1.0
   else y
 in 
+
+*)
 
 (* old implementation of int_of_float
 
@@ -297,11 +330,52 @@ external sin : float -> float = "sin_float" "sin" "float"
 external atan : float -> float = "atan_float" "atan" "float"
 *)
 
+(*
 let rec pow x n =
   if n = 0 then 1.0
-           else (x *. (pow x (n-1))) 
+  else (
+    x *. pow x (n-1)
+ )
+in
+*)
+
+(*
+let rec pow x n =
+  if n = 0 then 1.0
+  else (
+    let h = n / 2 in
+    let y = pow x h in
+    if h * 2 = n then
+      y *. y
+    else
+      x *. y *. y
+ )
+in
+*)
+let rec pow x n = 
+  if n = 0 then 1.0
+  else if n = 1 then x
+  else
+    let x2 = x *. x in
+    let x4 = x2 *. x2 in
+    let x8 = x4 *. x4 in
+    if n = 2 then x2
+    else if n = 3 then x *. x2
+    else if n = 4 then x4
+    else if n = 5 then x *. x4
+    else if n = 6 then x2 *. x4
+    else if n = 7 then x *. x2 *. x4
+    else if n = 8 then x8
+    else if n = 9 then x *. x8
+    else if n = 10 then x8 *. x2
+    else if n = 11 then x8 *. x *. x2
+    else if n = 12 then x8 *. x4
+    else if n = 13 then x8 *. x *. x4
+    else if n = 14 then x8 *. x2 *. x4
+    else x8 *. x *. x2 *. x4
 in
 
+(*
 let rec fact_tail acc n =
   if n = 1 then acc
   else fact_tail (acc * n) (n-1)
@@ -309,8 +383,9 @@ in
 
 let rec fact n = fact_tail 1 n
 in
+*)
 
-let rec pow_upper p x =
+(*let rec pow_upper p x =
   if x >= p then pow_upper (p *. 2.0) x
   else p
 in
@@ -327,6 +402,7 @@ let rec reduction_2pi_sub x p =
   else
     x
 in
+*)
 
 let rec fsgn x = 
   if x > 0.0 then 1.0
@@ -340,8 +416,12 @@ in
 let rec reduction_2pi x =
   let pi = 3.1415926535 in
   let p = pi *. 2.0 in
+  (*
   let p = pow_upper p x in
     reduction_2pi_sub x p
+  *)
+  let quo = (Asm floor (x /. p)) in
+  x -. quo *. p
 in
 
    
@@ -451,6 +531,7 @@ write assembly
 *)
 
 (* I/O *)
+(*
 let rec print_int_sub x = 
   if x = 0 then ()
   else (
@@ -461,7 +542,7 @@ let rec print_int_sub x =
   )
 in
 
-let rec print_int x = 
+let rec print_int_ascii x = 
   if x = 0 then (print_char 48)
   else (
     if x > 0 then print_int_sub x
@@ -470,6 +551,50 @@ let rec print_int x =
       print_int_sub (-x)
     )
  )
+in
+*)
+
+let rec div_10 x = 
+  (Asm ftoi (Asm floor ((Asm itof x) /. 10.0)))
+in
+
+let rec print_int_sub3 x = 
+  if x = 0 then ()
+  else (
+    let y = div_10 x in
+    let rem = x - y * 10 in
+    print_char (48+rem)
+ )
+in
+
+let rec print_int_sub2 x = 
+  if x = 0 then ()
+  else (
+    let y = div_10 x in
+    let rem = x - y * 10 in
+    print_int_sub3 y;
+    print_char (48+rem)
+ )
+in
+
+let rec print_int_sub1 x = 
+  if x = 0 then ()
+  else (
+    let y = div_10 x in
+    let rem = x - y * 10 in
+    print_int_sub2 y;
+    print_char (48+rem)
+ )
+in
+
+(* only for [0,1000) *)
+let rec print_int_ascii x = 
+  if x = 0 then (print_char 48)
+  else print_int_sub1 x
+in
+
+let rec print_int x =
+  print_char x
 in
 (****************************************************************)
 (*                                                              *)
@@ -2393,13 +2518,13 @@ in
 let rec write_ppm_header _ =
   (
     print_char 80; (* 'P' *)
-    print_char (48 + 3); (* +6 if binary *) (* 48 = '0' *)
+    print_char (48 + 6); (* +6 if binary *) (* 48 = '0' *)
     print_char 10;
-    print_int image_size.(0);
+    print_int_ascii image_size.(0);
     print_char 32;
-    print_int image_size.(1);
+    print_int_ascii image_size.(1);
     print_char 32;
-    print_int 255;
+    print_int_ascii 255;
     print_char 10
   )
 in
@@ -2412,11 +2537,12 @@ in
 
 let rec write_rgb _ =
    write_rgb_element rgb.(0); (* Red   *)
-   print_char 32;
+   (* print_char 32; *)
    write_rgb_element rgb.(1); (* Green *)
-   print_char 32;
+   (* print_char 32; *)
    write_rgb_element rgb.(2); (* Blue  *)
-   print_char 10
+   (* print_char 10 *)
+   ()
 in
 
 (******************************************************************************

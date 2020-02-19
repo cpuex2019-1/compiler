@@ -1,120 +1,64 @@
 Init: # initialize float value and heap pointer
 	ori	$3, $0, 0
-	ori	$30, $0, 0
-	slli	$30, $30, 16
-	ori	$30, $30, 170
+	ori	$30, $0, 170
 	ori	$29, $0, 0
 	ori	$31, $0, 0
 #	outb	$30 # atsunobu request
-	ori	$4, $0, 0
-	slli	$4, $4, 16
-	ori	$4, $4, 3020
-	j Main
-print_int_sub.33:
-	ori	$30, $0, 0
-	bne	$2, $30, eq_else.91
-	jr $31
-eq_else.91:
-	div10	$5, $2
-	addi	$6, $0, 10
-	mul	$6, $5, $6
-	sub	$2, $2, $6
-	sw	$2, 0($3)
-	mov	$2, $5
-	sw	$31, 4($3)
-	addi	$3, $3, 8
-	jal	print_int_sub.33
-	addi	$3, $3, -8
-	lw	$31, 4($3)
-	lw	$2, 0($3)
-	addi	$2, $2, 48
-	j	min_caml_print_char
-print_int.35:
-	ori	$30, $0, 0
-	bne	$2, $30, eq_else.93
-	addi	$2, $0, 48
-	j	min_caml_print_char
-eq_else.93:
-	ori	$30, $0, 0
-	slt	$30, $30, $2
-	bne	$30, $0, eq_else.94
-	addi	$5, $0, 45
-	sw	$2, 0($3)
-	mov	$2, $5
-	sw	$31, 4($3)
-	addi	$3, $3, 8
-	jal	min_caml_print_char
-	addi	$3, $3, -8
-	lw	$31, 4($3)
-	lw	$2, 0($3)
-	ori	$30, $0, 65535
+	ori	$4, $0, 3048
+	ori	$30, $0, 16384
 	slli	$30, $30, 16
-	ori	$30, $30, 65535
-	mul	$2, $2, $30
-	j	print_int_sub.33
-eq_else.94:
-	j	print_int_sub.33
-f.37:
-	slli	$2, $2, 2
-	addi	$2, $2, 3000
-	add	$30, $0, $2
-	lw	$2, 0($30)
-	slli	$5, $5, 2
-	add $30, $2, $5
-	sw	$6, 0($30)
-	jr $31
-g.41:
-	slli	$2, $2, 2
-	addi	$2, $2, 3000
-	add	$30, $0, $2
-	lw	$2, 0($30)
-	slli	$5, $5, 2
-	add	$30, $2, $5
-	lw	$2, 0($30)
+	sw	$30, 0($4)
+	addi	$4, $4, 8
+	ori	$30, $0, 16256
+	slli	$30, $30, 16
+	sw	$30, 0($4)
+	addi	$4, $4, 8
+	j Main
+prod.26:
+	lf	$f0, 0($2)
+	lf	$f1, 0($5)
+	fmul	$f0, $f0, $f1
+	lf	$f1, 8($2)
+	lf	$f2, 8($5)
+	fmul	$f1, $f1, $f2
+	fadd	$f0, $f0, $f1
+	lf	$f1, 16($2)
+	lf	$f2, 16($5)
+	fmul	$f1, $f1, $f2
+	fadd	$f0, $f0, $f1
 	jr $31
 #	main program starts
 Main:
-	addi	$2, $0, 4
-	addi	$5, $0, 0
-	sw	$31, 4($3)
-	addi	$3, $3, 8
-	jal	min_caml_create_array
-	addi	$3, $3, -8
-	lw	$31, 4($3)
-	mov	$6, $2
-	addi	$5, $0, 5
+	addi	$5, $0, 3
+	ori	$30, $0, 3056
+	lf	$f0, 0($30) # 1.000000
 	addi	$2, $0, 3000
 	sw	$31, 4($3)
 	addi	$3, $3, 8
-	jal	min_caml_create_global_array
+	jal	min_caml_create_global_float_array
 	addi	$3, $3, -8
 	lw	$31, 4($3)
-	addi	$2, $0, 2
 	addi	$5, $0, 3
-	addi	$6, $0, 4
+	ori	$30, $0, 3048
+	lf	$f0, 0($30) # 2.000000
+	addi	$6, $0, 3024
+	sw	$2, 0($3)
+	mov	$2, $6
 	sw	$31, 4($3)
 	addi	$3, $3, 8
-	jal	f.37
+	jal	min_caml_create_global_float_array
 	addi	$3, $3, -8
 	lw	$31, 4($3)
-	addi	$2, $0, 3
-	addi	$5, $0, 1
-	addi	$6, $0, 2
+	mov	$5, $2
+	lw	$2, 0($3)
 	sw	$31, 4($3)
 	addi	$3, $3, 8
-	jal	f.37
-	addi	$3, $3, -8
-	lw	$31, 4($3)
-	addi	$2, $0, 2
-	addi	$5, $0, 3
-	sw	$31, 4($3)
-	addi	$3, $3, 8
-	jal	g.41
+	jal	prod.26
 	addi	$3, $3, -8
 	lw	$31, 4($3)
 	sw	$31, 4($3)
 	addi	$3, $3, 8
-	jal	print_int.35
+	jal	min_caml_print_float
 	addi	$3, $3, -8
 	lw	$31, 4($3)
 	j Exit

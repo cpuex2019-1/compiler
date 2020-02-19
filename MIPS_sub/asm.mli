@@ -22,6 +22,13 @@ and exp =
   | FSub of Id.t * Id.t
   | FMul of Id.t * Id.t
   | FDiv of Id.t * Id.t
+  | Sqrt of Id.t
+  | Ftoi of Id.t
+  | Floor of Id.t
+  | Itof of Id.t
+  | Outb of Id.t
+  | In
+  | Inf
   | Lfd of Id.t * id_or_imm
   | Stfd of Id.t * Id.t * id_or_imm
   | Comment of string
@@ -62,3 +69,6 @@ val fv : t -> Id.t list
 val concat : t -> Id.t * Type.t -> t -> t
 
 val align : int -> int
+val print_fundef : out_channel -> fundef -> unit
+val print_syntax : out_channel -> t -> unit
+val print_prog : out_channel -> prog -> unit

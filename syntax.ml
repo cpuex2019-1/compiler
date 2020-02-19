@@ -20,8 +20,10 @@ type t = (* MinCamlの構文を表現するデータ型 (caml2html: syntax_t) *)
   | Let of (Id.t * Type.t) * t * t
   | Var of Id.t
   | LetRec of fundef * t
-  | App of t * t list
+  | App of t * t list 
+  | Asm of Id.t * t list
   | Tuple of t list
+  | GlobalTuple of t list
   | LetTuple of (Id.t * Type.t) list * t * t
   | Array of t * t
   | GlobalArray of t * t
@@ -112,8 +114,16 @@ let rec print_syntax exp depth outchan =
     -> (Printf.fprintf outchan "App\n";
         print_syntax e (depth+1) outchan;
         print_syntax_list el (depth+1) outchan)
+  | Asm (e,el)
+    -> (Printf.fprintf outchan "Asm\n";
+        print_indent (depth+1) outchan;
+        Printf.printf "%s\n" e;
+        print_syntax_list el (depth+1) outchan)
   | Tuple (el) 
     -> (Printf.fprintf outchan "Tuple\n";
+        print_syntax_list el (depth+1) outchan)
+  | GlobalTuple (el) 
+    -> (Printf.fprintf outchan "GlobalTuple\n";
         print_syntax_list el (depth+1) outchan)
   | LetTuple (id_list,e1,e2)
     -> (Printf.fprintf outchan ("LetTuple\n");
