@@ -12,8 +12,7 @@
 #    srli $5, $9, 23
 #    addi $5, $5, -127 # actual sisubu A $5
 #    and $12, $2, $11 # kasubu $12
-#    srli $8, $2, 31 # sgn $8
-#    slt $6, $5, $0
+#    srli $8, $2, 31 # sgn $8 #    slt $6, $5, $0
 #    bne $6, $0, floor_tiny # A < 0
 #    beq $5, $0, floor_exp_zero # A = 0
 #    addi $7, $0, 23
@@ -160,7 +159,7 @@ create_float_array_loop:
 create_float_array_cont:
 	sf $f0, 0($4)
 	addi $5, $5, -1
-	addi $4, $4, 8
+	addi $4, $4, 4
 	j	create_float_array_loop
   
 #	create_global_array
@@ -190,7 +189,7 @@ create_global_float_array_exit:
 create_global_float_array_cont:
 	sf $f0, 0($7)
 	addi $5, $5, -1
-	addi $7, $7, 8
+	addi $7, $7, 4
 	j	create_global_float_array_loop
 
 #read_int

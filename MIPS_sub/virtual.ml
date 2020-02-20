@@ -255,7 +255,7 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
                    Ans(Lwz(x, V(offset))))
            | _ -> assert false)
       )
-  | Closure.Put(x, y, z) ->
+  | Closure.Put(x, y, z) -> (* x[y] <- z : z can be array (address) *)
       let offset = Id.genid "o" in
       let absaddr = Id.genid "o" in
       (match List.mem_assoc x (!SetGlobalArray.global_arrays) with

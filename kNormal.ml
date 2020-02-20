@@ -69,12 +69,12 @@ let insert_let (e, t) k = (* letを挿入する補助関数 (caml2html: knormal_insert) *
       let e', t' = k x in
       Let((x, t), e, e'), t'
 
-let align i = (if i mod 8 = 0 then i else i + 4)
+let align i = (if i mod 4 = 0 then i else assert false)
 
 let calc_size sz t =
   match t with
   | Type.Unit -> sz
-  | Type.Float -> (align sz)+8
+  | Type.Float -> (align sz)+4
   | _ -> sz+4
 
 let tuple_size ts =
@@ -275,7 +275,7 @@ let rec g env = function (* K正規化ルーチン本体 (caml2html: knormal_g) *)
                 | _ -> "create_global_array"  in
                 (*| _ -> (raise ArrayTypeError) in *)
               let sz = (match t2 with
-                        | Type.Float -> 8
+                        | Type.Float -> 4
                         | _ -> 4
                        ) in
               let len = (match e1 with
