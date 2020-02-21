@@ -85,7 +85,7 @@ let rec get_float_imm_address label data_list idx =
   match data_list with
   | [] -> raise Invalid_float_immidiate
   | (Id.L(x),d)::rest ->
-      (if x = label then (!(KNormal.hp_init)+8*idx,d)
+      (if x = label then (!(KNormal.hp_init)+idx,d)
        else get_float_imm_address label rest (idx+1))
 
 (* 関数呼び出しのために引数を並べ替える(register shuffling) (caml2html: emit_shuffle) *)
@@ -575,7 +575,7 @@ let rec arrange_float_imm oc data n =
       (
       load_imm oc reg_tmp (Int32.to_int (get d));
       Printf.fprintf oc "\tsw\t%s, 0(%s)\n" (reg reg_tmp) (reg reg_hp);
-      Printf.fprintf oc "\taddi\t%s, %s, 8\n" (reg reg_hp) (reg reg_hp);
+      Printf.fprintf oc "\taddi\t%s, %s, 1\n" (reg reg_hp) (reg reg_hp);
       arrange_float_imm oc rest (n+1)
       )
 
