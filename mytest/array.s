@@ -1,186 +1,53 @@
-Init:
-# initialize float value and heap pointer
-	addi $3, $0, 0
-	addi $30, $0, 170
-	addi $29, $0, 0
-	ori  $31, $0, ha(Exit)
-	slli $31, $31, 16
-	ori  $31, $31, lo(Exit)
-	addi $4, $0, 3024
-	j     Main
-# main program starts
+Init: # initialize float value and heap pointer
+	addi	$3, $0, 0
+	addi	$30, $0, 170
+	addi	$29, $0, 0
+	addi	$31, $0, 0
+#	outb	$30 # atsunobu request
+	addi	$4, $0, 3024
+	j Main
+#	main program starts
 Main:
-block_id_0:
-	addi $5, $0, 1
-	addi $6, $0, 2
-	addi $2, $0, 3000
-	sw    $31, 4($3)
-	addi $3, $3, 8
-	jal   min_caml_create_global_array
-	addi $3, $3, -8
-	lw    $31, 4($3)
-	addi $2, $0, 1
-	addi $5, $0, 1
-	sw    $31, 4($3)
-	addi $3, $3, 8
-	jal   min_caml_create_array
-	addi $3, $3, -8
-	lw    $31, 4($3)
-	mov   $6, $2
-	addi $5, $0, 5
-	addi $2, $0, 3004
-	sw    $31, 4($3)
-	addi $3, $3, 8
-	jal   min_caml_create_global_array
-	addi $3, $3, -8
-	lw    $31, 4($3)
-	lw    $2, 3012($0)
-	lw    $2, 0($2)
-	lw    $5, 3000($0)
-	add  $2, $2, $5
-	addi $30, $0, 48
-	add  $2, $2, $30
-	outb $2
-	jr    $31
-	j     Exit
-# main program ends
-# floor
-
-#  min_caml_floor:
-#    sf $f0, 0($4)
-#    lw $2, 0($4)
-#    ori $10, $0, 32640 # sisubu mask $10
-#    slli $10, $10, 16
-#    ori $11, $0, 127 # kasubu mask $11
-#    slli $11, $11, 16
-#    ori $11, $11, 65535
-#    and $9, $2, $10 # formal sisubu $9
-#    srli $5, $9, 23
-#    addi $5, $5, -127 # actual sisubu A $5
-#    and $12, $2, $11 # kasubu $12
-#    srli $8, $2, 31 # sgn $8
-#    slt $6, $5, $0
-#    bne $6, $0, floor_tiny # A < 0
-#    beq $5, $0, floor_exp_zero # A = 0
-#    addi $7, $0, 23
-#    slt $6, $5, $7
-#    bne $6, $0, floor_main # A < 23
-#  
-#  floor_end:
-#    jr $31
-#  
-#  floor_tiny:
-#    bne $8, $0, floor_tiny_neg
-#    sw $0, 0($4)  # return 0.0
-#    lf $f0, 0($4)
-#    j floor_end
-#  
-#  floor_tiny_neg:
-#    ori $13, $0, 49024
-#    slli $13, $13, 16 # return -1.0
-#    sw $13, 0($4)
-#    lf $f0, 0($4)
-#    j floor_end
-#  
-#  floor_exp_zero:
-#    bne $8, $0, floor_exp_zero_neg
-#    ori $13, $0, 16256  
-#    slli $13, $13, 16 # return 1.0
-#    sw $13, 0($4)
-#    lf $f0, 0($4)
-#    j floor_end
-#  
-#  floor_exp_zero_neg:
-#    beq $12, $0, floor_exp_zero_neg_just
-#    ori $13, $0, 49152   
-#    slli $13, $13, 16 # return -2.0
-#    sw $13, 0($4)
-#    lf $f0, 0($4)
-#    j floor_end
-#  
-#  floor_exp_zero_neg_just:
-#    ori $13, $0, 49024  
-#    slli $13, $13, 16 # return -1.0
-#    sw $13, 0($4)
-#    lf $f0, 0($4)
-#    j floor_end #  #  floor_main:
-#    addi $7, $0, 23
-#    sub $6, $7, $5 # 23-A
-#    srl $7, $12, $6
-#    sll $7, $7, $6
-#    bne $8, $0, floor_neg
-#    or $10, $9, $7
-#    sw $10, 0($4)
-#    lf $f0, 0($4)
-#    j floor_end
-#  
-#  floor_neg: # kai bit tattetara kiriage
-#    slli $8, $8, 31
-#    bne $12, $7, floor_ceil
-#    or $10, $9, $7
-#    or $10, $10, $8
-#    sw $10, 0($4)
-#    lf $f0, 0($4)
-#    j floor_end
-#  
-#  floor_ceil:
-#    ori $10, $0, 1
-#    sll $10, $10, $6
-#    add $7, $7, $10
-#    or $10, $9, $7
-#    or $10, $10, $8
-#    sw $10, 0($4)
-#    lf $f0, 0($4)
-#    j floor_end 
-
-
-# float_of_int (less than 8388608)
-
-
-# 2nd instructions 
-
-min_caml_sqrt:
-  sqrt $f0, $f0
-  jr $31
-
-min_caml_float_of_int:
-  itof $f0, $2
-  jr $31
-
-min_caml_int_of_float:
-  ftoi $2, $f0
-  jr $31
-
-min_caml_floor:
-  floor $f0, $f0
-  jr $31
-
-
-
-
-
-min_caml_float_of_int_kernel:
-  ori $5, $0, 19200
-  slli $5, $5, 16 # 8388608.0
-  sw $5, 0($4)
-  add $5, $5, $2
-  sw $5, 4($4)
-  lf $f0, 4($4)
-  lf $f1, 0($4)
-  fsub $f0, $f0, $f1
-  jr $31
-
-min_caml_int_of_float_kernel:
-  ori $5, $0, 19200
-  slli $5, $5, 16 # 8388608.0
-  sw $5, 0($4)
-  lf $f1, 0($4)
-  fadd $f0, $f0, $f1
-  sf $f0, 0($4)
-  lw $2, 0($4)
-  sub $2, $2, $5
-  jr $31
-
+	addi	$6, $0, 1
+	addi	$5, $0, 2
+	addi	$2, $0, 3000
+	mov	$27, $6
+	mov	$6, $5
+	mov	$5, $27
+	sw	$31, 0($3)
+	addi	$3, $3, 4
+	jal	min_caml_create_global_array
+	addi	$3, $3, -4
+	lw	$31, 0($3)
+	addi	$5, $0, 1
+	addi	$2, $0, 1
+	mov	$27, $5
+	mov	$5, $2
+	mov	$2, $27
+	sw	$31, 0($3)
+	addi	$3, $3, 4
+	jal	min_caml_create_array
+	addi	$3, $3, -4
+	lw	$31, 0($3)
+	addi	$6, $0, 5
+	addi	$5, $0, 3004
+	mov	$27, $6
+	mov	$6, $2
+	mov	$2, $5
+	mov	$5, $27
+	sw	$31, 0($3)
+	addi	$3, $3, 4
+	jal	min_caml_create_global_array
+	addi	$3, $3, -4
+	lw	$31, 0($3)
+	lw	$2, 3012($0)
+	lw	$5, 0($2)
+	lw	$2, 3000($0)
+	add	$2, $5, $2
+	addi	$2, $2, 48
+	outb	$2
+	j Exit
+#	main program ends
 #	create_array
 min_caml_create_array:	
 	mov	$6, $2
@@ -206,7 +73,7 @@ create_float_array_loop:
 create_float_array_cont:
 	sf $f0, 0($4)
 	addi $5, $5, -1
-	addi $4, $4, 8
+	addi $4, $4, 4
 	j	create_float_array_loop
   
 #	create_global_array
@@ -236,25 +103,7 @@ create_global_float_array_exit:
 create_global_float_array_cont:
 	sf $f0, 0($7)
 	addi $5, $5, -1
-	addi $7, $7, 8
+	addi $7, $7, 4
 	j	create_global_float_array_loop
 
-#read_int
-min_caml_read_int:
-  in $2
-  jr $31 
-
-#read_float
-min_caml_read_float:
-  inf $f0
-  jr $31
-
-min_caml_print_float:
-  outf $f0
-  jr $31
-
-#print_char
-min_caml_print_char:
-  outb $2
-  jr $31
 Exit:

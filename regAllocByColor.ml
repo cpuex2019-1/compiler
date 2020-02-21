@@ -33,14 +33,23 @@ let rec alloc dest cont regenv x t =
   assert (not (M.mem x regenv));
   if is_reg x then Alloc(x)
   else begin
-    match t with
-    | Type.Unit  -> Alloc("%r0")
-    | Type.Float -> let freg_color = get_color x Type.Float in
-                    let r = Asm.fregs.(ColorToId.find freg_color !float_color_to_id) in
-                    Alloc(r)
-    | _          -> let reg_color = get_color x Type.Int in
-                    let r = Asm.regs.(ColorToId.find reg_color !int_color_to_id) in
-                    Alloc(r)
+    try
+    (
+      match t with
+      | Type.Unit  -> Alloc("%r0")
+      | Type.Float -> let freg_color = get_color x Type.Float in
+                      let r = Asm.fregs.(ColorToId.find freg_color !float_color_to_id) in
+                      Alloc(r)
+      | _          -> let reg_color = get_color x Type.Int in
+                      let r = Asm.regs.(ColorToId.find reg_color !int_color_to_id) in
+                      Alloc(r)
+    )
+    with
+    | Not_found -> (
+      (if t = Type.Int then Printf.eprintf "type int\n" else ());
+      Printf.eprintf "Not_found ColorToid %s\n" x;
+      assert false
+    )
   end
 
 (* auxiliary function for g and g'_and_restore *)
@@ -184,6 +193,9 @@ let h { name = Id.L(x); args = ys; fargs = zs; body = e; ret = t } = (* 関数のレ
 
   int_color_to_id := int_ctoi;
 
+  (* Printf.fprintf stdout "ColorToId (Int)\n";
+  ColorToId.iter (fun col id -> Printf.fprintf stdout "%d -> %d\n" col id); *)
+
   let zcs = List.map (fun z -> (get_color z Type.Float)) zs in
   let float_arg_id_list = List.rev (snd (List.fold_left 
                             (fun (i,l) _ -> (i+1,(i::l)))
@@ -206,6 +218,8 @@ let h { name = Id.L(x); args = ys; fargs = zs; body = e; ret = t } = (* 関数のレ
   *)
 
   float_color_to_id := float_ctoi;
+  (* Printf.fprintf stdout "ColorToId (Float)\n";
+  ColorToId.iter (fun col id -> Printf.fprintf stdout "%d -> %d\n" col id); *)
   
 
   let regenv = M.add x reg_cl M.empty in
@@ -239,11 +253,42 @@ let h { name = Id.L(x); args = ys; fargs = zs; body = e; ret = t } = (* 関数のレ
 
 let f (Prog(data, fundefs, e)) = (* プログラム全体のレジスタ割り当て (caml2html: regalloc_f) *)
   Format.eprintf "register allocation: may take some time (up to a few minutes, depending on the size of functions)@.";
-  Printf.eprintf "[regAllocByColoring] processing fundefs\n";
+  Printf.eprintf "[regAllocByColor] processing fundefs\n";
   let fundefs' = List.map h fundefs in
-  Printf.eprintf "[regAllocByColoring] processing main expression\n";
+  Printf.eprintf "[regAllocByColor] processing main expression\n";
+
+  (* initialize ColorToId for main expression *)
+
+  let int_arg_id_list = List.rev (snd (List.fold_left 
+                              (fun (i,l) _ -> (i+1,(i::l)))
+                              (0,[])
+                              allregs)) in
+  let ycs_all = List.fold_left
+                      (fun cs c -> if List.mem c cs then cs else cs@[c])
+                      []
+                      int_arg_id_list in
+  let int_ctoi = List.fold_left2
+                      (fun ctoi c i -> ColorToId.add c i ctoi)
+                      ColorToId.empty
+                      ycs_all
+                      int_arg_id_list in
+  int_color_to_id := int_ctoi;
+
+  let float_arg_id_list = List.rev (snd (List.fold_left 
+                            (fun (i,l) _ -> (i+1,(i::l)))
+                            (0,[])
+                            allfregs)) in
+  let zcs_all = List.fold_left
+                      (fun cs c -> if List.mem c cs then cs else cs@[c])
+                      []
+                      float_arg_id_list in
+  let float_ctoi = List.fold_left2
+                      (fun ctoi c i -> ColorToId.add c i ctoi)
+                      ColorToId.empty
+                      zcs_all
+                      float_arg_id_list in
+  float_color_to_id := float_ctoi;
+
   let e', regenv' = g (Id.gentmp Type.Unit, Type.Unit) (Ans(Nop)) M.empty e in
-  (*
-  print_syntax stderr e'; 
-  *)
+  (* print_syntax stderr e'; *)
   Prog(data, fundefs', e')
