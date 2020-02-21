@@ -32,7 +32,7 @@ let offset x =
   let pos = locate x in
   match pos with
   | [] -> (failwith (x^" was not saved"))
-  | _ -> 4 * (List.hd pos)
+  | _ -> (List.hd pos)
 
 let stacksize () = align ((List.length !stackmap + 1) * 4)
 
@@ -404,13 +404,13 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
       g'_args oc [(x, reg_cl)] ys zs;
       let ss = stacksize () in
       (* stacksizeは1余分にとってあるので-4 *)
-      Printf.fprintf oc "\tsw\t%s, %d(%s)\n" (reg reg_lr) (ss - 4) (reg reg_sp);
+      Printf.fprintf oc "\tsw\t%s, %d(%s)\n" (reg reg_lr) (ss - 1) (reg reg_sp);
       Printf.fprintf oc "\taddi\t%s, %s, %d\n" (reg reg_sp) (reg reg_sp) ss;
       Printf.fprintf oc "\tlw %s, 0(%s)\n" (reg reg_tmp) (reg reg_cl);
       Printf.fprintf oc "\tjalr\t%s, %s\n" (reg reg_lr) (reg reg_tmp);
       Printf.fprintf oc "\taddi\t%s, %s, %d\n" (reg reg_sp) (reg reg_sp) (-ss);
       (* link registerをもどす *)
-      Printf.fprintf oc "\tlw\t%s, %d(%s)\n" (reg reg_lr) (ss - 4) (reg reg_sp);
+      Printf.fprintf oc "\tlw\t%s, %d(%s)\n" (reg reg_lr) (ss - 1) (reg reg_sp);
       (* 返り値をaにセット *)
       if List.mem a allregs && a <> regs.(0) then
         Printf.fprintf oc "\tmov\t%s, %s\n" (reg a) (reg regs.(0))
@@ -420,11 +420,11 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
       (* link registerを退避 *)
       g'_args oc [] ys zs;
       let ss = stacksize () in
-      Printf.fprintf oc "\tsw\t%s, %d(%s)\n" (reg reg_lr) (ss - 4) (reg reg_sp);
+      Printf.fprintf oc "\tsw\t%s, %d(%s)\n" (reg reg_lr) (ss - 1) (reg reg_sp);
       Printf.fprintf oc "\taddi\t%s, %s, %d\n" (reg reg_sp) (reg reg_sp) ss;
       Printf.fprintf oc "\tjal\t%s\n" x;
       Printf.fprintf oc "\taddi\t%s, %s, %d\n" (reg reg_sp) (reg reg_sp) (-ss);
-      Printf.fprintf oc "\tlw\t%s, %d(%s)\n" (reg reg_lr) (ss - 4) (reg reg_sp);
+      Printf.fprintf oc "\tlw\t%s, %d(%s)\n" (reg reg_lr) (ss - 1) (reg reg_sp);
       if List.mem a allregs && a <> regs.(0) then
         Printf.fprintf oc "\tmov\t%s, %s\n" (reg a) (reg regs.(0))
       else if List.mem a allfregs && a <> fregs.(0) then
