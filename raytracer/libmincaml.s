@@ -202,9 +202,9 @@ min_caml_read_float:
   inf $f0
   jr $31
 
-min_caml_print_float:
-  outf $f0
-  jr $31
+# min_caml_print_float:
+#   outf $f0
+#   jr $31
 
 #print_char
 min_caml_print_char:
