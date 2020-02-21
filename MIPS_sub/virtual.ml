@@ -236,23 +236,17 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
       | true ->
           (let (addr,ty) = List.assoc x !(SetGlobalArray.global_arrays) in
            match ty with
-           | Type.Float -> Let((offset, Type.Int),Slw(y,C(0)),
-                             Let((absaddr,Type.Int),Add(offset,C(addr)),
-                               Ans(Lfd(reg_zero,V(absaddr)))))
-           | Type.Int -> Let((offset, Type.Int),Slw(y,C(0)),
-                             Let((absaddr,Type.Int),Add(offset,C(addr)),
-                               Ans(Lwz(reg_zero,V(absaddr)))))
+           | Type.Float -> assert (0 <= addr && addr < 32768); Ans(Lfd(y,C(addr)))
+           | Type.Int   -> assert (0 <= addr && addr < 32768); Ans(Lwz(y,C(addr)))
            | _ -> assert false
           )
       | false ->
           (match M.find x env with
            | Type.Array(Type.Unit) -> Ans(Nop)
            | Type.Array(Type.Float) ->
-               Let((offset, Type.Int), Slw(y, C(0)),
-                   Ans(Lfd(x, V(offset))))
+                   Ans(Lfd(x, V(y)))
            | Type.Array(_) ->
-               Let((offset, Type.Int), Slw(y, C(0)),
-                   Ans(Lwz(x, V(offset))))
+                   Ans(Lwz(x, V(y)))
            | _ -> assert false)
       )
   | Closure.Put(x, y, z) -> (* x[y] <- z : z can be array (address) *)
@@ -270,12 +264,8 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
                    (
                      let (addr,ty) = List.assoc x !(SetGlobalArray.global_arrays) in
                      match ty with
-                     | Type.Float -> Let((offset, Type.Int),Slw(y,C(0)),
-                                       Let((absaddr,Type.Int),Add(offset,C(addr)),
-                                         Ans(Stfd(z',reg_zero,V(absaddr)))))
-                     | Type.Int -> Let((offset, Type.Int),Slw(y,C(0)),
-                                       Let((absaddr,Type.Int),Add(offset,C(addr)),
-                                         Ans(Stw(z',reg_zero,V(absaddr)))))
+                     | Type.Float -> assert (0 <= addr && addr < 32768); Ans(Stfd(z',y,C(addr)))
+                     | Type.Int   -> assert (0 <= addr && addr < 32768); Ans(Stw(z',y,C(addr)))
                      | _ -> assert false
                    ))
                )
@@ -284,12 +274,8 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
                (
                  let (addr,ty) = List.assoc x !(SetGlobalArray.global_arrays) in
                  match ty with
-                 | Type.Float -> Let((offset, Type.Int),Slw(y,C(0)),
-                                   Let((absaddr,Type.Int),Add(offset,C(addr)),
-                                     Ans(Stfd(z,reg_zero,V(absaddr)))))
-                 | Type.Int -> Let((offset, Type.Int),Slw(y,C(0)),
-                                   Let((absaddr,Type.Int),Add(offset,C(addr)),
-                                     Ans(Stw(z,reg_zero,V(absaddr)))))
+                 | Type.Float -> assert (0 <= addr && addr < 32768); Ans(Stfd(z,y,C(addr)))
+                 | Type.Int   -> assert (0 <= addr && addr < 32768); Ans(Stw(z,y,C(addr)))
                  | _ -> assert false
                )
           )
@@ -304,11 +290,9 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
                    (match M.find x env with
                     | Type.Array(Type.Unit) -> ((Ans(Nop)))
                     | Type.Array(Type.Float) ->
-                        (Let((offset, Type.Int), Slw(y, C(0)),
-                            Ans(Stfd(z', x, V(offset)))))
+                            Ans(Stfd(z', x, V(y)))
                     | Type.Array(_) ->
-                        (Let((offset, Type.Int), Slw(y, C(0)),
-                            Ans(Stw(z', x, V(offset)))))
+                            Ans(Stw(z', x, V(y)))
                     | _ -> assert false
                    ))
                )
@@ -316,11 +300,9 @@ let rec g env = function (* 式の仮想マシンコード生成 (caml2html: virtual_g) *)
                (match M.find x env with
                 | Type.Array(Type.Unit) -> ((Ans(Nop)))
                 | Type.Array(Type.Float) ->
-                    (Let((offset, Type.Int), Slw(y, C(0)),
-                        Ans(Stfd(z, x, V(offset)))))
+                        Ans(Stfd(z, x, V(y)))
                 | Type.Array(_) ->
-                    (Let((offset, Type.Int), Slw(y, C(0)),
-                        Ans(Stw(z, x, V(offset)))))
+                        Ans(Stw(z, x, V(y)))
                 | _ -> assert false
                )
           )
