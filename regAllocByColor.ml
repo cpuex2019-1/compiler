@@ -11,6 +11,12 @@ module ColorToId =
 let   int_color_to_id = ref ColorToId.empty
 let float_color_to_id = ref ColorToId.empty
 
+let library_func = [ "min_caml_create_array";
+                     "min_caml_create_float_array";
+                     "min_caml_create_global_array";
+                     "min_caml_create_global_array"; ]
+let library_func_use_regs = ["$2"; "$5"; "$6"; "$7"; "$f0";]
+
 let get_color x t =
   try
   (
@@ -127,12 +133,14 @@ and g' dest cont regenv = function (* ³ÆÌ¿Îá¤Î¥ì¥¸¥¹¥¿³ä¤êÅö¤Æ (caml2html: regal
       if List.length ys > Array.length regs - 2 || List.length zs > Array.length fregs - 1 then
         failwith (Format.sprintf "cannot allocate registers for arugments to %s" x)
       else
-        g'_call dest cont regenv exp (fun ys zs -> CallCls(find x Type.Int regenv, ys, zs)) ys zs
+        let is_library = List.mem x library_func in
+        g'_call dest cont regenv exp (fun ys zs -> CallCls(find x Type.Int regenv, ys, zs)) ys zs is_library
   | CallDir(Id.L(x), ys, zs) as exp ->
       if List.length ys > Array.length regs - 1 || List.length zs > Array.length fregs - 1 then
         failwith (Format.sprintf "cannot allocate registers for arugments to %s" x)
       else
-        g'_call dest cont regenv exp (fun ys zs -> CallDir(Id.L(x), ys, zs)) ys zs
+        let is_library = List.mem x library_func in
+        g'_call dest cont regenv exp (fun ys zs -> CallDir(Id.L(x), ys, zs)) ys zs is_library
   | Save(x, y) -> assert false
 
 and g'_if dest cont regenv exp constr e1 e2 = (* if¤Î¥ì¥¸¥¹¥¿³ä¤êÅö¤Æ (caml2html: regalloc_if) *)
@@ -159,7 +167,7 @@ and g'_if dest cont regenv exp constr e1 e2 = (* if¤Î¥ì¥¸¥¹¥¿³ä¤êÅö¤Æ (caml2html
      (fv cont),
    regenv')
 
-and g'_call dest cont regenv exp constr ys zs = (* ´Ø¿ô¸Æ¤Ó½Ð¤·¤Î¥ì¥¸¥¹¥¿³ä¤êÅö¤Æ (caml2html: regalloc_call) *)
+and g'_call dest cont regenv exp constr ys zs is_library = (* ´Ø¿ô¸Æ¤Ó½Ð¤·¤Î¥ì¥¸¥¹¥¿³ä¤êÅö¤Æ (caml2html: regalloc_call) *)
 
   let dest_reg = 
     match alloc dest cont regenv (fst dest) (snd dest) with
@@ -168,17 +176,24 @@ and g'_call dest cont regenv exp constr ys zs = (* ´Ø¿ô¸Æ¤Ó½Ð¤·¤Î¥ì¥¸¥¹¥¿³ä¤êÅö¤
   let dest_type = (snd dest) in
   let e =
     (
-      (List.fold_left (fun e x -> if x = fst dest || not (M.mem x regenv) then e else
-        let r = M.find x regenv  in
-        assert (r <> dest_reg);
-        insert_before_ans (seq(Save(r, x), e)) (r,reg_type r) (Restore x))
-         (Let((dest_reg,(dest_type)),
+      (List.fold_left 
+        (fun e x -> 
+          if x = fst dest || not (M.mem x regenv) then e else
+            let r = M.find x regenv  in
+            if (is_library && (not (List.mem r library_func_use_regs))) then
+              e
+            else begin
+              assert (r <> dest_reg);
+              insert_before_ans (seq(Save(r, x), e)) (r,reg_type r) (Restore x)
+            end
+        )
+        (Let((dest_reg,(dest_type)),
               (constr
                 (List.map (fun y -> find y Type.Int regenv) ys)
                 (List.map (fun z -> find z Type.Float regenv) zs)),
               Ans(Nop)))
-         (fv cont)
-       )
+        (fv cont)
+      )
     ) in
   let regenv' = (M.add (fst dest) dest_reg (M.remove (fst dest) regenv)) in
   (
