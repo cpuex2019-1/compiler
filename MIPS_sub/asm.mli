@@ -52,6 +52,7 @@ type prog = Prog of (Id.l * float) list * fundef list * t
 
 val fletd : Id.t * exp * t -> t (* shorthand of Let for float *)
 val seq : exp * t -> t (* shorthand of Let for unit *)
+val insert_before_ans : t -> Id.t * Type.t -> exp -> t
 
 val regs : Id.t array
 val fregs : Id.t array
@@ -69,6 +70,9 @@ val reg_tmp2 : Id.t
 val reg_ftmp : Id.t
 val reg_lr : Id.t
 val is_reg : Id.t -> bool
+
+val tmp_reg : Type.t -> Id.t
+val reg_type : Id.t -> Type.t
 
 val fv : t -> Id.t list
 val concat : t -> Id.t * Type.t -> t -> t

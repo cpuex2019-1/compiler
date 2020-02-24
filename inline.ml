@@ -2,7 +2,7 @@ open KNormal
 
 (* インライン展開する関数の最大サイズ (caml2html: inline_threshold) *)
 let threshold = ref 0 (* Mainで-inlineオプションによりセットされる *)
-let recursive_threshold = 150
+let recursive_threshold = ref 200
 
 let rec size = function
   | IfEq(_, _, e1, e2) | IfLE(_, _, e1, e2)
@@ -24,7 +24,7 @@ let rec g env = function (* インライン展開ルーチン本体 (caml2html: inline_g) *)
   | Let(xt, e1, e2) -> Let(xt, g env e1, g env e2)
   | LetRec({ name = (x, t); args = yts; body = e1 }, e2) -> (* 関数定義の場合 (caml2html: inline_letrec) *)
       if is_recursive e1 x then (
-        let env = if size e1 > recursive_threshold then env else M.add x (yts,e1) env in
+        let env = if size e1 > !recursive_threshold then env else M.add x (yts,e1) env in
         LetRec({ name = (x, t); args = yts; body = g env e1}, g env e2)
       ) else (
         let env = if size e1 > !threshold then env else M.add x (yts, e1) env in

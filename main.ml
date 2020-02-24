@@ -51,7 +51,7 @@ let lexbuf outchan l = (* バッファをコンパイルしてチャンネルへ出力する (caml2htm
         (RegAlloc.f opt_asm))
   end
 
-  (*  
+(*
   Emit.f outchan
    (iter_asm2 !limit_asm
      (RegAlloc.f
@@ -63,10 +63,10 @@ let lexbuf outchan l = (* バッファをコンパイルしてチャンネルへ出力する (caml2htm
                  (SetGlobalArray.f
                    (Alpha.f
                      (KNormal.f
-                       (Global_array.f
+                       (GlobalArray.f
                          (Typing.f
                             (Parser.exp Lexer.token l)))))))))))))
-       *)
+*)
 
   (*  
    Emit.f outchan
@@ -155,6 +155,7 @@ let () = (* ここからコンパイラの実行が開始される (caml2html: main_entry) *)
   let files = ref [] in
   Arg.parse
     [("-inline", Arg.Int(fun i -> Inline.threshold := i), "maximum size of functions inlined");
+     ("-inline_recursive", Arg.Int(fun i -> Inline.recursive_threshold := i), "maximum size of functions inlined");
      ("-iter", Arg.Int(fun i -> limit := i), "maximum number of optimizations iterated")]
     (fun s -> files := !files @ [s])
     ("Mitou Min-Caml Compiler (C) Eijiro Sumii\n" ^

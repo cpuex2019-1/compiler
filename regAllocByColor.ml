@@ -30,7 +30,7 @@ type alloc_result = (* allocにおいてspillingがあったかどうかを表すデータ型 *)
 
 let rec alloc dest cont regenv x t =
   (* allocate a register or spill a variable *)
-  assert (not (M.mem x regenv));
+  (* assert (not (M.mem x regenv)); *)
   if is_reg x then Alloc(x)
   else begin
     try
@@ -154,18 +154,48 @@ and g'_if dest cont regenv exp constr e1 e2 = (* ifのレジスタ割り当て (caml2html
      (fun e x ->
        if x = fst dest || not (M.mem x regenv) || M.mem x regenv' then e
        else (
-         seq(Save(M.find x regenv, x), e))) (* そうでない変数は分岐直前にセーブ *)
+          (* seq(Save(M.find x regenv, x), e) *) e )) (* そうでない変数は分岐直前にセーブ *)
        (Ans(constr e1' e2'))
      (fv cont),
    regenv')
 
-and g'_call dest cont regenv exp constr ys zs = (* 関数呼び出しのレジスタ割り当て (caml2html: regalloc_call) *) (List.fold_left (fun e x -> if x = fst dest || not (M.mem x regenv) then e else
+and g'_call dest cont regenv exp constr ys zs = (* 関数呼び出しのレジスタ割り当て (caml2html: regalloc_call) *)
+
+  let dest_reg = 
+    match alloc dest cont regenv (fst dest) (snd dest) with
+    | Alloc(r) -> r
+    | _ -> assert(false) in
+  let dest_type = (snd dest) in
+  let e =
+    (
+      (List.fold_left (fun e x -> if x = fst dest || not (M.mem x regenv) then e else
+        let r = M.find x regenv  in
+        assert (r <> dest_reg);
+        insert_before_ans (seq(Save(r, x), e)) (r,reg_type r) (Restore x))
+         (Let((dest_reg,(dest_type)),
+              (constr
+                (List.map (fun y -> find y Type.Int regenv) ys)
+                (List.map (fun z -> find z Type.Float regenv) zs)),
+              Ans(Nop)))
+         (fv cont)
+       )
+    ) in
+  let regenv' = (M.add (fst dest) dest_reg (M.remove (fst dest) regenv)) in
+  (
+  match e with
+  | Let(x,exp,Ans(Nop)) -> (Ans(exp),regenv')
+  | _ -> (e,regenv')
+  )
+
+  (*
+  (List.fold_left (fun e x -> if x = fst dest || not (M.mem x regenv) then e else
        seq(Save(M.find x regenv, x), e))
      (Ans(constr
             (List.map (fun y -> find y Type.Int regenv) ys)
             (List.map (fun z -> find z Type.Float regenv) zs)))
      (fv cont),
    M.empty)
+*)
 
 let h { name = Id.L(x); args = ys; fargs = zs; body = e; ret = t } = (* 関数のレジスタ割り当て (caml2html: regalloc_h) *)
 
@@ -249,6 +279,8 @@ let h { name = Id.L(x); args = ys; fargs = zs; body = e; ret = t } = (* 関数のレ
     | Type.Float -> fregs.(0)
     | _ -> regs.(0) in
   let (e', regenv') = g (a, t) (Ans(Mr(a))) regenv e in
+  Printf.fprintf stdout "function : %s\n" x;
+  print_syntax stdout e';
   { name = Id.L(x); args = arg_regs; fargs = farg_regs; body = e'; ret = t }
 
 let f (Prog(data, fundefs, e)) = (* プログラム全体のレジスタ割り当て (caml2html: regalloc_f) *)
@@ -290,5 +322,5 @@ let f (Prog(data, fundefs, e)) = (* プログラム全体のレジスタ割り当て (caml2html:
   float_color_to_id := float_ctoi;
 
   let e', regenv' = g (Id.gentmp Type.Unit, Type.Unit) (Ans(Nop)) M.empty e in
-  (* print_syntax stderr e'; *)
+  print_syntax stdout e'; 
   Prog(data, fundefs', e')

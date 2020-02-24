@@ -18,9 +18,7 @@ let save x =
 let savef x =
   stackset := S.add x !stackset;
   if not (List.mem x !stackmap) then
-    (let pad =
-      if List.length !stackmap mod 2 = 0 then [] else [Id.gentmp Type.Int] in
-    stackmap := !stackmap @ pad @ [x; x])
+    stackmap := !stackmap @ [x]
 let locate x =
   let rec loc = function
     | [] -> []
@@ -34,7 +32,7 @@ let offset x =
   | [] -> (failwith (x^" was not saved"))
   | _ -> (List.hd pos)
 
-let stacksize () = align ((List.length !stackmap + 1) * 4)
+let stacksize () = align ((List.length !stackmap + 1))
 
 let reg r =
   if is_reg r
@@ -147,6 +145,8 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
       let s = load_label x y in
       Printf.fprintf oc "%s" s
   | NonTail(x), Mr(y) when x = y -> ()
+  | NonTail(x), Mr(y) when x = "%r0" -> ()
+  | NonTail(x), Mr(y) when y = "%r0" -> ()
   | NonTail(x), Mr(y) -> Printf.fprintf oc "\tmov\t%s, %s\n" (reg x) (reg y)
   | NonTail(x), Neg(y) 
   -> Printf.fprintf oc "\tsub\t%s, %s, %s\n" (reg x) (reg reg_zero) (reg y)

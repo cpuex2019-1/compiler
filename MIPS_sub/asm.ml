@@ -55,6 +55,14 @@ type prog = Prog of (Id.l * float) list * fundef list * t
 
 let fletd(x, e1, e2) = Let((x, Type.Float), e1, e2)
 let seq(e1, e2) = Let((Id.gentmp Type.Unit, Type.Unit), e1, e2)
+let rec insert_before_ans e1 xt com =
+  match e1 with
+  | Ans(exp) -> Let(xt,com,Ans(exp))
+  | Let((x,t),exp,e) -> Let((x,t),exp,(insert_before_ans e xt com))
+let rec insert_end e1 xt com =
+  match e1 with
+  | Ans(exp) -> Let(xt,exp,Ans(com))
+  | Let((x,t),exp,e) -> Let((x,t),exp,(insert_end e xt com))
 
 let regs = (* Array.init 27 (fun i -> Printf.sprintf "_R_%d" i) *)
   [| "$2"; "$5"; "$6"; "$7"; "$8"; "$9"; "$10";
@@ -72,10 +80,17 @@ let reg_sp = "$3" (* stack pointer *)
 let reg_hp = "$4" (* heap pointer (caml2html: sparcasm_reghp) *)
 let reg_tmp = "$30" (* [XX] ad hoc *)
 let reg_tmp2 = "$29"
-let reg_fzero = "$30"
+let reg_fzero = "$f30"
 let reg_ftmp = "$f31"
 let reg_lr = "$31" (* link register *)
 let is_reg x = (x.[0] = '$')
+let tmp_reg t =
+  match t with
+  | Type.Unit -> "%r0"
+  | Type.Float -> reg_ftmp
+  | _ -> reg_tmp
+let reg_type r =
+  if (r.[1] = 'f') then Type.Float else Type.Int
 
 (* super-tenuki *)
 let rec remove_and_uniq xs = function
