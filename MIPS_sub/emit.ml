@@ -600,9 +600,19 @@ let f oc (Prog(data, fundefs, e)) =
 
   (* initialize special integer registers *)
   load_imm oc (reg reg_sp) 0;
-  load_imm oc (reg reg_tmp) 170; (* for output 0xaa required by atsunobu *) 
+  (* load_imm oc (reg reg_tmp) 170; for output 0xaa required by atsunobu *) 
   load_imm oc (reg reg_tmp2) 0;
   load_imm oc (reg reg_lr) 0;
+  load_imm oc (reg reg_one) 1;
+
+  load_imm oc reg_tmp (Int32.to_int (get 0.0));
+  Printf.fprintf oc "\tsw\t%s, 0(%s)\n" (reg reg_tmp) (reg reg_hp);
+  Printf.fprintf oc "\tlf\t%s, 0(%s)\n" (reg reg_fzero) (reg reg_hp);
+
+  load_imm oc reg_tmp (Int32.to_int (get (-1.0)));
+  Printf.fprintf oc "\tsw\t%s, 0(%s)\n" (reg reg_tmp) (reg reg_hp);
+  Printf.fprintf oc "\tlf\t%s, 0(%s)\n" (reg reg_fnegone) (reg reg_hp);
+  
   Printf.fprintf oc "#\toutb\t%s # atsunobu request\n" (reg reg_tmp) ;
  
   

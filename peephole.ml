@@ -173,7 +173,7 @@ let h { name = Id.L(x); args = ys; fargs = zs; body = e; ret = t } =
   { name = Id.L(x); args = ys; fargs = zs; body = e'; ret = t }
 
 let f (Prog(data, fundefs, e)) = 
-  Printf.eprintf "peephole!\n";
+  Printf.fprintf stderr "[Peephole]\n";
   let fds = List.map h fundefs in
   let e' = g e in
   Printf.eprintf "peephole optimization counter %d\n" !opt_count;

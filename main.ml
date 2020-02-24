@@ -11,14 +11,14 @@ let rec iter n e = (* 最適化処理をくりかえす (caml2html: main_iter) *)
 let rec iter_asm n e = (* 最適化処理をくりかえす (caml2html: main_iter) *)
   Format.eprintf "iteration[asm] %d@." n;
   if n = 0 then e else
-  let e' = Peephole.f (Elim_asm.f (ConstFoldAsm.f e)) in
+  let e' = Constreg.f (Peephole.f (Elim_asm.f (ConstFoldAsm.f e))) in
   if e = e' then e else
   iter_asm (n - 1) e'
 
 let rec iter_asm2 n e = (* 最適化処理をくりかえす (caml2html: main_iter) *)
   Format.eprintf "iteration[asm] %d@." n;
   if n = 0 then e else
-  let e' = Peephole.f (Elim_asm.f e) in
+  let e' = Constreg.f (Peephole.f (Elim_asm.f e)) in
   if e = e' then e else
   iter_asm2 (n - 1) e'
 

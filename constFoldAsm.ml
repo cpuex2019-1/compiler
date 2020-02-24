@@ -155,7 +155,7 @@ let h { name = Id.L(x); args = ys; fargs = zs; body = e; ret = t } =
 
 let f (Prog(data, fundefs, e)) = 
   fdata := data;
-  Printf.eprintf "[const fold asm]\n";
+  Printf.fprintf stderr "[Const fold asm]\n";
   let fds = List.map h fundefs in
   let e' = g e M.empty in
   Prog(!fdata,fds,e')

@@ -84,7 +84,7 @@ let h { name = Id.L(x); args = ys; fargs = zs; body = e; ret = t } =
   { name = Id.L(x); args = ys; fargs = zs; body = e'; ret = t }
 
 let f (Prog(data, fundefs, e)) = 
-  Printf.eprintf "eliminate asm!\n";
+  Printf.fprintf stderr "[Eliminate asm]\n";
   let fds = List.map h fundefs in
   let e' = g' e in
   (* print_prog stderr (Prog(data,fds,e')); *)
