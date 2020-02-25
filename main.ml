@@ -38,7 +38,8 @@ let lexbuf outchan l = (* バッファをコンパイルしてチャンネルへ出力する (caml2htm
                        (GlobalArray.f
                          (Typing.f
                             (Parser.exp Lexer.token l)))))))))) in
-  let _ = Optimistic.f
+  Printf.eprintf "Start constucting interference graph";
+  let _ = Optimistic.f 
            (InterferenceGraph.f
              (Liveness.f
               (ToBasicBlock.f opt_asm))) in

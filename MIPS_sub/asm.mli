@@ -85,3 +85,4 @@ val align : int -> int
 val print_fundef : out_channel -> fundef -> unit
 val print_syntax : out_channel -> t -> unit
 val print_prog : out_channel -> prog -> unit
+val print_id_list : out_channel -> string list -> unit

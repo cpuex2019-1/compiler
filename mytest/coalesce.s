@@ -3,6 +3,8 @@ Init: # initialize float value and heap pointer
 	addi	$29, $0, 0
 	addi	$31, $0, 0
 	addi	$1, $0, 1
+	addi	$28, $0, -1
+	addi	$4, $0, 3000
 	addi	$30, $0, 0
 	sw	$30, 0($4)
 	lf	$f30, 0($4)
@@ -10,8 +12,11 @@ Init: # initialize float value and heap pointer
 	slli	$30, $30, 16
 	sw	$30, 0($4)
 	lf	$f29, 0($4)
+	ori	$30, $0, 16256
+	slli	$30, $30, 16
+	sw	$30, 0($4)
+	lf	$f28, 0($4)
 #	outb	$30 # atsunobu request
-	addi	$4, $0, 10000
 	j Main
 f.10:
 	bne	$2, $0, eq_else.26

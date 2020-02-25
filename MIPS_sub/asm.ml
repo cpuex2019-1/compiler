@@ -143,9 +143,9 @@ let print_id_or_imm outchan ioi =
 
 let rec print_id_list outchan tl = 
   match tl with 
-  | [] -> ()
+  | [] -> Printf.fprintf outchan "\n"
   | t::rest -> (
-    Printf.fprintf outchan "  %s\n" t;
+    Printf.fprintf outchan " %s" t;
     print_id_list outchan rest
   )
 

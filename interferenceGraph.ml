@@ -80,10 +80,12 @@ let g live_in_ref_list live_out_ref_list =
 let initialize_graph _ =
   Hashtbl.iter
     (fun x t -> 
+      if not (is_reg x) then begin
        match t with
        | Type.Float -> float_graph := G.add_vertex !float_graph x
        | Type.Unit  -> ()
        | _          -> int_graph := G.add_vertex !int_graph x
+      end else ()
     )
     ToBasicBlock.type_env
 
@@ -92,6 +94,7 @@ let h blocks =
 
 let f (Block.Prog(data,fundefs,e)) = 
   Printf.eprintf "[Interference Graph]\n";
+  Printf.printf "[Interference Graph]\n";
   initialize_graph ();
   List.iter (fun {Block.args = ys; Block.fargs = zs; Block.body = e} -> 
                int_graph := add_clique (!int_graph) ys; (* to allocate different registers for each args  (same register may be allocated to different args when there are unused args ) *)
@@ -99,6 +102,7 @@ let f (Block.Prog(data,fundefs,e)) =
                (h e)) fundefs; 
   let _ = h e in
   temp_g := !int_graph;
+  (* G.iter_vertex (fun v -> Printf.printf "%s\n" v) !int_graph; *)
   (* make_dot ();  *)
   (try
     int_reg_color_map := Color.coloring !int_graph (Array.length Asm.regs);

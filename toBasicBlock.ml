@@ -5,7 +5,9 @@ let blocks_ref = ref []
 let ret_var_env = ref M.empty
 let current_id = ref 0
 let next_id = ref 1
-let type_env = Hashtbl.create 1000
+let type_env = Hashtbl.create 1000 (* all temporary variables' type *)
+let prefer_reg = Hashtbl.create 1000
+let prefer_var = Hashtbl.create 1000
 
 let change xt merge_id = function
 | Asm.Nop     -> Nop xt
@@ -82,13 +84,51 @@ let change xt merge_id = function
 | Asm.IfFEq(x, y, e1, e2)      -> IfFEq(xt, x,   y, merge_id)
 | Asm.IfFLE(x, y, e1, e2)      -> IfFLE(xt, x,   y, merge_id)
 
-| _ -> assert false
+
+let typetoreg t id =
+  match t with
+  | Type.Float -> Asm.fregs.(0)
+  | Type.Unit  -> Asm.reg_zero
+  | _   -> Asm.regs.(0)
 
 let add_type_env (x,t) = if not (Hashtbl.mem type_env x) then Hashtbl.add type_env x t else ()
+
+let update tbl x ele =
+  if Asm.is_reg x then () else begin (* regは実引数にreg_zeroが入ってる時 *)
+    if not (Hashtbl.mem tbl x) then () (* 登録されてなかったらそれは関数の仮引数 *)
+    else Hashtbl.replace tbl x (S.union (Hashtbl.find tbl x) (S.singleton ele))
+  end
+
+let rec add_prefer_arg ys id t = 
+  match ys with
+  | [] -> ()
+  | y :: rest -> update prefer_reg y (typetoreg t id);
+                 add_prefer_arg rest (id+1) t
+
+
+let add_prefer (x,t) exp =
+  (* 定義された変数をHashtblに登録 *)
+  if Asm.is_reg x then () else begin (* $4とかがxになりうるので除外 *)
+    (if not (Hashtbl.mem prefer_reg x) then begin
+      Hashtbl.add prefer_reg x S.empty;
+      Hashtbl.add prefer_var x S.empty
+    end else ());
+    match exp with
+    | Asm.CallDir(_,ys,zs) -> update prefer_reg x (typetoreg t 0);
+                              add_prefer_arg ys 0 Type.Int
+    | Asm.CallCls(_,ys,zs) -> update prefer_reg x (typetoreg t 0);
+                              add_prefer_arg zs 0 Type.Float
+    | Asm.Mr(y) ->  if Asm.is_reg y then update prefer_reg x y (* xとyは同じがうれしい *)
+                    else update prefer_var x y;update prefer_var y x
+    | Asm.Mr(y) ->  if Asm.is_reg y then update prefer_reg x y (* xとyは同じがうれしい *)
+                    else update prefer_var x y;update prefer_var y x
+    | _ -> ()
+  end
 
 let rec finish cont xt = function
 | Asm.IfEq(_, _, e1, e2) | Asm.IfLE(_, _, e1, e2) | Asm.IfGE(_, _, e1, e2) | Asm.IfFEq(_, _, e1, e2) | Asm.IfFLE(_, _, e1, e2) as exp ->
     add_type_env xt;
+    add_prefer xt exp;
     let exp' = change xt None exp in
     let block = exp' :: !block_ref in
     blocks_ref := (
@@ -104,6 +144,7 @@ let rec finish cont xt = function
     make_new_block cont xt e2;
 | exp ->
     add_type_env xt;
+    add_prefer xt exp;
     let exp' = change xt None exp in
     let block = exp' :: !block_ref in
     blocks_ref := { id = !current_id ;
@@ -113,6 +154,7 @@ let rec finish cont xt = function
 and continue cont xt e yt = function
 | Asm.IfEq(_, _, e1, e2) | Asm.IfLE(_, _, e1, e2) | Asm.IfGE(_, _, e1, e2) | Asm.IfFEq(_, _, e1, e2) | Asm.IfFLE(_, _, e1, e2) as exp ->
     add_type_env yt;
+    add_prefer yt exp;
     let exp' = change yt (Some(!next_id+2)) exp in
     let block = exp' :: !block_ref in
     blocks_ref := { id = !current_id ;
@@ -128,6 +170,7 @@ and continue cont xt e yt = function
     make_new_block cont xt e;
 | exp ->
     add_type_env yt;
+    add_prefer yt exp;
     let exp' = change yt (Some(!next_id+2)) exp in
     block_ref := exp' :: !block_ref;
     make_block cont xt e

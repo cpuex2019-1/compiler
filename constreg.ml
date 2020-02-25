@@ -7,6 +7,7 @@ let subst_ioi ioi x creg =
   | C(c) -> C(c)
   | V(y) when x = y -> V(creg)
   | V(y) -> V(y)
+
 let subst_reg y x creg =
   if x = y then creg else y
 
