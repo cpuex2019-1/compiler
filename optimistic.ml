@@ -44,7 +44,8 @@ let get_mindeg g =
   (!mindegv)
 
 let rec push_all g = 
-  Printf.fprintf stderr "%d\n" (G.nb_vertex g);
+(*
+  Printf.fprintf stdout "[push_all] %d\n" (G.nb_vertex g);
   if G.is_empty g then () else begin
     let v = get_mindeg g in
     let vnum = G.nb_vertex g in
@@ -53,57 +54,68 @@ let rec push_all g =
     let gg = G.remove_vertex g v in
     let nvnum = G.nb_vertex gg in
     assert (vnum = nvnum + 1);
-    push_all gg
   end
+*)
+ G.iter_vertex (fun v -> stack_ref := (v::(!stack_ref))) g
 
 let rec used vs = (* 頂点のリストを受け取ってそれらに割り付けられたレジスタの集合を返す *)
   match vs with
   | [] -> S.empty
   | v :: rest -> 
-      if Hashtbl.mem mapping v then S.union (S.singleton (Hashtbl.find mapping v)) (used rest)
+      if Hashtbl.mem mapping v then S.add (Hashtbl.find mapping v) (used rest)
       else used rest
 
 let rec coloring stack =
   match stack with
   | [] -> ()
-  | x :: rest ->
+  | x :: rest -> (
       if Hashtbl.mem mapping x then coloring rest (* 既に割り付けられてたら関数の仮引数のはず、無視 *)
-      else begin
+      else (
+        assert (Hashtbl.mem ToBasicBlock.prefer_reg x);
+        assert (Hashtbl.mem ToBasicBlock.prefer_var x);
+        assert (Hashtbl.mem ToBasicBlock.type_env x);
         let t = Hashtbl.find ToBasicBlock.type_env x in
-        begin 
+        (
           match t with
           | Type.Unit -> Hashtbl.add mapping x "%r0"
           | Type.Float -> 
+              assert (G.mem_vertex !(InterferenceGraph.float_graph) x);
               let invalid = used (Adj.list_from_vertex !(InterferenceGraph.float_graph) x) in
               let all = S.of_list Asm.allfregs in
               let valid = S.diff all invalid in
-              if valid = S.empty then raise FailColoring
-              else begin
+              if S.is_empty valid then raise FailColoring
+              else (
                 let prefer = S.union (Hashtbl.find ToBasicBlock.prefer_reg x)
                                      (used (S.elements (Hashtbl.find ToBasicBlock.prefer_var x))) in
                 let prefer = S.inter prefer valid in
-                if prefer <> S.empty then
+                (
+                if not (S.is_empty prefer) then
                   Hashtbl.add mapping x (S.choose prefer)
                 else
                   Hashtbl.add mapping x (S.min_elt valid)
-              end
+                )
+              )
           | _ ->
+              assert (G.mem_vertex !(InterferenceGraph.int_graph) x);
               let invalid = used (Adj.list_from_vertex !(InterferenceGraph.int_graph) x) in
               let all = S.of_list Asm.allregs in
               let valid = S.diff all invalid in
-              if valid = S.empty then raise FailColoring
-              else begin
+              if S.is_empty valid then raise FailColoring
+              else (
                 let prefer = S.union (Hashtbl.find ToBasicBlock.prefer_reg x)
                                      (used (S.elements (Hashtbl.find ToBasicBlock.prefer_var x))) in
                 let prefer = S.inter prefer valid in
-                if prefer <> S.empty then
+                (
+                if not (S.is_empty prefer) then
                   Hashtbl.add mapping x (S.choose prefer)
                 else
                   Hashtbl.add mapping x (S.min_elt valid)
-              end
-        end
-      end;
-      coloring rest
+                )
+              )
+        );
+        coloring rest
+      )
+     )
 
 
 let rec print_string_list sl =
@@ -132,14 +144,15 @@ let color_arg { Block.args = ys; Block.fargs = zs } =
 let f (Block.Prog(data,fundefs,e)) =
   Printf.fprintf stderr "[Optimistic]\n";
   Printf.fprintf stdout "[Optimistic]\n";
-(*
   Printf.fprintf stdout "prefer reg\n";
   Hashtbl.iter (fun x s -> Printf.fprintf stdout "%s : " x;
                            Asm.print_id_list stdout (S.elements s)) ToBasicBlock.prefer_reg;
   Printf.fprintf stdout "prefer var\n";
   Hashtbl.iter (fun x s -> Printf.fprintf stdout "%s : " x;
                            Asm.print_id_list stdout (S.elements s)) ToBasicBlock.prefer_var;
-*)
+  Printf.eprintf "int graph size : %d\n" (G.nb_vertex !(InterferenceGraph.int_graph));
+  Printf.eprintf "float graph size : %d\n" (G.nb_vertex !(InterferenceGraph.float_graph));
+
   push_all !(InterferenceGraph.int_graph);
   push_all !(InterferenceGraph.float_graph);
   Printf.fprintf stdout "poped Stack\n";
@@ -147,7 +160,6 @@ let f (Block.Prog(data,fundefs,e)) =
 
   List.iter (fun fd -> color_arg fd) fundefs; (* 各関数の仮引数をレジスタ規約に従って割付 *)
   coloring !stack_ref; (* その他の変数の割付 *)
-  Printf.fprintf stdout "Mapping to register\n"
-(*
-  ;Hashtbl.iter (fun x r -> Printf.fprintf stdout "%s -> %s\n" x r) mapping
-*)
+  Printf.fprintf stdout "Mapping to register\n";
+  Hashtbl.iter (fun x r -> Printf.fprintf stdout "%s -> %s\n" x r) mapping;
+  Printf.fprintf stdout "[Optimistic] end\n"

@@ -43,12 +43,15 @@ let rec alloc dest cont regenv x t =
     (
       match t with
       | Type.Unit  -> Alloc("%r0")
+(*
       | Type.Float -> let freg_color = get_color x Type.Float in
                       let r = Asm.fregs.(ColorToId.find freg_color !float_color_to_id) in
                       Alloc(r)
       | _          -> let reg_color = get_color x Type.Int in
                       let r = Asm.regs.(ColorToId.find reg_color !int_color_to_id) in
                       Alloc(r)
+*)
+      | _          -> Alloc(Hashtbl.find Optimistic.mapping x)
     )
     with
     | Not_found -> (

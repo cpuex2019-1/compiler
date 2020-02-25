@@ -1,10 +1,22 @@
 Init: # initialize float value and heap pointer
 	addi	$3, $0, 0
-	addi	$30, $0, 170
 	addi	$29, $0, 0
 	addi	$31, $0, 0
+	addi	$1, $0, 1
+	addi	$28, $0, -1
+	addi	$4, $0, 3000
+	addi	$30, $0, 0
+	sw	$30, 0($4)
+	lf	$f30, 0($4)
+	ori	$30, $0, 49024
+	slli	$30, $30, 16
+	sw	$30, 0($4)
+	lf	$f29, 0($4)
+	ori	$30, $0, 16256
+	slli	$30, $30, 16
+	sw	$30, 0($4)
+	lf	$f28, 0($4)
 #	outb	$30 # atsunobu request
-	addi	$4, $0, 10000
 	addi	$30, $0, 0
 	sw	$30, 0($4)
 	addi	$4, $4, 1
@@ -57,12 +69,12 @@ eq_else.133:
 	fmul	$f2, $f3, $f3
 	fmul	$f0, $f1, $f1
 	fadd	$f7, $f2, $f0
-	lf	$f6, 10004($0) # 4.000000
+	lf	$f6, 3004($0) # 4.000000
 	bltf	$f6, $f7, fle.135
 	addi	$2, $2, -1
-	movf	$f29, $f3
+	movf	$f27, $f3
 	movf	$f3, $f0
-	movf	$f0, $f29
+	movf	$f0, $f27
 	j	iloop.58
 fle.135:
 	addi	$2, $0, 48
@@ -82,9 +94,9 @@ xloop.48:
 	movf	$f1, $f0
 	lw	$5, 1($3)
 	lw	$2, 0($3)
-	lf	$f0, 10003($0) # 400.000000
+	lf	$f0, 3003($0) # 400.000000
 	fdiv	$f1, $f1, $f0
-	lf	$f0, 10002($0) # 1.500000
+	lf	$f0, 3002($0) # 1.500000
 	fsub	$f0, $f1, $f0
 	itof	$f1, $5
 	sf	$f0, 2($3)
@@ -98,24 +110,17 @@ xloop.48:
 	lf	$f0, 2($3)
 	lw	$2, 0($3)
 	lw	$5, 1($3)
-	lf	$f1, 10003($0) # 400.000000
-	fdiv	$f2, $f2, $f1
-	lf	$f1, 10001($0) # 1.000000
-	fsub	$f1, $f2, $f1
+	lf	$f1, 3003($0) # 400.000000
+	fdiv	$f1, $f2, $f1
+	fsub	$f1, $f1, $f28
 	addi	$6, $0, 1000
-	lf	$f5, 10000($0) # 0.000000
-	lf	$f4, 10000($0) # 0.000000
-	lf	$f3, 10000($0) # 0.000000
-	lf	$f2, 10000($0) # 0.000000
 	mov	$2, $6
-	movf	$f29, $f5
 	movf	$f5, $f1
-	movf	$f1, $f4
 	movf	$f4, $f0
-	movf	$f0, $f29
-	movf	$f29, $f3
-	movf	$f3, $f2
-	movf	$f2, $f29
+	movf	$f3, $f30
+	movf	$f2, $f30
+	movf	$f1, $f30
+	movf	$f0, $f30
 	sw	$31, 3($3)
 	addi	$3, $3, 4
 	jal	iloop.58
@@ -130,11 +135,9 @@ ge.137:
 yloop.44:
 	addi	$30, $0, 400
 	bge	$2, $30, ge.139
-	addi	$5, $0, 0
 	sw	$2, 0($3)
-	mov	$27, $5
 	mov	$5, $2
-	mov	$2, $27
+	mov	$2, $0
 	sw	$31, 1($3)
 	addi	$3, $3, 2
 	jal	xloop.48
@@ -147,7 +150,7 @@ ge.139:
 	jr $31
 #	main program starts
 Main:
-	addi	$2, $0, 0
+	mov	$2, $0
 	sw	$31, 0($3)
 	addi	$3, $3, 1
 	jal	yloop.44

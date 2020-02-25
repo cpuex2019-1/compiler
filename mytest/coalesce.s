@@ -29,15 +29,12 @@ eq_else.26:
 	jal	f.10
 	addi	$3, $3, -1
 	lw	$31, 0($3)
-	mov	$6, $2
-	addi	$2, $6, 1
+	addi	$2, $2, 1
 	jr $31
 #	main program starts
 Main:
-	addi	$5, $0, 3
-	addi	$2, $0, 2
-	mov	$6, $2
-	mov	$2, $5
+	addi	$2, $0, 3
+	addi	$6, $0, 2
 	mov	$5, $1
 	sw	$31, 0($3)
 	addi	$3, $3, 1

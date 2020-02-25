@@ -87,9 +87,9 @@ let change xt merge_id = function
 
 let typetoreg t id =
   match t with
-  | Type.Float -> Asm.fregs.(0)
+  | Type.Float -> Asm.fregs.(id)
   | Type.Unit  -> Asm.reg_zero
-  | _   -> Asm.regs.(0)
+  | _   -> Asm.regs.(id)
 
 let add_type_env (x,t) = if not (Hashtbl.mem type_env x) then Hashtbl.add type_env x t else ()
 
