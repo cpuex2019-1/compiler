@@ -22,8 +22,8 @@ let get_color x t =
   (
     match t with
     | Type.Unit  -> assert false
-    | Type.Float -> (InterferenceGraph.Color.H.find !(InterferenceGraph.float_reg_color_map) x) - 1 (* color : [1,k] *)
-    | Type.Int   -> (InterferenceGraph.Color.H.find !(InterferenceGraph.int_reg_color_map) x) - 1
+    | Type.Float -> (Color.H.find !(InterferenceGraph.float_reg_color_map) x) - 1 (* color : [1,k] *)
+    | Type.Int   -> (Color.H.find !(InterferenceGraph.int_reg_color_map) x) - 1
     | _ -> assert false
   )
   with

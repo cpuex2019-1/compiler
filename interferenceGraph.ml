@@ -1,17 +1,3 @@
-module Node = struct
-  type t = string
-  let compare = Pervasives.compare
-  let hash = Hashtbl.hash
-  let equal = (=)
-end
-
-module G = Graph.Persistent.Graph.Concrete(Node)
-
-module Color = Graph.Coloring.Make(G)
-
-include G
-include Color
-
 let int_graph = ref G.empty 
 let float_graph = ref G.empty
 

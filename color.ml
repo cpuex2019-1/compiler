@@ -1,4 +1,9 @@
 
+module Color = Graph.Coloring.Make(G)
+
+include Color
+(*
+
 module Node = struct
   type t = string
   let compare = Pervasives.compare
@@ -40,3 +45,4 @@ end)
 let _ =
   let file = open_out_bin "igraph.dot" in
   Dot.output_graph file g
+*)

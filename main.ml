@@ -38,20 +38,19 @@ let lexbuf outchan l = (* バッファをコンパイルしてチャンネルへ出力する (caml2htm
                        (GlobalArray.f
                          (Typing.f
                             (Parser.exp Lexer.token l)))))))))) in
-(*
-  let _ = InterferenceGraph.f
-            (Liveness.f
-              (ToBasicBlock.f opt_asm)) in
+  let _ = Optimistic.f
+           (InterferenceGraph.f
+             (Liveness.f
+              (ToBasicBlock.f opt_asm))) in
   if !InterferenceGraph.exist_coloring then 
     Emit.f outchan
       (iter_asm2 !limit_asm
         (RegAllocByColor.f opt_asm))
   else begin
-*)
     Emit.f outchan
       (iter_asm2 !limit_asm
         (RegAlloc.f opt_asm))
-(*  end *)
+  end
 
 (*
   Emit.f outchan

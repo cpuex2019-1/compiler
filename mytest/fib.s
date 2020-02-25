@@ -1,10 +1,22 @@
 Init: # initialize float value and heap pointer
 	addi	$3, $0, 0
-	addi	$30, $0, 170
 	addi	$29, $0, 0
 	addi	$31, $0, 0
-#	outb	$30 # atsunobu request
+	addi	$1, $0, 1
+	addi	$28, $0, -1
 	addi	$4, $0, 3000
+	addi	$30, $0, 0
+	sw	$30, 0($4)
+	lf	$f30, 0($4)
+	ori	$30, $0, 49024
+	slli	$30, $30, 16
+	sw	$30, 0($4)
+	lf	$f29, 0($4)
+	ori	$30, $0, 16256
+	slli	$30, $30, 16
+	sw	$30, 0($4)
+	lf	$f28, 0($4)
+#	outb	$30 # atsunobu request
 	j Main
 fib.10:
 	addi	$30, $0, 2
@@ -12,34 +24,34 @@ fib.10:
 	addi	$5, $2, -1
 	sw	$2, 0($3)
 	mov	$2, $5
-	sw	$31, 7($3)
-	addi	$3, $3, 8
+	sw	$31, 1($3)
+	addi	$3, $3, 2
 	jal	fib.10
-	addi	$3, $3, -8
-	lw	$31, 7($3)
+	addi	$3, $3, -2
+	lw	$31, 1($3)
 	mov	$5, $2
 	lw	$2, 0($3)
 	addi	$2, $2, -2
 	sw	$5, 1($3)
-	sw	$31, 11($3)
-	addi	$3, $3, 12
+	sw	$31, 2($3)
+	addi	$3, $3, 3
 	jal	fib.10
-	addi	$3, $3, -12
-	lw	$31, 11($3)
+	addi	$3, $3, -3
+	lw	$31, 2($3)
 	lw	$5, 1($3)
 	add	$2, $5, $2
 	jr $31
 le.26:
-	addi	$2, $0, 1
+	mov	$2, $1
 	jr $31
 #	main program starts
 Main:
 	addi	$2, $0, 30
-	sw	$31, 3($3)
-	addi	$3, $3, 4
+	sw	$31, 0($3)
+	addi	$3, $3, 1
 	jal	fib.10
-	addi	$3, $3, -4
-	lw	$31, 3($3)
+	addi	$3, $3, -1
+	lw	$31, 0($3)
 	outb	$2
 	j Exit
 #	main program ends
