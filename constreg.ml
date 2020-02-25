@@ -70,8 +70,10 @@ let rec g e =
   match e with
   | Ans(Li(0)) -> Ans(Mr(reg_zero))
   | Ans(Li(1)) -> Ans(Mr(reg_one))
+  | Ans(Li(-1)) -> Ans(Mr(reg_negone))
   | Ans(FLi(l)) when float_imm l !float_imm_data = 0.0 -> Ans(FMr(reg_fzero))
   | Ans(FLi(l)) when float_imm l !float_imm_data = (-1.0) -> Ans(FMr(reg_fnegone))
+  | Ans(FLi(l)) when float_imm l !float_imm_data = (1.0) -> Ans(FMr(reg_fone))
   | Ans(IfEq(y,ioi,e1,e2)) -> Ans(IfEq(y,ioi,g e1,g e2))
   | Ans(IfLE(y,ioi,e1,e2)) -> Ans(IfLE(y,ioi,g e1,g e2))
   | Ans(IfGE(y,ioi,e1,e2)) -> Ans(IfGE(y,ioi,g e1,g e2))
@@ -80,8 +82,10 @@ let rec g e =
   | Ans(_) -> e
   | Let((x,t),Li(0),e2) -> opt_count := !opt_count+1; g (subst e2 x reg_zero)
   | Let((x,t),Li(1),e2) -> opt_count := !opt_count+1; g (subst e2 x reg_one)
+  | Let((x,t),Li(-1),e2) -> opt_count := !opt_count+1; g (subst e2 x reg_negone)
   | Let((x,t),FLi(l),e2) when float_imm l !float_imm_data = 0.0  -> opt_count := !opt_count+1; g (subst e2 x reg_fzero)
   | Let((x,t),FLi(l),e2) when (float_imm l !float_imm_data) = (-1.0)  -> opt_count := !opt_count+1; g (subst e2 x reg_fnegone)
+  | Let((x,t),FLi(l),e2) when (float_imm l !float_imm_data) = (1.0)  -> opt_count := !opt_count+1; g (subst e2 x reg_fone)
   | Let((x,t),IfEq(y,ioi,e1,e2),e3) -> Let((x,t),IfEq(y,ioi,g e1,g e2),g e3)
   | Let((x,t),IfLE(y,ioi,e1,e2),e3) -> Let((x,t),IfLE(y,ioi,g e1,g e2),g e3)
   | Let((x,t),IfGE(y,ioi,e1,e2),e3) -> Let((x,t),IfGE(y,ioi,g e1,g e2),g e3)

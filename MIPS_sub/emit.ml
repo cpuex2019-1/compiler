@@ -604,6 +604,10 @@ let f oc (Prog(data, fundefs, e)) =
   load_imm oc (reg reg_tmp2) 0;
   load_imm oc (reg reg_lr) 0;
   load_imm oc (reg reg_one) 1;
+  load_imm oc (reg reg_negone) (-1);
+
+  (* initialize heap pointer *)
+  load_imm oc (reg reg_hp) !(KNormal.hp_init);
 
   load_imm oc reg_tmp (Int32.to_int (get 0.0));
   Printf.fprintf oc "\tsw\t%s, 0(%s)\n" (reg reg_tmp) (reg reg_hp);
@@ -612,13 +616,15 @@ let f oc (Prog(data, fundefs, e)) =
   load_imm oc reg_tmp (Int32.to_int (get (-1.0)));
   Printf.fprintf oc "\tsw\t%s, 0(%s)\n" (reg reg_tmp) (reg reg_hp);
   Printf.fprintf oc "\tlf\t%s, 0(%s)\n" (reg reg_fnegone) (reg reg_hp);
+
+  load_imm oc reg_tmp (Int32.to_int (get (1.0)));
+  Printf.fprintf oc "\tsw\t%s, 0(%s)\n" (reg reg_tmp) (reg reg_hp);
+  Printf.fprintf oc "\tlf\t%s, 0(%s)\n" (reg reg_fone) (reg reg_hp);
   
   Printf.fprintf oc "#\toutb\t%s # atsunobu request\n" (reg reg_tmp) ;
  
   
-  (* initialize heap pointer *)
   (
-    load_imm oc (reg reg_hp) !(KNormal.hp_init);
     (* 浮動小数即値の初期化 *)
     arrange_float_imm oc data 0;
     float_imm_data := data;

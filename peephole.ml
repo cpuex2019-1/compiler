@@ -6,6 +6,15 @@ let opt_count = ref 0
 let rec h com = 
   (
     match com with
+    | IfEq(y,C(-1),e1,e2) -> IfEq(y,V(reg_negone),g e1,g e2)
+    | IfLE(y,C(-1),e1,e2) -> IfLE(y,V(reg_negone),g e1,g e2)
+    | IfGE(y,C(-1),e1,e2) -> IfGE(y,V(reg_negone),g e1,g e2)
+    | IfEq(y,C(1),e1,e2)  -> IfEq(y,V(reg_one)   ,g e1,g e2)
+    | IfLE(y,C(1),e1,e2)  -> IfLE(y,V(reg_one)   ,g e1,g e2)
+    | IfGE(y,C(1),e1,e2)  -> IfGE(y,V(reg_one)   ,g e1,g e2)
+    | IfEq(y,C(0),e1,e2)  -> IfEq(y,V(reg_zero)  ,g e1,g e2)
+    | IfLE(y,C(0),e1,e2)  -> IfLE(y,V(reg_zero)  ,g e1,g e2)
+    | IfGE(y,C(0),e1,e2)  -> IfGE(y,V(reg_zero)  ,g e1,g e2)
     | IfEq(y,ioi,e1,e2) -> 
         (
           let e1' = g e1 in

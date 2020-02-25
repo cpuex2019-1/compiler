@@ -26,9 +26,7 @@ let save x =
 let savef x =
   stackset := S.add x !stackset;
   if not (List.mem x !stackmap) then
-    (let pad =
-      if List.length !stackmap mod 2 = 0 then [] else [Id.gentmp Type.Int] in
-    stackmap := !stackmap @ pad @ [x; x])
+    stackmap := !stackmap @ [x]
 
 let locate x =
   let rec loc = function
@@ -41,9 +39,9 @@ let offset x =
   let pos = locate x in
   match pos with
   | [] -> (failwith (x^" was not saved"))
-  | _ -> 4 * (List.hd pos)
+  | _ -> (List.hd pos)
 
-let stacksize () = Asm.align ((List.length !stackmap + 1) * 4)
+let stacksize () = Asm.align ((List.length !stackmap + 1))
 
 let load_imm target_reg c = 
   (if (c > int_max) then raise (Out_of_range c));
