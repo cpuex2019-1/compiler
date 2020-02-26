@@ -90,7 +90,9 @@ let rec coloring stack =
                 let prefer = S.inter prefer valid in
                 (
                 if not (S.is_empty prefer) then
-                  Hashtbl.add mapping x (S.choose prefer)
+                  let chosen = S.min_elt prefer in
+                  (* Printf.fprintf stdout "targetting to %s\n" chosen; *)
+                  Hashtbl.add mapping x chosen
                 else
                   Hashtbl.add mapping x (S.min_elt valid)
                 )
@@ -107,7 +109,9 @@ let rec coloring stack =
                 let prefer = S.inter prefer valid in
                 (
                 if not (S.is_empty prefer) then
-                  Hashtbl.add mapping x (S.choose prefer)
+                  let chosen = S.min_elt prefer in
+                  (* Printf.fprintf stdout "targetting to %s\n" chosen; *)
+                  Hashtbl.add mapping x chosen
                 else
                   Hashtbl.add mapping x (S.min_elt valid)
                 )

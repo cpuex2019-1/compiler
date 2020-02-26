@@ -85,13 +85,13 @@ let reg_negone = "$28"
 let reg_fone = "$f28" (* 1 register *)
 let reg_fnegone = "$f29" (* -1 register *)
 let reg_fzero = "$f30"
-let reg_ftmp = "$f31"
+let reg_fpi = "$f31"
 let reg_lr = "$31" (* link register *)
 let is_reg x = (x.[0] = '$')
 let tmp_reg t =
   match t with
   | Type.Unit -> "%r0"
-  | Type.Float -> reg_ftmp
+  | Type.Float -> assert false
   | _ -> reg_tmp
 let reg_type r =
   if (r.[1] = 'f') then Type.Float else Type.Int

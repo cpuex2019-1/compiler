@@ -154,6 +154,20 @@ and g exp =
           Printf.eprintf "redundant iffle found.(inv)\n";
           g (Let((x,tx),Sltf(z,y),Let((x,tx),Xor(x,C(1)),exp)))
         )
+    | Let((x,tx),IfEq(y,V(z),Ans(Li(0)),Ans(Li(1))),exp) ->
+        (* if y = z then 0 else 1 <=> if 0 < (y xor z) then 1 else 0 *)
+        (
+          opt_count := !opt_count+1;
+          Printf.eprintf "redundant ifeq found.(int)\n";
+          g (Let((reg_tmp,tx),Xor(z,V(y)),Let((x,tx),Slt(reg_zero,reg_tmp),exp)))
+        )
+    | Let((x,tx),IfEq(y,V(z),Ans(Li(1)),Ans(Li(0))),exp) ->
+        (* if y = z then 1 else 0 <=> if 0 < y xor z then 1 else 0 *)
+        (
+          opt_count := !opt_count+1;
+          Printf.eprintf "redundant ifeq found.(int)\n";
+          g (Let((reg_tmp,tx),Xor(z,V(y)),Let((x,tx),Slt(reg_zero,reg_tmp),exp)))
+        )
     | Let((x,tx),IfLE(y,V(z),Ans(Li(0)),Ans(Li(1))),exp) ->
         (* if y <= z then 0 else 1 <=> if z < y then 1 else 0 *)
         (

@@ -11,6 +11,12 @@ let subst_ioi ioi x creg =
 let subst_reg y x creg =
   if x = y then creg else y
 
+let is_alias com x = 
+  match com with
+  | Mr(y) when y = x -> true
+  | FMr(y) when y = x -> true
+  | _ -> false
+
 let rec subst_com com x creg = 
   match com with
   | Mr(y)  -> Mr(subst_reg y x creg)
@@ -57,7 +63,9 @@ let rec subst_com com x creg =
 and subst e x creg =
   match e with
   | Ans(com) -> Ans(subst_com com x creg)
-  | Let(xt,com,e2) -> Let(xt,(subst_com com x creg),(subst e2 x creg))
+  | Let((y,t),com,e2) -> if is_alias com x then begin
+                           (* Printf.eprintf "[constreg] found alias"; *) subst (subst e2 y creg) x creg
+                         end else Let((y,t),(subst_com com x creg),(subst e2 x creg))
 
 let float_imm_data = ref []
 
@@ -75,6 +83,9 @@ let rec g e =
   | Ans(FLi(l)) when float_imm l !float_imm_data = 0.0 -> Ans(FMr(reg_fzero))
   | Ans(FLi(l)) when float_imm l !float_imm_data = (-1.0) -> Ans(FMr(reg_fnegone))
   | Ans(FLi(l)) when float_imm l !float_imm_data = (1.0) -> Ans(FMr(reg_fone))
+(*
+  | Ans(FLi(l)) when float_imm l !float_imm_data = (3.1415926535) -> Ans(FMr(reg_fpi))
+*)
   | Ans(IfEq(y,ioi,e1,e2)) -> Ans(IfEq(y,ioi,g e1,g e2))
   | Ans(IfLE(y,ioi,e1,e2)) -> Ans(IfLE(y,ioi,g e1,g e2))
   | Ans(IfGE(y,ioi,e1,e2)) -> Ans(IfGE(y,ioi,g e1,g e2))
@@ -87,6 +98,9 @@ let rec g e =
   | Let((x,t),FLi(l),e2) when float_imm l !float_imm_data = 0.0  -> opt_count := !opt_count+1; g (subst e2 x reg_fzero)
   | Let((x,t),FLi(l),e2) when (float_imm l !float_imm_data) = (-1.0)  -> opt_count := !opt_count+1; g (subst e2 x reg_fnegone)
   | Let((x,t),FLi(l),e2) when (float_imm l !float_imm_data) = (1.0)  -> opt_count := !opt_count+1; g (subst e2 x reg_fone)
+(*
+  | Let((x,t),FLi(l),e2) when (float_imm l !float_imm_data) = (3.1415926535)  -> opt_count := !opt_count+1; g (subst e2 x reg_fpi)
+*)
   | Let((x,t),IfEq(y,ioi,e1,e2),e3) -> Let((x,t),IfEq(y,ioi,g e1,g e2),g e3)
   | Let((x,t),IfLE(y,ioi,e1,e2),e3) -> Let((x,t),IfLE(y,ioi,g e1,g e2),g e3)
   | Let((x,t),IfGE(y,ioi,e1,e2),e3) -> Let((x,t),IfGE(y,ioi,g e1,g e2),g e3)

@@ -71,11 +71,13 @@ val reg_hp : Id.t
 val reg_sp : Id.t
 val reg_tmp : Id.t
 val reg_tmp2 : Id.t
-val reg_ftmp : Id.t
+val reg_fpi : Id.t
 val reg_lr : Id.t
 val is_reg : Id.t -> bool
 
+(*
 val tmp_reg : Type.t -> Id.t
+*)
 val reg_type : Id.t -> Type.t
 
 val fv : t -> Id.t list

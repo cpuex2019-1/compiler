@@ -620,6 +620,10 @@ let f oc (Prog(data, fundefs, e)) =
   load_imm oc reg_tmp (Int32.to_int (get (1.0)));
   Printf.fprintf oc "\tsw\t%s, 0(%s)\n" (reg reg_tmp) (reg reg_hp);
   Printf.fprintf oc "\tlf\t%s, 0(%s)\n" (reg reg_fone) (reg reg_hp);
+
+  load_imm oc reg_tmp (Int32.to_int (get (3.1415926535)));
+  Printf.fprintf oc "\tsw\t%s, 0(%s)\n" (reg reg_tmp) (reg reg_hp);
+  Printf.fprintf oc "\tlf\t%s, 0(%s)\n" (reg reg_fpi) (reg reg_hp);
   
   Printf.fprintf oc "#\toutb\t%s # atsunobu request\n" (reg reg_tmp) ;
  
