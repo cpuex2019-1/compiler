@@ -168,6 +168,57 @@ and g exp =
           Printf.eprintf "redundant ifle found.(zero)\n";
           g (Let((x,tx),Slt(reg_zero,y),exp))
         )
+        
+    | Let((x,tx),Sltf(y,z),Let((a,ta),IfEq(x1,V(r),e1,e2),exp)) when x = x1 && r = reg_zero ->
+        (* if z <= y then e1 else e2 *)
+        (
+          opt_count := !opt_count+1;
+          g (Let((a,ta),IfFLE(z,y,e1,e2),exp))
+        )
+    | Let((x,tx),Sltf(y,z),Let((a,ta),IfEq(r,V(x1),e1,e2),exp)) when x = x1 && r = reg_zero ->
+        (* if z <= y then e1 else e2 *)
+        (
+          opt_count := !opt_count+1;
+          g (Let((a,ta),IfFLE(z,y,e1,e2),exp))
+        )
+    | Let((x,tx),Sltf(y,z),Let((a,ta),IfEq(x1,V(r),e1,e2),exp)) when x = x1 && r = reg_one ->
+        (* if z <= y then e2 else e1 *)
+        (
+          opt_count := !opt_count+1;
+          g (Let((a,ta),IfFLE(z,y,e2,e1),exp))
+        )
+    | Let((x,tx),Sltf(y,z),Let((a,ta),IfEq(r,V(x1),e1,e2),exp)) when x = x1 && r = reg_one ->
+        (* if z <= y then e2 else e1 *)
+        (
+          opt_count := !opt_count+1;
+          g (Let((a,ta),IfFLE(z,y,e2,e1),exp))
+        )
+
+    | Let((x,tx),Sltf(y,z),Ans(IfEq(x1,V(r),e1,e2))) when x = x1 && r = reg_zero ->
+        (* if z <= y then e1 else e2 *)
+        (
+          opt_count := !opt_count+1;
+          g (Ans(IfFLE(z,y,e1,e2)))
+        )
+    | Let((x,tx),Sltf(y,z),Ans(IfEq(r,V(x1),e1,e2))) when x = x1 && r = reg_zero ->
+        (* if z <= y then e1 else e2 *)
+        (
+          opt_count := !opt_count+1;
+          g (Ans(IfFLE(z,y,e1,e2)))
+        )
+    | Let((x,tx),Sltf(y,z),Ans(IfEq(x1,V(r),e1,e2))) when x = x1 && r = reg_one ->
+        (* if z <= y then e2 else e1 *)
+        (
+          opt_count := !opt_count+1;
+          g (Ans(IfFLE(z,y,e2,e1)))
+        )
+    | Let((x,tx),Sltf(y,z),Ans(IfEq(r,V(x1),e1,e2))) when x = x1 && r = reg_one ->
+        (* if z <= y then e2 else e1 *)
+        (
+          opt_count := !opt_count+1;
+          g (Ans(IfFLE(z,y,e2,e1)))
+        )
+
     | Let((x,t),com,e2) ->
         (
           let e2' = g e2 in
