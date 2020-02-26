@@ -86,6 +86,19 @@ let rec g e =
   | Ans(FLi(l)) when float_imm l !float_imm_data = (-1.0) -> Ans(FMr(reg_fnegone))
   | Ans(FLi(l)) when float_imm l !float_imm_data = (1.0) -> Ans(FMr(reg_fone))
   | Ans(FLi(l)) when float_imm l !float_imm_data = (3.1415926535) -> Ans(FMr(reg_fpi))
+
+  | Ans(IfEq(y,C(-1),e1,e2)) -> Ans(IfEq(y,V(reg_negone),e1,e2))
+  | Ans(IfEq(y,C(0),e1,e2)) -> Ans(IfEq(y,V(reg_zero),e1,e2))
+  | Ans(IfEq(y,C(1),e1,e2)) -> Ans(IfEq(y,V(reg_one),e1,e2))
+  | Ans(IfEq(y,C(2),e1,e2)) -> Ans(IfEq(y,V(reg_two),e1,e2))
+  | Ans(IfEq(y,C(3),e1,e2)) -> Ans(IfEq(y,V(reg_three),e1,e2))
+
+  | Ans(IfLE(y,C(-1),e1,e2)) -> Ans(IfLE(y,V(reg_negone),e1,e2))
+  | Ans(IfLE(y,C(0),e1,e2)) -> Ans(IfLE(y,V(reg_zero),e1,e2))
+  | Ans(IfLE(y,C(1),e1,e2)) -> Ans(IfLE(y,V(reg_one),e1,e2))
+  | Ans(IfLE(y,C(2),e1,e2)) -> Ans(IfLE(y,V(reg_two),e1,e2))
+  | Ans(IfLE(y,C(3),e1,e2)) -> Ans(IfLE(y,V(reg_three),e1,e2))
+
   | Ans(IfEq(y,ioi,e1,e2)) -> Ans(IfEq(y,ioi,g e1,g e2))
   | Ans(IfLE(y,ioi,e1,e2)) -> Ans(IfLE(y,ioi,g e1,g e2))
   | Ans(IfGE(y,ioi,e1,e2)) -> Ans(IfGE(y,ioi,g e1,g e2))
