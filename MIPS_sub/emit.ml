@@ -250,6 +250,8 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
       | [i; j] when i + 1 = j -> g' oc (NonTail(fregs.(0)), exp)
       | _ -> assert false);
       Printf.fprintf oc "\tjr %s\n" (reg reg_lr);
+  | Tail, IfEq(x, V(y), e1, e2) when x = y ->
+      g oc (Tail,e1) 
   | Tail, IfEq(x, V(y), e1, e2) ->
       g'_tail_ifeq oc x y e1 e2 
   | Tail, IfEq(x, C(y), e1, e2) ->
@@ -267,6 +269,8 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
         load_imm oc reg_tmp y;
         g'_tail_ifeq oc x reg_tmp e1 e2
       )
+  | Tail, IfLE(x, V(y), e1, e2) when x = y ->
+      g oc (Tail,e1) 
   | Tail, IfLE(x, V(y), e1, e2) ->
       g'_tail_ifle oc x y e1 e2
   | Tail, IfLE(x, C(y), e1, e2) ->
@@ -279,6 +283,8 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
         load_imm oc reg_tmp y;
         g'_tail_ifle oc x reg_tmp e1 e2
       )
+  | Tail, IfGE(x, V(y), e1, e2) when x = y ->
+      g oc (Tail,e1) 
   | Tail, IfGE(x, V(y), e1, e2) ->
       g'_tail_ifge oc x y e1 e2
   | Tail, IfGE(x, C(y), e1, e2) ->
@@ -291,6 +297,8 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
         load_imm oc reg_tmp y;
         g'_tail_ifge oc x reg_tmp e1 e2
       )
+  | Tail, IfFEq(x, y, e1, e2) when x = y ->
+      g oc (Tail,e1) 
   | Tail, IfFEq(x, y, e1, e2) ->
       (* heap領域を通じて整数レジスタに入れ直してから比較*)
       (*
@@ -306,6 +314,8 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
       g'_tail_ifeq oc (reg reg_tmp) (reg reg_tmp2) e1 e2
       *)
       g'_tail_iffeq oc x y e1 e2
+  | Tail, IfFLE(x, y, e1, e2) when x = y ->
+      g oc (Tail,e1) 
   | Tail, IfFLE(x, y, e1, e2) ->
       (*
       Printf.fprintf oc "\tsltf\t%s, %s, %s\n" (reg reg_tmp) (reg y) (reg x);
