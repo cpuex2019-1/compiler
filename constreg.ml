@@ -79,6 +79,8 @@ let rec g e =
   match e with
   | Ans(Li(0)) -> Ans(Mr(reg_zero))
   | Ans(Li(1)) -> Ans(Mr(reg_one))
+  | Ans(Li(2)) -> Ans(Mr(reg_two))
+  | Ans(Li(3)) -> Ans(Mr(reg_three))
   | Ans(Li(-1)) -> Ans(Mr(reg_negone))
   | Ans(FLi(l)) when float_imm l !float_imm_data = 0.0 -> Ans(FMr(reg_fzero))
   | Ans(FLi(l)) when float_imm l !float_imm_data = (-1.0) -> Ans(FMr(reg_fnegone))
@@ -92,6 +94,8 @@ let rec g e =
   | Ans(_) -> e
   | Let((x,t),Li(0),e2) -> opt_count := !opt_count+1; g (subst e2 x reg_zero)
   | Let((x,t),Li(1),e2) -> opt_count := !opt_count+1; g (subst e2 x reg_one)
+  | Let((x,t),Li(2),e2) -> opt_count := !opt_count+1; g (subst e2 x reg_two)
+  | Let((x,t),Li(3),e2) -> opt_count := !opt_count+1; g (subst e2 x reg_three)
   | Let((x,t),Li(-1),e2) -> opt_count := !opt_count+1; g (subst e2 x reg_negone)
   | Let((x,t),FLi(l),e2) when float_imm l !float_imm_data = 0.0  -> 
       Printf.eprintf "substitute %s for %s\n" x reg_fzero; 

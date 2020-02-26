@@ -604,6 +604,8 @@ let f oc (Prog(data, fundefs, e)) =
   load_imm oc (reg reg_tmp2) 0;
   load_imm oc (reg reg_lr) 0;
   load_imm oc (reg reg_one) 1;
+  load_imm oc (reg reg_two) 2;
+  load_imm oc (reg reg_three) 3;
   load_imm oc (reg reg_negone) (-1);
 
   (* initialize heap pointer *)

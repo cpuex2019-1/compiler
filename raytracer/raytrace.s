@@ -3,6 +3,8 @@ Init: # initialize float value and heap pointer
 	addi	$29, $0, 0
 	addi	$31, $0, 0
 	addi	$1, $0, 1
+	addi	$26, $0, 2
+	addi	$27, $0, 3
 	addi	$28, $0, -1
 	addi	$4, $0, 3352
 	addi	$30, $0, 0
@@ -244,54 +246,54 @@ Init: # initialize float value and heap pointer
 	addi	$4, $4, 1
 	j Main
 pow.2646:
-	bne	$2, $0, eq_else.87454
+	bne	$2, $0, eq_else.87944
 	movf	$f0, $f28
 	jr $31
-eq_else.87454:
+eq_else.87944:
 	srai	$5, $2, 1
 	sf	$f0, 0($3)
 	sw	$2, 1($3)
-	bne	$5, $0, eq_else.87455
+	bne	$5, $0, eq_else.87945
 	movf	$f0, $f28
-	j	eq_cont.87456
-eq_else.87455:
+	j	eq_cont.87946
+eq_else.87945:
 	srai	$6, $5, 1
 	sw	$5, 2($3)
 	sw	$6, 3($3)
-	bne	$6, $0, eq_else.87457
+	bne	$6, $0, eq_else.87947
 	movf	$f0, $f28
-	j	eq_cont.87458
-eq_else.87457:
+	j	eq_cont.87948
+eq_else.87947:
 	srai	$7, $6, 1
 	sw	$7, 4($3)
-	bne	$7, $0, eq_else.87459
+	bne	$7, $0, eq_else.87949
 	movf	$f0, $f28
-	j	eq_cont.87460
-eq_else.87459:
+	j	eq_cont.87950
+eq_else.87949:
 	srai	$8, $7, 1
 	sw	$8, 5($3)
-	bne	$8, $0, eq_else.87461
+	bne	$8, $0, eq_else.87951
 	movf	$f0, $f28
-	j	eq_cont.87462
-eq_else.87461:
+	j	eq_cont.87952
+eq_else.87951:
 	srai	$9, $8, 1
 	sw	$9, 6($3)
-	bne	$9, $0, eq_else.87463
+	bne	$9, $0, eq_else.87953
 	movf	$f0, $f28
-	j	eq_cont.87464
-eq_else.87463:
+	j	eq_cont.87954
+eq_else.87953:
 	srai	$10, $9, 1
 	sw	$10, 7($3)
-	bne	$10, $0, eq_else.87465
+	bne	$10, $0, eq_else.87955
 	movf	$f0, $f28
-	j	eq_cont.87466
-eq_else.87465:
+	j	eq_cont.87956
+eq_else.87955:
 	srai	$11, $10, 1
 	sw	$11, 8($3)
-	bne	$11, $0, eq_else.87467
+	bne	$11, $0, eq_else.87957
 	movf	$f0, $f28
-	j	eq_cont.87468
-eq_else.87467:
+	j	eq_cont.87958
+eq_else.87957:
 	srai	$12, $11, 1
 	sw	$12, 9($3)
 	mov	$2, $12
@@ -300,126 +302,117 @@ eq_else.87467:
 	jal	pow.2646
 	addi	$3, $3, -11
 	lw	$31, 10($3)
-	addi	$2, $0, 2
-	lw	$5, 9($3)
-	mul	$2, $5, $2
+	lw	$2, 9($3)
+	mul	$2, $2, $26
 	lw	$5, 8($3)
-	bne	$2, $5, eq_else.87469
+	bne	$2, $5, eq_else.87959
 	fmul	$f0, $f0, $f0
-	j	eq_cont.87470
-eq_else.87469:
+	j	eq_cont.87960
+eq_else.87959:
 	lf	$f1, 0($3)
 	fmul	$f2, $f1, $f0
 	fmul	$f0, $f2, $f0
-eq_cont.87470:
-eq_cont.87468:
-	addi	$2, $0, 2
-	lw	$5, 8($3)
-	mul	$2, $5, $2
+eq_cont.87960:
+eq_cont.87958:
+	lw	$2, 8($3)
+	mul	$2, $2, $26
 	lw	$5, 7($3)
-	bne	$2, $5, eq_else.87471
+	bne	$2, $5, eq_else.87961
 	fmul	$f0, $f0, $f0
-	j	eq_cont.87472
-eq_else.87471:
+	j	eq_cont.87962
+eq_else.87961:
 	lf	$f1, 0($3)
 	fmul	$f2, $f1, $f0
 	fmul	$f0, $f2, $f0
-eq_cont.87472:
-eq_cont.87466:
-	addi	$2, $0, 2
-	lw	$5, 7($3)
-	mul	$2, $5, $2
+eq_cont.87962:
+eq_cont.87956:
+	lw	$2, 7($3)
+	mul	$2, $2, $26
 	lw	$5, 6($3)
-	bne	$2, $5, eq_else.87473
+	bne	$2, $5, eq_else.87963
 	fmul	$f0, $f0, $f0
-	j	eq_cont.87474
-eq_else.87473:
+	j	eq_cont.87964
+eq_else.87963:
 	lf	$f1, 0($3)
 	fmul	$f2, $f1, $f0
 	fmul	$f0, $f2, $f0
-eq_cont.87474:
-eq_cont.87464:
-	addi	$2, $0, 2
-	lw	$5, 6($3)
-	mul	$2, $5, $2
+eq_cont.87964:
+eq_cont.87954:
+	lw	$2, 6($3)
+	mul	$2, $2, $26
 	lw	$5, 5($3)
-	bne	$2, $5, eq_else.87475
+	bne	$2, $5, eq_else.87965
 	fmul	$f0, $f0, $f0
-	j	eq_cont.87476
-eq_else.87475:
+	j	eq_cont.87966
+eq_else.87965:
 	lf	$f1, 0($3)
 	fmul	$f2, $f1, $f0
 	fmul	$f0, $f2, $f0
-eq_cont.87476:
-eq_cont.87462:
-	addi	$2, $0, 2
-	lw	$5, 5($3)
-	mul	$2, $5, $2
+eq_cont.87966:
+eq_cont.87952:
+	lw	$2, 5($3)
+	mul	$2, $2, $26
 	lw	$5, 4($3)
-	bne	$2, $5, eq_else.87477
+	bne	$2, $5, eq_else.87967
 	fmul	$f0, $f0, $f0
-	j	eq_cont.87478
-eq_else.87477:
+	j	eq_cont.87968
+eq_else.87967:
 	lf	$f1, 0($3)
 	fmul	$f2, $f1, $f0
 	fmul	$f0, $f2, $f0
-eq_cont.87478:
-eq_cont.87460:
-	addi	$2, $0, 2
-	lw	$5, 4($3)
-	mul	$2, $5, $2
+eq_cont.87968:
+eq_cont.87950:
+	lw	$2, 4($3)
+	mul	$2, $2, $26
 	lw	$5, 3($3)
-	bne	$2, $5, eq_else.87479
+	bne	$2, $5, eq_else.87969
 	fmul	$f0, $f0, $f0
-	j	eq_cont.87480
-eq_else.87479:
+	j	eq_cont.87970
+eq_else.87969:
 	lf	$f1, 0($3)
 	fmul	$f2, $f1, $f0
 	fmul	$f0, $f2, $f0
-eq_cont.87480:
-eq_cont.87458:
-	addi	$2, $0, 2
-	lw	$5, 3($3)
-	mul	$2, $5, $2
+eq_cont.87970:
+eq_cont.87948:
+	lw	$2, 3($3)
+	mul	$2, $2, $26
 	lw	$5, 2($3)
-	bne	$2, $5, eq_else.87481
+	bne	$2, $5, eq_else.87971
 	fmul	$f0, $f0, $f0
-	j	eq_cont.87482
-eq_else.87481:
+	j	eq_cont.87972
+eq_else.87971:
 	lf	$f1, 0($3)
 	fmul	$f2, $f1, $f0
 	fmul	$f0, $f2, $f0
-eq_cont.87482:
-eq_cont.87456:
-	addi	$2, $0, 2
-	mul	$2, $5, $2
+eq_cont.87972:
+eq_cont.87946:
+	mul	$2, $5, $26
 	lw	$5, 1($3)
-	bne	$2, $5, eq_else.87483
+	bne	$2, $5, eq_else.87973
 	fmul	$f0, $f0, $f0
 	jr $31
-eq_else.87483:
+eq_else.87973:
 	lf	$f1, 0($3)
 	fmul	$f1, $f1, $f0
 	fmul	$f0, $f1, $f0
 	jr $31
 read_object.2833:
 	addi	$30, $0, 60
-	bge	$2, $30, ge.87484
+	bge	$2, $30, ge.87974
 	in	$5
 	sw	$2, 0($3)
-	bne	$5, $28, eq_else.87485
+	bne	$5, $28, eq_else.87975
 	mov	$2, $0
-	j	eq_cont.87486
-eq_else.87485:
+	j	eq_cont.87976
+eq_else.87975:
 	in	$6
 	in	$7
 	in	$8
-	addi	$9, $0, 3
 	sw	$5, 1($3)
 	sw	$7, 2($3)
 	sw	$6, 3($3)
 	sw	$8, 4($3)
-	mov	$2, $9
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 5($3)
 	addi	$3, $3, 6
@@ -432,9 +425,8 @@ eq_else.87485:
 	sf	$f0, 1($2)
 	inf	$f0
 	sf	$f0, 2($2)
-	addi	$5, $0, 3
 	sw	$2, 5($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 6($3)
 	addi	$3, $3, 7
@@ -449,10 +441,9 @@ eq_else.87485:
 	sf	$f0, 2($2)
 	inf	$f0
 	sltf	$5, $f0, $f30
-	addi	$6, $0, 2
 	sw	$2, 6($3)
 	sw	$5, 7($3)
-	mov	$2, $6
+	mov	$2, $26
 	movf	$f0, $f30
 	sw	$31, 8($3)
 	addi	$3, $3, 9
@@ -463,9 +454,8 @@ eq_else.87485:
 	sf	$f0, 0($2)
 	inf	$f0
 	sf	$f0, 1($2)
-	addi	$5, $0, 3
 	sw	$2, 8($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 9($3)
 	addi	$3, $3, 10
@@ -478,9 +468,8 @@ eq_else.87485:
 	sf	$f0, 1($2)
 	inf	$f0
 	sf	$f0, 2($2)
-	addi	$5, $0, 3
 	sw	$2, 9($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 10($3)
 	addi	$3, $3, 11
@@ -488,9 +477,9 @@ eq_else.87485:
 	addi	$3, $3, -11
 	lw	$31, 10($3)
 	lw	$5, 4($3)
-	bne	$5, $0, eq_else.87487
-	j	eq_cont.87488
-eq_else.87487:
+	bne	$5, $0, eq_else.87977
+	j	eq_cont.87978
+eq_else.87977:
 	inf	$f0
 	lf	$f1, 3397($0) # 0.017453
 	fmul	$f0, $f0, $f1
@@ -503,15 +492,15 @@ eq_else.87487:
 	lf	$f1, 3397($0) # 0.017453
 	fmul	$f0, $f0, $f1
 	sf	$f0, 2($2)
-eq_cont.87488:
+eq_cont.87978:
 	lw	$6, 3($3)
 	addi	$30, $0, 2
-	bne	$6, $30, eq_else.87489
+	bne	$6, $30, eq_else.87979
 	mov	$7, $1
-	j	eq_cont.87490
-eq_else.87489:
+	j	eq_cont.87980
+eq_else.87979:
 	lw	$7, 7($3)
-eq_cont.87490:
+eq_cont.87980:
 	addi	$8, $0, 4
 	sw	$7, 10($3)
 	sw	$2, 11($3)
@@ -548,117 +537,117 @@ eq_cont.87490:
 	lw	$9, 0($3)
 	sw	$5, 3001($9)
 	addi	$30, $0, 3
-	bne	$8, $30, eq_else.87491
+	bne	$8, $30, eq_else.87981
 	lf	$f0, 0($6)
-	beqf	$f0, $f30, feq.87493
+	beqf	$f0, $f30, feq.87983
 	mov	$5, $0
-	j	feq_cont.87494
-feq.87493:
+	j	feq_cont.87984
+feq.87983:
 	mov	$5, $1
-feq_cont.87494:
-	bne	$5, $0, eq_else.87495
-	beqf	$f0, $f30, feq.87497
+feq_cont.87984:
+	bne	$5, $0, eq_else.87985
+	beqf	$f0, $f30, feq.87987
 	mov	$5, $0
-	j	feq_cont.87498
-feq.87497:
+	j	feq_cont.87988
+feq.87987:
 	mov	$5, $1
-feq_cont.87498:
-	bne	$5, $0, eq_else.87499
+feq_cont.87988:
+	bne	$5, $0, eq_else.87989
 	sltf	$5, $f30, $f0
-	bne	$5, $0, eq_else.87501
+	bne	$5, $0, eq_else.87991
 	movf	$f1, $f29
-	j	eq_cont.87502
-eq_else.87501:
+	j	eq_cont.87992
+eq_else.87991:
 	movf	$f1, $f28
-eq_cont.87502:
-	j	eq_cont.87500
-eq_else.87499:
+eq_cont.87992:
+	j	eq_cont.87990
+eq_else.87989:
 	movf	$f1, $f30
-eq_cont.87500:
+eq_cont.87990:
 	fmul	$f0, $f0, $f0
 	fdiv	$f0, $f1, $f0
-	j	eq_cont.87496
-eq_else.87495:
+	j	eq_cont.87986
+eq_else.87985:
 	movf	$f0, $f30
-eq_cont.87496:
+eq_cont.87986:
 	sf	$f0, 0($6)
 	lf	$f0, 1($6)
-	beqf	$f0, $f30, feq.87503
+	beqf	$f0, $f30, feq.87993
 	mov	$5, $0
-	j	feq_cont.87504
-feq.87503:
+	j	feq_cont.87994
+feq.87993:
 	mov	$5, $1
-feq_cont.87504:
-	bne	$5, $0, eq_else.87505
-	beqf	$f0, $f30, feq.87507
+feq_cont.87994:
+	bne	$5, $0, eq_else.87995
+	beqf	$f0, $f30, feq.87997
 	mov	$5, $0
-	j	feq_cont.87508
-feq.87507:
+	j	feq_cont.87998
+feq.87997:
 	mov	$5, $1
-feq_cont.87508:
-	bne	$5, $0, eq_else.87509
+feq_cont.87998:
+	bne	$5, $0, eq_else.87999
 	sltf	$5, $f30, $f0
-	bne	$5, $0, eq_else.87511
+	bne	$5, $0, eq_else.88001
 	movf	$f1, $f29
-	j	eq_cont.87512
-eq_else.87511:
+	j	eq_cont.88002
+eq_else.88001:
 	movf	$f1, $f28
-eq_cont.87512:
-	j	eq_cont.87510
-eq_else.87509:
+eq_cont.88002:
+	j	eq_cont.88000
+eq_else.87999:
 	movf	$f1, $f30
-eq_cont.87510:
+eq_cont.88000:
 	fmul	$f0, $f0, $f0
 	fdiv	$f0, $f1, $f0
-	j	eq_cont.87506
-eq_else.87505:
+	j	eq_cont.87996
+eq_else.87995:
 	movf	$f0, $f30
-eq_cont.87506:
+eq_cont.87996:
 	sf	$f0, 1($6)
 	lf	$f0, 2($6)
-	beqf	$f0, $f30, feq.87513
+	beqf	$f0, $f30, feq.88003
 	mov	$5, $0
-	j	feq_cont.87514
-feq.87513:
+	j	feq_cont.88004
+feq.88003:
 	mov	$5, $1
-feq_cont.87514:
-	bne	$5, $0, eq_else.87515
-	beqf	$f0, $f30, feq.87517
+feq_cont.88004:
+	bne	$5, $0, eq_else.88005
+	beqf	$f0, $f30, feq.88007
 	mov	$5, $0
-	j	feq_cont.87518
-feq.87517:
+	j	feq_cont.88008
+feq.88007:
 	mov	$5, $1
-feq_cont.87518:
-	bne	$5, $0, eq_else.87519
+feq_cont.88008:
+	bne	$5, $0, eq_else.88009
 	sltf	$5, $f30, $f0
-	bne	$5, $0, eq_else.87521
+	bne	$5, $0, eq_else.88011
 	movf	$f1, $f29
-	j	eq_cont.87522
-eq_else.87521:
+	j	eq_cont.88012
+eq_else.88011:
 	movf	$f1, $f28
-eq_cont.87522:
-	j	eq_cont.87520
-eq_else.87519:
+eq_cont.88012:
+	j	eq_cont.88010
+eq_else.88009:
 	movf	$f1, $f30
-eq_cont.87520:
+eq_cont.88010:
 	fmul	$f0, $f0, $f0
 	fdiv	$f0, $f1, $f0
-	j	eq_cont.87516
-eq_else.87515:
+	j	eq_cont.88006
+eq_else.88005:
 	movf	$f0, $f30
-eq_cont.87516:
+eq_cont.88006:
 	sf	$f0, 2($6)
-	j	eq_cont.87492
-eq_else.87491:
+	j	eq_cont.87982
+eq_else.87981:
 	addi	$30, $0, 2
-	bne	$8, $30, eq_else.87523
+	bne	$8, $30, eq_else.88013
 	lw	$5, 7($3)
-	bne	$5, $0, eq_else.87525
+	bne	$5, $0, eq_else.88015
 	mov	$5, $1
-	j	eq_cont.87526
-eq_else.87525:
+	j	eq_cont.88016
+eq_else.88015:
 	mov	$5, $0
-eq_cont.87526:
+eq_cont.88016:
 	lf	$f0, 0($6)
 	fmul	$f0, $f0, $f0
 	lf	$f1, 1($6)
@@ -668,23 +657,23 @@ eq_cont.87526:
 	fmul	$f1, $f1, $f1
 	fadd	$f0, $f0, $f1
 	sqrt	$f0, $f0
-	beqf	$f0, $f30, feq.87527
+	beqf	$f0, $f30, feq.88017
 	mov	$8, $0
-	j	feq_cont.87528
-feq.87527:
+	j	feq_cont.88018
+feq.88017:
 	mov	$8, $1
-feq_cont.87528:
-	bne	$8, $0, eq_else.87529
-	bne	$5, $0, eq_else.87531
+feq_cont.88018:
+	bne	$8, $0, eq_else.88019
+	bne	$5, $0, eq_else.88021
 	fdiv	$f0, $f28, $f0
-	j	eq_cont.87532
-eq_else.87531:
+	j	eq_cont.88022
+eq_else.88021:
 	fdiv	$f0, $f29, $f0
-eq_cont.87532:
-	j	eq_cont.87530
-eq_else.87529:
+eq_cont.88022:
+	j	eq_cont.88020
+eq_else.88019:
 	movf	$f0, $f28
-eq_cont.87530:
+eq_cont.88020:
 	lf	$f1, 0($6)
 	fmul	$f1, $f1, $f0
 	sf	$f1, 0($6)
@@ -694,42 +683,41 @@ eq_cont.87530:
 	lf	$f1, 2($6)
 	fmul	$f0, $f1, $f0
 	sf	$f0, 2($6)
-	j	eq_cont.87524
-eq_else.87523:
-eq_cont.87524:
-eq_cont.87492:
-	bne	$7, $0, eq_else.87533
-	j	eq_cont.87534
-eq_else.87533:
+	j	eq_cont.88014
+eq_else.88013:
+eq_cont.88014:
+eq_cont.87982:
+	bne	$7, $0, eq_else.88023
+	j	eq_cont.88024
+eq_else.88023:
 	lf	$f0, 0($2)
-	bltf	$f30, $f0, fle.87535
+	bltf	$f30, $f0, fle.88025
 	movf	$f1, $f29
-	j	fle_cont.87536
-fle.87535:
+	j	fle_cont.88026
+fle.88025:
 	movf	$f1, $f28
-fle_cont.87536:
+fle_cont.88026:
 	fmul	$f0, $f1, $f0
 	lf	$f1, 3395($0) # 6.283185
 	fdiv	$f2, $f0, $f1
 	floor	$f2, $f2
 	fmul	$f1, $f2, $f1
 	fsub	$f0, $f0, $f1
-	bltf	$f0, $f31, fle.87537
+	bltf	$f0, $f31, fle.88027
 	fsub	$f0, $f0, $f31
 	lf	$f1, 3393($0) # 1.570796
-	bltf	$f0, $f1, fle.87539
+	bltf	$f0, $f1, fle.88029
 	fsub	$f0, $f31, $f0
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.87541
+	bltf	$f1, $f0, fle.88031
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f3, 12($3)
 	sf	$f2, 13($3)
 	sf	$f0, 14($3)
 	sf	$f1, 15($3)
-	mov	$2, $5
+	mov	$2, $26
 	sw	$31, 16($3)
 	addi	$3, $3, 17
 	jal	pow.2646
@@ -765,19 +753,18 @@ fle_cont.87536:
 	lf	$f1, 17($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-	j	fle_cont.87542
-fle.87541:
+	j	fle_cont.88032
+fle.88031:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
 	lf	$f2, 3390($0) # 0.008333
 	lf	$f3, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f3, 18($3)
 	sf	$f2, 19($3)
 	sf	$f0, 20($3)
 	sf	$f1, 21($3)
-	mov	$2, $5
+	mov	$2, $27
 	sw	$31, 22($3)
 	addi	$3, $3, 23
 	jal	pow.2646
@@ -813,20 +800,19 @@ fle.87541:
 	lf	$f1, 23($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-fle_cont.87542:
-	j	fle_cont.87540
-fle.87539:
+fle_cont.88032:
+	j	fle_cont.88030
+fle.88029:
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.87543
+	bltf	$f1, $f0, fle.88033
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f3, 24($3)
 	sf	$f2, 25($3)
 	sf	$f0, 26($3)
 	sf	$f1, 27($3)
-	mov	$2, $5
+	mov	$2, $26
 	sw	$31, 28($3)
 	addi	$3, $3, 29
 	jal	pow.2646
@@ -862,19 +848,18 @@ fle.87539:
 	lf	$f1, 29($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-	j	fle_cont.87544
-fle.87543:
+	j	fle_cont.88034
+fle.88033:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
 	lf	$f2, 3390($0) # 0.008333
 	lf	$f3, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f3, 30($3)
 	sf	$f2, 31($3)
 	sf	$f0, 32($3)
 	sf	$f1, 33($3)
-	mov	$2, $5
+	mov	$2, $27
 	sw	$31, 34($3)
 	addi	$3, $3, 35
 	jal	pow.2646
@@ -910,24 +895,23 @@ fle.87543:
 	lf	$f1, 35($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-fle_cont.87544:
-fle_cont.87540:
-	j	fle_cont.87538
-fle.87537:
+fle_cont.88034:
+fle_cont.88030:
+	j	fle_cont.88028
+fle.88027:
 	lf	$f1, 3393($0) # 1.570796
-	bltf	$f0, $f1, fle.87545
+	bltf	$f0, $f1, fle.88035
 	fsub	$f0, $f31, $f0
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.87547
+	bltf	$f1, $f0, fle.88037
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f3, 36($3)
 	sf	$f2, 37($3)
 	sf	$f0, 38($3)
 	sf	$f1, 39($3)
-	mov	$2, $5
+	mov	$2, $26
 	sw	$31, 40($3)
 	addi	$3, $3, 41
 	jal	pow.2646
@@ -963,19 +947,18 @@ fle.87537:
 	lf	$f1, 41($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-	j	fle_cont.87548
-fle.87547:
+	j	fle_cont.88038
+fle.88037:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
 	lf	$f2, 3390($0) # 0.008333
 	lf	$f3, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f3, 42($3)
 	sf	$f2, 43($3)
 	sf	$f0, 44($3)
 	sf	$f1, 45($3)
-	mov	$2, $5
+	mov	$2, $27
 	sw	$31, 46($3)
 	addi	$3, $3, 47
 	jal	pow.2646
@@ -1011,20 +994,19 @@ fle.87547:
 	lf	$f1, 47($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-fle_cont.87548:
-	j	fle_cont.87546
-fle.87545:
+fle_cont.88038:
+	j	fle_cont.88036
+fle.88035:
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.87549
+	bltf	$f1, $f0, fle.88039
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f3, 48($3)
 	sf	$f2, 49($3)
 	sf	$f0, 50($3)
 	sf	$f1, 51($3)
-	mov	$2, $5
+	mov	$2, $26
 	sw	$31, 52($3)
 	addi	$3, $3, 53
 	jal	pow.2646
@@ -1060,19 +1042,18 @@ fle.87545:
 	lf	$f1, 53($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-	j	fle_cont.87550
-fle.87549:
+	j	fle_cont.88040
+fle.88039:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
 	lf	$f2, 3390($0) # 0.008333
 	lf	$f3, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f3, 54($3)
 	sf	$f2, 55($3)
 	sf	$f0, 56($3)
 	sf	$f1, 57($3)
-	mov	$2, $5
+	mov	$2, $27
 	sw	$31, 58($3)
 	addi	$3, $3, 59
 	jal	pow.2646
@@ -1108,17 +1089,17 @@ fle.87549:
 	lf	$f1, 59($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-fle_cont.87550:
-fle_cont.87546:
-fle_cont.87538:
+fle_cont.88040:
+fle_cont.88036:
+fle_cont.88028:
 	lw	$2, 11($3)
 	lf	$f1, 0($2)
-	bltf	$f30, $f1, fle.87551
+	bltf	$f30, $f1, fle.88041
 	movf	$f2, $f29
-	j	fle_cont.87552
-fle.87551:
+	j	fle_cont.88042
+fle.88041:
 	movf	$f2, $f28
-fle_cont.87552:
+fle_cont.88042:
 	fmul	$f1, $f2, $f1
 	lf	$f3, 3395($0) # 6.283185
 	fdiv	$f4, $f1, $f3
@@ -1126,24 +1107,23 @@ fle_cont.87552:
 	fmul	$f3, $f4, $f3
 	fsub	$f1, $f1, $f3
 	sf	$f0, 60($3)
-	bltf	$f1, $f31, fle.87553
+	bltf	$f1, $f31, fle.88043
 	fsub	$f1, $f1, $f31
 	fneg	$f2, $f2
 	lf	$f3, 3393($0) # 1.570796
-	bltf	$f1, $f3, fle.87555
+	bltf	$f1, $f3, fle.88045
 	fsub	$f1, $f31, $f1
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f1, fle.87557
+	bltf	$f3, $f1, fle.88047
 	lf	$f3, 3391($0) # 0.166667
 	lf	$f4, 3390($0) # 0.008333
 	lf	$f5, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f2, 61($3)
 	sf	$f5, 62($3)
 	sf	$f4, 63($3)
 	sf	$f1, 64($3)
 	sf	$f3, 65($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 66($3)
 	addi	$3, $3, 67
@@ -1181,20 +1161,19 @@ fle_cont.87552:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 61($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.87558
-fle.87557:
+	j	fle_cont.88048
+fle.88047:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f1, $f3, $f1
 	lf	$f3, 3388($0) # 0.500000
 	lf	$f4, 3387($0) # 0.041664
 	lf	$f5, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f2, 61($3)
 	sf	$f5, 68($3)
 	sf	$f4, 69($3)
 	sf	$f1, 70($3)
 	sf	$f3, 71($3)
-	mov	$2, $5
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 72($3)
 	addi	$3, $3, 73
@@ -1232,21 +1211,20 @@ fle.87557:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 61($3)
 	fmul	$f0, $f1, $f0
-fle_cont.87558:
-	j	fle_cont.87556
-fle.87555:
+fle_cont.88048:
+	j	fle_cont.88046
+fle.88045:
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f1, fle.87559
+	bltf	$f3, $f1, fle.88049
 	lf	$f3, 3391($0) # 0.166667
 	lf	$f4, 3390($0) # 0.008333
 	lf	$f5, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f2, 61($3)
 	sf	$f5, 74($3)
 	sf	$f4, 75($3)
 	sf	$f1, 76($3)
 	sf	$f3, 77($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 78($3)
 	addi	$3, $3, 79
@@ -1284,20 +1262,19 @@ fle.87555:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 61($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.87560
-fle.87559:
+	j	fle_cont.88050
+fle.88049:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f1, $f3, $f1
 	lf	$f3, 3388($0) # 0.500000
 	lf	$f4, 3387($0) # 0.041664
 	lf	$f5, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f2, 61($3)
 	sf	$f5, 80($3)
 	sf	$f4, 81($3)
 	sf	$f1, 82($3)
 	sf	$f3, 83($3)
-	mov	$2, $5
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 84($3)
 	addi	$3, $3, 85
@@ -1335,25 +1312,24 @@ fle.87559:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 61($3)
 	fmul	$f0, $f1, $f0
-fle_cont.87560:
-fle_cont.87556:
-	j	fle_cont.87554
-fle.87553:
+fle_cont.88050:
+fle_cont.88046:
+	j	fle_cont.88044
+fle.88043:
 	lf	$f3, 3393($0) # 1.570796
-	bltf	$f1, $f3, fle.87561
+	bltf	$f1, $f3, fle.88051
 	fsub	$f1, $f31, $f1
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f1, fle.87563
+	bltf	$f3, $f1, fle.88053
 	lf	$f3, 3391($0) # 0.166667
 	lf	$f4, 3390($0) # 0.008333
 	lf	$f5, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f2, 86($3)
 	sf	$f5, 87($3)
 	sf	$f4, 88($3)
 	sf	$f1, 89($3)
 	sf	$f3, 90($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 91($3)
 	addi	$3, $3, 92
@@ -1391,20 +1367,19 @@ fle.87553:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 86($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.87564
-fle.87563:
+	j	fle_cont.88054
+fle.88053:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f1, $f3, $f1
 	lf	$f3, 3388($0) # 0.500000
 	lf	$f4, 3387($0) # 0.041664
 	lf	$f5, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f2, 86($3)
 	sf	$f5, 93($3)
 	sf	$f4, 94($3)
 	sf	$f1, 95($3)
 	sf	$f3, 96($3)
-	mov	$2, $5
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 97($3)
 	addi	$3, $3, 98
@@ -1442,21 +1417,20 @@ fle.87563:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 86($3)
 	fmul	$f0, $f1, $f0
-fle_cont.87564:
-	j	fle_cont.87562
-fle.87561:
+fle_cont.88054:
+	j	fle_cont.88052
+fle.88051:
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f1, fle.87565
+	bltf	$f3, $f1, fle.88055
 	lf	$f3, 3391($0) # 0.166667
 	lf	$f4, 3390($0) # 0.008333
 	lf	$f5, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f2, 86($3)
 	sf	$f5, 99($3)
 	sf	$f4, 100($3)
 	sf	$f1, 101($3)
 	sf	$f3, 102($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 103($3)
 	addi	$3, $3, 104
@@ -1494,20 +1468,19 @@ fle.87561:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 86($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.87566
-fle.87565:
+	j	fle_cont.88056
+fle.88055:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f1, $f3, $f1
 	lf	$f3, 3388($0) # 0.500000
 	lf	$f4, 3387($0) # 0.041664
 	lf	$f5, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f2, 86($3)
 	sf	$f5, 105($3)
 	sf	$f4, 106($3)
 	sf	$f1, 107($3)
 	sf	$f3, 108($3)
-	mov	$2, $5
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 109($3)
 	addi	$3, $3, 110
@@ -1545,17 +1518,17 @@ fle.87565:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 86($3)
 	fmul	$f0, $f1, $f0
-fle_cont.87566:
-fle_cont.87562:
-fle_cont.87554:
+fle_cont.88056:
+fle_cont.88052:
+fle_cont.88044:
 	lw	$2, 11($3)
 	lf	$f1, 1($2)
-	bltf	$f30, $f1, fle.87567
+	bltf	$f30, $f1, fle.88057
 	movf	$f2, $f29
-	j	fle_cont.87568
-fle.87567:
+	j	fle_cont.88058
+fle.88057:
 	movf	$f2, $f28
-fle_cont.87568:
+fle_cont.88058:
 	fmul	$f1, $f2, $f1
 	lf	$f2, 3395($0) # 6.283185
 	fdiv	$f3, $f1, $f2
@@ -1563,22 +1536,21 @@ fle_cont.87568:
 	fmul	$f2, $f3, $f2
 	fsub	$f1, $f1, $f2
 	sf	$f0, 111($3)
-	bltf	$f1, $f31, fle.87569
+	bltf	$f1, $f31, fle.88059
 	fsub	$f1, $f1, $f31
 	lf	$f2, 3393($0) # 1.570796
-	bltf	$f1, $f2, fle.87571
+	bltf	$f1, $f2, fle.88061
 	fsub	$f1, $f31, $f1
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f1, fle.87573
+	bltf	$f2, $f1, fle.88063
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f4, 112($3)
 	sf	$f3, 113($3)
 	sf	$f1, 114($3)
 	sf	$f2, 115($3)
-	mov	$2, $5
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 116($3)
 	addi	$3, $3, 117
@@ -1615,19 +1587,18 @@ fle_cont.87568:
 	lf	$f1, 117($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-	j	fle_cont.87574
-fle.87573:
+	j	fle_cont.88064
+fle.88063:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f1, $f2, $f1
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f4, 118($3)
 	sf	$f3, 119($3)
 	sf	$f1, 120($3)
 	sf	$f2, 121($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 122($3)
 	addi	$3, $3, 123
@@ -1664,20 +1635,19 @@ fle.87573:
 	lf	$f1, 123($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-fle_cont.87574:
-	j	fle_cont.87572
-fle.87571:
+fle_cont.88064:
+	j	fle_cont.88062
+fle.88061:
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f1, fle.87575
+	bltf	$f2, $f1, fle.88065
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f4, 124($3)
 	sf	$f3, 125($3)
 	sf	$f1, 126($3)
 	sf	$f2, 127($3)
-	mov	$2, $5
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 128($3)
 	addi	$3, $3, 129
@@ -1714,19 +1684,18 @@ fle.87571:
 	lf	$f1, 129($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-	j	fle_cont.87576
-fle.87575:
+	j	fle_cont.88066
+fle.88065:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f1, $f2, $f1
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f4, 130($3)
 	sf	$f3, 131($3)
 	sf	$f1, 132($3)
 	sf	$f2, 133($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 134($3)
 	addi	$3, $3, 135
@@ -1763,24 +1732,23 @@ fle.87575:
 	lf	$f1, 135($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-fle_cont.87576:
-fle_cont.87572:
-	j	fle_cont.87570
-fle.87569:
+fle_cont.88066:
+fle_cont.88062:
+	j	fle_cont.88060
+fle.88059:
 	lf	$f2, 3393($0) # 1.570796
-	bltf	$f1, $f2, fle.87577
+	bltf	$f1, $f2, fle.88067
 	fsub	$f1, $f31, $f1
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f1, fle.87579
+	bltf	$f2, $f1, fle.88069
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f4, 136($3)
 	sf	$f3, 137($3)
 	sf	$f1, 138($3)
 	sf	$f2, 139($3)
-	mov	$2, $5
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 140($3)
 	addi	$3, $3, 141
@@ -1817,19 +1785,18 @@ fle.87569:
 	lf	$f1, 141($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-	j	fle_cont.87580
-fle.87579:
+	j	fle_cont.88070
+fle.88069:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f1, $f2, $f1
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f4, 142($3)
 	sf	$f3, 143($3)
 	sf	$f1, 144($3)
 	sf	$f2, 145($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 146($3)
 	addi	$3, $3, 147
@@ -1866,20 +1833,19 @@ fle.87579:
 	lf	$f1, 147($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-fle_cont.87580:
-	j	fle_cont.87578
-fle.87577:
+fle_cont.88070:
+	j	fle_cont.88068
+fle.88067:
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f1, fle.87581
+	bltf	$f2, $f1, fle.88071
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f4, 148($3)
 	sf	$f3, 149($3)
 	sf	$f1, 150($3)
 	sf	$f2, 151($3)
-	mov	$2, $5
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 152($3)
 	addi	$3, $3, 153
@@ -1916,19 +1882,18 @@ fle.87577:
 	lf	$f1, 153($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-	j	fle_cont.87582
-fle.87581:
+	j	fle_cont.88072
+fle.88071:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f1, $f2, $f1
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f4, 154($3)
 	sf	$f3, 155($3)
 	sf	$f1, 156($3)
 	sf	$f2, 157($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 158($3)
 	addi	$3, $3, 159
@@ -1965,17 +1930,17 @@ fle.87581:
 	lf	$f1, 159($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-fle_cont.87582:
-fle_cont.87578:
-fle_cont.87570:
+fle_cont.88072:
+fle_cont.88068:
+fle_cont.88060:
 	lw	$2, 11($3)
 	lf	$f1, 1($2)
-	bltf	$f30, $f1, fle.87583
+	bltf	$f30, $f1, fle.88073
 	movf	$f2, $f29
-	j	fle_cont.87584
-fle.87583:
+	j	fle_cont.88074
+fle.88073:
 	movf	$f2, $f28
-fle_cont.87584:
+fle_cont.88074:
 	fmul	$f1, $f2, $f1
 	lf	$f3, 3395($0) # 6.283185
 	fdiv	$f4, $f1, $f3
@@ -1983,24 +1948,23 @@ fle_cont.87584:
 	fmul	$f3, $f4, $f3
 	fsub	$f1, $f1, $f3
 	sf	$f0, 160($3)
-	bltf	$f1, $f31, fle.87585
+	bltf	$f1, $f31, fle.88075
 	fsub	$f1, $f1, $f31
 	fneg	$f2, $f2
 	lf	$f3, 3393($0) # 1.570796
-	bltf	$f1, $f3, fle.87587
+	bltf	$f1, $f3, fle.88077
 	fsub	$f1, $f31, $f1
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f1, fle.87589
+	bltf	$f3, $f1, fle.88079
 	lf	$f3, 3391($0) # 0.166667
 	lf	$f4, 3390($0) # 0.008333
 	lf	$f5, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f2, 161($3)
 	sf	$f5, 162($3)
 	sf	$f4, 163($3)
 	sf	$f1, 164($3)
 	sf	$f3, 165($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 166($3)
 	addi	$3, $3, 167
@@ -2038,20 +2002,19 @@ fle_cont.87584:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 161($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.87590
-fle.87589:
+	j	fle_cont.88080
+fle.88079:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f1, $f3, $f1
 	lf	$f3, 3388($0) # 0.500000
 	lf	$f4, 3387($0) # 0.041664
 	lf	$f5, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f2, 161($3)
 	sf	$f5, 168($3)
 	sf	$f4, 169($3)
 	sf	$f1, 170($3)
 	sf	$f3, 171($3)
-	mov	$2, $5
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 172($3)
 	addi	$3, $3, 173
@@ -2089,21 +2052,20 @@ fle.87589:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 161($3)
 	fmul	$f0, $f1, $f0
-fle_cont.87590:
-	j	fle_cont.87588
-fle.87587:
+fle_cont.88080:
+	j	fle_cont.88078
+fle.88077:
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f1, fle.87591
+	bltf	$f3, $f1, fle.88081
 	lf	$f3, 3391($0) # 0.166667
 	lf	$f4, 3390($0) # 0.008333
 	lf	$f5, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f2, 161($3)
 	sf	$f5, 174($3)
 	sf	$f4, 175($3)
 	sf	$f1, 176($3)
 	sf	$f3, 177($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 178($3)
 	addi	$3, $3, 179
@@ -2141,20 +2103,19 @@ fle.87587:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 161($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.87592
-fle.87591:
+	j	fle_cont.88082
+fle.88081:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f1, $f3, $f1
 	lf	$f3, 3388($0) # 0.500000
 	lf	$f4, 3387($0) # 0.041664
 	lf	$f5, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f2, 161($3)
 	sf	$f5, 180($3)
 	sf	$f4, 181($3)
 	sf	$f1, 182($3)
 	sf	$f3, 183($3)
-	mov	$2, $5
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 184($3)
 	addi	$3, $3, 185
@@ -2192,25 +2153,24 @@ fle.87591:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 161($3)
 	fmul	$f0, $f1, $f0
-fle_cont.87592:
-fle_cont.87588:
-	j	fle_cont.87586
-fle.87585:
+fle_cont.88082:
+fle_cont.88078:
+	j	fle_cont.88076
+fle.88075:
 	lf	$f3, 3393($0) # 1.570796
-	bltf	$f1, $f3, fle.87593
+	bltf	$f1, $f3, fle.88083
 	fsub	$f1, $f31, $f1
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f1, fle.87595
+	bltf	$f3, $f1, fle.88085
 	lf	$f3, 3391($0) # 0.166667
 	lf	$f4, 3390($0) # 0.008333
 	lf	$f5, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f2, 186($3)
 	sf	$f5, 187($3)
 	sf	$f4, 188($3)
 	sf	$f1, 189($3)
 	sf	$f3, 190($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 191($3)
 	addi	$3, $3, 192
@@ -2248,20 +2208,19 @@ fle.87585:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 186($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.87596
-fle.87595:
+	j	fle_cont.88086
+fle.88085:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f1, $f3, $f1
 	lf	$f3, 3388($0) # 0.500000
 	lf	$f4, 3387($0) # 0.041664
 	lf	$f5, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f2, 186($3)
 	sf	$f5, 193($3)
 	sf	$f4, 194($3)
 	sf	$f1, 195($3)
 	sf	$f3, 196($3)
-	mov	$2, $5
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 197($3)
 	addi	$3, $3, 198
@@ -2299,21 +2258,20 @@ fle.87595:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 186($3)
 	fmul	$f0, $f1, $f0
-fle_cont.87596:
-	j	fle_cont.87594
-fle.87593:
+fle_cont.88086:
+	j	fle_cont.88084
+fle.88083:
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f1, fle.87597
+	bltf	$f3, $f1, fle.88087
 	lf	$f3, 3391($0) # 0.166667
 	lf	$f4, 3390($0) # 0.008333
 	lf	$f5, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f2, 186($3)
 	sf	$f5, 199($3)
 	sf	$f4, 200($3)
 	sf	$f1, 201($3)
 	sf	$f3, 202($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 203($3)
 	addi	$3, $3, 204
@@ -2351,20 +2309,19 @@ fle.87593:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 186($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.87598
-fle.87597:
+	j	fle_cont.88088
+fle.88087:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f1, $f3, $f1
 	lf	$f3, 3388($0) # 0.500000
 	lf	$f4, 3387($0) # 0.041664
 	lf	$f5, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f2, 186($3)
 	sf	$f5, 205($3)
 	sf	$f4, 206($3)
 	sf	$f1, 207($3)
 	sf	$f3, 208($3)
-	mov	$2, $5
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 209($3)
 	addi	$3, $3, 210
@@ -2402,17 +2359,17 @@ fle.87597:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 186($3)
 	fmul	$f0, $f1, $f0
-fle_cont.87598:
-fle_cont.87594:
-fle_cont.87586:
+fle_cont.88088:
+fle_cont.88084:
+fle_cont.88076:
 	lw	$2, 11($3)
 	lf	$f1, 2($2)
-	bltf	$f30, $f1, fle.87599
+	bltf	$f30, $f1, fle.88089
 	movf	$f2, $f29
-	j	fle_cont.87600
-fle.87599:
+	j	fle_cont.88090
+fle.88089:
 	movf	$f2, $f28
-fle_cont.87600:
+fle_cont.88090:
 	fmul	$f1, $f2, $f1
 	lf	$f2, 3395($0) # 6.283185
 	fdiv	$f3, $f1, $f2
@@ -2420,22 +2377,21 @@ fle_cont.87600:
 	fmul	$f2, $f3, $f2
 	fsub	$f1, $f1, $f2
 	sf	$f0, 211($3)
-	bltf	$f1, $f31, fle.87601
+	bltf	$f1, $f31, fle.88091
 	fsub	$f1, $f1, $f31
 	lf	$f2, 3393($0) # 1.570796
-	bltf	$f1, $f2, fle.87603
+	bltf	$f1, $f2, fle.88093
 	fsub	$f1, $f31, $f1
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f1, fle.87605
+	bltf	$f2, $f1, fle.88095
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f4, 212($3)
 	sf	$f3, 213($3)
 	sf	$f1, 214($3)
 	sf	$f2, 215($3)
-	mov	$2, $5
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 216($3)
 	addi	$3, $3, 217
@@ -2472,19 +2428,18 @@ fle_cont.87600:
 	lf	$f1, 217($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-	j	fle_cont.87606
-fle.87605:
+	j	fle_cont.88096
+fle.88095:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f1, $f2, $f1
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f4, 218($3)
 	sf	$f3, 219($3)
 	sf	$f1, 220($3)
 	sf	$f2, 221($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 222($3)
 	addi	$3, $3, 223
@@ -2521,20 +2476,19 @@ fle.87605:
 	lf	$f1, 223($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-fle_cont.87606:
-	j	fle_cont.87604
-fle.87603:
+fle_cont.88096:
+	j	fle_cont.88094
+fle.88093:
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f1, fle.87607
+	bltf	$f2, $f1, fle.88097
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f4, 224($3)
 	sf	$f3, 225($3)
 	sf	$f1, 226($3)
 	sf	$f2, 227($3)
-	mov	$2, $5
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 228($3)
 	addi	$3, $3, 229
@@ -2571,19 +2525,18 @@ fle.87603:
 	lf	$f1, 229($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-	j	fle_cont.87608
-fle.87607:
+	j	fle_cont.88098
+fle.88097:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f1, $f2, $f1
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f4, 230($3)
 	sf	$f3, 231($3)
 	sf	$f1, 232($3)
 	sf	$f2, 233($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 234($3)
 	addi	$3, $3, 235
@@ -2620,24 +2573,23 @@ fle.87607:
 	lf	$f1, 235($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-fle_cont.87608:
-fle_cont.87604:
-	j	fle_cont.87602
-fle.87601:
+fle_cont.88098:
+fle_cont.88094:
+	j	fle_cont.88092
+fle.88091:
 	lf	$f2, 3393($0) # 1.570796
-	bltf	$f1, $f2, fle.87609
+	bltf	$f1, $f2, fle.88099
 	fsub	$f1, $f31, $f1
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f1, fle.87611
+	bltf	$f2, $f1, fle.88101
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f4, 236($3)
 	sf	$f3, 237($3)
 	sf	$f1, 238($3)
 	sf	$f2, 239($3)
-	mov	$2, $5
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 240($3)
 	addi	$3, $3, 241
@@ -2674,19 +2626,18 @@ fle.87601:
 	lf	$f1, 241($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-	j	fle_cont.87612
-fle.87611:
+	j	fle_cont.88102
+fle.88101:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f1, $f2, $f1
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f4, 242($3)
 	sf	$f3, 243($3)
 	sf	$f1, 244($3)
 	sf	$f2, 245($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 246($3)
 	addi	$3, $3, 247
@@ -2723,20 +2674,19 @@ fle.87611:
 	lf	$f1, 247($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-fle_cont.87612:
-	j	fle_cont.87610
-fle.87609:
+fle_cont.88102:
+	j	fle_cont.88100
+fle.88099:
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f1, fle.87613
+	bltf	$f2, $f1, fle.88103
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f4, 248($3)
 	sf	$f3, 249($3)
 	sf	$f1, 250($3)
 	sf	$f2, 251($3)
-	mov	$2, $5
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 252($3)
 	addi	$3, $3, 253
@@ -2773,19 +2723,18 @@ fle.87609:
 	lf	$f1, 253($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-	j	fle_cont.87614
-fle.87613:
+	j	fle_cont.88104
+fle.88103:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f1, $f2, $f1
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f4, 254($3)
 	sf	$f3, 255($3)
 	sf	$f1, 256($3)
 	sf	$f2, 257($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 258($3)
 	addi	$3, $3, 259
@@ -2822,17 +2771,17 @@ fle.87613:
 	lf	$f1, 259($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-fle_cont.87614:
-fle_cont.87610:
-fle_cont.87602:
+fle_cont.88104:
+fle_cont.88100:
+fle_cont.88092:
 	lw	$2, 11($3)
 	lf	$f1, 2($2)
-	bltf	$f30, $f1, fle.87615
+	bltf	$f30, $f1, fle.88105
 	movf	$f2, $f29
-	j	fle_cont.87616
-fle.87615:
+	j	fle_cont.88106
+fle.88105:
 	movf	$f2, $f28
-fle_cont.87616:
+fle_cont.88106:
 	fmul	$f1, $f2, $f1
 	lf	$f3, 3395($0) # 6.283185
 	fdiv	$f4, $f1, $f3
@@ -2840,24 +2789,23 @@ fle_cont.87616:
 	fmul	$f3, $f4, $f3
 	fsub	$f1, $f1, $f3
 	sf	$f0, 260($3)
-	bltf	$f1, $f31, fle.87617
+	bltf	$f1, $f31, fle.88107
 	fsub	$f1, $f1, $f31
 	fneg	$f2, $f2
 	lf	$f3, 3393($0) # 1.570796
-	bltf	$f1, $f3, fle.87619
+	bltf	$f1, $f3, fle.88109
 	fsub	$f1, $f31, $f1
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f1, fle.87621
+	bltf	$f3, $f1, fle.88111
 	lf	$f3, 3391($0) # 0.166667
 	lf	$f4, 3390($0) # 0.008333
 	lf	$f5, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f2, 261($3)
 	sf	$f5, 262($3)
 	sf	$f4, 263($3)
 	sf	$f1, 264($3)
 	sf	$f3, 265($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 266($3)
 	addi	$3, $3, 267
@@ -2895,20 +2843,19 @@ fle_cont.87616:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 261($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.87622
-fle.87621:
+	j	fle_cont.88112
+fle.88111:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f1, $f3, $f1
 	lf	$f3, 3388($0) # 0.500000
 	lf	$f4, 3387($0) # 0.041664
 	lf	$f5, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f2, 261($3)
 	sf	$f5, 268($3)
 	sf	$f4, 269($3)
 	sf	$f1, 270($3)
 	sf	$f3, 271($3)
-	mov	$2, $5
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 272($3)
 	addi	$3, $3, 273
@@ -2946,21 +2893,20 @@ fle.87621:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 261($3)
 	fmul	$f0, $f1, $f0
-fle_cont.87622:
-	j	fle_cont.87620
-fle.87619:
+fle_cont.88112:
+	j	fle_cont.88110
+fle.88109:
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f1, fle.87623
+	bltf	$f3, $f1, fle.88113
 	lf	$f3, 3391($0) # 0.166667
 	lf	$f4, 3390($0) # 0.008333
 	lf	$f5, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f2, 261($3)
 	sf	$f5, 274($3)
 	sf	$f4, 275($3)
 	sf	$f1, 276($3)
 	sf	$f3, 277($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 278($3)
 	addi	$3, $3, 279
@@ -2998,20 +2944,19 @@ fle.87619:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 261($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.87624
-fle.87623:
+	j	fle_cont.88114
+fle.88113:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f1, $f3, $f1
 	lf	$f3, 3388($0) # 0.500000
 	lf	$f4, 3387($0) # 0.041664
 	lf	$f5, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f2, 261($3)
 	sf	$f5, 280($3)
 	sf	$f4, 281($3)
 	sf	$f1, 282($3)
 	sf	$f3, 283($3)
-	mov	$2, $5
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 284($3)
 	addi	$3, $3, 285
@@ -3049,25 +2994,24 @@ fle.87623:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 261($3)
 	fmul	$f0, $f1, $f0
-fle_cont.87624:
-fle_cont.87620:
-	j	fle_cont.87618
-fle.87617:
+fle_cont.88114:
+fle_cont.88110:
+	j	fle_cont.88108
+fle.88107:
 	lf	$f3, 3393($0) # 1.570796
-	bltf	$f1, $f3, fle.87625
+	bltf	$f1, $f3, fle.88115
 	fsub	$f1, $f31, $f1
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f1, fle.87627
+	bltf	$f3, $f1, fle.88117
 	lf	$f3, 3391($0) # 0.166667
 	lf	$f4, 3390($0) # 0.008333
 	lf	$f5, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f2, 286($3)
 	sf	$f5, 287($3)
 	sf	$f4, 288($3)
 	sf	$f1, 289($3)
 	sf	$f3, 290($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 291($3)
 	addi	$3, $3, 292
@@ -3105,20 +3049,19 @@ fle.87617:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 286($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.87628
-fle.87627:
+	j	fle_cont.88118
+fle.88117:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f1, $f3, $f1
 	lf	$f3, 3388($0) # 0.500000
 	lf	$f4, 3387($0) # 0.041664
 	lf	$f5, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f2, 286($3)
 	sf	$f5, 293($3)
 	sf	$f4, 294($3)
 	sf	$f1, 295($3)
 	sf	$f3, 296($3)
-	mov	$2, $5
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 297($3)
 	addi	$3, $3, 298
@@ -3156,21 +3099,20 @@ fle.87627:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 286($3)
 	fmul	$f0, $f1, $f0
-fle_cont.87628:
-	j	fle_cont.87626
-fle.87625:
+fle_cont.88118:
+	j	fle_cont.88116
+fle.88115:
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f1, fle.87629
+	bltf	$f3, $f1, fle.88119
 	lf	$f3, 3391($0) # 0.166667
 	lf	$f4, 3390($0) # 0.008333
 	lf	$f5, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f2, 286($3)
 	sf	$f5, 299($3)
 	sf	$f4, 300($3)
 	sf	$f1, 301($3)
 	sf	$f3, 302($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 303($3)
 	addi	$3, $3, 304
@@ -3208,20 +3150,19 @@ fle.87625:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 286($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.87630
-fle.87629:
+	j	fle_cont.88120
+fle.88119:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f1, $f3, $f1
 	lf	$f3, 3388($0) # 0.500000
 	lf	$f4, 3387($0) # 0.041664
 	lf	$f5, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f2, 286($3)
 	sf	$f5, 305($3)
 	sf	$f4, 306($3)
 	sf	$f1, 307($3)
 	sf	$f3, 308($3)
-	mov	$2, $5
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 309($3)
 	addi	$3, $3, 310
@@ -3259,9 +3200,9 @@ fle.87629:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 286($3)
 	fmul	$f0, $f1, $f0
-fle_cont.87630:
-fle_cont.87626:
-fle_cont.87618:
+fle_cont.88120:
+fle_cont.88116:
+fle_cont.88108:
 	lf	$f1, 260($3)
 	lf	$f2, 160($3)
 	fmul	$f3, $f2, $f1
@@ -3353,33 +3294,32 @@ fle_cont.87618:
 	fadd	$f1, $f2, $f1
 	fmul	$f0, $f0, $f1
 	sf	$f0, 2($2)
-eq_cont.87534:
+eq_cont.88024:
 	mov	$2, $1
-eq_cont.87486:
-	bne	$2, $0, eq_else.87631
+eq_cont.87976:
+	bne	$2, $0, eq_else.88121
 	lw	$2, 0($3)
 	sw	$2, 3000($0)
 	jr $31
-eq_else.87631:
+eq_else.88121:
 	lw	$2, 0($3)
 	addi	$2, $2, 1
 	addi	$30, $0, 60
-	bge	$2, $30, ge.87633
+	bge	$2, $30, ge.88123
 	in	$5
 	sw	$2, 311($3)
-	bne	$5, $28, eq_else.87634
+	bne	$5, $28, eq_else.88124
 	mov	$2, $0
-	j	eq_cont.87635
-eq_else.87634:
+	j	eq_cont.88125
+eq_else.88124:
 	in	$6
 	in	$7
 	in	$8
-	addi	$9, $0, 3
 	sw	$5, 312($3)
 	sw	$7, 313($3)
 	sw	$6, 314($3)
 	sw	$8, 315($3)
-	mov	$2, $9
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 316($3)
 	addi	$3, $3, 317
@@ -3392,9 +3332,8 @@ eq_else.87634:
 	sf	$f0, 1($2)
 	inf	$f0
 	sf	$f0, 2($2)
-	addi	$5, $0, 3
 	sw	$2, 316($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 317($3)
 	addi	$3, $3, 318
@@ -3409,10 +3348,9 @@ eq_else.87634:
 	sf	$f0, 2($2)
 	inf	$f0
 	sltf	$5, $f0, $f30
-	addi	$6, $0, 2
 	sw	$2, 317($3)
 	sw	$5, 318($3)
-	mov	$2, $6
+	mov	$2, $26
 	movf	$f0, $f30
 	sw	$31, 319($3)
 	addi	$3, $3, 320
@@ -3423,9 +3361,8 @@ eq_else.87634:
 	sf	$f0, 0($2)
 	inf	$f0
 	sf	$f0, 1($2)
-	addi	$5, $0, 3
 	sw	$2, 319($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 320($3)
 	addi	$3, $3, 321
@@ -3438,9 +3375,8 @@ eq_else.87634:
 	sf	$f0, 1($2)
 	inf	$f0
 	sf	$f0, 2($2)
-	addi	$5, $0, 3
 	sw	$2, 320($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 321($3)
 	addi	$3, $3, 322
@@ -3448,9 +3384,9 @@ eq_else.87634:
 	addi	$3, $3, -322
 	lw	$31, 321($3)
 	lw	$5, 315($3)
-	bne	$5, $0, eq_else.87636
-	j	eq_cont.87637
-eq_else.87636:
+	bne	$5, $0, eq_else.88126
+	j	eq_cont.88127
+eq_else.88126:
 	inf	$f0
 	lf	$f1, 3397($0) # 0.017453
 	fmul	$f0, $f0, $f1
@@ -3463,15 +3399,15 @@ eq_else.87636:
 	lf	$f1, 3397($0) # 0.017453
 	fmul	$f0, $f0, $f1
 	sf	$f0, 2($2)
-eq_cont.87637:
+eq_cont.88127:
 	lw	$6, 314($3)
 	addi	$30, $0, 2
-	bne	$6, $30, eq_else.87638
+	bne	$6, $30, eq_else.88128
 	mov	$7, $1
-	j	eq_cont.87639
-eq_else.87638:
+	j	eq_cont.88129
+eq_else.88128:
 	lw	$7, 318($3)
-eq_cont.87639:
+eq_cont.88129:
 	addi	$8, $0, 4
 	sw	$7, 321($3)
 	sw	$2, 322($3)
@@ -3508,117 +3444,117 @@ eq_cont.87639:
 	lw	$9, 311($3)
 	sw	$5, 3001($9)
 	addi	$30, $0, 3
-	bne	$8, $30, eq_else.87640
+	bne	$8, $30, eq_else.88130
 	lf	$f0, 0($6)
-	beqf	$f0, $f30, feq.87642
+	beqf	$f0, $f30, feq.88132
 	mov	$5, $0
-	j	feq_cont.87643
-feq.87642:
+	j	feq_cont.88133
+feq.88132:
 	mov	$5, $1
-feq_cont.87643:
-	bne	$5, $0, eq_else.87644
-	beqf	$f0, $f30, feq.87646
+feq_cont.88133:
+	bne	$5, $0, eq_else.88134
+	beqf	$f0, $f30, feq.88136
 	mov	$5, $0
-	j	feq_cont.87647
-feq.87646:
+	j	feq_cont.88137
+feq.88136:
 	mov	$5, $1
-feq_cont.87647:
-	bne	$5, $0, eq_else.87648
+feq_cont.88137:
+	bne	$5, $0, eq_else.88138
 	sltf	$5, $f30, $f0
-	bne	$5, $0, eq_else.87650
+	bne	$5, $0, eq_else.88140
 	movf	$f1, $f29
-	j	eq_cont.87651
-eq_else.87650:
+	j	eq_cont.88141
+eq_else.88140:
 	movf	$f1, $f28
-eq_cont.87651:
-	j	eq_cont.87649
-eq_else.87648:
+eq_cont.88141:
+	j	eq_cont.88139
+eq_else.88138:
 	movf	$f1, $f30
-eq_cont.87649:
+eq_cont.88139:
 	fmul	$f0, $f0, $f0
 	fdiv	$f0, $f1, $f0
-	j	eq_cont.87645
-eq_else.87644:
+	j	eq_cont.88135
+eq_else.88134:
 	movf	$f0, $f30
-eq_cont.87645:
+eq_cont.88135:
 	sf	$f0, 0($6)
 	lf	$f0, 1($6)
-	beqf	$f0, $f30, feq.87652
+	beqf	$f0, $f30, feq.88142
 	mov	$5, $0
-	j	feq_cont.87653
-feq.87652:
+	j	feq_cont.88143
+feq.88142:
 	mov	$5, $1
-feq_cont.87653:
-	bne	$5, $0, eq_else.87654
-	beqf	$f0, $f30, feq.87656
+feq_cont.88143:
+	bne	$5, $0, eq_else.88144
+	beqf	$f0, $f30, feq.88146
 	mov	$5, $0
-	j	feq_cont.87657
-feq.87656:
+	j	feq_cont.88147
+feq.88146:
 	mov	$5, $1
-feq_cont.87657:
-	bne	$5, $0, eq_else.87658
+feq_cont.88147:
+	bne	$5, $0, eq_else.88148
 	sltf	$5, $f30, $f0
-	bne	$5, $0, eq_else.87660
+	bne	$5, $0, eq_else.88150
 	movf	$f1, $f29
-	j	eq_cont.87661
-eq_else.87660:
+	j	eq_cont.88151
+eq_else.88150:
 	movf	$f1, $f28
-eq_cont.87661:
-	j	eq_cont.87659
-eq_else.87658:
+eq_cont.88151:
+	j	eq_cont.88149
+eq_else.88148:
 	movf	$f1, $f30
-eq_cont.87659:
+eq_cont.88149:
 	fmul	$f0, $f0, $f0
 	fdiv	$f0, $f1, $f0
-	j	eq_cont.87655
-eq_else.87654:
+	j	eq_cont.88145
+eq_else.88144:
 	movf	$f0, $f30
-eq_cont.87655:
+eq_cont.88145:
 	sf	$f0, 1($6)
 	lf	$f0, 2($6)
-	beqf	$f0, $f30, feq.87662
+	beqf	$f0, $f30, feq.88152
 	mov	$5, $0
-	j	feq_cont.87663
-feq.87662:
+	j	feq_cont.88153
+feq.88152:
 	mov	$5, $1
-feq_cont.87663:
-	bne	$5, $0, eq_else.87664
-	beqf	$f0, $f30, feq.87666
+feq_cont.88153:
+	bne	$5, $0, eq_else.88154
+	beqf	$f0, $f30, feq.88156
 	mov	$5, $0
-	j	feq_cont.87667
-feq.87666:
+	j	feq_cont.88157
+feq.88156:
 	mov	$5, $1
-feq_cont.87667:
-	bne	$5, $0, eq_else.87668
+feq_cont.88157:
+	bne	$5, $0, eq_else.88158
 	sltf	$5, $f30, $f0
-	bne	$5, $0, eq_else.87670
+	bne	$5, $0, eq_else.88160
 	movf	$f1, $f29
-	j	eq_cont.87671
-eq_else.87670:
+	j	eq_cont.88161
+eq_else.88160:
 	movf	$f1, $f28
-eq_cont.87671:
-	j	eq_cont.87669
-eq_else.87668:
+eq_cont.88161:
+	j	eq_cont.88159
+eq_else.88158:
 	movf	$f1, $f30
-eq_cont.87669:
+eq_cont.88159:
 	fmul	$f0, $f0, $f0
 	fdiv	$f0, $f1, $f0
-	j	eq_cont.87665
-eq_else.87664:
+	j	eq_cont.88155
+eq_else.88154:
 	movf	$f0, $f30
-eq_cont.87665:
+eq_cont.88155:
 	sf	$f0, 2($6)
-	j	eq_cont.87641
-eq_else.87640:
+	j	eq_cont.88131
+eq_else.88130:
 	addi	$30, $0, 2
-	bne	$8, $30, eq_else.87672
+	bne	$8, $30, eq_else.88162
 	lw	$5, 318($3)
-	bne	$5, $0, eq_else.87674
+	bne	$5, $0, eq_else.88164
 	mov	$5, $1
-	j	eq_cont.87675
-eq_else.87674:
+	j	eq_cont.88165
+eq_else.88164:
 	mov	$5, $0
-eq_cont.87675:
+eq_cont.88165:
 	lf	$f0, 0($6)
 	fmul	$f0, $f0, $f0
 	lf	$f1, 1($6)
@@ -3628,23 +3564,23 @@ eq_cont.87675:
 	fmul	$f1, $f1, $f1
 	fadd	$f0, $f0, $f1
 	sqrt	$f0, $f0
-	beqf	$f0, $f30, feq.87676
+	beqf	$f0, $f30, feq.88166
 	mov	$8, $0
-	j	feq_cont.87677
-feq.87676:
+	j	feq_cont.88167
+feq.88166:
 	mov	$8, $1
-feq_cont.87677:
-	bne	$8, $0, eq_else.87678
-	bne	$5, $0, eq_else.87680
+feq_cont.88167:
+	bne	$8, $0, eq_else.88168
+	bne	$5, $0, eq_else.88170
 	fdiv	$f0, $f28, $f0
-	j	eq_cont.87681
-eq_else.87680:
+	j	eq_cont.88171
+eq_else.88170:
 	fdiv	$f0, $f29, $f0
-eq_cont.87681:
-	j	eq_cont.87679
-eq_else.87678:
+eq_cont.88171:
+	j	eq_cont.88169
+eq_else.88168:
 	movf	$f0, $f28
-eq_cont.87679:
+eq_cont.88169:
 	lf	$f1, 0($6)
 	fmul	$f1, $f1, $f0
 	sf	$f1, 0($6)
@@ -3654,33 +3590,33 @@ eq_cont.87679:
 	lf	$f1, 2($6)
 	fmul	$f0, $f1, $f0
 	sf	$f0, 2($6)
-	j	eq_cont.87673
-eq_else.87672:
-eq_cont.87673:
-eq_cont.87641:
-	bne	$7, $0, eq_else.87682
-	j	eq_cont.87683
-eq_else.87682:
+	j	eq_cont.88163
+eq_else.88162:
+eq_cont.88163:
+eq_cont.88131:
+	bne	$7, $0, eq_else.88172
+	j	eq_cont.88173
+eq_else.88172:
 	lf	$f0, 0($2)
-	bltf	$f30, $f0, fle.87684
+	bltf	$f30, $f0, fle.88174
 	movf	$f1, $f29
-	j	fle_cont.87685
-fle.87684:
+	j	fle_cont.88175
+fle.88174:
 	movf	$f1, $f28
-fle_cont.87685:
+fle_cont.88175:
 	fmul	$f0, $f1, $f0
 	lf	$f1, 3395($0) # 6.283185
 	fdiv	$f2, $f0, $f1
 	floor	$f2, $f2
 	fmul	$f1, $f2, $f1
 	fsub	$f0, $f0, $f1
-	bltf	$f0, $f31, fle.87686
+	bltf	$f0, $f31, fle.88176
 	fsub	$f0, $f0, $f31
 	lf	$f1, 3393($0) # 1.570796
-	bltf	$f0, $f1, fle.87688
+	bltf	$f0, $f1, fle.88178
 	fsub	$f0, $f31, $f0
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.87690
+	bltf	$f1, $f0, fle.88180
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
@@ -3703,8 +3639,8 @@ fle_cont.87685:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-	j	fle_cont.87691
-fle.87690:
+	j	fle_cont.88181
+fle.88180:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
@@ -3732,11 +3668,11 @@ fle.87690:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-fle_cont.87691:
-	j	fle_cont.87689
-fle.87688:
+fle_cont.88181:
+	j	fle_cont.88179
+fle.88178:
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.87692
+	bltf	$f1, $f0, fle.88182
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
@@ -3759,8 +3695,8 @@ fle.87688:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-	j	fle_cont.87693
-fle.87692:
+	j	fle_cont.88183
+fle.88182:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
@@ -3788,15 +3724,15 @@ fle.87692:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-fle_cont.87693:
-fle_cont.87689:
-	j	fle_cont.87687
-fle.87686:
+fle_cont.88183:
+fle_cont.88179:
+	j	fle_cont.88177
+fle.88176:
 	lf	$f1, 3393($0) # 1.570796
-	bltf	$f0, $f1, fle.87694
+	bltf	$f0, $f1, fle.88184
 	fsub	$f0, $f31, $f0
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.87696
+	bltf	$f1, $f0, fle.88186
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
@@ -3819,8 +3755,8 @@ fle.87686:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-	j	fle_cont.87697
-fle.87696:
+	j	fle_cont.88187
+fle.88186:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
@@ -3848,11 +3784,11 @@ fle.87696:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-fle_cont.87697:
-	j	fle_cont.87695
-fle.87694:
+fle_cont.88187:
+	j	fle_cont.88185
+fle.88184:
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.87698
+	bltf	$f1, $f0, fle.88188
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
@@ -3875,8 +3811,8 @@ fle.87694:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-	j	fle_cont.87699
-fle.87698:
+	j	fle_cont.88189
+fle.88188:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
@@ -3904,30 +3840,30 @@ fle.87698:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-fle_cont.87699:
-fle_cont.87695:
-fle_cont.87687:
+fle_cont.88189:
+fle_cont.88185:
+fle_cont.88177:
 	lf	$f1, 0($2)
-	bltf	$f30, $f1, fle.87700
+	bltf	$f30, $f1, fle.88190
 	movf	$f2, $f29
-	j	fle_cont.87701
-fle.87700:
+	j	fle_cont.88191
+fle.88190:
 	movf	$f2, $f28
-fle_cont.87701:
+fle_cont.88191:
 	fmul	$f1, $f2, $f1
 	lf	$f3, 3395($0) # 6.283185
 	fdiv	$f4, $f1, $f3
 	floor	$f4, $f4
 	fmul	$f3, $f4, $f3
 	fsub	$f1, $f1, $f3
-	bltf	$f1, $f31, fle.87702
+	bltf	$f1, $f31, fle.88192
 	fsub	$f1, $f1, $f31
 	fneg	$f2, $f2
 	lf	$f3, 3393($0) # 1.570796
-	bltf	$f1, $f3, fle.87704
+	bltf	$f1, $f3, fle.88194
 	fsub	$f1, $f31, $f1
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f1, fle.87706
+	bltf	$f3, $f1, fle.88196
 	lf	$f3, 3391($0) # 0.166667
 	lf	$f4, 3390($0) # 0.008333
 	lf	$f5, 3389($0) # 0.000196
@@ -3953,8 +3889,8 @@ fle_cont.87701:
 	fmul	$f1, $f1, $f5
 	fsub	$f1, $f3, $f1
 	fmul	$f1, $f2, $f1
-	j	fle_cont.87707
-fle.87706:
+	j	fle_cont.88197
+fle.88196:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f1, $f3, $f1
 	lf	$f3, 3388($0) # 0.500000
@@ -3979,11 +3915,11 @@ fle.87706:
 	fmul	$f1, $f1, $f5
 	fsub	$f1, $f3, $f1
 	fmul	$f1, $f2, $f1
-fle_cont.87707:
-	j	fle_cont.87705
-fle.87704:
+fle_cont.88197:
+	j	fle_cont.88195
+fle.88194:
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f1, fle.87708
+	bltf	$f3, $f1, fle.88198
 	lf	$f3, 3391($0) # 0.166667
 	lf	$f4, 3390($0) # 0.008333
 	lf	$f5, 3389($0) # 0.000196
@@ -4009,8 +3945,8 @@ fle.87704:
 	fmul	$f1, $f1, $f5
 	fsub	$f1, $f3, $f1
 	fmul	$f1, $f2, $f1
-	j	fle_cont.87709
-fle.87708:
+	j	fle_cont.88199
+fle.88198:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f1, $f3, $f1
 	lf	$f3, 3388($0) # 0.500000
@@ -4035,15 +3971,15 @@ fle.87708:
 	fmul	$f1, $f1, $f5
 	fsub	$f1, $f3, $f1
 	fmul	$f1, $f2, $f1
-fle_cont.87709:
-fle_cont.87705:
-	j	fle_cont.87703
-fle.87702:
+fle_cont.88199:
+fle_cont.88195:
+	j	fle_cont.88193
+fle.88192:
 	lf	$f3, 3393($0) # 1.570796
-	bltf	$f1, $f3, fle.87710
+	bltf	$f1, $f3, fle.88200
 	fsub	$f1, $f31, $f1
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f1, fle.87712
+	bltf	$f3, $f1, fle.88202
 	lf	$f3, 3391($0) # 0.166667
 	lf	$f4, 3390($0) # 0.008333
 	lf	$f5, 3389($0) # 0.000196
@@ -4069,8 +4005,8 @@ fle.87702:
 	fmul	$f1, $f1, $f5
 	fsub	$f1, $f3, $f1
 	fmul	$f1, $f2, $f1
-	j	fle_cont.87713
-fle.87712:
+	j	fle_cont.88203
+fle.88202:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f1, $f3, $f1
 	lf	$f3, 3388($0) # 0.500000
@@ -4095,11 +4031,11 @@ fle.87712:
 	fmul	$f1, $f1, $f5
 	fsub	$f1, $f3, $f1
 	fmul	$f1, $f2, $f1
-fle_cont.87713:
-	j	fle_cont.87711
-fle.87710:
+fle_cont.88203:
+	j	fle_cont.88201
+fle.88200:
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f1, fle.87714
+	bltf	$f3, $f1, fle.88204
 	lf	$f3, 3391($0) # 0.166667
 	lf	$f4, 3390($0) # 0.008333
 	lf	$f5, 3389($0) # 0.000196
@@ -4125,8 +4061,8 @@ fle.87710:
 	fmul	$f1, $f1, $f5
 	fsub	$f1, $f3, $f1
 	fmul	$f1, $f2, $f1
-	j	fle_cont.87715
-fle.87714:
+	j	fle_cont.88205
+fle.88204:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f1, $f3, $f1
 	lf	$f3, 3388($0) # 0.500000
@@ -4151,29 +4087,29 @@ fle.87714:
 	fmul	$f1, $f1, $f5
 	fsub	$f1, $f3, $f1
 	fmul	$f1, $f2, $f1
-fle_cont.87715:
-fle_cont.87711:
-fle_cont.87703:
+fle_cont.88205:
+fle_cont.88201:
+fle_cont.88193:
 	lf	$f2, 1($2)
-	bltf	$f30, $f2, fle.87716
+	bltf	$f30, $f2, fle.88206
 	movf	$f3, $f29
-	j	fle_cont.87717
-fle.87716:
+	j	fle_cont.88207
+fle.88206:
 	movf	$f3, $f28
-fle_cont.87717:
+fle_cont.88207:
 	fmul	$f2, $f3, $f2
 	lf	$f3, 3395($0) # 6.283185
 	fdiv	$f4, $f2, $f3
 	floor	$f4, $f4
 	fmul	$f3, $f4, $f3
 	fsub	$f2, $f2, $f3
-	bltf	$f2, $f31, fle.87718
+	bltf	$f2, $f31, fle.88208
 	fsub	$f2, $f2, $f31
 	lf	$f3, 3393($0) # 1.570796
-	bltf	$f2, $f3, fle.87720
+	bltf	$f2, $f3, fle.88210
 	fsub	$f2, $f31, $f2
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f2, fle.87722
+	bltf	$f3, $f2, fle.88212
 	lf	$f3, 3388($0) # 0.500000
 	lf	$f4, 3387($0) # 0.041664
 	lf	$f5, 3386($0) # 0.001370
@@ -4196,8 +4132,8 @@ fle_cont.87717:
 	fmul	$f2, $f2, $f5
 	fsub	$f2, $f3, $f2
 	fmul	$f2, $f28, $f2
-	j	fle_cont.87723
-fle.87722:
+	j	fle_cont.88213
+fle.88212:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f2, $f3, $f2
 	lf	$f3, 3391($0) # 0.166667
@@ -4225,11 +4161,11 @@ fle.87722:
 	fmul	$f2, $f2, $f5
 	fsub	$f2, $f3, $f2
 	fmul	$f2, $f28, $f2
-fle_cont.87723:
-	j	fle_cont.87721
-fle.87720:
+fle_cont.88213:
+	j	fle_cont.88211
+fle.88210:
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f2, fle.87724
+	bltf	$f3, $f2, fle.88214
 	lf	$f3, 3388($0) # 0.500000
 	lf	$f4, 3387($0) # 0.041664
 	lf	$f5, 3386($0) # 0.001370
@@ -4252,8 +4188,8 @@ fle.87720:
 	fmul	$f2, $f2, $f5
 	fsub	$f2, $f3, $f2
 	fmul	$f2, $f29, $f2
-	j	fle_cont.87725
-fle.87724:
+	j	fle_cont.88215
+fle.88214:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f2, $f3, $f2
 	lf	$f3, 3391($0) # 0.166667
@@ -4281,15 +4217,15 @@ fle.87724:
 	fmul	$f2, $f2, $f5
 	fsub	$f2, $f3, $f2
 	fmul	$f2, $f29, $f2
-fle_cont.87725:
-fle_cont.87721:
-	j	fle_cont.87719
-fle.87718:
+fle_cont.88215:
+fle_cont.88211:
+	j	fle_cont.88209
+fle.88208:
 	lf	$f3, 3393($0) # 1.570796
-	bltf	$f2, $f3, fle.87726
+	bltf	$f2, $f3, fle.88216
 	fsub	$f2, $f31, $f2
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f2, fle.87728
+	bltf	$f3, $f2, fle.88218
 	lf	$f3, 3388($0) # 0.500000
 	lf	$f4, 3387($0) # 0.041664
 	lf	$f5, 3386($0) # 0.001370
@@ -4312,8 +4248,8 @@ fle.87718:
 	fmul	$f2, $f2, $f5
 	fsub	$f2, $f3, $f2
 	fmul	$f2, $f29, $f2
-	j	fle_cont.87729
-fle.87728:
+	j	fle_cont.88219
+fle.88218:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f2, $f3, $f2
 	lf	$f3, 3391($0) # 0.166667
@@ -4341,11 +4277,11 @@ fle.87728:
 	fmul	$f2, $f2, $f5
 	fsub	$f2, $f3, $f2
 	fmul	$f2, $f29, $f2
-fle_cont.87729:
-	j	fle_cont.87727
-fle.87726:
+fle_cont.88219:
+	j	fle_cont.88217
+fle.88216:
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f2, fle.87730
+	bltf	$f3, $f2, fle.88220
 	lf	$f3, 3388($0) # 0.500000
 	lf	$f4, 3387($0) # 0.041664
 	lf	$f5, 3386($0) # 0.001370
@@ -4368,8 +4304,8 @@ fle.87726:
 	fmul	$f2, $f2, $f5
 	fsub	$f2, $f3, $f2
 	fmul	$f2, $f28, $f2
-	j	fle_cont.87731
-fle.87730:
+	j	fle_cont.88221
+fle.88220:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f2, $f3, $f2
 	lf	$f3, 3391($0) # 0.166667
@@ -4397,30 +4333,30 @@ fle.87730:
 	fmul	$f2, $f2, $f5
 	fsub	$f2, $f3, $f2
 	fmul	$f2, $f28, $f2
-fle_cont.87731:
-fle_cont.87727:
-fle_cont.87719:
+fle_cont.88221:
+fle_cont.88217:
+fle_cont.88209:
 	lf	$f3, 1($2)
-	bltf	$f30, $f3, fle.87732
+	bltf	$f30, $f3, fle.88222
 	movf	$f4, $f29
-	j	fle_cont.87733
-fle.87732:
+	j	fle_cont.88223
+fle.88222:
 	movf	$f4, $f28
-fle_cont.87733:
+fle_cont.88223:
 	fmul	$f3, $f4, $f3
 	lf	$f5, 3395($0) # 6.283185
 	fdiv	$f6, $f3, $f5
 	floor	$f6, $f6
 	fmul	$f5, $f6, $f5
 	fsub	$f3, $f3, $f5
-	bltf	$f3, $f31, fle.87734
+	bltf	$f3, $f31, fle.88224
 	fsub	$f3, $f3, $f31
 	fneg	$f4, $f4
 	lf	$f5, 3393($0) # 1.570796
-	bltf	$f3, $f5, fle.87736
+	bltf	$f3, $f5, fle.88226
 	fsub	$f3, $f31, $f3
 	lf	$f5, 3392($0) # 0.785398
-	bltf	$f5, $f3, fle.87738
+	bltf	$f5, $f3, fle.88228
 	lf	$f5, 3391($0) # 0.166667
 	lf	$f6, 3390($0) # 0.008333
 	lf	$f7, 3389($0) # 0.000196
@@ -4446,8 +4382,8 @@ fle_cont.87733:
 	fmul	$f3, $f3, $f7
 	fsub	$f3, $f5, $f3
 	fmul	$f3, $f4, $f3
-	j	fle_cont.87739
-fle.87738:
+	j	fle_cont.88229
+fle.88228:
 	lf	$f5, 3393($0) # 1.570796
 	fsub	$f3, $f5, $f3
 	lf	$f5, 3388($0) # 0.500000
@@ -4472,11 +4408,11 @@ fle.87738:
 	fmul	$f3, $f3, $f7
 	fsub	$f3, $f5, $f3
 	fmul	$f3, $f4, $f3
-fle_cont.87739:
-	j	fle_cont.87737
-fle.87736:
+fle_cont.88229:
+	j	fle_cont.88227
+fle.88226:
 	lf	$f5, 3392($0) # 0.785398
-	bltf	$f5, $f3, fle.87740
+	bltf	$f5, $f3, fle.88230
 	lf	$f5, 3391($0) # 0.166667
 	lf	$f6, 3390($0) # 0.008333
 	lf	$f7, 3389($0) # 0.000196
@@ -4502,8 +4438,8 @@ fle.87736:
 	fmul	$f3, $f3, $f7
 	fsub	$f3, $f5, $f3
 	fmul	$f3, $f4, $f3
-	j	fle_cont.87741
-fle.87740:
+	j	fle_cont.88231
+fle.88230:
 	lf	$f5, 3393($0) # 1.570796
 	fsub	$f3, $f5, $f3
 	lf	$f5, 3388($0) # 0.500000
@@ -4528,15 +4464,15 @@ fle.87740:
 	fmul	$f3, $f3, $f7
 	fsub	$f3, $f5, $f3
 	fmul	$f3, $f4, $f3
-fle_cont.87741:
-fle_cont.87737:
-	j	fle_cont.87735
-fle.87734:
+fle_cont.88231:
+fle_cont.88227:
+	j	fle_cont.88225
+fle.88224:
 	lf	$f5, 3393($0) # 1.570796
-	bltf	$f3, $f5, fle.87742
+	bltf	$f3, $f5, fle.88232
 	fsub	$f3, $f31, $f3
 	lf	$f5, 3392($0) # 0.785398
-	bltf	$f5, $f3, fle.87744
+	bltf	$f5, $f3, fle.88234
 	lf	$f5, 3391($0) # 0.166667
 	lf	$f6, 3390($0) # 0.008333
 	lf	$f7, 3389($0) # 0.000196
@@ -4562,8 +4498,8 @@ fle.87734:
 	fmul	$f3, $f3, $f7
 	fsub	$f3, $f5, $f3
 	fmul	$f3, $f4, $f3
-	j	fle_cont.87745
-fle.87744:
+	j	fle_cont.88235
+fle.88234:
 	lf	$f5, 3393($0) # 1.570796
 	fsub	$f3, $f5, $f3
 	lf	$f5, 3388($0) # 0.500000
@@ -4588,11 +4524,11 @@ fle.87744:
 	fmul	$f3, $f3, $f7
 	fsub	$f3, $f5, $f3
 	fmul	$f3, $f4, $f3
-fle_cont.87745:
-	j	fle_cont.87743
-fle.87742:
+fle_cont.88235:
+	j	fle_cont.88233
+fle.88232:
 	lf	$f5, 3392($0) # 0.785398
-	bltf	$f5, $f3, fle.87746
+	bltf	$f5, $f3, fle.88236
 	lf	$f5, 3391($0) # 0.166667
 	lf	$f6, 3390($0) # 0.008333
 	lf	$f7, 3389($0) # 0.000196
@@ -4618,8 +4554,8 @@ fle.87742:
 	fmul	$f3, $f3, $f7
 	fsub	$f3, $f5, $f3
 	fmul	$f3, $f4, $f3
-	j	fle_cont.87747
-fle.87746:
+	j	fle_cont.88237
+fle.88236:
 	lf	$f5, 3393($0) # 1.570796
 	fsub	$f3, $f5, $f3
 	lf	$f5, 3388($0) # 0.500000
@@ -4644,29 +4580,29 @@ fle.87746:
 	fmul	$f3, $f3, $f7
 	fsub	$f3, $f5, $f3
 	fmul	$f3, $f4, $f3
-fle_cont.87747:
-fle_cont.87743:
-fle_cont.87735:
+fle_cont.88237:
+fle_cont.88233:
+fle_cont.88225:
 	lf	$f4, 2($2)
-	bltf	$f30, $f4, fle.87748
+	bltf	$f30, $f4, fle.88238
 	movf	$f5, $f29
-	j	fle_cont.87749
-fle.87748:
+	j	fle_cont.88239
+fle.88238:
 	movf	$f5, $f28
-fle_cont.87749:
+fle_cont.88239:
 	fmul	$f4, $f5, $f4
 	lf	$f5, 3395($0) # 6.283185
 	fdiv	$f6, $f4, $f5
 	floor	$f6, $f6
 	fmul	$f5, $f6, $f5
 	fsub	$f4, $f4, $f5
-	bltf	$f4, $f31, fle.87750
+	bltf	$f4, $f31, fle.88240
 	fsub	$f4, $f4, $f31
 	lf	$f5, 3393($0) # 1.570796
-	bltf	$f4, $f5, fle.87752
+	bltf	$f4, $f5, fle.88242
 	fsub	$f4, $f31, $f4
 	lf	$f5, 3392($0) # 0.785398
-	bltf	$f5, $f4, fle.87754
+	bltf	$f5, $f4, fle.88244
 	lf	$f5, 3388($0) # 0.500000
 	lf	$f6, 3387($0) # 0.041664
 	lf	$f7, 3386($0) # 0.001370
@@ -4689,8 +4625,8 @@ fle_cont.87749:
 	fmul	$f4, $f4, $f7
 	fsub	$f4, $f5, $f4
 	fmul	$f4, $f28, $f4
-	j	fle_cont.87755
-fle.87754:
+	j	fle_cont.88245
+fle.88244:
 	lf	$f5, 3393($0) # 1.570796
 	fsub	$f4, $f5, $f4
 	lf	$f5, 3391($0) # 0.166667
@@ -4718,11 +4654,11 @@ fle.87754:
 	fmul	$f4, $f4, $f7
 	fsub	$f4, $f5, $f4
 	fmul	$f4, $f28, $f4
-fle_cont.87755:
-	j	fle_cont.87753
-fle.87752:
+fle_cont.88245:
+	j	fle_cont.88243
+fle.88242:
 	lf	$f5, 3392($0) # 0.785398
-	bltf	$f5, $f4, fle.87756
+	bltf	$f5, $f4, fle.88246
 	lf	$f5, 3388($0) # 0.500000
 	lf	$f6, 3387($0) # 0.041664
 	lf	$f7, 3386($0) # 0.001370
@@ -4745,8 +4681,8 @@ fle.87752:
 	fmul	$f4, $f4, $f7
 	fsub	$f4, $f5, $f4
 	fmul	$f4, $f29, $f4
-	j	fle_cont.87757
-fle.87756:
+	j	fle_cont.88247
+fle.88246:
 	lf	$f5, 3393($0) # 1.570796
 	fsub	$f4, $f5, $f4
 	lf	$f5, 3391($0) # 0.166667
@@ -4774,15 +4710,15 @@ fle.87756:
 	fmul	$f4, $f4, $f7
 	fsub	$f4, $f5, $f4
 	fmul	$f4, $f29, $f4
-fle_cont.87757:
-fle_cont.87753:
-	j	fle_cont.87751
-fle.87750:
+fle_cont.88247:
+fle_cont.88243:
+	j	fle_cont.88241
+fle.88240:
 	lf	$f5, 3393($0) # 1.570796
-	bltf	$f4, $f5, fle.87758
+	bltf	$f4, $f5, fle.88248
 	fsub	$f4, $f31, $f4
 	lf	$f5, 3392($0) # 0.785398
-	bltf	$f5, $f4, fle.87760
+	bltf	$f5, $f4, fle.88250
 	lf	$f5, 3388($0) # 0.500000
 	lf	$f6, 3387($0) # 0.041664
 	lf	$f7, 3386($0) # 0.001370
@@ -4805,8 +4741,8 @@ fle.87750:
 	fmul	$f4, $f4, $f7
 	fsub	$f4, $f5, $f4
 	fmul	$f4, $f29, $f4
-	j	fle_cont.87761
-fle.87760:
+	j	fle_cont.88251
+fle.88250:
 	lf	$f5, 3393($0) # 1.570796
 	fsub	$f4, $f5, $f4
 	lf	$f5, 3391($0) # 0.166667
@@ -4834,11 +4770,11 @@ fle.87760:
 	fmul	$f4, $f4, $f7
 	fsub	$f4, $f5, $f4
 	fmul	$f4, $f29, $f4
-fle_cont.87761:
-	j	fle_cont.87759
-fle.87758:
+fle_cont.88251:
+	j	fle_cont.88249
+fle.88248:
 	lf	$f5, 3392($0) # 0.785398
-	bltf	$f5, $f4, fle.87762
+	bltf	$f5, $f4, fle.88252
 	lf	$f5, 3388($0) # 0.500000
 	lf	$f6, 3387($0) # 0.041664
 	lf	$f7, 3386($0) # 0.001370
@@ -4861,8 +4797,8 @@ fle.87758:
 	fmul	$f4, $f4, $f7
 	fsub	$f4, $f5, $f4
 	fmul	$f4, $f28, $f4
-	j	fle_cont.87763
-fle.87762:
+	j	fle_cont.88253
+fle.88252:
 	lf	$f5, 3393($0) # 1.570796
 	fsub	$f4, $f5, $f4
 	lf	$f5, 3391($0) # 0.166667
@@ -4890,30 +4826,30 @@ fle.87762:
 	fmul	$f4, $f4, $f7
 	fsub	$f4, $f5, $f4
 	fmul	$f4, $f28, $f4
-fle_cont.87763:
-fle_cont.87759:
-fle_cont.87751:
+fle_cont.88253:
+fle_cont.88249:
+fle_cont.88241:
 	lf	$f5, 2($2)
-	bltf	$f30, $f5, fle.87764
+	bltf	$f30, $f5, fle.88254
 	movf	$f6, $f29
-	j	fle_cont.87765
-fle.87764:
+	j	fle_cont.88255
+fle.88254:
 	movf	$f6, $f28
-fle_cont.87765:
+fle_cont.88255:
 	fmul	$f5, $f6, $f5
 	lf	$f7, 3395($0) # 6.283185
 	fdiv	$f8, $f5, $f7
 	floor	$f8, $f8
 	fmul	$f7, $f8, $f7
 	fsub	$f5, $f5, $f7
-	bltf	$f5, $f31, fle.87766
+	bltf	$f5, $f31, fle.88256
 	fsub	$f5, $f5, $f31
 	fneg	$f6, $f6
 	lf	$f7, 3393($0) # 1.570796
-	bltf	$f5, $f7, fle.87768
+	bltf	$f5, $f7, fle.88258
 	fsub	$f5, $f31, $f5
 	lf	$f7, 3392($0) # 0.785398
-	bltf	$f7, $f5, fle.87770
+	bltf	$f7, $f5, fle.88260
 	lf	$f7, 3391($0) # 0.166667
 	lf	$f8, 3390($0) # 0.008333
 	lf	$f9, 3389($0) # 0.000196
@@ -4939,8 +4875,8 @@ fle_cont.87765:
 	fmul	$f5, $f5, $f9
 	fsub	$f5, $f7, $f5
 	fmul	$f5, $f6, $f5
-	j	fle_cont.87771
-fle.87770:
+	j	fle_cont.88261
+fle.88260:
 	lf	$f7, 3393($0) # 1.570796
 	fsub	$f5, $f7, $f5
 	lf	$f7, 3388($0) # 0.500000
@@ -4965,11 +4901,11 @@ fle.87770:
 	fmul	$f5, $f5, $f9
 	fsub	$f5, $f7, $f5
 	fmul	$f5, $f6, $f5
-fle_cont.87771:
-	j	fle_cont.87769
-fle.87768:
+fle_cont.88261:
+	j	fle_cont.88259
+fle.88258:
 	lf	$f7, 3392($0) # 0.785398
-	bltf	$f7, $f5, fle.87772
+	bltf	$f7, $f5, fle.88262
 	lf	$f7, 3391($0) # 0.166667
 	lf	$f8, 3390($0) # 0.008333
 	lf	$f9, 3389($0) # 0.000196
@@ -4995,8 +4931,8 @@ fle.87768:
 	fmul	$f5, $f5, $f9
 	fsub	$f5, $f7, $f5
 	fmul	$f5, $f6, $f5
-	j	fle_cont.87773
-fle.87772:
+	j	fle_cont.88263
+fle.88262:
 	lf	$f7, 3393($0) # 1.570796
 	fsub	$f5, $f7, $f5
 	lf	$f7, 3388($0) # 0.500000
@@ -5021,15 +4957,15 @@ fle.87772:
 	fmul	$f5, $f5, $f9
 	fsub	$f5, $f7, $f5
 	fmul	$f5, $f6, $f5
-fle_cont.87773:
-fle_cont.87769:
-	j	fle_cont.87767
-fle.87766:
+fle_cont.88263:
+fle_cont.88259:
+	j	fle_cont.88257
+fle.88256:
 	lf	$f7, 3393($0) # 1.570796
-	bltf	$f5, $f7, fle.87774
+	bltf	$f5, $f7, fle.88264
 	fsub	$f5, $f31, $f5
 	lf	$f7, 3392($0) # 0.785398
-	bltf	$f7, $f5, fle.87776
+	bltf	$f7, $f5, fle.88266
 	lf	$f7, 3391($0) # 0.166667
 	lf	$f8, 3390($0) # 0.008333
 	lf	$f9, 3389($0) # 0.000196
@@ -5055,8 +4991,8 @@ fle.87766:
 	fmul	$f5, $f5, $f9
 	fsub	$f5, $f7, $f5
 	fmul	$f5, $f6, $f5
-	j	fle_cont.87777
-fle.87776:
+	j	fle_cont.88267
+fle.88266:
 	lf	$f7, 3393($0) # 1.570796
 	fsub	$f5, $f7, $f5
 	lf	$f7, 3388($0) # 0.500000
@@ -5081,11 +5017,11 @@ fle.87776:
 	fmul	$f5, $f5, $f9
 	fsub	$f5, $f7, $f5
 	fmul	$f5, $f6, $f5
-fle_cont.87777:
-	j	fle_cont.87775
-fle.87774:
+fle_cont.88267:
+	j	fle_cont.88265
+fle.88264:
 	lf	$f7, 3392($0) # 0.785398
-	bltf	$f7, $f5, fle.87778
+	bltf	$f7, $f5, fle.88268
 	lf	$f7, 3391($0) # 0.166667
 	lf	$f8, 3390($0) # 0.008333
 	lf	$f9, 3389($0) # 0.000196
@@ -5111,8 +5047,8 @@ fle.87774:
 	fmul	$f5, $f5, $f9
 	fsub	$f5, $f7, $f5
 	fmul	$f5, $f6, $f5
-	j	fle_cont.87779
-fle.87778:
+	j	fle_cont.88269
+fle.88268:
 	lf	$f7, 3393($0) # 1.570796
 	fsub	$f5, $f7, $f5
 	lf	$f7, 3388($0) # 0.500000
@@ -5137,9 +5073,9 @@ fle.87778:
 	fmul	$f5, $f5, $f9
 	fsub	$f5, $f7, $f5
 	fmul	$f5, $f6, $f5
-fle_cont.87779:
-fle_cont.87775:
-fle_cont.87767:
+fle_cont.88269:
+fle_cont.88265:
+fle_cont.88257:
 	fmul	$f6, $f2, $f4
 	fmul	$f7, $f1, $f3
 	fmul	$f7, $f7, $f4
@@ -5224,33 +5160,33 @@ fle_cont.87767:
 	fadd	$f1, $f2, $f1
 	fmul	$f0, $f0, $f1
 	sf	$f0, 2($2)
-eq_cont.87683:
+eq_cont.88173:
 	mov	$2, $1
-eq_cont.87635:
-	bne	$2, $0, eq_else.87780
+eq_cont.88125:
+	bne	$2, $0, eq_else.88270
 	lw	$2, 311($3)
 	sw	$2, 3000($0)
 	jr $31
-eq_else.87780:
+eq_else.88270:
 	lw	$2, 311($3)
 	addi	$2, $2, 1
 	j	read_object.2833
-ge.87633:
+ge.88123:
 	jr $31
-ge.87484:
+ge.87974:
 	jr $31
 read_net_item.2837:
 	in	$5
-	bne	$5, $28, eq_else.87784
+	bne	$5, $28, eq_else.88274
 	addi	$2, $2, 1
 	mov	$5, $28
 	j	min_caml_create_array
-eq_else.87784:
+eq_else.88274:
 	addi	$6, $2, 1
 	in	$7
 	sw	$2, 0($3)
 	sw	$5, 1($3)
-	bne	$7, $28, eq_else.87785
+	bne	$7, $28, eq_else.88275
 	addi	$6, $6, 1
 	mov	$5, $28
 	mov	$2, $6
@@ -5259,13 +5195,13 @@ eq_else.87784:
 	jal	min_caml_create_array
 	addi	$3, $3, -3
 	lw	$31, 2($3)
-	j	eq_cont.87786
-eq_else.87785:
+	j	eq_cont.88276
+eq_else.88275:
 	addi	$8, $6, 1
 	in	$9
 	sw	$6, 2($3)
 	sw	$7, 3($3)
-	bne	$9, $28, eq_else.87787
+	bne	$9, $28, eq_else.88277
 	addi	$8, $8, 1
 	mov	$5, $28
 	mov	$2, $8
@@ -5274,13 +5210,13 @@ eq_else.87785:
 	jal	min_caml_create_array
 	addi	$3, $3, -5
 	lw	$31, 4($3)
-	j	eq_cont.87788
-eq_else.87787:
+	j	eq_cont.88278
+eq_else.88277:
 	addi	$10, $8, 1
 	in	$11
 	sw	$8, 4($3)
 	sw	$9, 5($3)
-	bne	$11, $28, eq_else.87789
+	bne	$11, $28, eq_else.88279
 	addi	$10, $10, 1
 	mov	$5, $28
 	mov	$2, $10
@@ -5289,13 +5225,13 @@ eq_else.87787:
 	jal	min_caml_create_array
 	addi	$3, $3, -7
 	lw	$31, 6($3)
-	j	eq_cont.87790
-eq_else.87789:
+	j	eq_cont.88280
+eq_else.88279:
 	addi	$12, $10, 1
 	in	$13
 	sw	$10, 6($3)
 	sw	$11, 7($3)
-	bne	$13, $28, eq_else.87791
+	bne	$13, $28, eq_else.88281
 	addi	$12, $12, 1
 	mov	$5, $28
 	mov	$2, $12
@@ -5304,13 +5240,13 @@ eq_else.87789:
 	jal	min_caml_create_array
 	addi	$3, $3, -9
 	lw	$31, 8($3)
-	j	eq_cont.87792
-eq_else.87791:
+	j	eq_cont.88282
+eq_else.88281:
 	addi	$14, $12, 1
 	in	$15
 	sw	$12, 8($3)
 	sw	$13, 9($3)
-	bne	$15, $28, eq_else.87793
+	bne	$15, $28, eq_else.88283
 	addi	$14, $14, 1
 	mov	$5, $28
 	mov	$2, $14
@@ -5319,13 +5255,13 @@ eq_else.87791:
 	jal	min_caml_create_array
 	addi	$3, $3, -11
 	lw	$31, 10($3)
-	j	eq_cont.87794
-eq_else.87793:
+	j	eq_cont.88284
+eq_else.88283:
 	addi	$16, $14, 1
 	in	$17
 	sw	$14, 10($3)
 	sw	$15, 11($3)
-	bne	$17, $28, eq_else.87795
+	bne	$17, $28, eq_else.88285
 	addi	$16, $16, 1
 	mov	$5, $28
 	mov	$2, $16
@@ -5334,13 +5270,13 @@ eq_else.87793:
 	jal	min_caml_create_array
 	addi	$3, $3, -13
 	lw	$31, 12($3)
-	j	eq_cont.87796
-eq_else.87795:
+	j	eq_cont.88286
+eq_else.88285:
 	addi	$18, $16, 1
 	in	$19
 	sw	$16, 12($3)
 	sw	$17, 13($3)
-	bne	$19, $28, eq_else.87797
+	bne	$19, $28, eq_else.88287
 	addi	$18, $18, 1
 	mov	$5, $28
 	mov	$2, $18
@@ -5349,8 +5285,8 @@ eq_else.87795:
 	jal	min_caml_create_array
 	addi	$3, $3, -15
 	lw	$31, 14($3)
-	j	eq_cont.87798
-eq_else.87797:
+	j	eq_cont.88288
+eq_else.88287:
 	addi	$20, $18, 1
 	sw	$18, 14($3)
 	sw	$19, 15($3)
@@ -5364,37 +5300,37 @@ eq_else.87797:
 	lw	$6, 15($3)
 	add $30, $2, $5
 	sw	$6, 0($30)
-eq_cont.87798:
+eq_cont.88288:
 	lw	$5, 12($3)
 	lw	$6, 13($3)
 	add $30, $2, $5
 	sw	$6, 0($30)
-eq_cont.87796:
+eq_cont.88286:
 	lw	$5, 10($3)
 	lw	$6, 11($3)
 	add $30, $2, $5
 	sw	$6, 0($30)
-eq_cont.87794:
+eq_cont.88284:
 	lw	$5, 8($3)
 	lw	$6, 9($3)
 	add $30, $2, $5
 	sw	$6, 0($30)
-eq_cont.87792:
+eq_cont.88282:
 	lw	$5, 6($3)
 	lw	$6, 7($3)
 	add $30, $2, $5
 	sw	$6, 0($30)
-eq_cont.87790:
+eq_cont.88280:
 	lw	$5, 4($3)
 	lw	$6, 5($3)
 	add $30, $2, $5
 	sw	$6, 0($30)
-eq_cont.87788:
+eq_cont.88278:
 	lw	$5, 2($3)
 	lw	$6, 3($3)
 	add $30, $2, $5
 	sw	$6, 0($30)
-eq_cont.87786:
+eq_cont.88276:
 	lw	$5, 0($3)
 	lw	$6, 1($3)
 	add $30, $2, $5
@@ -5403,7 +5339,7 @@ eq_cont.87786:
 read_or_network.2839:
 	in	$5
 	sw	$2, 0($3)
-	bne	$5, $28, eq_else.87799
+	bne	$5, $28, eq_else.88289
 	mov	$5, $28
 	mov	$2, $1
 	sw	$31, 1($3)
@@ -5412,37 +5348,35 @@ read_or_network.2839:
 	addi	$3, $3, -2
 	lw	$31, 1($3)
 	mov	$5, $2
-	j	eq_cont.87800
-eq_else.87799:
+	j	eq_cont.88290
+eq_else.88289:
 	in	$6
 	sw	$5, 1($3)
-	bne	$6, $28, eq_else.87801
-	addi	$6, $0, 2
+	bne	$6, $28, eq_else.88291
 	mov	$5, $28
-	mov	$2, $6
+	mov	$2, $26
 	sw	$31, 2($3)
 	addi	$3, $3, 3
 	jal	min_caml_create_array
 	addi	$3, $3, -3
 	lw	$31, 2($3)
-	j	eq_cont.87802
-eq_else.87801:
+	j	eq_cont.88292
+eq_else.88291:
 	in	$7
 	sw	$6, 2($3)
-	bne	$7, $28, eq_else.87803
-	addi	$7, $0, 3
+	bne	$7, $28, eq_else.88293
 	mov	$5, $28
-	mov	$2, $7
+	mov	$2, $27
 	sw	$31, 3($3)
 	addi	$3, $3, 4
 	jal	min_caml_create_array
 	addi	$3, $3, -4
 	lw	$31, 3($3)
-	j	eq_cont.87804
-eq_else.87803:
+	j	eq_cont.88294
+eq_else.88293:
 	in	$8
 	sw	$7, 3($3)
-	bne	$8, $28, eq_else.87805
+	bne	$8, $28, eq_else.88295
 	addi	$8, $0, 4
 	mov	$5, $28
 	mov	$2, $8
@@ -5451,11 +5385,11 @@ eq_else.87803:
 	jal	min_caml_create_array
 	addi	$3, $3, -5
 	lw	$31, 4($3)
-	j	eq_cont.87806
-eq_else.87805:
+	j	eq_cont.88296
+eq_else.88295:
 	in	$9
 	sw	$8, 4($3)
-	bne	$9, $28, eq_else.87807
+	bne	$9, $28, eq_else.88297
 	addi	$9, $0, 5
 	mov	$5, $28
 	mov	$2, $9
@@ -5464,11 +5398,11 @@ eq_else.87805:
 	jal	min_caml_create_array
 	addi	$3, $3, -6
 	lw	$31, 5($3)
-	j	eq_cont.87808
-eq_else.87807:
+	j	eq_cont.88298
+eq_else.88297:
 	in	$10
 	sw	$9, 5($3)
-	bne	$10, $28, eq_else.87809
+	bne	$10, $28, eq_else.88299
 	addi	$10, $0, 6
 	mov	$5, $28
 	mov	$2, $10
@@ -5477,11 +5411,11 @@ eq_else.87807:
 	jal	min_caml_create_array
 	addi	$3, $3, -7
 	lw	$31, 6($3)
-	j	eq_cont.87810
-eq_else.87809:
+	j	eq_cont.88300
+eq_else.88299:
 	in	$11
 	sw	$10, 6($3)
-	bne	$11, $28, eq_else.87811
+	bne	$11, $28, eq_else.88301
 	addi	$11, $0, 7
 	mov	$5, $28
 	mov	$2, $11
@@ -5490,8 +5424,8 @@ eq_else.87809:
 	jal	min_caml_create_array
 	addi	$3, $3, -8
 	lw	$31, 7($3)
-	j	eq_cont.87812
-eq_else.87811:
+	j	eq_cont.88302
+eq_else.88301:
 	addi	$12, $0, 7
 	sw	$11, 7($3)
 	mov	$2, $12
@@ -5502,38 +5436,38 @@ eq_else.87811:
 	lw	$31, 8($3)
 	lw	$5, 7($3)
 	sw	$5, 6($2)
-eq_cont.87812:
+eq_cont.88302:
 	lw	$5, 6($3)
 	sw	$5, 5($2)
-eq_cont.87810:
+eq_cont.88300:
 	lw	$5, 5($3)
 	sw	$5, 4($2)
-eq_cont.87808:
+eq_cont.88298:
 	lw	$5, 4($3)
 	sw	$5, 3($2)
-eq_cont.87806:
+eq_cont.88296:
 	lw	$5, 3($3)
 	sw	$5, 2($2)
-eq_cont.87804:
+eq_cont.88294:
 	lw	$5, 2($3)
 	sw	$5, 1($2)
-eq_cont.87802:
+eq_cont.88292:
 	lw	$5, 1($3)
 	sw	$5, 0($2)
 	mov	$5, $2
-eq_cont.87800:
+eq_cont.88290:
 	lw	$2, 0($5)
-	bne	$2, $28, eq_else.87813
+	bne	$2, $28, eq_else.88303
 	lw	$2, 0($3)
 	addi	$2, $2, 1
 	j	min_caml_create_array
-eq_else.87813:
+eq_else.88303:
 	lw	$2, 0($3)
 	addi	$6, $2, 1
 	in	$7
 	sw	$5, 8($3)
 	sw	$6, 9($3)
-	bne	$7, $28, eq_else.87814
+	bne	$7, $28, eq_else.88304
 	mov	$5, $28
 	mov	$2, $1
 	sw	$31, 10($3)
@@ -5542,37 +5476,35 @@ eq_else.87813:
 	addi	$3, $3, -11
 	lw	$31, 10($3)
 	mov	$5, $2
-	j	eq_cont.87815
-eq_else.87814:
+	j	eq_cont.88305
+eq_else.88304:
 	in	$8
 	sw	$7, 10($3)
-	bne	$8, $28, eq_else.87816
-	addi	$8, $0, 2
+	bne	$8, $28, eq_else.88306
 	mov	$5, $28
-	mov	$2, $8
+	mov	$2, $26
 	sw	$31, 11($3)
 	addi	$3, $3, 12
 	jal	min_caml_create_array
 	addi	$3, $3, -12
 	lw	$31, 11($3)
-	j	eq_cont.87817
-eq_else.87816:
+	j	eq_cont.88307
+eq_else.88306:
 	in	$9
 	sw	$8, 11($3)
-	bne	$9, $28, eq_else.87818
-	addi	$9, $0, 3
+	bne	$9, $28, eq_else.88308
 	mov	$5, $28
-	mov	$2, $9
+	mov	$2, $27
 	sw	$31, 12($3)
 	addi	$3, $3, 13
 	jal	min_caml_create_array
 	addi	$3, $3, -13
 	lw	$31, 12($3)
-	j	eq_cont.87819
-eq_else.87818:
+	j	eq_cont.88309
+eq_else.88308:
 	in	$10
 	sw	$9, 12($3)
-	bne	$10, $28, eq_else.87820
+	bne	$10, $28, eq_else.88310
 	addi	$10, $0, 4
 	mov	$5, $28
 	mov	$2, $10
@@ -5581,11 +5513,11 @@ eq_else.87818:
 	jal	min_caml_create_array
 	addi	$3, $3, -14
 	lw	$31, 13($3)
-	j	eq_cont.87821
-eq_else.87820:
+	j	eq_cont.88311
+eq_else.88310:
 	in	$11
 	sw	$10, 13($3)
-	bne	$11, $28, eq_else.87822
+	bne	$11, $28, eq_else.88312
 	addi	$11, $0, 5
 	mov	$5, $28
 	mov	$2, $11
@@ -5594,11 +5526,11 @@ eq_else.87820:
 	jal	min_caml_create_array
 	addi	$3, $3, -15
 	lw	$31, 14($3)
-	j	eq_cont.87823
-eq_else.87822:
+	j	eq_cont.88313
+eq_else.88312:
 	in	$12
 	sw	$11, 14($3)
-	bne	$12, $28, eq_else.87824
+	bne	$12, $28, eq_else.88314
 	addi	$12, $0, 6
 	mov	$5, $28
 	mov	$2, $12
@@ -5607,8 +5539,8 @@ eq_else.87822:
 	jal	min_caml_create_array
 	addi	$3, $3, -16
 	lw	$31, 15($3)
-	j	eq_cont.87825
-eq_else.87824:
+	j	eq_cont.88315
+eq_else.88314:
 	addi	$13, $0, 6
 	sw	$12, 15($3)
 	mov	$2, $13
@@ -5619,25 +5551,25 @@ eq_else.87824:
 	lw	$31, 16($3)
 	lw	$5, 15($3)
 	sw	$5, 5($2)
-eq_cont.87825:
+eq_cont.88315:
 	lw	$5, 14($3)
 	sw	$5, 4($2)
-eq_cont.87823:
+eq_cont.88313:
 	lw	$5, 13($3)
 	sw	$5, 3($2)
-eq_cont.87821:
+eq_cont.88311:
 	lw	$5, 12($3)
 	sw	$5, 2($2)
-eq_cont.87819:
+eq_cont.88309:
 	lw	$5, 11($3)
 	sw	$5, 1($2)
-eq_cont.87817:
+eq_cont.88307:
 	lw	$5, 10($3)
 	sw	$5, 0($2)
 	mov	$5, $2
-eq_cont.87815:
+eq_cont.88305:
 	lw	$2, 0($5)
-	bne	$2, $28, eq_else.87826
+	bne	$2, $28, eq_else.88316
 	lw	$2, 9($3)
 	addi	$2, $2, 1
 	sw	$31, 16($3)
@@ -5645,14 +5577,14 @@ eq_cont.87815:
 	jal	min_caml_create_array
 	addi	$3, $3, -17
 	lw	$31, 16($3)
-	j	eq_cont.87827
-eq_else.87826:
+	j	eq_cont.88317
+eq_else.88316:
 	lw	$2, 9($3)
 	addi	$6, $2, 1
 	in	$7
 	sw	$5, 16($3)
 	sw	$6, 17($3)
-	bne	$7, $28, eq_else.87828
+	bne	$7, $28, eq_else.88318
 	mov	$5, $28
 	mov	$2, $1
 	sw	$31, 18($3)
@@ -5661,37 +5593,35 @@ eq_else.87826:
 	addi	$3, $3, -19
 	lw	$31, 18($3)
 	mov	$5, $2
-	j	eq_cont.87829
-eq_else.87828:
+	j	eq_cont.88319
+eq_else.88318:
 	in	$8
 	sw	$7, 18($3)
-	bne	$8, $28, eq_else.87830
-	addi	$8, $0, 2
+	bne	$8, $28, eq_else.88320
 	mov	$5, $28
-	mov	$2, $8
+	mov	$2, $26
 	sw	$31, 19($3)
 	addi	$3, $3, 20
 	jal	min_caml_create_array
 	addi	$3, $3, -20
 	lw	$31, 19($3)
-	j	eq_cont.87831
-eq_else.87830:
+	j	eq_cont.88321
+eq_else.88320:
 	in	$9
 	sw	$8, 19($3)
-	bne	$9, $28, eq_else.87832
-	addi	$9, $0, 3
+	bne	$9, $28, eq_else.88322
 	mov	$5, $28
-	mov	$2, $9
+	mov	$2, $27
 	sw	$31, 20($3)
 	addi	$3, $3, 21
 	jal	min_caml_create_array
 	addi	$3, $3, -21
 	lw	$31, 20($3)
-	j	eq_cont.87833
-eq_else.87832:
+	j	eq_cont.88323
+eq_else.88322:
 	in	$10
 	sw	$9, 20($3)
-	bne	$10, $28, eq_else.87834
+	bne	$10, $28, eq_else.88324
 	addi	$10, $0, 4
 	mov	$5, $28
 	mov	$2, $10
@@ -5700,11 +5630,11 @@ eq_else.87832:
 	jal	min_caml_create_array
 	addi	$3, $3, -22
 	lw	$31, 21($3)
-	j	eq_cont.87835
-eq_else.87834:
+	j	eq_cont.88325
+eq_else.88324:
 	in	$11
 	sw	$10, 21($3)
-	bne	$11, $28, eq_else.87836
+	bne	$11, $28, eq_else.88326
 	addi	$11, $0, 5
 	mov	$5, $28
 	mov	$2, $11
@@ -5713,8 +5643,8 @@ eq_else.87834:
 	jal	min_caml_create_array
 	addi	$3, $3, -23
 	lw	$31, 22($3)
-	j	eq_cont.87837
-eq_else.87836:
+	j	eq_cont.88327
+eq_else.88326:
 	addi	$12, $0, 5
 	sw	$11, 22($3)
 	mov	$2, $12
@@ -5725,22 +5655,22 @@ eq_else.87836:
 	lw	$31, 23($3)
 	lw	$5, 22($3)
 	sw	$5, 4($2)
-eq_cont.87837:
+eq_cont.88327:
 	lw	$5, 21($3)
 	sw	$5, 3($2)
-eq_cont.87835:
+eq_cont.88325:
 	lw	$5, 20($3)
 	sw	$5, 2($2)
-eq_cont.87833:
+eq_cont.88323:
 	lw	$5, 19($3)
 	sw	$5, 1($2)
-eq_cont.87831:
+eq_cont.88321:
 	lw	$5, 18($3)
 	sw	$5, 0($2)
 	mov	$5, $2
-eq_cont.87829:
+eq_cont.88319:
 	lw	$2, 0($5)
-	bne	$2, $28, eq_else.87838
+	bne	$2, $28, eq_else.88328
 	lw	$2, 17($3)
 	addi	$2, $2, 1
 	sw	$31, 23($3)
@@ -5748,14 +5678,14 @@ eq_cont.87829:
 	jal	min_caml_create_array
 	addi	$3, $3, -24
 	lw	$31, 23($3)
-	j	eq_cont.87839
-eq_else.87838:
+	j	eq_cont.88329
+eq_else.88328:
 	lw	$2, 17($3)
 	addi	$6, $2, 1
 	in	$7
 	sw	$5, 23($3)
 	sw	$6, 24($3)
-	bne	$7, $28, eq_else.87840
+	bne	$7, $28, eq_else.88330
 	mov	$5, $28
 	mov	$2, $1
 	sw	$31, 25($3)
@@ -5764,37 +5694,35 @@ eq_else.87838:
 	addi	$3, $3, -26
 	lw	$31, 25($3)
 	mov	$5, $2
-	j	eq_cont.87841
-eq_else.87840:
+	j	eq_cont.88331
+eq_else.88330:
 	in	$8
 	sw	$7, 25($3)
-	bne	$8, $28, eq_else.87842
-	addi	$8, $0, 2
+	bne	$8, $28, eq_else.88332
 	mov	$5, $28
-	mov	$2, $8
+	mov	$2, $26
 	sw	$31, 26($3)
 	addi	$3, $3, 27
 	jal	min_caml_create_array
 	addi	$3, $3, -27
 	lw	$31, 26($3)
-	j	eq_cont.87843
-eq_else.87842:
+	j	eq_cont.88333
+eq_else.88332:
 	in	$9
 	sw	$8, 26($3)
-	bne	$9, $28, eq_else.87844
-	addi	$9, $0, 3
+	bne	$9, $28, eq_else.88334
 	mov	$5, $28
-	mov	$2, $9
+	mov	$2, $27
 	sw	$31, 27($3)
 	addi	$3, $3, 28
 	jal	min_caml_create_array
 	addi	$3, $3, -28
 	lw	$31, 27($3)
-	j	eq_cont.87845
-eq_else.87844:
+	j	eq_cont.88335
+eq_else.88334:
 	in	$10
 	sw	$9, 27($3)
-	bne	$10, $28, eq_else.87846
+	bne	$10, $28, eq_else.88336
 	addi	$10, $0, 4
 	mov	$5, $28
 	mov	$2, $10
@@ -5803,8 +5731,8 @@ eq_else.87844:
 	jal	min_caml_create_array
 	addi	$3, $3, -29
 	lw	$31, 28($3)
-	j	eq_cont.87847
-eq_else.87846:
+	j	eq_cont.88337
+eq_else.88336:
 	addi	$11, $0, 4
 	sw	$10, 28($3)
 	mov	$2, $11
@@ -5815,19 +5743,19 @@ eq_else.87846:
 	lw	$31, 29($3)
 	lw	$5, 28($3)
 	sw	$5, 3($2)
-eq_cont.87847:
+eq_cont.88337:
 	lw	$5, 27($3)
 	sw	$5, 2($2)
-eq_cont.87845:
+eq_cont.88335:
 	lw	$5, 26($3)
 	sw	$5, 1($2)
-eq_cont.87843:
+eq_cont.88333:
 	lw	$5, 25($3)
 	sw	$5, 0($2)
 	mov	$5, $2
-eq_cont.87841:
+eq_cont.88331:
 	lw	$2, 0($5)
-	bne	$2, $28, eq_else.87848
+	bne	$2, $28, eq_else.88338
 	lw	$2, 24($3)
 	addi	$2, $2, 1
 	sw	$31, 29($3)
@@ -5835,8 +5763,8 @@ eq_cont.87841:
 	jal	min_caml_create_array
 	addi	$3, $3, -30
 	lw	$31, 29($3)
-	j	eq_cont.87849
-eq_else.87848:
+	j	eq_cont.88339
+eq_else.88338:
 	lw	$2, 24($3)
 	addi	$6, $2, 1
 	sw	$5, 29($3)
@@ -5850,17 +5778,17 @@ eq_else.87848:
 	lw	$6, 29($3)
 	add $30, $2, $5
 	sw	$6, 0($30)
-eq_cont.87849:
+eq_cont.88339:
 	lw	$5, 17($3)
 	lw	$6, 23($3)
 	add $30, $2, $5
 	sw	$6, 0($30)
-eq_cont.87839:
+eq_cont.88329:
 	lw	$5, 9($3)
 	lw	$6, 16($3)
 	add $30, $2, $5
 	sw	$6, 0($30)
-eq_cont.87827:
+eq_cont.88317:
 	lw	$5, 0($3)
 	lw	$6, 8($3)
 	add $30, $2, $5
@@ -5869,7 +5797,7 @@ eq_cont.87827:
 read_and_network.2841:
 	in	$5
 	sw	$2, 0($3)
-	bne	$5, $28, eq_else.87850
+	bne	$5, $28, eq_else.88340
 	mov	$5, $28
 	mov	$2, $1
 	sw	$31, 1($3)
@@ -5877,37 +5805,35 @@ read_and_network.2841:
 	jal	min_caml_create_array
 	addi	$3, $3, -2
 	lw	$31, 1($3)
-	j	eq_cont.87851
-eq_else.87850:
+	j	eq_cont.88341
+eq_else.88340:
 	in	$6
 	sw	$5, 1($3)
-	bne	$6, $28, eq_else.87852
-	addi	$6, $0, 2
+	bne	$6, $28, eq_else.88342
 	mov	$5, $28
-	mov	$2, $6
+	mov	$2, $26
 	sw	$31, 2($3)
 	addi	$3, $3, 3
 	jal	min_caml_create_array
 	addi	$3, $3, -3
 	lw	$31, 2($3)
-	j	eq_cont.87853
-eq_else.87852:
+	j	eq_cont.88343
+eq_else.88342:
 	in	$7
 	sw	$6, 2($3)
-	bne	$7, $28, eq_else.87854
-	addi	$7, $0, 3
+	bne	$7, $28, eq_else.88344
 	mov	$5, $28
-	mov	$2, $7
+	mov	$2, $27
 	sw	$31, 3($3)
 	addi	$3, $3, 4
 	jal	min_caml_create_array
 	addi	$3, $3, -4
 	lw	$31, 3($3)
-	j	eq_cont.87855
-eq_else.87854:
+	j	eq_cont.88345
+eq_else.88344:
 	in	$8
 	sw	$7, 3($3)
-	bne	$8, $28, eq_else.87856
+	bne	$8, $28, eq_else.88346
 	addi	$8, $0, 4
 	mov	$5, $28
 	mov	$2, $8
@@ -5916,11 +5842,11 @@ eq_else.87854:
 	jal	min_caml_create_array
 	addi	$3, $3, -5
 	lw	$31, 4($3)
-	j	eq_cont.87857
-eq_else.87856:
+	j	eq_cont.88347
+eq_else.88346:
 	in	$9
 	sw	$8, 4($3)
-	bne	$9, $28, eq_else.87858
+	bne	$9, $28, eq_else.88348
 	addi	$9, $0, 5
 	mov	$5, $28
 	mov	$2, $9
@@ -5929,11 +5855,11 @@ eq_else.87856:
 	jal	min_caml_create_array
 	addi	$3, $3, -6
 	lw	$31, 5($3)
-	j	eq_cont.87859
-eq_else.87858:
+	j	eq_cont.88349
+eq_else.88348:
 	in	$10
 	sw	$9, 5($3)
-	bne	$10, $28, eq_else.87860
+	bne	$10, $28, eq_else.88350
 	addi	$10, $0, 6
 	mov	$5, $28
 	mov	$2, $10
@@ -5942,11 +5868,11 @@ eq_else.87858:
 	jal	min_caml_create_array
 	addi	$3, $3, -7
 	lw	$31, 6($3)
-	j	eq_cont.87861
-eq_else.87860:
+	j	eq_cont.88351
+eq_else.88350:
 	in	$11
 	sw	$10, 6($3)
-	bne	$11, $28, eq_else.87862
+	bne	$11, $28, eq_else.88352
 	addi	$11, $0, 7
 	mov	$5, $28
 	mov	$2, $11
@@ -5955,8 +5881,8 @@ eq_else.87860:
 	jal	min_caml_create_array
 	addi	$3, $3, -8
 	lw	$31, 7($3)
-	j	eq_cont.87863
-eq_else.87862:
+	j	eq_cont.88353
+eq_else.88352:
 	addi	$12, $0, 7
 	sw	$11, 7($3)
 	mov	$2, $12
@@ -5967,35 +5893,35 @@ eq_else.87862:
 	lw	$31, 8($3)
 	lw	$5, 7($3)
 	sw	$5, 6($2)
-eq_cont.87863:
+eq_cont.88353:
 	lw	$5, 6($3)
 	sw	$5, 5($2)
-eq_cont.87861:
+eq_cont.88351:
 	lw	$5, 5($3)
 	sw	$5, 4($2)
-eq_cont.87859:
+eq_cont.88349:
 	lw	$5, 4($3)
 	sw	$5, 3($2)
-eq_cont.87857:
+eq_cont.88347:
 	lw	$5, 3($3)
 	sw	$5, 2($2)
-eq_cont.87855:
+eq_cont.88345:
 	lw	$5, 2($3)
 	sw	$5, 1($2)
-eq_cont.87853:
+eq_cont.88343:
 	lw	$5, 1($3)
 	sw	$5, 0($2)
-eq_cont.87851:
+eq_cont.88341:
 	lw	$5, 0($2)
-	bne	$5, $28, eq_else.87864
+	bne	$5, $28, eq_else.88354
 	jr $31
-eq_else.87864:
+eq_else.88354:
 	lw	$5, 0($3)
 	sw	$2, 3071($5)
 	addi	$2, $5, 1
 	in	$5
 	sw	$2, 8($3)
-	bne	$5, $28, eq_else.87866
+	bne	$5, $28, eq_else.88356
 	mov	$5, $28
 	mov	$2, $1
 	sw	$31, 9($3)
@@ -6003,37 +5929,35 @@ eq_else.87864:
 	jal	min_caml_create_array
 	addi	$3, $3, -10
 	lw	$31, 9($3)
-	j	eq_cont.87867
-eq_else.87866:
+	j	eq_cont.88357
+eq_else.88356:
 	in	$6
 	sw	$5, 9($3)
-	bne	$6, $28, eq_else.87868
-	addi	$6, $0, 2
+	bne	$6, $28, eq_else.88358
 	mov	$5, $28
-	mov	$2, $6
+	mov	$2, $26
 	sw	$31, 10($3)
 	addi	$3, $3, 11
 	jal	min_caml_create_array
 	addi	$3, $3, -11
 	lw	$31, 10($3)
-	j	eq_cont.87869
-eq_else.87868:
+	j	eq_cont.88359
+eq_else.88358:
 	in	$7
 	sw	$6, 10($3)
-	bne	$7, $28, eq_else.87870
-	addi	$7, $0, 3
+	bne	$7, $28, eq_else.88360
 	mov	$5, $28
-	mov	$2, $7
+	mov	$2, $27
 	sw	$31, 11($3)
 	addi	$3, $3, 12
 	jal	min_caml_create_array
 	addi	$3, $3, -12
 	lw	$31, 11($3)
-	j	eq_cont.87871
-eq_else.87870:
+	j	eq_cont.88361
+eq_else.88360:
 	in	$8
 	sw	$7, 11($3)
-	bne	$8, $28, eq_else.87872
+	bne	$8, $28, eq_else.88362
 	addi	$8, $0, 4
 	mov	$5, $28
 	mov	$2, $8
@@ -6042,11 +5966,11 @@ eq_else.87870:
 	jal	min_caml_create_array
 	addi	$3, $3, -13
 	lw	$31, 12($3)
-	j	eq_cont.87873
-eq_else.87872:
+	j	eq_cont.88363
+eq_else.88362:
 	in	$9
 	sw	$8, 12($3)
-	bne	$9, $28, eq_else.87874
+	bne	$9, $28, eq_else.88364
 	addi	$9, $0, 5
 	mov	$5, $28
 	mov	$2, $9
@@ -6055,11 +5979,11 @@ eq_else.87872:
 	jal	min_caml_create_array
 	addi	$3, $3, -14
 	lw	$31, 13($3)
-	j	eq_cont.87875
-eq_else.87874:
+	j	eq_cont.88365
+eq_else.88364:
 	in	$10
 	sw	$9, 13($3)
-	bne	$10, $28, eq_else.87876
+	bne	$10, $28, eq_else.88366
 	addi	$10, $0, 6
 	mov	$5, $28
 	mov	$2, $10
@@ -6068,8 +5992,8 @@ eq_else.87874:
 	jal	min_caml_create_array
 	addi	$3, $3, -15
 	lw	$31, 14($3)
-	j	eq_cont.87877
-eq_else.87876:
+	j	eq_cont.88367
+eq_else.88366:
 	addi	$11, $0, 6
 	sw	$10, 14($3)
 	mov	$2, $11
@@ -6080,32 +6004,32 @@ eq_else.87876:
 	lw	$31, 15($3)
 	lw	$5, 14($3)
 	sw	$5, 5($2)
-eq_cont.87877:
+eq_cont.88367:
 	lw	$5, 13($3)
 	sw	$5, 4($2)
-eq_cont.87875:
+eq_cont.88365:
 	lw	$5, 12($3)
 	sw	$5, 3($2)
-eq_cont.87873:
+eq_cont.88363:
 	lw	$5, 11($3)
 	sw	$5, 2($2)
-eq_cont.87871:
+eq_cont.88361:
 	lw	$5, 10($3)
 	sw	$5, 1($2)
-eq_cont.87869:
+eq_cont.88359:
 	lw	$5, 9($3)
 	sw	$5, 0($2)
-eq_cont.87867:
+eq_cont.88357:
 	lw	$5, 0($2)
-	bne	$5, $28, eq_else.87878
+	bne	$5, $28, eq_else.88368
 	jr $31
-eq_else.87878:
+eq_else.88368:
 	lw	$5, 8($3)
 	sw	$2, 3071($5)
 	addi	$2, $5, 1
 	in	$5
 	sw	$2, 15($3)
-	bne	$5, $28, eq_else.87880
+	bne	$5, $28, eq_else.88370
 	mov	$5, $28
 	mov	$2, $1
 	sw	$31, 16($3)
@@ -6113,37 +6037,35 @@ eq_else.87878:
 	jal	min_caml_create_array
 	addi	$3, $3, -17
 	lw	$31, 16($3)
-	j	eq_cont.87881
-eq_else.87880:
+	j	eq_cont.88371
+eq_else.88370:
 	in	$6
 	sw	$5, 16($3)
-	bne	$6, $28, eq_else.87882
-	addi	$6, $0, 2
+	bne	$6, $28, eq_else.88372
 	mov	$5, $28
-	mov	$2, $6
+	mov	$2, $26
 	sw	$31, 17($3)
 	addi	$3, $3, 18
 	jal	min_caml_create_array
 	addi	$3, $3, -18
 	lw	$31, 17($3)
-	j	eq_cont.87883
-eq_else.87882:
+	j	eq_cont.88373
+eq_else.88372:
 	in	$7
 	sw	$6, 17($3)
-	bne	$7, $28, eq_else.87884
-	addi	$7, $0, 3
+	bne	$7, $28, eq_else.88374
 	mov	$5, $28
-	mov	$2, $7
+	mov	$2, $27
 	sw	$31, 18($3)
 	addi	$3, $3, 19
 	jal	min_caml_create_array
 	addi	$3, $3, -19
 	lw	$31, 18($3)
-	j	eq_cont.87885
-eq_else.87884:
+	j	eq_cont.88375
+eq_else.88374:
 	in	$8
 	sw	$7, 18($3)
-	bne	$8, $28, eq_else.87886
+	bne	$8, $28, eq_else.88376
 	addi	$8, $0, 4
 	mov	$5, $28
 	mov	$2, $8
@@ -6152,11 +6074,11 @@ eq_else.87884:
 	jal	min_caml_create_array
 	addi	$3, $3, -20
 	lw	$31, 19($3)
-	j	eq_cont.87887
-eq_else.87886:
+	j	eq_cont.88377
+eq_else.88376:
 	in	$9
 	sw	$8, 19($3)
-	bne	$9, $28, eq_else.87888
+	bne	$9, $28, eq_else.88378
 	addi	$9, $0, 5
 	mov	$5, $28
 	mov	$2, $9
@@ -6165,8 +6087,8 @@ eq_else.87886:
 	jal	min_caml_create_array
 	addi	$3, $3, -21
 	lw	$31, 20($3)
-	j	eq_cont.87889
-eq_else.87888:
+	j	eq_cont.88379
+eq_else.88378:
 	addi	$10, $0, 5
 	sw	$9, 20($3)
 	mov	$2, $10
@@ -6177,29 +6099,29 @@ eq_else.87888:
 	lw	$31, 21($3)
 	lw	$5, 20($3)
 	sw	$5, 4($2)
-eq_cont.87889:
+eq_cont.88379:
 	lw	$5, 19($3)
 	sw	$5, 3($2)
-eq_cont.87887:
+eq_cont.88377:
 	lw	$5, 18($3)
 	sw	$5, 2($2)
-eq_cont.87885:
+eq_cont.88375:
 	lw	$5, 17($3)
 	sw	$5, 1($2)
-eq_cont.87883:
+eq_cont.88373:
 	lw	$5, 16($3)
 	sw	$5, 0($2)
-eq_cont.87881:
+eq_cont.88371:
 	lw	$5, 0($2)
-	bne	$5, $28, eq_else.87890
+	bne	$5, $28, eq_else.88380
 	jr $31
-eq_else.87890:
+eq_else.88380:
 	lw	$5, 15($3)
 	sw	$2, 3071($5)
 	addi	$2, $5, 1
 	in	$5
 	sw	$2, 21($3)
-	bne	$5, $28, eq_else.87892
+	bne	$5, $28, eq_else.88382
 	mov	$5, $28
 	mov	$2, $1
 	sw	$31, 22($3)
@@ -6207,37 +6129,35 @@ eq_else.87890:
 	jal	min_caml_create_array
 	addi	$3, $3, -23
 	lw	$31, 22($3)
-	j	eq_cont.87893
-eq_else.87892:
+	j	eq_cont.88383
+eq_else.88382:
 	in	$6
 	sw	$5, 22($3)
-	bne	$6, $28, eq_else.87894
-	addi	$6, $0, 2
+	bne	$6, $28, eq_else.88384
 	mov	$5, $28
-	mov	$2, $6
+	mov	$2, $26
 	sw	$31, 23($3)
 	addi	$3, $3, 24
 	jal	min_caml_create_array
 	addi	$3, $3, -24
 	lw	$31, 23($3)
-	j	eq_cont.87895
-eq_else.87894:
+	j	eq_cont.88385
+eq_else.88384:
 	in	$7
 	sw	$6, 23($3)
-	bne	$7, $28, eq_else.87896
-	addi	$7, $0, 3
+	bne	$7, $28, eq_else.88386
 	mov	$5, $28
-	mov	$2, $7
+	mov	$2, $27
 	sw	$31, 24($3)
 	addi	$3, $3, 25
 	jal	min_caml_create_array
 	addi	$3, $3, -25
 	lw	$31, 24($3)
-	j	eq_cont.87897
-eq_else.87896:
+	j	eq_cont.88387
+eq_else.88386:
 	in	$8
 	sw	$7, 24($3)
-	bne	$8, $28, eq_else.87898
+	bne	$8, $28, eq_else.88388
 	addi	$8, $0, 4
 	mov	$5, $28
 	mov	$2, $8
@@ -6246,8 +6166,8 @@ eq_else.87896:
 	jal	min_caml_create_array
 	addi	$3, $3, -26
 	lw	$31, 25($3)
-	j	eq_cont.87899
-eq_else.87898:
+	j	eq_cont.88389
+eq_else.88388:
 	addi	$9, $0, 4
 	sw	$8, 25($3)
 	mov	$2, $9
@@ -6258,34 +6178,34 @@ eq_else.87898:
 	lw	$31, 26($3)
 	lw	$5, 25($3)
 	sw	$5, 3($2)
-eq_cont.87899:
+eq_cont.88389:
 	lw	$5, 24($3)
 	sw	$5, 2($2)
-eq_cont.87897:
+eq_cont.88387:
 	lw	$5, 23($3)
 	sw	$5, 1($2)
-eq_cont.87895:
+eq_cont.88385:
 	lw	$5, 22($3)
 	sw	$5, 0($2)
-eq_cont.87893:
+eq_cont.88383:
 	lw	$5, 0($2)
-	bne	$5, $28, eq_else.87900
+	bne	$5, $28, eq_else.88390
 	jr $31
-eq_else.87900:
+eq_else.88390:
 	lw	$5, 21($3)
 	sw	$2, 3071($5)
 	addi	$2, $5, 1
 	j	read_and_network.2841
 iter_setup_dirvec_constants.2938:
-	bge	$5, $0, ge.87902
+	bge	$5, $0, ge.88392
 	jr $31
-ge.87902:
+ge.88392:
 	lw	$6, 3001($5)
 	lw	$7, 1($2)
 	lw	$8, 0($2)
 	lw	$9, 1($6)
 	sw	$2, 0($3)
-	bne	$9, $1, eq_else.87904
+	bne	$9, $1, eq_else.88394
 	addi	$9, $0, 6
 	sw	$5, 1($3)
 	sw	$7, 2($3)
@@ -6300,13 +6220,13 @@ ge.87902:
 	lw	$31, 5($3)
 	lw	$5, 4($3)
 	lf	$f0, 0($5)
-	beqf	$f0, $f30, feq.87906
+	beqf	$f0, $f30, feq.88396
 	mov	$6, $0
-	j	feq_cont.87907
-feq.87906:
+	j	feq_cont.88397
+feq.88396:
 	mov	$6, $1
-feq_cont.87907:
-	bne	$6, $0, eq_else.87908
+feq_cont.88397:
+	bne	$6, $0, eq_else.88398
 	lw	$6, 3($3)
 	lw	$7, 6($6)
 	lf	$f0, 0($5)
@@ -6314,27 +6234,27 @@ feq_cont.87907:
 	xor	$7, $7, $8
 	lw	$8, 4($6)
 	lf	$f0, 0($8)
-	bne	$7, $0, eq_else.87910
+	bne	$7, $0, eq_else.88400
 	fneg	$f0, $f0
-	j	eq_cont.87911
-eq_else.87910:
-eq_cont.87911:
+	j	eq_cont.88401
+eq_else.88400:
+eq_cont.88401:
 	sf	$f0, 0($2)
 	lf	$f0, 0($5)
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 1($2)
-	j	eq_cont.87909
-eq_else.87908:
+	j	eq_cont.88399
+eq_else.88398:
 	sf	$f30, 1($2)
-eq_cont.87909:
+eq_cont.88399:
 	lf	$f0, 1($5)
-	beqf	$f0, $f30, feq.87912
+	beqf	$f0, $f30, feq.88402
 	mov	$6, $0
-	j	feq_cont.87913
-feq.87912:
+	j	feq_cont.88403
+feq.88402:
 	mov	$6, $1
-feq_cont.87913:
-	bne	$6, $0, eq_else.87914
+feq_cont.88403:
+	bne	$6, $0, eq_else.88404
 	lw	$6, 3($3)
 	lw	$7, 6($6)
 	lf	$f0, 1($5)
@@ -6342,27 +6262,27 @@ feq_cont.87913:
 	xor	$7, $7, $8
 	lw	$8, 4($6)
 	lf	$f0, 1($8)
-	bne	$7, $0, eq_else.87916
+	bne	$7, $0, eq_else.88406
 	fneg	$f0, $f0
-	j	eq_cont.87917
-eq_else.87916:
-eq_cont.87917:
+	j	eq_cont.88407
+eq_else.88406:
+eq_cont.88407:
 	sf	$f0, 2($2)
 	lf	$f0, 1($5)
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 3($2)
-	j	eq_cont.87915
-eq_else.87914:
+	j	eq_cont.88405
+eq_else.88404:
 	sf	$f30, 3($2)
-eq_cont.87915:
+eq_cont.88405:
 	lf	$f0, 2($5)
-	beqf	$f0, $f30, feq.87918
+	beqf	$f0, $f30, feq.88408
 	mov	$6, $0
-	j	feq_cont.87919
-feq.87918:
+	j	feq_cont.88409
+feq.88408:
 	mov	$6, $1
-feq_cont.87919:
-	bne	$6, $0, eq_else.87920
+feq_cont.88409:
+	bne	$6, $0, eq_else.88410
 	lw	$6, 3($3)
 	lw	$7, 6($6)
 	lf	$f0, 2($5)
@@ -6370,27 +6290,27 @@ feq_cont.87919:
 	xor	$7, $7, $8
 	lw	$6, 4($6)
 	lf	$f0, 2($6)
-	bne	$7, $0, eq_else.87922
+	bne	$7, $0, eq_else.88412
 	fneg	$f0, $f0
-	j	eq_cont.87923
-eq_else.87922:
-eq_cont.87923:
+	j	eq_cont.88413
+eq_else.88412:
+eq_cont.88413:
 	sf	$f0, 4($2)
 	lf	$f0, 2($5)
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 5($2)
-	j	eq_cont.87921
-eq_else.87920:
+	j	eq_cont.88411
+eq_else.88410:
 	sf	$f30, 5($2)
-eq_cont.87921:
+eq_cont.88411:
 	lw	$5, 1($3)
 	lw	$6, 2($3)
 	add $30, $6, $5
 	sw	$2, 0($30)
-	j	eq_cont.87905
-eq_else.87904:
+	j	eq_cont.88395
+eq_else.88394:
 	addi	$30, $0, 2
-	bne	$9, $30, eq_else.87924
+	bne	$9, $30, eq_else.88414
 	addi	$9, $0, 4
 	sw	$5, 1($3)
 	sw	$7, 2($3)
@@ -6420,10 +6340,10 @@ eq_else.87904:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f30, $f0
-	bne	$5, $0, eq_else.87926
+	bne	$5, $0, eq_else.88416
 	sf	$f30, 0($2)
-	j	eq_cont.87927
-eq_else.87926:
+	j	eq_cont.88417
+eq_else.88416:
 	fdiv	$f1, $f29, $f0
 	sf	$f1, 0($2)
 	lw	$5, 4($6)
@@ -6441,13 +6361,13 @@ eq_else.87926:
 	fdiv	$f0, $f1, $f0
 	fneg	$f0, $f0
 	sf	$f0, 3($2)
-eq_cont.87927:
+eq_cont.88417:
 	lw	$5, 1($3)
 	lw	$6, 2($3)
 	add $30, $6, $5
 	sw	$2, 0($30)
-	j	eq_cont.87925
-eq_else.87924:
+	j	eq_cont.88415
+eq_else.88414:
 	addi	$9, $0, 5
 	sw	$5, 1($3)
 	sw	$7, 2($3)
@@ -6480,10 +6400,10 @@ eq_else.87924:
 	fmul	$f4, $f4, $f5
 	fadd	$f3, $f3, $f4
 	lw	$7, 3($6)
-	bne	$7, $0, eq_else.87928
+	bne	$7, $0, eq_else.88418
 	movf	$f0, $f3
-	j	eq_cont.87929
-eq_else.87928:
+	j	eq_cont.88419
+eq_else.88418:
 	fmul	$f4, $f1, $f2
 	lw	$7, 9($6)
 	lf	$f5, 0($7)
@@ -6499,7 +6419,7 @@ eq_else.87928:
 	lf	$f1, 2($7)
 	fmul	$f0, $f0, $f1
 	fadd	$f0, $f2, $f0
-eq_cont.87929:
+eq_cont.88419:
 	lf	$f1, 0($5)
 	lw	$7, 4($6)
 	lf	$f2, 0($7)
@@ -6517,12 +6437,12 @@ eq_cont.87929:
 	fneg	$f3, $f3
 	sf	$f0, 0($2)
 	lw	$7, 3($6)
-	bne	$7, $0, eq_else.87930
+	bne	$7, $0, eq_else.88420
 	sf	$f1, 1($2)
 	sf	$f2, 2($2)
 	sf	$f3, 3($2)
-	j	eq_cont.87931
-eq_else.87930:
+	j	eq_cont.88421
+eq_else.88420:
 	lf	$f4, 2($5)
 	lw	$7, 9($6)
 	lf	$f5, 1($7)
@@ -6562,35 +6482,35 @@ eq_else.87930:
 	fmul	$f1, $f1, $f2
 	fsub	$f1, $f3, $f1
 	sf	$f1, 3($2)
-eq_cont.87931:
-	beqf	$f0, $f30, feq.87932
+eq_cont.88421:
+	beqf	$f0, $f30, feq.88422
 	mov	$5, $0
-	j	feq_cont.87933
-feq.87932:
+	j	feq_cont.88423
+feq.88422:
 	mov	$5, $1
-feq_cont.87933:
-	bne	$5, $0, eq_else.87934
+feq_cont.88423:
+	bne	$5, $0, eq_else.88424
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 4($2)
-	j	eq_cont.87935
-eq_else.87934:
-eq_cont.87935:
+	j	eq_cont.88425
+eq_else.88424:
+eq_cont.88425:
 	lw	$5, 1($3)
 	lw	$6, 2($3)
 	add $30, $6, $5
 	sw	$2, 0($30)
-eq_cont.87925:
-eq_cont.87905:
+eq_cont.88415:
+eq_cont.88395:
 	addi	$2, $5, -1
-	bge	$2, $0, ge.87936
+	bge	$2, $0, ge.88426
 	jr $31
-ge.87936:
+ge.88426:
 	lw	$5, 3001($2)
 	lw	$6, 0($3)
 	lw	$7, 1($6)
 	lw	$8, 0($6)
 	lw	$9, 1($5)
-	bne	$9, $1, eq_else.87938
+	bne	$9, $1, eq_else.88428
 	addi	$9, $0, 6
 	sw	$2, 5($3)
 	sw	$7, 6($3)
@@ -6605,13 +6525,13 @@ ge.87936:
 	lw	$31, 9($3)
 	lw	$5, 8($3)
 	lf	$f0, 0($5)
-	beqf	$f0, $f30, feq.87940
+	beqf	$f0, $f30, feq.88430
 	mov	$6, $0
-	j	feq_cont.87941
-feq.87940:
+	j	feq_cont.88431
+feq.88430:
 	mov	$6, $1
-feq_cont.87941:
-	bne	$6, $0, eq_else.87942
+feq_cont.88431:
+	bne	$6, $0, eq_else.88432
 	lw	$6, 7($3)
 	lw	$7, 6($6)
 	lf	$f0, 0($5)
@@ -6619,27 +6539,27 @@ feq_cont.87941:
 	xor	$7, $7, $8
 	lw	$8, 4($6)
 	lf	$f0, 0($8)
-	bne	$7, $0, eq_else.87944
+	bne	$7, $0, eq_else.88434
 	fneg	$f0, $f0
-	j	eq_cont.87945
-eq_else.87944:
-eq_cont.87945:
+	j	eq_cont.88435
+eq_else.88434:
+eq_cont.88435:
 	sf	$f0, 0($2)
 	lf	$f0, 0($5)
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 1($2)
-	j	eq_cont.87943
-eq_else.87942:
+	j	eq_cont.88433
+eq_else.88432:
 	sf	$f30, 1($2)
-eq_cont.87943:
+eq_cont.88433:
 	lf	$f0, 1($5)
-	beqf	$f0, $f30, feq.87946
+	beqf	$f0, $f30, feq.88436
 	mov	$6, $0
-	j	feq_cont.87947
-feq.87946:
+	j	feq_cont.88437
+feq.88436:
 	mov	$6, $1
-feq_cont.87947:
-	bne	$6, $0, eq_else.87948
+feq_cont.88437:
+	bne	$6, $0, eq_else.88438
 	lw	$6, 7($3)
 	lw	$7, 6($6)
 	lf	$f0, 1($5)
@@ -6647,27 +6567,27 @@ feq_cont.87947:
 	xor	$7, $7, $8
 	lw	$8, 4($6)
 	lf	$f0, 1($8)
-	bne	$7, $0, eq_else.87950
+	bne	$7, $0, eq_else.88440
 	fneg	$f0, $f0
-	j	eq_cont.87951
-eq_else.87950:
-eq_cont.87951:
+	j	eq_cont.88441
+eq_else.88440:
+eq_cont.88441:
 	sf	$f0, 2($2)
 	lf	$f0, 1($5)
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 3($2)
-	j	eq_cont.87949
-eq_else.87948:
+	j	eq_cont.88439
+eq_else.88438:
 	sf	$f30, 3($2)
-eq_cont.87949:
+eq_cont.88439:
 	lf	$f0, 2($5)
-	beqf	$f0, $f30, feq.87952
+	beqf	$f0, $f30, feq.88442
 	mov	$6, $0
-	j	feq_cont.87953
-feq.87952:
+	j	feq_cont.88443
+feq.88442:
 	mov	$6, $1
-feq_cont.87953:
-	bne	$6, $0, eq_else.87954
+feq_cont.88443:
+	bne	$6, $0, eq_else.88444
 	lw	$6, 7($3)
 	lw	$7, 6($6)
 	lf	$f0, 2($5)
@@ -6675,27 +6595,27 @@ feq_cont.87953:
 	xor	$7, $7, $8
 	lw	$6, 4($6)
 	lf	$f0, 2($6)
-	bne	$7, $0, eq_else.87956
+	bne	$7, $0, eq_else.88446
 	fneg	$f0, $f0
-	j	eq_cont.87957
-eq_else.87956:
-eq_cont.87957:
+	j	eq_cont.88447
+eq_else.88446:
+eq_cont.88447:
 	sf	$f0, 4($2)
 	lf	$f0, 2($5)
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 5($2)
-	j	eq_cont.87955
-eq_else.87954:
+	j	eq_cont.88445
+eq_else.88444:
 	sf	$f30, 5($2)
-eq_cont.87955:
+eq_cont.88445:
 	lw	$5, 5($3)
 	lw	$6, 6($3)
 	add $30, $6, $5
 	sw	$2, 0($30)
-	j	eq_cont.87939
-eq_else.87938:
+	j	eq_cont.88429
+eq_else.88428:
 	addi	$30, $0, 2
-	bne	$9, $30, eq_else.87958
+	bne	$9, $30, eq_else.88448
 	addi	$9, $0, 4
 	sw	$2, 5($3)
 	sw	$7, 6($3)
@@ -6725,10 +6645,10 @@ eq_else.87938:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f30, $f0
-	bne	$5, $0, eq_else.87960
+	bne	$5, $0, eq_else.88450
 	sf	$f30, 0($2)
-	j	eq_cont.87961
-eq_else.87960:
+	j	eq_cont.88451
+eq_else.88450:
 	fdiv	$f1, $f29, $f0
 	sf	$f1, 0($2)
 	lw	$5, 4($6)
@@ -6746,13 +6666,13 @@ eq_else.87960:
 	fdiv	$f0, $f1, $f0
 	fneg	$f0, $f0
 	sf	$f0, 3($2)
-eq_cont.87961:
+eq_cont.88451:
 	lw	$5, 5($3)
 	lw	$6, 6($3)
 	add $30, $6, $5
 	sw	$2, 0($30)
-	j	eq_cont.87959
-eq_else.87958:
+	j	eq_cont.88449
+eq_else.88448:
 	addi	$9, $0, 5
 	sw	$2, 5($3)
 	sw	$7, 6($3)
@@ -6785,10 +6705,10 @@ eq_else.87958:
 	fmul	$f4, $f4, $f5
 	fadd	$f3, $f3, $f4
 	lw	$7, 3($6)
-	bne	$7, $0, eq_else.87962
+	bne	$7, $0, eq_else.88452
 	movf	$f0, $f3
-	j	eq_cont.87963
-eq_else.87962:
+	j	eq_cont.88453
+eq_else.88452:
 	fmul	$f4, $f1, $f2
 	lw	$7, 9($6)
 	lf	$f5, 0($7)
@@ -6804,7 +6724,7 @@ eq_else.87962:
 	lf	$f1, 2($7)
 	fmul	$f0, $f0, $f1
 	fadd	$f0, $f2, $f0
-eq_cont.87963:
+eq_cont.88453:
 	lf	$f1, 0($5)
 	lw	$7, 4($6)
 	lf	$f2, 0($7)
@@ -6822,12 +6742,12 @@ eq_cont.87963:
 	fneg	$f3, $f3
 	sf	$f0, 0($2)
 	lw	$7, 3($6)
-	bne	$7, $0, eq_else.87964
+	bne	$7, $0, eq_else.88454
 	sf	$f1, 1($2)
 	sf	$f2, 2($2)
 	sf	$f3, 3($2)
-	j	eq_cont.87965
-eq_else.87964:
+	j	eq_cont.88455
+eq_else.88454:
 	lf	$f4, 2($5)
 	lw	$7, 9($6)
 	lf	$f5, 1($7)
@@ -6867,32 +6787,32 @@ eq_else.87964:
 	fmul	$f1, $f1, $f2
 	fsub	$f1, $f3, $f1
 	sf	$f1, 3($2)
-eq_cont.87965:
-	beqf	$f0, $f30, feq.87966
+eq_cont.88455:
+	beqf	$f0, $f30, feq.88456
 	mov	$5, $0
-	j	feq_cont.87967
-feq.87966:
+	j	feq_cont.88457
+feq.88456:
 	mov	$5, $1
-feq_cont.87967:
-	bne	$5, $0, eq_else.87968
+feq_cont.88457:
+	bne	$5, $0, eq_else.88458
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 4($2)
-	j	eq_cont.87969
-eq_else.87968:
-eq_cont.87969:
+	j	eq_cont.88459
+eq_else.88458:
+eq_cont.88459:
 	lw	$5, 5($3)
 	lw	$6, 6($3)
 	add $30, $6, $5
 	sw	$2, 0($30)
-eq_cont.87959:
-eq_cont.87939:
+eq_cont.88449:
+eq_cont.88429:
 	addi	$5, $5, -1
 	lw	$2, 0($3)
 	j	iter_setup_dirvec_constants.2938
 setup_startp_constants.2943:
-	bge	$5, $0, ge.87970
+	bge	$5, $0, ge.88460
 	jr $31
-ge.87970:
+ge.88460:
 	lw	$6, 3001($5)
 	lw	$7, 10($6)
 	lw	$8, 1($6)
@@ -6912,7 +6832,7 @@ ge.87970:
 	fsub	$f0, $f0, $f1
 	sf	$f0, 2($7)
 	addi	$30, $0, 2
-	bne	$8, $30, eq_else.87972
+	bne	$8, $30, eq_else.88462
 	lw	$6, 4($6)
 	lf	$f0, 0($7)
 	lf	$f1, 1($7)
@@ -6926,10 +6846,10 @@ ge.87970:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3($7)
-	j	eq_cont.87973
-eq_else.87972:
+	j	eq_cont.88463
+eq_else.88462:
 	addi	$30, $0, 2
-	ble	$8, $30, le_else.87974
+	ble	$8, $30, le_else.88464
 	lf	$f0, 0($7)
 	lf	$f1, 1($7)
 	lf	$f2, 2($7)
@@ -6948,10 +6868,10 @@ eq_else.87972:
 	fmul	$f4, $f4, $f5
 	fadd	$f3, $f3, $f4
 	lw	$9, 3($6)
-	bne	$9, $0, eq_else.87976
+	bne	$9, $0, eq_else.88466
 	movf	$f0, $f3
-	j	eq_cont.87977
-eq_else.87976:
+	j	eq_cont.88467
+eq_else.88466:
 	fmul	$f4, $f1, $f2
 	lw	$9, 9($6)
 	lf	$f5, 0($9)
@@ -6967,27 +6887,27 @@ eq_else.87976:
 	lf	$f1, 2($6)
 	fmul	$f0, $f0, $f1
 	fadd	$f0, $f2, $f0
-eq_cont.87977:
+eq_cont.88467:
 	addi	$30, $0, 3
-	bne	$8, $30, eq_else.87978
+	bne	$8, $30, eq_else.88468
 	fsub	$f0, $f0, $f28
-	j	eq_cont.87979
-eq_else.87978:
-eq_cont.87979:
+	j	eq_cont.88469
+eq_else.88468:
+eq_cont.88469:
 	sf	$f0, 3($7)
-	j	le_cont.87975
-le_else.87974:
-le_cont.87975:
-eq_cont.87973:
+	j	le_cont.88465
+le_else.88464:
+le_cont.88465:
+eq_cont.88463:
 	addi	$5, $5, -1
 	j	setup_startp_constants.2943
 check_all_inside.2968:
 	add	$30, $5, $2
 	lw	$6, 0($30)
-	bne	$6, $28, eq_else.87980
+	bne	$6, $28, eq_else.88470
 	mov	$2, $1
 	jr $31
-eq_else.87980:
+eq_else.88470:
 	lw	$6, 3001($6)
 	lw	$7, 5($6)
 	lf	$f3, 0($7)
@@ -6999,50 +6919,50 @@ eq_else.87980:
 	lf	$f5, 2($7)
 	fsub	$f5, $f2, $f5
 	lw	$7, 1($6)
-	bne	$7, $1, eq_else.87981
+	bne	$7, $1, eq_else.88471
 	fabs	$f3, $f3
 	lw	$7, 4($6)
 	lf	$f6, 0($7)
 	sltf	$7, $f3, $f6
-	bne	$7, $0, eq_else.87983
+	bne	$7, $0, eq_else.88473
 	mov	$7, $0
-	j	eq_cont.87984
-eq_else.87983:
+	j	eq_cont.88474
+eq_else.88473:
 	fabs	$f3, $f4
 	lw	$7, 4($6)
 	lf	$f4, 1($7)
 	sltf	$7, $f3, $f4
-	bne	$7, $0, eq_else.87985
+	bne	$7, $0, eq_else.88475
 	mov	$7, $0
-	j	eq_cont.87986
-eq_else.87985:
+	j	eq_cont.88476
+eq_else.88475:
 	fabs	$f3, $f5
 	lw	$7, 4($6)
 	lf	$f4, 2($7)
-	bltf	$f3, $f4, fle.87987
+	bltf	$f3, $f4, fle.88477
 	mov	$7, $0
-	j	fle_cont.87988
-fle.87987:
+	j	fle_cont.88478
+fle.88477:
 	mov	$7, $1
-fle_cont.87988:
-eq_cont.87986:
-eq_cont.87984:
-	bne	$7, $0, eq_else.87989
+fle_cont.88478:
+eq_cont.88476:
+eq_cont.88474:
+	bne	$7, $0, eq_else.88479
 	lw	$6, 6($6)
-	bne	$6, $0, eq_else.87991
+	bne	$6, $0, eq_else.88481
 	mov	$6, $1
-	j	eq_cont.87992
-eq_else.87991:
+	j	eq_cont.88482
+eq_else.88481:
 	mov	$6, $0
-eq_cont.87992:
-	j	eq_cont.87990
-eq_else.87989:
+eq_cont.88482:
+	j	eq_cont.88480
+eq_else.88479:
 	lw	$6, 6($6)
-eq_cont.87990:
-	j	eq_cont.87982
-eq_else.87981:
+eq_cont.88480:
+	j	eq_cont.88472
+eq_else.88471:
 	addi	$30, $0, 2
-	bne	$7, $30, eq_else.87993
+	bne	$7, $30, eq_else.88483
 	lw	$7, 4($6)
 	lf	$f6, 0($7)
 	fmul	$f3, $f6, $f3
@@ -7055,14 +6975,14 @@ eq_else.87981:
 	lw	$6, 6($6)
 	sltf	$7, $f3, $f30
 	xor	$6, $6, $7
-	bne	$6, $0, eq_else.87995
+	bne	$6, $0, eq_else.88485
 	mov	$6, $1
-	j	eq_cont.87996
-eq_else.87995:
+	j	eq_cont.88486
+eq_else.88485:
 	mov	$6, $0
-eq_cont.87996:
-	j	eq_cont.87994
-eq_else.87993:
+eq_cont.88486:
+	j	eq_cont.88484
+eq_else.88483:
 	fmul	$f6, $f3, $f3
 	lw	$7, 4($6)
 	lf	$f7, 0($7)
@@ -7078,10 +6998,10 @@ eq_else.87993:
 	fmul	$f7, $f7, $f8
 	fadd	$f6, $f6, $f7
 	lw	$7, 3($6)
-	bne	$7, $0, eq_else.87997
+	bne	$7, $0, eq_else.88487
 	movf	$f3, $f6
-	j	eq_cont.87998
-eq_else.87997:
+	j	eq_cont.88488
+eq_else.88487:
 	fmul	$f7, $f4, $f5
 	lw	$7, 9($6)
 	lf	$f8, 0($7)
@@ -7097,33 +7017,33 @@ eq_else.87997:
 	lf	$f4, 2($7)
 	fmul	$f3, $f3, $f4
 	fadd	$f3, $f5, $f3
-eq_cont.87998:
+eq_cont.88488:
 	lw	$7, 1($6)
 	addi	$30, $0, 3
-	bne	$7, $30, eq_else.87999
+	bne	$7, $30, eq_else.88489
 	fsub	$f3, $f3, $f28
-	j	eq_cont.88000
-eq_else.87999:
-eq_cont.88000:
+	j	eq_cont.88490
+eq_else.88489:
+eq_cont.88490:
 	lw	$6, 6($6)
 	sltf	$7, $f3, $f30
 	xor	$6, $6, $7
-	bne	$6, $0, eq_else.88001
+	bne	$6, $0, eq_else.88491
 	mov	$6, $1
-	j	eq_cont.88002
-eq_else.88001:
+	j	eq_cont.88492
+eq_else.88491:
 	mov	$6, $0
-eq_cont.88002:
-eq_cont.87994:
-eq_cont.87982:
-	bne	$6, $0, eq_else.88003
+eq_cont.88492:
+eq_cont.88484:
+eq_cont.88472:
+	bne	$6, $0, eq_else.88493
 	addi	$2, $2, 1
 	add	$30, $5, $2
 	lw	$6, 0($30)
-	bne	$6, $28, eq_else.88004
+	bne	$6, $28, eq_else.88494
 	mov	$2, $1
 	jr $31
-eq_else.88004:
+eq_else.88494:
 	lw	$6, 3001($6)
 	lw	$7, 5($6)
 	lf	$f3, 0($7)
@@ -7135,50 +7055,50 @@ eq_else.88004:
 	lf	$f5, 2($7)
 	fsub	$f5, $f2, $f5
 	lw	$7, 1($6)
-	bne	$7, $1, eq_else.88005
+	bne	$7, $1, eq_else.88495
 	fabs	$f3, $f3
 	lw	$7, 4($6)
 	lf	$f6, 0($7)
 	sltf	$7, $f3, $f6
-	bne	$7, $0, eq_else.88007
+	bne	$7, $0, eq_else.88497
 	mov	$7, $0
-	j	eq_cont.88008
-eq_else.88007:
+	j	eq_cont.88498
+eq_else.88497:
 	fabs	$f3, $f4
 	lw	$7, 4($6)
 	lf	$f4, 1($7)
 	sltf	$7, $f3, $f4
-	bne	$7, $0, eq_else.88009
+	bne	$7, $0, eq_else.88499
 	mov	$7, $0
-	j	eq_cont.88010
-eq_else.88009:
+	j	eq_cont.88500
+eq_else.88499:
 	fabs	$f3, $f5
 	lw	$7, 4($6)
 	lf	$f4, 2($7)
-	bltf	$f3, $f4, fle.88011
+	bltf	$f3, $f4, fle.88501
 	mov	$7, $0
-	j	fle_cont.88012
-fle.88011:
+	j	fle_cont.88502
+fle.88501:
 	mov	$7, $1
-fle_cont.88012:
-eq_cont.88010:
-eq_cont.88008:
-	bne	$7, $0, eq_else.88013
+fle_cont.88502:
+eq_cont.88500:
+eq_cont.88498:
+	bne	$7, $0, eq_else.88503
 	lw	$6, 6($6)
-	bne	$6, $0, eq_else.88015
+	bne	$6, $0, eq_else.88505
 	mov	$6, $1
-	j	eq_cont.88016
-eq_else.88015:
+	j	eq_cont.88506
+eq_else.88505:
 	mov	$6, $0
-eq_cont.88016:
-	j	eq_cont.88014
-eq_else.88013:
+eq_cont.88506:
+	j	eq_cont.88504
+eq_else.88503:
 	lw	$6, 6($6)
-eq_cont.88014:
-	j	eq_cont.88006
-eq_else.88005:
+eq_cont.88504:
+	j	eq_cont.88496
+eq_else.88495:
 	addi	$30, $0, 2
-	bne	$7, $30, eq_else.88017
+	bne	$7, $30, eq_else.88507
 	lw	$7, 4($6)
 	lf	$f6, 0($7)
 	fmul	$f3, $f6, $f3
@@ -7191,14 +7111,14 @@ eq_else.88005:
 	lw	$6, 6($6)
 	sltf	$7, $f3, $f30
 	xor	$6, $6, $7
-	bne	$6, $0, eq_else.88019
+	bne	$6, $0, eq_else.88509
 	mov	$6, $1
-	j	eq_cont.88020
-eq_else.88019:
+	j	eq_cont.88510
+eq_else.88509:
 	mov	$6, $0
-eq_cont.88020:
-	j	eq_cont.88018
-eq_else.88017:
+eq_cont.88510:
+	j	eq_cont.88508
+eq_else.88507:
 	fmul	$f6, $f3, $f3
 	lw	$7, 4($6)
 	lf	$f7, 0($7)
@@ -7214,10 +7134,10 @@ eq_else.88017:
 	fmul	$f7, $f7, $f8
 	fadd	$f6, $f6, $f7
 	lw	$7, 3($6)
-	bne	$7, $0, eq_else.88021
+	bne	$7, $0, eq_else.88511
 	movf	$f3, $f6
-	j	eq_cont.88022
-eq_else.88021:
+	j	eq_cont.88512
+eq_else.88511:
 	fmul	$f7, $f4, $f5
 	lw	$7, 9($6)
 	lf	$f8, 0($7)
@@ -7233,33 +7153,33 @@ eq_else.88021:
 	lf	$f4, 2($7)
 	fmul	$f3, $f3, $f4
 	fadd	$f3, $f5, $f3
-eq_cont.88022:
+eq_cont.88512:
 	lw	$7, 1($6)
 	addi	$30, $0, 3
-	bne	$7, $30, eq_else.88023
+	bne	$7, $30, eq_else.88513
 	fsub	$f3, $f3, $f28
-	j	eq_cont.88024
-eq_else.88023:
-eq_cont.88024:
+	j	eq_cont.88514
+eq_else.88513:
+eq_cont.88514:
 	lw	$6, 6($6)
 	sltf	$7, $f3, $f30
 	xor	$6, $6, $7
-	bne	$6, $0, eq_else.88025
+	bne	$6, $0, eq_else.88515
 	mov	$6, $1
-	j	eq_cont.88026
-eq_else.88025:
+	j	eq_cont.88516
+eq_else.88515:
 	mov	$6, $0
-eq_cont.88026:
-eq_cont.88018:
-eq_cont.88006:
-	bne	$6, $0, eq_else.88027
+eq_cont.88516:
+eq_cont.88508:
+eq_cont.88496:
+	bne	$6, $0, eq_else.88517
 	addi	$2, $2, 1
 	add	$30, $5, $2
 	lw	$6, 0($30)
-	bne	$6, $28, eq_else.88028
+	bne	$6, $28, eq_else.88518
 	mov	$2, $1
 	jr $31
-eq_else.88028:
+eq_else.88518:
 	lw	$6, 3001($6)
 	lw	$7, 5($6)
 	lf	$f3, 0($7)
@@ -7271,50 +7191,50 @@ eq_else.88028:
 	lf	$f5, 2($7)
 	fsub	$f5, $f2, $f5
 	lw	$7, 1($6)
-	bne	$7, $1, eq_else.88029
+	bne	$7, $1, eq_else.88519
 	fabs	$f3, $f3
 	lw	$7, 4($6)
 	lf	$f6, 0($7)
 	sltf	$7, $f3, $f6
-	bne	$7, $0, eq_else.88031
+	bne	$7, $0, eq_else.88521
 	mov	$7, $0
-	j	eq_cont.88032
-eq_else.88031:
+	j	eq_cont.88522
+eq_else.88521:
 	fabs	$f3, $f4
 	lw	$7, 4($6)
 	lf	$f4, 1($7)
 	sltf	$7, $f3, $f4
-	bne	$7, $0, eq_else.88033
+	bne	$7, $0, eq_else.88523
 	mov	$7, $0
-	j	eq_cont.88034
-eq_else.88033:
+	j	eq_cont.88524
+eq_else.88523:
 	fabs	$f3, $f5
 	lw	$7, 4($6)
 	lf	$f4, 2($7)
-	bltf	$f3, $f4, fle.88035
+	bltf	$f3, $f4, fle.88525
 	mov	$7, $0
-	j	fle_cont.88036
-fle.88035:
+	j	fle_cont.88526
+fle.88525:
 	mov	$7, $1
-fle_cont.88036:
-eq_cont.88034:
-eq_cont.88032:
-	bne	$7, $0, eq_else.88037
+fle_cont.88526:
+eq_cont.88524:
+eq_cont.88522:
+	bne	$7, $0, eq_else.88527
 	lw	$6, 6($6)
-	bne	$6, $0, eq_else.88039
+	bne	$6, $0, eq_else.88529
 	mov	$6, $1
-	j	eq_cont.88040
-eq_else.88039:
+	j	eq_cont.88530
+eq_else.88529:
 	mov	$6, $0
-eq_cont.88040:
-	j	eq_cont.88038
-eq_else.88037:
+eq_cont.88530:
+	j	eq_cont.88528
+eq_else.88527:
 	lw	$6, 6($6)
-eq_cont.88038:
-	j	eq_cont.88030
-eq_else.88029:
+eq_cont.88528:
+	j	eq_cont.88520
+eq_else.88519:
 	addi	$30, $0, 2
-	bne	$7, $30, eq_else.88041
+	bne	$7, $30, eq_else.88531
 	lw	$7, 4($6)
 	lf	$f6, 0($7)
 	fmul	$f3, $f6, $f3
@@ -7327,14 +7247,14 @@ eq_else.88029:
 	lw	$6, 6($6)
 	sltf	$7, $f3, $f30
 	xor	$6, $6, $7
-	bne	$6, $0, eq_else.88043
+	bne	$6, $0, eq_else.88533
 	mov	$6, $1
-	j	eq_cont.88044
-eq_else.88043:
+	j	eq_cont.88534
+eq_else.88533:
 	mov	$6, $0
-eq_cont.88044:
-	j	eq_cont.88042
-eq_else.88041:
+eq_cont.88534:
+	j	eq_cont.88532
+eq_else.88531:
 	fmul	$f6, $f3, $f3
 	lw	$7, 4($6)
 	lf	$f7, 0($7)
@@ -7350,10 +7270,10 @@ eq_else.88041:
 	fmul	$f7, $f7, $f8
 	fadd	$f6, $f6, $f7
 	lw	$7, 3($6)
-	bne	$7, $0, eq_else.88045
+	bne	$7, $0, eq_else.88535
 	movf	$f3, $f6
-	j	eq_cont.88046
-eq_else.88045:
+	j	eq_cont.88536
+eq_else.88535:
 	fmul	$f7, $f4, $f5
 	lw	$7, 9($6)
 	lf	$f8, 0($7)
@@ -7369,33 +7289,33 @@ eq_else.88045:
 	lf	$f4, 2($7)
 	fmul	$f3, $f3, $f4
 	fadd	$f3, $f5, $f3
-eq_cont.88046:
+eq_cont.88536:
 	lw	$7, 1($6)
 	addi	$30, $0, 3
-	bne	$7, $30, eq_else.88047
+	bne	$7, $30, eq_else.88537
 	fsub	$f3, $f3, $f28
-	j	eq_cont.88048
-eq_else.88047:
-eq_cont.88048:
+	j	eq_cont.88538
+eq_else.88537:
+eq_cont.88538:
 	lw	$6, 6($6)
 	sltf	$7, $f3, $f30
 	xor	$6, $6, $7
-	bne	$6, $0, eq_else.88049
+	bne	$6, $0, eq_else.88539
 	mov	$6, $1
-	j	eq_cont.88050
-eq_else.88049:
+	j	eq_cont.88540
+eq_else.88539:
 	mov	$6, $0
-eq_cont.88050:
-eq_cont.88042:
-eq_cont.88030:
-	bne	$6, $0, eq_else.88051
+eq_cont.88540:
+eq_cont.88532:
+eq_cont.88520:
+	bne	$6, $0, eq_else.88541
 	addi	$2, $2, 1
 	add	$30, $5, $2
 	lw	$6, 0($30)
-	bne	$6, $28, eq_else.88052
+	bne	$6, $28, eq_else.88542
 	mov	$2, $1
 	jr $31
-eq_else.88052:
+eq_else.88542:
 	lw	$6, 3001($6)
 	lw	$7, 5($6)
 	lf	$f3, 0($7)
@@ -7407,50 +7327,50 @@ eq_else.88052:
 	lf	$f5, 2($7)
 	fsub	$f5, $f2, $f5
 	lw	$7, 1($6)
-	bne	$7, $1, eq_else.88053
+	bne	$7, $1, eq_else.88543
 	fabs	$f3, $f3
 	lw	$7, 4($6)
 	lf	$f6, 0($7)
 	sltf	$7, $f3, $f6
-	bne	$7, $0, eq_else.88055
+	bne	$7, $0, eq_else.88545
 	mov	$7, $0
-	j	eq_cont.88056
-eq_else.88055:
+	j	eq_cont.88546
+eq_else.88545:
 	fabs	$f3, $f4
 	lw	$7, 4($6)
 	lf	$f4, 1($7)
 	sltf	$7, $f3, $f4
-	bne	$7, $0, eq_else.88057
+	bne	$7, $0, eq_else.88547
 	mov	$7, $0
-	j	eq_cont.88058
-eq_else.88057:
+	j	eq_cont.88548
+eq_else.88547:
 	fabs	$f3, $f5
 	lw	$7, 4($6)
 	lf	$f4, 2($7)
-	bltf	$f3, $f4, fle.88059
+	bltf	$f3, $f4, fle.88549
 	mov	$7, $0
-	j	fle_cont.88060
-fle.88059:
+	j	fle_cont.88550
+fle.88549:
 	mov	$7, $1
-fle_cont.88060:
-eq_cont.88058:
-eq_cont.88056:
-	bne	$7, $0, eq_else.88061
+fle_cont.88550:
+eq_cont.88548:
+eq_cont.88546:
+	bne	$7, $0, eq_else.88551
 	lw	$6, 6($6)
-	bne	$6, $0, eq_else.88063
+	bne	$6, $0, eq_else.88553
 	mov	$6, $1
-	j	eq_cont.88064
-eq_else.88063:
+	j	eq_cont.88554
+eq_else.88553:
 	mov	$6, $0
-eq_cont.88064:
-	j	eq_cont.88062
-eq_else.88061:
+eq_cont.88554:
+	j	eq_cont.88552
+eq_else.88551:
 	lw	$6, 6($6)
-eq_cont.88062:
-	j	eq_cont.88054
-eq_else.88053:
+eq_cont.88552:
+	j	eq_cont.88544
+eq_else.88543:
 	addi	$30, $0, 2
-	bne	$7, $30, eq_else.88065
+	bne	$7, $30, eq_else.88555
 	lw	$7, 4($6)
 	lf	$f6, 0($7)
 	fmul	$f3, $f6, $f3
@@ -7463,14 +7383,14 @@ eq_else.88053:
 	lw	$6, 6($6)
 	sltf	$7, $f3, $f30
 	xor	$6, $6, $7
-	bne	$6, $0, eq_else.88067
+	bne	$6, $0, eq_else.88557
 	mov	$6, $1
-	j	eq_cont.88068
-eq_else.88067:
+	j	eq_cont.88558
+eq_else.88557:
 	mov	$6, $0
-eq_cont.88068:
-	j	eq_cont.88066
-eq_else.88065:
+eq_cont.88558:
+	j	eq_cont.88556
+eq_else.88555:
 	fmul	$f6, $f3, $f3
 	lw	$7, 4($6)
 	lf	$f7, 0($7)
@@ -7486,10 +7406,10 @@ eq_else.88065:
 	fmul	$f7, $f7, $f8
 	fadd	$f6, $f6, $f7
 	lw	$7, 3($6)
-	bne	$7, $0, eq_else.88069
+	bne	$7, $0, eq_else.88559
 	movf	$f3, $f6
-	j	eq_cont.88070
-eq_else.88069:
+	j	eq_cont.88560
+eq_else.88559:
 	fmul	$f7, $f4, $f5
 	lw	$7, 9($6)
 	lf	$f8, 0($7)
@@ -7505,47 +7425,47 @@ eq_else.88069:
 	lf	$f4, 2($7)
 	fmul	$f3, $f3, $f4
 	fadd	$f3, $f5, $f3
-eq_cont.88070:
+eq_cont.88560:
 	lw	$7, 1($6)
 	addi	$30, $0, 3
-	bne	$7, $30, eq_else.88071
+	bne	$7, $30, eq_else.88561
 	fsub	$f3, $f3, $f28
-	j	eq_cont.88072
-eq_else.88071:
-eq_cont.88072:
+	j	eq_cont.88562
+eq_else.88561:
+eq_cont.88562:
 	lw	$6, 6($6)
 	sltf	$7, $f3, $f30
 	xor	$6, $6, $7
-	bne	$6, $0, eq_else.88073
+	bne	$6, $0, eq_else.88563
 	mov	$6, $1
-	j	eq_cont.88074
-eq_else.88073:
+	j	eq_cont.88564
+eq_else.88563:
 	mov	$6, $0
-eq_cont.88074:
-eq_cont.88066:
-eq_cont.88054:
-	bne	$6, $0, eq_else.88075
+eq_cont.88564:
+eq_cont.88556:
+eq_cont.88544:
+	bne	$6, $0, eq_else.88565
 	addi	$2, $2, 1
 	j	check_all_inside.2968
-eq_else.88075:
+eq_else.88565:
 	mov	$2, $0
 	jr $31
-eq_else.88051:
+eq_else.88541:
 	mov	$2, $0
 	jr $31
-eq_else.88027:
+eq_else.88517:
 	mov	$2, $0
 	jr $31
-eq_else.88003:
+eq_else.88493:
 	mov	$2, $0
 	jr $31
 shadow_check_and_group.2974:
 	add	$30, $5, $2
 	lw	$6, 0($30)
-	bne	$6, $28, eq_else.88076
+	bne	$6, $28, eq_else.88566
 	mov	$2, $0
 	jr $31
-eq_else.88076:
+eq_else.88566:
 	add	$30, $5, $2
 	lw	$6, 0($30)
 	lw	$7, 3001($6)
@@ -7557,8 +7477,7 @@ eq_else.88076:
 	lw	$8, 5($7)
 	lf	$f2, 1($8)
 	fsub	$f1, $f1, $f2
-	addi	$8, $0, 2
-	lf	$f2, 3125($8)
+	lf	$f2, 3125($26)
 	lw	$8, 5($7)
 	lf	$f3, 2($8)
 	fsub	$f2, $f2, $f3
@@ -7567,7 +7486,7 @@ eq_else.88076:
 	add	$30, $8, $6
 	lw	$8, 0($30)
 	lw	$9, 1($7)
-	bne	$9, $1, eq_else.88077
+	bne	$9, $1, eq_else.88567
 	addi	$9, $0, 3169
 	lw	$9, 0($9)
 	lf	$f3, 0($8)
@@ -7581,10 +7500,10 @@ eq_else.88076:
 	lw	$10, 4($7)
 	lf	$f5, 1($10)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.88079
+	bne	$10, $0, eq_else.88569
 	mov	$10, $0
-	j	eq_cont.88080
-eq_else.88079:
+	j	eq_cont.88570
+eq_else.88569:
 	lf	$f4, 2($9)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
@@ -7592,26 +7511,26 @@ eq_else.88079:
 	lw	$10, 4($7)
 	lf	$f5, 2($10)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.88081
+	bne	$10, $0, eq_else.88571
 	mov	$10, $0
-	j	eq_cont.88082
-eq_else.88081:
+	j	eq_cont.88572
+eq_else.88571:
 	lf	$f4, 1($8)
-	beqf	$f4, $f30, feq.88083
+	beqf	$f4, $f30, feq.88573
 	mov	$10, $0
-	j	feq_cont.88084
-feq.88083:
+	j	feq_cont.88574
+feq.88573:
 	mov	$10, $1
-feq_cont.88084:
-	bne	$10, $0, eq_else.88085
+feq_cont.88574:
+	bne	$10, $0, eq_else.88575
 	mov	$10, $1
-	j	eq_cont.88086
-eq_else.88085:
+	j	eq_cont.88576
+eq_else.88575:
 	mov	$10, $0
-eq_cont.88086:
-eq_cont.88082:
-eq_cont.88080:
-	bne	$10, $0, eq_else.88087
+eq_cont.88576:
+eq_cont.88572:
+eq_cont.88570:
+	bne	$10, $0, eq_else.88577
 	lf	$f3, 2($8)
 	fsub	$f3, $f3, $f1
 	lf	$f4, 3($8)
@@ -7623,10 +7542,10 @@ eq_cont.88080:
 	lw	$10, 4($7)
 	lf	$f5, 0($10)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.88089
+	bne	$10, $0, eq_else.88579
 	mov	$10, $0
-	j	eq_cont.88090
-eq_else.88089:
+	j	eq_cont.88580
+eq_else.88579:
 	lf	$f4, 2($9)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
@@ -7634,26 +7553,26 @@ eq_else.88089:
 	lw	$10, 4($7)
 	lf	$f5, 2($10)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.88091
+	bne	$10, $0, eq_else.88581
 	mov	$10, $0
-	j	eq_cont.88092
-eq_else.88091:
+	j	eq_cont.88582
+eq_else.88581:
 	lf	$f4, 3($8)
-	beqf	$f4, $f30, feq.88093
+	beqf	$f4, $f30, feq.88583
 	mov	$10, $0
-	j	feq_cont.88094
-feq.88093:
+	j	feq_cont.88584
+feq.88583:
 	mov	$10, $1
-feq_cont.88094:
-	bne	$10, $0, eq_else.88095
+feq_cont.88584:
+	bne	$10, $0, eq_else.88585
 	mov	$10, $1
-	j	eq_cont.88096
-eq_else.88095:
+	j	eq_cont.88586
+eq_else.88585:
 	mov	$10, $0
-eq_cont.88096:
-eq_cont.88092:
-eq_cont.88090:
-	bne	$10, $0, eq_else.88097
+eq_cont.88586:
+eq_cont.88582:
+eq_cont.88580:
+	bne	$10, $0, eq_else.88587
 	lf	$f3, 4($8)
 	fsub	$f2, $f3, $f2
 	lf	$f3, 5($8)
@@ -7665,10 +7584,10 @@ eq_cont.88090:
 	lw	$10, 4($7)
 	lf	$f3, 0($10)
 	sltf	$10, $f0, $f3
-	bne	$10, $0, eq_else.88099
+	bne	$10, $0, eq_else.88589
 	mov	$7, $0
-	j	eq_cont.88100
-eq_else.88099:
+	j	eq_cont.88590
+eq_else.88589:
 	lf	$f0, 1($9)
 	fmul	$f0, $f2, $f0
 	fadd	$f0, $f0, $f1
@@ -7676,52 +7595,52 @@ eq_else.88099:
 	lw	$7, 4($7)
 	lf	$f1, 1($7)
 	sltf	$7, $f0, $f1
-	bne	$7, $0, eq_else.88101
+	bne	$7, $0, eq_else.88591
 	mov	$7, $0
-	j	eq_cont.88102
-eq_else.88101:
+	j	eq_cont.88592
+eq_else.88591:
 	lf	$f0, 5($8)
-	beqf	$f0, $f30, feq.88103
+	beqf	$f0, $f30, feq.88593
 	mov	$7, $0
-	j	feq_cont.88104
-feq.88103:
+	j	feq_cont.88594
+feq.88593:
 	mov	$7, $1
-feq_cont.88104:
-	bne	$7, $0, eq_else.88105
+feq_cont.88594:
+	bne	$7, $0, eq_else.88595
 	mov	$7, $1
-	j	eq_cont.88106
-eq_else.88105:
+	j	eq_cont.88596
+eq_else.88595:
 	mov	$7, $0
-eq_cont.88106:
-eq_cont.88102:
-eq_cont.88100:
-	bne	$7, $0, eq_else.88107
+eq_cont.88596:
+eq_cont.88592:
+eq_cont.88590:
+	bne	$7, $0, eq_else.88597
 	mov	$7, $0
-	j	eq_cont.88108
-eq_else.88107:
+	j	eq_cont.88598
+eq_else.88597:
 	sf	$f2, 3122($0)
-	addi	$7, $0, 3
-eq_cont.88108:
-	j	eq_cont.88098
-eq_else.88097:
+	mov	$7, $27
+eq_cont.88598:
+	j	eq_cont.88588
+eq_else.88587:
 	sf	$f3, 3122($0)
-	addi	$7, $0, 2
-eq_cont.88098:
-	j	eq_cont.88088
-eq_else.88087:
+	mov	$7, $26
+eq_cont.88588:
+	j	eq_cont.88578
+eq_else.88577:
 	sf	$f3, 3122($0)
 	mov	$7, $1
-eq_cont.88088:
-	j	eq_cont.88078
-eq_else.88077:
+eq_cont.88578:
+	j	eq_cont.88568
+eq_else.88567:
 	addi	$30, $0, 2
-	bne	$9, $30, eq_else.88109
+	bne	$9, $30, eq_else.88599
 	lf	$f3, 0($8)
 	sltf	$7, $f3, $f30
-	bne	$7, $0, eq_else.88111
+	bne	$7, $0, eq_else.88601
 	mov	$7, $0
-	j	eq_cont.88112
-eq_else.88111:
+	j	eq_cont.88602
+eq_else.88601:
 	lf	$f3, 1($8)
 	fmul	$f0, $f3, $f0
 	lf	$f3, 2($8)
@@ -7732,17 +7651,17 @@ eq_else.88111:
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3122($0)
 	mov	$7, $1
-eq_cont.88112:
-	j	eq_cont.88110
-eq_else.88109:
+eq_cont.88602:
+	j	eq_cont.88600
+eq_else.88599:
 	lf	$f3, 0($8)
-	beqf	$f3, $f30, feq.88113
+	beqf	$f3, $f30, feq.88603
 	mov	$9, $0
-	j	feq_cont.88114
-feq.88113:
+	j	feq_cont.88604
+feq.88603:
 	mov	$9, $1
-feq_cont.88114:
-	bne	$9, $0, eq_else.88115
+feq_cont.88604:
+	bne	$9, $0, eq_else.88605
 	lf	$f4, 1($8)
 	fmul	$f4, $f4, $f0
 	lf	$f5, 2($8)
@@ -7766,10 +7685,10 @@ feq_cont.88114:
 	fmul	$f6, $f6, $f7
 	fadd	$f5, $f5, $f6
 	lw	$9, 3($7)
-	bne	$9, $0, eq_else.88117
+	bne	$9, $0, eq_else.88607
 	movf	$f0, $f5
-	j	eq_cont.88118
-eq_else.88117:
+	j	eq_cont.88608
+eq_else.88607:
 	fmul	$f6, $f1, $f2
 	lw	$9, 9($7)
 	lf	$f7, 0($9)
@@ -7785,68 +7704,68 @@ eq_else.88117:
 	lf	$f1, 2($9)
 	fmul	$f0, $f0, $f1
 	fadd	$f0, $f2, $f0
-eq_cont.88118:
+eq_cont.88608:
 	lw	$9, 1($7)
 	addi	$30, $0, 3
-	bne	$9, $30, eq_else.88119
+	bne	$9, $30, eq_else.88609
 	fsub	$f0, $f0, $f28
-	j	eq_cont.88120
-eq_else.88119:
-eq_cont.88120:
+	j	eq_cont.88610
+eq_else.88609:
+eq_cont.88610:
 	fmul	$f1, $f4, $f4
 	fmul	$f0, $f3, $f0
 	fsub	$f0, $f1, $f0
 	sltf	$9, $f30, $f0
-	bne	$9, $0, eq_else.88121
+	bne	$9, $0, eq_else.88611
 	mov	$7, $0
-	j	eq_cont.88122
-eq_else.88121:
+	j	eq_cont.88612
+eq_else.88611:
 	lw	$7, 6($7)
-	bne	$7, $0, eq_else.88123
+	bne	$7, $0, eq_else.88613
 	sqrt	$f0, $f0
 	fsub	$f0, $f4, $f0
 	lf	$f1, 4($8)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
-	j	eq_cont.88124
-eq_else.88123:
+	j	eq_cont.88614
+eq_else.88613:
 	sqrt	$f0, $f0
 	fadd	$f0, $f4, $f0
 	lf	$f1, 4($8)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
-eq_cont.88124:
+eq_cont.88614:
 	mov	$7, $1
-eq_cont.88122:
-	j	eq_cont.88116
-eq_else.88115:
+eq_cont.88612:
+	j	eq_cont.88606
+eq_else.88605:
 	mov	$7, $0
-eq_cont.88116:
-eq_cont.88110:
-eq_cont.88078:
+eq_cont.88606:
+eq_cont.88600:
+eq_cont.88568:
 	lf	$f0, 3122($0)
-	bne	$7, $0, eq_else.88125
+	bne	$7, $0, eq_else.88615
 	mov	$7, $0
-	j	eq_cont.88126
-eq_else.88125:
+	j	eq_cont.88616
+eq_else.88615:
 	lf	$f1, 3384($0) # -0.200000
-	bltf	$f0, $f1, fle.88127
+	bltf	$f0, $f1, fle.88617
 	mov	$7, $0
-	j	fle_cont.88128
-fle.88127:
+	j	fle_cont.88618
+fle.88617:
 	mov	$7, $1
-fle_cont.88128:
-eq_cont.88126:
-	bne	$7, $0, eq_else.88129
+fle_cont.88618:
+eq_cont.88616:
+	bne	$7, $0, eq_else.88619
 	lw	$6, 3001($6)
 	lw	$6, 6($6)
-	bne	$6, $0, eq_else.88130
+	bne	$6, $0, eq_else.88620
 	mov	$2, $0
 	jr $31
-eq_else.88130:
+eq_else.88620:
 	addi	$2, $2, 1
 	j	shadow_check_and_group.2974
-eq_else.88129:
+eq_else.88619:
 	lf	$f1, 3383($0) # 0.010000
 	fadd	$f0, $f0, $f1
 	lf	$f1, 3067($0)
@@ -7857,19 +7776,17 @@ eq_else.88129:
 	fmul	$f2, $f2, $f0
 	lf	$f3, 3125($1)
 	fadd	$f2, $f2, $f3
-	addi	$6, $0, 2
-	lf	$f3, 3067($6)
+	lf	$f3, 3067($26)
 	fmul	$f0, $f3, $f0
-	addi	$6, $0, 2
-	lf	$f3, 3125($6)
+	lf	$f3, 3125($26)
 	fadd	$f0, $f0, $f3
 	lw	$6, 0($5)
 	sw	$5, 0($3)
 	sw	$2, 1($3)
-	bne	$6, $28, eq_else.88131
+	bne	$6, $28, eq_else.88621
 	mov	$2, $1
-	j	eq_cont.88132
-eq_else.88131:
+	j	eq_cont.88622
+eq_else.88621:
 	lw	$6, 3001($6)
 	lw	$7, 5($6)
 	lf	$f3, 0($7)
@@ -7881,50 +7798,50 @@ eq_else.88131:
 	lf	$f5, 2($7)
 	fsub	$f5, $f0, $f5
 	lw	$7, 1($6)
-	bne	$7, $1, eq_else.88133
+	bne	$7, $1, eq_else.88623
 	fabs	$f3, $f3
 	lw	$7, 4($6)
 	lf	$f6, 0($7)
 	sltf	$7, $f3, $f6
-	bne	$7, $0, eq_else.88135
+	bne	$7, $0, eq_else.88625
 	mov	$7, $0
-	j	eq_cont.88136
-eq_else.88135:
+	j	eq_cont.88626
+eq_else.88625:
 	fabs	$f3, $f4
 	lw	$7, 4($6)
 	lf	$f4, 1($7)
 	sltf	$7, $f3, $f4
-	bne	$7, $0, eq_else.88137
+	bne	$7, $0, eq_else.88627
 	mov	$7, $0
-	j	eq_cont.88138
-eq_else.88137:
+	j	eq_cont.88628
+eq_else.88627:
 	fabs	$f3, $f5
 	lw	$7, 4($6)
 	lf	$f4, 2($7)
-	bltf	$f3, $f4, fle.88139
+	bltf	$f3, $f4, fle.88629
 	mov	$7, $0
-	j	fle_cont.88140
-fle.88139:
+	j	fle_cont.88630
+fle.88629:
 	mov	$7, $1
-fle_cont.88140:
-eq_cont.88138:
-eq_cont.88136:
-	bne	$7, $0, eq_else.88141
+fle_cont.88630:
+eq_cont.88628:
+eq_cont.88626:
+	bne	$7, $0, eq_else.88631
 	lw	$6, 6($6)
-	bne	$6, $0, eq_else.88143
+	bne	$6, $0, eq_else.88633
 	mov	$6, $1
-	j	eq_cont.88144
-eq_else.88143:
+	j	eq_cont.88634
+eq_else.88633:
 	mov	$6, $0
-eq_cont.88144:
-	j	eq_cont.88142
-eq_else.88141:
+eq_cont.88634:
+	j	eq_cont.88632
+eq_else.88631:
 	lw	$6, 6($6)
-eq_cont.88142:
-	j	eq_cont.88134
-eq_else.88133:
+eq_cont.88632:
+	j	eq_cont.88624
+eq_else.88623:
 	addi	$30, $0, 2
-	bne	$7, $30, eq_else.88145
+	bne	$7, $30, eq_else.88635
 	lw	$7, 4($6)
 	lf	$f6, 0($7)
 	fmul	$f3, $f6, $f3
@@ -7937,14 +7854,14 @@ eq_else.88133:
 	lw	$6, 6($6)
 	sltf	$7, $f3, $f30
 	xor	$6, $6, $7
-	bne	$6, $0, eq_else.88147
+	bne	$6, $0, eq_else.88637
 	mov	$6, $1
-	j	eq_cont.88148
-eq_else.88147:
+	j	eq_cont.88638
+eq_else.88637:
 	mov	$6, $0
-eq_cont.88148:
-	j	eq_cont.88146
-eq_else.88145:
+eq_cont.88638:
+	j	eq_cont.88636
+eq_else.88635:
 	fmul	$f6, $f3, $f3
 	lw	$7, 4($6)
 	lf	$f7, 0($7)
@@ -7960,10 +7877,10 @@ eq_else.88145:
 	fmul	$f7, $f7, $f8
 	fadd	$f6, $f6, $f7
 	lw	$7, 3($6)
-	bne	$7, $0, eq_else.88149
+	bne	$7, $0, eq_else.88639
 	movf	$f3, $f6
-	j	eq_cont.88150
-eq_else.88149:
+	j	eq_cont.88640
+eq_else.88639:
 	fmul	$f7, $f4, $f5
 	lw	$7, 9($6)
 	lf	$f8, 0($7)
@@ -7979,31 +7896,31 @@ eq_else.88149:
 	lf	$f4, 2($7)
 	fmul	$f3, $f3, $f4
 	fadd	$f3, $f5, $f3
-eq_cont.88150:
+eq_cont.88640:
 	lw	$7, 1($6)
 	addi	$30, $0, 3
-	bne	$7, $30, eq_else.88151
+	bne	$7, $30, eq_else.88641
 	fsub	$f3, $f3, $f28
-	j	eq_cont.88152
-eq_else.88151:
-eq_cont.88152:
+	j	eq_cont.88642
+eq_else.88641:
+eq_cont.88642:
 	lw	$6, 6($6)
 	sltf	$7, $f3, $f30
 	xor	$6, $6, $7
-	bne	$6, $0, eq_else.88153
+	bne	$6, $0, eq_else.88643
 	mov	$6, $1
-	j	eq_cont.88154
-eq_else.88153:
+	j	eq_cont.88644
+eq_else.88643:
 	mov	$6, $0
-eq_cont.88154:
-eq_cont.88146:
-eq_cont.88134:
-	bne	$6, $0, eq_else.88155
+eq_cont.88644:
+eq_cont.88636:
+eq_cont.88624:
+	bne	$6, $0, eq_else.88645
 	lw	$6, 1($5)
-	bne	$6, $28, eq_else.88157
+	bne	$6, $28, eq_else.88647
 	mov	$2, $1
-	j	eq_cont.88158
-eq_else.88157:
+	j	eq_cont.88648
+eq_else.88647:
 	lw	$6, 3001($6)
 	lw	$7, 5($6)
 	lf	$f3, 0($7)
@@ -8015,50 +7932,50 @@ eq_else.88157:
 	lf	$f5, 2($7)
 	fsub	$f5, $f0, $f5
 	lw	$7, 1($6)
-	bne	$7, $1, eq_else.88159
+	bne	$7, $1, eq_else.88649
 	fabs	$f3, $f3
 	lw	$7, 4($6)
 	lf	$f6, 0($7)
 	sltf	$7, $f3, $f6
-	bne	$7, $0, eq_else.88161
+	bne	$7, $0, eq_else.88651
 	mov	$7, $0
-	j	eq_cont.88162
-eq_else.88161:
+	j	eq_cont.88652
+eq_else.88651:
 	fabs	$f3, $f4
 	lw	$7, 4($6)
 	lf	$f4, 1($7)
 	sltf	$7, $f3, $f4
-	bne	$7, $0, eq_else.88163
+	bne	$7, $0, eq_else.88653
 	mov	$7, $0
-	j	eq_cont.88164
-eq_else.88163:
+	j	eq_cont.88654
+eq_else.88653:
 	fabs	$f3, $f5
 	lw	$7, 4($6)
 	lf	$f4, 2($7)
-	bltf	$f3, $f4, fle.88165
+	bltf	$f3, $f4, fle.88655
 	mov	$7, $0
-	j	fle_cont.88166
-fle.88165:
+	j	fle_cont.88656
+fle.88655:
 	mov	$7, $1
-fle_cont.88166:
-eq_cont.88164:
-eq_cont.88162:
-	bne	$7, $0, eq_else.88167
+fle_cont.88656:
+eq_cont.88654:
+eq_cont.88652:
+	bne	$7, $0, eq_else.88657
 	lw	$6, 6($6)
-	bne	$6, $0, eq_else.88169
+	bne	$6, $0, eq_else.88659
 	mov	$6, $1
-	j	eq_cont.88170
-eq_else.88169:
+	j	eq_cont.88660
+eq_else.88659:
 	mov	$6, $0
-eq_cont.88170:
-	j	eq_cont.88168
-eq_else.88167:
+eq_cont.88660:
+	j	eq_cont.88658
+eq_else.88657:
 	lw	$6, 6($6)
-eq_cont.88168:
-	j	eq_cont.88160
-eq_else.88159:
+eq_cont.88658:
+	j	eq_cont.88650
+eq_else.88649:
 	addi	$30, $0, 2
-	bne	$7, $30, eq_else.88171
+	bne	$7, $30, eq_else.88661
 	lw	$7, 4($6)
 	lf	$f6, 0($7)
 	fmul	$f3, $f6, $f3
@@ -8071,14 +7988,14 @@ eq_else.88159:
 	lw	$6, 6($6)
 	sltf	$7, $f3, $f30
 	xor	$6, $6, $7
-	bne	$6, $0, eq_else.88173
+	bne	$6, $0, eq_else.88663
 	mov	$6, $1
-	j	eq_cont.88174
-eq_else.88173:
+	j	eq_cont.88664
+eq_else.88663:
 	mov	$6, $0
-eq_cont.88174:
-	j	eq_cont.88172
-eq_else.88171:
+eq_cont.88664:
+	j	eq_cont.88662
+eq_else.88661:
 	fmul	$f6, $f3, $f3
 	lw	$7, 4($6)
 	lf	$f7, 0($7)
@@ -8094,10 +8011,10 @@ eq_else.88171:
 	fmul	$f7, $f7, $f8
 	fadd	$f6, $f6, $f7
 	lw	$7, 3($6)
-	bne	$7, $0, eq_else.88175
+	bne	$7, $0, eq_else.88665
 	movf	$f3, $f6
-	j	eq_cont.88176
-eq_else.88175:
+	j	eq_cont.88666
+eq_else.88665:
 	fmul	$f7, $f4, $f5
 	lw	$7, 9($6)
 	lf	$f8, 0($7)
@@ -8113,31 +8030,31 @@ eq_else.88175:
 	lf	$f4, 2($7)
 	fmul	$f3, $f3, $f4
 	fadd	$f3, $f5, $f3
-eq_cont.88176:
+eq_cont.88666:
 	lw	$7, 1($6)
 	addi	$30, $0, 3
-	bne	$7, $30, eq_else.88177
+	bne	$7, $30, eq_else.88667
 	fsub	$f3, $f3, $f28
-	j	eq_cont.88178
-eq_else.88177:
-eq_cont.88178:
+	j	eq_cont.88668
+eq_else.88667:
+eq_cont.88668:
 	lw	$6, 6($6)
 	sltf	$7, $f3, $f30
 	xor	$6, $6, $7
-	bne	$6, $0, eq_else.88179
+	bne	$6, $0, eq_else.88669
 	mov	$6, $1
-	j	eq_cont.88180
-eq_else.88179:
+	j	eq_cont.88670
+eq_else.88669:
 	mov	$6, $0
-eq_cont.88180:
-eq_cont.88172:
-eq_cont.88160:
-	bne	$6, $0, eq_else.88181
+eq_cont.88670:
+eq_cont.88662:
+eq_cont.88650:
+	bne	$6, $0, eq_else.88671
 	lw	$6, 2($5)
-	bne	$6, $28, eq_else.88183
+	bne	$6, $28, eq_else.88673
 	mov	$2, $1
-	j	eq_cont.88184
-eq_else.88183:
+	j	eq_cont.88674
+eq_else.88673:
 	lw	$6, 3001($6)
 	lw	$7, 5($6)
 	lf	$f3, 0($7)
@@ -8149,50 +8066,50 @@ eq_else.88183:
 	lf	$f5, 2($7)
 	fsub	$f5, $f0, $f5
 	lw	$7, 1($6)
-	bne	$7, $1, eq_else.88185
+	bne	$7, $1, eq_else.88675
 	fabs	$f3, $f3
 	lw	$7, 4($6)
 	lf	$f6, 0($7)
 	sltf	$7, $f3, $f6
-	bne	$7, $0, eq_else.88187
+	bne	$7, $0, eq_else.88677
 	mov	$7, $0
-	j	eq_cont.88188
-eq_else.88187:
+	j	eq_cont.88678
+eq_else.88677:
 	fabs	$f3, $f4
 	lw	$7, 4($6)
 	lf	$f4, 1($7)
 	sltf	$7, $f3, $f4
-	bne	$7, $0, eq_else.88189
+	bne	$7, $0, eq_else.88679
 	mov	$7, $0
-	j	eq_cont.88190
-eq_else.88189:
+	j	eq_cont.88680
+eq_else.88679:
 	fabs	$f3, $f5
 	lw	$7, 4($6)
 	lf	$f4, 2($7)
-	bltf	$f3, $f4, fle.88191
+	bltf	$f3, $f4, fle.88681
 	mov	$7, $0
-	j	fle_cont.88192
-fle.88191:
+	j	fle_cont.88682
+fle.88681:
 	mov	$7, $1
-fle_cont.88192:
-eq_cont.88190:
-eq_cont.88188:
-	bne	$7, $0, eq_else.88193
+fle_cont.88682:
+eq_cont.88680:
+eq_cont.88678:
+	bne	$7, $0, eq_else.88683
 	lw	$6, 6($6)
-	bne	$6, $0, eq_else.88195
+	bne	$6, $0, eq_else.88685
 	mov	$6, $1
-	j	eq_cont.88196
-eq_else.88195:
+	j	eq_cont.88686
+eq_else.88685:
 	mov	$6, $0
-eq_cont.88196:
-	j	eq_cont.88194
-eq_else.88193:
+eq_cont.88686:
+	j	eq_cont.88684
+eq_else.88683:
 	lw	$6, 6($6)
-eq_cont.88194:
-	j	eq_cont.88186
-eq_else.88185:
+eq_cont.88684:
+	j	eq_cont.88676
+eq_else.88675:
 	addi	$30, $0, 2
-	bne	$7, $30, eq_else.88197
+	bne	$7, $30, eq_else.88687
 	lw	$7, 4($6)
 	lf	$f6, 0($7)
 	fmul	$f3, $f6, $f3
@@ -8205,14 +8122,14 @@ eq_else.88185:
 	lw	$6, 6($6)
 	sltf	$7, $f3, $f30
 	xor	$6, $6, $7
-	bne	$6, $0, eq_else.88199
+	bne	$6, $0, eq_else.88689
 	mov	$6, $1
-	j	eq_cont.88200
-eq_else.88199:
+	j	eq_cont.88690
+eq_else.88689:
 	mov	$6, $0
-eq_cont.88200:
-	j	eq_cont.88198
-eq_else.88197:
+eq_cont.88690:
+	j	eq_cont.88688
+eq_else.88687:
 	fmul	$f6, $f3, $f3
 	lw	$7, 4($6)
 	lf	$f7, 0($7)
@@ -8228,10 +8145,10 @@ eq_else.88197:
 	fmul	$f7, $f7, $f8
 	fadd	$f6, $f6, $f7
 	lw	$7, 3($6)
-	bne	$7, $0, eq_else.88201
+	bne	$7, $0, eq_else.88691
 	movf	$f3, $f6
-	j	eq_cont.88202
-eq_else.88201:
+	j	eq_cont.88692
+eq_else.88691:
 	fmul	$f7, $f4, $f5
 	lw	$7, 9($6)
 	lf	$f8, 0($7)
@@ -8247,28 +8164,27 @@ eq_else.88201:
 	lf	$f4, 2($7)
 	fmul	$f3, $f3, $f4
 	fadd	$f3, $f5, $f3
-eq_cont.88202:
+eq_cont.88692:
 	lw	$7, 1($6)
 	addi	$30, $0, 3
-	bne	$7, $30, eq_else.88203
+	bne	$7, $30, eq_else.88693
 	fsub	$f3, $f3, $f28
-	j	eq_cont.88204
-eq_else.88203:
-eq_cont.88204:
+	j	eq_cont.88694
+eq_else.88693:
+eq_cont.88694:
 	lw	$6, 6($6)
 	sltf	$7, $f3, $f30
 	xor	$6, $6, $7
-	bne	$6, $0, eq_else.88205
+	bne	$6, $0, eq_else.88695
 	mov	$6, $1
-	j	eq_cont.88206
-eq_else.88205:
+	j	eq_cont.88696
+eq_else.88695:
 	mov	$6, $0
-eq_cont.88206:
-eq_cont.88198:
-eq_cont.88186:
-	bne	$6, $0, eq_else.88207
-	addi	$6, $0, 3
-	mov	$2, $6
+eq_cont.88696:
+eq_cont.88688:
+eq_cont.88676:
+	bne	$6, $0, eq_else.88697
+	mov	$2, $27
 	movf	$f27, $f2
 	movf	$f2, $f0
 	movf	$f0, $f1
@@ -8278,36 +8194,36 @@ eq_cont.88186:
 	jal	check_all_inside.2968
 	addi	$3, $3, -3
 	lw	$31, 2($3)
-	j	eq_cont.88208
-eq_else.88207:
+	j	eq_cont.88698
+eq_else.88697:
 	mov	$2, $0
-eq_cont.88208:
-eq_cont.88184:
-	j	eq_cont.88182
-eq_else.88181:
+eq_cont.88698:
+eq_cont.88674:
+	j	eq_cont.88672
+eq_else.88671:
 	mov	$2, $0
-eq_cont.88182:
-eq_cont.88158:
-	j	eq_cont.88156
-eq_else.88155:
+eq_cont.88672:
+eq_cont.88648:
+	j	eq_cont.88646
+eq_else.88645:
 	mov	$2, $0
-eq_cont.88156:
-eq_cont.88132:
-	bne	$2, $0, eq_else.88209
+eq_cont.88646:
+eq_cont.88622:
+	bne	$2, $0, eq_else.88699
 	lw	$2, 1($3)
 	addi	$2, $2, 1
 	lw	$5, 0($3)
 	j	shadow_check_and_group.2974
-eq_else.88209:
+eq_else.88699:
 	mov	$2, $1
 	jr $31
 shadow_check_one_or_group.2977:
 	add	$30, $5, $2
 	lw	$6, 0($30)
-	bne	$6, $28, eq_else.88210
+	bne	$6, $28, eq_else.88700
 	mov	$2, $0
 	jr $31
-eq_else.88210:
+eq_else.88700:
 	lw	$6, 3071($6)
 	sw	$5, 0($3)
 	sw	$2, 1($3)
@@ -8318,16 +8234,16 @@ eq_else.88210:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -3
 	lw	$31, 2($3)
-	bne	$2, $0, eq_else.88211
+	bne	$2, $0, eq_else.88701
 	lw	$2, 1($3)
 	addi	$2, $2, 1
 	lw	$5, 0($3)
 	add	$30, $5, $2
 	lw	$6, 0($30)
-	bne	$6, $28, eq_else.88212
+	bne	$6, $28, eq_else.88702
 	mov	$2, $0
 	jr $31
-eq_else.88212:
+eq_else.88702:
 	lw	$6, 3071($6)
 	sw	$2, 2($3)
 	mov	$5, $6
@@ -8337,16 +8253,16 @@ eq_else.88212:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -4
 	lw	$31, 3($3)
-	bne	$2, $0, eq_else.88213
+	bne	$2, $0, eq_else.88703
 	lw	$2, 2($3)
 	addi	$2, $2, 1
 	lw	$5, 0($3)
 	add	$30, $5, $2
 	lw	$6, 0($30)
-	bne	$6, $28, eq_else.88214
+	bne	$6, $28, eq_else.88704
 	mov	$2, $0
 	jr $31
-eq_else.88214:
+eq_else.88704:
 	lw	$6, 3071($6)
 	sw	$2, 3($3)
 	mov	$5, $6
@@ -8356,16 +8272,16 @@ eq_else.88214:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -5
 	lw	$31, 4($3)
-	bne	$2, $0, eq_else.88215
+	bne	$2, $0, eq_else.88705
 	lw	$2, 3($3)
 	addi	$2, $2, 1
 	lw	$5, 0($3)
 	add	$30, $5, $2
 	lw	$6, 0($30)
-	bne	$6, $28, eq_else.88216
+	bne	$6, $28, eq_else.88706
 	mov	$2, $0
 	jr $31
-eq_else.88216:
+eq_else.88706:
 	lw	$6, 3071($6)
 	sw	$2, 4($3)
 	mov	$5, $6
@@ -8375,16 +8291,16 @@ eq_else.88216:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -6
 	lw	$31, 5($3)
-	bne	$2, $0, eq_else.88217
+	bne	$2, $0, eq_else.88707
 	lw	$2, 4($3)
 	addi	$2, $2, 1
 	lw	$5, 0($3)
 	add	$30, $5, $2
 	lw	$6, 0($30)
-	bne	$6, $28, eq_else.88218
+	bne	$6, $28, eq_else.88708
 	mov	$2, $0
 	jr $31
-eq_else.88218:
+eq_else.88708:
 	lw	$6, 3071($6)
 	sw	$2, 5($3)
 	mov	$5, $6
@@ -8394,16 +8310,16 @@ eq_else.88218:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -7
 	lw	$31, 6($3)
-	bne	$2, $0, eq_else.88219
+	bne	$2, $0, eq_else.88709
 	lw	$2, 5($3)
 	addi	$2, $2, 1
 	lw	$5, 0($3)
 	add	$30, $5, $2
 	lw	$6, 0($30)
-	bne	$6, $28, eq_else.88220
+	bne	$6, $28, eq_else.88710
 	mov	$2, $0
 	jr $31
-eq_else.88220:
+eq_else.88710:
 	lw	$6, 3071($6)
 	sw	$2, 6($3)
 	mov	$5, $6
@@ -8413,16 +8329,16 @@ eq_else.88220:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -8
 	lw	$31, 7($3)
-	bne	$2, $0, eq_else.88221
+	bne	$2, $0, eq_else.88711
 	lw	$2, 6($3)
 	addi	$2, $2, 1
 	lw	$5, 0($3)
 	add	$30, $5, $2
 	lw	$6, 0($30)
-	bne	$6, $28, eq_else.88222
+	bne	$6, $28, eq_else.88712
 	mov	$2, $0
 	jr $31
-eq_else.88222:
+eq_else.88712:
 	lw	$6, 3071($6)
 	sw	$2, 7($3)
 	mov	$5, $6
@@ -8432,16 +8348,16 @@ eq_else.88222:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -9
 	lw	$31, 8($3)
-	bne	$2, $0, eq_else.88223
+	bne	$2, $0, eq_else.88713
 	lw	$2, 7($3)
 	addi	$2, $2, 1
 	lw	$5, 0($3)
 	add	$30, $5, $2
 	lw	$6, 0($30)
-	bne	$6, $28, eq_else.88224
+	bne	$6, $28, eq_else.88714
 	mov	$2, $0
 	jr $31
-eq_else.88224:
+eq_else.88714:
 	lw	$6, 3071($6)
 	sw	$2, 8($3)
 	mov	$5, $6
@@ -8451,51 +8367,51 @@ eq_else.88224:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -10
 	lw	$31, 9($3)
-	bne	$2, $0, eq_else.88225
+	bne	$2, $0, eq_else.88715
 	lw	$2, 8($3)
 	addi	$2, $2, 1
 	lw	$5, 0($3)
 	j	shadow_check_one_or_group.2977
-eq_else.88225:
+eq_else.88715:
 	mov	$2, $1
 	jr $31
-eq_else.88223:
+eq_else.88713:
 	mov	$2, $1
 	jr $31
-eq_else.88221:
+eq_else.88711:
 	mov	$2, $1
 	jr $31
-eq_else.88219:
+eq_else.88709:
 	mov	$2, $1
 	jr $31
-eq_else.88217:
+eq_else.88707:
 	mov	$2, $1
 	jr $31
-eq_else.88215:
+eq_else.88705:
 	mov	$2, $1
 	jr $31
-eq_else.88213:
+eq_else.88703:
 	mov	$2, $1
 	jr $31
-eq_else.88211:
+eq_else.88701:
 	mov	$2, $1
 	jr $31
 shadow_check_one_or_matrix.2980:
 	add	$30, $5, $2
 	lw	$6, 0($30)
 	lw	$7, 0($6)
-	bne	$7, $28, eq_else.88226
+	bne	$7, $28, eq_else.88716
 	mov	$2, $0
 	jr $31
-eq_else.88226:
+eq_else.88716:
 	sw	$6, 0($3)
 	sw	$5, 1($3)
 	sw	$2, 2($3)
 	addi	$30, $0, 99
-	bne	$7, $30, eq_else.88227
+	bne	$7, $30, eq_else.88717
 	mov	$2, $1
-	j	eq_cont.88228
-eq_else.88227:
+	j	eq_cont.88718
+eq_else.88717:
 	lw	$8, 3001($7)
 	lf	$f0, 3125($0)
 	lw	$9, 5($8)
@@ -8505,8 +8421,7 @@ eq_else.88227:
 	lw	$9, 5($8)
 	lf	$f2, 1($9)
 	fsub	$f1, $f1, $f2
-	addi	$9, $0, 2
-	lf	$f2, 3125($9)
+	lf	$f2, 3125($26)
 	lw	$9, 5($8)
 	lf	$f3, 2($9)
 	fsub	$f2, $f2, $f3
@@ -8515,7 +8430,7 @@ eq_else.88227:
 	add	$30, $9, $7
 	lw	$7, 0($30)
 	lw	$9, 1($8)
-	bne	$9, $1, eq_else.88229
+	bne	$9, $1, eq_else.88719
 	addi	$9, $0, 3169
 	lw	$9, 0($9)
 	lf	$f3, 0($7)
@@ -8529,10 +8444,10 @@ eq_else.88227:
 	lw	$10, 4($8)
 	lf	$f5, 1($10)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.88231
+	bne	$10, $0, eq_else.88721
 	mov	$10, $0
-	j	eq_cont.88232
-eq_else.88231:
+	j	eq_cont.88722
+eq_else.88721:
 	lf	$f4, 2($9)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
@@ -8540,26 +8455,26 @@ eq_else.88231:
 	lw	$10, 4($8)
 	lf	$f5, 2($10)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.88233
+	bne	$10, $0, eq_else.88723
 	mov	$10, $0
-	j	eq_cont.88234
-eq_else.88233:
+	j	eq_cont.88724
+eq_else.88723:
 	lf	$f4, 1($7)
-	beqf	$f4, $f30, feq.88235
+	beqf	$f4, $f30, feq.88725
 	mov	$10, $0
-	j	feq_cont.88236
-feq.88235:
+	j	feq_cont.88726
+feq.88725:
 	mov	$10, $1
-feq_cont.88236:
-	bne	$10, $0, eq_else.88237
+feq_cont.88726:
+	bne	$10, $0, eq_else.88727
 	mov	$10, $1
-	j	eq_cont.88238
-eq_else.88237:
+	j	eq_cont.88728
+eq_else.88727:
 	mov	$10, $0
-eq_cont.88238:
-eq_cont.88234:
-eq_cont.88232:
-	bne	$10, $0, eq_else.88239
+eq_cont.88728:
+eq_cont.88724:
+eq_cont.88722:
+	bne	$10, $0, eq_else.88729
 	lf	$f3, 2($7)
 	fsub	$f3, $f3, $f1
 	lf	$f4, 3($7)
@@ -8571,10 +8486,10 @@ eq_cont.88232:
 	lw	$10, 4($8)
 	lf	$f5, 0($10)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.88241
+	bne	$10, $0, eq_else.88731
 	mov	$10, $0
-	j	eq_cont.88242
-eq_else.88241:
+	j	eq_cont.88732
+eq_else.88731:
 	lf	$f4, 2($9)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
@@ -8582,26 +8497,26 @@ eq_else.88241:
 	lw	$10, 4($8)
 	lf	$f5, 2($10)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.88243
+	bne	$10, $0, eq_else.88733
 	mov	$10, $0
-	j	eq_cont.88244
-eq_else.88243:
+	j	eq_cont.88734
+eq_else.88733:
 	lf	$f4, 3($7)
-	beqf	$f4, $f30, feq.88245
+	beqf	$f4, $f30, feq.88735
 	mov	$10, $0
-	j	feq_cont.88246
-feq.88245:
+	j	feq_cont.88736
+feq.88735:
 	mov	$10, $1
-feq_cont.88246:
-	bne	$10, $0, eq_else.88247
+feq_cont.88736:
+	bne	$10, $0, eq_else.88737
 	mov	$10, $1
-	j	eq_cont.88248
-eq_else.88247:
+	j	eq_cont.88738
+eq_else.88737:
 	mov	$10, $0
-eq_cont.88248:
-eq_cont.88244:
-eq_cont.88242:
-	bne	$10, $0, eq_else.88249
+eq_cont.88738:
+eq_cont.88734:
+eq_cont.88732:
+	bne	$10, $0, eq_else.88739
 	lf	$f3, 4($7)
 	fsub	$f2, $f3, $f2
 	lf	$f3, 5($7)
@@ -8613,10 +8528,10 @@ eq_cont.88242:
 	lw	$10, 4($8)
 	lf	$f3, 0($10)
 	sltf	$10, $f0, $f3
-	bne	$10, $0, eq_else.88251
+	bne	$10, $0, eq_else.88741
 	mov	$7, $0
-	j	eq_cont.88252
-eq_else.88251:
+	j	eq_cont.88742
+eq_else.88741:
 	lf	$f0, 1($9)
 	fmul	$f0, $f2, $f0
 	fadd	$f0, $f0, $f1
@@ -8624,52 +8539,52 @@ eq_else.88251:
 	lw	$8, 4($8)
 	lf	$f1, 1($8)
 	sltf	$8, $f0, $f1
-	bne	$8, $0, eq_else.88253
+	bne	$8, $0, eq_else.88743
 	mov	$7, $0
-	j	eq_cont.88254
-eq_else.88253:
+	j	eq_cont.88744
+eq_else.88743:
 	lf	$f0, 5($7)
-	beqf	$f0, $f30, feq.88255
+	beqf	$f0, $f30, feq.88745
 	mov	$7, $0
-	j	feq_cont.88256
-feq.88255:
+	j	feq_cont.88746
+feq.88745:
 	mov	$7, $1
-feq_cont.88256:
-	bne	$7, $0, eq_else.88257
+feq_cont.88746:
+	bne	$7, $0, eq_else.88747
 	mov	$7, $1
-	j	eq_cont.88258
-eq_else.88257:
+	j	eq_cont.88748
+eq_else.88747:
 	mov	$7, $0
-eq_cont.88258:
-eq_cont.88254:
-eq_cont.88252:
-	bne	$7, $0, eq_else.88259
+eq_cont.88748:
+eq_cont.88744:
+eq_cont.88742:
+	bne	$7, $0, eq_else.88749
 	mov	$7, $0
-	j	eq_cont.88260
-eq_else.88259:
+	j	eq_cont.88750
+eq_else.88749:
 	sf	$f2, 3122($0)
-	addi	$7, $0, 3
-eq_cont.88260:
-	j	eq_cont.88250
-eq_else.88249:
+	mov	$7, $27
+eq_cont.88750:
+	j	eq_cont.88740
+eq_else.88739:
 	sf	$f3, 3122($0)
-	addi	$7, $0, 2
-eq_cont.88250:
-	j	eq_cont.88240
-eq_else.88239:
+	mov	$7, $26
+eq_cont.88740:
+	j	eq_cont.88730
+eq_else.88729:
 	sf	$f3, 3122($0)
 	mov	$7, $1
-eq_cont.88240:
-	j	eq_cont.88230
-eq_else.88229:
+eq_cont.88730:
+	j	eq_cont.88720
+eq_else.88719:
 	addi	$30, $0, 2
-	bne	$9, $30, eq_else.88261
+	bne	$9, $30, eq_else.88751
 	lf	$f3, 0($7)
 	sltf	$8, $f3, $f30
-	bne	$8, $0, eq_else.88263
+	bne	$8, $0, eq_else.88753
 	mov	$7, $0
-	j	eq_cont.88264
-eq_else.88263:
+	j	eq_cont.88754
+eq_else.88753:
 	lf	$f3, 1($7)
 	fmul	$f0, $f3, $f0
 	lf	$f3, 2($7)
@@ -8680,17 +8595,17 @@ eq_else.88263:
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3122($0)
 	mov	$7, $1
-eq_cont.88264:
-	j	eq_cont.88262
-eq_else.88261:
+eq_cont.88754:
+	j	eq_cont.88752
+eq_else.88751:
 	lf	$f3, 0($7)
-	beqf	$f3, $f30, feq.88265
+	beqf	$f3, $f30, feq.88755
 	mov	$9, $0
-	j	feq_cont.88266
-feq.88265:
+	j	feq_cont.88756
+feq.88755:
 	mov	$9, $1
-feq_cont.88266:
-	bne	$9, $0, eq_else.88267
+feq_cont.88756:
+	bne	$9, $0, eq_else.88757
 	lf	$f4, 1($7)
 	fmul	$f4, $f4, $f0
 	lf	$f5, 2($7)
@@ -8714,10 +8629,10 @@ feq_cont.88266:
 	fmul	$f6, $f6, $f7
 	fadd	$f5, $f5, $f6
 	lw	$9, 3($8)
-	bne	$9, $0, eq_else.88269
+	bne	$9, $0, eq_else.88759
 	movf	$f0, $f5
-	j	eq_cont.88270
-eq_else.88269:
+	j	eq_cont.88760
+eq_else.88759:
 	fmul	$f6, $f1, $f2
 	lw	$9, 9($8)
 	lf	$f7, 0($9)
@@ -8733,61 +8648,61 @@ eq_else.88269:
 	lf	$f1, 2($9)
 	fmul	$f0, $f0, $f1
 	fadd	$f0, $f2, $f0
-eq_cont.88270:
+eq_cont.88760:
 	lw	$9, 1($8)
 	addi	$30, $0, 3
-	bne	$9, $30, eq_else.88271
+	bne	$9, $30, eq_else.88761
 	fsub	$f0, $f0, $f28
-	j	eq_cont.88272
-eq_else.88271:
-eq_cont.88272:
+	j	eq_cont.88762
+eq_else.88761:
+eq_cont.88762:
 	fmul	$f1, $f4, $f4
 	fmul	$f0, $f3, $f0
 	fsub	$f0, $f1, $f0
 	sltf	$9, $f30, $f0
-	bne	$9, $0, eq_else.88273
+	bne	$9, $0, eq_else.88763
 	mov	$7, $0
-	j	eq_cont.88274
-eq_else.88273:
+	j	eq_cont.88764
+eq_else.88763:
 	lw	$8, 6($8)
-	bne	$8, $0, eq_else.88275
+	bne	$8, $0, eq_else.88765
 	sqrt	$f0, $f0
 	fsub	$f0, $f4, $f0
 	lf	$f1, 4($7)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
-	j	eq_cont.88276
-eq_else.88275:
+	j	eq_cont.88766
+eq_else.88765:
 	sqrt	$f0, $f0
 	fadd	$f0, $f4, $f0
 	lf	$f1, 4($7)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
-eq_cont.88276:
+eq_cont.88766:
 	mov	$7, $1
-eq_cont.88274:
-	j	eq_cont.88268
-eq_else.88267:
+eq_cont.88764:
+	j	eq_cont.88758
+eq_else.88757:
 	mov	$7, $0
-eq_cont.88268:
-eq_cont.88262:
-eq_cont.88230:
-	bne	$7, $0, eq_else.88277
+eq_cont.88758:
+eq_cont.88752:
+eq_cont.88720:
+	bne	$7, $0, eq_else.88767
 	mov	$2, $0
-	j	eq_cont.88278
-eq_else.88277:
+	j	eq_cont.88768
+eq_else.88767:
 	lf	$f0, 3122($0)
 	lf	$f1, 3382($0) # -0.100000
 	sltf	$7, $f0, $f1
-	bne	$7, $0, eq_else.88279
+	bne	$7, $0, eq_else.88769
 	mov	$2, $0
-	j	eq_cont.88280
-eq_else.88279:
+	j	eq_cont.88770
+eq_else.88769:
 	lw	$7, 1($6)
-	bne	$7, $28, eq_else.88281
+	bne	$7, $28, eq_else.88771
 	mov	$2, $0
-	j	eq_cont.88282
-eq_else.88281:
+	j	eq_cont.88772
+eq_else.88771:
 	lw	$7, 3071($7)
 	mov	$5, $7
 	mov	$2, $0
@@ -8796,13 +8711,13 @@ eq_else.88281:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -4
 	lw	$31, 3($3)
-	bne	$2, $0, eq_else.88283
+	bne	$2, $0, eq_else.88773
 	lw	$2, 0($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.88285
+	bne	$5, $28, eq_else.88775
 	mov	$2, $0
-	j	eq_cont.88286
-eq_else.88285:
+	j	eq_cont.88776
+eq_else.88775:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 3($3)
@@ -8810,13 +8725,13 @@ eq_else.88285:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -4
 	lw	$31, 3($3)
-	bne	$2, $0, eq_else.88287
+	bne	$2, $0, eq_else.88777
 	lw	$2, 0($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.88289
+	bne	$5, $28, eq_else.88779
 	mov	$2, $0
-	j	eq_cont.88290
-eq_else.88289:
+	j	eq_cont.88780
+eq_else.88779:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 3($3)
@@ -8824,13 +8739,13 @@ eq_else.88289:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -4
 	lw	$31, 3($3)
-	bne	$2, $0, eq_else.88291
+	bne	$2, $0, eq_else.88781
 	lw	$2, 0($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.88293
+	bne	$5, $28, eq_else.88783
 	mov	$2, $0
-	j	eq_cont.88294
-eq_else.88293:
+	j	eq_cont.88784
+eq_else.88783:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 3($3)
@@ -8838,13 +8753,13 @@ eq_else.88293:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -4
 	lw	$31, 3($3)
-	bne	$2, $0, eq_else.88295
+	bne	$2, $0, eq_else.88785
 	lw	$2, 0($3)
 	lw	$5, 5($2)
-	bne	$5, $28, eq_else.88297
+	bne	$5, $28, eq_else.88787
 	mov	$2, $0
-	j	eq_cont.88298
-eq_else.88297:
+	j	eq_cont.88788
+eq_else.88787:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 3($3)
@@ -8852,13 +8767,13 @@ eq_else.88297:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -4
 	lw	$31, 3($3)
-	bne	$2, $0, eq_else.88299
+	bne	$2, $0, eq_else.88789
 	lw	$2, 0($3)
 	lw	$5, 6($2)
-	bne	$5, $28, eq_else.88301
+	bne	$5, $28, eq_else.88791
 	mov	$2, $0
-	j	eq_cont.88302
-eq_else.88301:
+	j	eq_cont.88792
+eq_else.88791:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 3($3)
@@ -8866,13 +8781,13 @@ eq_else.88301:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -4
 	lw	$31, 3($3)
-	bne	$2, $0, eq_else.88303
+	bne	$2, $0, eq_else.88793
 	lw	$2, 0($3)
 	lw	$5, 7($2)
-	bne	$5, $28, eq_else.88305
+	bne	$5, $28, eq_else.88795
 	mov	$2, $0
-	j	eq_cont.88306
-eq_else.88305:
+	j	eq_cont.88796
+eq_else.88795:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 3($3)
@@ -8880,7 +8795,7 @@ eq_else.88305:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -4
 	lw	$31, 3($3)
-	bne	$2, $0, eq_else.88307
+	bne	$2, $0, eq_else.88797
 	addi	$2, $0, 8
 	lw	$5, 0($3)
 	sw	$31, 3($3)
@@ -8888,68 +8803,68 @@ eq_else.88305:
 	jal	shadow_check_one_or_group.2977
 	addi	$3, $3, -4
 	lw	$31, 3($3)
-	j	eq_cont.88308
-eq_else.88307:
+	j	eq_cont.88798
+eq_else.88797:
 	mov	$2, $1
-eq_cont.88308:
-eq_cont.88306:
-	j	eq_cont.88304
-eq_else.88303:
+eq_cont.88798:
+eq_cont.88796:
+	j	eq_cont.88794
+eq_else.88793:
 	mov	$2, $1
-eq_cont.88304:
-eq_cont.88302:
-	j	eq_cont.88300
-eq_else.88299:
+eq_cont.88794:
+eq_cont.88792:
+	j	eq_cont.88790
+eq_else.88789:
 	mov	$2, $1
-eq_cont.88300:
-eq_cont.88298:
-	j	eq_cont.88296
-eq_else.88295:
+eq_cont.88790:
+eq_cont.88788:
+	j	eq_cont.88786
+eq_else.88785:
 	mov	$2, $1
-eq_cont.88296:
-eq_cont.88294:
-	j	eq_cont.88292
-eq_else.88291:
+eq_cont.88786:
+eq_cont.88784:
+	j	eq_cont.88782
+eq_else.88781:
 	mov	$2, $1
-eq_cont.88292:
-eq_cont.88290:
-	j	eq_cont.88288
-eq_else.88287:
+eq_cont.88782:
+eq_cont.88780:
+	j	eq_cont.88778
+eq_else.88777:
 	mov	$2, $1
-eq_cont.88288:
-eq_cont.88286:
-	j	eq_cont.88284
-eq_else.88283:
+eq_cont.88778:
+eq_cont.88776:
+	j	eq_cont.88774
+eq_else.88773:
 	mov	$2, $1
-eq_cont.88284:
-eq_cont.88282:
-	bne	$2, $0, eq_else.88309
+eq_cont.88774:
+eq_cont.88772:
+	bne	$2, $0, eq_else.88799
 	mov	$2, $0
-	j	eq_cont.88310
-eq_else.88309:
+	j	eq_cont.88800
+eq_else.88799:
 	mov	$2, $1
-eq_cont.88310:
-eq_cont.88280:
-eq_cont.88278:
-eq_cont.88228:
-	bne	$2, $0, eq_else.88311
+eq_cont.88800:
+eq_cont.88770:
+eq_cont.88768:
+eq_cont.88718:
+	bne	$2, $0, eq_else.88801
 	lw	$2, 2($3)
 	addi	$2, $2, 1
 	lw	$5, 1($3)
 	add	$30, $5, $2
 	lw	$6, 0($30)
 	lw	$7, 0($6)
-	bne	$7, $28, eq_else.88312
+	bne	$7, $28, eq_else.88802
 	mov	$2, $0
 	jr $31
-eq_else.88312:
+eq_else.88802:
 	sw	$6, 3($3)
 	sw	$2, 4($3)
 	addi	$30, $0, 99
-	bne	$7, $30, eq_else.88313
+	bne	$7, $30, eq_else.88803
 	mov	$2, $1
-	j	eq_cont.88314
-eq_else.88313:
+	j	eq_cont.88804
+eq_else.88803:
 	lw	$8, 3001($7)
 	lf	$f0, 3125($0)
 	lw	$9, 5($8)
@@ -8959,8 +8874,7 @@ eq_else.88313:
 	lw	$9, 5($8)
 	lf	$f2, 1($9)
 	fsub	$f1, $f1, $f2
-	addi	$9, $0, 2
-	lf	$f2, 3125($9)
+	lf	$f2, 3125($26)
 	lw	$9, 5($8)
 	lf	$f3, 2($9)
 	fsub	$f2, $f2, $f3
@@ -8969,7 +8883,7 @@ eq_else.88313:
 	add	$30, $9, $7
 	lw	$7, 0($30)
 	lw	$9, 1($8)
-	bne	$9, $1, eq_else.88315
+	bne	$9, $1, eq_else.88805
 	addi	$9, $0, 3169
 	lw	$9, 0($9)
 	lf	$f3, 0($7)
@@ -8983,10 +8897,10 @@ eq_else.88313:
 	lw	$10, 4($8)
 	lf	$f5, 1($10)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.88317
+	bne	$10, $0, eq_else.88807
 	mov	$10, $0
-	j	eq_cont.88318
-eq_else.88317:
+	j	eq_cont.88808
+eq_else.88807:
 	lf	$f4, 2($9)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
@@ -8994,26 +8908,26 @@ eq_else.88317:
 	lw	$10, 4($8)
 	lf	$f5, 2($10)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.88319
+	bne	$10, $0, eq_else.88809
 	mov	$10, $0
-	j	eq_cont.88320
-eq_else.88319:
+	j	eq_cont.88810
+eq_else.88809:
 	lf	$f4, 1($7)
-	beqf	$f4, $f30, feq.88321
+	beqf	$f4, $f30, feq.88811
 	mov	$10, $0
-	j	feq_cont.88322
-feq.88321:
+	j	feq_cont.88812
+feq.88811:
 	mov	$10, $1
-feq_cont.88322:
-	bne	$10, $0, eq_else.88323
+feq_cont.88812:
+	bne	$10, $0, eq_else.88813
 	mov	$10, $1
-	j	eq_cont.88324
-eq_else.88323:
+	j	eq_cont.88814
+eq_else.88813:
 	mov	$10, $0
-eq_cont.88324:
-eq_cont.88320:
-eq_cont.88318:
-	bne	$10, $0, eq_else.88325
+eq_cont.88814:
+eq_cont.88810:
+eq_cont.88808:
+	bne	$10, $0, eq_else.88815
 	lf	$f3, 2($7)
 	fsub	$f3, $f3, $f1
 	lf	$f4, 3($7)
@@ -9025,10 +8939,10 @@ eq_cont.88318:
 	lw	$10, 4($8)
 	lf	$f5, 0($10)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.88327
+	bne	$10, $0, eq_else.88817
 	mov	$10, $0
-	j	eq_cont.88328
-eq_else.88327:
+	j	eq_cont.88818
+eq_else.88817:
 	lf	$f4, 2($9)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
@@ -9036,26 +8950,26 @@ eq_else.88327:
 	lw	$10, 4($8)
 	lf	$f5, 2($10)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.88329
+	bne	$10, $0, eq_else.88819
 	mov	$10, $0
-	j	eq_cont.88330
-eq_else.88329:
+	j	eq_cont.88820
+eq_else.88819:
 	lf	$f4, 3($7)
-	beqf	$f4, $f30, feq.88331
+	beqf	$f4, $f30, feq.88821
 	mov	$10, $0
-	j	feq_cont.88332
-feq.88331:
+	j	feq_cont.88822
+feq.88821:
 	mov	$10, $1
-feq_cont.88332:
-	bne	$10, $0, eq_else.88333
+feq_cont.88822:
+	bne	$10, $0, eq_else.88823
 	mov	$10, $1
-	j	eq_cont.88334
-eq_else.88333:
+	j	eq_cont.88824
+eq_else.88823:
 	mov	$10, $0
-eq_cont.88334:
-eq_cont.88330:
-eq_cont.88328:
-	bne	$10, $0, eq_else.88335
+eq_cont.88824:
+eq_cont.88820:
+eq_cont.88818:
+	bne	$10, $0, eq_else.88825
 	lf	$f3, 4($7)
 	fsub	$f2, $f3, $f2
 	lf	$f3, 5($7)
@@ -9067,10 +8981,10 @@ eq_cont.88328:
 	lw	$10, 4($8)
 	lf	$f3, 0($10)
 	sltf	$10, $f0, $f3
-	bne	$10, $0, eq_else.88337
+	bne	$10, $0, eq_else.88827
 	mov	$7, $0
-	j	eq_cont.88338
-eq_else.88337:
+	j	eq_cont.88828
+eq_else.88827:
 	lf	$f0, 1($9)
 	fmul	$f0, $f2, $f0
 	fadd	$f0, $f0, $f1
@@ -9078,52 +8992,52 @@ eq_else.88337:
 	lw	$8, 4($8)
 	lf	$f1, 1($8)
 	sltf	$8, $f0, $f1
-	bne	$8, $0, eq_else.88339
+	bne	$8, $0, eq_else.88829
 	mov	$7, $0
-	j	eq_cont.88340
-eq_else.88339:
+	j	eq_cont.88830
+eq_else.88829:
 	lf	$f0, 5($7)
-	beqf	$f0, $f30, feq.88341
+	beqf	$f0, $f30, feq.88831
 	mov	$7, $0
-	j	feq_cont.88342
-feq.88341:
+	j	feq_cont.88832
+feq.88831:
 	mov	$7, $1
-feq_cont.88342:
-	bne	$7, $0, eq_else.88343
+feq_cont.88832:
+	bne	$7, $0, eq_else.88833
 	mov	$7, $1
-	j	eq_cont.88344
-eq_else.88343:
+	j	eq_cont.88834
+eq_else.88833:
 	mov	$7, $0
-eq_cont.88344:
-eq_cont.88340:
-eq_cont.88338:
-	bne	$7, $0, eq_else.88345
+eq_cont.88834:
+eq_cont.88830:
+eq_cont.88828:
+	bne	$7, $0, eq_else.88835
 	mov	$7, $0
-	j	eq_cont.88346
-eq_else.88345:
+	j	eq_cont.88836
+eq_else.88835:
 	sf	$f2, 3122($0)
-	addi	$7, $0, 3
-eq_cont.88346:
-	j	eq_cont.88336
-eq_else.88335:
+	mov	$7, $27
+eq_cont.88836:
+	j	eq_cont.88826
+eq_else.88825:
 	sf	$f3, 3122($0)
-	addi	$7, $0, 2
-eq_cont.88336:
-	j	eq_cont.88326
-eq_else.88325:
+	mov	$7, $26
+eq_cont.88826:
+	j	eq_cont.88816
+eq_else.88815:
 	sf	$f3, 3122($0)
 	mov	$7, $1
-eq_cont.88326:
-	j	eq_cont.88316
-eq_else.88315:
+eq_cont.88816:
+	j	eq_cont.88806
+eq_else.88805:
 	addi	$30, $0, 2
-	bne	$9, $30, eq_else.88347
+	bne	$9, $30, eq_else.88837
 	lf	$f3, 0($7)
 	sltf	$8, $f3, $f30
-	bne	$8, $0, eq_else.88349
+	bne	$8, $0, eq_else.88839
 	mov	$7, $0
-	j	eq_cont.88350
-eq_else.88349:
+	j	eq_cont.88840
+eq_else.88839:
 	lf	$f3, 1($7)
 	fmul	$f0, $f3, $f0
 	lf	$f3, 2($7)
@@ -9134,17 +9048,17 @@ eq_else.88349:
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3122($0)
 	mov	$7, $1
-eq_cont.88350:
-	j	eq_cont.88348
-eq_else.88347:
+eq_cont.88840:
+	j	eq_cont.88838
+eq_else.88837:
 	lf	$f3, 0($7)
-	beqf	$f3, $f30, feq.88351
+	beqf	$f3, $f30, feq.88841
 	mov	$9, $0
-	j	feq_cont.88352
-feq.88351:
+	j	feq_cont.88842
+feq.88841:
 	mov	$9, $1
-feq_cont.88352:
-	bne	$9, $0, eq_else.88353
+feq_cont.88842:
+	bne	$9, $0, eq_else.88843
 	lf	$f4, 1($7)
 	fmul	$f4, $f4, $f0
 	lf	$f5, 2($7)
@@ -9168,10 +9082,10 @@ feq_cont.88352:
 	fmul	$f6, $f6, $f7
 	fadd	$f5, $f5, $f6
 	lw	$9, 3($8)
-	bne	$9, $0, eq_else.88355
+	bne	$9, $0, eq_else.88845
 	movf	$f0, $f5
-	j	eq_cont.88356
-eq_else.88355:
+	j	eq_cont.88846
+eq_else.88845:
 	fmul	$f6, $f1, $f2
 	lw	$9, 9($8)
 	lf	$f7, 0($9)
@@ -9187,61 +9101,61 @@ eq_else.88355:
 	lf	$f1, 2($9)
 	fmul	$f0, $f0, $f1
 	fadd	$f0, $f2, $f0
-eq_cont.88356:
+eq_cont.88846:
 	lw	$9, 1($8)
 	addi	$30, $0, 3
-	bne	$9, $30, eq_else.88357
+	bne	$9, $30, eq_else.88847
 	fsub	$f0, $f0, $f28
-	j	eq_cont.88358
-eq_else.88357:
-eq_cont.88358:
+	j	eq_cont.88848
+eq_else.88847:
+eq_cont.88848:
 	fmul	$f1, $f4, $f4
 	fmul	$f0, $f3, $f0
 	fsub	$f0, $f1, $f0
 	sltf	$9, $f30, $f0
-	bne	$9, $0, eq_else.88359
+	bne	$9, $0, eq_else.88849
 	mov	$7, $0
-	j	eq_cont.88360
-eq_else.88359:
+	j	eq_cont.88850
+eq_else.88849:
 	lw	$8, 6($8)
-	bne	$8, $0, eq_else.88361
+	bne	$8, $0, eq_else.88851
 	sqrt	$f0, $f0
 	fsub	$f0, $f4, $f0
 	lf	$f1, 4($7)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
-	j	eq_cont.88362
-eq_else.88361:
+	j	eq_cont.88852
+eq_else.88851:
 	sqrt	$f0, $f0
 	fadd	$f0, $f4, $f0
 	lf	$f1, 4($7)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
-eq_cont.88362:
+eq_cont.88852:
 	mov	$7, $1
-eq_cont.88360:
-	j	eq_cont.88354
-eq_else.88353:
+eq_cont.88850:
+	j	eq_cont.88844
+eq_else.88843:
 	mov	$7, $0
-eq_cont.88354:
-eq_cont.88348:
-eq_cont.88316:
-	bne	$7, $0, eq_else.88363
+eq_cont.88844:
+eq_cont.88838:
+eq_cont.88806:
+	bne	$7, $0, eq_else.88853
 	mov	$2, $0
-	j	eq_cont.88364
-eq_else.88363:
+	j	eq_cont.88854
+eq_else.88853:
 	lf	$f0, 3122($0)
 	lf	$f1, 3382($0) # -0.100000
 	sltf	$7, $f0, $f1
-	bne	$7, $0, eq_else.88365
+	bne	$7, $0, eq_else.88855
 	mov	$2, $0
-	j	eq_cont.88366
-eq_else.88365:
+	j	eq_cont.88856
+eq_else.88855:
 	lw	$7, 1($6)
-	bne	$7, $28, eq_else.88367
+	bne	$7, $28, eq_else.88857
 	mov	$2, $0
-	j	eq_cont.88368
-eq_else.88367:
+	j	eq_cont.88858
+eq_else.88857:
 	lw	$7, 3071($7)
 	mov	$5, $7
 	mov	$2, $0
@@ -9250,13 +9164,13 @@ eq_else.88367:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -6
 	lw	$31, 5($3)
-	bne	$2, $0, eq_else.88369
+	bne	$2, $0, eq_else.88859
 	lw	$2, 3($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.88371
+	bne	$5, $28, eq_else.88861
 	mov	$2, $0
-	j	eq_cont.88372
-eq_else.88371:
+	j	eq_cont.88862
+eq_else.88861:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 5($3)
@@ -9264,13 +9178,13 @@ eq_else.88371:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -6
 	lw	$31, 5($3)
-	bne	$2, $0, eq_else.88373
+	bne	$2, $0, eq_else.88863
 	lw	$2, 3($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.88375
+	bne	$5, $28, eq_else.88865
 	mov	$2, $0
-	j	eq_cont.88376
-eq_else.88375:
+	j	eq_cont.88866
+eq_else.88865:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 5($3)
@@ -9278,13 +9192,13 @@ eq_else.88375:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -6
 	lw	$31, 5($3)
-	bne	$2, $0, eq_else.88377
+	bne	$2, $0, eq_else.88867
 	lw	$2, 3($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.88379
+	bne	$5, $28, eq_else.88869
 	mov	$2, $0
-	j	eq_cont.88380
-eq_else.88379:
+	j	eq_cont.88870
+eq_else.88869:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 5($3)
@@ -9292,13 +9206,13 @@ eq_else.88379:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -6
 	lw	$31, 5($3)
-	bne	$2, $0, eq_else.88381
+	bne	$2, $0, eq_else.88871
 	lw	$2, 3($3)
 	lw	$5, 5($2)
-	bne	$5, $28, eq_else.88383
+	bne	$5, $28, eq_else.88873
 	mov	$2, $0
-	j	eq_cont.88384
-eq_else.88383:
+	j	eq_cont.88874
+eq_else.88873:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 5($3)
@@ -9306,13 +9220,13 @@ eq_else.88383:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -6
 	lw	$31, 5($3)
-	bne	$2, $0, eq_else.88385
+	bne	$2, $0, eq_else.88875
 	lw	$2, 3($3)
 	lw	$5, 6($2)
-	bne	$5, $28, eq_else.88387
+	bne	$5, $28, eq_else.88877
 	mov	$2, $0
-	j	eq_cont.88388
-eq_else.88387:
+	j	eq_cont.88878
+eq_else.88877:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 5($3)
@@ -9320,7 +9234,7 @@ eq_else.88387:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -6
 	lw	$31, 5($3)
-	bne	$2, $0, eq_else.88389
+	bne	$2, $0, eq_else.88879
 	addi	$2, $0, 7
 	lw	$5, 3($3)
 	sw	$31, 5($3)
@@ -9328,57 +9242,57 @@ eq_else.88387:
 	jal	shadow_check_one_or_group.2977
 	addi	$3, $3, -6
 	lw	$31, 5($3)
-	j	eq_cont.88390
-eq_else.88389:
+	j	eq_cont.88880
+eq_else.88879:
 	mov	$2, $1
-eq_cont.88390:
-eq_cont.88388:
-	j	eq_cont.88386
-eq_else.88385:
+eq_cont.88880:
+eq_cont.88878:
+	j	eq_cont.88876
+eq_else.88875:
 	mov	$2, $1
-eq_cont.88386:
-eq_cont.88384:
-	j	eq_cont.88382
-eq_else.88381:
+eq_cont.88876:
+eq_cont.88874:
+	j	eq_cont.88872
+eq_else.88871:
 	mov	$2, $1
-eq_cont.88382:
-eq_cont.88380:
-	j	eq_cont.88378
-eq_else.88377:
+eq_cont.88872:
+eq_cont.88870:
+	j	eq_cont.88868
+eq_else.88867:
 	mov	$2, $1
-eq_cont.88378:
-eq_cont.88376:
-	j	eq_cont.88374
-eq_else.88373:
+eq_cont.88868:
+eq_cont.88866:
+	j	eq_cont.88864
+eq_else.88863:
 	mov	$2, $1
-eq_cont.88374:
-eq_cont.88372:
-	j	eq_cont.88370
-eq_else.88369:
+eq_cont.88864:
+eq_cont.88862:
+	j	eq_cont.88860
+eq_else.88859:
 	mov	$2, $1
-eq_cont.88370:
-eq_cont.88368:
-	bne	$2, $0, eq_else.88391
+eq_cont.88860:
+eq_cont.88858:
+	bne	$2, $0, eq_else.88881
 	mov	$2, $0
-	j	eq_cont.88392
-eq_else.88391:
+	j	eq_cont.88882
+eq_else.88881:
 	mov	$2, $1
-eq_cont.88392:
-eq_cont.88366:
-eq_cont.88364:
-eq_cont.88314:
-	bne	$2, $0, eq_else.88393
+eq_cont.88882:
+eq_cont.88856:
+eq_cont.88854:
+eq_cont.88804:
+	bne	$2, $0, eq_else.88883
 	lw	$2, 4($3)
 	addi	$2, $2, 1
 	lw	$5, 1($3)
 	j	shadow_check_one_or_matrix.2980
-eq_else.88393:
+eq_else.88883:
 	lw	$2, 3($3)
 	lw	$5, 1($2)
-	bne	$5, $28, eq_else.88394
+	bne	$5, $28, eq_else.88884
 	mov	$2, $0
-	j	eq_cont.88395
-eq_else.88394:
+	j	eq_cont.88885
+eq_else.88884:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 5($3)
@@ -9386,13 +9300,13 @@ eq_else.88394:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -6
 	lw	$31, 5($3)
-	bne	$2, $0, eq_else.88396
+	bne	$2, $0, eq_else.88886
 	lw	$2, 3($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.88398
+	bne	$5, $28, eq_else.88888
 	mov	$2, $0
-	j	eq_cont.88399
-eq_else.88398:
+	j	eq_cont.88889
+eq_else.88888:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 5($3)
@@ -9400,13 +9314,13 @@ eq_else.88398:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -6
 	lw	$31, 5($3)
-	bne	$2, $0, eq_else.88400
+	bne	$2, $0, eq_else.88890
 	lw	$2, 3($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.88402
+	bne	$5, $28, eq_else.88892
 	mov	$2, $0
-	j	eq_cont.88403
-eq_else.88402:
+	j	eq_cont.88893
+eq_else.88892:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 5($3)
@@ -9414,13 +9328,13 @@ eq_else.88402:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -6
 	lw	$31, 5($3)
-	bne	$2, $0, eq_else.88404
+	bne	$2, $0, eq_else.88894
 	lw	$2, 3($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.88406
+	bne	$5, $28, eq_else.88896
 	mov	$2, $0
-	j	eq_cont.88407
-eq_else.88406:
+	j	eq_cont.88897
+eq_else.88896:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 5($3)
@@ -9428,13 +9342,13 @@ eq_else.88406:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -6
 	lw	$31, 5($3)
-	bne	$2, $0, eq_else.88408
+	bne	$2, $0, eq_else.88898
 	lw	$2, 3($3)
 	lw	$5, 5($2)
-	bne	$5, $28, eq_else.88410
+	bne	$5, $28, eq_else.88900
 	mov	$2, $0
-	j	eq_cont.88411
-eq_else.88410:
+	j	eq_cont.88901
+eq_else.88900:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 5($3)
@@ -9442,13 +9356,13 @@ eq_else.88410:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -6
 	lw	$31, 5($3)
-	bne	$2, $0, eq_else.88412
+	bne	$2, $0, eq_else.88902
 	lw	$2, 3($3)
 	lw	$5, 6($2)
-	bne	$5, $28, eq_else.88414
+	bne	$5, $28, eq_else.88904
 	mov	$2, $0
-	j	eq_cont.88415
-eq_else.88414:
+	j	eq_cont.88905
+eq_else.88904:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 5($3)
@@ -9456,7 +9370,7 @@ eq_else.88414:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -6
 	lw	$31, 5($3)
-	bne	$2, $0, eq_else.88416
+	bne	$2, $0, eq_else.88906
 	addi	$2, $0, 7
 	lw	$5, 3($3)
 	sw	$31, 5($3)
@@ -9464,51 +9378,51 @@ eq_else.88414:
 	jal	shadow_check_one_or_group.2977
 	addi	$3, $3, -6
 	lw	$31, 5($3)
-	j	eq_cont.88417
-eq_else.88416:
+	j	eq_cont.88907
+eq_else.88906:
 	mov	$2, $1
-eq_cont.88417:
-eq_cont.88415:
-	j	eq_cont.88413
-eq_else.88412:
+eq_cont.88907:
+eq_cont.88905:
+	j	eq_cont.88903
+eq_else.88902:
 	mov	$2, $1
-eq_cont.88413:
-eq_cont.88411:
-	j	eq_cont.88409
-eq_else.88408:
+eq_cont.88903:
+eq_cont.88901:
+	j	eq_cont.88899
+eq_else.88898:
 	mov	$2, $1
-eq_cont.88409:
-eq_cont.88407:
-	j	eq_cont.88405
-eq_else.88404:
+eq_cont.88899:
+eq_cont.88897:
+	j	eq_cont.88895
+eq_else.88894:
 	mov	$2, $1
-eq_cont.88405:
-eq_cont.88403:
-	j	eq_cont.88401
-eq_else.88400:
+eq_cont.88895:
+eq_cont.88893:
+	j	eq_cont.88891
+eq_else.88890:
 	mov	$2, $1
-eq_cont.88401:
-eq_cont.88399:
-	j	eq_cont.88397
-eq_else.88396:
+eq_cont.88891:
+eq_cont.88889:
+	j	eq_cont.88887
+eq_else.88886:
 	mov	$2, $1
-eq_cont.88397:
-eq_cont.88395:
-	bne	$2, $0, eq_else.88418
+eq_cont.88887:
+eq_cont.88885:
+	bne	$2, $0, eq_else.88908
 	lw	$2, 4($3)
 	addi	$2, $2, 1
 	lw	$5, 1($3)
 	j	shadow_check_one_or_matrix.2980
-eq_else.88418:
+eq_else.88908:
 	mov	$2, $1
 	jr $31
-eq_else.88311:
+eq_else.88801:
 	lw	$2, 0($3)
 	lw	$5, 1($2)
-	bne	$5, $28, eq_else.88419
+	bne	$5, $28, eq_else.88909
 	mov	$2, $0
-	j	eq_cont.88420
-eq_else.88419:
+	j	eq_cont.88910
+eq_else.88909:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 5($3)
@@ -9516,13 +9430,13 @@ eq_else.88419:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -6
 	lw	$31, 5($3)
-	bne	$2, $0, eq_else.88421
+	bne	$2, $0, eq_else.88911
 	lw	$2, 0($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.88423
+	bne	$5, $28, eq_else.88913
 	mov	$2, $0
-	j	eq_cont.88424
-eq_else.88423:
+	j	eq_cont.88914
+eq_else.88913:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 5($3)
@@ -9530,13 +9444,13 @@ eq_else.88423:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -6
 	lw	$31, 5($3)
-	bne	$2, $0, eq_else.88425
+	bne	$2, $0, eq_else.88915
 	lw	$2, 0($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.88427
+	bne	$5, $28, eq_else.88917
 	mov	$2, $0
-	j	eq_cont.88428
-eq_else.88427:
+	j	eq_cont.88918
+eq_else.88917:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 5($3)
@@ -9544,13 +9458,13 @@ eq_else.88427:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -6
 	lw	$31, 5($3)
-	bne	$2, $0, eq_else.88429
+	bne	$2, $0, eq_else.88919
 	lw	$2, 0($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.88431
+	bne	$5, $28, eq_else.88921
 	mov	$2, $0
-	j	eq_cont.88432
-eq_else.88431:
+	j	eq_cont.88922
+eq_else.88921:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 5($3)
@@ -9558,13 +9472,13 @@ eq_else.88431:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -6
 	lw	$31, 5($3)
-	bne	$2, $0, eq_else.88433
+	bne	$2, $0, eq_else.88923
 	lw	$2, 0($3)
 	lw	$5, 5($2)
-	bne	$5, $28, eq_else.88435
+	bne	$5, $28, eq_else.88925
 	mov	$2, $0
-	j	eq_cont.88436
-eq_else.88435:
+	j	eq_cont.88926
+eq_else.88925:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 5($3)
@@ -9572,13 +9486,13 @@ eq_else.88435:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -6
 	lw	$31, 5($3)
-	bne	$2, $0, eq_else.88437
+	bne	$2, $0, eq_else.88927
 	lw	$2, 0($3)
 	lw	$5, 6($2)
-	bne	$5, $28, eq_else.88439
+	bne	$5, $28, eq_else.88929
 	mov	$2, $0
-	j	eq_cont.88440
-eq_else.88439:
+	j	eq_cont.88930
+eq_else.88929:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 5($3)
@@ -9586,13 +9500,13 @@ eq_else.88439:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -6
 	lw	$31, 5($3)
-	bne	$2, $0, eq_else.88441
+	bne	$2, $0, eq_else.88931
 	lw	$2, 0($3)
 	lw	$5, 7($2)
-	bne	$5, $28, eq_else.88443
+	bne	$5, $28, eq_else.88933
 	mov	$2, $0
-	j	eq_cont.88444
-eq_else.88443:
+	j	eq_cont.88934
+eq_else.88933:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 5($3)
@@ -9600,7 +9514,7 @@ eq_else.88443:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -6
 	lw	$31, 5($3)
-	bne	$2, $0, eq_else.88445
+	bne	$2, $0, eq_else.88935
 	addi	$2, $0, 8
 	lw	$5, 0($3)
 	sw	$31, 5($3)
@@ -9608,59 +9522,59 @@ eq_else.88443:
 	jal	shadow_check_one_or_group.2977
 	addi	$3, $3, -6
 	lw	$31, 5($3)
-	j	eq_cont.88446
-eq_else.88445:
+	j	eq_cont.88936
+eq_else.88935:
 	mov	$2, $1
-eq_cont.88446:
-eq_cont.88444:
-	j	eq_cont.88442
-eq_else.88441:
+eq_cont.88936:
+eq_cont.88934:
+	j	eq_cont.88932
+eq_else.88931:
 	mov	$2, $1
-eq_cont.88442:
-eq_cont.88440:
-	j	eq_cont.88438
-eq_else.88437:
+eq_cont.88932:
+eq_cont.88930:
+	j	eq_cont.88928
+eq_else.88927:
 	mov	$2, $1
-eq_cont.88438:
-eq_cont.88436:
-	j	eq_cont.88434
-eq_else.88433:
+eq_cont.88928:
+eq_cont.88926:
+	j	eq_cont.88924
+eq_else.88923:
 	mov	$2, $1
-eq_cont.88434:
-eq_cont.88432:
-	j	eq_cont.88430
-eq_else.88429:
+eq_cont.88924:
+eq_cont.88922:
+	j	eq_cont.88920
+eq_else.88919:
 	mov	$2, $1
-eq_cont.88430:
-eq_cont.88428:
-	j	eq_cont.88426
-eq_else.88425:
+eq_cont.88920:
+eq_cont.88918:
+	j	eq_cont.88916
+eq_else.88915:
 	mov	$2, $1
-eq_cont.88426:
-eq_cont.88424:
-	j	eq_cont.88422
-eq_else.88421:
+eq_cont.88916:
+eq_cont.88914:
+	j	eq_cont.88912
+eq_else.88911:
 	mov	$2, $1
-eq_cont.88422:
-eq_cont.88420:
-	bne	$2, $0, eq_else.88447
+eq_cont.88912:
+eq_cont.88910:
+	bne	$2, $0, eq_else.88937
 	lw	$2, 2($3)
 	addi	$2, $2, 1
 	lw	$5, 1($3)
 	add	$30, $5, $2
 	lw	$6, 0($30)
 	lw	$7, 0($6)
-	bne	$7, $28, eq_else.88448
+	bne	$7, $28, eq_else.88938
 	mov	$2, $0
 	jr $31
-eq_else.88448:
+eq_else.88938:
 	sw	$6, 5($3)
 	sw	$2, 6($3)
 	addi	$30, $0, 99
-	bne	$7, $30, eq_else.88449
+	bne	$7, $30, eq_else.88939
 	mov	$2, $1
-	j	eq_cont.88450
-eq_else.88449:
+	j	eq_cont.88940
+eq_else.88939:
 	lw	$8, 3001($7)
 	lf	$f0, 3125($0)
 	lw	$9, 5($8)
@@ -9670,8 +9584,7 @@ eq_else.88449:
 	lw	$9, 5($8)
 	lf	$f2, 1($9)
 	fsub	$f1, $f1, $f2
-	addi	$9, $0, 2
-	lf	$f2, 3125($9)
+	lf	$f2, 3125($26)
 	lw	$9, 5($8)
 	lf	$f3, 2($9)
 	fsub	$f2, $f2, $f3
@@ -9680,7 +9593,7 @@ eq_else.88449:
 	add	$30, $9, $7
 	lw	$7, 0($30)
 	lw	$9, 1($8)
-	bne	$9, $1, eq_else.88451
+	bne	$9, $1, eq_else.88941
 	addi	$9, $0, 3169
 	lw	$9, 0($9)
 	lf	$f3, 0($7)
@@ -9694,10 +9607,10 @@ eq_else.88449:
 	lw	$10, 4($8)
 	lf	$f5, 1($10)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.88453
+	bne	$10, $0, eq_else.88943
 	mov	$10, $0
-	j	eq_cont.88454
-eq_else.88453:
+	j	eq_cont.88944
+eq_else.88943:
 	lf	$f4, 2($9)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
@@ -9705,26 +9618,26 @@ eq_else.88453:
 	lw	$10, 4($8)
 	lf	$f5, 2($10)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.88455
+	bne	$10, $0, eq_else.88945
 	mov	$10, $0
-	j	eq_cont.88456
-eq_else.88455:
+	j	eq_cont.88946
+eq_else.88945:
 	lf	$f4, 1($7)
-	beqf	$f4, $f30, feq.88457
+	beqf	$f4, $f30, feq.88947
 	mov	$10, $0
-	j	feq_cont.88458
-feq.88457:
+	j	feq_cont.88948
+feq.88947:
 	mov	$10, $1
-feq_cont.88458:
-	bne	$10, $0, eq_else.88459
+feq_cont.88948:
+	bne	$10, $0, eq_else.88949
 	mov	$10, $1
-	j	eq_cont.88460
-eq_else.88459:
+	j	eq_cont.88950
+eq_else.88949:
 	mov	$10, $0
-eq_cont.88460:
-eq_cont.88456:
-eq_cont.88454:
-	bne	$10, $0, eq_else.88461
+eq_cont.88950:
+eq_cont.88946:
+eq_cont.88944:
+	bne	$10, $0, eq_else.88951
 	lf	$f3, 2($7)
 	fsub	$f3, $f3, $f1
 	lf	$f4, 3($7)
@@ -9736,10 +9649,10 @@ eq_cont.88454:
 	lw	$10, 4($8)
 	lf	$f5, 0($10)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.88463
+	bne	$10, $0, eq_else.88953
 	mov	$10, $0
-	j	eq_cont.88464
-eq_else.88463:
+	j	eq_cont.88954
+eq_else.88953:
 	lf	$f4, 2($9)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
@@ -9747,26 +9660,26 @@ eq_else.88463:
 	lw	$10, 4($8)
 	lf	$f5, 2($10)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.88465
+	bne	$10, $0, eq_else.88955
 	mov	$10, $0
-	j	eq_cont.88466
-eq_else.88465:
+	j	eq_cont.88956
+eq_else.88955:
 	lf	$f4, 3($7)
-	beqf	$f4, $f30, feq.88467
+	beqf	$f4, $f30, feq.88957
 	mov	$10, $0
-	j	feq_cont.88468
-feq.88467:
+	j	feq_cont.88958
+feq.88957:
 	mov	$10, $1
-feq_cont.88468:
-	bne	$10, $0, eq_else.88469
+feq_cont.88958:
+	bne	$10, $0, eq_else.88959
 	mov	$10, $1
-	j	eq_cont.88470
-eq_else.88469:
+	j	eq_cont.88960
+eq_else.88959:
 	mov	$10, $0
-eq_cont.88470:
-eq_cont.88466:
-eq_cont.88464:
-	bne	$10, $0, eq_else.88471
+eq_cont.88960:
+eq_cont.88956:
+eq_cont.88954:
+	bne	$10, $0, eq_else.88961
 	lf	$f3, 4($7)
 	fsub	$f2, $f3, $f2
 	lf	$f3, 5($7)
@@ -9778,10 +9691,10 @@ eq_cont.88464:
 	lw	$10, 4($8)
 	lf	$f3, 0($10)
 	sltf	$10, $f0, $f3
-	bne	$10, $0, eq_else.88473
+	bne	$10, $0, eq_else.88963
 	mov	$7, $0
-	j	eq_cont.88474
-eq_else.88473:
+	j	eq_cont.88964
+eq_else.88963:
 	lf	$f0, 1($9)
 	fmul	$f0, $f2, $f0
 	fadd	$f0, $f0, $f1
@@ -9789,52 +9702,52 @@ eq_else.88473:
 	lw	$8, 4($8)
 	lf	$f1, 1($8)
 	sltf	$8, $f0, $f1
-	bne	$8, $0, eq_else.88475
+	bne	$8, $0, eq_else.88965
 	mov	$7, $0
-	j	eq_cont.88476
-eq_else.88475:
+	j	eq_cont.88966
+eq_else.88965:
 	lf	$f0, 5($7)
-	beqf	$f0, $f30, feq.88477
+	beqf	$f0, $f30, feq.88967
 	mov	$7, $0
-	j	feq_cont.88478
-feq.88477:
+	j	feq_cont.88968
+feq.88967:
 	mov	$7, $1
-feq_cont.88478:
-	bne	$7, $0, eq_else.88479
+feq_cont.88968:
+	bne	$7, $0, eq_else.88969
 	mov	$7, $1
-	j	eq_cont.88480
-eq_else.88479:
+	j	eq_cont.88970
+eq_else.88969:
 	mov	$7, $0
-eq_cont.88480:
-eq_cont.88476:
-eq_cont.88474:
-	bne	$7, $0, eq_else.88481
+eq_cont.88970:
+eq_cont.88966:
+eq_cont.88964:
+	bne	$7, $0, eq_else.88971
 	mov	$7, $0
-	j	eq_cont.88482
-eq_else.88481:
+	j	eq_cont.88972
+eq_else.88971:
 	sf	$f2, 3122($0)
-	addi	$7, $0, 3
-eq_cont.88482:
-	j	eq_cont.88472
-eq_else.88471:
+	mov	$7, $27
+eq_cont.88972:
+	j	eq_cont.88962
+eq_else.88961:
 	sf	$f3, 3122($0)
-	addi	$7, $0, 2
-eq_cont.88472:
-	j	eq_cont.88462
-eq_else.88461:
+	mov	$7, $26
+eq_cont.88962:
+	j	eq_cont.88952
+eq_else.88951:
 	sf	$f3, 3122($0)
 	mov	$7, $1
-eq_cont.88462:
-	j	eq_cont.88452
-eq_else.88451:
+eq_cont.88952:
+	j	eq_cont.88942
+eq_else.88941:
 	addi	$30, $0, 2
-	bne	$9, $30, eq_else.88483
+	bne	$9, $30, eq_else.88973
 	lf	$f3, 0($7)
 	sltf	$8, $f3, $f30
-	bne	$8, $0, eq_else.88485
+	bne	$8, $0, eq_else.88975
 	mov	$7, $0
-	j	eq_cont.88486
-eq_else.88485:
+	j	eq_cont.88976
+eq_else.88975:
 	lf	$f3, 1($7)
 	fmul	$f0, $f3, $f0
 	lf	$f3, 2($7)
@@ -9845,17 +9758,17 @@ eq_else.88485:
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3122($0)
 	mov	$7, $1
-eq_cont.88486:
-	j	eq_cont.88484
-eq_else.88483:
+eq_cont.88976:
+	j	eq_cont.88974
+eq_else.88973:
 	lf	$f3, 0($7)
-	beqf	$f3, $f30, feq.88487
+	beqf	$f3, $f30, feq.88977
 	mov	$9, $0
-	j	feq_cont.88488
-feq.88487:
+	j	feq_cont.88978
+feq.88977:
 	mov	$9, $1
-feq_cont.88488:
-	bne	$9, $0, eq_else.88489
+feq_cont.88978:
+	bne	$9, $0, eq_else.88979
 	lf	$f4, 1($7)
 	fmul	$f4, $f4, $f0
 	lf	$f5, 2($7)
@@ -9879,10 +9792,10 @@ feq_cont.88488:
 	fmul	$f6, $f6, $f7
 	fadd	$f5, $f5, $f6
 	lw	$9, 3($8)
-	bne	$9, $0, eq_else.88491
+	bne	$9, $0, eq_else.88981
 	movf	$f0, $f5
-	j	eq_cont.88492
-eq_else.88491:
+	j	eq_cont.88982
+eq_else.88981:
 	fmul	$f6, $f1, $f2
 	lw	$9, 9($8)
 	lf	$f7, 0($9)
@@ -9898,61 +9811,61 @@ eq_else.88491:
 	lf	$f1, 2($9)
 	fmul	$f0, $f0, $f1
 	fadd	$f0, $f2, $f0
-eq_cont.88492:
+eq_cont.88982:
 	lw	$9, 1($8)
 	addi	$30, $0, 3
-	bne	$9, $30, eq_else.88493
+	bne	$9, $30, eq_else.88983
 	fsub	$f0, $f0, $f28
-	j	eq_cont.88494
-eq_else.88493:
-eq_cont.88494:
+	j	eq_cont.88984
+eq_else.88983:
+eq_cont.88984:
 	fmul	$f1, $f4, $f4
 	fmul	$f0, $f3, $f0
 	fsub	$f0, $f1, $f0
 	sltf	$9, $f30, $f0
-	bne	$9, $0, eq_else.88495
+	bne	$9, $0, eq_else.88985
 	mov	$7, $0
-	j	eq_cont.88496
-eq_else.88495:
+	j	eq_cont.88986
+eq_else.88985:
 	lw	$8, 6($8)
-	bne	$8, $0, eq_else.88497
+	bne	$8, $0, eq_else.88987
 	sqrt	$f0, $f0
 	fsub	$f0, $f4, $f0
 	lf	$f1, 4($7)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
-	j	eq_cont.88498
-eq_else.88497:
+	j	eq_cont.88988
+eq_else.88987:
 	sqrt	$f0, $f0
 	fadd	$f0, $f4, $f0
 	lf	$f1, 4($7)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
-eq_cont.88498:
+eq_cont.88988:
 	mov	$7, $1
-eq_cont.88496:
-	j	eq_cont.88490
-eq_else.88489:
+eq_cont.88986:
+	j	eq_cont.88980
+eq_else.88979:
 	mov	$7, $0
-eq_cont.88490:
-eq_cont.88484:
-eq_cont.88452:
-	bne	$7, $0, eq_else.88499
+eq_cont.88980:
+eq_cont.88974:
+eq_cont.88942:
+	bne	$7, $0, eq_else.88989
 	mov	$2, $0
-	j	eq_cont.88500
-eq_else.88499:
+	j	eq_cont.88990
+eq_else.88989:
 	lf	$f0, 3122($0)
 	lf	$f1, 3382($0) # -0.100000
 	sltf	$7, $f0, $f1
-	bne	$7, $0, eq_else.88501
+	bne	$7, $0, eq_else.88991
 	mov	$2, $0
-	j	eq_cont.88502
-eq_else.88501:
+	j	eq_cont.88992
+eq_else.88991:
 	lw	$7, 1($6)
-	bne	$7, $28, eq_else.88503
+	bne	$7, $28, eq_else.88993
 	mov	$2, $0
-	j	eq_cont.88504
-eq_else.88503:
+	j	eq_cont.88994
+eq_else.88993:
 	lw	$7, 3071($7)
 	mov	$5, $7
 	mov	$2, $0
@@ -9961,13 +9874,13 @@ eq_else.88503:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -8
 	lw	$31, 7($3)
-	bne	$2, $0, eq_else.88505
+	bne	$2, $0, eq_else.88995
 	lw	$2, 5($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.88507
+	bne	$5, $28, eq_else.88997
 	mov	$2, $0
-	j	eq_cont.88508
-eq_else.88507:
+	j	eq_cont.88998
+eq_else.88997:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 7($3)
@@ -9975,13 +9888,13 @@ eq_else.88507:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -8
 	lw	$31, 7($3)
-	bne	$2, $0, eq_else.88509
+	bne	$2, $0, eq_else.88999
 	lw	$2, 5($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.88511
+	bne	$5, $28, eq_else.89001
 	mov	$2, $0
-	j	eq_cont.88512
-eq_else.88511:
+	j	eq_cont.89002
+eq_else.89001:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 7($3)
@@ -9989,13 +9902,13 @@ eq_else.88511:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -8
 	lw	$31, 7($3)
-	bne	$2, $0, eq_else.88513
+	bne	$2, $0, eq_else.89003
 	lw	$2, 5($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.88515
+	bne	$5, $28, eq_else.89005
 	mov	$2, $0
-	j	eq_cont.88516
-eq_else.88515:
+	j	eq_cont.89006
+eq_else.89005:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 7($3)
@@ -10003,13 +9916,13 @@ eq_else.88515:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -8
 	lw	$31, 7($3)
-	bne	$2, $0, eq_else.88517
+	bne	$2, $0, eq_else.89007
 	lw	$2, 5($3)
 	lw	$5, 5($2)
-	bne	$5, $28, eq_else.88519
+	bne	$5, $28, eq_else.89009
 	mov	$2, $0
-	j	eq_cont.88520
-eq_else.88519:
+	j	eq_cont.89010
+eq_else.89009:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 7($3)
@@ -10017,13 +9930,13 @@ eq_else.88519:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -8
 	lw	$31, 7($3)
-	bne	$2, $0, eq_else.88521
+	bne	$2, $0, eq_else.89011
 	lw	$2, 5($3)
 	lw	$5, 6($2)
-	bne	$5, $28, eq_else.88523
+	bne	$5, $28, eq_else.89013
 	mov	$2, $0
-	j	eq_cont.88524
-eq_else.88523:
+	j	eq_cont.89014
+eq_else.89013:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 7($3)
@@ -10031,7 +9944,7 @@ eq_else.88523:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -8
 	lw	$31, 7($3)
-	bne	$2, $0, eq_else.88525
+	bne	$2, $0, eq_else.89015
 	addi	$2, $0, 7
 	lw	$5, 5($3)
 	sw	$31, 7($3)
@@ -10039,57 +9952,57 @@ eq_else.88523:
 	jal	shadow_check_one_or_group.2977
 	addi	$3, $3, -8
 	lw	$31, 7($3)
-	j	eq_cont.88526
-eq_else.88525:
+	j	eq_cont.89016
+eq_else.89015:
 	mov	$2, $1
-eq_cont.88526:
-eq_cont.88524:
-	j	eq_cont.88522
-eq_else.88521:
+eq_cont.89016:
+eq_cont.89014:
+	j	eq_cont.89012
+eq_else.89011:
 	mov	$2, $1
-eq_cont.88522:
-eq_cont.88520:
-	j	eq_cont.88518
-eq_else.88517:
+eq_cont.89012:
+eq_cont.89010:
+	j	eq_cont.89008
+eq_else.89007:
 	mov	$2, $1
-eq_cont.88518:
-eq_cont.88516:
-	j	eq_cont.88514
-eq_else.88513:
+eq_cont.89008:
+eq_cont.89006:
+	j	eq_cont.89004
+eq_else.89003:
 	mov	$2, $1
-eq_cont.88514:
-eq_cont.88512:
-	j	eq_cont.88510
-eq_else.88509:
+eq_cont.89004:
+eq_cont.89002:
+	j	eq_cont.89000
+eq_else.88999:
 	mov	$2, $1
-eq_cont.88510:
-eq_cont.88508:
-	j	eq_cont.88506
-eq_else.88505:
+eq_cont.89000:
+eq_cont.88998:
+	j	eq_cont.88996
+eq_else.88995:
 	mov	$2, $1
-eq_cont.88506:
-eq_cont.88504:
-	bne	$2, $0, eq_else.88527
+eq_cont.88996:
+eq_cont.88994:
+	bne	$2, $0, eq_else.89017
 	mov	$2, $0
-	j	eq_cont.88528
-eq_else.88527:
+	j	eq_cont.89018
+eq_else.89017:
 	mov	$2, $1
-eq_cont.88528:
-eq_cont.88502:
-eq_cont.88500:
-eq_cont.88450:
-	bne	$2, $0, eq_else.88529
+eq_cont.89018:
+eq_cont.88992:
+eq_cont.88990:
+eq_cont.88940:
+	bne	$2, $0, eq_else.89019
 	lw	$2, 6($3)
 	addi	$2, $2, 1
 	lw	$5, 1($3)
 	j	shadow_check_one_or_matrix.2980
-eq_else.88529:
+eq_else.89019:
 	lw	$2, 5($3)
 	lw	$5, 1($2)
-	bne	$5, $28, eq_else.88530
+	bne	$5, $28, eq_else.89020
 	mov	$2, $0
-	j	eq_cont.88531
-eq_else.88530:
+	j	eq_cont.89021
+eq_else.89020:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 7($3)
@@ -10097,13 +10010,13 @@ eq_else.88530:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -8
 	lw	$31, 7($3)
-	bne	$2, $0, eq_else.88532
+	bne	$2, $0, eq_else.89022
 	lw	$2, 5($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.88534
+	bne	$5, $28, eq_else.89024
 	mov	$2, $0
-	j	eq_cont.88535
-eq_else.88534:
+	j	eq_cont.89025
+eq_else.89024:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 7($3)
@@ -10111,13 +10024,13 @@ eq_else.88534:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -8
 	lw	$31, 7($3)
-	bne	$2, $0, eq_else.88536
+	bne	$2, $0, eq_else.89026
 	lw	$2, 5($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.88538
+	bne	$5, $28, eq_else.89028
 	mov	$2, $0
-	j	eq_cont.88539
-eq_else.88538:
+	j	eq_cont.89029
+eq_else.89028:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 7($3)
@@ -10125,13 +10038,13 @@ eq_else.88538:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -8
 	lw	$31, 7($3)
-	bne	$2, $0, eq_else.88540
+	bne	$2, $0, eq_else.89030
 	lw	$2, 5($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.88542
+	bne	$5, $28, eq_else.89032
 	mov	$2, $0
-	j	eq_cont.88543
-eq_else.88542:
+	j	eq_cont.89033
+eq_else.89032:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 7($3)
@@ -10139,13 +10052,13 @@ eq_else.88542:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -8
 	lw	$31, 7($3)
-	bne	$2, $0, eq_else.88544
+	bne	$2, $0, eq_else.89034
 	lw	$2, 5($3)
 	lw	$5, 5($2)
-	bne	$5, $28, eq_else.88546
+	bne	$5, $28, eq_else.89036
 	mov	$2, $0
-	j	eq_cont.88547
-eq_else.88546:
+	j	eq_cont.89037
+eq_else.89036:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 7($3)
@@ -10153,13 +10066,13 @@ eq_else.88546:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -8
 	lw	$31, 7($3)
-	bne	$2, $0, eq_else.88548
+	bne	$2, $0, eq_else.89038
 	lw	$2, 5($3)
 	lw	$5, 6($2)
-	bne	$5, $28, eq_else.88550
+	bne	$5, $28, eq_else.89040
 	mov	$2, $0
-	j	eq_cont.88551
-eq_else.88550:
+	j	eq_cont.89041
+eq_else.89040:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 7($3)
@@ -10167,7 +10080,7 @@ eq_else.88550:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -8
 	lw	$31, 7($3)
-	bne	$2, $0, eq_else.88552
+	bne	$2, $0, eq_else.89042
 	addi	$2, $0, 7
 	lw	$5, 5($3)
 	sw	$31, 7($3)
@@ -10175,53 +10088,53 @@ eq_else.88550:
 	jal	shadow_check_one_or_group.2977
 	addi	$3, $3, -8
 	lw	$31, 7($3)
-	j	eq_cont.88553
-eq_else.88552:
+	j	eq_cont.89043
+eq_else.89042:
 	mov	$2, $1
-eq_cont.88553:
-eq_cont.88551:
-	j	eq_cont.88549
-eq_else.88548:
+eq_cont.89043:
+eq_cont.89041:
+	j	eq_cont.89039
+eq_else.89038:
 	mov	$2, $1
-eq_cont.88549:
-eq_cont.88547:
-	j	eq_cont.88545
-eq_else.88544:
+eq_cont.89039:
+eq_cont.89037:
+	j	eq_cont.89035
+eq_else.89034:
 	mov	$2, $1
-eq_cont.88545:
-eq_cont.88543:
-	j	eq_cont.88541
-eq_else.88540:
+eq_cont.89035:
+eq_cont.89033:
+	j	eq_cont.89031
+eq_else.89030:
 	mov	$2, $1
-eq_cont.88541:
-eq_cont.88539:
-	j	eq_cont.88537
-eq_else.88536:
+eq_cont.89031:
+eq_cont.89029:
+	j	eq_cont.89027
+eq_else.89026:
 	mov	$2, $1
-eq_cont.88537:
-eq_cont.88535:
-	j	eq_cont.88533
-eq_else.88532:
+eq_cont.89027:
+eq_cont.89025:
+	j	eq_cont.89023
+eq_else.89022:
 	mov	$2, $1
-eq_cont.88533:
-eq_cont.88531:
-	bne	$2, $0, eq_else.88554
+eq_cont.89023:
+eq_cont.89021:
+	bne	$2, $0, eq_else.89044
 	lw	$2, 6($3)
 	addi	$2, $2, 1
 	lw	$5, 1($3)
 	j	shadow_check_one_or_matrix.2980
-eq_else.88554:
+eq_else.89044:
 	mov	$2, $1
 	jr $31
-eq_else.88447:
+eq_else.88937:
 	mov	$2, $1
 	jr $31
 solve_each_element.2983:
 	add	$30, $5, $2
 	lw	$7, 0($30)
-	bne	$7, $28, eq_else.88555
+	bne	$7, $28, eq_else.89045
 	jr $31
-eq_else.88555:
+eq_else.89045:
 	lw	$8, 3001($7)
 	lf	$f0, 3146($0)
 	lw	$9, 5($8)
@@ -10231,32 +10144,31 @@ eq_else.88555:
 	lw	$9, 5($8)
 	lf	$f2, 1($9)
 	fsub	$f1, $f1, $f2
-	addi	$9, $0, 2
-	lf	$f2, 3146($9)
+	lf	$f2, 3146($26)
 	lw	$9, 5($8)
 	lf	$f3, 2($9)
 	fsub	$f2, $f2, $f3
 	lw	$9, 1($8)
-	bne	$9, $1, eq_else.88557
+	bne	$9, $1, eq_else.89047
 	lf	$f3, 0($6)
-	beqf	$f3, $f30, feq.88559
+	beqf	$f3, $f30, feq.89049
 	mov	$9, $0
-	j	feq_cont.88560
-feq.88559:
+	j	feq_cont.89050
+feq.89049:
 	mov	$9, $1
-feq_cont.88560:
-	bne	$9, $0, eq_else.88561
+feq_cont.89050:
+	bne	$9, $0, eq_else.89051
 	lw	$9, 4($8)
 	lw	$10, 6($8)
 	lf	$f3, 0($6)
 	sltf	$11, $f3, $f30
 	xor	$10, $10, $11
 	lf	$f3, 0($9)
-	bne	$10, $0, eq_else.88563
+	bne	$10, $0, eq_else.89053
 	fneg	$f3, $f3
-	j	eq_cont.88564
-eq_else.88563:
-eq_cont.88564:
+	j	eq_cont.89054
+eq_else.89053:
+eq_cont.89054:
 	fsub	$f3, $f3, $f0
 	lf	$f4, 0($6)
 	fdiv	$f3, $f3, $f4
@@ -10266,48 +10178,48 @@ eq_cont.88564:
 	fabs	$f4, $f4
 	lf	$f5, 1($9)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.88565
+	bne	$10, $0, eq_else.89055
 	mov	$9, $0
-	j	eq_cont.88566
-eq_else.88565:
+	j	eq_cont.89056
+eq_else.89055:
 	lf	$f4, 2($6)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
 	fabs	$f4, $f4
 	lf	$f5, 2($9)
 	sltf	$9, $f4, $f5
-	bne	$9, $0, eq_else.88567
+	bne	$9, $0, eq_else.89057
 	mov	$9, $0
-	j	eq_cont.88568
-eq_else.88567:
+	j	eq_cont.89058
+eq_else.89057:
 	sf	$f3, 3122($0)
 	mov	$9, $1
-eq_cont.88568:
-eq_cont.88566:
-	j	eq_cont.88562
-eq_else.88561:
+eq_cont.89058:
+eq_cont.89056:
+	j	eq_cont.89052
+eq_else.89051:
 	mov	$9, $0
-eq_cont.88562:
-	bne	$9, $0, eq_else.88569
+eq_cont.89052:
+	bne	$9, $0, eq_else.89059
 	lf	$f3, 1($6)
-	beqf	$f3, $f30, feq.88571
+	beqf	$f3, $f30, feq.89061
 	mov	$9, $0
-	j	feq_cont.88572
-feq.88571:
+	j	feq_cont.89062
+feq.89061:
 	mov	$9, $1
-feq_cont.88572:
-	bne	$9, $0, eq_else.88573
+feq_cont.89062:
+	bne	$9, $0, eq_else.89063
 	lw	$9, 4($8)
 	lw	$10, 6($8)
 	lf	$f3, 1($6)
 	sltf	$11, $f3, $f30
 	xor	$10, $10, $11
 	lf	$f3, 1($9)
-	bne	$10, $0, eq_else.88575
+	bne	$10, $0, eq_else.89065
 	fneg	$f3, $f3
-	j	eq_cont.88576
-eq_else.88575:
-eq_cont.88576:
+	j	eq_cont.89066
+eq_else.89065:
+eq_cont.89066:
 	fsub	$f3, $f3, $f1
 	lf	$f4, 1($6)
 	fdiv	$f3, $f3, $f4
@@ -10317,48 +10229,48 @@ eq_cont.88576:
 	fabs	$f4, $f4
 	lf	$f5, 2($9)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.88577
+	bne	$10, $0, eq_else.89067
 	mov	$9, $0
-	j	eq_cont.88578
-eq_else.88577:
+	j	eq_cont.89068
+eq_else.89067:
 	lf	$f4, 0($6)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f0
 	fabs	$f4, $f4
 	lf	$f5, 0($9)
 	sltf	$9, $f4, $f5
-	bne	$9, $0, eq_else.88579
+	bne	$9, $0, eq_else.89069
 	mov	$9, $0
-	j	eq_cont.88580
-eq_else.88579:
+	j	eq_cont.89070
+eq_else.89069:
 	sf	$f3, 3122($0)
 	mov	$9, $1
-eq_cont.88580:
-eq_cont.88578:
-	j	eq_cont.88574
-eq_else.88573:
+eq_cont.89070:
+eq_cont.89068:
+	j	eq_cont.89064
+eq_else.89063:
 	mov	$9, $0
-eq_cont.88574:
-	bne	$9, $0, eq_else.88581
+eq_cont.89064:
+	bne	$9, $0, eq_else.89071
 	lf	$f3, 2($6)
-	beqf	$f3, $f30, feq.88583
+	beqf	$f3, $f30, feq.89073
 	mov	$9, $0
-	j	feq_cont.88584
-feq.88583:
+	j	feq_cont.89074
+feq.89073:
 	mov	$9, $1
-feq_cont.88584:
-	bne	$9, $0, eq_else.88585
+feq_cont.89074:
+	bne	$9, $0, eq_else.89075
 	lw	$9, 4($8)
 	lw	$8, 6($8)
 	lf	$f3, 2($6)
 	sltf	$10, $f3, $f30
 	xor	$8, $8, $10
 	lf	$f3, 2($9)
-	bne	$8, $0, eq_else.88587
+	bne	$8, $0, eq_else.89077
 	fneg	$f3, $f3
-	j	eq_cont.88588
-eq_else.88587:
-eq_cont.88588:
+	j	eq_cont.89078
+eq_else.89077:
+eq_cont.89078:
 	fsub	$f2, $f3, $f2
 	lf	$f3, 2($6)
 	fdiv	$f2, $f2, $f3
@@ -10368,46 +10280,46 @@ eq_cont.88588:
 	fabs	$f0, $f0
 	lf	$f3, 0($9)
 	sltf	$8, $f0, $f3
-	bne	$8, $0, eq_else.88589
+	bne	$8, $0, eq_else.89079
 	mov	$8, $0
-	j	eq_cont.88590
-eq_else.88589:
+	j	eq_cont.89080
+eq_else.89079:
 	lf	$f0, 1($6)
 	fmul	$f0, $f2, $f0
 	fadd	$f0, $f0, $f1
 	fabs	$f0, $f0
 	lf	$f1, 1($9)
 	sltf	$8, $f0, $f1
-	bne	$8, $0, eq_else.88591
+	bne	$8, $0, eq_else.89081
 	mov	$8, $0
-	j	eq_cont.88592
-eq_else.88591:
+	j	eq_cont.89082
+eq_else.89081:
 	sf	$f2, 3122($0)
 	mov	$8, $1
-eq_cont.88592:
-eq_cont.88590:
-	j	eq_cont.88586
-eq_else.88585:
+eq_cont.89082:
+eq_cont.89080:
+	j	eq_cont.89076
+eq_else.89075:
 	mov	$8, $0
-eq_cont.88586:
-	bne	$8, $0, eq_else.88593
+eq_cont.89076:
+	bne	$8, $0, eq_else.89083
 	mov	$8, $0
-	j	eq_cont.88594
-eq_else.88593:
-	addi	$8, $0, 3
-eq_cont.88594:
-	j	eq_cont.88582
-eq_else.88581:
-	addi	$8, $0, 2
-eq_cont.88582:
-	j	eq_cont.88570
-eq_else.88569:
+	j	eq_cont.89084
+eq_else.89083:
+	mov	$8, $27
+eq_cont.89084:
+	j	eq_cont.89072
+eq_else.89071:
+	mov	$8, $26
+eq_cont.89072:
+	j	eq_cont.89060
+eq_else.89059:
 	mov	$8, $1
-eq_cont.88570:
-	j	eq_cont.88558
-eq_else.88557:
+eq_cont.89060:
+	j	eq_cont.89048
+eq_else.89047:
 	addi	$30, $0, 2
-	bne	$9, $30, eq_else.88595
+	bne	$9, $30, eq_else.89085
 	lw	$8, 4($8)
 	lf	$f3, 0($6)
 	lf	$f4, 0($8)
@@ -10421,10 +10333,10 @@ eq_else.88557:
 	fmul	$f4, $f4, $f5
 	fadd	$f3, $f3, $f4
 	sltf	$9, $f30, $f3
-	bne	$9, $0, eq_else.88597
+	bne	$9, $0, eq_else.89087
 	mov	$8, $0
-	j	eq_cont.88598
-eq_else.88597:
+	j	eq_cont.89088
+eq_else.89087:
 	lf	$f4, 0($8)
 	fmul	$f0, $f4, $f0
 	lf	$f4, 1($8)
@@ -10437,9 +10349,9 @@ eq_else.88597:
 	fdiv	$f0, $f0, $f3
 	sf	$f0, 3122($0)
 	mov	$8, $1
-eq_cont.88598:
-	j	eq_cont.88596
-eq_else.88595:
+eq_cont.89088:
+	j	eq_cont.89086
+eq_else.89085:
 	lf	$f3, 0($6)
 	lf	$f4, 1($6)
 	lf	$f5, 2($6)
@@ -10458,10 +10370,10 @@ eq_else.88595:
 	fmul	$f7, $f7, $f8
 	fadd	$f6, $f6, $f7
 	lw	$9, 3($8)
-	bne	$9, $0, eq_else.88599
+	bne	$9, $0, eq_else.89089
 	movf	$f3, $f6
-	j	eq_cont.88600
-eq_else.88599:
+	j	eq_cont.89090
+eq_else.89089:
 	fmul	$f7, $f4, $f5
 	lw	$9, 9($8)
 	lf	$f8, 0($9)
@@ -10477,14 +10389,14 @@ eq_else.88599:
 	lf	$f4, 2($9)
 	fmul	$f3, $f3, $f4
 	fadd	$f3, $f5, $f3
-eq_cont.88600:
-	beqf	$f3, $f30, feq.88601
+eq_cont.89090:
+	beqf	$f3, $f30, feq.89091
 	mov	$9, $0
-	j	feq_cont.88602
-feq.88601:
+	j	feq_cont.89092
+feq.89091:
 	mov	$9, $1
-feq_cont.88602:
-	bne	$9, $0, eq_else.88603
+feq_cont.89092:
+	bne	$9, $0, eq_else.89093
 	lf	$f4, 0($6)
 	lf	$f5, 1($6)
 	lf	$f6, 2($6)
@@ -10503,10 +10415,10 @@ feq_cont.88602:
 	fmul	$f8, $f8, $f9
 	fadd	$f7, $f7, $f8
 	lw	$9, 3($8)
-	bne	$9, $0, eq_else.88605
+	bne	$9, $0, eq_else.89095
 	movf	$f4, $f7
-	j	eq_cont.88606
-eq_else.88605:
+	j	eq_cont.89096
+eq_else.89095:
 	fmul	$f8, $f6, $f1
 	fmul	$f9, $f5, $f2
 	fadd	$f8, $f8, $f9
@@ -10530,7 +10442,7 @@ eq_else.88605:
 	lf	$f5, 3388($0) # 0.500000
 	fmul	$f4, $f4, $f5
 	fadd	$f4, $f7, $f4
-eq_cont.88606:
+eq_cont.89096:
 	fmul	$f5, $f0, $f0
 	lw	$9, 4($8)
 	lf	$f6, 0($9)
@@ -10546,10 +10458,10 @@ eq_cont.88606:
 	fmul	$f6, $f6, $f7
 	fadd	$f5, $f5, $f6
 	lw	$9, 3($8)
-	bne	$9, $0, eq_else.88607
+	bne	$9, $0, eq_else.89097
 	movf	$f0, $f5
-	j	eq_cont.88608
-eq_else.88607:
+	j	eq_cont.89098
+eq_else.89097:
 	fmul	$f6, $f1, $f2
 	lw	$9, 9($8)
 	lf	$f7, 0($9)
@@ -10565,62 +10477,62 @@ eq_else.88607:
 	lf	$f1, 2($9)
 	fmul	$f0, $f0, $f1
 	fadd	$f0, $f2, $f0
-eq_cont.88608:
+eq_cont.89098:
 	lw	$9, 1($8)
 	addi	$30, $0, 3
-	bne	$9, $30, eq_else.88609
+	bne	$9, $30, eq_else.89099
 	fsub	$f0, $f0, $f28
-	j	eq_cont.88610
-eq_else.88609:
-eq_cont.88610:
+	j	eq_cont.89100
+eq_else.89099:
+eq_cont.89100:
 	fmul	$f1, $f4, $f4
 	fmul	$f0, $f3, $f0
 	fsub	$f0, $f1, $f0
 	sltf	$9, $f30, $f0
-	bne	$9, $0, eq_else.88611
+	bne	$9, $0, eq_else.89101
 	mov	$8, $0
-	j	eq_cont.88612
-eq_else.88611:
+	j	eq_cont.89102
+eq_else.89101:
 	sqrt	$f0, $f0
 	lw	$8, 6($8)
-	bne	$8, $0, eq_else.88613
+	bne	$8, $0, eq_else.89103
 	fneg	$f0, $f0
-	j	eq_cont.88614
-eq_else.88613:
-eq_cont.88614:
+	j	eq_cont.89104
+eq_else.89103:
+eq_cont.89104:
 	fsub	$f0, $f0, $f4
 	fdiv	$f0, $f0, $f3
 	sf	$f0, 3122($0)
 	mov	$8, $1
-eq_cont.88612:
-	j	eq_cont.88604
-eq_else.88603:
+eq_cont.89102:
+	j	eq_cont.89094
+eq_else.89093:
 	mov	$8, $0
-eq_cont.88604:
-eq_cont.88596:
-eq_cont.88558:
-	bne	$8, $0, eq_else.88615
+eq_cont.89094:
+eq_cont.89086:
+eq_cont.89048:
+	bne	$8, $0, eq_else.89105
 	lw	$7, 3001($7)
 	lw	$7, 6($7)
-	bne	$7, $0, eq_else.88616
+	bne	$7, $0, eq_else.89106
 	jr $31
-eq_else.88616:
+eq_else.89106:
 	addi	$2, $2, 1
 	j	solve_each_element.2983
-eq_else.88615:
+eq_else.89105:
 	lf	$f0, 3122($0)
 	sltf	$9, $f30, $f0
 	sw	$6, 0($3)
 	sw	$5, 1($3)
 	sw	$2, 2($3)
-	bne	$9, $0, eq_else.88618
-	j	eq_cont.88619
-eq_else.88618:
+	bne	$9, $0, eq_else.89108
+	j	eq_cont.89109
+eq_else.89108:
 	lf	$f1, 3124($0)
 	sltf	$9, $f0, $f1
-	bne	$9, $0, eq_else.88620
-	j	eq_cont.88621
-eq_else.88620:
+	bne	$9, $0, eq_else.89110
+	j	eq_cont.89111
+eq_else.89110:
 	lf	$f1, 3383($0) # 0.010000
 	fadd	$f0, $f0, $f1
 	lf	$f1, 0($6)
@@ -10633,8 +10545,7 @@ eq_else.88620:
 	fadd	$f2, $f2, $f3
 	lf	$f3, 2($6)
 	fmul	$f3, $f3, $f0
-	addi	$9, $0, 2
-	lf	$f4, 3146($9)
+	lf	$f4, 3146($26)
 	fadd	$f3, $f3, $f4
 	lw	$9, 0($5)
 	sw	$8, 3($3)
@@ -10643,10 +10554,10 @@ eq_else.88620:
 	sf	$f2, 6($3)
 	sf	$f1, 7($3)
 	sf	$f0, 8($3)
-	bne	$9, $28, eq_else.88622
+	bne	$9, $28, eq_else.89112
 	mov	$2, $1
-	j	eq_cont.88623
-eq_else.88622:
+	j	eq_cont.89113
+eq_else.89112:
 	lw	$9, 3001($9)
 	lw	$10, 5($9)
 	lf	$f4, 0($10)
@@ -10658,50 +10569,50 @@ eq_else.88622:
 	lf	$f6, 2($10)
 	fsub	$f6, $f3, $f6
 	lw	$10, 1($9)
-	bne	$10, $1, eq_else.88624
+	bne	$10, $1, eq_else.89114
 	fabs	$f4, $f4
 	lw	$10, 4($9)
 	lf	$f7, 0($10)
 	sltf	$10, $f4, $f7
-	bne	$10, $0, eq_else.88626
+	bne	$10, $0, eq_else.89116
 	mov	$10, $0
-	j	eq_cont.88627
-eq_else.88626:
+	j	eq_cont.89117
+eq_else.89116:
 	fabs	$f4, $f5
 	lw	$10, 4($9)
 	lf	$f5, 1($10)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.88628
+	bne	$10, $0, eq_else.89118
 	mov	$10, $0
-	j	eq_cont.88629
-eq_else.88628:
+	j	eq_cont.89119
+eq_else.89118:
 	fabs	$f4, $f6
 	lw	$10, 4($9)
 	lf	$f5, 2($10)
-	bltf	$f4, $f5, fle.88630
+	bltf	$f4, $f5, fle.89120
 	mov	$10, $0
-	j	fle_cont.88631
-fle.88630:
+	j	fle_cont.89121
+fle.89120:
 	mov	$10, $1
-fle_cont.88631:
-eq_cont.88629:
-eq_cont.88627:
-	bne	$10, $0, eq_else.88632
+fle_cont.89121:
+eq_cont.89119:
+eq_cont.89117:
+	bne	$10, $0, eq_else.89122
 	lw	$9, 6($9)
-	bne	$9, $0, eq_else.88634
+	bne	$9, $0, eq_else.89124
 	mov	$9, $1
-	j	eq_cont.88635
-eq_else.88634:
+	j	eq_cont.89125
+eq_else.89124:
 	mov	$9, $0
-eq_cont.88635:
-	j	eq_cont.88633
-eq_else.88632:
+eq_cont.89125:
+	j	eq_cont.89123
+eq_else.89122:
 	lw	$9, 6($9)
-eq_cont.88633:
-	j	eq_cont.88625
-eq_else.88624:
+eq_cont.89123:
+	j	eq_cont.89115
+eq_else.89114:
 	addi	$30, $0, 2
-	bne	$10, $30, eq_else.88636
+	bne	$10, $30, eq_else.89126
 	lw	$10, 4($9)
 	lf	$f7, 0($10)
 	fmul	$f4, $f7, $f4
@@ -10714,14 +10625,14 @@ eq_else.88624:
 	lw	$9, 6($9)
 	sltf	$10, $f4, $f30
 	xor	$9, $9, $10
-	bne	$9, $0, eq_else.88638
+	bne	$9, $0, eq_else.89128
 	mov	$9, $1
-	j	eq_cont.88639
-eq_else.88638:
+	j	eq_cont.89129
+eq_else.89128:
 	mov	$9, $0
-eq_cont.88639:
-	j	eq_cont.88637
-eq_else.88636:
+eq_cont.89129:
+	j	eq_cont.89127
+eq_else.89126:
 	fmul	$f7, $f4, $f4
 	lw	$10, 4($9)
 	lf	$f8, 0($10)
@@ -10737,10 +10648,10 @@ eq_else.88636:
 	fmul	$f8, $f8, $f9
 	fadd	$f7, $f7, $f8
 	lw	$10, 3($9)
-	bne	$10, $0, eq_else.88640
+	bne	$10, $0, eq_else.89130
 	movf	$f4, $f7
-	j	eq_cont.88641
-eq_else.88640:
+	j	eq_cont.89131
+eq_else.89130:
 	fmul	$f8, $f5, $f6
 	lw	$10, 9($9)
 	lf	$f9, 0($10)
@@ -10756,31 +10667,31 @@ eq_else.88640:
 	lf	$f5, 2($10)
 	fmul	$f4, $f4, $f5
 	fadd	$f4, $f6, $f4
-eq_cont.88641:
+eq_cont.89131:
 	lw	$10, 1($9)
 	addi	$30, $0, 3
-	bne	$10, $30, eq_else.88642
+	bne	$10, $30, eq_else.89132
 	fsub	$f4, $f4, $f28
-	j	eq_cont.88643
-eq_else.88642:
-eq_cont.88643:
+	j	eq_cont.89133
+eq_else.89132:
+eq_cont.89133:
 	lw	$9, 6($9)
 	sltf	$10, $f4, $f30
 	xor	$9, $9, $10
-	bne	$9, $0, eq_else.88644
+	bne	$9, $0, eq_else.89134
 	mov	$9, $1
-	j	eq_cont.88645
-eq_else.88644:
+	j	eq_cont.89135
+eq_else.89134:
 	mov	$9, $0
-eq_cont.88645:
-eq_cont.88637:
-eq_cont.88625:
-	bne	$9, $0, eq_else.88646
+eq_cont.89135:
+eq_cont.89127:
+eq_cont.89115:
+	bne	$9, $0, eq_else.89136
 	lw	$9, 1($5)
-	bne	$9, $28, eq_else.88648
+	bne	$9, $28, eq_else.89138
 	mov	$2, $1
-	j	eq_cont.88649
-eq_else.88648:
+	j	eq_cont.89139
+eq_else.89138:
 	lw	$9, 3001($9)
 	lw	$10, 5($9)
 	lf	$f4, 0($10)
@@ -10792,50 +10703,50 @@ eq_else.88648:
 	lf	$f6, 2($10)
 	fsub	$f6, $f3, $f6
 	lw	$10, 1($9)
-	bne	$10, $1, eq_else.88650
+	bne	$10, $1, eq_else.89140
 	fabs	$f4, $f4
 	lw	$10, 4($9)
 	lf	$f7, 0($10)
 	sltf	$10, $f4, $f7
-	bne	$10, $0, eq_else.88652
+	bne	$10, $0, eq_else.89142
 	mov	$10, $0
-	j	eq_cont.88653
-eq_else.88652:
+	j	eq_cont.89143
+eq_else.89142:
 	fabs	$f4, $f5
 	lw	$10, 4($9)
 	lf	$f5, 1($10)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.88654
+	bne	$10, $0, eq_else.89144
 	mov	$10, $0
-	j	eq_cont.88655
-eq_else.88654:
+	j	eq_cont.89145
+eq_else.89144:
 	fabs	$f4, $f6
 	lw	$10, 4($9)
 	lf	$f5, 2($10)
-	bltf	$f4, $f5, fle.88656
+	bltf	$f4, $f5, fle.89146
 	mov	$10, $0
-	j	fle_cont.88657
-fle.88656:
+	j	fle_cont.89147
+fle.89146:
 	mov	$10, $1
-fle_cont.88657:
-eq_cont.88655:
-eq_cont.88653:
-	bne	$10, $0, eq_else.88658
+fle_cont.89147:
+eq_cont.89145:
+eq_cont.89143:
+	bne	$10, $0, eq_else.89148
 	lw	$9, 6($9)
-	bne	$9, $0, eq_else.88660
+	bne	$9, $0, eq_else.89150
 	mov	$9, $1
-	j	eq_cont.88661
-eq_else.88660:
+	j	eq_cont.89151
+eq_else.89150:
 	mov	$9, $0
-eq_cont.88661:
-	j	eq_cont.88659
-eq_else.88658:
+eq_cont.89151:
+	j	eq_cont.89149
+eq_else.89148:
 	lw	$9, 6($9)
-eq_cont.88659:
-	j	eq_cont.88651
-eq_else.88650:
+eq_cont.89149:
+	j	eq_cont.89141
+eq_else.89140:
 	addi	$30, $0, 2
-	bne	$10, $30, eq_else.88662
+	bne	$10, $30, eq_else.89152
 	lw	$10, 4($9)
 	lf	$f7, 0($10)
 	fmul	$f4, $f7, $f4
@@ -10848,14 +10759,14 @@ eq_else.88650:
 	lw	$9, 6($9)
 	sltf	$10, $f4, $f30
 	xor	$9, $9, $10
-	bne	$9, $0, eq_else.88664
+	bne	$9, $0, eq_else.89154
 	mov	$9, $1
-	j	eq_cont.88665
-eq_else.88664:
+	j	eq_cont.89155
+eq_else.89154:
 	mov	$9, $0
-eq_cont.88665:
-	j	eq_cont.88663
-eq_else.88662:
+eq_cont.89155:
+	j	eq_cont.89153
+eq_else.89152:
 	fmul	$f7, $f4, $f4
 	lw	$10, 4($9)
 	lf	$f8, 0($10)
@@ -10871,10 +10782,10 @@ eq_else.88662:
 	fmul	$f8, $f8, $f9
 	fadd	$f7, $f7, $f8
 	lw	$10, 3($9)
-	bne	$10, $0, eq_else.88666
+	bne	$10, $0, eq_else.89156
 	movf	$f4, $f7
-	j	eq_cont.88667
-eq_else.88666:
+	j	eq_cont.89157
+eq_else.89156:
 	fmul	$f8, $f5, $f6
 	lw	$10, 9($9)
 	lf	$f9, 0($10)
@@ -10890,31 +10801,31 @@ eq_else.88666:
 	lf	$f5, 2($10)
 	fmul	$f4, $f4, $f5
 	fadd	$f4, $f6, $f4
-eq_cont.88667:
+eq_cont.89157:
 	lw	$10, 1($9)
 	addi	$30, $0, 3
-	bne	$10, $30, eq_else.88668
+	bne	$10, $30, eq_else.89158
 	fsub	$f4, $f4, $f28
-	j	eq_cont.88669
-eq_else.88668:
-eq_cont.88669:
+	j	eq_cont.89159
+eq_else.89158:
+eq_cont.89159:
 	lw	$9, 6($9)
 	sltf	$10, $f4, $f30
 	xor	$9, $9, $10
-	bne	$9, $0, eq_else.88670
+	bne	$9, $0, eq_else.89160
 	mov	$9, $1
-	j	eq_cont.88671
-eq_else.88670:
+	j	eq_cont.89161
+eq_else.89160:
 	mov	$9, $0
-eq_cont.88671:
-eq_cont.88663:
-eq_cont.88651:
-	bne	$9, $0, eq_else.88672
+eq_cont.89161:
+eq_cont.89153:
+eq_cont.89141:
+	bne	$9, $0, eq_else.89162
 	lw	$9, 2($5)
-	bne	$9, $28, eq_else.88674
+	bne	$9, $28, eq_else.89164
 	mov	$2, $1
-	j	eq_cont.88675
-eq_else.88674:
+	j	eq_cont.89165
+eq_else.89164:
 	lw	$9, 3001($9)
 	lw	$10, 5($9)
 	lf	$f4, 0($10)
@@ -10926,50 +10837,50 @@ eq_else.88674:
 	lf	$f6, 2($10)
 	fsub	$f6, $f3, $f6
 	lw	$10, 1($9)
-	bne	$10, $1, eq_else.88676
+	bne	$10, $1, eq_else.89166
 	fabs	$f4, $f4
 	lw	$10, 4($9)
 	lf	$f7, 0($10)
 	sltf	$10, $f4, $f7
-	bne	$10, $0, eq_else.88678
+	bne	$10, $0, eq_else.89168
 	mov	$10, $0
-	j	eq_cont.88679
-eq_else.88678:
+	j	eq_cont.89169
+eq_else.89168:
 	fabs	$f4, $f5
 	lw	$10, 4($9)
 	lf	$f5, 1($10)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.88680
+	bne	$10, $0, eq_else.89170
 	mov	$10, $0
-	j	eq_cont.88681
-eq_else.88680:
+	j	eq_cont.89171
+eq_else.89170:
 	fabs	$f4, $f6
 	lw	$10, 4($9)
 	lf	$f5, 2($10)
-	bltf	$f4, $f5, fle.88682
+	bltf	$f4, $f5, fle.89172
 	mov	$10, $0
-	j	fle_cont.88683
-fle.88682:
+	j	fle_cont.89173
+fle.89172:
 	mov	$10, $1
-fle_cont.88683:
-eq_cont.88681:
-eq_cont.88679:
-	bne	$10, $0, eq_else.88684
+fle_cont.89173:
+eq_cont.89171:
+eq_cont.89169:
+	bne	$10, $0, eq_else.89174
 	lw	$9, 6($9)
-	bne	$9, $0, eq_else.88686
+	bne	$9, $0, eq_else.89176
 	mov	$9, $1
-	j	eq_cont.88687
-eq_else.88686:
+	j	eq_cont.89177
+eq_else.89176:
 	mov	$9, $0
-eq_cont.88687:
-	j	eq_cont.88685
-eq_else.88684:
+eq_cont.89177:
+	j	eq_cont.89175
+eq_else.89174:
 	lw	$9, 6($9)
-eq_cont.88685:
-	j	eq_cont.88677
-eq_else.88676:
+eq_cont.89175:
+	j	eq_cont.89167
+eq_else.89166:
 	addi	$30, $0, 2
-	bne	$10, $30, eq_else.88688
+	bne	$10, $30, eq_else.89178
 	lw	$10, 4($9)
 	lf	$f7, 0($10)
 	fmul	$f4, $f7, $f4
@@ -10982,14 +10893,14 @@ eq_else.88676:
 	lw	$9, 6($9)
 	sltf	$10, $f4, $f30
 	xor	$9, $9, $10
-	bne	$9, $0, eq_else.88690
+	bne	$9, $0, eq_else.89180
 	mov	$9, $1
-	j	eq_cont.88691
-eq_else.88690:
+	j	eq_cont.89181
+eq_else.89180:
 	mov	$9, $0
-eq_cont.88691:
-	j	eq_cont.88689
-eq_else.88688:
+eq_cont.89181:
+	j	eq_cont.89179
+eq_else.89178:
 	fmul	$f7, $f4, $f4
 	lw	$10, 4($9)
 	lf	$f8, 0($10)
@@ -11005,10 +10916,10 @@ eq_else.88688:
 	fmul	$f8, $f8, $f9
 	fadd	$f7, $f7, $f8
 	lw	$10, 3($9)
-	bne	$10, $0, eq_else.88692
+	bne	$10, $0, eq_else.89182
 	movf	$f4, $f7
-	j	eq_cont.88693
-eq_else.88692:
+	j	eq_cont.89183
+eq_else.89182:
 	fmul	$f8, $f5, $f6
 	lw	$10, 9($9)
 	lf	$f9, 0($10)
@@ -11024,28 +10935,27 @@ eq_else.88692:
 	lf	$f5, 2($10)
 	fmul	$f4, $f4, $f5
 	fadd	$f4, $f6, $f4
-eq_cont.88693:
+eq_cont.89183:
 	lw	$10, 1($9)
 	addi	$30, $0, 3
-	bne	$10, $30, eq_else.88694
+	bne	$10, $30, eq_else.89184
 	fsub	$f4, $f4, $f28
-	j	eq_cont.88695
-eq_else.88694:
-eq_cont.88695:
+	j	eq_cont.89185
+eq_else.89184:
+eq_cont.89185:
 	lw	$9, 6($9)
 	sltf	$10, $f4, $f30
 	xor	$9, $9, $10
-	bne	$9, $0, eq_else.88696
+	bne	$9, $0, eq_else.89186
 	mov	$9, $1
-	j	eq_cont.88697
-eq_else.88696:
+	j	eq_cont.89187
+eq_else.89186:
 	mov	$9, $0
-eq_cont.88697:
-eq_cont.88689:
-eq_cont.88677:
-	bne	$9, $0, eq_else.88698
-	addi	$9, $0, 3
-	mov	$2, $9
+eq_cont.89187:
+eq_cont.89179:
+eq_cont.89167:
+	bne	$9, $0, eq_else.89188
+	mov	$2, $27
 	movf	$f0, $f1
 	movf	$f1, $f2
 	movf	$f2, $f3
@@ -11054,40 +10964,39 @@ eq_cont.88677:
 	jal	check_all_inside.2968
 	addi	$3, $3, -10
 	lw	$31, 9($3)
-	j	eq_cont.88699
-eq_else.88698:
+	j	eq_cont.89189
+eq_else.89188:
 	mov	$2, $0
-eq_cont.88699:
-eq_cont.88675:
-	j	eq_cont.88673
-eq_else.88672:
+eq_cont.89189:
+eq_cont.89165:
+	j	eq_cont.89163
+eq_else.89162:
 	mov	$2, $0
-eq_cont.88673:
-eq_cont.88649:
-	j	eq_cont.88647
-eq_else.88646:
+eq_cont.89163:
+eq_cont.89139:
+	j	eq_cont.89137
+eq_else.89136:
 	mov	$2, $0
-eq_cont.88647:
-eq_cont.88623:
-	bne	$2, $0, eq_else.88700
-	j	eq_cont.88701
-eq_else.88700:
+eq_cont.89137:
+eq_cont.89113:
+	bne	$2, $0, eq_else.89190
+	j	eq_cont.89191
+eq_else.89190:
 	lf	$f0, 8($3)
 	sf	$f0, 3124($0)
 	lf	$f0, 7($3)
 	sf	$f0, 3125($0)
 	lf	$f0, 6($3)
 	sf	$f0, 3125($1)
-	addi	$2, $0, 2
 	lf	$f0, 5($3)
-	sf	$f0, 3125($2)
+	sf	$f0, 3125($26)
 	lw	$2, 4($3)
 	sw	$2, 3128($0)
 	lw	$2, 3($3)
 	sw	$2, 3123($0)
-eq_cont.88701:
-eq_cont.88621:
-eq_cont.88619:
+eq_cont.89191:
+eq_cont.89111:
+eq_cont.89109:
 	lw	$2, 2($3)
 	addi	$2, $2, 1
 	lw	$5, 1($3)
@@ -11096,9 +11005,9 @@ eq_cont.88619:
 solve_one_or_network.2987:
 	add	$30, $5, $2
 	lw	$7, 0($30)
-	bne	$7, $28, eq_else.88702
+	bne	$7, $28, eq_else.89192
 	jr $31
-eq_else.88702:
+eq_else.89192:
 	lw	$7, 3071($7)
 	sw	$6, 0($3)
 	sw	$5, 1($3)
@@ -11115,9 +11024,9 @@ eq_else.88702:
 	lw	$5, 1($3)
 	add	$30, $5, $2
 	lw	$6, 0($30)
-	bne	$6, $28, eq_else.88704
+	bne	$6, $28, eq_else.89194
 	jr $31
-eq_else.88704:
+eq_else.89194:
 	lw	$6, 3071($6)
 	lw	$7, 0($3)
 	sw	$2, 3($3)
@@ -11134,9 +11043,9 @@ eq_else.88704:
 	lw	$5, 1($3)
 	add	$30, $5, $2
 	lw	$6, 0($30)
-	bne	$6, $28, eq_else.88706
+	bne	$6, $28, eq_else.89196
 	jr $31
-eq_else.88706:
+eq_else.89196:
 	lw	$6, 3071($6)
 	lw	$7, 0($3)
 	sw	$2, 4($3)
@@ -11153,9 +11062,9 @@ eq_else.88706:
 	lw	$5, 1($3)
 	add	$30, $5, $2
 	lw	$6, 0($30)
-	bne	$6, $28, eq_else.88708
+	bne	$6, $28, eq_else.89198
 	jr $31
-eq_else.88708:
+eq_else.89198:
 	lw	$6, 3071($6)
 	lw	$7, 0($3)
 	sw	$2, 5($3)
@@ -11172,9 +11081,9 @@ eq_else.88708:
 	lw	$5, 1($3)
 	add	$30, $5, $2
 	lw	$6, 0($30)
-	bne	$6, $28, eq_else.88710
+	bne	$6, $28, eq_else.89200
 	jr $31
-eq_else.88710:
+eq_else.89200:
 	lw	$6, 3071($6)
 	lw	$7, 0($3)
 	sw	$2, 6($3)
@@ -11191,9 +11100,9 @@ eq_else.88710:
 	lw	$5, 1($3)
 	add	$30, $5, $2
 	lw	$6, 0($30)
-	bne	$6, $28, eq_else.88712
+	bne	$6, $28, eq_else.89202
 	jr $31
-eq_else.88712:
+eq_else.89202:
 	lw	$6, 3071($6)
 	lw	$7, 0($3)
 	sw	$2, 7($3)
@@ -11210,9 +11119,9 @@ eq_else.88712:
 	lw	$5, 1($3)
 	add	$30, $5, $2
 	lw	$6, 0($30)
-	bne	$6, $28, eq_else.88714
+	bne	$6, $28, eq_else.89204
 	jr $31
-eq_else.88714:
+eq_else.89204:
 	lw	$6, 3071($6)
 	lw	$7, 0($3)
 	sw	$2, 8($3)
@@ -11229,9 +11138,9 @@ eq_else.88714:
 	lw	$5, 1($3)
 	add	$30, $5, $2
 	lw	$6, 0($30)
-	bne	$6, $28, eq_else.88716
+	bne	$6, $28, eq_else.89206
 	jr $31
-eq_else.88716:
+eq_else.89206:
 	lw	$6, 3071($6)
 	lw	$7, 0($3)
 	sw	$2, 9($3)
@@ -11252,18 +11161,18 @@ trace_or_matrix.2991:
 	add	$30, $5, $2
 	lw	$7, 0($30)
 	lw	$8, 0($7)
-	bne	$8, $28, eq_else.88718
+	bne	$8, $28, eq_else.89208
 	jr $31
-eq_else.88718:
+eq_else.89208:
 	sw	$6, 0($3)
 	sw	$5, 1($3)
 	sw	$2, 2($3)
 	addi	$30, $0, 99
-	bne	$8, $30, eq_else.88720
+	bne	$8, $30, eq_else.89210
 	lw	$8, 1($7)
-	bne	$8, $28, eq_else.88722
-	j	eq_cont.88723
-eq_else.88722:
+	bne	$8, $28, eq_else.89212
+	j	eq_cont.89213
+eq_else.89212:
 	lw	$8, 3071($8)
 	sw	$7, 3($3)
 	mov	$5, $8
@@ -11275,9 +11184,9 @@ eq_else.88722:
 	lw	$31, 4($3)
 	lw	$2, 3($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.88724
-	j	eq_cont.88725
-eq_else.88724:
+	bne	$5, $28, eq_else.89214
+	j	eq_cont.89215
+eq_else.89214:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -11288,9 +11197,9 @@ eq_else.88724:
 	lw	$31, 4($3)
 	lw	$2, 3($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.88726
-	j	eq_cont.88727
-eq_else.88726:
+	bne	$5, $28, eq_else.89216
+	j	eq_cont.89217
+eq_else.89216:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -11301,9 +11210,9 @@ eq_else.88726:
 	lw	$31, 4($3)
 	lw	$2, 3($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.88728
-	j	eq_cont.88729
-eq_else.88728:
+	bne	$5, $28, eq_else.89218
+	j	eq_cont.89219
+eq_else.89218:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -11314,9 +11223,9 @@ eq_else.88728:
 	lw	$31, 4($3)
 	lw	$2, 3($3)
 	lw	$5, 5($2)
-	bne	$5, $28, eq_else.88730
-	j	eq_cont.88731
-eq_else.88730:
+	bne	$5, $28, eq_else.89220
+	j	eq_cont.89221
+eq_else.89220:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -11327,9 +11236,9 @@ eq_else.88730:
 	lw	$31, 4($3)
 	lw	$2, 3($3)
 	lw	$5, 6($2)
-	bne	$5, $28, eq_else.88732
-	j	eq_cont.88733
-eq_else.88732:
+	bne	$5, $28, eq_else.89222
+	j	eq_cont.89223
+eq_else.89222:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -11340,9 +11249,9 @@ eq_else.88732:
 	lw	$31, 4($3)
 	lw	$2, 3($3)
 	lw	$5, 7($2)
-	bne	$5, $28, eq_else.88734
-	j	eq_cont.88735
-eq_else.88734:
+	bne	$5, $28, eq_else.89224
+	j	eq_cont.89225
+eq_else.89224:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -11359,15 +11268,15 @@ eq_else.88734:
 	jal	solve_one_or_network.2987
 	addi	$3, $3, -5
 	lw	$31, 4($3)
-eq_cont.88735:
-eq_cont.88733:
-eq_cont.88731:
-eq_cont.88729:
-eq_cont.88727:
-eq_cont.88725:
-eq_cont.88723:
-	j	eq_cont.88721
-eq_else.88720:
+eq_cont.89225:
+eq_cont.89223:
+eq_cont.89221:
+eq_cont.89219:
+eq_cont.89217:
+eq_cont.89215:
+eq_cont.89213:
+	j	eq_cont.89211
+eq_else.89210:
 	lw	$8, 3001($8)
 	lf	$f0, 3146($0)
 	lw	$9, 5($8)
@@ -11377,32 +11286,31 @@ eq_else.88720:
 	lw	$9, 5($8)
 	lf	$f2, 1($9)
 	fsub	$f1, $f1, $f2
-	addi	$9, $0, 2
-	lf	$f2, 3146($9)
+	lf	$f2, 3146($26)
 	lw	$9, 5($8)
 	lf	$f3, 2($9)
 	fsub	$f2, $f2, $f3
 	lw	$9, 1($8)
-	bne	$9, $1, eq_else.88736
+	bne	$9, $1, eq_else.89226
 	lf	$f3, 0($6)
-	beqf	$f3, $f30, feq.88738
+	beqf	$f3, $f30, feq.89228
 	mov	$9, $0
-	j	feq_cont.88739
-feq.88738:
+	j	feq_cont.89229
+feq.89228:
 	mov	$9, $1
-feq_cont.88739:
-	bne	$9, $0, eq_else.88740
+feq_cont.89229:
+	bne	$9, $0, eq_else.89230
 	lw	$9, 4($8)
 	lw	$10, 6($8)
 	lf	$f3, 0($6)
 	sltf	$11, $f3, $f30
 	xor	$10, $10, $11
 	lf	$f3, 0($9)
-	bne	$10, $0, eq_else.88742
+	bne	$10, $0, eq_else.89232
 	fneg	$f3, $f3
-	j	eq_cont.88743
-eq_else.88742:
-eq_cont.88743:
+	j	eq_cont.89233
+eq_else.89232:
+eq_cont.89233:
 	fsub	$f3, $f3, $f0
 	lf	$f4, 0($6)
 	fdiv	$f3, $f3, $f4
@@ -11412,48 +11320,48 @@ eq_cont.88743:
 	fabs	$f4, $f4
 	lf	$f5, 1($9)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.88744
+	bne	$10, $0, eq_else.89234
 	mov	$9, $0
-	j	eq_cont.88745
-eq_else.88744:
+	j	eq_cont.89235
+eq_else.89234:
 	lf	$f4, 2($6)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
 	fabs	$f4, $f4
 	lf	$f5, 2($9)
 	sltf	$9, $f4, $f5
-	bne	$9, $0, eq_else.88746
+	bne	$9, $0, eq_else.89236
 	mov	$9, $0
-	j	eq_cont.88747
-eq_else.88746:
+	j	eq_cont.89237
+eq_else.89236:
 	sf	$f3, 3122($0)
 	mov	$9, $1
-eq_cont.88747:
-eq_cont.88745:
-	j	eq_cont.88741
-eq_else.88740:
+eq_cont.89237:
+eq_cont.89235:
+	j	eq_cont.89231
+eq_else.89230:
 	mov	$9, $0
-eq_cont.88741:
-	bne	$9, $0, eq_else.88748
+eq_cont.89231:
+	bne	$9, $0, eq_else.89238
 	lf	$f3, 1($6)
-	beqf	$f3, $f30, feq.88750
+	beqf	$f3, $f30, feq.89240
 	mov	$9, $0
-	j	feq_cont.88751
-feq.88750:
+	j	feq_cont.89241
+feq.89240:
 	mov	$9, $1
-feq_cont.88751:
-	bne	$9, $0, eq_else.88752
+feq_cont.89241:
+	bne	$9, $0, eq_else.89242
 	lw	$9, 4($8)
 	lw	$10, 6($8)
 	lf	$f3, 1($6)
 	sltf	$11, $f3, $f30
 	xor	$10, $10, $11
 	lf	$f3, 1($9)
-	bne	$10, $0, eq_else.88754
+	bne	$10, $0, eq_else.89244
 	fneg	$f3, $f3
-	j	eq_cont.88755
-eq_else.88754:
-eq_cont.88755:
+	j	eq_cont.89245
+eq_else.89244:
+eq_cont.89245:
 	fsub	$f3, $f3, $f1
 	lf	$f4, 1($6)
 	fdiv	$f3, $f3, $f4
@@ -11463,48 +11371,48 @@ eq_cont.88755:
 	fabs	$f4, $f4
 	lf	$f5, 2($9)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.88756
+	bne	$10, $0, eq_else.89246
 	mov	$9, $0
-	j	eq_cont.88757
-eq_else.88756:
+	j	eq_cont.89247
+eq_else.89246:
 	lf	$f4, 0($6)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f0
 	fabs	$f4, $f4
 	lf	$f5, 0($9)
 	sltf	$9, $f4, $f5
-	bne	$9, $0, eq_else.88758
+	bne	$9, $0, eq_else.89248
 	mov	$9, $0
-	j	eq_cont.88759
-eq_else.88758:
+	j	eq_cont.89249
+eq_else.89248:
 	sf	$f3, 3122($0)
 	mov	$9, $1
-eq_cont.88759:
-eq_cont.88757:
-	j	eq_cont.88753
-eq_else.88752:
+eq_cont.89249:
+eq_cont.89247:
+	j	eq_cont.89243
+eq_else.89242:
 	mov	$9, $0
-eq_cont.88753:
-	bne	$9, $0, eq_else.88760
+eq_cont.89243:
+	bne	$9, $0, eq_else.89250
 	lf	$f3, 2($6)
-	beqf	$f3, $f30, feq.88762
+	beqf	$f3, $f30, feq.89252
 	mov	$9, $0
-	j	feq_cont.88763
-feq.88762:
+	j	feq_cont.89253
+feq.89252:
 	mov	$9, $1
-feq_cont.88763:
-	bne	$9, $0, eq_else.88764
+feq_cont.89253:
+	bne	$9, $0, eq_else.89254
 	lw	$9, 4($8)
 	lw	$8, 6($8)
 	lf	$f3, 2($6)
 	sltf	$10, $f3, $f30
 	xor	$8, $8, $10
 	lf	$f3, 2($9)
-	bne	$8, $0, eq_else.88766
+	bne	$8, $0, eq_else.89256
 	fneg	$f3, $f3
-	j	eq_cont.88767
-eq_else.88766:
-eq_cont.88767:
+	j	eq_cont.89257
+eq_else.89256:
+eq_cont.89257:
 	fsub	$f2, $f3, $f2
 	lf	$f3, 2($6)
 	fdiv	$f2, $f2, $f3
@@ -11514,46 +11422,46 @@ eq_cont.88767:
 	fabs	$f0, $f0
 	lf	$f3, 0($9)
 	sltf	$8, $f0, $f3
-	bne	$8, $0, eq_else.88768
+	bne	$8, $0, eq_else.89258
 	mov	$8, $0
-	j	eq_cont.88769
-eq_else.88768:
+	j	eq_cont.89259
+eq_else.89258:
 	lf	$f0, 1($6)
 	fmul	$f0, $f2, $f0
 	fadd	$f0, $f0, $f1
 	fabs	$f0, $f0
 	lf	$f1, 1($9)
 	sltf	$8, $f0, $f1
-	bne	$8, $0, eq_else.88770
+	bne	$8, $0, eq_else.89260
 	mov	$8, $0
-	j	eq_cont.88771
-eq_else.88770:
+	j	eq_cont.89261
+eq_else.89260:
 	sf	$f2, 3122($0)
 	mov	$8, $1
-eq_cont.88771:
-eq_cont.88769:
-	j	eq_cont.88765
-eq_else.88764:
+eq_cont.89261:
+eq_cont.89259:
+	j	eq_cont.89255
+eq_else.89254:
 	mov	$8, $0
-eq_cont.88765:
-	bne	$8, $0, eq_else.88772
+eq_cont.89255:
+	bne	$8, $0, eq_else.89262
 	mov	$8, $0
-	j	eq_cont.88773
-eq_else.88772:
-	addi	$8, $0, 3
-eq_cont.88773:
-	j	eq_cont.88761
-eq_else.88760:
-	addi	$8, $0, 2
-eq_cont.88761:
-	j	eq_cont.88749
-eq_else.88748:
+	j	eq_cont.89263
+eq_else.89262:
+	mov	$8, $27
+eq_cont.89263:
+	j	eq_cont.89251
+eq_else.89250:
+	mov	$8, $26
+eq_cont.89251:
+	j	eq_cont.89239
+eq_else.89238:
 	mov	$8, $1
-eq_cont.88749:
-	j	eq_cont.88737
-eq_else.88736:
+eq_cont.89239:
+	j	eq_cont.89227
+eq_else.89226:
 	addi	$30, $0, 2
-	bne	$9, $30, eq_else.88774
+	bne	$9, $30, eq_else.89264
 	lw	$8, 4($8)
 	lf	$f3, 0($6)
 	lf	$f4, 0($8)
@@ -11567,10 +11475,10 @@ eq_else.88736:
 	fmul	$f4, $f4, $f5
 	fadd	$f3, $f3, $f4
 	sltf	$9, $f30, $f3
-	bne	$9, $0, eq_else.88776
+	bne	$9, $0, eq_else.89266
 	mov	$8, $0
-	j	eq_cont.88777
-eq_else.88776:
+	j	eq_cont.89267
+eq_else.89266:
 	lf	$f4, 0($8)
 	fmul	$f0, $f4, $f0
 	lf	$f4, 1($8)
@@ -11583,9 +11491,9 @@ eq_else.88776:
 	fdiv	$f0, $f0, $f3
 	sf	$f0, 3122($0)
 	mov	$8, $1
-eq_cont.88777:
-	j	eq_cont.88775
-eq_else.88774:
+eq_cont.89267:
+	j	eq_cont.89265
+eq_else.89264:
 	lf	$f3, 0($6)
 	lf	$f4, 1($6)
 	lf	$f5, 2($6)
@@ -11604,10 +11512,10 @@ eq_else.88774:
 	fmul	$f7, $f7, $f8
 	fadd	$f6, $f6, $f7
 	lw	$9, 3($8)
-	bne	$9, $0, eq_else.88778
+	bne	$9, $0, eq_else.89268
 	movf	$f3, $f6
-	j	eq_cont.88779
-eq_else.88778:
+	j	eq_cont.89269
+eq_else.89268:
 	fmul	$f7, $f4, $f5
 	lw	$9, 9($8)
 	lf	$f8, 0($9)
@@ -11623,14 +11531,14 @@ eq_else.88778:
 	lf	$f4, 2($9)
 	fmul	$f3, $f3, $f4
 	fadd	$f3, $f5, $f3
-eq_cont.88779:
-	beqf	$f3, $f30, feq.88780
+eq_cont.89269:
+	beqf	$f3, $f30, feq.89270
 	mov	$9, $0
-	j	feq_cont.88781
-feq.88780:
+	j	feq_cont.89271
+feq.89270:
 	mov	$9, $1
-feq_cont.88781:
-	bne	$9, $0, eq_else.88782
+feq_cont.89271:
+	bne	$9, $0, eq_else.89272
 	lf	$f4, 0($6)
 	lf	$f5, 1($6)
 	lf	$f6, 2($6)
@@ -11649,10 +11557,10 @@ feq_cont.88781:
 	fmul	$f8, $f8, $f9
 	fadd	$f7, $f7, $f8
 	lw	$9, 3($8)
-	bne	$9, $0, eq_else.88784
+	bne	$9, $0, eq_else.89274
 	movf	$f4, $f7
-	j	eq_cont.88785
-eq_else.88784:
+	j	eq_cont.89275
+eq_else.89274:
 	fmul	$f8, $f6, $f1
 	fmul	$f9, $f5, $f2
 	fadd	$f8, $f8, $f9
@@ -11676,7 +11584,7 @@ eq_else.88784:
 	lf	$f5, 3388($0) # 0.500000
 	fmul	$f4, $f4, $f5
 	fadd	$f4, $f7, $f4
-eq_cont.88785:
+eq_cont.89275:
 	fmul	$f5, $f0, $f0
 	lw	$9, 4($8)
 	lf	$f6, 0($9)
@@ -11692,10 +11600,10 @@ eq_cont.88785:
 	fmul	$f6, $f6, $f7
 	fadd	$f5, $f5, $f6
 	lw	$9, 3($8)
-	bne	$9, $0, eq_else.88786
+	bne	$9, $0, eq_else.89276
 	movf	$f0, $f5
-	j	eq_cont.88787
-eq_else.88786:
+	j	eq_cont.89277
+eq_else.89276:
 	fmul	$f6, $f1, $f2
 	lw	$9, 9($8)
 	lf	$f7, 0($9)
@@ -11711,53 +11619,53 @@ eq_else.88786:
 	lf	$f1, 2($9)
 	fmul	$f0, $f0, $f1
 	fadd	$f0, $f2, $f0
-eq_cont.88787:
+eq_cont.89277:
 	lw	$9, 1($8)
 	addi	$30, $0, 3
-	bne	$9, $30, eq_else.88788
+	bne	$9, $30, eq_else.89278
 	fsub	$f0, $f0, $f28
-	j	eq_cont.88789
-eq_else.88788:
-eq_cont.88789:
+	j	eq_cont.89279
+eq_else.89278:
+eq_cont.89279:
 	fmul	$f1, $f4, $f4
 	fmul	$f0, $f3, $f0
 	fsub	$f0, $f1, $f0
 	sltf	$9, $f30, $f0
-	bne	$9, $0, eq_else.88790
+	bne	$9, $0, eq_else.89280
 	mov	$8, $0
-	j	eq_cont.88791
-eq_else.88790:
+	j	eq_cont.89281
+eq_else.89280:
 	sqrt	$f0, $f0
 	lw	$8, 6($8)
-	bne	$8, $0, eq_else.88792
+	bne	$8, $0, eq_else.89282
 	fneg	$f0, $f0
-	j	eq_cont.88793
-eq_else.88792:
-eq_cont.88793:
+	j	eq_cont.89283
+eq_else.89282:
+eq_cont.89283:
 	fsub	$f0, $f0, $f4
 	fdiv	$f0, $f0, $f3
 	sf	$f0, 3122($0)
 	mov	$8, $1
-eq_cont.88791:
-	j	eq_cont.88783
-eq_else.88782:
+eq_cont.89281:
+	j	eq_cont.89273
+eq_else.89272:
 	mov	$8, $0
-eq_cont.88783:
-eq_cont.88775:
-eq_cont.88737:
-	bne	$8, $0, eq_else.88794
-	j	eq_cont.88795
-eq_else.88794:
+eq_cont.89273:
+eq_cont.89265:
+eq_cont.89227:
+	bne	$8, $0, eq_else.89284
+	j	eq_cont.89285
+eq_else.89284:
 	lf	$f0, 3122($0)
 	lf	$f1, 3124($0)
 	sltf	$8, $f0, $f1
-	bne	$8, $0, eq_else.88796
-	j	eq_cont.88797
-eq_else.88796:
+	bne	$8, $0, eq_else.89286
+	j	eq_cont.89287
+eq_else.89286:
 	lw	$8, 1($7)
-	bne	$8, $28, eq_else.88798
-	j	eq_cont.88799
-eq_else.88798:
+	bne	$8, $28, eq_else.89288
+	j	eq_cont.89289
+eq_else.89288:
 	lw	$8, 3071($8)
 	sw	$7, 3($3)
 	mov	$5, $8
@@ -11769,9 +11677,9 @@ eq_else.88798:
 	lw	$31, 4($3)
 	lw	$2, 3($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.88800
-	j	eq_cont.88801
-eq_else.88800:
+	bne	$5, $28, eq_else.89290
+	j	eq_cont.89291
+eq_else.89290:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -11782,9 +11690,9 @@ eq_else.88800:
 	lw	$31, 4($3)
 	lw	$2, 3($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.88802
-	j	eq_cont.88803
-eq_else.88802:
+	bne	$5, $28, eq_else.89292
+	j	eq_cont.89293
+eq_else.89292:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -11795,9 +11703,9 @@ eq_else.88802:
 	lw	$31, 4($3)
 	lw	$2, 3($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.88804
-	j	eq_cont.88805
-eq_else.88804:
+	bne	$5, $28, eq_else.89294
+	j	eq_cont.89295
+eq_else.89294:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -11808,9 +11716,9 @@ eq_else.88804:
 	lw	$31, 4($3)
 	lw	$2, 3($3)
 	lw	$5, 5($2)
-	bne	$5, $28, eq_else.88806
-	j	eq_cont.88807
-eq_else.88806:
+	bne	$5, $28, eq_else.89296
+	j	eq_cont.89297
+eq_else.89296:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -11821,9 +11729,9 @@ eq_else.88806:
 	lw	$31, 4($3)
 	lw	$2, 3($3)
 	lw	$5, 6($2)
-	bne	$5, $28, eq_else.88808
-	j	eq_cont.88809
-eq_else.88808:
+	bne	$5, $28, eq_else.89298
+	j	eq_cont.89299
+eq_else.89298:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -11834,9 +11742,9 @@ eq_else.88808:
 	lw	$31, 4($3)
 	lw	$2, 3($3)
 	lw	$5, 7($2)
-	bne	$5, $28, eq_else.88810
-	j	eq_cont.88811
-eq_else.88810:
+	bne	$5, $28, eq_else.89300
+	j	eq_cont.89301
+eq_else.89300:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -11853,32 +11761,32 @@ eq_else.88810:
 	jal	solve_one_or_network.2987
 	addi	$3, $3, -5
 	lw	$31, 4($3)
-eq_cont.88811:
-eq_cont.88809:
-eq_cont.88807:
-eq_cont.88805:
-eq_cont.88803:
-eq_cont.88801:
-eq_cont.88799:
-eq_cont.88797:
-eq_cont.88795:
-eq_cont.88721:
+eq_cont.89301:
+eq_cont.89299:
+eq_cont.89297:
+eq_cont.89295:
+eq_cont.89293:
+eq_cont.89291:
+eq_cont.89289:
+eq_cont.89287:
+eq_cont.89285:
+eq_cont.89211:
 	lw	$2, 2($3)
 	addi	$2, $2, 1
 	lw	$5, 1($3)
 	add	$30, $5, $2
 	lw	$6, 0($30)
 	lw	$7, 0($6)
-	bne	$7, $28, eq_else.88812
+	bne	$7, $28, eq_else.89302
 	jr $31
-eq_else.88812:
+eq_else.89302:
 	sw	$2, 4($3)
 	addi	$30, $0, 99
-	bne	$7, $30, eq_else.88814
+	bne	$7, $30, eq_else.89304
 	lw	$7, 1($6)
-	bne	$7, $28, eq_else.88816
-	j	eq_cont.88817
-eq_else.88816:
+	bne	$7, $28, eq_else.89306
+	j	eq_cont.89307
+eq_else.89306:
 	lw	$7, 3071($7)
 	lw	$8, 0($3)
 	sw	$6, 5($3)
@@ -11892,9 +11800,9 @@ eq_else.88816:
 	lw	$31, 6($3)
 	lw	$2, 5($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.88818
-	j	eq_cont.88819
-eq_else.88818:
+	bne	$5, $28, eq_else.89308
+	j	eq_cont.89309
+eq_else.89308:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -11905,9 +11813,9 @@ eq_else.88818:
 	lw	$31, 6($3)
 	lw	$2, 5($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.88820
-	j	eq_cont.88821
-eq_else.88820:
+	bne	$5, $28, eq_else.89310
+	j	eq_cont.89311
+eq_else.89310:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -11918,9 +11826,9 @@ eq_else.88820:
 	lw	$31, 6($3)
 	lw	$2, 5($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.88822
-	j	eq_cont.88823
-eq_else.88822:
+	bne	$5, $28, eq_else.89312
+	j	eq_cont.89313
+eq_else.89312:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -11931,9 +11839,9 @@ eq_else.88822:
 	lw	$31, 6($3)
 	lw	$2, 5($3)
 	lw	$5, 5($2)
-	bne	$5, $28, eq_else.88824
-	j	eq_cont.88825
-eq_else.88824:
+	bne	$5, $28, eq_else.89314
+	j	eq_cont.89315
+eq_else.89314:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -11944,9 +11852,9 @@ eq_else.88824:
 	lw	$31, 6($3)
 	lw	$2, 5($3)
 	lw	$5, 6($2)
-	bne	$5, $28, eq_else.88826
-	j	eq_cont.88827
-eq_else.88826:
+	bne	$5, $28, eq_else.89316
+	j	eq_cont.89317
+eq_else.89316:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -11963,14 +11871,14 @@ eq_else.88826:
 	jal	solve_one_or_network.2987
 	addi	$3, $3, -7
 	lw	$31, 6($3)
-eq_cont.88827:
-eq_cont.88825:
-eq_cont.88823:
-eq_cont.88821:
-eq_cont.88819:
-eq_cont.88817:
-	j	eq_cont.88815
-eq_else.88814:
+eq_cont.89317:
+eq_cont.89315:
+eq_cont.89313:
+eq_cont.89311:
+eq_cont.89309:
+eq_cont.89307:
+	j	eq_cont.89305
+eq_else.89304:
 	lw	$7, 3001($7)
 	lf	$f0, 3146($0)
 	lw	$8, 5($7)
@@ -11980,33 +11888,32 @@ eq_else.88814:
 	lw	$8, 5($7)
 	lf	$f2, 1($8)
 	fsub	$f1, $f1, $f2
-	addi	$8, $0, 2
-	lf	$f2, 3146($8)
+	lf	$f2, 3146($26)
 	lw	$8, 5($7)
 	lf	$f3, 2($8)
 	fsub	$f2, $f2, $f3
 	lw	$8, 1($7)
-	bne	$8, $1, eq_else.88828
+	bne	$8, $1, eq_else.89318
 	lw	$8, 0($3)
 	lf	$f3, 0($8)
-	beqf	$f3, $f30, feq.88830
+	beqf	$f3, $f30, feq.89320
 	mov	$9, $0
-	j	feq_cont.88831
-feq.88830:
+	j	feq_cont.89321
+feq.89320:
 	mov	$9, $1
-feq_cont.88831:
-	bne	$9, $0, eq_else.88832
+feq_cont.89321:
+	bne	$9, $0, eq_else.89322
 	lw	$9, 4($7)
 	lw	$10, 6($7)
 	lf	$f3, 0($8)
 	sltf	$11, $f3, $f30
 	xor	$10, $10, $11
 	lf	$f3, 0($9)
-	bne	$10, $0, eq_else.88834
+	bne	$10, $0, eq_else.89324
 	fneg	$f3, $f3
-	j	eq_cont.88835
-eq_else.88834:
-eq_cont.88835:
+	j	eq_cont.89325
+eq_else.89324:
+eq_cont.89325:
 	fsub	$f3, $f3, $f0
 	lf	$f4, 0($8)
 	fdiv	$f3, $f3, $f4
@@ -12016,48 +11923,48 @@ eq_cont.88835:
 	fabs	$f4, $f4
 	lf	$f5, 1($9)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.88836
+	bne	$10, $0, eq_else.89326
 	mov	$9, $0
-	j	eq_cont.88837
-eq_else.88836:
+	j	eq_cont.89327
+eq_else.89326:
 	lf	$f4, 2($8)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
 	fabs	$f4, $f4
 	lf	$f5, 2($9)
 	sltf	$9, $f4, $f5
-	bne	$9, $0, eq_else.88838
+	bne	$9, $0, eq_else.89328
 	mov	$9, $0
-	j	eq_cont.88839
-eq_else.88838:
+	j	eq_cont.89329
+eq_else.89328:
 	sf	$f3, 3122($0)
 	mov	$9, $1
-eq_cont.88839:
-eq_cont.88837:
-	j	eq_cont.88833
-eq_else.88832:
+eq_cont.89329:
+eq_cont.89327:
+	j	eq_cont.89323
+eq_else.89322:
 	mov	$9, $0
-eq_cont.88833:
-	bne	$9, $0, eq_else.88840
+eq_cont.89323:
+	bne	$9, $0, eq_else.89330
 	lf	$f3, 1($8)
-	beqf	$f3, $f30, feq.88842
+	beqf	$f3, $f30, feq.89332
 	mov	$9, $0
-	j	feq_cont.88843
-feq.88842:
+	j	feq_cont.89333
+feq.89332:
 	mov	$9, $1
-feq_cont.88843:
-	bne	$9, $0, eq_else.88844
+feq_cont.89333:
+	bne	$9, $0, eq_else.89334
 	lw	$9, 4($7)
 	lw	$10, 6($7)
 	lf	$f3, 1($8)
 	sltf	$11, $f3, $f30
 	xor	$10, $10, $11
 	lf	$f3, 1($9)
-	bne	$10, $0, eq_else.88846
+	bne	$10, $0, eq_else.89336
 	fneg	$f3, $f3
-	j	eq_cont.88847
-eq_else.88846:
-eq_cont.88847:
+	j	eq_cont.89337
+eq_else.89336:
+eq_cont.89337:
 	fsub	$f3, $f3, $f1
 	lf	$f4, 1($8)
 	fdiv	$f3, $f3, $f4
@@ -12067,48 +11974,48 @@ eq_cont.88847:
 	fabs	$f4, $f4
 	lf	$f5, 2($9)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.88848
+	bne	$10, $0, eq_else.89338
 	mov	$9, $0
-	j	eq_cont.88849
-eq_else.88848:
+	j	eq_cont.89339
+eq_else.89338:
 	lf	$f4, 0($8)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f0
 	fabs	$f4, $f4
 	lf	$f5, 0($9)
 	sltf	$9, $f4, $f5
-	bne	$9, $0, eq_else.88850
+	bne	$9, $0, eq_else.89340
 	mov	$9, $0
-	j	eq_cont.88851
-eq_else.88850:
+	j	eq_cont.89341
+eq_else.89340:
 	sf	$f3, 3122($0)
 	mov	$9, $1
-eq_cont.88851:
-eq_cont.88849:
-	j	eq_cont.88845
-eq_else.88844:
+eq_cont.89341:
+eq_cont.89339:
+	j	eq_cont.89335
+eq_else.89334:
 	mov	$9, $0
-eq_cont.88845:
-	bne	$9, $0, eq_else.88852
+eq_cont.89335:
+	bne	$9, $0, eq_else.89342
 	lf	$f3, 2($8)
-	beqf	$f3, $f30, feq.88854
+	beqf	$f3, $f30, feq.89344
 	mov	$9, $0
-	j	feq_cont.88855
-feq.88854:
+	j	feq_cont.89345
+feq.89344:
 	mov	$9, $1
-feq_cont.88855:
-	bne	$9, $0, eq_else.88856
+feq_cont.89345:
+	bne	$9, $0, eq_else.89346
 	lw	$9, 4($7)
 	lw	$7, 6($7)
 	lf	$f3, 2($8)
 	sltf	$10, $f3, $f30
 	xor	$7, $7, $10
 	lf	$f3, 2($9)
-	bne	$7, $0, eq_else.88858
+	bne	$7, $0, eq_else.89348
 	fneg	$f3, $f3
-	j	eq_cont.88859
-eq_else.88858:
-eq_cont.88859:
+	j	eq_cont.89349
+eq_else.89348:
+eq_cont.89349:
 	fsub	$f2, $f3, $f2
 	lf	$f3, 2($8)
 	fdiv	$f2, $f2, $f3
@@ -12118,46 +12025,46 @@ eq_cont.88859:
 	fabs	$f0, $f0
 	lf	$f3, 0($9)
 	sltf	$7, $f0, $f3
-	bne	$7, $0, eq_else.88860
+	bne	$7, $0, eq_else.89350
 	mov	$7, $0
-	j	eq_cont.88861
-eq_else.88860:
+	j	eq_cont.89351
+eq_else.89350:
 	lf	$f0, 1($8)
 	fmul	$f0, $f2, $f0
 	fadd	$f0, $f0, $f1
 	fabs	$f0, $f0
 	lf	$f1, 1($9)
 	sltf	$7, $f0, $f1
-	bne	$7, $0, eq_else.88862
+	bne	$7, $0, eq_else.89352
 	mov	$7, $0
-	j	eq_cont.88863
-eq_else.88862:
+	j	eq_cont.89353
+eq_else.89352:
 	sf	$f2, 3122($0)
 	mov	$7, $1
-eq_cont.88863:
-eq_cont.88861:
-	j	eq_cont.88857
-eq_else.88856:
+eq_cont.89353:
+eq_cont.89351:
+	j	eq_cont.89347
+eq_else.89346:
 	mov	$7, $0
-eq_cont.88857:
-	bne	$7, $0, eq_else.88864
+eq_cont.89347:
+	bne	$7, $0, eq_else.89354
 	mov	$7, $0
-	j	eq_cont.88865
-eq_else.88864:
-	addi	$7, $0, 3
-eq_cont.88865:
-	j	eq_cont.88853
-eq_else.88852:
-	addi	$7, $0, 2
-eq_cont.88853:
-	j	eq_cont.88841
-eq_else.88840:
+	j	eq_cont.89355
+eq_else.89354:
+	mov	$7, $27
+eq_cont.89355:
+	j	eq_cont.89343
+eq_else.89342:
+	mov	$7, $26
+eq_cont.89343:
+	j	eq_cont.89331
+eq_else.89330:
 	mov	$7, $1
-eq_cont.88841:
-	j	eq_cont.88829
-eq_else.88828:
+eq_cont.89331:
+	j	eq_cont.89319
+eq_else.89318:
 	addi	$30, $0, 2
-	bne	$8, $30, eq_else.88866
+	bne	$8, $30, eq_else.89356
 	lw	$7, 4($7)
 	lw	$8, 0($3)
 	lf	$f3, 0($8)
@@ -12172,10 +12079,10 @@ eq_else.88828:
 	fmul	$f4, $f4, $f5
 	fadd	$f3, $f3, $f4
 	sltf	$9, $f30, $f3
-	bne	$9, $0, eq_else.88868
+	bne	$9, $0, eq_else.89358
 	mov	$7, $0
-	j	eq_cont.88869
-eq_else.88868:
+	j	eq_cont.89359
+eq_else.89358:
 	lf	$f4, 0($7)
 	fmul	$f0, $f4, $f0
 	lf	$f4, 1($7)
@@ -12188,9 +12095,9 @@ eq_else.88868:
 	fdiv	$f0, $f0, $f3
 	sf	$f0, 3122($0)
 	mov	$7, $1
-eq_cont.88869:
-	j	eq_cont.88867
-eq_else.88866:
+eq_cont.89359:
+	j	eq_cont.89357
+eq_else.89356:
 	lw	$8, 0($3)
 	lf	$f3, 0($8)
 	lf	$f4, 1($8)
@@ -12210,10 +12117,10 @@ eq_else.88866:
 	fmul	$f7, $f7, $f8
 	fadd	$f6, $f6, $f7
 	lw	$9, 3($7)
-	bne	$9, $0, eq_else.88870
+	bne	$9, $0, eq_else.89360
 	movf	$f3, $f6
-	j	eq_cont.88871
-eq_else.88870:
+	j	eq_cont.89361
+eq_else.89360:
 	fmul	$f7, $f4, $f5
 	lw	$9, 9($7)
 	lf	$f8, 0($9)
@@ -12229,14 +12136,14 @@ eq_else.88870:
 	lf	$f4, 2($9)
 	fmul	$f3, $f3, $f4
 	fadd	$f3, $f5, $f3
-eq_cont.88871:
-	beqf	$f3, $f30, feq.88872
+eq_cont.89361:
+	beqf	$f3, $f30, feq.89362
 	mov	$9, $0
-	j	feq_cont.88873
-feq.88872:
+	j	feq_cont.89363
+feq.89362:
 	mov	$9, $1
-feq_cont.88873:
-	bne	$9, $0, eq_else.88874
+feq_cont.89363:
+	bne	$9, $0, eq_else.89364
 	lf	$f4, 0($8)
 	lf	$f5, 1($8)
 	lf	$f6, 2($8)
@@ -12255,10 +12162,10 @@ feq_cont.88873:
 	fmul	$f8, $f8, $f9
 	fadd	$f7, $f7, $f8
 	lw	$9, 3($7)
-	bne	$9, $0, eq_else.88876
+	bne	$9, $0, eq_else.89366
 	movf	$f4, $f7
-	j	eq_cont.88877
-eq_else.88876:
+	j	eq_cont.89367
+eq_else.89366:
 	fmul	$f8, $f6, $f1
 	fmul	$f9, $f5, $f2
 	fadd	$f8, $f8, $f9
@@ -12282,7 +12189,7 @@ eq_else.88876:
 	lf	$f5, 3388($0) # 0.500000
 	fmul	$f4, $f4, $f5
 	fadd	$f4, $f7, $f4
-eq_cont.88877:
+eq_cont.89367:
 	fmul	$f5, $f0, $f0
 	lw	$9, 4($7)
 	lf	$f6, 0($9)
@@ -12298,10 +12205,10 @@ eq_cont.88877:
 	fmul	$f6, $f6, $f7
 	fadd	$f5, $f5, $f6
 	lw	$9, 3($7)
-	bne	$9, $0, eq_else.88878
+	bne	$9, $0, eq_else.89368
 	movf	$f0, $f5
-	j	eq_cont.88879
-eq_else.88878:
+	j	eq_cont.89369
+eq_else.89368:
 	fmul	$f6, $f1, $f2
 	lw	$9, 9($7)
 	lf	$f7, 0($9)
@@ -12317,53 +12224,53 @@ eq_else.88878:
 	lf	$f1, 2($9)
 	fmul	$f0, $f0, $f1
 	fadd	$f0, $f2, $f0
-eq_cont.88879:
+eq_cont.89369:
 	lw	$9, 1($7)
 	addi	$30, $0, 3
-	bne	$9, $30, eq_else.88880
+	bne	$9, $30, eq_else.89370
 	fsub	$f0, $f0, $f28
-	j	eq_cont.88881
-eq_else.88880:
-eq_cont.88881:
+	j	eq_cont.89371
+eq_else.89370:
+eq_cont.89371:
 	fmul	$f1, $f4, $f4
 	fmul	$f0, $f3, $f0
 	fsub	$f0, $f1, $f0
 	sltf	$9, $f30, $f0
-	bne	$9, $0, eq_else.88882
+	bne	$9, $0, eq_else.89372
 	mov	$7, $0
-	j	eq_cont.88883
-eq_else.88882:
+	j	eq_cont.89373
+eq_else.89372:
 	sqrt	$f0, $f0
 	lw	$7, 6($7)
-	bne	$7, $0, eq_else.88884
+	bne	$7, $0, eq_else.89374
 	fneg	$f0, $f0
-	j	eq_cont.88885
-eq_else.88884:
-eq_cont.88885:
+	j	eq_cont.89375
+eq_else.89374:
+eq_cont.89375:
 	fsub	$f0, $f0, $f4
 	fdiv	$f0, $f0, $f3
 	sf	$f0, 3122($0)
 	mov	$7, $1
-eq_cont.88883:
-	j	eq_cont.88875
-eq_else.88874:
+eq_cont.89373:
+	j	eq_cont.89365
+eq_else.89364:
 	mov	$7, $0
-eq_cont.88875:
-eq_cont.88867:
-eq_cont.88829:
-	bne	$7, $0, eq_else.88886
-	j	eq_cont.88887
-eq_else.88886:
+eq_cont.89365:
+eq_cont.89357:
+eq_cont.89319:
+	bne	$7, $0, eq_else.89376
+	j	eq_cont.89377
+eq_else.89376:
 	lf	$f0, 3122($0)
 	lf	$f1, 3124($0)
 	sltf	$7, $f0, $f1
-	bne	$7, $0, eq_else.88888
-	j	eq_cont.88889
-eq_else.88888:
+	bne	$7, $0, eq_else.89378
+	j	eq_cont.89379
+eq_else.89378:
 	lw	$7, 1($6)
-	bne	$7, $28, eq_else.88890
-	j	eq_cont.88891
-eq_else.88890:
+	bne	$7, $28, eq_else.89380
+	j	eq_cont.89381
+eq_else.89380:
 	lw	$7, 3071($7)
 	sw	$6, 5($3)
 	mov	$6, $8
@@ -12376,9 +12283,9 @@ eq_else.88890:
 	lw	$31, 6($3)
 	lw	$2, 5($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.88892
-	j	eq_cont.88893
-eq_else.88892:
+	bne	$5, $28, eq_else.89382
+	j	eq_cont.89383
+eq_else.89382:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -12389,9 +12296,9 @@ eq_else.88892:
 	lw	$31, 6($3)
 	lw	$2, 5($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.88894
-	j	eq_cont.88895
-eq_else.88894:
+	bne	$5, $28, eq_else.89384
+	j	eq_cont.89385
+eq_else.89384:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -12402,9 +12309,9 @@ eq_else.88894:
 	lw	$31, 6($3)
 	lw	$2, 5($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.88896
-	j	eq_cont.88897
-eq_else.88896:
+	bne	$5, $28, eq_else.89386
+	j	eq_cont.89387
+eq_else.89386:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -12415,9 +12322,9 @@ eq_else.88896:
 	lw	$31, 6($3)
 	lw	$2, 5($3)
 	lw	$5, 5($2)
-	bne	$5, $28, eq_else.88898
-	j	eq_cont.88899
-eq_else.88898:
+	bne	$5, $28, eq_else.89388
+	j	eq_cont.89389
+eq_else.89388:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -12428,9 +12335,9 @@ eq_else.88898:
 	lw	$31, 6($3)
 	lw	$2, 5($3)
 	lw	$5, 6($2)
-	bne	$5, $28, eq_else.88900
-	j	eq_cont.88901
-eq_else.88900:
+	bne	$5, $28, eq_else.89390
+	j	eq_cont.89391
+eq_else.89390:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -12447,15 +12354,15 @@ eq_else.88900:
 	jal	solve_one_or_network.2987
 	addi	$3, $3, -7
 	lw	$31, 6($3)
-eq_cont.88901:
-eq_cont.88899:
-eq_cont.88897:
-eq_cont.88895:
-eq_cont.88893:
-eq_cont.88891:
-eq_cont.88889:
-eq_cont.88887:
-eq_cont.88815:
+eq_cont.89391:
+eq_cont.89389:
+eq_cont.89387:
+eq_cont.89385:
+eq_cont.89383:
+eq_cont.89381:
+eq_cont.89379:
+eq_cont.89377:
+eq_cont.89305:
 	lw	$2, 4($3)
 	addi	$2, $2, 1
 	lw	$5, 1($3)
@@ -12465,9 +12372,9 @@ solve_each_element_fast.2997:
 	lw	$7, 0($6)
 	add	$30, $5, $2
 	lw	$8, 0($30)
-	bne	$8, $28, eq_else.88902
+	bne	$8, $28, eq_else.89392
 	jr $31
-eq_else.88902:
+eq_else.89392:
 	lw	$9, 3001($8)
 	lw	$10, 10($9)
 	lf	$f0, 0($10)
@@ -12477,7 +12384,7 @@ eq_else.88902:
 	add	$30, $11, $8
 	lw	$11, 0($30)
 	lw	$12, 1($9)
-	bne	$12, $1, eq_else.88904
+	bne	$12, $1, eq_else.89394
 	lw	$10, 0($6)
 	lf	$f3, 0($11)
 	fsub	$f3, $f3, $f0
@@ -12490,10 +12397,10 @@ eq_else.88902:
 	lw	$12, 4($9)
 	lf	$f5, 1($12)
 	sltf	$12, $f4, $f5
-	bne	$12, $0, eq_else.88906
+	bne	$12, $0, eq_else.89396
 	mov	$12, $0
-	j	eq_cont.88907
-eq_else.88906:
+	j	eq_cont.89397
+eq_else.89396:
 	lf	$f4, 2($10)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
@@ -12501,26 +12408,26 @@ eq_else.88906:
 	lw	$12, 4($9)
 	lf	$f5, 2($12)
 	sltf	$12, $f4, $f5
-	bne	$12, $0, eq_else.88908
+	bne	$12, $0, eq_else.89398
 	mov	$12, $0
-	j	eq_cont.88909
-eq_else.88908:
+	j	eq_cont.89399
+eq_else.89398:
 	lf	$f4, 1($11)
-	beqf	$f4, $f30, feq.88910
+	beqf	$f4, $f30, feq.89400
 	mov	$12, $0
-	j	feq_cont.88911
-feq.88910:
+	j	feq_cont.89401
+feq.89400:
 	mov	$12, $1
-feq_cont.88911:
-	bne	$12, $0, eq_else.88912
+feq_cont.89401:
+	bne	$12, $0, eq_else.89402
 	mov	$12, $1
-	j	eq_cont.88913
-eq_else.88912:
+	j	eq_cont.89403
+eq_else.89402:
 	mov	$12, $0
-eq_cont.88913:
-eq_cont.88909:
-eq_cont.88907:
-	bne	$12, $0, eq_else.88914
+eq_cont.89403:
+eq_cont.89399:
+eq_cont.89397:
+	bne	$12, $0, eq_else.89404
 	lf	$f3, 2($11)
 	fsub	$f3, $f3, $f1
 	lf	$f4, 3($11)
@@ -12532,10 +12439,10 @@ eq_cont.88907:
 	lw	$12, 4($9)
 	lf	$f5, 0($12)
 	sltf	$12, $f4, $f5
-	bne	$12, $0, eq_else.88916
+	bne	$12, $0, eq_else.89406
 	mov	$12, $0
-	j	eq_cont.88917
-eq_else.88916:
+	j	eq_cont.89407
+eq_else.89406:
 	lf	$f4, 2($10)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
@@ -12543,26 +12450,26 @@ eq_else.88916:
 	lw	$12, 4($9)
 	lf	$f5, 2($12)
 	sltf	$12, $f4, $f5
-	bne	$12, $0, eq_else.88918
+	bne	$12, $0, eq_else.89408
 	mov	$12, $0
-	j	eq_cont.88919
-eq_else.88918:
+	j	eq_cont.89409
+eq_else.89408:
 	lf	$f4, 3($11)
-	beqf	$f4, $f30, feq.88920
+	beqf	$f4, $f30, feq.89410
 	mov	$12, $0
-	j	feq_cont.88921
-feq.88920:
+	j	feq_cont.89411
+feq.89410:
 	mov	$12, $1
-feq_cont.88921:
-	bne	$12, $0, eq_else.88922
+feq_cont.89411:
+	bne	$12, $0, eq_else.89412
 	mov	$12, $1
-	j	eq_cont.88923
-eq_else.88922:
+	j	eq_cont.89413
+eq_else.89412:
 	mov	$12, $0
-eq_cont.88923:
-eq_cont.88919:
-eq_cont.88917:
-	bne	$12, $0, eq_else.88924
+eq_cont.89413:
+eq_cont.89409:
+eq_cont.89407:
+	bne	$12, $0, eq_else.89414
 	lf	$f3, 4($11)
 	fsub	$f2, $f3, $f2
 	lf	$f3, 5($11)
@@ -12574,10 +12481,10 @@ eq_cont.88917:
 	lw	$12, 4($9)
 	lf	$f3, 0($12)
 	sltf	$12, $f0, $f3
-	bne	$12, $0, eq_else.88926
+	bne	$12, $0, eq_else.89416
 	mov	$9, $0
-	j	eq_cont.88927
-eq_else.88926:
+	j	eq_cont.89417
+eq_else.89416:
 	lf	$f0, 1($10)
 	fmul	$f0, $f2, $f0
 	fadd	$f0, $f0, $f1
@@ -12585,68 +12492,68 @@ eq_else.88926:
 	lw	$9, 4($9)
 	lf	$f1, 1($9)
 	sltf	$9, $f0, $f1
-	bne	$9, $0, eq_else.88928
+	bne	$9, $0, eq_else.89418
 	mov	$9, $0
-	j	eq_cont.88929
-eq_else.88928:
+	j	eq_cont.89419
+eq_else.89418:
 	lf	$f0, 5($11)
-	beqf	$f0, $f30, feq.88930
+	beqf	$f0, $f30, feq.89420
 	mov	$9, $0
-	j	feq_cont.88931
-feq.88930:
+	j	feq_cont.89421
+feq.89420:
 	mov	$9, $1
-feq_cont.88931:
-	bne	$9, $0, eq_else.88932
+feq_cont.89421:
+	bne	$9, $0, eq_else.89422
 	mov	$9, $1
-	j	eq_cont.88933
-eq_else.88932:
+	j	eq_cont.89423
+eq_else.89422:
 	mov	$9, $0
-eq_cont.88933:
-eq_cont.88929:
-eq_cont.88927:
-	bne	$9, $0, eq_else.88934
+eq_cont.89423:
+eq_cont.89419:
+eq_cont.89417:
+	bne	$9, $0, eq_else.89424
 	mov	$9, $0
-	j	eq_cont.88935
-eq_else.88934:
+	j	eq_cont.89425
+eq_else.89424:
 	sf	$f2, 3122($0)
-	addi	$9, $0, 3
-eq_cont.88935:
-	j	eq_cont.88925
-eq_else.88924:
+	mov	$9, $27
+eq_cont.89425:
+	j	eq_cont.89415
+eq_else.89414:
 	sf	$f3, 3122($0)
-	addi	$9, $0, 2
-eq_cont.88925:
-	j	eq_cont.88915
-eq_else.88914:
+	mov	$9, $26
+eq_cont.89415:
+	j	eq_cont.89405
+eq_else.89404:
 	sf	$f3, 3122($0)
 	mov	$9, $1
-eq_cont.88915:
-	j	eq_cont.88905
-eq_else.88904:
+eq_cont.89405:
+	j	eq_cont.89395
+eq_else.89394:
 	addi	$30, $0, 2
-	bne	$12, $30, eq_else.88936
+	bne	$12, $30, eq_else.89426
 	lf	$f0, 0($11)
 	sltf	$9, $f0, $f30
-	bne	$9, $0, eq_else.88938
+	bne	$9, $0, eq_else.89428
 	mov	$9, $0
-	j	eq_cont.88939
-eq_else.88938:
+	j	eq_cont.89429
+eq_else.89428:
 	lf	$f0, 0($11)
 	lf	$f1, 3($10)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
 	mov	$9, $1
-eq_cont.88939:
-	j	eq_cont.88937
-eq_else.88936:
+eq_cont.89429:
+	j	eq_cont.89427
+eq_else.89426:
 	lf	$f3, 0($11)
-	beqf	$f3, $f30, feq.88940
+	beqf	$f3, $f30, feq.89430
 	mov	$12, $0
-	j	feq_cont.88941
-feq.88940:
+	j	feq_cont.89431
+feq.89430:
 	mov	$12, $1
-feq_cont.88941:
-	bne	$12, $0, eq_else.88942
+feq_cont.89431:
+	bne	$12, $0, eq_else.89432
 	lf	$f4, 1($11)
 	fmul	$f0, $f4, $f0
 	lf	$f4, 2($11)
@@ -12660,55 +12567,55 @@ feq_cont.88941:
 	fmul	$f1, $f3, $f1
 	fsub	$f1, $f2, $f1
 	sltf	$10, $f30, $f1
-	bne	$10, $0, eq_else.88944
+	bne	$10, $0, eq_else.89434
 	mov	$9, $0
-	j	eq_cont.88945
-eq_else.88944:
+	j	eq_cont.89435
+eq_else.89434:
 	lw	$9, 6($9)
-	bne	$9, $0, eq_else.88946
+	bne	$9, $0, eq_else.89436
 	sqrt	$f1, $f1
 	fsub	$f0, $f0, $f1
 	lf	$f1, 4($11)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
-	j	eq_cont.88947
-eq_else.88946:
+	j	eq_cont.89437
+eq_else.89436:
 	sqrt	$f1, $f1
 	fadd	$f0, $f0, $f1
 	lf	$f1, 4($11)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
-eq_cont.88947:
+eq_cont.89437:
 	mov	$9, $1
-eq_cont.88945:
-	j	eq_cont.88943
-eq_else.88942:
+eq_cont.89435:
+	j	eq_cont.89433
+eq_else.89432:
 	mov	$9, $0
-eq_cont.88943:
-eq_cont.88937:
-eq_cont.88905:
-	bne	$9, $0, eq_else.88948
+eq_cont.89433:
+eq_cont.89427:
+eq_cont.89395:
+	bne	$9, $0, eq_else.89438
 	lw	$7, 3001($8)
 	lw	$7, 6($7)
-	bne	$7, $0, eq_else.88949
+	bne	$7, $0, eq_else.89439
 	jr $31
-eq_else.88949:
+eq_else.89439:
 	addi	$2, $2, 1
 	j	solve_each_element_fast.2997
-eq_else.88948:
+eq_else.89438:
 	lf	$f0, 3122($0)
 	sltf	$10, $f30, $f0
 	sw	$6, 0($3)
 	sw	$5, 1($3)
 	sw	$2, 2($3)
-	bne	$10, $0, eq_else.88951
-	j	eq_cont.88952
-eq_else.88951:
+	bne	$10, $0, eq_else.89441
+	j	eq_cont.89442
+eq_else.89441:
 	lf	$f1, 3124($0)
 	sltf	$10, $f0, $f1
-	bne	$10, $0, eq_else.88953
-	j	eq_cont.88954
-eq_else.88953:
+	bne	$10, $0, eq_else.89443
+	j	eq_cont.89444
+eq_else.89443:
 	lf	$f1, 3383($0) # 0.010000
 	fadd	$f0, $f0, $f1
 	lf	$f1, 0($7)
@@ -12721,8 +12628,7 @@ eq_else.88953:
 	fadd	$f2, $f2, $f3
 	lf	$f3, 2($7)
 	fmul	$f3, $f3, $f0
-	addi	$7, $0, 2
-	lf	$f4, 3149($7)
+	lf	$f4, 3149($26)
 	fadd	$f3, $f3, $f4
 	lw	$7, 0($5)
 	sw	$9, 3($3)
@@ -12731,10 +12637,10 @@ eq_else.88953:
 	sf	$f2, 6($3)
 	sf	$f1, 7($3)
 	sf	$f0, 8($3)
-	bne	$7, $28, eq_else.88955
+	bne	$7, $28, eq_else.89445
 	mov	$2, $1
-	j	eq_cont.88956
-eq_else.88955:
+	j	eq_cont.89446
+eq_else.89445:
 	lw	$7, 3001($7)
 	lw	$10, 5($7)
 	lf	$f4, 0($10)
@@ -12746,50 +12652,50 @@ eq_else.88955:
 	lf	$f6, 2($10)
 	fsub	$f6, $f3, $f6
 	lw	$10, 1($7)
-	bne	$10, $1, eq_else.88957
+	bne	$10, $1, eq_else.89447
 	fabs	$f4, $f4
 	lw	$10, 4($7)
 	lf	$f7, 0($10)
 	sltf	$10, $f4, $f7
-	bne	$10, $0, eq_else.88959
+	bne	$10, $0, eq_else.89449
 	mov	$10, $0
-	j	eq_cont.88960
-eq_else.88959:
+	j	eq_cont.89450
+eq_else.89449:
 	fabs	$f4, $f5
 	lw	$10, 4($7)
 	lf	$f5, 1($10)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.88961
+	bne	$10, $0, eq_else.89451
 	mov	$10, $0
-	j	eq_cont.88962
-eq_else.88961:
+	j	eq_cont.89452
+eq_else.89451:
 	fabs	$f4, $f6
 	lw	$10, 4($7)
 	lf	$f5, 2($10)
-	bltf	$f4, $f5, fle.88963
+	bltf	$f4, $f5, fle.89453
 	mov	$10, $0
-	j	fle_cont.88964
-fle.88963:
+	j	fle_cont.89454
+fle.89453:
 	mov	$10, $1
-fle_cont.88964:
-eq_cont.88962:
-eq_cont.88960:
-	bne	$10, $0, eq_else.88965
+fle_cont.89454:
+eq_cont.89452:
+eq_cont.89450:
+	bne	$10, $0, eq_else.89455
 	lw	$7, 6($7)
-	bne	$7, $0, eq_else.88967
+	bne	$7, $0, eq_else.89457
 	mov	$7, $1
-	j	eq_cont.88968
-eq_else.88967:
+	j	eq_cont.89458
+eq_else.89457:
 	mov	$7, $0
-eq_cont.88968:
-	j	eq_cont.88966
-eq_else.88965:
+eq_cont.89458:
+	j	eq_cont.89456
+eq_else.89455:
 	lw	$7, 6($7)
-eq_cont.88966:
-	j	eq_cont.88958
-eq_else.88957:
+eq_cont.89456:
+	j	eq_cont.89448
+eq_else.89447:
 	addi	$30, $0, 2
-	bne	$10, $30, eq_else.88969
+	bne	$10, $30, eq_else.89459
 	lw	$10, 4($7)
 	lf	$f7, 0($10)
 	fmul	$f4, $f7, $f4
@@ -12802,14 +12708,14 @@ eq_else.88957:
 	lw	$7, 6($7)
 	sltf	$10, $f4, $f30
 	xor	$7, $7, $10
-	bne	$7, $0, eq_else.88971
+	bne	$7, $0, eq_else.89461
 	mov	$7, $1
-	j	eq_cont.88972
-eq_else.88971:
+	j	eq_cont.89462
+eq_else.89461:
 	mov	$7, $0
-eq_cont.88972:
-	j	eq_cont.88970
-eq_else.88969:
+eq_cont.89462:
+	j	eq_cont.89460
+eq_else.89459:
 	fmul	$f7, $f4, $f4
 	lw	$10, 4($7)
 	lf	$f8, 0($10)
@@ -12825,10 +12731,10 @@ eq_else.88969:
 	fmul	$f8, $f8, $f9
 	fadd	$f7, $f7, $f8
 	lw	$10, 3($7)
-	bne	$10, $0, eq_else.88973
+	bne	$10, $0, eq_else.89463
 	movf	$f4, $f7
-	j	eq_cont.88974
-eq_else.88973:
+	j	eq_cont.89464
+eq_else.89463:
 	fmul	$f8, $f5, $f6
 	lw	$10, 9($7)
 	lf	$f9, 0($10)
@@ -12844,31 +12750,31 @@ eq_else.88973:
 	lf	$f5, 2($10)
 	fmul	$f4, $f4, $f5
 	fadd	$f4, $f6, $f4
-eq_cont.88974:
+eq_cont.89464:
 	lw	$10, 1($7)
 	addi	$30, $0, 3
-	bne	$10, $30, eq_else.88975
+	bne	$10, $30, eq_else.89465
 	fsub	$f4, $f4, $f28
-	j	eq_cont.88976
-eq_else.88975:
-eq_cont.88976:
+	j	eq_cont.89466
+eq_else.89465:
+eq_cont.89466:
 	lw	$7, 6($7)
 	sltf	$10, $f4, $f30
 	xor	$7, $7, $10
-	bne	$7, $0, eq_else.88977
+	bne	$7, $0, eq_else.89467
 	mov	$7, $1
-	j	eq_cont.88978
-eq_else.88977:
+	j	eq_cont.89468
+eq_else.89467:
 	mov	$7, $0
-eq_cont.88978:
-eq_cont.88970:
-eq_cont.88958:
-	bne	$7, $0, eq_else.88979
+eq_cont.89468:
+eq_cont.89460:
+eq_cont.89448:
+	bne	$7, $0, eq_else.89469
 	lw	$7, 1($5)
-	bne	$7, $28, eq_else.88981
+	bne	$7, $28, eq_else.89471
 	mov	$2, $1
-	j	eq_cont.88982
-eq_else.88981:
+	j	eq_cont.89472
+eq_else.89471:
 	lw	$7, 3001($7)
 	lw	$10, 5($7)
 	lf	$f4, 0($10)
@@ -12880,50 +12786,50 @@ eq_else.88981:
 	lf	$f6, 2($10)
 	fsub	$f6, $f3, $f6
 	lw	$10, 1($7)
-	bne	$10, $1, eq_else.88983
+	bne	$10, $1, eq_else.89473
 	fabs	$f4, $f4
 	lw	$10, 4($7)
 	lf	$f7, 0($10)
 	sltf	$10, $f4, $f7
-	bne	$10, $0, eq_else.88985
+	bne	$10, $0, eq_else.89475
 	mov	$10, $0
-	j	eq_cont.88986
-eq_else.88985:
+	j	eq_cont.89476
+eq_else.89475:
 	fabs	$f4, $f5
 	lw	$10, 4($7)
 	lf	$f5, 1($10)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.88987
+	bne	$10, $0, eq_else.89477
 	mov	$10, $0
-	j	eq_cont.88988
-eq_else.88987:
+	j	eq_cont.89478
+eq_else.89477:
 	fabs	$f4, $f6
 	lw	$10, 4($7)
 	lf	$f5, 2($10)
-	bltf	$f4, $f5, fle.88989
+	bltf	$f4, $f5, fle.89479
 	mov	$10, $0
-	j	fle_cont.88990
-fle.88989:
+	j	fle_cont.89480
+fle.89479:
 	mov	$10, $1
-fle_cont.88990:
-eq_cont.88988:
-eq_cont.88986:
-	bne	$10, $0, eq_else.88991
+fle_cont.89480:
+eq_cont.89478:
+eq_cont.89476:
+	bne	$10, $0, eq_else.89481
 	lw	$7, 6($7)
-	bne	$7, $0, eq_else.88993
+	bne	$7, $0, eq_else.89483
 	mov	$7, $1
-	j	eq_cont.88994
-eq_else.88993:
+	j	eq_cont.89484
+eq_else.89483:
 	mov	$7, $0
-eq_cont.88994:
-	j	eq_cont.88992
-eq_else.88991:
+eq_cont.89484:
+	j	eq_cont.89482
+eq_else.89481:
 	lw	$7, 6($7)
-eq_cont.88992:
-	j	eq_cont.88984
-eq_else.88983:
+eq_cont.89482:
+	j	eq_cont.89474
+eq_else.89473:
 	addi	$30, $0, 2
-	bne	$10, $30, eq_else.88995
+	bne	$10, $30, eq_else.89485
 	lw	$10, 4($7)
 	lf	$f7, 0($10)
 	fmul	$f4, $f7, $f4
@@ -12936,14 +12842,14 @@ eq_else.88983:
 	lw	$7, 6($7)
 	sltf	$10, $f4, $f30
 	xor	$7, $7, $10
-	bne	$7, $0, eq_else.88997
+	bne	$7, $0, eq_else.89487
 	mov	$7, $1
-	j	eq_cont.88998
-eq_else.88997:
+	j	eq_cont.89488
+eq_else.89487:
 	mov	$7, $0
-eq_cont.88998:
-	j	eq_cont.88996
-eq_else.88995:
+eq_cont.89488:
+	j	eq_cont.89486
+eq_else.89485:
 	fmul	$f7, $f4, $f4
 	lw	$10, 4($7)
 	lf	$f8, 0($10)
@@ -12959,10 +12865,10 @@ eq_else.88995:
 	fmul	$f8, $f8, $f9
 	fadd	$f7, $f7, $f8
 	lw	$10, 3($7)
-	bne	$10, $0, eq_else.88999
+	bne	$10, $0, eq_else.89489
 	movf	$f4, $f7
-	j	eq_cont.89000
-eq_else.88999:
+	j	eq_cont.89490
+eq_else.89489:
 	fmul	$f8, $f5, $f6
 	lw	$10, 9($7)
 	lf	$f9, 0($10)
@@ -12978,31 +12884,31 @@ eq_else.88999:
 	lf	$f5, 2($10)
 	fmul	$f4, $f4, $f5
 	fadd	$f4, $f6, $f4
-eq_cont.89000:
+eq_cont.89490:
 	lw	$10, 1($7)
 	addi	$30, $0, 3
-	bne	$10, $30, eq_else.89001
+	bne	$10, $30, eq_else.89491
 	fsub	$f4, $f4, $f28
-	j	eq_cont.89002
-eq_else.89001:
-eq_cont.89002:
+	j	eq_cont.89492
+eq_else.89491:
+eq_cont.89492:
 	lw	$7, 6($7)
 	sltf	$10, $f4, $f30
 	xor	$7, $7, $10
-	bne	$7, $0, eq_else.89003
+	bne	$7, $0, eq_else.89493
 	mov	$7, $1
-	j	eq_cont.89004
-eq_else.89003:
+	j	eq_cont.89494
+eq_else.89493:
 	mov	$7, $0
-eq_cont.89004:
-eq_cont.88996:
-eq_cont.88984:
-	bne	$7, $0, eq_else.89005
+eq_cont.89494:
+eq_cont.89486:
+eq_cont.89474:
+	bne	$7, $0, eq_else.89495
 	lw	$7, 2($5)
-	bne	$7, $28, eq_else.89007
+	bne	$7, $28, eq_else.89497
 	mov	$2, $1
-	j	eq_cont.89008
-eq_else.89007:
+	j	eq_cont.89498
+eq_else.89497:
 	lw	$7, 3001($7)
 	lw	$10, 5($7)
 	lf	$f4, 0($10)
@@ -13014,50 +12920,50 @@ eq_else.89007:
 	lf	$f6, 2($10)
 	fsub	$f6, $f3, $f6
 	lw	$10, 1($7)
-	bne	$10, $1, eq_else.89009
+	bne	$10, $1, eq_else.89499
 	fabs	$f4, $f4
 	lw	$10, 4($7)
 	lf	$f7, 0($10)
 	sltf	$10, $f4, $f7
-	bne	$10, $0, eq_else.89011
+	bne	$10, $0, eq_else.89501
 	mov	$10, $0
-	j	eq_cont.89012
-eq_else.89011:
+	j	eq_cont.89502
+eq_else.89501:
 	fabs	$f4, $f5
 	lw	$10, 4($7)
 	lf	$f5, 1($10)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.89013
+	bne	$10, $0, eq_else.89503
 	mov	$10, $0
-	j	eq_cont.89014
-eq_else.89013:
+	j	eq_cont.89504
+eq_else.89503:
 	fabs	$f4, $f6
 	lw	$10, 4($7)
 	lf	$f5, 2($10)
-	bltf	$f4, $f5, fle.89015
+	bltf	$f4, $f5, fle.89505
 	mov	$10, $0
-	j	fle_cont.89016
-fle.89015:
+	j	fle_cont.89506
+fle.89505:
 	mov	$10, $1
-fle_cont.89016:
-eq_cont.89014:
-eq_cont.89012:
-	bne	$10, $0, eq_else.89017
+fle_cont.89506:
+eq_cont.89504:
+eq_cont.89502:
+	bne	$10, $0, eq_else.89507
 	lw	$7, 6($7)
-	bne	$7, $0, eq_else.89019
+	bne	$7, $0, eq_else.89509
 	mov	$7, $1
-	j	eq_cont.89020
-eq_else.89019:
+	j	eq_cont.89510
+eq_else.89509:
 	mov	$7, $0
-eq_cont.89020:
-	j	eq_cont.89018
-eq_else.89017:
+eq_cont.89510:
+	j	eq_cont.89508
+eq_else.89507:
 	lw	$7, 6($7)
-eq_cont.89018:
-	j	eq_cont.89010
-eq_else.89009:
+eq_cont.89508:
+	j	eq_cont.89500
+eq_else.89499:
 	addi	$30, $0, 2
-	bne	$10, $30, eq_else.89021
+	bne	$10, $30, eq_else.89511
 	lw	$10, 4($7)
 	lf	$f7, 0($10)
 	fmul	$f4, $f7, $f4
@@ -13070,14 +12976,14 @@ eq_else.89009:
 	lw	$7, 6($7)
 	sltf	$10, $f4, $f30
 	xor	$7, $7, $10
-	bne	$7, $0, eq_else.89023
+	bne	$7, $0, eq_else.89513
 	mov	$7, $1
-	j	eq_cont.89024
-eq_else.89023:
+	j	eq_cont.89514
+eq_else.89513:
 	mov	$7, $0
-eq_cont.89024:
-	j	eq_cont.89022
-eq_else.89021:
+eq_cont.89514:
+	j	eq_cont.89512
+eq_else.89511:
 	fmul	$f7, $f4, $f4
 	lw	$10, 4($7)
 	lf	$f8, 0($10)
@@ -13093,10 +12999,10 @@ eq_else.89021:
 	fmul	$f8, $f8, $f9
 	fadd	$f7, $f7, $f8
 	lw	$10, 3($7)
-	bne	$10, $0, eq_else.89025
+	bne	$10, $0, eq_else.89515
 	movf	$f4, $f7
-	j	eq_cont.89026
-eq_else.89025:
+	j	eq_cont.89516
+eq_else.89515:
 	fmul	$f8, $f5, $f6
 	lw	$10, 9($7)
 	lf	$f9, 0($10)
@@ -13112,28 +13018,27 @@ eq_else.89025:
 	lf	$f5, 2($10)
 	fmul	$f4, $f4, $f5
 	fadd	$f4, $f6, $f4
-eq_cont.89026:
+eq_cont.89516:
 	lw	$10, 1($7)
 	addi	$30, $0, 3
-	bne	$10, $30, eq_else.89027
+	bne	$10, $30, eq_else.89517
 	fsub	$f4, $f4, $f28
-	j	eq_cont.89028
-eq_else.89027:
-eq_cont.89028:
+	j	eq_cont.89518
+eq_else.89517:
+eq_cont.89518:
 	lw	$7, 6($7)
 	sltf	$10, $f4, $f30
 	xor	$7, $7, $10
-	bne	$7, $0, eq_else.89029
+	bne	$7, $0, eq_else.89519
 	mov	$7, $1
-	j	eq_cont.89030
-eq_else.89029:
+	j	eq_cont.89520
+eq_else.89519:
 	mov	$7, $0
-eq_cont.89030:
-eq_cont.89022:
-eq_cont.89010:
-	bne	$7, $0, eq_else.89031
-	addi	$7, $0, 3
-	mov	$2, $7
+eq_cont.89520:
+eq_cont.89512:
+eq_cont.89500:
+	bne	$7, $0, eq_else.89521
+	mov	$2, $27
 	movf	$f0, $f1
 	movf	$f1, $f2
 	movf	$f2, $f3
@@ -13142,40 +13047,39 @@ eq_cont.89010:
 	jal	check_all_inside.2968
 	addi	$3, $3, -10
 	lw	$31, 9($3)
-	j	eq_cont.89032
-eq_else.89031:
+	j	eq_cont.89522
+eq_else.89521:
 	mov	$2, $0
-eq_cont.89032:
-eq_cont.89008:
-	j	eq_cont.89006
-eq_else.89005:
+eq_cont.89522:
+eq_cont.89498:
+	j	eq_cont.89496
+eq_else.89495:
 	mov	$2, $0
-eq_cont.89006:
-eq_cont.88982:
-	j	eq_cont.88980
-eq_else.88979:
+eq_cont.89496:
+eq_cont.89472:
+	j	eq_cont.89470
+eq_else.89469:
 	mov	$2, $0
-eq_cont.88980:
-eq_cont.88956:
-	bne	$2, $0, eq_else.89033
-	j	eq_cont.89034
-eq_else.89033:
+eq_cont.89470:
+eq_cont.89446:
+	bne	$2, $0, eq_else.89523
+	j	eq_cont.89524
+eq_else.89523:
 	lf	$f0, 8($3)
 	sf	$f0, 3124($0)
 	lf	$f0, 7($3)
 	sf	$f0, 3125($0)
 	lf	$f0, 6($3)
 	sf	$f0, 3125($1)
-	addi	$2, $0, 2
 	lf	$f0, 5($3)
-	sf	$f0, 3125($2)
+	sf	$f0, 3125($26)
 	lw	$2, 4($3)
 	sw	$2, 3128($0)
 	lw	$2, 3($3)
 	sw	$2, 3123($0)
-eq_cont.89034:
-eq_cont.88954:
-eq_cont.88952:
+eq_cont.89524:
+eq_cont.89444:
+eq_cont.89442:
 	lw	$2, 2($3)
 	addi	$2, $2, 1
 	lw	$5, 1($3)
@@ -13184,9 +13088,9 @@ eq_cont.88952:
 solve_one_or_network_fast.3001:
 	add	$30, $5, $2
 	lw	$7, 0($30)
-	bne	$7, $28, eq_else.89035
+	bne	$7, $28, eq_else.89525
 	jr $31
-eq_else.89035:
+eq_else.89525:
 	lw	$7, 3071($7)
 	sw	$6, 0($3)
 	sw	$5, 1($3)
@@ -13203,9 +13107,9 @@ eq_else.89035:
 	lw	$5, 1($3)
 	add	$30, $5, $2
 	lw	$6, 0($30)
-	bne	$6, $28, eq_else.89037
+	bne	$6, $28, eq_else.89527
 	jr $31
-eq_else.89037:
+eq_else.89527:
 	lw	$6, 3071($6)
 	lw	$7, 0($3)
 	sw	$2, 3($3)
@@ -13222,9 +13126,9 @@ eq_else.89037:
 	lw	$5, 1($3)
 	add	$30, $5, $2
 	lw	$6, 0($30)
-	bne	$6, $28, eq_else.89039
+	bne	$6, $28, eq_else.89529
 	jr $31
-eq_else.89039:
+eq_else.89529:
 	lw	$6, 3071($6)
 	lw	$7, 0($3)
 	sw	$2, 4($3)
@@ -13241,9 +13145,9 @@ eq_else.89039:
 	lw	$5, 1($3)
 	add	$30, $5, $2
 	lw	$6, 0($30)
-	bne	$6, $28, eq_else.89041
+	bne	$6, $28, eq_else.89531
 	jr $31
-eq_else.89041:
+eq_else.89531:
 	lw	$6, 3071($6)
 	lw	$7, 0($3)
 	sw	$2, 5($3)
@@ -13260,9 +13164,9 @@ eq_else.89041:
 	lw	$5, 1($3)
 	add	$30, $5, $2
 	lw	$6, 0($30)
-	bne	$6, $28, eq_else.89043
+	bne	$6, $28, eq_else.89533
 	jr $31
-eq_else.89043:
+eq_else.89533:
 	lw	$6, 3071($6)
 	lw	$7, 0($3)
 	sw	$2, 6($3)
@@ -13279,9 +13183,9 @@ eq_else.89043:
 	lw	$5, 1($3)
 	add	$30, $5, $2
 	lw	$6, 0($30)
-	bne	$6, $28, eq_else.89045
+	bne	$6, $28, eq_else.89535
 	jr $31
-eq_else.89045:
+eq_else.89535:
 	lw	$6, 3071($6)
 	lw	$7, 0($3)
 	sw	$2, 7($3)
@@ -13298,9 +13202,9 @@ eq_else.89045:
 	lw	$5, 1($3)
 	add	$30, $5, $2
 	lw	$6, 0($30)
-	bne	$6, $28, eq_else.89047
+	bne	$6, $28, eq_else.89537
 	jr $31
-eq_else.89047:
+eq_else.89537:
 	lw	$6, 3071($6)
 	lw	$7, 0($3)
 	sw	$2, 8($3)
@@ -13317,9 +13221,9 @@ eq_else.89047:
 	lw	$5, 1($3)
 	add	$30, $5, $2
 	lw	$6, 0($30)
-	bne	$6, $28, eq_else.89049
+	bne	$6, $28, eq_else.89539
 	jr $31
-eq_else.89049:
+eq_else.89539:
 	lw	$6, 3071($6)
 	lw	$7, 0($3)
 	sw	$2, 9($3)
@@ -13340,18 +13244,18 @@ trace_or_matrix_fast.3005:
 	add	$30, $5, $2
 	lw	$7, 0($30)
 	lw	$8, 0($7)
-	bne	$8, $28, eq_else.89051
+	bne	$8, $28, eq_else.89541
 	jr $31
-eq_else.89051:
+eq_else.89541:
 	sw	$6, 0($3)
 	sw	$5, 1($3)
 	sw	$2, 2($3)
 	addi	$30, $0, 99
-	bne	$8, $30, eq_else.89053
+	bne	$8, $30, eq_else.89543
 	lw	$8, 1($7)
-	bne	$8, $28, eq_else.89055
-	j	eq_cont.89056
-eq_else.89055:
+	bne	$8, $28, eq_else.89545
+	j	eq_cont.89546
+eq_else.89545:
 	lw	$8, 3071($8)
 	sw	$7, 3($3)
 	mov	$5, $8
@@ -13363,9 +13267,9 @@ eq_else.89055:
 	lw	$31, 4($3)
 	lw	$2, 3($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.89057
-	j	eq_cont.89058
-eq_else.89057:
+	bne	$5, $28, eq_else.89547
+	j	eq_cont.89548
+eq_else.89547:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -13376,9 +13280,9 @@ eq_else.89057:
 	lw	$31, 4($3)
 	lw	$2, 3($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.89059
-	j	eq_cont.89060
-eq_else.89059:
+	bne	$5, $28, eq_else.89549
+	j	eq_cont.89550
+eq_else.89549:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -13389,9 +13293,9 @@ eq_else.89059:
 	lw	$31, 4($3)
 	lw	$2, 3($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.89061
-	j	eq_cont.89062
-eq_else.89061:
+	bne	$5, $28, eq_else.89551
+	j	eq_cont.89552
+eq_else.89551:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -13402,9 +13306,9 @@ eq_else.89061:
 	lw	$31, 4($3)
 	lw	$2, 3($3)
 	lw	$5, 5($2)
-	bne	$5, $28, eq_else.89063
-	j	eq_cont.89064
-eq_else.89063:
+	bne	$5, $28, eq_else.89553
+	j	eq_cont.89554
+eq_else.89553:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -13415,9 +13319,9 @@ eq_else.89063:
 	lw	$31, 4($3)
 	lw	$2, 3($3)
 	lw	$5, 6($2)
-	bne	$5, $28, eq_else.89065
-	j	eq_cont.89066
-eq_else.89065:
+	bne	$5, $28, eq_else.89555
+	j	eq_cont.89556
+eq_else.89555:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -13428,9 +13332,9 @@ eq_else.89065:
 	lw	$31, 4($3)
 	lw	$2, 3($3)
 	lw	$5, 7($2)
-	bne	$5, $28, eq_else.89067
-	j	eq_cont.89068
-eq_else.89067:
+	bne	$5, $28, eq_else.89557
+	j	eq_cont.89558
+eq_else.89557:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -13447,15 +13351,15 @@ eq_else.89067:
 	jal	solve_one_or_network_fast.3001
 	addi	$3, $3, -5
 	lw	$31, 4($3)
-eq_cont.89068:
-eq_cont.89066:
-eq_cont.89064:
-eq_cont.89062:
-eq_cont.89060:
-eq_cont.89058:
-eq_cont.89056:
-	j	eq_cont.89054
-eq_else.89053:
+eq_cont.89558:
+eq_cont.89556:
+eq_cont.89554:
+eq_cont.89552:
+eq_cont.89550:
+eq_cont.89548:
+eq_cont.89546:
+	j	eq_cont.89544
+eq_else.89543:
 	lw	$9, 3001($8)
 	lw	$10, 10($9)
 	lf	$f0, 0($10)
@@ -13465,7 +13369,7 @@ eq_else.89053:
 	add	$30, $11, $8
 	lw	$8, 0($30)
 	lw	$11, 1($9)
-	bne	$11, $1, eq_else.89069
+	bne	$11, $1, eq_else.89559
 	lw	$10, 0($6)
 	lf	$f3, 0($8)
 	fsub	$f3, $f3, $f0
@@ -13478,10 +13382,10 @@ eq_else.89053:
 	lw	$11, 4($9)
 	lf	$f5, 1($11)
 	sltf	$11, $f4, $f5
-	bne	$11, $0, eq_else.89071
+	bne	$11, $0, eq_else.89561
 	mov	$11, $0
-	j	eq_cont.89072
-eq_else.89071:
+	j	eq_cont.89562
+eq_else.89561:
 	lf	$f4, 2($10)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
@@ -13489,26 +13393,26 @@ eq_else.89071:
 	lw	$11, 4($9)
 	lf	$f5, 2($11)
 	sltf	$11, $f4, $f5
-	bne	$11, $0, eq_else.89073
+	bne	$11, $0, eq_else.89563
 	mov	$11, $0
-	j	eq_cont.89074
-eq_else.89073:
+	j	eq_cont.89564
+eq_else.89563:
 	lf	$f4, 1($8)
-	beqf	$f4, $f30, feq.89075
+	beqf	$f4, $f30, feq.89565
 	mov	$11, $0
-	j	feq_cont.89076
-feq.89075:
+	j	feq_cont.89566
+feq.89565:
 	mov	$11, $1
-feq_cont.89076:
-	bne	$11, $0, eq_else.89077
+feq_cont.89566:
+	bne	$11, $0, eq_else.89567
 	mov	$11, $1
-	j	eq_cont.89078
-eq_else.89077:
+	j	eq_cont.89568
+eq_else.89567:
 	mov	$11, $0
-eq_cont.89078:
-eq_cont.89074:
-eq_cont.89072:
-	bne	$11, $0, eq_else.89079
+eq_cont.89568:
+eq_cont.89564:
+eq_cont.89562:
+	bne	$11, $0, eq_else.89569
 	lf	$f3, 2($8)
 	fsub	$f3, $f3, $f1
 	lf	$f4, 3($8)
@@ -13520,10 +13424,10 @@ eq_cont.89072:
 	lw	$11, 4($9)
 	lf	$f5, 0($11)
 	sltf	$11, $f4, $f5
-	bne	$11, $0, eq_else.89081
+	bne	$11, $0, eq_else.89571
 	mov	$11, $0
-	j	eq_cont.89082
-eq_else.89081:
+	j	eq_cont.89572
+eq_else.89571:
 	lf	$f4, 2($10)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
@@ -13531,26 +13435,26 @@ eq_else.89081:
 	lw	$11, 4($9)
 	lf	$f5, 2($11)
 	sltf	$11, $f4, $f5
-	bne	$11, $0, eq_else.89083
+	bne	$11, $0, eq_else.89573
 	mov	$11, $0
-	j	eq_cont.89084
-eq_else.89083:
+	j	eq_cont.89574
+eq_else.89573:
 	lf	$f4, 3($8)
-	beqf	$f4, $f30, feq.89085
+	beqf	$f4, $f30, feq.89575
 	mov	$11, $0
-	j	feq_cont.89086
-feq.89085:
+	j	feq_cont.89576
+feq.89575:
 	mov	$11, $1
-feq_cont.89086:
-	bne	$11, $0, eq_else.89087
+feq_cont.89576:
+	bne	$11, $0, eq_else.89577
 	mov	$11, $1
-	j	eq_cont.89088
-eq_else.89087:
+	j	eq_cont.89578
+eq_else.89577:
 	mov	$11, $0
-eq_cont.89088:
-eq_cont.89084:
-eq_cont.89082:
-	bne	$11, $0, eq_else.89089
+eq_cont.89578:
+eq_cont.89574:
+eq_cont.89572:
+	bne	$11, $0, eq_else.89579
 	lf	$f3, 4($8)
 	fsub	$f2, $f3, $f2
 	lf	$f3, 5($8)
@@ -13562,10 +13466,10 @@ eq_cont.89082:
 	lw	$11, 4($9)
 	lf	$f3, 0($11)
 	sltf	$11, $f0, $f3
-	bne	$11, $0, eq_else.89091
+	bne	$11, $0, eq_else.89581
 	mov	$8, $0
-	j	eq_cont.89092
-eq_else.89091:
+	j	eq_cont.89582
+eq_else.89581:
 	lf	$f0, 1($10)
 	fmul	$f0, $f2, $f0
 	fadd	$f0, $f0, $f1
@@ -13573,68 +13477,68 @@ eq_else.89091:
 	lw	$9, 4($9)
 	lf	$f1, 1($9)
 	sltf	$9, $f0, $f1
-	bne	$9, $0, eq_else.89093
+	bne	$9, $0, eq_else.89583
 	mov	$8, $0
-	j	eq_cont.89094
-eq_else.89093:
+	j	eq_cont.89584
+eq_else.89583:
 	lf	$f0, 5($8)
-	beqf	$f0, $f30, feq.89095
+	beqf	$f0, $f30, feq.89585
 	mov	$8, $0
-	j	feq_cont.89096
-feq.89095:
+	j	feq_cont.89586
+feq.89585:
 	mov	$8, $1
-feq_cont.89096:
-	bne	$8, $0, eq_else.89097
+feq_cont.89586:
+	bne	$8, $0, eq_else.89587
 	mov	$8, $1
-	j	eq_cont.89098
-eq_else.89097:
+	j	eq_cont.89588
+eq_else.89587:
 	mov	$8, $0
-eq_cont.89098:
-eq_cont.89094:
-eq_cont.89092:
-	bne	$8, $0, eq_else.89099
+eq_cont.89588:
+eq_cont.89584:
+eq_cont.89582:
+	bne	$8, $0, eq_else.89589
 	mov	$8, $0
-	j	eq_cont.89100
-eq_else.89099:
+	j	eq_cont.89590
+eq_else.89589:
 	sf	$f2, 3122($0)
-	addi	$8, $0, 3
-eq_cont.89100:
-	j	eq_cont.89090
-eq_else.89089:
+	mov	$8, $27
+eq_cont.89590:
+	j	eq_cont.89580
+eq_else.89579:
 	sf	$f3, 3122($0)
-	addi	$8, $0, 2
-eq_cont.89090:
-	j	eq_cont.89080
-eq_else.89079:
+	mov	$8, $26
+eq_cont.89580:
+	j	eq_cont.89570
+eq_else.89569:
 	sf	$f3, 3122($0)
 	mov	$8, $1
-eq_cont.89080:
-	j	eq_cont.89070
-eq_else.89069:
+eq_cont.89570:
+	j	eq_cont.89560
+eq_else.89559:
 	addi	$30, $0, 2
-	bne	$11, $30, eq_else.89101
+	bne	$11, $30, eq_else.89591
 	lf	$f0, 0($8)
 	sltf	$9, $f0, $f30
-	bne	$9, $0, eq_else.89103
+	bne	$9, $0, eq_else.89593
 	mov	$8, $0
-	j	eq_cont.89104
-eq_else.89103:
+	j	eq_cont.89594
+eq_else.89593:
 	lf	$f0, 0($8)
 	lf	$f1, 3($10)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
 	mov	$8, $1
-eq_cont.89104:
-	j	eq_cont.89102
-eq_else.89101:
+eq_cont.89594:
+	j	eq_cont.89592
+eq_else.89591:
 	lf	$f3, 0($8)
-	beqf	$f3, $f30, feq.89105
+	beqf	$f3, $f30, feq.89595
 	mov	$11, $0
-	j	feq_cont.89106
-feq.89105:
+	j	feq_cont.89596
+feq.89595:
 	mov	$11, $1
-feq_cont.89106:
-	bne	$11, $0, eq_else.89107
+feq_cont.89596:
+	bne	$11, $0, eq_else.89597
 	lf	$f4, 1($8)
 	fmul	$f0, $f4, $f0
 	lf	$f4, 2($8)
@@ -13648,46 +13552,46 @@ feq_cont.89106:
 	fmul	$f1, $f3, $f1
 	fsub	$f1, $f2, $f1
 	sltf	$10, $f30, $f1
-	bne	$10, $0, eq_else.89109
+	bne	$10, $0, eq_else.89599
 	mov	$8, $0
-	j	eq_cont.89110
-eq_else.89109:
+	j	eq_cont.89600
+eq_else.89599:
 	lw	$9, 6($9)
-	bne	$9, $0, eq_else.89111
+	bne	$9, $0, eq_else.89601
 	sqrt	$f1, $f1
 	fsub	$f0, $f0, $f1
 	lf	$f1, 4($8)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
-	j	eq_cont.89112
-eq_else.89111:
+	j	eq_cont.89602
+eq_else.89601:
 	sqrt	$f1, $f1
 	fadd	$f0, $f0, $f1
 	lf	$f1, 4($8)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
-eq_cont.89112:
+eq_cont.89602:
 	mov	$8, $1
-eq_cont.89110:
-	j	eq_cont.89108
-eq_else.89107:
+eq_cont.89600:
+	j	eq_cont.89598
+eq_else.89597:
 	mov	$8, $0
-eq_cont.89108:
-eq_cont.89102:
-eq_cont.89070:
-	bne	$8, $0, eq_else.89113
-	j	eq_cont.89114
-eq_else.89113:
+eq_cont.89598:
+eq_cont.89592:
+eq_cont.89560:
+	bne	$8, $0, eq_else.89603
+	j	eq_cont.89604
+eq_else.89603:
 	lf	$f0, 3122($0)
 	lf	$f1, 3124($0)
 	sltf	$8, $f0, $f1
-	bne	$8, $0, eq_else.89115
-	j	eq_cont.89116
-eq_else.89115:
+	bne	$8, $0, eq_else.89605
+	j	eq_cont.89606
+eq_else.89605:
 	lw	$8, 1($7)
-	bne	$8, $28, eq_else.89117
-	j	eq_cont.89118
-eq_else.89117:
+	bne	$8, $28, eq_else.89607
+	j	eq_cont.89608
+eq_else.89607:
 	lw	$8, 3071($8)
 	sw	$7, 3($3)
 	mov	$5, $8
@@ -13699,9 +13603,9 @@ eq_else.89117:
 	lw	$31, 4($3)
 	lw	$2, 3($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.89119
-	j	eq_cont.89120
-eq_else.89119:
+	bne	$5, $28, eq_else.89609
+	j	eq_cont.89610
+eq_else.89609:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -13712,9 +13616,9 @@ eq_else.89119:
 	lw	$31, 4($3)
 	lw	$2, 3($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.89121
-	j	eq_cont.89122
-eq_else.89121:
+	bne	$5, $28, eq_else.89611
+	j	eq_cont.89612
+eq_else.89611:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -13725,9 +13629,9 @@ eq_else.89121:
 	lw	$31, 4($3)
 	lw	$2, 3($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.89123
-	j	eq_cont.89124
-eq_else.89123:
+	bne	$5, $28, eq_else.89613
+	j	eq_cont.89614
+eq_else.89613:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -13738,9 +13642,9 @@ eq_else.89123:
 	lw	$31, 4($3)
 	lw	$2, 3($3)
 	lw	$5, 5($2)
-	bne	$5, $28, eq_else.89125
-	j	eq_cont.89126
-eq_else.89125:
+	bne	$5, $28, eq_else.89615
+	j	eq_cont.89616
+eq_else.89615:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -13751,9 +13655,9 @@ eq_else.89125:
 	lw	$31, 4($3)
 	lw	$2, 3($3)
 	lw	$5, 6($2)
-	bne	$5, $28, eq_else.89127
-	j	eq_cont.89128
-eq_else.89127:
+	bne	$5, $28, eq_else.89617
+	j	eq_cont.89618
+eq_else.89617:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -13764,9 +13668,9 @@ eq_else.89127:
 	lw	$31, 4($3)
 	lw	$2, 3($3)
 	lw	$5, 7($2)
-	bne	$5, $28, eq_else.89129
-	j	eq_cont.89130
-eq_else.89129:
+	bne	$5, $28, eq_else.89619
+	j	eq_cont.89620
+eq_else.89619:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -13783,32 +13687,32 @@ eq_else.89129:
 	jal	solve_one_or_network_fast.3001
 	addi	$3, $3, -5
 	lw	$31, 4($3)
-eq_cont.89130:
-eq_cont.89128:
-eq_cont.89126:
-eq_cont.89124:
-eq_cont.89122:
-eq_cont.89120:
-eq_cont.89118:
-eq_cont.89116:
-eq_cont.89114:
-eq_cont.89054:
+eq_cont.89620:
+eq_cont.89618:
+eq_cont.89616:
+eq_cont.89614:
+eq_cont.89612:
+eq_cont.89610:
+eq_cont.89608:
+eq_cont.89606:
+eq_cont.89604:
+eq_cont.89544:
 	lw	$2, 2($3)
 	addi	$2, $2, 1
 	lw	$5, 1($3)
 	add	$30, $5, $2
 	lw	$6, 0($30)
 	lw	$7, 0($6)
-	bne	$7, $28, eq_else.89131
+	bne	$7, $28, eq_else.89621
 	jr $31
-eq_else.89131:
+eq_else.89621:
 	sw	$2, 4($3)
 	addi	$30, $0, 99
-	bne	$7, $30, eq_else.89133
+	bne	$7, $30, eq_else.89623
 	lw	$7, 1($6)
-	bne	$7, $28, eq_else.89135
-	j	eq_cont.89136
-eq_else.89135:
+	bne	$7, $28, eq_else.89625
+	j	eq_cont.89626
+eq_else.89625:
 	lw	$7, 3071($7)
 	lw	$8, 0($3)
 	sw	$6, 5($3)
@@ -13822,9 +13726,9 @@ eq_else.89135:
 	lw	$31, 6($3)
 	lw	$2, 5($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.89137
-	j	eq_cont.89138
-eq_else.89137:
+	bne	$5, $28, eq_else.89627
+	j	eq_cont.89628
+eq_else.89627:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -13835,9 +13739,9 @@ eq_else.89137:
 	lw	$31, 6($3)
 	lw	$2, 5($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.89139
-	j	eq_cont.89140
-eq_else.89139:
+	bne	$5, $28, eq_else.89629
+	j	eq_cont.89630
+eq_else.89629:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -13848,9 +13752,9 @@ eq_else.89139:
 	lw	$31, 6($3)
 	lw	$2, 5($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.89141
-	j	eq_cont.89142
-eq_else.89141:
+	bne	$5, $28, eq_else.89631
+	j	eq_cont.89632
+eq_else.89631:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -13861,9 +13765,9 @@ eq_else.89141:
 	lw	$31, 6($3)
 	lw	$2, 5($3)
 	lw	$5, 5($2)
-	bne	$5, $28, eq_else.89143
-	j	eq_cont.89144
-eq_else.89143:
+	bne	$5, $28, eq_else.89633
+	j	eq_cont.89634
+eq_else.89633:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -13874,9 +13778,9 @@ eq_else.89143:
 	lw	$31, 6($3)
 	lw	$2, 5($3)
 	lw	$5, 6($2)
-	bne	$5, $28, eq_else.89145
-	j	eq_cont.89146
-eq_else.89145:
+	bne	$5, $28, eq_else.89635
+	j	eq_cont.89636
+eq_else.89635:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -13893,14 +13797,14 @@ eq_else.89145:
 	jal	solve_one_or_network_fast.3001
 	addi	$3, $3, -7
 	lw	$31, 6($3)
-eq_cont.89146:
-eq_cont.89144:
-eq_cont.89142:
-eq_cont.89140:
-eq_cont.89138:
-eq_cont.89136:
-	j	eq_cont.89134
-eq_else.89133:
+eq_cont.89636:
+eq_cont.89634:
+eq_cont.89632:
+eq_cont.89630:
+eq_cont.89628:
+eq_cont.89626:
+	j	eq_cont.89624
+eq_else.89623:
 	lw	$8, 3001($7)
 	lw	$9, 10($8)
 	lf	$f0, 0($9)
@@ -13911,7 +13815,7 @@ eq_else.89133:
 	add	$30, $11, $7
 	lw	$7, 0($30)
 	lw	$11, 1($8)
-	bne	$11, $1, eq_else.89147
+	bne	$11, $1, eq_else.89637
 	lw	$9, 0($10)
 	lf	$f3, 0($7)
 	fsub	$f3, $f3, $f0
@@ -13924,10 +13828,10 @@ eq_else.89133:
 	lw	$11, 4($8)
 	lf	$f5, 1($11)
 	sltf	$11, $f4, $f5
-	bne	$11, $0, eq_else.89149
+	bne	$11, $0, eq_else.89639
 	mov	$11, $0
-	j	eq_cont.89150
-eq_else.89149:
+	j	eq_cont.89640
+eq_else.89639:
 	lf	$f4, 2($9)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
@@ -13935,26 +13839,26 @@ eq_else.89149:
 	lw	$11, 4($8)
 	lf	$f5, 2($11)
 	sltf	$11, $f4, $f5
-	bne	$11, $0, eq_else.89151
+	bne	$11, $0, eq_else.89641
 	mov	$11, $0
-	j	eq_cont.89152
-eq_else.89151:
+	j	eq_cont.89642
+eq_else.89641:
 	lf	$f4, 1($7)
-	beqf	$f4, $f30, feq.89153
+	beqf	$f4, $f30, feq.89643
 	mov	$11, $0
-	j	feq_cont.89154
-feq.89153:
+	j	feq_cont.89644
+feq.89643:
 	mov	$11, $1
-feq_cont.89154:
-	bne	$11, $0, eq_else.89155
+feq_cont.89644:
+	bne	$11, $0, eq_else.89645
 	mov	$11, $1
-	j	eq_cont.89156
-eq_else.89155:
+	j	eq_cont.89646
+eq_else.89645:
 	mov	$11, $0
-eq_cont.89156:
-eq_cont.89152:
-eq_cont.89150:
-	bne	$11, $0, eq_else.89157
+eq_cont.89646:
+eq_cont.89642:
+eq_cont.89640:
+	bne	$11, $0, eq_else.89647
 	lf	$f3, 2($7)
 	fsub	$f3, $f3, $f1
 	lf	$f4, 3($7)
@@ -13966,10 +13870,10 @@ eq_cont.89150:
 	lw	$11, 4($8)
 	lf	$f5, 0($11)
 	sltf	$11, $f4, $f5
-	bne	$11, $0, eq_else.89159
+	bne	$11, $0, eq_else.89649
 	mov	$11, $0
-	j	eq_cont.89160
-eq_else.89159:
+	j	eq_cont.89650
+eq_else.89649:
 	lf	$f4, 2($9)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
@@ -13977,26 +13881,26 @@ eq_else.89159:
 	lw	$11, 4($8)
 	lf	$f5, 2($11)
 	sltf	$11, $f4, $f5
-	bne	$11, $0, eq_else.89161
+	bne	$11, $0, eq_else.89651
 	mov	$11, $0
-	j	eq_cont.89162
-eq_else.89161:
+	j	eq_cont.89652
+eq_else.89651:
 	lf	$f4, 3($7)
-	beqf	$f4, $f30, feq.89163
+	beqf	$f4, $f30, feq.89653
 	mov	$11, $0
-	j	feq_cont.89164
-feq.89163:
+	j	feq_cont.89654
+feq.89653:
 	mov	$11, $1
-feq_cont.89164:
-	bne	$11, $0, eq_else.89165
+feq_cont.89654:
+	bne	$11, $0, eq_else.89655
 	mov	$11, $1
-	j	eq_cont.89166
-eq_else.89165:
+	j	eq_cont.89656
+eq_else.89655:
 	mov	$11, $0
-eq_cont.89166:
-eq_cont.89162:
-eq_cont.89160:
-	bne	$11, $0, eq_else.89167
+eq_cont.89656:
+eq_cont.89652:
+eq_cont.89650:
+	bne	$11, $0, eq_else.89657
 	lf	$f3, 4($7)
 	fsub	$f2, $f3, $f2
 	lf	$f3, 5($7)
@@ -14008,10 +13912,10 @@ eq_cont.89160:
 	lw	$11, 4($8)
 	lf	$f3, 0($11)
 	sltf	$11, $f0, $f3
-	bne	$11, $0, eq_else.89169
+	bne	$11, $0, eq_else.89659
 	mov	$7, $0
-	j	eq_cont.89170
-eq_else.89169:
+	j	eq_cont.89660
+eq_else.89659:
 	lf	$f0, 1($9)
 	fmul	$f0, $f2, $f0
 	fadd	$f0, $f0, $f1
@@ -14019,68 +13923,68 @@ eq_else.89169:
 	lw	$8, 4($8)
 	lf	$f1, 1($8)
 	sltf	$8, $f0, $f1
-	bne	$8, $0, eq_else.89171
+	bne	$8, $0, eq_else.89661
 	mov	$7, $0
-	j	eq_cont.89172
-eq_else.89171:
+	j	eq_cont.89662
+eq_else.89661:
 	lf	$f0, 5($7)
-	beqf	$f0, $f30, feq.89173
+	beqf	$f0, $f30, feq.89663
 	mov	$7, $0
-	j	feq_cont.89174
-feq.89173:
+	j	feq_cont.89664
+feq.89663:
 	mov	$7, $1
-feq_cont.89174:
-	bne	$7, $0, eq_else.89175
+feq_cont.89664:
+	bne	$7, $0, eq_else.89665
 	mov	$7, $1
-	j	eq_cont.89176
-eq_else.89175:
+	j	eq_cont.89666
+eq_else.89665:
 	mov	$7, $0
-eq_cont.89176:
-eq_cont.89172:
-eq_cont.89170:
-	bne	$7, $0, eq_else.89177
+eq_cont.89666:
+eq_cont.89662:
+eq_cont.89660:
+	bne	$7, $0, eq_else.89667
 	mov	$7, $0
-	j	eq_cont.89178
-eq_else.89177:
+	j	eq_cont.89668
+eq_else.89667:
 	sf	$f2, 3122($0)
-	addi	$7, $0, 3
-eq_cont.89178:
-	j	eq_cont.89168
-eq_else.89167:
+	mov	$7, $27
+eq_cont.89668:
+	j	eq_cont.89658
+eq_else.89657:
 	sf	$f3, 3122($0)
-	addi	$7, $0, 2
-eq_cont.89168:
-	j	eq_cont.89158
-eq_else.89157:
+	mov	$7, $26
+eq_cont.89658:
+	j	eq_cont.89648
+eq_else.89647:
 	sf	$f3, 3122($0)
 	mov	$7, $1
-eq_cont.89158:
-	j	eq_cont.89148
-eq_else.89147:
+eq_cont.89648:
+	j	eq_cont.89638
+eq_else.89637:
 	addi	$30, $0, 2
-	bne	$11, $30, eq_else.89179
+	bne	$11, $30, eq_else.89669
 	lf	$f0, 0($7)
 	sltf	$8, $f0, $f30
-	bne	$8, $0, eq_else.89181
+	bne	$8, $0, eq_else.89671
 	mov	$7, $0
-	j	eq_cont.89182
-eq_else.89181:
+	j	eq_cont.89672
+eq_else.89671:
 	lf	$f0, 0($7)
 	lf	$f1, 3($9)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
 	mov	$7, $1
-eq_cont.89182:
-	j	eq_cont.89180
-eq_else.89179:
+eq_cont.89672:
+	j	eq_cont.89670
+eq_else.89669:
 	lf	$f3, 0($7)
-	beqf	$f3, $f30, feq.89183
+	beqf	$f3, $f30, feq.89673
 	mov	$11, $0
-	j	feq_cont.89184
-feq.89183:
+	j	feq_cont.89674
+feq.89673:
 	mov	$11, $1
-feq_cont.89184:
-	bne	$11, $0, eq_else.89185
+feq_cont.89674:
+	bne	$11, $0, eq_else.89675
 	lf	$f4, 1($7)
 	fmul	$f0, $f4, $f0
 	lf	$f4, 2($7)
@@ -14094,46 +13998,46 @@ feq_cont.89184:
 	fmul	$f1, $f3, $f1
 	fsub	$f1, $f2, $f1
 	sltf	$9, $f30, $f1
-	bne	$9, $0, eq_else.89187
+	bne	$9, $0, eq_else.89677
 	mov	$7, $0
-	j	eq_cont.89188
-eq_else.89187:
+	j	eq_cont.89678
+eq_else.89677:
 	lw	$8, 6($8)
-	bne	$8, $0, eq_else.89189
+	bne	$8, $0, eq_else.89679
 	sqrt	$f1, $f1
 	fsub	$f0, $f0, $f1
 	lf	$f1, 4($7)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
-	j	eq_cont.89190
-eq_else.89189:
+	j	eq_cont.89680
+eq_else.89679:
 	sqrt	$f1, $f1
 	fadd	$f0, $f0, $f1
 	lf	$f1, 4($7)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
-eq_cont.89190:
+eq_cont.89680:
 	mov	$7, $1
-eq_cont.89188:
-	j	eq_cont.89186
-eq_else.89185:
+eq_cont.89678:
+	j	eq_cont.89676
+eq_else.89675:
 	mov	$7, $0
-eq_cont.89186:
-eq_cont.89180:
-eq_cont.89148:
-	bne	$7, $0, eq_else.89191
-	j	eq_cont.89192
-eq_else.89191:
+eq_cont.89676:
+eq_cont.89670:
+eq_cont.89638:
+	bne	$7, $0, eq_else.89681
+	j	eq_cont.89682
+eq_else.89681:
 	lf	$f0, 3122($0)
 	lf	$f1, 3124($0)
 	sltf	$7, $f0, $f1
-	bne	$7, $0, eq_else.89193
-	j	eq_cont.89194
-eq_else.89193:
+	bne	$7, $0, eq_else.89683
+	j	eq_cont.89684
+eq_else.89683:
 	lw	$7, 1($6)
-	bne	$7, $28, eq_else.89195
-	j	eq_cont.89196
-eq_else.89195:
+	bne	$7, $28, eq_else.89685
+	j	eq_cont.89686
+eq_else.89685:
 	lw	$7, 3071($7)
 	sw	$6, 5($3)
 	mov	$6, $10
@@ -14146,9 +14050,9 @@ eq_else.89195:
 	lw	$31, 6($3)
 	lw	$2, 5($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.89197
-	j	eq_cont.89198
-eq_else.89197:
+	bne	$5, $28, eq_else.89687
+	j	eq_cont.89688
+eq_else.89687:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -14159,9 +14063,9 @@ eq_else.89197:
 	lw	$31, 6($3)
 	lw	$2, 5($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.89199
-	j	eq_cont.89200
-eq_else.89199:
+	bne	$5, $28, eq_else.89689
+	j	eq_cont.89690
+eq_else.89689:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -14172,9 +14076,9 @@ eq_else.89199:
 	lw	$31, 6($3)
 	lw	$2, 5($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.89201
-	j	eq_cont.89202
-eq_else.89201:
+	bne	$5, $28, eq_else.89691
+	j	eq_cont.89692
+eq_else.89691:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -14185,9 +14089,9 @@ eq_else.89201:
 	lw	$31, 6($3)
 	lw	$2, 5($3)
 	lw	$5, 5($2)
-	bne	$5, $28, eq_else.89203
-	j	eq_cont.89204
-eq_else.89203:
+	bne	$5, $28, eq_else.89693
+	j	eq_cont.89694
+eq_else.89693:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -14198,9 +14102,9 @@ eq_else.89203:
 	lw	$31, 6($3)
 	lw	$2, 5($3)
 	lw	$5, 6($2)
-	bne	$5, $28, eq_else.89205
-	j	eq_cont.89206
-eq_else.89205:
+	bne	$5, $28, eq_else.89695
+	j	eq_cont.89696
+eq_else.89695:
 	lw	$5, 3071($5)
 	lw	$6, 0($3)
 	mov	$2, $0
@@ -14217,24 +14121,24 @@ eq_else.89205:
 	jal	solve_one_or_network_fast.3001
 	addi	$3, $3, -7
 	lw	$31, 6($3)
-eq_cont.89206:
-eq_cont.89204:
-eq_cont.89202:
-eq_cont.89200:
-eq_cont.89198:
-eq_cont.89196:
-eq_cont.89194:
-eq_cont.89192:
-eq_cont.89134:
+eq_cont.89696:
+eq_cont.89694:
+eq_cont.89692:
+eq_cont.89690:
+eq_cont.89688:
+eq_cont.89686:
+eq_cont.89684:
+eq_cont.89682:
+eq_cont.89624:
 	lw	$2, 4($3)
 	addi	$2, $2, 1
 	lw	$5, 1($3)
 	lw	$6, 0($3)
 	j	trace_or_matrix_fast.3005
 trace_reflections.3027:
-	bge	$2, $0, ge.89207
+	bge	$2, $0, ge.89697
 	jr $31
-ge.89207:
+ge.89697:
 	lw	$6, 3171($2)
 	lw	$7, 1($6)
 	lf	$f2, 3381($0) # 1000000000.000000
@@ -14257,21 +14161,21 @@ ge.89207:
 	lf	$f0, 3124($0)
 	lf	$f1, 3382($0) # -0.100000
 	sltf	$2, $f1, $f0
-	bne	$2, $0, eq_else.89209
+	bne	$2, $0, eq_else.89699
 	mov	$2, $0
-	j	eq_cont.89210
-eq_else.89209:
+	j	eq_cont.89700
+eq_else.89699:
 	lf	$f1, 3380($0) # 100000000.000000
-	bltf	$f0, $f1, fle.89211
+	bltf	$f0, $f1, fle.89701
 	mov	$2, $0
-	j	fle_cont.89212
-fle.89211:
+	j	fle_cont.89702
+fle.89701:
 	mov	$2, $1
-fle_cont.89212:
-eq_cont.89210:
-	bne	$2, $0, eq_else.89213
-	j	eq_cont.89214
-eq_else.89213:
+fle_cont.89702:
+eq_cont.89700:
+	bne	$2, $0, eq_else.89703
+	j	eq_cont.89704
+eq_else.89703:
 	lw	$2, 3128($0)
 	addi	$5, $0, 4
 	mul	$2, $2, $5
@@ -14279,21 +14183,21 @@ eq_else.89213:
 	add	$2, $2, $5
 	lw	$5, 5($3)
 	lw	$6, 0($5)
-	bne	$2, $6, eq_else.89215
+	bne	$2, $6, eq_else.89705
 	lw	$2, 3121($0)
 	lw	$6, 0($2)
 	lw	$7, 0($6)
-	bne	$7, $28, eq_else.89217
+	bne	$7, $28, eq_else.89707
 	mov	$2, $0
-	j	eq_cont.89218
-eq_else.89217:
+	j	eq_cont.89708
+eq_else.89707:
 	sw	$6, 6($3)
 	sw	$2, 7($3)
 	addi	$30, $0, 99
-	bne	$7, $30, eq_else.89219
+	bne	$7, $30, eq_else.89709
 	mov	$2, $1
-	j	eq_cont.89220
-eq_else.89219:
+	j	eq_cont.89710
+eq_else.89709:
 	lw	$8, 3001($7)
 	lf	$f0, 3125($0)
 	lw	$9, 5($8)
@@ -14303,8 +14207,7 @@ eq_else.89219:
 	lw	$9, 5($8)
 	lf	$f2, 1($9)
 	fsub	$f1, $f1, $f2
-	addi	$9, $0, 2
-	lf	$f2, 3125($9)
+	lf	$f2, 3125($26)
 	lw	$9, 5($8)
 	lf	$f3, 2($9)
 	fsub	$f2, $f2, $f3
@@ -14313,7 +14216,7 @@ eq_else.89219:
 	add	$30, $9, $7
 	lw	$7, 0($30)
 	lw	$9, 1($8)
-	bne	$9, $1, eq_else.89221
+	bne	$9, $1, eq_else.89711
 	addi	$9, $0, 3169
 	lw	$9, 0($9)
 	lf	$f3, 0($7)
@@ -14327,10 +14230,10 @@ eq_else.89219:
 	lw	$10, 4($8)
 	lf	$f5, 1($10)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.89223
+	bne	$10, $0, eq_else.89713
 	mov	$10, $0
-	j	eq_cont.89224
-eq_else.89223:
+	j	eq_cont.89714
+eq_else.89713:
 	lf	$f4, 2($9)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
@@ -14338,26 +14241,26 @@ eq_else.89223:
 	lw	$10, 4($8)
 	lf	$f5, 2($10)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.89225
+	bne	$10, $0, eq_else.89715
 	mov	$10, $0
-	j	eq_cont.89226
-eq_else.89225:
+	j	eq_cont.89716
+eq_else.89715:
 	lf	$f4, 1($7)
-	beqf	$f4, $f30, feq.89227
+	beqf	$f4, $f30, feq.89717
 	mov	$10, $0
-	j	feq_cont.89228
-feq.89227:
+	j	feq_cont.89718
+feq.89717:
 	mov	$10, $1
-feq_cont.89228:
-	bne	$10, $0, eq_else.89229
+feq_cont.89718:
+	bne	$10, $0, eq_else.89719
 	mov	$10, $1
-	j	eq_cont.89230
-eq_else.89229:
+	j	eq_cont.89720
+eq_else.89719:
 	mov	$10, $0
-eq_cont.89230:
-eq_cont.89226:
-eq_cont.89224:
-	bne	$10, $0, eq_else.89231
+eq_cont.89720:
+eq_cont.89716:
+eq_cont.89714:
+	bne	$10, $0, eq_else.89721
 	lf	$f3, 2($7)
 	fsub	$f3, $f3, $f1
 	lf	$f4, 3($7)
@@ -14369,10 +14272,10 @@ eq_cont.89224:
 	lw	$10, 4($8)
 	lf	$f5, 0($10)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.89233
+	bne	$10, $0, eq_else.89723
 	mov	$10, $0
-	j	eq_cont.89234
-eq_else.89233:
+	j	eq_cont.89724
+eq_else.89723:
 	lf	$f4, 2($9)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
@@ -14380,26 +14283,26 @@ eq_else.89233:
 	lw	$10, 4($8)
 	lf	$f5, 2($10)
 	sltf	$10, $f4, $f5
-	bne	$10, $0, eq_else.89235
+	bne	$10, $0, eq_else.89725
 	mov	$10, $0
-	j	eq_cont.89236
-eq_else.89235:
+	j	eq_cont.89726
+eq_else.89725:
 	lf	$f4, 3($7)
-	beqf	$f4, $f30, feq.89237
+	beqf	$f4, $f30, feq.89727
 	mov	$10, $0
-	j	feq_cont.89238
-feq.89237:
+	j	feq_cont.89728
+feq.89727:
 	mov	$10, $1
-feq_cont.89238:
-	bne	$10, $0, eq_else.89239
+feq_cont.89728:
+	bne	$10, $0, eq_else.89729
 	mov	$10, $1
-	j	eq_cont.89240
-eq_else.89239:
+	j	eq_cont.89730
+eq_else.89729:
 	mov	$10, $0
-eq_cont.89240:
-eq_cont.89236:
-eq_cont.89234:
-	bne	$10, $0, eq_else.89241
+eq_cont.89730:
+eq_cont.89726:
+eq_cont.89724:
+	bne	$10, $0, eq_else.89731
 	lf	$f3, 4($7)
 	fsub	$f2, $f3, $f2
 	lf	$f3, 5($7)
@@ -14411,10 +14314,10 @@ eq_cont.89234:
 	lw	$10, 4($8)
 	lf	$f3, 0($10)
 	sltf	$10, $f0, $f3
-	bne	$10, $0, eq_else.89243
+	bne	$10, $0, eq_else.89733
 	mov	$7, $0
-	j	eq_cont.89244
-eq_else.89243:
+	j	eq_cont.89734
+eq_else.89733:
 	lf	$f0, 1($9)
 	fmul	$f0, $f2, $f0
 	fadd	$f0, $f0, $f1
@@ -14422,52 +14325,52 @@ eq_else.89243:
 	lw	$8, 4($8)
 	lf	$f1, 1($8)
 	sltf	$8, $f0, $f1
-	bne	$8, $0, eq_else.89245
+	bne	$8, $0, eq_else.89735
 	mov	$7, $0
-	j	eq_cont.89246
-eq_else.89245:
+	j	eq_cont.89736
+eq_else.89735:
 	lf	$f0, 5($7)
-	beqf	$f0, $f30, feq.89247
+	beqf	$f0, $f30, feq.89737
 	mov	$7, $0
-	j	feq_cont.89248
-feq.89247:
+	j	feq_cont.89738
+feq.89737:
 	mov	$7, $1
-feq_cont.89248:
-	bne	$7, $0, eq_else.89249
+feq_cont.89738:
+	bne	$7, $0, eq_else.89739
 	mov	$7, $1
-	j	eq_cont.89250
-eq_else.89249:
+	j	eq_cont.89740
+eq_else.89739:
 	mov	$7, $0
-eq_cont.89250:
-eq_cont.89246:
-eq_cont.89244:
-	bne	$7, $0, eq_else.89251
+eq_cont.89740:
+eq_cont.89736:
+eq_cont.89734:
+	bne	$7, $0, eq_else.89741
 	mov	$7, $0
-	j	eq_cont.89252
-eq_else.89251:
+	j	eq_cont.89742
+eq_else.89741:
 	sf	$f2, 3122($0)
-	addi	$7, $0, 3
-eq_cont.89252:
-	j	eq_cont.89242
-eq_else.89241:
+	mov	$7, $27
+eq_cont.89742:
+	j	eq_cont.89732
+eq_else.89731:
 	sf	$f3, 3122($0)
-	addi	$7, $0, 2
-eq_cont.89242:
-	j	eq_cont.89232
-eq_else.89231:
+	mov	$7, $26
+eq_cont.89732:
+	j	eq_cont.89722
+eq_else.89721:
 	sf	$f3, 3122($0)
 	mov	$7, $1
-eq_cont.89232:
-	j	eq_cont.89222
-eq_else.89221:
+eq_cont.89722:
+	j	eq_cont.89712
+eq_else.89711:
 	addi	$30, $0, 2
-	bne	$9, $30, eq_else.89253
+	bne	$9, $30, eq_else.89743
 	lf	$f3, 0($7)
 	sltf	$8, $f3, $f30
-	bne	$8, $0, eq_else.89255
+	bne	$8, $0, eq_else.89745
 	mov	$7, $0
-	j	eq_cont.89256
-eq_else.89255:
+	j	eq_cont.89746
+eq_else.89745:
 	lf	$f3, 1($7)
 	fmul	$f0, $f3, $f0
 	lf	$f3, 2($7)
@@ -14478,17 +14381,17 @@ eq_else.89255:
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3122($0)
 	mov	$7, $1
-eq_cont.89256:
-	j	eq_cont.89254
-eq_else.89253:
+eq_cont.89746:
+	j	eq_cont.89744
+eq_else.89743:
 	lf	$f3, 0($7)
-	beqf	$f3, $f30, feq.89257
+	beqf	$f3, $f30, feq.89747
 	mov	$9, $0
-	j	feq_cont.89258
-feq.89257:
+	j	feq_cont.89748
+feq.89747:
 	mov	$9, $1
-feq_cont.89258:
-	bne	$9, $0, eq_else.89259
+feq_cont.89748:
+	bne	$9, $0, eq_else.89749
 	lf	$f4, 1($7)
 	fmul	$f4, $f4, $f0
 	lf	$f5, 2($7)
@@ -14512,10 +14415,10 @@ feq_cont.89258:
 	fmul	$f6, $f6, $f7
 	fadd	$f5, $f5, $f6
 	lw	$9, 3($8)
-	bne	$9, $0, eq_else.89261
+	bne	$9, $0, eq_else.89751
 	movf	$f0, $f5
-	j	eq_cont.89262
-eq_else.89261:
+	j	eq_cont.89752
+eq_else.89751:
 	fmul	$f6, $f1, $f2
 	lw	$9, 9($8)
 	lf	$f7, 0($9)
@@ -14531,61 +14434,61 @@ eq_else.89261:
 	lf	$f1, 2($9)
 	fmul	$f0, $f0, $f1
 	fadd	$f0, $f2, $f0
-eq_cont.89262:
+eq_cont.89752:
 	lw	$9, 1($8)
 	addi	$30, $0, 3
-	bne	$9, $30, eq_else.89263
+	bne	$9, $30, eq_else.89753
 	fsub	$f0, $f0, $f28
-	j	eq_cont.89264
-eq_else.89263:
-eq_cont.89264:
+	j	eq_cont.89754
+eq_else.89753:
+eq_cont.89754:
 	fmul	$f1, $f4, $f4
 	fmul	$f0, $f3, $f0
 	fsub	$f0, $f1, $f0
 	sltf	$9, $f30, $f0
-	bne	$9, $0, eq_else.89265
+	bne	$9, $0, eq_else.89755
 	mov	$7, $0
-	j	eq_cont.89266
-eq_else.89265:
+	j	eq_cont.89756
+eq_else.89755:
 	lw	$8, 6($8)
-	bne	$8, $0, eq_else.89267
+	bne	$8, $0, eq_else.89757
 	sqrt	$f0, $f0
 	fsub	$f0, $f4, $f0
 	lf	$f1, 4($7)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
-	j	eq_cont.89268
-eq_else.89267:
+	j	eq_cont.89758
+eq_else.89757:
 	sqrt	$f0, $f0
 	fadd	$f0, $f4, $f0
 	lf	$f1, 4($7)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
-eq_cont.89268:
+eq_cont.89758:
 	mov	$7, $1
-eq_cont.89266:
-	j	eq_cont.89260
-eq_else.89259:
+eq_cont.89756:
+	j	eq_cont.89750
+eq_else.89749:
 	mov	$7, $0
-eq_cont.89260:
-eq_cont.89254:
-eq_cont.89222:
-	bne	$7, $0, eq_else.89269
+eq_cont.89750:
+eq_cont.89744:
+eq_cont.89712:
+	bne	$7, $0, eq_else.89759
 	mov	$2, $0
-	j	eq_cont.89270
-eq_else.89269:
+	j	eq_cont.89760
+eq_else.89759:
 	lf	$f0, 3122($0)
 	lf	$f1, 3382($0) # -0.100000
 	sltf	$7, $f0, $f1
-	bne	$7, $0, eq_else.89271
+	bne	$7, $0, eq_else.89761
 	mov	$2, $0
-	j	eq_cont.89272
-eq_else.89271:
+	j	eq_cont.89762
+eq_else.89761:
 	lw	$7, 1($6)
-	bne	$7, $28, eq_else.89273
+	bne	$7, $28, eq_else.89763
 	mov	$2, $0
-	j	eq_cont.89274
-eq_else.89273:
+	j	eq_cont.89764
+eq_else.89763:
 	lw	$7, 3071($7)
 	mov	$5, $7
 	mov	$2, $0
@@ -14594,13 +14497,13 @@ eq_else.89273:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -9
 	lw	$31, 8($3)
-	bne	$2, $0, eq_else.89275
+	bne	$2, $0, eq_else.89765
 	lw	$2, 6($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.89277
+	bne	$5, $28, eq_else.89767
 	mov	$2, $0
-	j	eq_cont.89278
-eq_else.89277:
+	j	eq_cont.89768
+eq_else.89767:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 8($3)
@@ -14608,13 +14511,13 @@ eq_else.89277:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -9
 	lw	$31, 8($3)
-	bne	$2, $0, eq_else.89279
+	bne	$2, $0, eq_else.89769
 	lw	$2, 6($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.89281
+	bne	$5, $28, eq_else.89771
 	mov	$2, $0
-	j	eq_cont.89282
-eq_else.89281:
+	j	eq_cont.89772
+eq_else.89771:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 8($3)
@@ -14622,13 +14525,13 @@ eq_else.89281:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -9
 	lw	$31, 8($3)
-	bne	$2, $0, eq_else.89283
+	bne	$2, $0, eq_else.89773
 	lw	$2, 6($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.89285
+	bne	$5, $28, eq_else.89775
 	mov	$2, $0
-	j	eq_cont.89286
-eq_else.89285:
+	j	eq_cont.89776
+eq_else.89775:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 8($3)
@@ -14636,13 +14539,13 @@ eq_else.89285:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -9
 	lw	$31, 8($3)
-	bne	$2, $0, eq_else.89287
+	bne	$2, $0, eq_else.89777
 	lw	$2, 6($3)
 	lw	$5, 5($2)
-	bne	$5, $28, eq_else.89289
+	bne	$5, $28, eq_else.89779
 	mov	$2, $0
-	j	eq_cont.89290
-eq_else.89289:
+	j	eq_cont.89780
+eq_else.89779:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 8($3)
@@ -14650,13 +14553,13 @@ eq_else.89289:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -9
 	lw	$31, 8($3)
-	bne	$2, $0, eq_else.89291
+	bne	$2, $0, eq_else.89781
 	lw	$2, 6($3)
 	lw	$5, 6($2)
-	bne	$5, $28, eq_else.89293
+	bne	$5, $28, eq_else.89783
 	mov	$2, $0
-	j	eq_cont.89294
-eq_else.89293:
+	j	eq_cont.89784
+eq_else.89783:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 8($3)
@@ -14664,7 +14567,7 @@ eq_else.89293:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -9
 	lw	$31, 8($3)
-	bne	$2, $0, eq_else.89295
+	bne	$2, $0, eq_else.89785
 	addi	$2, $0, 7
 	lw	$5, 6($3)
 	sw	$31, 8($3)
@@ -14672,46 +14575,46 @@ eq_else.89293:
 	jal	shadow_check_one_or_group.2977
 	addi	$3, $3, -9
 	lw	$31, 8($3)
-	j	eq_cont.89296
-eq_else.89295:
+	j	eq_cont.89786
+eq_else.89785:
 	mov	$2, $1
-eq_cont.89296:
-eq_cont.89294:
-	j	eq_cont.89292
-eq_else.89291:
+eq_cont.89786:
+eq_cont.89784:
+	j	eq_cont.89782
+eq_else.89781:
 	mov	$2, $1
-eq_cont.89292:
-eq_cont.89290:
-	j	eq_cont.89288
-eq_else.89287:
+eq_cont.89782:
+eq_cont.89780:
+	j	eq_cont.89778
+eq_else.89777:
 	mov	$2, $1
-eq_cont.89288:
-eq_cont.89286:
-	j	eq_cont.89284
-eq_else.89283:
+eq_cont.89778:
+eq_cont.89776:
+	j	eq_cont.89774
+eq_else.89773:
 	mov	$2, $1
-eq_cont.89284:
-eq_cont.89282:
-	j	eq_cont.89280
-eq_else.89279:
+eq_cont.89774:
+eq_cont.89772:
+	j	eq_cont.89770
+eq_else.89769:
 	mov	$2, $1
-eq_cont.89280:
-eq_cont.89278:
-	j	eq_cont.89276
-eq_else.89275:
+eq_cont.89770:
+eq_cont.89768:
+	j	eq_cont.89766
+eq_else.89765:
 	mov	$2, $1
-eq_cont.89276:
-eq_cont.89274:
-	bne	$2, $0, eq_else.89297
+eq_cont.89766:
+eq_cont.89764:
+	bne	$2, $0, eq_else.89787
 	mov	$2, $0
-	j	eq_cont.89298
-eq_else.89297:
+	j	eq_cont.89788
+eq_else.89787:
 	mov	$2, $1
-eq_cont.89298:
-eq_cont.89272:
-eq_cont.89270:
-eq_cont.89220:
-	bne	$2, $0, eq_else.89299
+eq_cont.89788:
+eq_cont.89762:
+eq_cont.89760:
+eq_cont.89710:
+	bne	$2, $0, eq_else.89789
 	lw	$5, 7($3)
 	mov	$2, $1
 	sw	$31, 8($3)
@@ -14719,14 +14622,14 @@ eq_cont.89220:
 	jal	shadow_check_one_or_matrix.2980
 	addi	$3, $3, -9
 	lw	$31, 8($3)
-	j	eq_cont.89300
-eq_else.89299:
+	j	eq_cont.89790
+eq_else.89789:
 	lw	$2, 6($3)
 	lw	$5, 1($2)
-	bne	$5, $28, eq_else.89301
+	bne	$5, $28, eq_else.89791
 	mov	$2, $0
-	j	eq_cont.89302
-eq_else.89301:
+	j	eq_cont.89792
+eq_else.89791:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 8($3)
@@ -14734,13 +14637,13 @@ eq_else.89301:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -9
 	lw	$31, 8($3)
-	bne	$2, $0, eq_else.89303
+	bne	$2, $0, eq_else.89793
 	lw	$2, 6($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.89305
+	bne	$5, $28, eq_else.89795
 	mov	$2, $0
-	j	eq_cont.89306
-eq_else.89305:
+	j	eq_cont.89796
+eq_else.89795:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 8($3)
@@ -14748,13 +14651,13 @@ eq_else.89305:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -9
 	lw	$31, 8($3)
-	bne	$2, $0, eq_else.89307
+	bne	$2, $0, eq_else.89797
 	lw	$2, 6($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.89309
+	bne	$5, $28, eq_else.89799
 	mov	$2, $0
-	j	eq_cont.89310
-eq_else.89309:
+	j	eq_cont.89800
+eq_else.89799:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 8($3)
@@ -14762,13 +14665,13 @@ eq_else.89309:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -9
 	lw	$31, 8($3)
-	bne	$2, $0, eq_else.89311
+	bne	$2, $0, eq_else.89801
 	lw	$2, 6($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.89313
+	bne	$5, $28, eq_else.89803
 	mov	$2, $0
-	j	eq_cont.89314
-eq_else.89313:
+	j	eq_cont.89804
+eq_else.89803:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 8($3)
@@ -14776,13 +14679,13 @@ eq_else.89313:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -9
 	lw	$31, 8($3)
-	bne	$2, $0, eq_else.89315
+	bne	$2, $0, eq_else.89805
 	lw	$2, 6($3)
 	lw	$5, 5($2)
-	bne	$5, $28, eq_else.89317
+	bne	$5, $28, eq_else.89807
 	mov	$2, $0
-	j	eq_cont.89318
-eq_else.89317:
+	j	eq_cont.89808
+eq_else.89807:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 8($3)
@@ -14790,13 +14693,13 @@ eq_else.89317:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -9
 	lw	$31, 8($3)
-	bne	$2, $0, eq_else.89319
+	bne	$2, $0, eq_else.89809
 	lw	$2, 6($3)
 	lw	$5, 6($2)
-	bne	$5, $28, eq_else.89321
+	bne	$5, $28, eq_else.89811
 	mov	$2, $0
-	j	eq_cont.89322
-eq_else.89321:
+	j	eq_cont.89812
+eq_else.89811:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 8($3)
@@ -14804,7 +14707,7 @@ eq_else.89321:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -9
 	lw	$31, 8($3)
-	bne	$2, $0, eq_else.89323
+	bne	$2, $0, eq_else.89813
 	addi	$2, $0, 7
 	lw	$5, 6($3)
 	sw	$31, 8($3)
@@ -14812,37 +14715,37 @@ eq_else.89321:
 	jal	shadow_check_one_or_group.2977
 	addi	$3, $3, -9
 	lw	$31, 8($3)
-	j	eq_cont.89324
-eq_else.89323:
+	j	eq_cont.89814
+eq_else.89813:
 	mov	$2, $1
-eq_cont.89324:
-eq_cont.89322:
-	j	eq_cont.89320
-eq_else.89319:
+eq_cont.89814:
+eq_cont.89812:
+	j	eq_cont.89810
+eq_else.89809:
 	mov	$2, $1
-eq_cont.89320:
-eq_cont.89318:
-	j	eq_cont.89316
-eq_else.89315:
+eq_cont.89810:
+eq_cont.89808:
+	j	eq_cont.89806
+eq_else.89805:
 	mov	$2, $1
-eq_cont.89316:
-eq_cont.89314:
-	j	eq_cont.89312
-eq_else.89311:
+eq_cont.89806:
+eq_cont.89804:
+	j	eq_cont.89802
+eq_else.89801:
 	mov	$2, $1
-eq_cont.89312:
-eq_cont.89310:
-	j	eq_cont.89308
-eq_else.89307:
+eq_cont.89802:
+eq_cont.89800:
+	j	eq_cont.89798
+eq_else.89797:
 	mov	$2, $1
-eq_cont.89308:
-eq_cont.89306:
-	j	eq_cont.89304
-eq_else.89303:
+eq_cont.89798:
+eq_cont.89796:
+	j	eq_cont.89794
+eq_else.89793:
 	mov	$2, $1
-eq_cont.89304:
-eq_cont.89302:
-	bne	$2, $0, eq_else.89325
+eq_cont.89794:
+eq_cont.89792:
+	bne	$2, $0, eq_else.89815
 	lw	$5, 7($3)
 	mov	$2, $1
 	sw	$31, 8($3)
@@ -14850,13 +14753,13 @@ eq_cont.89302:
 	jal	shadow_check_one_or_matrix.2980
 	addi	$3, $3, -9
 	lw	$31, 8($3)
-	j	eq_cont.89326
-eq_else.89325:
+	j	eq_cont.89816
+eq_else.89815:
 	mov	$2, $1
-eq_cont.89326:
-eq_cont.89300:
-eq_cont.89218:
-	bne	$2, $0, eq_else.89327
+eq_cont.89816:
+eq_cont.89790:
+eq_cont.89708:
+	bne	$2, $0, eq_else.89817
 	lw	$2, 4($3)
 	lw	$5, 0($2)
 	lf	$f0, 3129($0)
@@ -14866,8 +14769,7 @@ eq_cont.89218:
 	lf	$f2, 1($5)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	addi	$6, $0, 2
-	lf	$f1, 3129($6)
+	lf	$f1, 3129($26)
 	lf	$f2, 2($5)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
@@ -14891,9 +14793,9 @@ eq_cont.89218:
 	fadd	$f3, $f3, $f4
 	fmul	$f1, $f1, $f3
 	sltf	$2, $f30, $f0
-	bne	$2, $0, eq_else.89329
-	j	eq_cont.89330
-eq_else.89329:
+	bne	$2, $0, eq_else.89819
+	j	eq_cont.89820
+eq_else.89819:
 	lf	$f3, 3138($0)
 	lf	$f4, 3132($0)
 	fmul	$f4, $f0, $f4
@@ -14904,19 +14806,16 @@ eq_else.89329:
 	fmul	$f4, $f0, $f4
 	fadd	$f3, $f3, $f4
 	sf	$f3, 3138($1)
-	addi	$2, $0, 2
-	addi	$6, $0, 2
-	lf	$f3, 3138($6)
-	addi	$6, $0, 2
-	lf	$f4, 3132($6)
+	lf	$f3, 3138($26)
+	lf	$f4, 3132($26)
 	fmul	$f0, $f0, $f4
 	fadd	$f0, $f3, $f0
-	sf	$f0, 3138($2)
-eq_cont.89330:
+	sf	$f0, 3138($26)
+eq_cont.89820:
 	sltf	$2, $f30, $f1
-	bne	$2, $0, eq_else.89331
-	j	eq_cont.89332
-eq_else.89331:
+	bne	$2, $0, eq_else.89821
+	j	eq_cont.89822
+eq_else.89821:
 	fmul	$f0, $f1, $f1
 	fmul	$f0, $f0, $f0
 	lf	$f1, 1($3)
@@ -14927,24 +14826,22 @@ eq_else.89331:
 	lf	$f3, 3138($1)
 	fadd	$f3, $f3, $f0
 	sf	$f3, 3138($1)
-	addi	$2, $0, 2
-	addi	$6, $0, 2
-	lf	$f3, 3138($6)
+	lf	$f3, 3138($26)
 	fadd	$f0, $f3, $f0
-	sf	$f0, 3138($2)
-eq_cont.89332:
-	j	eq_cont.89328
-eq_else.89327:
-eq_cont.89328:
-	j	eq_cont.89216
-eq_else.89215:
-eq_cont.89216:
-eq_cont.89214:
+	sf	$f0, 3138($26)
+eq_cont.89822:
+	j	eq_cont.89818
+eq_else.89817:
+eq_cont.89818:
+	j	eq_cont.89706
+eq_else.89705:
+eq_cont.89706:
+eq_cont.89704:
 	lw	$2, 0($3)
 	addi	$2, $2, -1
-	bge	$2, $0, ge.89333
+	bge	$2, $0, ge.89823
 	jr $31
-ge.89333:
+ge.89823:
 	lw	$5, 3171($2)
 	lw	$6, 1($5)
 	lf	$f0, 3381($0) # 1000000000.000000
@@ -14955,16 +14852,16 @@ ge.89333:
 	sw	$2, 8($3)
 	sw	$6, 9($3)
 	sw	$5, 10($3)
-	bne	$9, $28, eq_else.89335
-	j	eq_cont.89336
-eq_else.89335:
+	bne	$9, $28, eq_else.89825
+	j	eq_cont.89826
+eq_else.89825:
 	sw	$7, 11($3)
 	addi	$30, $0, 99
-	bne	$9, $30, eq_else.89337
+	bne	$9, $30, eq_else.89827
 	lw	$9, 1($8)
-	bne	$9, $28, eq_else.89339
-	j	eq_cont.89340
-eq_else.89339:
+	bne	$9, $28, eq_else.89829
+	j	eq_cont.89830
+eq_else.89829:
 	lw	$9, 3071($9)
 	sw	$8, 12($3)
 	mov	$5, $9
@@ -14976,9 +14873,9 @@ eq_else.89339:
 	lw	$31, 13($3)
 	lw	$2, 12($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.89341
-	j	eq_cont.89342
-eq_else.89341:
+	bne	$5, $28, eq_else.89831
+	j	eq_cont.89832
+eq_else.89831:
 	lw	$5, 3071($5)
 	lw	$6, 9($3)
 	mov	$2, $0
@@ -14989,9 +14886,9 @@ eq_else.89341:
 	lw	$31, 13($3)
 	lw	$2, 12($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.89343
-	j	eq_cont.89344
-eq_else.89343:
+	bne	$5, $28, eq_else.89833
+	j	eq_cont.89834
+eq_else.89833:
 	lw	$5, 3071($5)
 	lw	$6, 9($3)
 	mov	$2, $0
@@ -15002,9 +14899,9 @@ eq_else.89343:
 	lw	$31, 13($3)
 	lw	$2, 12($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.89345
-	j	eq_cont.89346
-eq_else.89345:
+	bne	$5, $28, eq_else.89835
+	j	eq_cont.89836
+eq_else.89835:
 	lw	$5, 3071($5)
 	lw	$6, 9($3)
 	mov	$2, $0
@@ -15021,12 +14918,12 @@ eq_else.89345:
 	jal	solve_one_or_network_fast.3001
 	addi	$3, $3, -14
 	lw	$31, 13($3)
-eq_cont.89346:
-eq_cont.89344:
-eq_cont.89342:
-eq_cont.89340:
-	j	eq_cont.89338
-eq_else.89337:
+eq_cont.89836:
+eq_cont.89834:
+eq_cont.89832:
+eq_cont.89830:
+	j	eq_cont.89828
+eq_else.89827:
 	lw	$10, 3001($9)
 	lw	$11, 10($10)
 	lf	$f0, 0($11)
@@ -15036,7 +14933,7 @@ eq_else.89337:
 	add	$30, $12, $9
 	lw	$9, 0($30)
 	lw	$12, 1($10)
-	bne	$12, $1, eq_else.89347
+	bne	$12, $1, eq_else.89837
 	lw	$11, 0($6)
 	lf	$f3, 0($9)
 	fsub	$f3, $f3, $f0
@@ -15049,10 +14946,10 @@ eq_else.89337:
 	lw	$12, 4($10)
 	lf	$f5, 1($12)
 	sltf	$12, $f4, $f5
-	bne	$12, $0, eq_else.89349
+	bne	$12, $0, eq_else.89839
 	mov	$12, $0
-	j	eq_cont.89350
-eq_else.89349:
+	j	eq_cont.89840
+eq_else.89839:
 	lf	$f4, 2($11)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
@@ -15060,26 +14957,26 @@ eq_else.89349:
 	lw	$12, 4($10)
 	lf	$f5, 2($12)
 	sltf	$12, $f4, $f5
-	bne	$12, $0, eq_else.89351
+	bne	$12, $0, eq_else.89841
 	mov	$12, $0
-	j	eq_cont.89352
-eq_else.89351:
+	j	eq_cont.89842
+eq_else.89841:
 	lf	$f4, 1($9)
-	beqf	$f4, $f30, feq.89353
+	beqf	$f4, $f30, feq.89843
 	mov	$12, $0
-	j	feq_cont.89354
-feq.89353:
+	j	feq_cont.89844
+feq.89843:
 	mov	$12, $1
-feq_cont.89354:
-	bne	$12, $0, eq_else.89355
+feq_cont.89844:
+	bne	$12, $0, eq_else.89845
 	mov	$12, $1
-	j	eq_cont.89356
-eq_else.89355:
+	j	eq_cont.89846
+eq_else.89845:
 	mov	$12, $0
-eq_cont.89356:
-eq_cont.89352:
-eq_cont.89350:
-	bne	$12, $0, eq_else.89357
+eq_cont.89846:
+eq_cont.89842:
+eq_cont.89840:
+	bne	$12, $0, eq_else.89847
 	lf	$f3, 2($9)
 	fsub	$f3, $f3, $f1
 	lf	$f4, 3($9)
@@ -15091,10 +14988,10 @@ eq_cont.89350:
 	lw	$12, 4($10)
 	lf	$f5, 0($12)
 	sltf	$12, $f4, $f5
-	bne	$12, $0, eq_else.89359
+	bne	$12, $0, eq_else.89849
 	mov	$12, $0
-	j	eq_cont.89360
-eq_else.89359:
+	j	eq_cont.89850
+eq_else.89849:
 	lf	$f4, 2($11)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
@@ -15102,26 +14999,26 @@ eq_else.89359:
 	lw	$12, 4($10)
 	lf	$f5, 2($12)
 	sltf	$12, $f4, $f5
-	bne	$12, $0, eq_else.89361
+	bne	$12, $0, eq_else.89851
 	mov	$12, $0
-	j	eq_cont.89362
-eq_else.89361:
+	j	eq_cont.89852
+eq_else.89851:
 	lf	$f4, 3($9)
-	beqf	$f4, $f30, feq.89363
+	beqf	$f4, $f30, feq.89853
 	mov	$12, $0
-	j	feq_cont.89364
-feq.89363:
+	j	feq_cont.89854
+feq.89853:
 	mov	$12, $1
-feq_cont.89364:
-	bne	$12, $0, eq_else.89365
+feq_cont.89854:
+	bne	$12, $0, eq_else.89855
 	mov	$12, $1
-	j	eq_cont.89366
-eq_else.89365:
+	j	eq_cont.89856
+eq_else.89855:
 	mov	$12, $0
-eq_cont.89366:
-eq_cont.89362:
-eq_cont.89360:
-	bne	$12, $0, eq_else.89367
+eq_cont.89856:
+eq_cont.89852:
+eq_cont.89850:
+	bne	$12, $0, eq_else.89857
 	lf	$f3, 4($9)
 	fsub	$f2, $f3, $f2
 	lf	$f3, 5($9)
@@ -15133,10 +15030,10 @@ eq_cont.89360:
 	lw	$12, 4($10)
 	lf	$f3, 0($12)
 	sltf	$12, $f0, $f3
-	bne	$12, $0, eq_else.89369
+	bne	$12, $0, eq_else.89859
 	mov	$9, $0
-	j	eq_cont.89370
-eq_else.89369:
+	j	eq_cont.89860
+eq_else.89859:
 	lf	$f0, 1($11)
 	fmul	$f0, $f2, $f0
 	fadd	$f0, $f0, $f1
@@ -15144,68 +15041,68 @@ eq_else.89369:
 	lw	$10, 4($10)
 	lf	$f1, 1($10)
 	sltf	$10, $f0, $f1
-	bne	$10, $0, eq_else.89371
+	bne	$10, $0, eq_else.89861
 	mov	$9, $0
-	j	eq_cont.89372
-eq_else.89371:
+	j	eq_cont.89862
+eq_else.89861:
 	lf	$f0, 5($9)
-	beqf	$f0, $f30, feq.89373
+	beqf	$f0, $f30, feq.89863
 	mov	$9, $0
-	j	feq_cont.89374
-feq.89373:
+	j	feq_cont.89864
+feq.89863:
 	mov	$9, $1
-feq_cont.89374:
-	bne	$9, $0, eq_else.89375
+feq_cont.89864:
+	bne	$9, $0, eq_else.89865
 	mov	$9, $1
-	j	eq_cont.89376
-eq_else.89375:
+	j	eq_cont.89866
+eq_else.89865:
 	mov	$9, $0
-eq_cont.89376:
-eq_cont.89372:
-eq_cont.89370:
-	bne	$9, $0, eq_else.89377
+eq_cont.89866:
+eq_cont.89862:
+eq_cont.89860:
+	bne	$9, $0, eq_else.89867
 	mov	$9, $0
-	j	eq_cont.89378
-eq_else.89377:
+	j	eq_cont.89868
+eq_else.89867:
 	sf	$f2, 3122($0)
-	addi	$9, $0, 3
-eq_cont.89378:
-	j	eq_cont.89368
-eq_else.89367:
+	mov	$9, $27
+eq_cont.89868:
+	j	eq_cont.89858
+eq_else.89857:
 	sf	$f3, 3122($0)
-	addi	$9, $0, 2
-eq_cont.89368:
-	j	eq_cont.89358
-eq_else.89357:
+	mov	$9, $26
+eq_cont.89858:
+	j	eq_cont.89848
+eq_else.89847:
 	sf	$f3, 3122($0)
 	mov	$9, $1
-eq_cont.89358:
-	j	eq_cont.89348
-eq_else.89347:
+eq_cont.89848:
+	j	eq_cont.89838
+eq_else.89837:
 	addi	$30, $0, 2
-	bne	$12, $30, eq_else.89379
+	bne	$12, $30, eq_else.89869
 	lf	$f0, 0($9)
 	sltf	$10, $f0, $f30
-	bne	$10, $0, eq_else.89381
+	bne	$10, $0, eq_else.89871
 	mov	$9, $0
-	j	eq_cont.89382
-eq_else.89381:
+	j	eq_cont.89872
+eq_else.89871:
 	lf	$f0, 0($9)
 	lf	$f1, 3($11)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
 	mov	$9, $1
-eq_cont.89382:
-	j	eq_cont.89380
-eq_else.89379:
+eq_cont.89872:
+	j	eq_cont.89870
+eq_else.89869:
 	lf	$f3, 0($9)
-	beqf	$f3, $f30, feq.89383
+	beqf	$f3, $f30, feq.89873
 	mov	$12, $0
-	j	feq_cont.89384
-feq.89383:
+	j	feq_cont.89874
+feq.89873:
 	mov	$12, $1
-feq_cont.89384:
-	bne	$12, $0, eq_else.89385
+feq_cont.89874:
+	bne	$12, $0, eq_else.89875
 	lf	$f4, 1($9)
 	fmul	$f0, $f4, $f0
 	lf	$f4, 2($9)
@@ -15219,46 +15116,46 @@ feq_cont.89384:
 	fmul	$f1, $f3, $f1
 	fsub	$f1, $f2, $f1
 	sltf	$11, $f30, $f1
-	bne	$11, $0, eq_else.89387
+	bne	$11, $0, eq_else.89877
 	mov	$9, $0
-	j	eq_cont.89388
-eq_else.89387:
+	j	eq_cont.89878
+eq_else.89877:
 	lw	$10, 6($10)
-	bne	$10, $0, eq_else.89389
+	bne	$10, $0, eq_else.89879
 	sqrt	$f1, $f1
 	fsub	$f0, $f0, $f1
 	lf	$f1, 4($9)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
-	j	eq_cont.89390
-eq_else.89389:
+	j	eq_cont.89880
+eq_else.89879:
 	sqrt	$f1, $f1
 	fadd	$f0, $f0, $f1
 	lf	$f1, 4($9)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
-eq_cont.89390:
+eq_cont.89880:
 	mov	$9, $1
-eq_cont.89388:
-	j	eq_cont.89386
-eq_else.89385:
+eq_cont.89878:
+	j	eq_cont.89876
+eq_else.89875:
 	mov	$9, $0
-eq_cont.89386:
-eq_cont.89380:
-eq_cont.89348:
-	bne	$9, $0, eq_else.89391
-	j	eq_cont.89392
-eq_else.89391:
+eq_cont.89876:
+eq_cont.89870:
+eq_cont.89838:
+	bne	$9, $0, eq_else.89881
+	j	eq_cont.89882
+eq_else.89881:
 	lf	$f0, 3122($0)
 	lf	$f1, 3124($0)
 	sltf	$9, $f0, $f1
-	bne	$9, $0, eq_else.89393
-	j	eq_cont.89394
-eq_else.89393:
+	bne	$9, $0, eq_else.89883
+	j	eq_cont.89884
+eq_else.89883:
 	lw	$9, 1($8)
-	bne	$9, $28, eq_else.89395
-	j	eq_cont.89396
-eq_else.89395:
+	bne	$9, $28, eq_else.89885
+	j	eq_cont.89886
+eq_else.89885:
 	lw	$9, 3071($9)
 	sw	$8, 12($3)
 	mov	$5, $9
@@ -15270,9 +15167,9 @@ eq_else.89395:
 	lw	$31, 13($3)
 	lw	$2, 12($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.89397
-	j	eq_cont.89398
-eq_else.89397:
+	bne	$5, $28, eq_else.89887
+	j	eq_cont.89888
+eq_else.89887:
 	lw	$5, 3071($5)
 	lw	$6, 9($3)
 	mov	$2, $0
@@ -15283,9 +15180,9 @@ eq_else.89397:
 	lw	$31, 13($3)
 	lw	$2, 12($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.89399
-	j	eq_cont.89400
-eq_else.89399:
+	bne	$5, $28, eq_else.89889
+	j	eq_cont.89890
+eq_else.89889:
 	lw	$5, 3071($5)
 	lw	$6, 9($3)
 	mov	$2, $0
@@ -15296,9 +15193,9 @@ eq_else.89399:
 	lw	$31, 13($3)
 	lw	$2, 12($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.89401
-	j	eq_cont.89402
-eq_else.89401:
+	bne	$5, $28, eq_else.89891
+	j	eq_cont.89892
+eq_else.89891:
 	lw	$5, 3071($5)
 	lw	$6, 9($3)
 	mov	$2, $0
@@ -15315,13 +15212,13 @@ eq_else.89401:
 	jal	solve_one_or_network_fast.3001
 	addi	$3, $3, -14
 	lw	$31, 13($3)
-eq_cont.89402:
-eq_cont.89400:
-eq_cont.89398:
-eq_cont.89396:
-eq_cont.89394:
-eq_cont.89392:
-eq_cont.89338:
+eq_cont.89892:
+eq_cont.89890:
+eq_cont.89888:
+eq_cont.89886:
+eq_cont.89884:
+eq_cont.89882:
+eq_cont.89828:
 	lw	$5, 11($3)
 	lw	$6, 9($3)
 	mov	$2, $1
@@ -15330,25 +15227,25 @@ eq_cont.89338:
 	jal	trace_or_matrix_fast.3005
 	addi	$3, $3, -14
 	lw	$31, 13($3)
-eq_cont.89336:
+eq_cont.89826:
 	lf	$f0, 3124($0)
 	lf	$f1, 3382($0) # -0.100000
 	sltf	$2, $f1, $f0
-	bne	$2, $0, eq_else.89403
+	bne	$2, $0, eq_else.89893
 	mov	$2, $0
-	j	eq_cont.89404
-eq_else.89403:
+	j	eq_cont.89894
+eq_else.89893:
 	lf	$f1, 3380($0) # 100000000.000000
-	bltf	$f0, $f1, fle.89405
+	bltf	$f0, $f1, fle.89895
 	mov	$2, $0
-	j	fle_cont.89406
-fle.89405:
+	j	fle_cont.89896
+fle.89895:
 	mov	$2, $1
-fle_cont.89406:
-eq_cont.89404:
-	bne	$2, $0, eq_else.89407
-	j	eq_cont.89408
-eq_else.89407:
+fle_cont.89896:
+eq_cont.89894:
+	bne	$2, $0, eq_else.89897
+	j	eq_cont.89898
+eq_else.89897:
 	lw	$2, 3128($0)
 	addi	$5, $0, 4
 	mul	$2, $2, $5
@@ -15356,7 +15253,7 @@ eq_else.89407:
 	add	$2, $2, $5
 	lw	$5, 10($3)
 	lw	$6, 0($5)
-	bne	$2, $6, eq_else.89409
+	bne	$2, $6, eq_else.89899
 	lw	$2, 3121($0)
 	mov	$5, $2
 	mov	$2, $0
@@ -15365,7 +15262,7 @@ eq_else.89407:
 	jal	shadow_check_one_or_matrix.2980
 	addi	$3, $3, -14
 	lw	$31, 13($3)
-	bne	$2, $0, eq_else.89411
+	bne	$2, $0, eq_else.89901
 	lw	$2, 9($3)
 	lw	$5, 0($2)
 	lf	$f0, 3129($0)
@@ -15375,8 +15272,7 @@ eq_else.89407:
 	lf	$f2, 1($5)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	addi	$6, $0, 2
-	lf	$f1, 3129($6)
+	lf	$f1, 3129($26)
 	lf	$f2, 2($5)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
@@ -15400,9 +15296,9 @@ eq_else.89407:
 	fadd	$f3, $f3, $f4
 	fmul	$f1, $f1, $f3
 	sltf	$2, $f30, $f0
-	bne	$2, $0, eq_else.89413
-	j	eq_cont.89414
-eq_else.89413:
+	bne	$2, $0, eq_else.89903
+	j	eq_cont.89904
+eq_else.89903:
 	lf	$f3, 3138($0)
 	lf	$f4, 3132($0)
 	fmul	$f4, $f0, $f4
@@ -15413,19 +15309,16 @@ eq_else.89413:
 	fmul	$f4, $f0, $f4
 	fadd	$f3, $f3, $f4
 	sf	$f3, 3138($1)
-	addi	$2, $0, 2
-	addi	$6, $0, 2
-	lf	$f3, 3138($6)
-	addi	$6, $0, 2
-	lf	$f4, 3132($6)
+	lf	$f3, 3138($26)
+	lf	$f4, 3132($26)
 	fmul	$f0, $f0, $f4
 	fadd	$f0, $f3, $f0
-	sf	$f0, 3138($2)
-eq_cont.89414:
+	sf	$f0, 3138($26)
+eq_cont.89904:
 	sltf	$2, $f30, $f1
-	bne	$2, $0, eq_else.89415
-	j	eq_cont.89416
-eq_else.89415:
+	bne	$2, $0, eq_else.89905
+	j	eq_cont.89906
+eq_else.89905:
 	fmul	$f0, $f1, $f1
 	fmul	$f0, $f0, $f0
 	lf	$f1, 1($3)
@@ -15436,19 +15329,17 @@ eq_else.89415:
 	lf	$f3, 3138($1)
 	fadd	$f3, $f3, $f0
 	sf	$f3, 3138($1)
-	addi	$2, $0, 2
-	addi	$6, $0, 2
-	lf	$f3, 3138($6)
+	lf	$f3, 3138($26)
 	fadd	$f0, $f3, $f0
-	sf	$f0, 3138($2)
-eq_cont.89416:
-	j	eq_cont.89412
-eq_else.89411:
-eq_cont.89412:
-	j	eq_cont.89410
-eq_else.89409:
-eq_cont.89410:
-eq_cont.89408:
+	sf	$f0, 3138($26)
+eq_cont.89906:
+	j	eq_cont.89902
+eq_else.89901:
+eq_cont.89902:
+	j	eq_cont.89900
+eq_else.89899:
+eq_cont.89900:
+eq_cont.89898:
 	lw	$2, 8($3)
 	addi	$2, $2, -1
 	lf	$f0, 3($3)
@@ -15457,9 +15348,9 @@ eq_cont.89408:
 	j	trace_reflections.3027
 trace_ray.3032:
 	addi	$30, $0, 4
-	ble	$2, $30, le.89417
+	ble	$2, $30, le.89907
 	jr $31
-le.89417:
+le.89907:
 	lw	$7, 2($6)
 	lf	$f2, 3381($0) # 1000000000.000000
 	sf	$f2, 3124($0)
@@ -15481,26 +15372,26 @@ le.89417:
 	lf	$f0, 3124($0)
 	lf	$f1, 3382($0) # -0.100000
 	sltf	$2, $f1, $f0
-	bne	$2, $0, eq_else.89419
+	bne	$2, $0, eq_else.89909
 	mov	$2, $0
-	j	eq_cont.89420
-eq_else.89419:
+	j	eq_cont.89910
+eq_else.89909:
 	lf	$f1, 3380($0) # 100000000.000000
-	bltf	$f0, $f1, fle.89421
+	bltf	$f0, $f1, fle.89911
 	mov	$2, $0
-	j	fle_cont.89422
-fle.89421:
+	j	fle_cont.89912
+fle.89911:
 	mov	$2, $1
-fle_cont.89422:
-eq_cont.89420:
-	bne	$2, $0, eq_else.89423
+fle_cont.89912:
+eq_cont.89910:
+	bne	$2, $0, eq_else.89913
 	lw	$2, 4($3)
 	lw	$5, 5($3)
 	add $30, $5, $2
 	sw	$28, 0($30)
-	bne	$2, $0, eq_else.89424
+	bne	$2, $0, eq_else.89914
 	jr $31
-eq_else.89424:
+eq_else.89914:
 	lw	$2, 3($3)
 	lf	$f0, 0($2)
 	lf	$f1, 3067($0)
@@ -15510,15 +15401,14 @@ eq_else.89424:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	lf	$f1, 2($2)
-	addi	$2, $0, 2
-	lf	$f2, 3067($2)
+	lf	$f2, 3067($26)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	fneg	$f0, $f0
 	sltf	$2, $f30, $f0
-	bne	$2, $0, eq_else.89426
+	bne	$2, $0, eq_else.89916
 	jr $31
-eq_else.89426:
+eq_else.89916:
 	fmul	$f1, $f0, $f0
 	fmul	$f0, $f1, $f0
 	lf	$f1, 2($3)
@@ -15531,13 +15421,11 @@ eq_else.89426:
 	lf	$f1, 3138($1)
 	fadd	$f1, $f1, $f0
 	sf	$f1, 3138($1)
-	addi	$2, $0, 2
-	addi	$5, $0, 2
-	lf	$f1, 3138($5)
+	lf	$f1, 3138($26)
 	fadd	$f0, $f1, $f0
-	sf	$f0, 3138($2)
+	sf	$f0, 3138($26)
 	jr $31
-eq_else.89423:
+eq_else.89913:
 	lw	$2, 3128($0)
 	lw	$5, 3001($2)
 	lw	$6, 2($5)
@@ -15546,41 +15434,40 @@ eq_else.89423:
 	lf	$f1, 2($3)
 	fmul	$f0, $f0, $f1
 	lw	$7, 1($5)
-	bne	$7, $1, eq_else.89429
+	bne	$7, $1, eq_else.89919
 	lw	$7, 3123($0)
 	sf	$f30, 3129($0)
 	sf	$f30, 3129($1)
-	addi	$8, $0, 2
-	sf	$f30, 3129($8)
+	sf	$f30, 3129($26)
 	addi	$8, $7, -1
 	addi	$7, $7, -1
 	lw	$9, 3($3)
 	add	$30, $9, $7
 	lf	$f2, 0($30)
-	beqf	$f2, $f30, feq.89431
+	beqf	$f2, $f30, feq.89921
 	mov	$7, $0
-	j	feq_cont.89432
-feq.89431:
+	j	feq_cont.89922
+feq.89921:
 	mov	$7, $1
-feq_cont.89432:
-	bne	$7, $0, eq_else.89433
+feq_cont.89922:
+	bne	$7, $0, eq_else.89923
 	sltf	$7, $f30, $f2
-	bne	$7, $0, eq_else.89435
+	bne	$7, $0, eq_else.89925
 	movf	$f2, $f29
-	j	eq_cont.89436
-eq_else.89435:
+	j	eq_cont.89926
+eq_else.89925:
 	movf	$f2, $f28
-eq_cont.89436:
-	j	eq_cont.89434
-eq_else.89433:
+eq_cont.89926:
+	j	eq_cont.89924
+eq_else.89923:
 	movf	$f2, $f30
-eq_cont.89434:
+eq_cont.89924:
 	fneg	$f2, $f2
 	sf	$f2, 3129($8)
-	j	eq_cont.89430
-eq_else.89429:
+	j	eq_cont.89920
+eq_else.89919:
 	addi	$30, $0, 2
-	bne	$7, $30, eq_else.89437
+	bne	$7, $30, eq_else.89927
 	lw	$7, 4($5)
 	lf	$f2, 0($7)
 	fneg	$f2, $f2
@@ -15589,13 +15476,12 @@ eq_else.89429:
 	lf	$f2, 1($7)
 	fneg	$f2, $f2
 	sf	$f2, 3129($1)
-	addi	$7, $0, 2
-	lw	$8, 4($5)
-	lf	$f2, 2($8)
+	lw	$7, 4($5)
+	lf	$f2, 2($7)
 	fneg	$f2, $f2
-	sf	$f2, 3129($7)
-	j	eq_cont.89438
-eq_else.89437:
+	sf	$f2, 3129($26)
+	j	eq_cont.89928
+eq_else.89927:
 	lf	$f2, 3125($0)
 	lw	$7, 5($5)
 	lf	$f3, 0($7)
@@ -15604,8 +15490,7 @@ eq_else.89437:
 	lw	$7, 5($5)
 	lf	$f4, 1($7)
 	fsub	$f3, $f3, $f4
-	addi	$7, $0, 2
-	lf	$f4, 3125($7)
+	lf	$f4, 3125($26)
 	lw	$7, 5($5)
 	lf	$f5, 2($7)
 	fsub	$f4, $f4, $f5
@@ -15619,13 +15504,12 @@ eq_else.89437:
 	lf	$f7, 2($7)
 	fmul	$f7, $f4, $f7
 	lw	$7, 3($5)
-	bne	$7, $0, eq_else.89439
+	bne	$7, $0, eq_else.89929
 	sf	$f5, 3129($0)
 	sf	$f6, 3129($1)
-	addi	$7, $0, 2
-	sf	$f7, 3129($7)
-	j	eq_cont.89440
-eq_else.89439:
+	sf	$f7, 3129($26)
+	j	eq_cont.89930
+eq_else.89929:
 	lw	$7, 9($5)
 	lf	$f8, 2($7)
 	fmul	$f8, $f3, $f8
@@ -15648,68 +15532,62 @@ eq_else.89439:
 	fmul	$f4, $f4, $f5
 	fadd	$f4, $f6, $f4
 	sf	$f4, 3129($1)
-	addi	$7, $0, 2
-	lw	$8, 9($5)
-	lf	$f4, 1($8)
+	lw	$7, 9($5)
+	lf	$f4, 1($7)
 	fmul	$f2, $f2, $f4
-	lw	$8, 9($5)
-	lf	$f4, 0($8)
+	lw	$7, 9($5)
+	lf	$f4, 0($7)
 	fmul	$f3, $f3, $f4
 	fadd	$f2, $f2, $f3
 	lf	$f3, 3388($0) # 0.500000
 	fmul	$f2, $f2, $f3
 	fadd	$f2, $f7, $f2
-	sf	$f2, 3129($7)
-eq_cont.89440:
+	sf	$f2, 3129($26)
+eq_cont.89930:
 	lw	$7, 6($5)
 	lf	$f2, 3129($0)
 	fmul	$f2, $f2, $f2
 	lf	$f3, 3129($1)
 	fmul	$f3, $f3, $f3
 	fadd	$f2, $f2, $f3
-	addi	$8, $0, 2
-	lf	$f3, 3129($8)
+	lf	$f3, 3129($26)
 	fmul	$f3, $f3, $f3
 	fadd	$f2, $f2, $f3
 	sqrt	$f2, $f2
-	beqf	$f2, $f30, feq.89441
+	beqf	$f2, $f30, feq.89931
 	mov	$8, $0
-	j	feq_cont.89442
-feq.89441:
+	j	feq_cont.89932
+feq.89931:
 	mov	$8, $1
-feq_cont.89442:
-	bne	$8, $0, eq_else.89443
-	bne	$7, $0, eq_else.89445
+feq_cont.89932:
+	bne	$8, $0, eq_else.89933
+	bne	$7, $0, eq_else.89935
 	fdiv	$f2, $f28, $f2
-	j	eq_cont.89446
-eq_else.89445:
+	j	eq_cont.89936
+eq_else.89935:
 	fdiv	$f2, $f29, $f2
-eq_cont.89446:
-	j	eq_cont.89444
-eq_else.89443:
+eq_cont.89936:
+	j	eq_cont.89934
+eq_else.89933:
 	movf	$f2, $f28
-eq_cont.89444:
+eq_cont.89934:
 	lf	$f3, 3129($0)
 	fmul	$f3, $f3, $f2
 	sf	$f3, 3129($0)
 	lf	$f3, 3129($1)
 	fmul	$f3, $f3, $f2
 	sf	$f3, 3129($1)
-	addi	$7, $0, 2
-	addi	$8, $0, 2
-	lf	$f3, 3129($8)
+	lf	$f3, 3129($26)
 	fmul	$f2, $f3, $f2
-	sf	$f2, 3129($7)
-eq_cont.89438:
-eq_cont.89430:
+	sf	$f2, 3129($26)
+eq_cont.89928:
+eq_cont.89920:
 	lf	$f2, 3125($0)
 	sf	$f2, 3146($0)
 	lf	$f2, 3125($1)
 	sf	$f2, 3146($1)
-	addi	$7, $0, 2
-	addi	$8, $0, 2
-	lf	$f2, 3125($8)
-	sf	$f2, 3146($7)
+	lf	$f2, 3125($26)
+	sf	$f2, 3146($26)
 	lw	$7, 0($5)
 	lw	$8, 8($5)
 	lf	$f2, 0($8)
@@ -15717,15 +15595,14 @@ eq_cont.89430:
 	lw	$8, 8($5)
 	lf	$f2, 1($8)
 	sf	$f2, 3132($1)
-	addi	$8, $0, 2
-	lw	$9, 8($5)
-	lf	$f2, 2($9)
-	sf	$f2, 3132($8)
+	lw	$8, 8($5)
+	lf	$f2, 2($8)
+	sf	$f2, 3132($26)
 	sw	$6, 6($3)
 	sf	$f0, 7($3)
 	sw	$5, 8($3)
 	sw	$2, 9($3)
-	bne	$7, $1, eq_else.89447
+	bne	$7, $1, eq_else.89937
 	lf	$f2, 3125($0)
 	lw	$7, 5($5)
 	lf	$f3, 0($7)
@@ -15738,8 +15615,7 @@ eq_cont.89430:
 	fsub	$f2, $f2, $f3
 	lf	$f3, 3364($0) # 10.000000
 	sltf	$7, $f2, $f3
-	addi	$8, $0, 2
-	lf	$f2, 3125($8)
+	lf	$f2, 3125($26)
 	lw	$8, 5($5)
 	lf	$f3, 2($8)
 	fsub	$f2, $f2, $f3
@@ -15751,50 +15627,50 @@ eq_cont.89430:
 	fsub	$f2, $f2, $f3
 	lf	$f3, 3364($0) # 10.000000
 	sltf	$8, $f2, $f3
-	bne	$7, $0, eq_else.89449
-	bne	$8, $0, eq_else.89451
+	bne	$7, $0, eq_else.89939
+	bne	$8, $0, eq_else.89941
 	lf	$f2, 3366($0) # 255.000000
-	j	eq_cont.89452
-eq_else.89451:
+	j	eq_cont.89942
+eq_else.89941:
 	movf	$f2, $f30
-eq_cont.89452:
-	j	eq_cont.89450
-eq_else.89449:
-	bne	$8, $0, eq_else.89453
+eq_cont.89942:
+	j	eq_cont.89940
+eq_else.89939:
+	bne	$8, $0, eq_else.89943
 	movf	$f2, $f30
-	j	eq_cont.89454
-eq_else.89453:
+	j	eq_cont.89944
+eq_else.89943:
 	lf	$f2, 3366($0) # 255.000000
-eq_cont.89454:
-eq_cont.89450:
+eq_cont.89944:
+eq_cont.89940:
 	sf	$f2, 3132($1)
-	j	eq_cont.89448
-eq_else.89447:
+	j	eq_cont.89938
+eq_else.89937:
 	addi	$30, $0, 2
-	bne	$7, $30, eq_else.89455
+	bne	$7, $30, eq_else.89945
 	lf	$f2, 3125($1)
 	lf	$f3, 3363($0) # 0.250000
 	fmul	$f2, $f2, $f3
-	bltf	$f30, $f2, fle.89457
+	bltf	$f30, $f2, fle.89947
 	movf	$f3, $f29
-	j	fle_cont.89458
-fle.89457:
+	j	fle_cont.89948
+fle.89947:
 	movf	$f3, $f28
-fle_cont.89458:
+fle_cont.89948:
 	fmul	$f2, $f3, $f2
 	lf	$f4, 3395($0) # 6.283185
 	fdiv	$f5, $f2, $f4
 	floor	$f5, $f5
 	fmul	$f4, $f5, $f4
 	fsub	$f2, $f2, $f4
-	bltf	$f2, $f31, fle.89459
+	bltf	$f2, $f31, fle.89949
 	fsub	$f2, $f2, $f31
 	fneg	$f3, $f3
 	lf	$f4, 3393($0) # 1.570796
-	bltf	$f2, $f4, fle.89461
+	bltf	$f2, $f4, fle.89951
 	fsub	$f2, $f31, $f2
 	lf	$f4, 3392($0) # 0.785398
-	bltf	$f4, $f2, fle.89463
+	bltf	$f4, $f2, fle.89953
 	lf	$f4, 3391($0) # 0.166667
 	lf	$f5, 3390($0) # 0.008333
 	lf	$f6, 3389($0) # 0.000196
@@ -15816,8 +15692,8 @@ fle_cont.89458:
 	lf	$f2, 13($3)
 	fmul	$f0, $f0, $f2
 	fsub	$f0, $f1, $f0
-	addi	$2, $0, 2
 	sf	$f0, 15($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 16($3)
 	addi	$3, $3, 17
@@ -15831,8 +15707,8 @@ fle_cont.89458:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 15($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 16($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 17($3)
 	addi	$3, $3, 18
@@ -15848,8 +15724,8 @@ fle_cont.89458:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 10($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.89464
-fle.89463:
+	j	fle_cont.89954
+fle.89953:
 	lf	$f4, 3393($0) # 1.570796
 	fsub	$f2, $f4, $f2
 	lf	$f4, 3388($0) # 0.500000
@@ -15871,9 +15747,9 @@ fle.89463:
 	lf	$f1, 20($3)
 	fmul	$f0, $f0, $f1
 	fsub	$f0, $f28, $f0
-	addi	$2, $0, 2
 	lf	$f1, 19($3)
 	sf	$f0, 21($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 22($3)
 	addi	$3, $3, 23
@@ -15885,9 +15761,9 @@ fle.89463:
 	fmul	$f0, $f0, $f1
 	lf	$f1, 21($3)
 	fadd	$f0, $f1, $f0
-	addi	$2, $0, 3
 	lf	$f1, 19($3)
 	sf	$f0, 22($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 23($3)
 	addi	$3, $3, 24
@@ -15901,11 +15777,11 @@ fle.89463:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 10($3)
 	fmul	$f0, $f1, $f0
-fle_cont.89464:
-	j	fle_cont.89462
-fle.89461:
+fle_cont.89954:
+	j	fle_cont.89952
+fle.89951:
 	lf	$f4, 3392($0) # 0.785398
-	bltf	$f4, $f2, fle.89465
+	bltf	$f4, $f2, fle.89955
 	lf	$f4, 3391($0) # 0.166667
 	lf	$f5, 3390($0) # 0.008333
 	lf	$f6, 3389($0) # 0.000196
@@ -15927,8 +15803,8 @@ fle.89461:
 	lf	$f2, 25($3)
 	fmul	$f0, $f0, $f2
 	fsub	$f0, $f1, $f0
-	addi	$2, $0, 2
 	sf	$f0, 27($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 28($3)
 	addi	$3, $3, 29
@@ -15942,8 +15818,8 @@ fle.89461:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 27($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 28($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 29($3)
 	addi	$3, $3, 30
@@ -15959,8 +15835,8 @@ fle.89461:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 10($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.89466
-fle.89465:
+	j	fle_cont.89956
+fle.89955:
 	lf	$f4, 3393($0) # 1.570796
 	fsub	$f2, $f4, $f2
 	lf	$f4, 3388($0) # 0.500000
@@ -15982,9 +15858,9 @@ fle.89465:
 	lf	$f1, 32($3)
 	fmul	$f0, $f0, $f1
 	fsub	$f0, $f28, $f0
-	addi	$2, $0, 2
 	lf	$f1, 31($3)
 	sf	$f0, 33($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 34($3)
 	addi	$3, $3, 35
@@ -15996,9 +15872,9 @@ fle.89465:
 	fmul	$f0, $f0, $f1
 	lf	$f1, 33($3)
 	fadd	$f0, $f1, $f0
-	addi	$2, $0, 3
 	lf	$f1, 31($3)
 	sf	$f0, 34($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 35($3)
 	addi	$3, $3, 36
@@ -16012,15 +15888,15 @@ fle.89465:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 10($3)
 	fmul	$f0, $f1, $f0
-fle_cont.89466:
-fle_cont.89462:
-	j	fle_cont.89460
-fle.89459:
+fle_cont.89956:
+fle_cont.89952:
+	j	fle_cont.89950
+fle.89949:
 	lf	$f4, 3393($0) # 1.570796
-	bltf	$f2, $f4, fle.89467
+	bltf	$f2, $f4, fle.89957
 	fsub	$f2, $f31, $f2
 	lf	$f4, 3392($0) # 0.785398
-	bltf	$f4, $f2, fle.89469
+	bltf	$f4, $f2, fle.89959
 	lf	$f4, 3391($0) # 0.166667
 	lf	$f5, 3390($0) # 0.008333
 	lf	$f6, 3389($0) # 0.000196
@@ -16042,8 +15918,8 @@ fle.89459:
 	lf	$f2, 38($3)
 	fmul	$f0, $f0, $f2
 	fsub	$f0, $f1, $f0
-	addi	$2, $0, 2
 	sf	$f0, 40($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 41($3)
 	addi	$3, $3, 42
@@ -16057,8 +15933,8 @@ fle.89459:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 40($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 41($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 42($3)
 	addi	$3, $3, 43
@@ -16074,8 +15950,8 @@ fle.89459:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 35($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.89470
-fle.89469:
+	j	fle_cont.89960
+fle.89959:
 	lf	$f4, 3393($0) # 1.570796
 	fsub	$f2, $f4, $f2
 	lf	$f4, 3388($0) # 0.500000
@@ -16097,9 +15973,9 @@ fle.89469:
 	lf	$f1, 45($3)
 	fmul	$f0, $f0, $f1
 	fsub	$f0, $f28, $f0
-	addi	$2, $0, 2
 	lf	$f1, 44($3)
 	sf	$f0, 46($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 47($3)
 	addi	$3, $3, 48
@@ -16111,9 +15987,9 @@ fle.89469:
 	fmul	$f0, $f0, $f1
 	lf	$f1, 46($3)
 	fadd	$f0, $f1, $f0
-	addi	$2, $0, 3
 	lf	$f1, 44($3)
 	sf	$f0, 47($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 48($3)
 	addi	$3, $3, 49
@@ -16127,11 +16003,11 @@ fle.89469:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 35($3)
 	fmul	$f0, $f1, $f0
-fle_cont.89470:
-	j	fle_cont.89468
-fle.89467:
+fle_cont.89960:
+	j	fle_cont.89958
+fle.89957:
 	lf	$f4, 3392($0) # 0.785398
-	bltf	$f4, $f2, fle.89471
+	bltf	$f4, $f2, fle.89961
 	lf	$f4, 3391($0) # 0.166667
 	lf	$f5, 3390($0) # 0.008333
 	lf	$f6, 3389($0) # 0.000196
@@ -16153,8 +16029,8 @@ fle.89467:
 	lf	$f2, 50($3)
 	fmul	$f0, $f0, $f2
 	fsub	$f0, $f1, $f0
-	addi	$2, $0, 2
 	sf	$f0, 52($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 53($3)
 	addi	$3, $3, 54
@@ -16168,8 +16044,8 @@ fle.89467:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 52($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 53($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 54($3)
 	addi	$3, $3, 55
@@ -16185,8 +16061,8 @@ fle.89467:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 35($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.89472
-fle.89471:
+	j	fle_cont.89962
+fle.89961:
 	lf	$f4, 3393($0) # 1.570796
 	fsub	$f2, $f4, $f2
 	lf	$f4, 3388($0) # 0.500000
@@ -16208,9 +16084,9 @@ fle.89471:
 	lf	$f1, 57($3)
 	fmul	$f0, $f0, $f1
 	fsub	$f0, $f28, $f0
-	addi	$2, $0, 2
 	lf	$f1, 56($3)
 	sf	$f0, 58($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 59($3)
 	addi	$3, $3, 60
@@ -16222,9 +16098,9 @@ fle.89471:
 	fmul	$f0, $f0, $f1
 	lf	$f1, 58($3)
 	fadd	$f0, $f1, $f0
-	addi	$2, $0, 3
 	lf	$f1, 56($3)
 	sf	$f0, 59($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 60($3)
 	addi	$3, $3, 61
@@ -16238,9 +16114,9 @@ fle.89471:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 35($3)
 	fmul	$f0, $f1, $f0
-fle_cont.89472:
-fle_cont.89468:
-fle_cont.89460:
+fle_cont.89962:
+fle_cont.89958:
+fle_cont.89950:
 	fmul	$f0, $f0, $f0
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f1, $f1, $f0
@@ -16249,16 +16125,15 @@ fle_cont.89460:
 	fsub	$f0, $f28, $f0
 	fmul	$f0, $f1, $f0
 	sf	$f0, 3132($1)
-	j	eq_cont.89456
-eq_else.89455:
+	j	eq_cont.89946
+eq_else.89945:
 	addi	$30, $0, 3
-	bne	$7, $30, eq_else.89473
+	bne	$7, $30, eq_else.89963
 	lf	$f2, 3125($0)
 	lw	$7, 5($5)
 	lf	$f3, 0($7)
 	fsub	$f2, $f2, $f3
-	addi	$7, $0, 2
-	lf	$f3, 3125($7)
+	lf	$f3, 3125($26)
 	lw	$7, 5($5)
 	lf	$f4, 2($7)
 	fsub	$f3, $f3, $f4
@@ -16272,25 +16147,25 @@ eq_else.89455:
 	fsub	$f2, $f2, $f3
 	lf	$f3, 3368($0) # 3.141593
 	fmul	$f2, $f2, $f3
-	bltf	$f30, $f2, fle.89475
+	bltf	$f30, $f2, fle.89965
 	movf	$f3, $f29
-	j	fle_cont.89476
-fle.89475:
+	j	fle_cont.89966
+fle.89965:
 	movf	$f3, $f28
-fle_cont.89476:
+fle_cont.89966:
 	fmul	$f2, $f3, $f2
 	lf	$f3, 3395($0) # 6.283185
 	fdiv	$f4, $f2, $f3
 	floor	$f4, $f4
 	fmul	$f3, $f4, $f3
 	fsub	$f2, $f2, $f3
-	bltf	$f2, $f31, fle.89477
+	bltf	$f2, $f31, fle.89967
 	fsub	$f2, $f2, $f31
 	lf	$f3, 3393($0) # 1.570796
-	bltf	$f2, $f3, fle.89479
+	bltf	$f2, $f3, fle.89969
 	fsub	$f2, $f31, $f2
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f2, fle.89481
+	bltf	$f3, $f2, fle.89971
 	lf	$f3, 3388($0) # 0.500000
 	lf	$f4, 3387($0) # 0.041664
 	lf	$f5, 3386($0) # 0.001370
@@ -16309,9 +16184,9 @@ fle_cont.89476:
 	lf	$f1, 63($3)
 	fmul	$f0, $f0, $f1
 	fsub	$f0, $f28, $f0
-	addi	$2, $0, 2
 	lf	$f1, 62($3)
 	sf	$f0, 64($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 65($3)
 	addi	$3, $3, 66
@@ -16323,9 +16198,9 @@ fle_cont.89476:
 	fmul	$f0, $f0, $f1
 	lf	$f1, 64($3)
 	fadd	$f0, $f1, $f0
-	addi	$2, $0, 3
 	lf	$f1, 62($3)
 	sf	$f0, 65($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 66($3)
 	addi	$3, $3, 67
@@ -16338,8 +16213,8 @@ fle_cont.89476:
 	lf	$f1, 65($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-	j	fle_cont.89482
-fle.89481:
+	j	fle_cont.89972
+fle.89971:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f2, $f3, $f2
 	lf	$f3, 3391($0) # 0.166667
@@ -16362,8 +16237,8 @@ fle.89481:
 	lf	$f2, 68($3)
 	fmul	$f0, $f0, $f2
 	fsub	$f0, $f1, $f0
-	addi	$2, $0, 2
 	sf	$f0, 70($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 71($3)
 	addi	$3, $3, 72
@@ -16377,8 +16252,8 @@ fle.89481:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 70($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 71($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 72($3)
 	addi	$3, $3, 73
@@ -16393,11 +16268,11 @@ fle.89481:
 	lf	$f1, 71($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-fle_cont.89482:
-	j	fle_cont.89480
-fle.89479:
+fle_cont.89972:
+	j	fle_cont.89970
+fle.89969:
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f2, fle.89483
+	bltf	$f3, $f2, fle.89973
 	lf	$f3, 3388($0) # 0.500000
 	lf	$f4, 3387($0) # 0.041664
 	lf	$f5, 3386($0) # 0.001370
@@ -16416,9 +16291,9 @@ fle.89479:
 	lf	$f1, 75($3)
 	fmul	$f0, $f0, $f1
 	fsub	$f0, $f28, $f0
-	addi	$2, $0, 2
 	lf	$f1, 74($3)
 	sf	$f0, 76($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 77($3)
 	addi	$3, $3, 78
@@ -16430,9 +16305,9 @@ fle.89479:
 	fmul	$f0, $f0, $f1
 	lf	$f1, 76($3)
 	fadd	$f0, $f1, $f0
-	addi	$2, $0, 3
 	lf	$f1, 74($3)
 	sf	$f0, 77($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 78($3)
 	addi	$3, $3, 79
@@ -16445,8 +16320,8 @@ fle.89479:
 	lf	$f1, 77($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-	j	fle_cont.89484
-fle.89483:
+	j	fle_cont.89974
+fle.89973:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f2, $f3, $f2
 	lf	$f3, 3391($0) # 0.166667
@@ -16469,8 +16344,8 @@ fle.89483:
 	lf	$f2, 80($3)
 	fmul	$f0, $f0, $f2
 	fsub	$f0, $f1, $f0
-	addi	$2, $0, 2
 	sf	$f0, 82($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 83($3)
 	addi	$3, $3, 84
@@ -16484,8 +16359,8 @@ fle.89483:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 82($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 83($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 84($3)
 	addi	$3, $3, 85
@@ -16500,15 +16375,15 @@ fle.89483:
 	lf	$f1, 83($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-fle_cont.89484:
-fle_cont.89480:
-	j	fle_cont.89478
-fle.89477:
+fle_cont.89974:
+fle_cont.89970:
+	j	fle_cont.89968
+fle.89967:
 	lf	$f3, 3393($0) # 1.570796
-	bltf	$f2, $f3, fle.89485
+	bltf	$f2, $f3, fle.89975
 	fsub	$f2, $f31, $f2
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f2, fle.89487
+	bltf	$f3, $f2, fle.89977
 	lf	$f3, 3388($0) # 0.500000
 	lf	$f4, 3387($0) # 0.041664
 	lf	$f5, 3386($0) # 0.001370
@@ -16527,9 +16402,9 @@ fle.89477:
 	lf	$f1, 87($3)
 	fmul	$f0, $f0, $f1
 	fsub	$f0, $f28, $f0
-	addi	$2, $0, 2
 	lf	$f1, 86($3)
 	sf	$f0, 88($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 89($3)
 	addi	$3, $3, 90
@@ -16541,9 +16416,9 @@ fle.89477:
 	fmul	$f0, $f0, $f1
 	lf	$f1, 88($3)
 	fadd	$f0, $f1, $f0
-	addi	$2, $0, 3
 	lf	$f1, 86($3)
 	sf	$f0, 89($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 90($3)
 	addi	$3, $3, 91
@@ -16556,8 +16431,8 @@ fle.89477:
 	lf	$f1, 89($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-	j	fle_cont.89488
-fle.89487:
+	j	fle_cont.89978
+fle.89977:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f2, $f3, $f2
 	lf	$f3, 3391($0) # 0.166667
@@ -16580,8 +16455,8 @@ fle.89487:
 	lf	$f2, 92($3)
 	fmul	$f0, $f0, $f2
 	fsub	$f0, $f1, $f0
-	addi	$2, $0, 2
 	sf	$f0, 94($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 95($3)
 	addi	$3, $3, 96
@@ -16595,8 +16470,8 @@ fle.89487:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 94($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 95($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 96($3)
 	addi	$3, $3, 97
@@ -16611,11 +16486,11 @@ fle.89487:
 	lf	$f1, 95($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-fle_cont.89488:
-	j	fle_cont.89486
-fle.89485:
+fle_cont.89978:
+	j	fle_cont.89976
+fle.89975:
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f2, fle.89489
+	bltf	$f3, $f2, fle.89979
 	lf	$f3, 3388($0) # 0.500000
 	lf	$f4, 3387($0) # 0.041664
 	lf	$f5, 3386($0) # 0.001370
@@ -16634,9 +16509,9 @@ fle.89485:
 	lf	$f1, 99($3)
 	fmul	$f0, $f0, $f1
 	fsub	$f0, $f28, $f0
-	addi	$2, $0, 2
 	lf	$f1, 98($3)
 	sf	$f0, 100($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 101($3)
 	addi	$3, $3, 102
@@ -16648,9 +16523,9 @@ fle.89485:
 	fmul	$f0, $f0, $f1
 	lf	$f1, 100($3)
 	fadd	$f0, $f1, $f0
-	addi	$2, $0, 3
 	lf	$f1, 98($3)
 	sf	$f0, 101($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 102($3)
 	addi	$3, $3, 103
@@ -16663,8 +16538,8 @@ fle.89485:
 	lf	$f1, 101($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-	j	fle_cont.89490
-fle.89489:
+	j	fle_cont.89980
+fle.89979:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f2, $f3, $f2
 	lf	$f3, 3391($0) # 0.166667
@@ -16687,8 +16562,8 @@ fle.89489:
 	lf	$f2, 104($3)
 	fmul	$f0, $f0, $f2
 	fsub	$f0, $f1, $f0
-	addi	$2, $0, 2
 	sf	$f0, 106($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 107($3)
 	addi	$3, $3, 108
@@ -16702,8 +16577,8 @@ fle.89489:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 106($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 107($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 108($3)
 	addi	$3, $3, 109
@@ -16718,22 +16593,21 @@ fle.89489:
 	lf	$f1, 107($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-fle_cont.89490:
-fle_cont.89486:
-fle_cont.89478:
+fle_cont.89980:
+fle_cont.89976:
+fle_cont.89968:
 	fmul	$f0, $f0, $f0
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f1, $f0, $f1
 	sf	$f1, 3132($1)
-	addi	$2, $0, 2
 	fsub	$f0, $f28, $f0
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f0, $f0, $f1
-	sf	$f0, 3132($2)
-	j	eq_cont.89474
-eq_else.89473:
+	sf	$f0, 3132($26)
+	j	eq_cont.89964
+eq_else.89963:
 	addi	$30, $0, 4
-	bne	$7, $30, eq_else.89491
+	bne	$7, $30, eq_else.89981
 	lf	$f2, 3125($0)
 	lw	$7, 5($5)
 	lf	$f3, 0($7)
@@ -16742,8 +16616,7 @@ eq_else.89473:
 	lf	$f3, 0($7)
 	sqrt	$f3, $f3
 	fmul	$f2, $f2, $f3
-	addi	$7, $0, 2
-	lf	$f3, 3125($7)
+	lf	$f3, 3125($26)
 	lw	$7, 5($5)
 	lf	$f4, 2($7)
 	fsub	$f3, $f3, $f4
@@ -16758,20 +16631,20 @@ eq_else.89473:
 	lf	$f6, 3379($0) # 0.000100
 	sltf	$7, $f5, $f6
 	sf	$f4, 108($3)
-	bne	$7, $0, eq_else.89493
+	bne	$7, $0, eq_else.89983
 	fdiv	$f2, $f3, $f2
 	fabs	$f2, $f2
-	bltf	$f30, $f2, fle.89495
+	bltf	$f30, $f2, fle.89985
 	movf	$f3, $f29
-	j	fle_cont.89496
-fle.89495:
+	j	fle_cont.89986
+fle.89985:
 	movf	$f3, $f28
-fle_cont.89496:
+fle_cont.89986:
 	fmul	$f2, $f3, $f2
 	lf	$f5, 3377($0) # 0.437500
-	bltf	$f2, $f5, fle.89497
+	bltf	$f2, $f5, fle.89987
 	lf	$f5, 3370($0) # 2.437500
-	bltf	$f2, $f5, fle.89499
+	bltf	$f2, $f5, fle.89989
 	lf	$f5, 3393($0) # 1.570796
 	fdiv	$f2, $f28, $f2
 	fmul	$f6, $f2, $f28
@@ -16864,8 +16737,8 @@ fle_cont.89496:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 109($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.89500
-fle.89499:
+	j	fle_cont.89990
+fle.89989:
 	lf	$f5, 3392($0) # 0.785398
 	fsub	$f6, $f2, $f28
 	fadd	$f2, $f2, $f28
@@ -16960,9 +16833,9 @@ fle.89499:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 109($3)
 	fmul	$f0, $f1, $f0
-fle_cont.89500:
-	j	fle_cont.89498
-fle.89497:
+fle_cont.89990:
+	j	fle_cont.89988
+fle.89987:
 	fmul	$f5, $f2, $f28
 	fmul	$f5, $f5, $f28
 	fmul	$f6, $f2, $f5
@@ -17050,15 +16923,15 @@ fle.89497:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 109($3)
 	fmul	$f0, $f1, $f0
-fle_cont.89498:
+fle_cont.89988:
 	lf	$f1, 3369($0) # 30.000000
 	fmul	$f0, $f0, $f1
 	lf	$f1, 3368($0) # 3.141593
 	fdiv	$f0, $f0, $f1
-	j	eq_cont.89494
-eq_else.89493:
+	j	eq_cont.89984
+eq_else.89983:
 	lf	$f0, 3378($0) # 15.000000
-eq_cont.89494:
+eq_cont.89984:
 	floor	$f1, $f0
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3125($1)
@@ -17075,20 +16948,20 @@ eq_cont.89494:
 	lf	$f4, 3379($0) # 0.000100
 	sltf	$5, $f3, $f4
 	sf	$f0, 124($3)
-	bne	$5, $0, eq_else.89501
+	bne	$5, $0, eq_else.89991
 	fdiv	$f1, $f1, $f2
 	fabs	$f1, $f1
-	bltf	$f30, $f1, fle.89503
+	bltf	$f30, $f1, fle.89993
 	movf	$f2, $f29
-	j	fle_cont.89504
-fle.89503:
+	j	fle_cont.89994
+fle.89993:
 	movf	$f2, $f28
-fle_cont.89504:
+fle_cont.89994:
 	fmul	$f1, $f2, $f1
 	lf	$f3, 3377($0) # 0.437500
-	bltf	$f1, $f3, fle.89505
+	bltf	$f1, $f3, fle.89995
 	lf	$f3, 3370($0) # 2.437500
-	bltf	$f1, $f3, fle.89507
+	bltf	$f1, $f3, fle.89997
 	lf	$f3, 3393($0) # 1.570796
 	fdiv	$f1, $f28, $f1
 	fmul	$f4, $f1, $f28
@@ -17181,8 +17054,8 @@ fle_cont.89504:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 125($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.89508
-fle.89507:
+	j	fle_cont.89998
+fle.89997:
 	lf	$f3, 3392($0) # 0.785398
 	fsub	$f4, $f1, $f28
 	fadd	$f1, $f1, $f28
@@ -17277,9 +17150,9 @@ fle.89507:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 125($3)
 	fmul	$f0, $f1, $f0
-fle_cont.89508:
-	j	fle_cont.89506
-fle.89505:
+fle_cont.89998:
+	j	fle_cont.89996
+fle.89995:
 	fmul	$f3, $f1, $f28
 	fmul	$f3, $f3, $f28
 	fmul	$f4, $f1, $f3
@@ -17367,15 +17240,15 @@ fle.89505:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 125($3)
 	fmul	$f0, $f1, $f0
-fle_cont.89506:
+fle_cont.89996:
 	lf	$f1, 3369($0) # 30.000000
 	fmul	$f0, $f0, $f1
 	lf	$f1, 3368($0) # 3.141593
 	fdiv	$f0, $f0, $f1
-	j	eq_cont.89502
-eq_else.89501:
+	j	eq_cont.89992
+eq_else.89991:
 	lf	$f0, 3378($0) # 15.000000
-eq_cont.89502:
+eq_cont.89992:
 	floor	$f1, $f0
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3367($0) # 0.150000
@@ -17389,23 +17262,22 @@ eq_cont.89502:
 	fmul	$f0, $f0, $f0
 	fsub	$f0, $f1, $f0
 	sltf	$2, $f0, $f30
-	bne	$2, $0, eq_else.89509
-	j	eq_cont.89510
-eq_else.89509:
+	bne	$2, $0, eq_else.89999
+	j	eq_cont.90000
+eq_else.89999:
 	movf	$f0, $f30
-eq_cont.89510:
-	addi	$2, $0, 2
+eq_cont.90000:
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f0, $f1, $f0
 	lf	$f1, 3365($0) # 0.300000
 	fdiv	$f0, $f0, $f1
-	sf	$f0, 3132($2)
-	j	eq_cont.89492
-eq_else.89491:
-eq_cont.89492:
-eq_cont.89474:
-eq_cont.89456:
-eq_cont.89448:
+	sf	$f0, 3132($26)
+	j	eq_cont.89982
+eq_else.89981:
+eq_cont.89982:
+eq_cont.89964:
+eq_cont.89946:
+eq_cont.89938:
 	addi	$2, $0, 4
 	lw	$5, 9($3)
 	mul	$2, $5, $2
@@ -17423,8 +17295,7 @@ eq_cont.89448:
 	sf	$f0, 0($7)
 	lf	$f0, 3125($1)
 	sf	$f0, 1($7)
-	addi	$8, $0, 2
-	lf	$f0, 3125($8)
+	lf	$f0, 3125($26)
 	sf	$f0, 2($7)
 	lw	$7, 3($2)
 	lw	$8, 8($3)
@@ -17432,7 +17303,7 @@ eq_cont.89448:
 	lf	$f0, 0($9)
 	lf	$f1, 3388($0) # 0.500000
 	sltf	$9, $f0, $f1
-	bne	$9, $0, eq_else.89511
+	bne	$9, $0, eq_else.90001
 	add $30, $7, $5
 	sw	$1, 0($30)
 	lw	$7, 4($2)
@@ -17442,8 +17313,7 @@ eq_cont.89448:
 	sf	$f0, 0($9)
 	lf	$f0, 3132($1)
 	sf	$f0, 1($9)
-	addi	$10, $0, 2
-	lf	$f0, 3132($10)
+	lf	$f0, 3132($26)
 	sf	$f0, 2($9)
 	add	$30, $7, $5
 	lw	$7, 0($30)
@@ -17466,14 +17336,13 @@ eq_cont.89448:
 	sf	$f0, 0($7)
 	lf	$f0, 3129($1)
 	sf	$f0, 1($7)
-	addi	$9, $0, 2
-	lf	$f0, 3129($9)
+	lf	$f0, 3129($26)
 	sf	$f0, 2($7)
-	j	eq_cont.89512
-eq_else.89511:
+	j	eq_cont.90002
+eq_else.90001:
 	add $30, $7, $5
 	sw	$0, 0($30)
-eq_cont.89512:
+eq_cont.90002:
 	lf	$f0, 3359($0) # -2.000000
 	lw	$7, 3($3)
 	lf	$f1, 0($7)
@@ -17484,8 +17353,7 @@ eq_cont.89512:
 	fmul	$f2, $f2, $f3
 	fadd	$f1, $f1, $f2
 	lf	$f2, 2($7)
-	addi	$9, $0, 2
-	lf	$f3, 3129($9)
+	lf	$f3, 3129($26)
 	fmul	$f2, $f2, $f3
 	fadd	$f1, $f1, $f2
 	fmul	$f0, $f0, $f1
@@ -17500,8 +17368,7 @@ eq_cont.89512:
 	fadd	$f1, $f1, $f2
 	sf	$f1, 1($7)
 	lf	$f1, 2($7)
-	addi	$9, $0, 2
-	lf	$f2, 3129($9)
+	lf	$f2, 3129($26)
 	fmul	$f0, $f0, $f2
 	fadd	$f0, $f1, $f0
 	sf	$f0, 2($7)
@@ -17513,17 +17380,17 @@ eq_cont.89512:
 	lw	$10, 0($9)
 	lw	$11, 0($10)
 	sf	$f0, 140($3)
-	bne	$11, $28, eq_else.89513
+	bne	$11, $28, eq_else.90003
 	mov	$2, $0
-	j	eq_cont.89514
-eq_else.89513:
+	j	eq_cont.90004
+eq_else.90003:
 	sw	$10, 141($3)
 	sw	$9, 142($3)
 	addi	$30, $0, 99
-	bne	$11, $30, eq_else.89515
+	bne	$11, $30, eq_else.90005
 	mov	$2, $1
-	j	eq_cont.89516
-eq_else.89515:
+	j	eq_cont.90006
+eq_else.90005:
 	lw	$12, 3001($11)
 	lf	$f2, 3125($0)
 	lw	$13, 5($12)
@@ -17533,8 +17400,7 @@ eq_else.89515:
 	lw	$13, 5($12)
 	lf	$f4, 1($13)
 	fsub	$f3, $f3, $f4
-	addi	$13, $0, 2
-	lf	$f4, 3125($13)
+	lf	$f4, 3125($26)
 	lw	$13, 5($12)
 	lf	$f5, 2($13)
 	fsub	$f4, $f4, $f5
@@ -17543,7 +17409,7 @@ eq_else.89515:
 	add	$30, $13, $11
 	lw	$11, 0($30)
 	lw	$13, 1($12)
-	bne	$13, $1, eq_else.89517
+	bne	$13, $1, eq_else.90007
 	addi	$13, $0, 3169
 	lw	$13, 0($13)
 	lf	$f5, 0($11)
@@ -17557,10 +17423,10 @@ eq_else.89515:
 	lw	$14, 4($12)
 	lf	$f7, 1($14)
 	sltf	$14, $f6, $f7
-	bne	$14, $0, eq_else.89519
+	bne	$14, $0, eq_else.90009
 	mov	$14, $0
-	j	eq_cont.89520
-eq_else.89519:
+	j	eq_cont.90010
+eq_else.90009:
 	lf	$f6, 2($13)
 	fmul	$f6, $f5, $f6
 	fadd	$f6, $f6, $f4
@@ -17568,26 +17434,26 @@ eq_else.89519:
 	lw	$14, 4($12)
 	lf	$f7, 2($14)
 	sltf	$14, $f6, $f7
-	bne	$14, $0, eq_else.89521
+	bne	$14, $0, eq_else.90011
 	mov	$14, $0
-	j	eq_cont.89522
-eq_else.89521:
+	j	eq_cont.90012
+eq_else.90011:
 	lf	$f6, 1($11)
-	beqf	$f6, $f30, feq.89523
+	beqf	$f6, $f30, feq.90013
 	mov	$14, $0
-	j	feq_cont.89524
-feq.89523:
+	j	feq_cont.90014
+feq.90013:
 	mov	$14, $1
-feq_cont.89524:
-	bne	$14, $0, eq_else.89525
+feq_cont.90014:
+	bne	$14, $0, eq_else.90015
 	mov	$14, $1
-	j	eq_cont.89526
-eq_else.89525:
+	j	eq_cont.90016
+eq_else.90015:
 	mov	$14, $0
-eq_cont.89526:
-eq_cont.89522:
-eq_cont.89520:
-	bne	$14, $0, eq_else.89527
+eq_cont.90016:
+eq_cont.90012:
+eq_cont.90010:
+	bne	$14, $0, eq_else.90017
 	lf	$f5, 2($11)
 	fsub	$f5, $f5, $f3
 	lf	$f6, 3($11)
@@ -17599,10 +17465,10 @@ eq_cont.89520:
 	lw	$14, 4($12)
 	lf	$f7, 0($14)
 	sltf	$14, $f6, $f7
-	bne	$14, $0, eq_else.89529
+	bne	$14, $0, eq_else.90019
 	mov	$14, $0
-	j	eq_cont.89530
-eq_else.89529:
+	j	eq_cont.90020
+eq_else.90019:
 	lf	$f6, 2($13)
 	fmul	$f6, $f5, $f6
 	fadd	$f6, $f6, $f4
@@ -17610,26 +17476,26 @@ eq_else.89529:
 	lw	$14, 4($12)
 	lf	$f7, 2($14)
 	sltf	$14, $f6, $f7
-	bne	$14, $0, eq_else.89531
+	bne	$14, $0, eq_else.90021
 	mov	$14, $0
-	j	eq_cont.89532
-eq_else.89531:
+	j	eq_cont.90022
+eq_else.90021:
 	lf	$f6, 3($11)
-	beqf	$f6, $f30, feq.89533
+	beqf	$f6, $f30, feq.90023
 	mov	$14, $0
-	j	feq_cont.89534
-feq.89533:
+	j	feq_cont.90024
+feq.90023:
 	mov	$14, $1
-feq_cont.89534:
-	bne	$14, $0, eq_else.89535
+feq_cont.90024:
+	bne	$14, $0, eq_else.90025
 	mov	$14, $1
-	j	eq_cont.89536
-eq_else.89535:
+	j	eq_cont.90026
+eq_else.90025:
 	mov	$14, $0
-eq_cont.89536:
-eq_cont.89532:
-eq_cont.89530:
-	bne	$14, $0, eq_else.89537
+eq_cont.90026:
+eq_cont.90022:
+eq_cont.90020:
+	bne	$14, $0, eq_else.90027
 	lf	$f5, 4($11)
 	fsub	$f4, $f5, $f4
 	lf	$f5, 5($11)
@@ -17641,10 +17507,10 @@ eq_cont.89530:
 	lw	$14, 4($12)
 	lf	$f5, 0($14)
 	sltf	$14, $f2, $f5
-	bne	$14, $0, eq_else.89539
+	bne	$14, $0, eq_else.90029
 	mov	$11, $0
-	j	eq_cont.89540
-eq_else.89539:
+	j	eq_cont.90030
+eq_else.90029:
 	lf	$f2, 1($13)
 	fmul	$f2, $f4, $f2
 	fadd	$f2, $f2, $f3
@@ -17652,52 +17518,52 @@ eq_else.89539:
 	lw	$12, 4($12)
 	lf	$f3, 1($12)
 	sltf	$12, $f2, $f3
-	bne	$12, $0, eq_else.89541
+	bne	$12, $0, eq_else.90031
 	mov	$11, $0
-	j	eq_cont.89542
-eq_else.89541:
+	j	eq_cont.90032
+eq_else.90031:
 	lf	$f2, 5($11)
-	beqf	$f2, $f30, feq.89543
+	beqf	$f2, $f30, feq.90033
 	mov	$11, $0
-	j	feq_cont.89544
-feq.89543:
+	j	feq_cont.90034
+feq.90033:
 	mov	$11, $1
-feq_cont.89544:
-	bne	$11, $0, eq_else.89545
+feq_cont.90034:
+	bne	$11, $0, eq_else.90035
 	mov	$11, $1
-	j	eq_cont.89546
-eq_else.89545:
+	j	eq_cont.90036
+eq_else.90035:
 	mov	$11, $0
-eq_cont.89546:
-eq_cont.89542:
-eq_cont.89540:
-	bne	$11, $0, eq_else.89547
+eq_cont.90036:
+eq_cont.90032:
+eq_cont.90030:
+	bne	$11, $0, eq_else.90037
 	mov	$11, $0
-	j	eq_cont.89548
-eq_else.89547:
+	j	eq_cont.90038
+eq_else.90037:
 	sf	$f4, 3122($0)
-	addi	$11, $0, 3
-eq_cont.89548:
-	j	eq_cont.89538
-eq_else.89537:
+	mov	$11, $27
+eq_cont.90038:
+	j	eq_cont.90028
+eq_else.90027:
 	sf	$f5, 3122($0)
-	addi	$11, $0, 2
-eq_cont.89538:
-	j	eq_cont.89528
-eq_else.89527:
+	mov	$11, $26
+eq_cont.90028:
+	j	eq_cont.90018
+eq_else.90017:
 	sf	$f5, 3122($0)
 	mov	$11, $1
-eq_cont.89528:
-	j	eq_cont.89518
-eq_else.89517:
+eq_cont.90018:
+	j	eq_cont.90008
+eq_else.90007:
 	addi	$30, $0, 2
-	bne	$13, $30, eq_else.89549
+	bne	$13, $30, eq_else.90039
 	lf	$f5, 0($11)
 	sltf	$12, $f5, $f30
-	bne	$12, $0, eq_else.89551
+	bne	$12, $0, eq_else.90041
 	mov	$11, $0
-	j	eq_cont.89552
-eq_else.89551:
+	j	eq_cont.90042
+eq_else.90041:
 	lf	$f5, 1($11)
 	fmul	$f2, $f5, $f2
 	lf	$f5, 2($11)
@@ -17708,17 +17574,17 @@ eq_else.89551:
 	fadd	$f2, $f2, $f3
 	sf	$f2, 3122($0)
 	mov	$11, $1
-eq_cont.89552:
-	j	eq_cont.89550
-eq_else.89549:
+eq_cont.90042:
+	j	eq_cont.90040
+eq_else.90039:
 	lf	$f5, 0($11)
-	beqf	$f5, $f30, feq.89553
+	beqf	$f5, $f30, feq.90043
 	mov	$13, $0
-	j	feq_cont.89554
-feq.89553:
+	j	feq_cont.90044
+feq.90043:
 	mov	$13, $1
-feq_cont.89554:
-	bne	$13, $0, eq_else.89555
+feq_cont.90044:
+	bne	$13, $0, eq_else.90045
 	lf	$f6, 1($11)
 	fmul	$f6, $f6, $f2
 	lf	$f7, 2($11)
@@ -17742,10 +17608,10 @@ feq_cont.89554:
 	fmul	$f8, $f8, $f9
 	fadd	$f7, $f7, $f8
 	lw	$13, 3($12)
-	bne	$13, $0, eq_else.89557
+	bne	$13, $0, eq_else.90047
 	movf	$f2, $f7
-	j	eq_cont.89558
-eq_else.89557:
+	j	eq_cont.90048
+eq_else.90047:
 	fmul	$f8, $f3, $f4
 	lw	$13, 9($12)
 	lf	$f9, 0($13)
@@ -17761,61 +17627,61 @@ eq_else.89557:
 	lf	$f3, 2($13)
 	fmul	$f2, $f2, $f3
 	fadd	$f2, $f4, $f2
-eq_cont.89558:
+eq_cont.90048:
 	lw	$13, 1($12)
 	addi	$30, $0, 3
-	bne	$13, $30, eq_else.89559
+	bne	$13, $30, eq_else.90049
 	fsub	$f2, $f2, $f28
-	j	eq_cont.89560
-eq_else.89559:
-eq_cont.89560:
+	j	eq_cont.90050
+eq_else.90049:
+eq_cont.90050:
 	fmul	$f3, $f6, $f6
 	fmul	$f2, $f5, $f2
 	fsub	$f2, $f3, $f2
 	sltf	$13, $f30, $f2
-	bne	$13, $0, eq_else.89561
+	bne	$13, $0, eq_else.90051
 	mov	$11, $0
-	j	eq_cont.89562
-eq_else.89561:
+	j	eq_cont.90052
+eq_else.90051:
 	lw	$12, 6($12)
-	bne	$12, $0, eq_else.89563
+	bne	$12, $0, eq_else.90053
 	sqrt	$f2, $f2
 	fsub	$f2, $f6, $f2
 	lf	$f3, 4($11)
 	fmul	$f2, $f2, $f3
 	sf	$f2, 3122($0)
-	j	eq_cont.89564
-eq_else.89563:
+	j	eq_cont.90054
+eq_else.90053:
 	sqrt	$f2, $f2
 	fadd	$f2, $f6, $f2
 	lf	$f3, 4($11)
 	fmul	$f2, $f2, $f3
 	sf	$f2, 3122($0)
-eq_cont.89564:
+eq_cont.90054:
 	mov	$11, $1
-eq_cont.89562:
-	j	eq_cont.89556
-eq_else.89555:
+eq_cont.90052:
+	j	eq_cont.90046
+eq_else.90045:
 	mov	$11, $0
-eq_cont.89556:
-eq_cont.89550:
-eq_cont.89518:
-	bne	$11, $0, eq_else.89565
+eq_cont.90046:
+eq_cont.90040:
+eq_cont.90008:
+	bne	$11, $0, eq_else.90055
 	mov	$2, $0
-	j	eq_cont.89566
-eq_else.89565:
+	j	eq_cont.90056
+eq_else.90055:
 	lf	$f2, 3122($0)
 	lf	$f3, 3382($0) # -0.100000
 	sltf	$11, $f2, $f3
-	bne	$11, $0, eq_else.89567
+	bne	$11, $0, eq_else.90057
 	mov	$2, $0
-	j	eq_cont.89568
-eq_else.89567:
+	j	eq_cont.90058
+eq_else.90057:
 	lw	$11, 1($10)
-	bne	$11, $28, eq_else.89569
+	bne	$11, $28, eq_else.90059
 	mov	$2, $0
-	j	eq_cont.89570
-eq_else.89569:
+	j	eq_cont.90060
+eq_else.90059:
 	lw	$11, 3071($11)
 	mov	$5, $11
 	mov	$2, $0
@@ -17824,13 +17690,13 @@ eq_else.89569:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -144
 	lw	$31, 143($3)
-	bne	$2, $0, eq_else.89571
+	bne	$2, $0, eq_else.90061
 	lw	$2, 141($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.89573
+	bne	$5, $28, eq_else.90063
 	mov	$2, $0
-	j	eq_cont.89574
-eq_else.89573:
+	j	eq_cont.90064
+eq_else.90063:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 143($3)
@@ -17838,13 +17704,13 @@ eq_else.89573:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -144
 	lw	$31, 143($3)
-	bne	$2, $0, eq_else.89575
+	bne	$2, $0, eq_else.90065
 	lw	$2, 141($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.89577
+	bne	$5, $28, eq_else.90067
 	mov	$2, $0
-	j	eq_cont.89578
-eq_else.89577:
+	j	eq_cont.90068
+eq_else.90067:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 143($3)
@@ -17852,13 +17718,13 @@ eq_else.89577:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -144
 	lw	$31, 143($3)
-	bne	$2, $0, eq_else.89579
+	bne	$2, $0, eq_else.90069
 	lw	$2, 141($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.89581
+	bne	$5, $28, eq_else.90071
 	mov	$2, $0
-	j	eq_cont.89582
-eq_else.89581:
+	j	eq_cont.90072
+eq_else.90071:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 143($3)
@@ -17866,13 +17732,13 @@ eq_else.89581:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -144
 	lw	$31, 143($3)
-	bne	$2, $0, eq_else.89583
+	bne	$2, $0, eq_else.90073
 	lw	$2, 141($3)
 	lw	$5, 5($2)
-	bne	$5, $28, eq_else.89585
+	bne	$5, $28, eq_else.90075
 	mov	$2, $0
-	j	eq_cont.89586
-eq_else.89585:
+	j	eq_cont.90076
+eq_else.90075:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 143($3)
@@ -17880,13 +17746,13 @@ eq_else.89585:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -144
 	lw	$31, 143($3)
-	bne	$2, $0, eq_else.89587
+	bne	$2, $0, eq_else.90077
 	lw	$2, 141($3)
 	lw	$5, 6($2)
-	bne	$5, $28, eq_else.89589
+	bne	$5, $28, eq_else.90079
 	mov	$2, $0
-	j	eq_cont.89590
-eq_else.89589:
+	j	eq_cont.90080
+eq_else.90079:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 143($3)
@@ -17894,7 +17760,7 @@ eq_else.89589:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -144
 	lw	$31, 143($3)
-	bne	$2, $0, eq_else.89591
+	bne	$2, $0, eq_else.90081
 	addi	$2, $0, 7
 	lw	$5, 141($3)
 	sw	$31, 143($3)
@@ -17902,46 +17768,46 @@ eq_else.89589:
 	jal	shadow_check_one_or_group.2977
 	addi	$3, $3, -144
 	lw	$31, 143($3)
-	j	eq_cont.89592
-eq_else.89591:
+	j	eq_cont.90082
+eq_else.90081:
 	mov	$2, $1
-eq_cont.89592:
-eq_cont.89590:
-	j	eq_cont.89588
-eq_else.89587:
+eq_cont.90082:
+eq_cont.90080:
+	j	eq_cont.90078
+eq_else.90077:
 	mov	$2, $1
-eq_cont.89588:
-eq_cont.89586:
-	j	eq_cont.89584
-eq_else.89583:
+eq_cont.90078:
+eq_cont.90076:
+	j	eq_cont.90074
+eq_else.90073:
 	mov	$2, $1
-eq_cont.89584:
-eq_cont.89582:
-	j	eq_cont.89580
-eq_else.89579:
+eq_cont.90074:
+eq_cont.90072:
+	j	eq_cont.90070
+eq_else.90069:
 	mov	$2, $1
-eq_cont.89580:
-eq_cont.89578:
-	j	eq_cont.89576
-eq_else.89575:
+eq_cont.90070:
+eq_cont.90068:
+	j	eq_cont.90066
+eq_else.90065:
 	mov	$2, $1
-eq_cont.89576:
-eq_cont.89574:
-	j	eq_cont.89572
-eq_else.89571:
+eq_cont.90066:
+eq_cont.90064:
+	j	eq_cont.90062
+eq_else.90061:
 	mov	$2, $1
-eq_cont.89572:
-eq_cont.89570:
-	bne	$2, $0, eq_else.89593
+eq_cont.90062:
+eq_cont.90060:
+	bne	$2, $0, eq_else.90083
 	mov	$2, $0
-	j	eq_cont.89594
-eq_else.89593:
+	j	eq_cont.90084
+eq_else.90083:
 	mov	$2, $1
-eq_cont.89594:
-eq_cont.89568:
-eq_cont.89566:
-eq_cont.89516:
-	bne	$2, $0, eq_else.89595
+eq_cont.90084:
+eq_cont.90058:
+eq_cont.90056:
+eq_cont.90006:
+	bne	$2, $0, eq_else.90085
 	lw	$5, 142($3)
 	mov	$2, $1
 	sw	$31, 143($3)
@@ -17949,14 +17815,14 @@ eq_cont.89516:
 	jal	shadow_check_one_or_matrix.2980
 	addi	$3, $3, -144
 	lw	$31, 143($3)
-	j	eq_cont.89596
-eq_else.89595:
+	j	eq_cont.90086
+eq_else.90085:
 	lw	$2, 141($3)
 	lw	$5, 1($2)
-	bne	$5, $28, eq_else.89597
+	bne	$5, $28, eq_else.90087
 	mov	$2, $0
-	j	eq_cont.89598
-eq_else.89597:
+	j	eq_cont.90088
+eq_else.90087:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 143($3)
@@ -17964,13 +17830,13 @@ eq_else.89597:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -144
 	lw	$31, 143($3)
-	bne	$2, $0, eq_else.89599
+	bne	$2, $0, eq_else.90089
 	lw	$2, 141($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.89601
+	bne	$5, $28, eq_else.90091
 	mov	$2, $0
-	j	eq_cont.89602
-eq_else.89601:
+	j	eq_cont.90092
+eq_else.90091:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 143($3)
@@ -17978,13 +17844,13 @@ eq_else.89601:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -144
 	lw	$31, 143($3)
-	bne	$2, $0, eq_else.89603
+	bne	$2, $0, eq_else.90093
 	lw	$2, 141($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.89605
+	bne	$5, $28, eq_else.90095
 	mov	$2, $0
-	j	eq_cont.89606
-eq_else.89605:
+	j	eq_cont.90096
+eq_else.90095:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 143($3)
@@ -17992,13 +17858,13 @@ eq_else.89605:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -144
 	lw	$31, 143($3)
-	bne	$2, $0, eq_else.89607
+	bne	$2, $0, eq_else.90097
 	lw	$2, 141($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.89609
+	bne	$5, $28, eq_else.90099
 	mov	$2, $0
-	j	eq_cont.89610
-eq_else.89609:
+	j	eq_cont.90100
+eq_else.90099:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 143($3)
@@ -18006,13 +17872,13 @@ eq_else.89609:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -144
 	lw	$31, 143($3)
-	bne	$2, $0, eq_else.89611
+	bne	$2, $0, eq_else.90101
 	lw	$2, 141($3)
 	lw	$5, 5($2)
-	bne	$5, $28, eq_else.89613
+	bne	$5, $28, eq_else.90103
 	mov	$2, $0
-	j	eq_cont.89614
-eq_else.89613:
+	j	eq_cont.90104
+eq_else.90103:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 143($3)
@@ -18020,13 +17886,13 @@ eq_else.89613:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -144
 	lw	$31, 143($3)
-	bne	$2, $0, eq_else.89615
+	bne	$2, $0, eq_else.90105
 	lw	$2, 141($3)
 	lw	$5, 6($2)
-	bne	$5, $28, eq_else.89617
+	bne	$5, $28, eq_else.90107
 	mov	$2, $0
-	j	eq_cont.89618
-eq_else.89617:
+	j	eq_cont.90108
+eq_else.90107:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 143($3)
@@ -18034,7 +17900,7 @@ eq_else.89617:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -144
 	lw	$31, 143($3)
-	bne	$2, $0, eq_else.89619
+	bne	$2, $0, eq_else.90109
 	addi	$2, $0, 7
 	lw	$5, 141($3)
 	sw	$31, 143($3)
@@ -18042,37 +17908,37 @@ eq_else.89617:
 	jal	shadow_check_one_or_group.2977
 	addi	$3, $3, -144
 	lw	$31, 143($3)
-	j	eq_cont.89620
-eq_else.89619:
+	j	eq_cont.90110
+eq_else.90109:
 	mov	$2, $1
-eq_cont.89620:
-eq_cont.89618:
-	j	eq_cont.89616
-eq_else.89615:
+eq_cont.90110:
+eq_cont.90108:
+	j	eq_cont.90106
+eq_else.90105:
 	mov	$2, $1
-eq_cont.89616:
-eq_cont.89614:
-	j	eq_cont.89612
-eq_else.89611:
+eq_cont.90106:
+eq_cont.90104:
+	j	eq_cont.90102
+eq_else.90101:
 	mov	$2, $1
-eq_cont.89612:
-eq_cont.89610:
-	j	eq_cont.89608
-eq_else.89607:
+eq_cont.90102:
+eq_cont.90100:
+	j	eq_cont.90098
+eq_else.90097:
 	mov	$2, $1
-eq_cont.89608:
-eq_cont.89606:
-	j	eq_cont.89604
-eq_else.89603:
+eq_cont.90098:
+eq_cont.90096:
+	j	eq_cont.90094
+eq_else.90093:
 	mov	$2, $1
-eq_cont.89604:
-eq_cont.89602:
-	j	eq_cont.89600
-eq_else.89599:
+eq_cont.90094:
+eq_cont.90092:
+	j	eq_cont.90090
+eq_else.90089:
 	mov	$2, $1
-eq_cont.89600:
-eq_cont.89598:
-	bne	$2, $0, eq_else.89621
+eq_cont.90090:
+eq_cont.90088:
+	bne	$2, $0, eq_else.90111
 	lw	$5, 142($3)
 	mov	$2, $1
 	sw	$31, 143($3)
@@ -18080,13 +17946,13 @@ eq_cont.89598:
 	jal	shadow_check_one_or_matrix.2980
 	addi	$3, $3, -144
 	lw	$31, 143($3)
-	j	eq_cont.89622
-eq_else.89621:
+	j	eq_cont.90112
+eq_else.90111:
 	mov	$2, $1
-eq_cont.89622:
-eq_cont.89596:
-eq_cont.89514:
-	bne	$2, $0, eq_else.89623
+eq_cont.90112:
+eq_cont.90086:
+eq_cont.90004:
+	bne	$2, $0, eq_else.90113
 	lf	$f0, 3129($0)
 	lf	$f1, 3067($0)
 	fmul	$f0, $f0, $f1
@@ -18094,10 +17960,8 @@ eq_cont.89514:
 	lf	$f2, 3067($1)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	addi	$2, $0, 2
-	lf	$f1, 3129($2)
-	addi	$2, $0, 2
-	lf	$f2, 3067($2)
+	lf	$f1, 3129($26)
+	lf	$f2, 3067($26)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	fneg	$f0, $f0
@@ -18112,15 +17976,14 @@ eq_cont.89514:
 	fmul	$f3, $f3, $f4
 	fadd	$f2, $f2, $f3
 	lf	$f3, 2($2)
-	addi	$5, $0, 2
-	lf	$f4, 3067($5)
+	lf	$f4, 3067($26)
 	fmul	$f3, $f3, $f4
 	fadd	$f2, $f2, $f3
 	fneg	$f2, $f2
 	sltf	$5, $f30, $f0
-	bne	$5, $0, eq_else.89625
-	j	eq_cont.89626
-eq_else.89625:
+	bne	$5, $0, eq_else.90115
+	j	eq_cont.90116
+eq_else.90115:
 	lf	$f3, 3138($0)
 	lf	$f4, 3132($0)
 	fmul	$f4, $f0, $f4
@@ -18131,19 +17994,16 @@ eq_else.89625:
 	fmul	$f4, $f0, $f4
 	fadd	$f3, $f3, $f4
 	sf	$f3, 3138($1)
-	addi	$5, $0, 2
-	addi	$6, $0, 2
-	lf	$f3, 3138($6)
-	addi	$6, $0, 2
-	lf	$f4, 3132($6)
+	lf	$f3, 3138($26)
+	lf	$f4, 3132($26)
 	fmul	$f0, $f0, $f4
 	fadd	$f0, $f3, $f0
-	sf	$f0, 3138($5)
-eq_cont.89626:
+	sf	$f0, 3138($26)
+eq_cont.90116:
 	sltf	$5, $f30, $f2
-	bne	$5, $0, eq_else.89627
-	j	eq_cont.89628
-eq_else.89627:
+	bne	$5, $0, eq_else.90117
+	j	eq_cont.90118
+eq_else.90117:
 	fmul	$f0, $f2, $f2
 	fmul	$f0, $f0, $f0
 	lf	$f2, 140($3)
@@ -18154,23 +18014,19 @@ eq_else.89627:
 	lf	$f3, 3138($1)
 	fadd	$f3, $f3, $f0
 	sf	$f3, 3138($1)
-	addi	$5, $0, 2
-	addi	$6, $0, 2
-	lf	$f3, 3138($6)
+	lf	$f3, 3138($26)
 	fadd	$f0, $f3, $f0
-	sf	$f0, 3138($5)
-eq_cont.89628:
-	j	eq_cont.89624
-eq_else.89623:
-eq_cont.89624:
+	sf	$f0, 3138($26)
+eq_cont.90118:
+	j	eq_cont.90114
+eq_else.90113:
+eq_cont.90114:
 	lf	$f0, 3125($0)
 	sf	$f0, 3149($0)
 	lf	$f0, 3125($1)
 	sf	$f0, 3149($1)
-	addi	$2, $0, 2
-	addi	$5, $0, 2
-	lf	$f0, 3125($5)
-	sf	$f0, 3149($2)
+	lf	$f0, 3125($26)
+	sf	$f0, 3149($26)
 	lw	$2, 3000($0)
 	addi	$5, $2, -1
 	addi	$2, $0, 3125
@@ -18181,9 +18037,9 @@ eq_cont.89624:
 	lw	$31, 143($3)
 	lw	$2, 3351($0)
 	addi	$2, $2, -1
-	bge	$2, $0, ge_else.89629
-	j	ge_cont.89630
-ge_else.89629:
+	bge	$2, $0, ge_else.90119
+	j	ge_cont.90120
+ge_else.90119:
 	lw	$5, 3171($2)
 	lw	$6, 1($5)
 	lf	$f0, 3381($0) # 1000000000.000000
@@ -18194,16 +18050,16 @@ ge_else.89629:
 	sw	$2, 143($3)
 	sw	$6, 144($3)
 	sw	$5, 145($3)
-	bne	$9, $28, eq_else.89631
-	j	eq_cont.89632
-eq_else.89631:
+	bne	$9, $28, eq_else.90121
+	j	eq_cont.90122
+eq_else.90121:
 	sw	$7, 146($3)
 	addi	$30, $0, 99
-	bne	$9, $30, eq_else.89633
+	bne	$9, $30, eq_else.90123
 	lw	$9, 1($8)
-	bne	$9, $28, eq_else.89635
-	j	eq_cont.89636
-eq_else.89635:
+	bne	$9, $28, eq_else.90125
+	j	eq_cont.90126
+eq_else.90125:
 	lw	$9, 3071($9)
 	sw	$8, 147($3)
 	mov	$5, $9
@@ -18215,9 +18071,9 @@ eq_else.89635:
 	lw	$31, 148($3)
 	lw	$2, 147($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.89637
-	j	eq_cont.89638
-eq_else.89637:
+	bne	$5, $28, eq_else.90127
+	j	eq_cont.90128
+eq_else.90127:
 	lw	$5, 3071($5)
 	lw	$6, 144($3)
 	mov	$2, $0
@@ -18228,9 +18084,9 @@ eq_else.89637:
 	lw	$31, 148($3)
 	lw	$2, 147($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.89639
-	j	eq_cont.89640
-eq_else.89639:
+	bne	$5, $28, eq_else.90129
+	j	eq_cont.90130
+eq_else.90129:
 	lw	$5, 3071($5)
 	lw	$6, 144($3)
 	mov	$2, $0
@@ -18241,9 +18097,9 @@ eq_else.89639:
 	lw	$31, 148($3)
 	lw	$2, 147($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.89641
-	j	eq_cont.89642
-eq_else.89641:
+	bne	$5, $28, eq_else.90131
+	j	eq_cont.90132
+eq_else.90131:
 	lw	$5, 3071($5)
 	lw	$6, 144($3)
 	mov	$2, $0
@@ -18260,12 +18116,12 @@ eq_else.89641:
 	jal	solve_one_or_network_fast.3001
 	addi	$3, $3, -149
 	lw	$31, 148($3)
-eq_cont.89642:
-eq_cont.89640:
-eq_cont.89638:
-eq_cont.89636:
-	j	eq_cont.89634
-eq_else.89633:
+eq_cont.90132:
+eq_cont.90130:
+eq_cont.90128:
+eq_cont.90126:
+	j	eq_cont.90124
+eq_else.90123:
 	lw	$10, 3001($9)
 	lw	$11, 10($10)
 	lf	$f0, 0($11)
@@ -18275,7 +18131,7 @@ eq_else.89633:
 	add	$30, $12, $9
 	lw	$9, 0($30)
 	lw	$12, 1($10)
-	bne	$12, $1, eq_else.89643
+	bne	$12, $1, eq_else.90133
 	lw	$11, 0($6)
 	lf	$f3, 0($9)
 	fsub	$f3, $f3, $f0
@@ -18288,10 +18144,10 @@ eq_else.89633:
 	lw	$12, 4($10)
 	lf	$f5, 1($12)
 	sltf	$12, $f4, $f5
-	bne	$12, $0, eq_else.89645
+	bne	$12, $0, eq_else.90135
 	mov	$12, $0
-	j	eq_cont.89646
-eq_else.89645:
+	j	eq_cont.90136
+eq_else.90135:
 	lf	$f4, 2($11)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
@@ -18299,26 +18155,26 @@ eq_else.89645:
 	lw	$12, 4($10)
 	lf	$f5, 2($12)
 	sltf	$12, $f4, $f5
-	bne	$12, $0, eq_else.89647
+	bne	$12, $0, eq_else.90137
 	mov	$12, $0
-	j	eq_cont.89648
-eq_else.89647:
+	j	eq_cont.90138
+eq_else.90137:
 	lf	$f4, 1($9)
-	beqf	$f4, $f30, feq.89649
+	beqf	$f4, $f30, feq.90139
 	mov	$12, $0
-	j	feq_cont.89650
-feq.89649:
+	j	feq_cont.90140
+feq.90139:
 	mov	$12, $1
-feq_cont.89650:
-	bne	$12, $0, eq_else.89651
+feq_cont.90140:
+	bne	$12, $0, eq_else.90141
 	mov	$12, $1
-	j	eq_cont.89652
-eq_else.89651:
+	j	eq_cont.90142
+eq_else.90141:
 	mov	$12, $0
-eq_cont.89652:
-eq_cont.89648:
-eq_cont.89646:
-	bne	$12, $0, eq_else.89653
+eq_cont.90142:
+eq_cont.90138:
+eq_cont.90136:
+	bne	$12, $0, eq_else.90143
 	lf	$f3, 2($9)
 	fsub	$f3, $f3, $f1
 	lf	$f4, 3($9)
@@ -18330,10 +18186,10 @@ eq_cont.89646:
 	lw	$12, 4($10)
 	lf	$f5, 0($12)
 	sltf	$12, $f4, $f5
-	bne	$12, $0, eq_else.89655
+	bne	$12, $0, eq_else.90145
 	mov	$12, $0
-	j	eq_cont.89656
-eq_else.89655:
+	j	eq_cont.90146
+eq_else.90145:
 	lf	$f4, 2($11)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
@@ -18341,26 +18197,26 @@ eq_else.89655:
 	lw	$12, 4($10)
 	lf	$f5, 2($12)
 	sltf	$12, $f4, $f5
-	bne	$12, $0, eq_else.89657
+	bne	$12, $0, eq_else.90147
 	mov	$12, $0
-	j	eq_cont.89658
-eq_else.89657:
+	j	eq_cont.90148
+eq_else.90147:
 	lf	$f4, 3($9)
-	beqf	$f4, $f30, feq.89659
+	beqf	$f4, $f30, feq.90149
 	mov	$12, $0
-	j	feq_cont.89660
-feq.89659:
+	j	feq_cont.90150
+feq.90149:
 	mov	$12, $1
-feq_cont.89660:
-	bne	$12, $0, eq_else.89661
+feq_cont.90150:
+	bne	$12, $0, eq_else.90151
 	mov	$12, $1
-	j	eq_cont.89662
-eq_else.89661:
+	j	eq_cont.90152
+eq_else.90151:
 	mov	$12, $0
-eq_cont.89662:
-eq_cont.89658:
-eq_cont.89656:
-	bne	$12, $0, eq_else.89663
+eq_cont.90152:
+eq_cont.90148:
+eq_cont.90146:
+	bne	$12, $0, eq_else.90153
 	lf	$f3, 4($9)
 	fsub	$f2, $f3, $f2
 	lf	$f3, 5($9)
@@ -18372,10 +18228,10 @@ eq_cont.89656:
 	lw	$12, 4($10)
 	lf	$f3, 0($12)
 	sltf	$12, $f0, $f3
-	bne	$12, $0, eq_else.89665
+	bne	$12, $0, eq_else.90155
 	mov	$9, $0
-	j	eq_cont.89666
-eq_else.89665:
+	j	eq_cont.90156
+eq_else.90155:
 	lf	$f0, 1($11)
 	fmul	$f0, $f2, $f0
 	fadd	$f0, $f0, $f1
@@ -18383,68 +18239,68 @@ eq_else.89665:
 	lw	$10, 4($10)
 	lf	$f1, 1($10)
 	sltf	$10, $f0, $f1
-	bne	$10, $0, eq_else.89667
+	bne	$10, $0, eq_else.90157
 	mov	$9, $0
-	j	eq_cont.89668
-eq_else.89667:
+	j	eq_cont.90158
+eq_else.90157:
 	lf	$f0, 5($9)
-	beqf	$f0, $f30, feq.89669
+	beqf	$f0, $f30, feq.90159
 	mov	$9, $0
-	j	feq_cont.89670
-feq.89669:
+	j	feq_cont.90160
+feq.90159:
 	mov	$9, $1
-feq_cont.89670:
-	bne	$9, $0, eq_else.89671
+feq_cont.90160:
+	bne	$9, $0, eq_else.90161
 	mov	$9, $1
-	j	eq_cont.89672
-eq_else.89671:
+	j	eq_cont.90162
+eq_else.90161:
 	mov	$9, $0
-eq_cont.89672:
-eq_cont.89668:
-eq_cont.89666:
-	bne	$9, $0, eq_else.89673
+eq_cont.90162:
+eq_cont.90158:
+eq_cont.90156:
+	bne	$9, $0, eq_else.90163
 	mov	$9, $0
-	j	eq_cont.89674
-eq_else.89673:
+	j	eq_cont.90164
+eq_else.90163:
 	sf	$f2, 3122($0)
-	addi	$9, $0, 3
-eq_cont.89674:
-	j	eq_cont.89664
-eq_else.89663:
+	mov	$9, $27
+eq_cont.90164:
+	j	eq_cont.90154
+eq_else.90153:
 	sf	$f3, 3122($0)
-	addi	$9, $0, 2
-eq_cont.89664:
-	j	eq_cont.89654
-eq_else.89653:
+	mov	$9, $26
+eq_cont.90154:
+	j	eq_cont.90144
+eq_else.90143:
 	sf	$f3, 3122($0)
 	mov	$9, $1
-eq_cont.89654:
-	j	eq_cont.89644
-eq_else.89643:
+eq_cont.90144:
+	j	eq_cont.90134
+eq_else.90133:
 	addi	$30, $0, 2
-	bne	$12, $30, eq_else.89675
+	bne	$12, $30, eq_else.90165
 	lf	$f0, 0($9)
 	sltf	$10, $f0, $f30
-	bne	$10, $0, eq_else.89677
+	bne	$10, $0, eq_else.90167
 	mov	$9, $0
-	j	eq_cont.89678
-eq_else.89677:
+	j	eq_cont.90168
+eq_else.90167:
 	lf	$f0, 0($9)
 	lf	$f1, 3($11)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
 	mov	$9, $1
-eq_cont.89678:
-	j	eq_cont.89676
-eq_else.89675:
+eq_cont.90168:
+	j	eq_cont.90166
+eq_else.90165:
 	lf	$f3, 0($9)
-	beqf	$f3, $f30, feq.89679
+	beqf	$f3, $f30, feq.90169
 	mov	$12, $0
-	j	feq_cont.89680
-feq.89679:
+	j	feq_cont.90170
+feq.90169:
 	mov	$12, $1
-feq_cont.89680:
-	bne	$12, $0, eq_else.89681
+feq_cont.90170:
+	bne	$12, $0, eq_else.90171
 	lf	$f4, 1($9)
 	fmul	$f0, $f4, $f0
 	lf	$f4, 2($9)
@@ -18458,46 +18314,46 @@ feq_cont.89680:
 	fmul	$f1, $f3, $f1
 	fsub	$f1, $f2, $f1
 	sltf	$11, $f30, $f1
-	bne	$11, $0, eq_else.89683
+	bne	$11, $0, eq_else.90173
 	mov	$9, $0
-	j	eq_cont.89684
-eq_else.89683:
+	j	eq_cont.90174
+eq_else.90173:
 	lw	$10, 6($10)
-	bne	$10, $0, eq_else.89685
+	bne	$10, $0, eq_else.90175
 	sqrt	$f1, $f1
 	fsub	$f0, $f0, $f1
 	lf	$f1, 4($9)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
-	j	eq_cont.89686
-eq_else.89685:
+	j	eq_cont.90176
+eq_else.90175:
 	sqrt	$f1, $f1
 	fadd	$f0, $f0, $f1
 	lf	$f1, 4($9)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
-eq_cont.89686:
+eq_cont.90176:
 	mov	$9, $1
-eq_cont.89684:
-	j	eq_cont.89682
-eq_else.89681:
+eq_cont.90174:
+	j	eq_cont.90172
+eq_else.90171:
 	mov	$9, $0
-eq_cont.89682:
-eq_cont.89676:
-eq_cont.89644:
-	bne	$9, $0, eq_else.89687
-	j	eq_cont.89688
-eq_else.89687:
+eq_cont.90172:
+eq_cont.90166:
+eq_cont.90134:
+	bne	$9, $0, eq_else.90177
+	j	eq_cont.90178
+eq_else.90177:
 	lf	$f0, 3122($0)
 	lf	$f1, 3124($0)
 	sltf	$9, $f0, $f1
-	bne	$9, $0, eq_else.89689
-	j	eq_cont.89690
-eq_else.89689:
+	bne	$9, $0, eq_else.90179
+	j	eq_cont.90180
+eq_else.90179:
 	lw	$9, 1($8)
-	bne	$9, $28, eq_else.89691
-	j	eq_cont.89692
-eq_else.89691:
+	bne	$9, $28, eq_else.90181
+	j	eq_cont.90182
+eq_else.90181:
 	lw	$9, 3071($9)
 	sw	$8, 147($3)
 	mov	$5, $9
@@ -18509,9 +18365,9 @@ eq_else.89691:
 	lw	$31, 148($3)
 	lw	$2, 147($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.89693
-	j	eq_cont.89694
-eq_else.89693:
+	bne	$5, $28, eq_else.90183
+	j	eq_cont.90184
+eq_else.90183:
 	lw	$5, 3071($5)
 	lw	$6, 144($3)
 	mov	$2, $0
@@ -18522,9 +18378,9 @@ eq_else.89693:
 	lw	$31, 148($3)
 	lw	$2, 147($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.89695
-	j	eq_cont.89696
-eq_else.89695:
+	bne	$5, $28, eq_else.90185
+	j	eq_cont.90186
+eq_else.90185:
 	lw	$5, 3071($5)
 	lw	$6, 144($3)
 	mov	$2, $0
@@ -18535,9 +18391,9 @@ eq_else.89695:
 	lw	$31, 148($3)
 	lw	$2, 147($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.89697
-	j	eq_cont.89698
-eq_else.89697:
+	bne	$5, $28, eq_else.90187
+	j	eq_cont.90188
+eq_else.90187:
 	lw	$5, 3071($5)
 	lw	$6, 144($3)
 	mov	$2, $0
@@ -18554,13 +18410,13 @@ eq_else.89697:
 	jal	solve_one_or_network_fast.3001
 	addi	$3, $3, -149
 	lw	$31, 148($3)
-eq_cont.89698:
-eq_cont.89696:
-eq_cont.89694:
-eq_cont.89692:
-eq_cont.89690:
-eq_cont.89688:
-eq_cont.89634:
+eq_cont.90188:
+eq_cont.90186:
+eq_cont.90184:
+eq_cont.90182:
+eq_cont.90180:
+eq_cont.90178:
+eq_cont.90124:
 	lw	$5, 146($3)
 	lw	$6, 144($3)
 	mov	$2, $1
@@ -18569,25 +18425,25 @@ eq_cont.89634:
 	jal	trace_or_matrix_fast.3005
 	addi	$3, $3, -149
 	lw	$31, 148($3)
-eq_cont.89632:
+eq_cont.90122:
 	lf	$f0, 3124($0)
 	lf	$f1, 3382($0) # -0.100000
 	sltf	$2, $f1, $f0
-	bne	$2, $0, eq_else.89699
+	bne	$2, $0, eq_else.90189
 	mov	$2, $0
-	j	eq_cont.89700
-eq_else.89699:
+	j	eq_cont.90190
+eq_else.90189:
 	lf	$f1, 3380($0) # 100000000.000000
-	bltf	$f0, $f1, fle.89701
+	bltf	$f0, $f1, fle.90191
 	mov	$2, $0
-	j	fle_cont.89702
-fle.89701:
+	j	fle_cont.90192
+fle.90191:
 	mov	$2, $1
-fle_cont.89702:
-eq_cont.89700:
-	bne	$2, $0, eq_else.89703
-	j	eq_cont.89704
-eq_else.89703:
+fle_cont.90192:
+eq_cont.90190:
+	bne	$2, $0, eq_else.90193
+	j	eq_cont.90194
+eq_else.90193:
 	lw	$2, 3128($0)
 	addi	$5, $0, 4
 	mul	$2, $2, $5
@@ -18595,7 +18451,7 @@ eq_else.89703:
 	add	$2, $2, $5
 	lw	$5, 145($3)
 	lw	$6, 0($5)
-	bne	$2, $6, eq_else.89705
+	bne	$2, $6, eq_else.90195
 	lw	$2, 3121($0)
 	mov	$5, $2
 	mov	$2, $0
@@ -18604,7 +18460,7 @@ eq_else.89703:
 	jal	shadow_check_one_or_matrix.2980
 	addi	$3, $3, -149
 	lw	$31, 148($3)
-	bne	$2, $0, eq_else.89707
+	bne	$2, $0, eq_else.90197
 	lw	$2, 144($3)
 	lw	$5, 0($2)
 	lf	$f0, 3129($0)
@@ -18614,8 +18470,7 @@ eq_else.89703:
 	lf	$f2, 1($5)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	addi	$6, $0, 2
-	lf	$f1, 3129($6)
+	lf	$f1, 3129($26)
 	lf	$f2, 2($5)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
@@ -18639,9 +18494,9 @@ eq_else.89703:
 	fadd	$f3, $f3, $f4
 	fmul	$f1, $f1, $f3
 	sltf	$2, $f30, $f0
-	bne	$2, $0, eq_else.89709
-	j	eq_cont.89710
-eq_else.89709:
+	bne	$2, $0, eq_else.90199
+	j	eq_cont.90200
+eq_else.90199:
 	lf	$f3, 3138($0)
 	lf	$f4, 3132($0)
 	fmul	$f4, $f0, $f4
@@ -18652,19 +18507,16 @@ eq_else.89709:
 	fmul	$f4, $f0, $f4
 	fadd	$f3, $f3, $f4
 	sf	$f3, 3138($1)
-	addi	$2, $0, 2
-	addi	$6, $0, 2
-	lf	$f3, 3138($6)
-	addi	$6, $0, 2
-	lf	$f4, 3132($6)
+	lf	$f3, 3138($26)
+	lf	$f4, 3132($26)
 	fmul	$f0, $f0, $f4
 	fadd	$f0, $f3, $f0
-	sf	$f0, 3138($2)
-eq_cont.89710:
+	sf	$f0, 3138($26)
+eq_cont.90200:
 	sltf	$2, $f30, $f1
-	bne	$2, $0, eq_else.89711
-	j	eq_cont.89712
-eq_else.89711:
+	bne	$2, $0, eq_else.90201
+	j	eq_cont.90202
+eq_else.90201:
 	fmul	$f0, $f1, $f1
 	fmul	$f0, $f0, $f0
 	lf	$f1, 140($3)
@@ -18675,19 +18527,17 @@ eq_else.89711:
 	lf	$f3, 3138($1)
 	fadd	$f3, $f3, $f0
 	sf	$f3, 3138($1)
-	addi	$2, $0, 2
-	addi	$6, $0, 2
-	lf	$f3, 3138($6)
+	lf	$f3, 3138($26)
 	fadd	$f0, $f3, $f0
-	sf	$f0, 3138($2)
-eq_cont.89712:
-	j	eq_cont.89708
-eq_else.89707:
-eq_cont.89708:
-	j	eq_cont.89706
-eq_else.89705:
-eq_cont.89706:
-eq_cont.89704:
+	sf	$f0, 3138($26)
+eq_cont.90202:
+	j	eq_cont.90198
+eq_else.90197:
+eq_cont.90198:
+	j	eq_cont.90196
+eq_else.90195:
+eq_cont.90196:
+eq_cont.90194:
 	lw	$2, 143($3)
 	addi	$2, $2, -1
 	lf	$f0, 7($3)
@@ -18698,26 +18548,26 @@ eq_cont.89704:
 	jal	trace_reflections.3027
 	addi	$3, $3, -149
 	lw	$31, 148($3)
-ge_cont.89630:
+ge_cont.90120:
 	lf	$f0, 3358($0) # 0.100000
 	lf	$f1, 2($3)
 	sltf	$2, $f0, $f1
-	bne	$2, $0, eq_else.89713
+	bne	$2, $0, eq_else.90203
 	jr $31
-eq_else.89713:
+eq_else.90203:
 	lw	$2, 4($3)
 	addi	$30, $0, 4
-	bge	$2, $30, ge_else.89715
+	bge	$2, $30, ge_else.90205
 	addi	$5, $2, 1
 	lw	$6, 5($3)
 	add $30, $6, $5
 	sw	$28, 0($30)
-	j	ge_cont.89716
-ge_else.89715:
-ge_cont.89716:
+	j	ge_cont.90206
+ge_else.90205:
+ge_cont.90206:
 	lw	$5, 6($3)
 	addi	$30, $0, 2
-	bne	$5, $30, eq_else.89717
+	bne	$5, $30, eq_else.90207
 	lw	$5, 8($3)
 	lw	$5, 7($5)
 	lf	$f0, 0($5)
@@ -18730,7 +18580,7 @@ ge_cont.89716:
 	lw	$5, 3($3)
 	lw	$6, 1($3)
 	j	trace_ray.3032
-eq_else.89717:
+eq_else.90207:
 	jr $31
 trace_diffuse_ray.3038:
 	lf	$f1, 3381($0) # 1000000000.000000
@@ -18748,60 +18598,59 @@ trace_diffuse_ray.3038:
 	lf	$f0, 3124($0)
 	lf	$f1, 3382($0) # -0.100000
 	sltf	$2, $f1, $f0
-	bne	$2, $0, eq_else.89719
+	bne	$2, $0, eq_else.90209
 	mov	$2, $0
-	j	eq_cont.89720
-eq_else.89719:
+	j	eq_cont.90210
+eq_else.90209:
 	lf	$f1, 3380($0) # 100000000.000000
-	bltf	$f0, $f1, fle.89721
+	bltf	$f0, $f1, fle.90211
 	mov	$2, $0
-	j	fle_cont.89722
-fle.89721:
+	j	fle_cont.90212
+fle.90211:
 	mov	$2, $1
-fle_cont.89722:
-eq_cont.89720:
-	bne	$2, $0, eq_else.89723
+fle_cont.90212:
+eq_cont.90210:
+	bne	$2, $0, eq_else.90213
 	jr $31
-eq_else.89723:
+eq_else.90213:
 	lw	$2, 3128($0)
 	lw	$2, 3001($2)
 	lw	$5, 1($3)
 	lw	$5, 0($5)
 	lw	$6, 1($2)
-	bne	$6, $1, eq_else.89725
+	bne	$6, $1, eq_else.90215
 	lw	$6, 3123($0)
 	sf	$f30, 3129($0)
 	sf	$f30, 3129($1)
-	addi	$7, $0, 2
-	sf	$f30, 3129($7)
+	sf	$f30, 3129($26)
 	addi	$7, $6, -1
 	addi	$6, $6, -1
 	add	$30, $5, $6
 	lf	$f0, 0($30)
-	beqf	$f0, $f30, feq.89727
+	beqf	$f0, $f30, feq.90217
 	mov	$5, $0
-	j	feq_cont.89728
-feq.89727:
+	j	feq_cont.90218
+feq.90217:
 	mov	$5, $1
-feq_cont.89728:
-	bne	$5, $0, eq_else.89729
+feq_cont.90218:
+	bne	$5, $0, eq_else.90219
 	sltf	$5, $f30, $f0
-	bne	$5, $0, eq_else.89731
+	bne	$5, $0, eq_else.90221
 	movf	$f0, $f29
-	j	eq_cont.89732
-eq_else.89731:
+	j	eq_cont.90222
+eq_else.90221:
 	movf	$f0, $f28
-eq_cont.89732:
-	j	eq_cont.89730
-eq_else.89729:
+eq_cont.90222:
+	j	eq_cont.90220
+eq_else.90219:
 	movf	$f0, $f30
-eq_cont.89730:
+eq_cont.90220:
 	fneg	$f0, $f0
 	sf	$f0, 3129($7)
-	j	eq_cont.89726
-eq_else.89725:
+	j	eq_cont.90216
+eq_else.90215:
 	addi	$30, $0, 2
-	bne	$6, $30, eq_else.89733
+	bne	$6, $30, eq_else.90223
 	lw	$5, 4($2)
 	lf	$f0, 0($5)
 	fneg	$f0, $f0
@@ -18810,13 +18659,12 @@ eq_else.89725:
 	lf	$f0, 1($5)
 	fneg	$f0, $f0
 	sf	$f0, 3129($1)
-	addi	$5, $0, 2
-	lw	$6, 4($2)
-	lf	$f0, 2($6)
+	lw	$5, 4($2)
+	lf	$f0, 2($5)
 	fneg	$f0, $f0
-	sf	$f0, 3129($5)
-	j	eq_cont.89734
-eq_else.89733:
+	sf	$f0, 3129($26)
+	j	eq_cont.90224
+eq_else.90223:
 	lf	$f0, 3125($0)
 	lw	$5, 5($2)
 	lf	$f1, 0($5)
@@ -18825,8 +18673,7 @@ eq_else.89733:
 	lw	$5, 5($2)
 	lf	$f2, 1($5)
 	fsub	$f1, $f1, $f2
-	addi	$5, $0, 2
-	lf	$f2, 3125($5)
+	lf	$f2, 3125($26)
 	lw	$5, 5($2)
 	lf	$f3, 2($5)
 	fsub	$f2, $f2, $f3
@@ -18840,13 +18687,12 @@ eq_else.89733:
 	lf	$f5, 2($5)
 	fmul	$f5, $f2, $f5
 	lw	$5, 3($2)
-	bne	$5, $0, eq_else.89735
+	bne	$5, $0, eq_else.90225
 	sf	$f3, 3129($0)
 	sf	$f4, 3129($1)
-	addi	$5, $0, 2
-	sf	$f5, 3129($5)
-	j	eq_cont.89736
-eq_else.89735:
+	sf	$f5, 3129($26)
+	j	eq_cont.90226
+eq_else.90225:
 	lw	$5, 9($2)
 	lf	$f6, 2($5)
 	fmul	$f6, $f1, $f6
@@ -18869,60 +18715,56 @@ eq_else.89735:
 	fmul	$f2, $f2, $f3
 	fadd	$f2, $f4, $f2
 	sf	$f2, 3129($1)
-	addi	$5, $0, 2
-	lw	$6, 9($2)
-	lf	$f2, 1($6)
+	lw	$5, 9($2)
+	lf	$f2, 1($5)
 	fmul	$f0, $f0, $f2
-	lw	$6, 9($2)
-	lf	$f2, 0($6)
+	lw	$5, 9($2)
+	lf	$f2, 0($5)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	lf	$f1, 3388($0) # 0.500000
 	fmul	$f0, $f0, $f1
 	fadd	$f0, $f5, $f0
-	sf	$f0, 3129($5)
-eq_cont.89736:
+	sf	$f0, 3129($26)
+eq_cont.90226:
 	lw	$5, 6($2)
 	lf	$f0, 3129($0)
 	fmul	$f0, $f0, $f0
 	lf	$f1, 3129($1)
 	fmul	$f1, $f1, $f1
 	fadd	$f0, $f0, $f1
-	addi	$6, $0, 2
-	lf	$f1, 3129($6)
+	lf	$f1, 3129($26)
 	fmul	$f1, $f1, $f1
 	fadd	$f0, $f0, $f1
 	sqrt	$f0, $f0
-	beqf	$f0, $f30, feq.89737
+	beqf	$f0, $f30, feq.90227
 	mov	$6, $0
-	j	feq_cont.89738
-feq.89737:
+	j	feq_cont.90228
+feq.90227:
 	mov	$6, $1
-feq_cont.89738:
-	bne	$6, $0, eq_else.89739
-	bne	$5, $0, eq_else.89741
+feq_cont.90228:
+	bne	$6, $0, eq_else.90229
+	bne	$5, $0, eq_else.90231
 	fdiv	$f0, $f28, $f0
-	j	eq_cont.89742
-eq_else.89741:
+	j	eq_cont.90232
+eq_else.90231:
 	fdiv	$f0, $f29, $f0
-eq_cont.89742:
-	j	eq_cont.89740
-eq_else.89739:
+eq_cont.90232:
+	j	eq_cont.90230
+eq_else.90229:
 	movf	$f0, $f28
-eq_cont.89740:
+eq_cont.90230:
 	lf	$f1, 3129($0)
 	fmul	$f1, $f1, $f0
 	sf	$f1, 3129($0)
 	lf	$f1, 3129($1)
 	fmul	$f1, $f1, $f0
 	sf	$f1, 3129($1)
-	addi	$5, $0, 2
-	addi	$6, $0, 2
-	lf	$f1, 3129($6)
+	lf	$f1, 3129($26)
 	fmul	$f0, $f1, $f0
-	sf	$f0, 3129($5)
-eq_cont.89734:
-eq_cont.89726:
+	sf	$f0, 3129($26)
+eq_cont.90224:
+eq_cont.90216:
 	lw	$5, 0($2)
 	lw	$6, 8($2)
 	lf	$f0, 0($6)
@@ -18930,12 +18772,11 @@ eq_cont.89726:
 	lw	$6, 8($2)
 	lf	$f0, 1($6)
 	sf	$f0, 3132($1)
-	addi	$6, $0, 2
-	lw	$7, 8($2)
-	lf	$f0, 2($7)
-	sf	$f0, 3132($6)
+	lw	$6, 8($2)
+	lf	$f0, 2($6)
+	sf	$f0, 3132($26)
 	sw	$2, 2($3)
-	bne	$5, $1, eq_else.89743
+	bne	$5, $1, eq_else.90233
 	lf	$f0, 3125($0)
 	lw	$5, 5($2)
 	lf	$f1, 0($5)
@@ -18948,8 +18789,7 @@ eq_cont.89726:
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3364($0) # 10.000000
 	sltf	$5, $f0, $f1
-	addi	$6, $0, 2
-	lf	$f0, 3125($6)
+	lf	$f0, 3125($26)
 	lw	$6, 5($2)
 	lf	$f1, 2($6)
 	fsub	$f0, $f0, $f1
@@ -18961,50 +18801,50 @@ eq_cont.89726:
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3364($0) # 10.000000
 	sltf	$6, $f0, $f1
-	bne	$5, $0, eq_else.89745
-	bne	$6, $0, eq_else.89747
+	bne	$5, $0, eq_else.90235
+	bne	$6, $0, eq_else.90237
 	lf	$f0, 3366($0) # 255.000000
-	j	eq_cont.89748
-eq_else.89747:
+	j	eq_cont.90238
+eq_else.90237:
 	movf	$f0, $f30
-eq_cont.89748:
-	j	eq_cont.89746
-eq_else.89745:
-	bne	$6, $0, eq_else.89749
+eq_cont.90238:
+	j	eq_cont.90236
+eq_else.90235:
+	bne	$6, $0, eq_else.90239
 	movf	$f0, $f30
-	j	eq_cont.89750
-eq_else.89749:
+	j	eq_cont.90240
+eq_else.90239:
 	lf	$f0, 3366($0) # 255.000000
-eq_cont.89750:
-eq_cont.89746:
+eq_cont.90240:
+eq_cont.90236:
 	sf	$f0, 3132($1)
-	j	eq_cont.89744
-eq_else.89743:
+	j	eq_cont.90234
+eq_else.90233:
 	addi	$30, $0, 2
-	bne	$5, $30, eq_else.89751
+	bne	$5, $30, eq_else.90241
 	lf	$f0, 3125($1)
 	lf	$f1, 3363($0) # 0.250000
 	fmul	$f0, $f0, $f1
-	bltf	$f30, $f0, fle.89753
+	bltf	$f30, $f0, fle.90243
 	movf	$f1, $f29
-	j	fle_cont.89754
-fle.89753:
+	j	fle_cont.90244
+fle.90243:
 	movf	$f1, $f28
-fle_cont.89754:
+fle_cont.90244:
 	fmul	$f0, $f1, $f0
 	lf	$f2, 3395($0) # 6.283185
 	fdiv	$f3, $f0, $f2
 	floor	$f3, $f3
 	fmul	$f2, $f3, $f2
 	fsub	$f0, $f0, $f2
-	bltf	$f0, $f31, fle.89755
+	bltf	$f0, $f31, fle.90245
 	fsub	$f0, $f0, $f31
 	fneg	$f1, $f1
 	lf	$f2, 3393($0) # 1.570796
-	bltf	$f0, $f2, fle.89757
+	bltf	$f0, $f2, fle.90247
 	fsub	$f0, $f31, $f0
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.89759
+	bltf	$f2, $f0, fle.90249
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
@@ -19025,8 +18865,8 @@ fle_cont.89754:
 	lf	$f2, 6($3)
 	fmul	$f0, $f0, $f2
 	fsub	$f0, $f1, $f0
-	addi	$2, $0, 2
 	sf	$f0, 8($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 9($3)
 	addi	$3, $3, 10
@@ -19040,8 +18880,8 @@ fle_cont.89754:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 8($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 9($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 10($3)
 	addi	$3, $3, 11
@@ -19057,8 +18897,8 @@ fle_cont.89754:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.89760
-fle.89759:
+	j	fle_cont.90250
+fle.90249:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3388($0) # 0.500000
@@ -19079,9 +18919,9 @@ fle.89759:
 	lf	$f1, 13($3)
 	fmul	$f0, $f0, $f1
 	fsub	$f0, $f28, $f0
-	addi	$2, $0, 2
 	lf	$f1, 12($3)
 	sf	$f0, 14($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 15($3)
 	addi	$3, $3, 16
@@ -19093,9 +18933,9 @@ fle.89759:
 	fmul	$f0, $f0, $f1
 	lf	$f1, 14($3)
 	fadd	$f0, $f1, $f0
-	addi	$2, $0, 3
 	lf	$f1, 12($3)
 	sf	$f0, 15($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 16($3)
 	addi	$3, $3, 17
@@ -19109,11 +18949,11 @@ fle.89759:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3($3)
 	fmul	$f0, $f1, $f0
-fle_cont.89760:
-	j	fle_cont.89758
-fle.89757:
+fle_cont.90250:
+	j	fle_cont.90248
+fle.90247:
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.89761
+	bltf	$f2, $f0, fle.90251
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
@@ -19134,8 +18974,8 @@ fle.89757:
 	lf	$f2, 18($3)
 	fmul	$f0, $f0, $f2
 	fsub	$f0, $f1, $f0
-	addi	$2, $0, 2
 	sf	$f0, 20($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 21($3)
 	addi	$3, $3, 22
@@ -19149,8 +18989,8 @@ fle.89757:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 20($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 21($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 22($3)
 	addi	$3, $3, 23
@@ -19166,8 +19006,8 @@ fle.89757:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.89762
-fle.89761:
+	j	fle_cont.90252
+fle.90251:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3388($0) # 0.500000
@@ -19188,9 +19028,9 @@ fle.89761:
 	lf	$f1, 25($3)
 	fmul	$f0, $f0, $f1
 	fsub	$f0, $f28, $f0
-	addi	$2, $0, 2
 	lf	$f1, 24($3)
 	sf	$f0, 26($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 27($3)
 	addi	$3, $3, 28
@@ -19202,9 +19042,9 @@ fle.89761:
 	fmul	$f0, $f0, $f1
 	lf	$f1, 26($3)
 	fadd	$f0, $f1, $f0
-	addi	$2, $0, 3
 	lf	$f1, 24($3)
 	sf	$f0, 27($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 28($3)
 	addi	$3, $3, 29
@@ -19218,15 +19058,15 @@ fle.89761:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3($3)
 	fmul	$f0, $f1, $f0
-fle_cont.89762:
-fle_cont.89758:
-	j	fle_cont.89756
-fle.89755:
+fle_cont.90252:
+fle_cont.90248:
+	j	fle_cont.90246
+fle.90245:
 	lf	$f2, 3393($0) # 1.570796
-	bltf	$f0, $f2, fle.89763
+	bltf	$f0, $f2, fle.90253
 	fsub	$f0, $f31, $f0
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.89765
+	bltf	$f2, $f0, fle.90255
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
@@ -19247,8 +19087,8 @@ fle.89755:
 	lf	$f2, 31($3)
 	fmul	$f0, $f0, $f2
 	fsub	$f0, $f1, $f0
-	addi	$2, $0, 2
 	sf	$f0, 33($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 34($3)
 	addi	$3, $3, 35
@@ -19262,8 +19102,8 @@ fle.89755:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 33($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 34($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 35($3)
 	addi	$3, $3, 36
@@ -19279,8 +19119,8 @@ fle.89755:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 28($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.89766
-fle.89765:
+	j	fle_cont.90256
+fle.90255:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3388($0) # 0.500000
@@ -19301,9 +19141,9 @@ fle.89765:
 	lf	$f1, 38($3)
 	fmul	$f0, $f0, $f1
 	fsub	$f0, $f28, $f0
-	addi	$2, $0, 2
 	lf	$f1, 37($3)
 	sf	$f0, 39($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 40($3)
 	addi	$3, $3, 41
@@ -19315,9 +19155,9 @@ fle.89765:
 	fmul	$f0, $f0, $f1
 	lf	$f1, 39($3)
 	fadd	$f0, $f1, $f0
-	addi	$2, $0, 3
 	lf	$f1, 37($3)
 	sf	$f0, 40($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 41($3)
 	addi	$3, $3, 42
@@ -19331,11 +19171,11 @@ fle.89765:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 28($3)
 	fmul	$f0, $f1, $f0
-fle_cont.89766:
-	j	fle_cont.89764
-fle.89763:
+fle_cont.90256:
+	j	fle_cont.90254
+fle.90253:
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.89767
+	bltf	$f2, $f0, fle.90257
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
@@ -19356,8 +19196,8 @@ fle.89763:
 	lf	$f2, 43($3)
 	fmul	$f0, $f0, $f2
 	fsub	$f0, $f1, $f0
-	addi	$2, $0, 2
 	sf	$f0, 45($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 46($3)
 	addi	$3, $3, 47
@@ -19371,8 +19211,8 @@ fle.89763:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 45($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 46($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 47($3)
 	addi	$3, $3, 48
@@ -19388,8 +19228,8 @@ fle.89763:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 28($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.89768
-fle.89767:
+	j	fle_cont.90258
+fle.90257:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3388($0) # 0.500000
@@ -19410,9 +19250,9 @@ fle.89767:
 	lf	$f1, 50($3)
 	fmul	$f0, $f0, $f1
 	fsub	$f0, $f28, $f0
-	addi	$2, $0, 2
 	lf	$f1, 49($3)
 	sf	$f0, 51($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 52($3)
 	addi	$3, $3, 53
@@ -19424,9 +19264,9 @@ fle.89767:
 	fmul	$f0, $f0, $f1
 	lf	$f1, 51($3)
 	fadd	$f0, $f1, $f0
-	addi	$2, $0, 3
 	lf	$f1, 49($3)
 	sf	$f0, 52($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 53($3)
 	addi	$3, $3, 54
@@ -19440,9 +19280,9 @@ fle.89767:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 28($3)
 	fmul	$f0, $f1, $f0
-fle_cont.89768:
-fle_cont.89764:
-fle_cont.89756:
+fle_cont.90258:
+fle_cont.90254:
+fle_cont.90246:
 	fmul	$f0, $f0, $f0
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f1, $f1, $f0
@@ -19451,16 +19291,15 @@ fle_cont.89756:
 	fsub	$f0, $f28, $f0
 	fmul	$f0, $f1, $f0
 	sf	$f0, 3132($1)
-	j	eq_cont.89752
-eq_else.89751:
+	j	eq_cont.90242
+eq_else.90241:
 	addi	$30, $0, 3
-	bne	$5, $30, eq_else.89769
+	bne	$5, $30, eq_else.90259
 	lf	$f0, 3125($0)
 	lw	$5, 5($2)
 	lf	$f1, 0($5)
 	fsub	$f0, $f0, $f1
-	addi	$5, $0, 2
-	lf	$f1, 3125($5)
+	lf	$f1, 3125($26)
 	lw	$5, 5($2)
 	lf	$f2, 2($5)
 	fsub	$f1, $f1, $f2
@@ -19474,25 +19313,25 @@ eq_else.89751:
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3368($0) # 3.141593
 	fmul	$f0, $f0, $f1
-	bltf	$f30, $f0, fle.89771
+	bltf	$f30, $f0, fle.90261
 	movf	$f1, $f29
-	j	fle_cont.89772
-fle.89771:
+	j	fle_cont.90262
+fle.90261:
 	movf	$f1, $f28
-fle_cont.89772:
+fle_cont.90262:
 	fmul	$f0, $f1, $f0
 	lf	$f1, 3395($0) # 6.283185
 	fdiv	$f2, $f0, $f1
 	floor	$f2, $f2
 	fmul	$f1, $f2, $f1
 	fsub	$f0, $f0, $f1
-	bltf	$f0, $f31, fle.89773
+	bltf	$f0, $f31, fle.90263
 	fsub	$f0, $f0, $f31
 	lf	$f1, 3393($0) # 1.570796
-	bltf	$f0, $f1, fle.89775
+	bltf	$f0, $f1, fle.90265
 	fsub	$f0, $f31, $f0
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.89777
+	bltf	$f1, $f0, fle.90267
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
@@ -19510,9 +19349,9 @@ fle_cont.89772:
 	lf	$f1, 56($3)
 	fmul	$f0, $f0, $f1
 	fsub	$f0, $f28, $f0
-	addi	$2, $0, 2
 	lf	$f1, 55($3)
 	sf	$f0, 57($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 58($3)
 	addi	$3, $3, 59
@@ -19524,9 +19363,9 @@ fle_cont.89772:
 	fmul	$f0, $f0, $f1
 	lf	$f1, 57($3)
 	fadd	$f0, $f1, $f0
-	addi	$2, $0, 3
 	lf	$f1, 55($3)
 	sf	$f0, 58($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 59($3)
 	addi	$3, $3, 60
@@ -19539,8 +19378,8 @@ fle_cont.89772:
 	lf	$f1, 58($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-	j	fle_cont.89778
-fle.89777:
+	j	fle_cont.90268
+fle.90267:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
@@ -19562,8 +19401,8 @@ fle.89777:
 	lf	$f2, 61($3)
 	fmul	$f0, $f0, $f2
 	fsub	$f0, $f1, $f0
-	addi	$2, $0, 2
 	sf	$f0, 63($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 64($3)
 	addi	$3, $3, 65
@@ -19577,8 +19416,8 @@ fle.89777:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 63($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 64($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 65($3)
 	addi	$3, $3, 66
@@ -19593,11 +19432,11 @@ fle.89777:
 	lf	$f1, 64($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-fle_cont.89778:
-	j	fle_cont.89776
-fle.89775:
+fle_cont.90268:
+	j	fle_cont.90266
+fle.90265:
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.89779
+	bltf	$f1, $f0, fle.90269
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
@@ -19615,9 +19454,9 @@ fle.89775:
 	lf	$f1, 68($3)
 	fmul	$f0, $f0, $f1
 	fsub	$f0, $f28, $f0
-	addi	$2, $0, 2
 	lf	$f1, 67($3)
 	sf	$f0, 69($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 70($3)
 	addi	$3, $3, 71
@@ -19629,9 +19468,9 @@ fle.89775:
 	fmul	$f0, $f0, $f1
 	lf	$f1, 69($3)
 	fadd	$f0, $f1, $f0
-	addi	$2, $0, 3
 	lf	$f1, 67($3)
 	sf	$f0, 70($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 71($3)
 	addi	$3, $3, 72
@@ -19644,8 +19483,8 @@ fle.89775:
 	lf	$f1, 70($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-	j	fle_cont.89780
-fle.89779:
+	j	fle_cont.90270
+fle.90269:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
@@ -19667,8 +19506,8 @@ fle.89779:
 	lf	$f2, 73($3)
 	fmul	$f0, $f0, $f2
 	fsub	$f0, $f1, $f0
-	addi	$2, $0, 2
 	sf	$f0, 75($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 76($3)
 	addi	$3, $3, 77
@@ -19682,8 +19521,8 @@ fle.89779:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 75($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 76($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 77($3)
 	addi	$3, $3, 78
@@ -19698,15 +19537,15 @@ fle.89779:
 	lf	$f1, 76($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-fle_cont.89780:
-fle_cont.89776:
-	j	fle_cont.89774
-fle.89773:
+fle_cont.90270:
+fle_cont.90266:
+	j	fle_cont.90264
+fle.90263:
 	lf	$f1, 3393($0) # 1.570796
-	bltf	$f0, $f1, fle.89781
+	bltf	$f0, $f1, fle.90271
 	fsub	$f0, $f31, $f0
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.89783
+	bltf	$f1, $f0, fle.90273
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
@@ -19724,9 +19563,9 @@ fle.89773:
 	lf	$f1, 80($3)
 	fmul	$f0, $f0, $f1
 	fsub	$f0, $f28, $f0
-	addi	$2, $0, 2
 	lf	$f1, 79($3)
 	sf	$f0, 81($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 82($3)
 	addi	$3, $3, 83
@@ -19738,9 +19577,9 @@ fle.89773:
 	fmul	$f0, $f0, $f1
 	lf	$f1, 81($3)
 	fadd	$f0, $f1, $f0
-	addi	$2, $0, 3
 	lf	$f1, 79($3)
 	sf	$f0, 82($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 83($3)
 	addi	$3, $3, 84
@@ -19753,8 +19592,8 @@ fle.89773:
 	lf	$f1, 82($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-	j	fle_cont.89784
-fle.89783:
+	j	fle_cont.90274
+fle.90273:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
@@ -19776,8 +19615,8 @@ fle.89783:
 	lf	$f2, 85($3)
 	fmul	$f0, $f0, $f2
 	fsub	$f0, $f1, $f0
-	addi	$2, $0, 2
 	sf	$f0, 87($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 88($3)
 	addi	$3, $3, 89
@@ -19791,8 +19630,8 @@ fle.89783:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 87($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 88($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 89($3)
 	addi	$3, $3, 90
@@ -19807,11 +19646,11 @@ fle.89783:
 	lf	$f1, 88($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-fle_cont.89784:
-	j	fle_cont.89782
-fle.89781:
+fle_cont.90274:
+	j	fle_cont.90272
+fle.90271:
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.89785
+	bltf	$f1, $f0, fle.90275
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
@@ -19829,9 +19668,9 @@ fle.89781:
 	lf	$f1, 92($3)
 	fmul	$f0, $f0, $f1
 	fsub	$f0, $f28, $f0
-	addi	$2, $0, 2
 	lf	$f1, 91($3)
 	sf	$f0, 93($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 94($3)
 	addi	$3, $3, 95
@@ -19843,9 +19682,9 @@ fle.89781:
 	fmul	$f0, $f0, $f1
 	lf	$f1, 93($3)
 	fadd	$f0, $f1, $f0
-	addi	$2, $0, 3
 	lf	$f1, 91($3)
 	sf	$f0, 94($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 95($3)
 	addi	$3, $3, 96
@@ -19858,8 +19697,8 @@ fle.89781:
 	lf	$f1, 94($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-	j	fle_cont.89786
-fle.89785:
+	j	fle_cont.90276
+fle.90275:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
@@ -19881,8 +19720,8 @@ fle.89785:
 	lf	$f2, 97($3)
 	fmul	$f0, $f0, $f2
 	fsub	$f0, $f1, $f0
-	addi	$2, $0, 2
 	sf	$f0, 99($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 100($3)
 	addi	$3, $3, 101
@@ -19896,8 +19735,8 @@ fle.89785:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 99($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 100($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 101($3)
 	addi	$3, $3, 102
@@ -19912,22 +19751,21 @@ fle.89785:
 	lf	$f1, 100($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-fle_cont.89786:
-fle_cont.89782:
-fle_cont.89774:
+fle_cont.90276:
+fle_cont.90272:
+fle_cont.90264:
 	fmul	$f0, $f0, $f0
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f1, $f0, $f1
 	sf	$f1, 3132($1)
-	addi	$2, $0, 2
 	fsub	$f0, $f28, $f0
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f0, $f0, $f1
-	sf	$f0, 3132($2)
-	j	eq_cont.89770
-eq_else.89769:
+	sf	$f0, 3132($26)
+	j	eq_cont.90260
+eq_else.90259:
 	addi	$30, $0, 4
-	bne	$5, $30, eq_else.89787
+	bne	$5, $30, eq_else.90277
 	lf	$f0, 3125($0)
 	lw	$5, 5($2)
 	lf	$f1, 0($5)
@@ -19936,8 +19774,7 @@ eq_else.89769:
 	lf	$f1, 0($5)
 	sqrt	$f1, $f1
 	fmul	$f0, $f0, $f1
-	addi	$5, $0, 2
-	lf	$f1, 3125($5)
+	lf	$f1, 3125($26)
 	lw	$5, 5($2)
 	lf	$f2, 2($5)
 	fsub	$f1, $f1, $f2
@@ -19952,20 +19789,20 @@ eq_else.89769:
 	lf	$f4, 3379($0) # 0.000100
 	sltf	$5, $f3, $f4
 	sf	$f2, 101($3)
-	bne	$5, $0, eq_else.89789
+	bne	$5, $0, eq_else.90279
 	fdiv	$f0, $f1, $f0
 	fabs	$f0, $f0
-	bltf	$f30, $f0, fle.89791
+	bltf	$f30, $f0, fle.90281
 	movf	$f1, $f29
-	j	fle_cont.89792
-fle.89791:
+	j	fle_cont.90282
+fle.90281:
 	movf	$f1, $f28
-fle_cont.89792:
+fle_cont.90282:
 	fmul	$f0, $f1, $f0
 	lf	$f3, 3377($0) # 0.437500
-	bltf	$f0, $f3, fle.89793
+	bltf	$f0, $f3, fle.90283
 	lf	$f3, 3370($0) # 2.437500
-	bltf	$f0, $f3, fle.89795
+	bltf	$f0, $f3, fle.90285
 	lf	$f3, 3393($0) # 1.570796
 	fdiv	$f0, $f28, $f0
 	fmul	$f4, $f0, $f28
@@ -20057,8 +19894,8 @@ fle_cont.89792:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 102($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.89796
-fle.89795:
+	j	fle_cont.90286
+fle.90285:
 	lf	$f3, 3392($0) # 0.785398
 	fsub	$f4, $f0, $f28
 	fadd	$f0, $f0, $f28
@@ -20152,9 +19989,9 @@ fle.89795:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 102($3)
 	fmul	$f0, $f1, $f0
-fle_cont.89796:
-	j	fle_cont.89794
-fle.89793:
+fle_cont.90286:
+	j	fle_cont.90284
+fle.90283:
 	fmul	$f3, $f0, $f28
 	fmul	$f3, $f3, $f28
 	fmul	$f4, $f0, $f3
@@ -20241,15 +20078,15 @@ fle.89793:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 102($3)
 	fmul	$f0, $f1, $f0
-fle_cont.89794:
+fle_cont.90284:
 	lf	$f1, 3369($0) # 30.000000
 	fmul	$f0, $f0, $f1
 	lf	$f1, 3368($0) # 3.141593
 	fdiv	$f0, $f0, $f1
-	j	eq_cont.89790
-eq_else.89789:
+	j	eq_cont.90280
+eq_else.90279:
 	lf	$f0, 3378($0) # 15.000000
-eq_cont.89790:
+eq_cont.90280:
 	floor	$f1, $f0
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3125($1)
@@ -20266,20 +20103,20 @@ eq_cont.89790:
 	lf	$f4, 3379($0) # 0.000100
 	sltf	$5, $f3, $f4
 	sf	$f0, 117($3)
-	bne	$5, $0, eq_else.89797
+	bne	$5, $0, eq_else.90287
 	fdiv	$f1, $f1, $f2
 	fabs	$f1, $f1
-	bltf	$f30, $f1, fle.89799
+	bltf	$f30, $f1, fle.90289
 	movf	$f2, $f29
-	j	fle_cont.89800
-fle.89799:
+	j	fle_cont.90290
+fle.90289:
 	movf	$f2, $f28
-fle_cont.89800:
+fle_cont.90290:
 	fmul	$f1, $f2, $f1
 	lf	$f3, 3377($0) # 0.437500
-	bltf	$f1, $f3, fle.89801
+	bltf	$f1, $f3, fle.90291
 	lf	$f3, 3370($0) # 2.437500
-	bltf	$f1, $f3, fle.89803
+	bltf	$f1, $f3, fle.90293
 	lf	$f3, 3393($0) # 1.570796
 	fdiv	$f1, $f28, $f1
 	fmul	$f4, $f1, $f28
@@ -20372,8 +20209,8 @@ fle_cont.89800:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 118($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.89804
-fle.89803:
+	j	fle_cont.90294
+fle.90293:
 	lf	$f3, 3392($0) # 0.785398
 	fsub	$f4, $f1, $f28
 	fadd	$f1, $f1, $f28
@@ -20468,9 +20305,9 @@ fle.89803:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 118($3)
 	fmul	$f0, $f1, $f0
-fle_cont.89804:
-	j	fle_cont.89802
-fle.89801:
+fle_cont.90294:
+	j	fle_cont.90292
+fle.90291:
 	fmul	$f3, $f1, $f28
 	fmul	$f3, $f3, $f28
 	fmul	$f4, $f1, $f3
@@ -20558,15 +20395,15 @@ fle.89801:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 118($3)
 	fmul	$f0, $f1, $f0
-fle_cont.89802:
+fle_cont.90292:
 	lf	$f1, 3369($0) # 30.000000
 	fmul	$f0, $f0, $f1
 	lf	$f1, 3368($0) # 3.141593
 	fdiv	$f0, $f0, $f1
-	j	eq_cont.89798
-eq_else.89797:
+	j	eq_cont.90288
+eq_else.90287:
 	lf	$f0, 3378($0) # 15.000000
-eq_cont.89798:
+eq_cont.90288:
 	floor	$f1, $f0
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3367($0) # 0.150000
@@ -20580,37 +20417,36 @@ eq_cont.89798:
 	fmul	$f0, $f0, $f0
 	fsub	$f0, $f1, $f0
 	sltf	$2, $f0, $f30
-	bne	$2, $0, eq_else.89805
-	j	eq_cont.89806
-eq_else.89805:
+	bne	$2, $0, eq_else.90295
+	j	eq_cont.90296
+eq_else.90295:
 	movf	$f0, $f30
-eq_cont.89806:
-	addi	$2, $0, 2
+eq_cont.90296:
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f0, $f1, $f0
 	lf	$f1, 3365($0) # 0.300000
 	fdiv	$f0, $f0, $f1
-	sf	$f0, 3132($2)
-	j	eq_cont.89788
-eq_else.89787:
-eq_cont.89788:
-eq_cont.89770:
-eq_cont.89752:
-eq_cont.89744:
+	sf	$f0, 3132($26)
+	j	eq_cont.90278
+eq_else.90277:
+eq_cont.90278:
+eq_cont.90260:
+eq_cont.90242:
+eq_cont.90234:
 	lw	$5, 3121($0)
 	lw	$2, 0($5)
 	lw	$6, 0($2)
-	bne	$6, $28, eq_else.89807
+	bne	$6, $28, eq_else.90297
 	mov	$2, $0
-	j	eq_cont.89808
-eq_else.89807:
+	j	eq_cont.90298
+eq_else.90297:
 	sw	$2, 133($3)
 	sw	$5, 134($3)
 	addi	$30, $0, 99
-	bne	$6, $30, eq_else.89809
+	bne	$6, $30, eq_else.90299
 	mov	$2, $1
-	j	eq_cont.89810
-eq_else.89809:
+	j	eq_cont.90300
+eq_else.90299:
 	lw	$7, 3001($6)
 	lf	$f0, 3125($0)
 	lw	$8, 5($7)
@@ -20620,8 +20456,7 @@ eq_else.89809:
 	lw	$8, 5($7)
 	lf	$f2, 1($8)
 	fsub	$f1, $f1, $f2
-	addi	$8, $0, 2
-	lf	$f2, 3125($8)
+	lf	$f2, 3125($26)
 	lw	$8, 5($7)
 	lf	$f3, 2($8)
 	fsub	$f2, $f2, $f3
@@ -20630,7 +20465,7 @@ eq_else.89809:
 	add	$30, $8, $6
 	lw	$6, 0($30)
 	lw	$8, 1($7)
-	bne	$8, $1, eq_else.89811
+	bne	$8, $1, eq_else.90301
 	addi	$8, $0, 3169
 	lw	$8, 0($8)
 	lf	$f3, 0($6)
@@ -20644,10 +20479,10 @@ eq_else.89809:
 	lw	$9, 4($7)
 	lf	$f5, 1($9)
 	sltf	$9, $f4, $f5
-	bne	$9, $0, eq_else.89813
+	bne	$9, $0, eq_else.90303
 	mov	$9, $0
-	j	eq_cont.89814
-eq_else.89813:
+	j	eq_cont.90304
+eq_else.90303:
 	lf	$f4, 2($8)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
@@ -20655,26 +20490,26 @@ eq_else.89813:
 	lw	$9, 4($7)
 	lf	$f5, 2($9)
 	sltf	$9, $f4, $f5
-	bne	$9, $0, eq_else.89815
+	bne	$9, $0, eq_else.90305
 	mov	$9, $0
-	j	eq_cont.89816
-eq_else.89815:
+	j	eq_cont.90306
+eq_else.90305:
 	lf	$f4, 1($6)
-	beqf	$f4, $f30, feq.89817
+	beqf	$f4, $f30, feq.90307
 	mov	$9, $0
-	j	feq_cont.89818
-feq.89817:
+	j	feq_cont.90308
+feq.90307:
 	mov	$9, $1
-feq_cont.89818:
-	bne	$9, $0, eq_else.89819
+feq_cont.90308:
+	bne	$9, $0, eq_else.90309
 	mov	$9, $1
-	j	eq_cont.89820
-eq_else.89819:
+	j	eq_cont.90310
+eq_else.90309:
 	mov	$9, $0
-eq_cont.89820:
-eq_cont.89816:
-eq_cont.89814:
-	bne	$9, $0, eq_else.89821
+eq_cont.90310:
+eq_cont.90306:
+eq_cont.90304:
+	bne	$9, $0, eq_else.90311
 	lf	$f3, 2($6)
 	fsub	$f3, $f3, $f1
 	lf	$f4, 3($6)
@@ -20686,10 +20521,10 @@ eq_cont.89814:
 	lw	$9, 4($7)
 	lf	$f5, 0($9)
 	sltf	$9, $f4, $f5
-	bne	$9, $0, eq_else.89823
+	bne	$9, $0, eq_else.90313
 	mov	$9, $0
-	j	eq_cont.89824
-eq_else.89823:
+	j	eq_cont.90314
+eq_else.90313:
 	lf	$f4, 2($8)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
@@ -20697,26 +20532,26 @@ eq_else.89823:
 	lw	$9, 4($7)
 	lf	$f5, 2($9)
 	sltf	$9, $f4, $f5
-	bne	$9, $0, eq_else.89825
+	bne	$9, $0, eq_else.90315
 	mov	$9, $0
-	j	eq_cont.89826
-eq_else.89825:
+	j	eq_cont.90316
+eq_else.90315:
 	lf	$f4, 3($6)
-	beqf	$f4, $f30, feq.89827
+	beqf	$f4, $f30, feq.90317
 	mov	$9, $0
-	j	feq_cont.89828
-feq.89827:
+	j	feq_cont.90318
+feq.90317:
 	mov	$9, $1
-feq_cont.89828:
-	bne	$9, $0, eq_else.89829
+feq_cont.90318:
+	bne	$9, $0, eq_else.90319
 	mov	$9, $1
-	j	eq_cont.89830
-eq_else.89829:
+	j	eq_cont.90320
+eq_else.90319:
 	mov	$9, $0
-eq_cont.89830:
-eq_cont.89826:
-eq_cont.89824:
-	bne	$9, $0, eq_else.89831
+eq_cont.90320:
+eq_cont.90316:
+eq_cont.90314:
+	bne	$9, $0, eq_else.90321
 	lf	$f3, 4($6)
 	fsub	$f2, $f3, $f2
 	lf	$f3, 5($6)
@@ -20728,10 +20563,10 @@ eq_cont.89824:
 	lw	$9, 4($7)
 	lf	$f3, 0($9)
 	sltf	$9, $f0, $f3
-	bne	$9, $0, eq_else.89833
+	bne	$9, $0, eq_else.90323
 	mov	$6, $0
-	j	eq_cont.89834
-eq_else.89833:
+	j	eq_cont.90324
+eq_else.90323:
 	lf	$f0, 1($8)
 	fmul	$f0, $f2, $f0
 	fadd	$f0, $f0, $f1
@@ -20739,52 +20574,52 @@ eq_else.89833:
 	lw	$7, 4($7)
 	lf	$f1, 1($7)
 	sltf	$7, $f0, $f1
-	bne	$7, $0, eq_else.89835
+	bne	$7, $0, eq_else.90325
 	mov	$6, $0
-	j	eq_cont.89836
-eq_else.89835:
+	j	eq_cont.90326
+eq_else.90325:
 	lf	$f0, 5($6)
-	beqf	$f0, $f30, feq.89837
+	beqf	$f0, $f30, feq.90327
 	mov	$6, $0
-	j	feq_cont.89838
-feq.89837:
+	j	feq_cont.90328
+feq.90327:
 	mov	$6, $1
-feq_cont.89838:
-	bne	$6, $0, eq_else.89839
+feq_cont.90328:
+	bne	$6, $0, eq_else.90329
 	mov	$6, $1
-	j	eq_cont.89840
-eq_else.89839:
+	j	eq_cont.90330
+eq_else.90329:
 	mov	$6, $0
-eq_cont.89840:
-eq_cont.89836:
-eq_cont.89834:
-	bne	$6, $0, eq_else.89841
+eq_cont.90330:
+eq_cont.90326:
+eq_cont.90324:
+	bne	$6, $0, eq_else.90331
 	mov	$6, $0
-	j	eq_cont.89842
-eq_else.89841:
+	j	eq_cont.90332
+eq_else.90331:
 	sf	$f2, 3122($0)
-	addi	$6, $0, 3
-eq_cont.89842:
-	j	eq_cont.89832
-eq_else.89831:
+	mov	$6, $27
+eq_cont.90332:
+	j	eq_cont.90322
+eq_else.90321:
 	sf	$f3, 3122($0)
-	addi	$6, $0, 2
-eq_cont.89832:
-	j	eq_cont.89822
-eq_else.89821:
+	mov	$6, $26
+eq_cont.90322:
+	j	eq_cont.90312
+eq_else.90311:
 	sf	$f3, 3122($0)
 	mov	$6, $1
-eq_cont.89822:
-	j	eq_cont.89812
-eq_else.89811:
+eq_cont.90312:
+	j	eq_cont.90302
+eq_else.90301:
 	addi	$30, $0, 2
-	bne	$8, $30, eq_else.89843
+	bne	$8, $30, eq_else.90333
 	lf	$f3, 0($6)
 	sltf	$7, $f3, $f30
-	bne	$7, $0, eq_else.89845
+	bne	$7, $0, eq_else.90335
 	mov	$6, $0
-	j	eq_cont.89846
-eq_else.89845:
+	j	eq_cont.90336
+eq_else.90335:
 	lf	$f3, 1($6)
 	fmul	$f0, $f3, $f0
 	lf	$f3, 2($6)
@@ -20795,17 +20630,17 @@ eq_else.89845:
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3122($0)
 	mov	$6, $1
-eq_cont.89846:
-	j	eq_cont.89844
-eq_else.89843:
+eq_cont.90336:
+	j	eq_cont.90334
+eq_else.90333:
 	lf	$f3, 0($6)
-	beqf	$f3, $f30, feq.89847
+	beqf	$f3, $f30, feq.90337
 	mov	$8, $0
-	j	feq_cont.89848
-feq.89847:
+	j	feq_cont.90338
+feq.90337:
 	mov	$8, $1
-feq_cont.89848:
-	bne	$8, $0, eq_else.89849
+feq_cont.90338:
+	bne	$8, $0, eq_else.90339
 	lf	$f4, 1($6)
 	fmul	$f4, $f4, $f0
 	lf	$f5, 2($6)
@@ -20829,10 +20664,10 @@ feq_cont.89848:
 	fmul	$f6, $f6, $f7
 	fadd	$f5, $f5, $f6
 	lw	$8, 3($7)
-	bne	$8, $0, eq_else.89851
+	bne	$8, $0, eq_else.90341
 	movf	$f0, $f5
-	j	eq_cont.89852
-eq_else.89851:
+	j	eq_cont.90342
+eq_else.90341:
 	fmul	$f6, $f1, $f2
 	lw	$8, 9($7)
 	lf	$f7, 0($8)
@@ -20848,61 +20683,61 @@ eq_else.89851:
 	lf	$f1, 2($8)
 	fmul	$f0, $f0, $f1
 	fadd	$f0, $f2, $f0
-eq_cont.89852:
+eq_cont.90342:
 	lw	$8, 1($7)
 	addi	$30, $0, 3
-	bne	$8, $30, eq_else.89853
+	bne	$8, $30, eq_else.90343
 	fsub	$f0, $f0, $f28
-	j	eq_cont.89854
-eq_else.89853:
-eq_cont.89854:
+	j	eq_cont.90344
+eq_else.90343:
+eq_cont.90344:
 	fmul	$f1, $f4, $f4
 	fmul	$f0, $f3, $f0
 	fsub	$f0, $f1, $f0
 	sltf	$8, $f30, $f0
-	bne	$8, $0, eq_else.89855
+	bne	$8, $0, eq_else.90345
 	mov	$6, $0
-	j	eq_cont.89856
-eq_else.89855:
+	j	eq_cont.90346
+eq_else.90345:
 	lw	$7, 6($7)
-	bne	$7, $0, eq_else.89857
+	bne	$7, $0, eq_else.90347
 	sqrt	$f0, $f0
 	fsub	$f0, $f4, $f0
 	lf	$f1, 4($6)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
-	j	eq_cont.89858
-eq_else.89857:
+	j	eq_cont.90348
+eq_else.90347:
 	sqrt	$f0, $f0
 	fadd	$f0, $f4, $f0
 	lf	$f1, 4($6)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
-eq_cont.89858:
+eq_cont.90348:
 	mov	$6, $1
-eq_cont.89856:
-	j	eq_cont.89850
-eq_else.89849:
+eq_cont.90346:
+	j	eq_cont.90340
+eq_else.90339:
 	mov	$6, $0
-eq_cont.89850:
-eq_cont.89844:
-eq_cont.89812:
-	bne	$6, $0, eq_else.89859
+eq_cont.90340:
+eq_cont.90334:
+eq_cont.90302:
+	bne	$6, $0, eq_else.90349
 	mov	$2, $0
-	j	eq_cont.89860
-eq_else.89859:
+	j	eq_cont.90350
+eq_else.90349:
 	lf	$f0, 3122($0)
 	lf	$f1, 3382($0) # -0.100000
 	sltf	$6, $f0, $f1
-	bne	$6, $0, eq_else.89861
+	bne	$6, $0, eq_else.90351
 	mov	$2, $0
-	j	eq_cont.89862
-eq_else.89861:
+	j	eq_cont.90352
+eq_else.90351:
 	lw	$6, 1($2)
-	bne	$6, $28, eq_else.89863
+	bne	$6, $28, eq_else.90353
 	mov	$2, $0
-	j	eq_cont.89864
-eq_else.89863:
+	j	eq_cont.90354
+eq_else.90353:
 	lw	$6, 3071($6)
 	mov	$5, $6
 	mov	$2, $0
@@ -20911,13 +20746,13 @@ eq_else.89863:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -136
 	lw	$31, 135($3)
-	bne	$2, $0, eq_else.89865
+	bne	$2, $0, eq_else.90355
 	lw	$2, 133($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.89867
+	bne	$5, $28, eq_else.90357
 	mov	$2, $0
-	j	eq_cont.89868
-eq_else.89867:
+	j	eq_cont.90358
+eq_else.90357:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 135($3)
@@ -20925,13 +20760,13 @@ eq_else.89867:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -136
 	lw	$31, 135($3)
-	bne	$2, $0, eq_else.89869
+	bne	$2, $0, eq_else.90359
 	lw	$2, 133($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.89871
+	bne	$5, $28, eq_else.90361
 	mov	$2, $0
-	j	eq_cont.89872
-eq_else.89871:
+	j	eq_cont.90362
+eq_else.90361:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 135($3)
@@ -20939,13 +20774,13 @@ eq_else.89871:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -136
 	lw	$31, 135($3)
-	bne	$2, $0, eq_else.89873
+	bne	$2, $0, eq_else.90363
 	lw	$2, 133($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.89875
+	bne	$5, $28, eq_else.90365
 	mov	$2, $0
-	j	eq_cont.89876
-eq_else.89875:
+	j	eq_cont.90366
+eq_else.90365:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 135($3)
@@ -20953,13 +20788,13 @@ eq_else.89875:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -136
 	lw	$31, 135($3)
-	bne	$2, $0, eq_else.89877
+	bne	$2, $0, eq_else.90367
 	lw	$2, 133($3)
 	lw	$5, 5($2)
-	bne	$5, $28, eq_else.89879
+	bne	$5, $28, eq_else.90369
 	mov	$2, $0
-	j	eq_cont.89880
-eq_else.89879:
+	j	eq_cont.90370
+eq_else.90369:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 135($3)
@@ -20967,13 +20802,13 @@ eq_else.89879:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -136
 	lw	$31, 135($3)
-	bne	$2, $0, eq_else.89881
+	bne	$2, $0, eq_else.90371
 	lw	$2, 133($3)
 	lw	$5, 6($2)
-	bne	$5, $28, eq_else.89883
+	bne	$5, $28, eq_else.90373
 	mov	$2, $0
-	j	eq_cont.89884
-eq_else.89883:
+	j	eq_cont.90374
+eq_else.90373:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 135($3)
@@ -20981,7 +20816,7 @@ eq_else.89883:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -136
 	lw	$31, 135($3)
-	bne	$2, $0, eq_else.89885
+	bne	$2, $0, eq_else.90375
 	addi	$2, $0, 7
 	lw	$5, 133($3)
 	sw	$31, 135($3)
@@ -20989,46 +20824,46 @@ eq_else.89883:
 	jal	shadow_check_one_or_group.2977
 	addi	$3, $3, -136
 	lw	$31, 135($3)
-	j	eq_cont.89886
-eq_else.89885:
+	j	eq_cont.90376
+eq_else.90375:
 	mov	$2, $1
-eq_cont.89886:
-eq_cont.89884:
-	j	eq_cont.89882
-eq_else.89881:
+eq_cont.90376:
+eq_cont.90374:
+	j	eq_cont.90372
+eq_else.90371:
 	mov	$2, $1
-eq_cont.89882:
-eq_cont.89880:
-	j	eq_cont.89878
-eq_else.89877:
+eq_cont.90372:
+eq_cont.90370:
+	j	eq_cont.90368
+eq_else.90367:
 	mov	$2, $1
-eq_cont.89878:
-eq_cont.89876:
-	j	eq_cont.89874
-eq_else.89873:
+eq_cont.90368:
+eq_cont.90366:
+	j	eq_cont.90364
+eq_else.90363:
 	mov	$2, $1
-eq_cont.89874:
-eq_cont.89872:
-	j	eq_cont.89870
-eq_else.89869:
+eq_cont.90364:
+eq_cont.90362:
+	j	eq_cont.90360
+eq_else.90359:
 	mov	$2, $1
-eq_cont.89870:
-eq_cont.89868:
-	j	eq_cont.89866
-eq_else.89865:
+eq_cont.90360:
+eq_cont.90358:
+	j	eq_cont.90356
+eq_else.90355:
 	mov	$2, $1
-eq_cont.89866:
-eq_cont.89864:
-	bne	$2, $0, eq_else.89887
+eq_cont.90356:
+eq_cont.90354:
+	bne	$2, $0, eq_else.90377
 	mov	$2, $0
-	j	eq_cont.89888
-eq_else.89887:
+	j	eq_cont.90378
+eq_else.90377:
 	mov	$2, $1
-eq_cont.89888:
-eq_cont.89862:
-eq_cont.89860:
-eq_cont.89810:
-	bne	$2, $0, eq_else.89889
+eq_cont.90378:
+eq_cont.90352:
+eq_cont.90350:
+eq_cont.90300:
+	bne	$2, $0, eq_else.90379
 	lw	$5, 134($3)
 	mov	$2, $1
 	sw	$31, 135($3)
@@ -21036,14 +20871,14 @@ eq_cont.89810:
 	jal	shadow_check_one_or_matrix.2980
 	addi	$3, $3, -136
 	lw	$31, 135($3)
-	j	eq_cont.89890
-eq_else.89889:
+	j	eq_cont.90380
+eq_else.90379:
 	lw	$2, 133($3)
 	lw	$5, 1($2)
-	bne	$5, $28, eq_else.89891
+	bne	$5, $28, eq_else.90381
 	mov	$2, $0
-	j	eq_cont.89892
-eq_else.89891:
+	j	eq_cont.90382
+eq_else.90381:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 135($3)
@@ -21051,13 +20886,13 @@ eq_else.89891:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -136
 	lw	$31, 135($3)
-	bne	$2, $0, eq_else.89893
+	bne	$2, $0, eq_else.90383
 	lw	$2, 133($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.89895
+	bne	$5, $28, eq_else.90385
 	mov	$2, $0
-	j	eq_cont.89896
-eq_else.89895:
+	j	eq_cont.90386
+eq_else.90385:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 135($3)
@@ -21065,13 +20900,13 @@ eq_else.89895:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -136
 	lw	$31, 135($3)
-	bne	$2, $0, eq_else.89897
+	bne	$2, $0, eq_else.90387
 	lw	$2, 133($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.89899
+	bne	$5, $28, eq_else.90389
 	mov	$2, $0
-	j	eq_cont.89900
-eq_else.89899:
+	j	eq_cont.90390
+eq_else.90389:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 135($3)
@@ -21079,13 +20914,13 @@ eq_else.89899:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -136
 	lw	$31, 135($3)
-	bne	$2, $0, eq_else.89901
+	bne	$2, $0, eq_else.90391
 	lw	$2, 133($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.89903
+	bne	$5, $28, eq_else.90393
 	mov	$2, $0
-	j	eq_cont.89904
-eq_else.89903:
+	j	eq_cont.90394
+eq_else.90393:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 135($3)
@@ -21093,13 +20928,13 @@ eq_else.89903:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -136
 	lw	$31, 135($3)
-	bne	$2, $0, eq_else.89905
+	bne	$2, $0, eq_else.90395
 	lw	$2, 133($3)
 	lw	$5, 5($2)
-	bne	$5, $28, eq_else.89907
+	bne	$5, $28, eq_else.90397
 	mov	$2, $0
-	j	eq_cont.89908
-eq_else.89907:
+	j	eq_cont.90398
+eq_else.90397:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 135($3)
@@ -21107,13 +20942,13 @@ eq_else.89907:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -136
 	lw	$31, 135($3)
-	bne	$2, $0, eq_else.89909
+	bne	$2, $0, eq_else.90399
 	lw	$2, 133($3)
 	lw	$5, 6($2)
-	bne	$5, $28, eq_else.89911
+	bne	$5, $28, eq_else.90401
 	mov	$2, $0
-	j	eq_cont.89912
-eq_else.89911:
+	j	eq_cont.90402
+eq_else.90401:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 135($3)
@@ -21121,7 +20956,7 @@ eq_else.89911:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -136
 	lw	$31, 135($3)
-	bne	$2, $0, eq_else.89913
+	bne	$2, $0, eq_else.90403
 	addi	$2, $0, 7
 	lw	$5, 133($3)
 	sw	$31, 135($3)
@@ -21129,37 +20964,37 @@ eq_else.89911:
 	jal	shadow_check_one_or_group.2977
 	addi	$3, $3, -136
 	lw	$31, 135($3)
-	j	eq_cont.89914
-eq_else.89913:
+	j	eq_cont.90404
+eq_else.90403:
 	mov	$2, $1
-eq_cont.89914:
-eq_cont.89912:
-	j	eq_cont.89910
-eq_else.89909:
+eq_cont.90404:
+eq_cont.90402:
+	j	eq_cont.90400
+eq_else.90399:
 	mov	$2, $1
-eq_cont.89910:
-eq_cont.89908:
-	j	eq_cont.89906
-eq_else.89905:
+eq_cont.90400:
+eq_cont.90398:
+	j	eq_cont.90396
+eq_else.90395:
 	mov	$2, $1
-eq_cont.89906:
-eq_cont.89904:
-	j	eq_cont.89902
-eq_else.89901:
+eq_cont.90396:
+eq_cont.90394:
+	j	eq_cont.90392
+eq_else.90391:
 	mov	$2, $1
-eq_cont.89902:
-eq_cont.89900:
-	j	eq_cont.89898
-eq_else.89897:
+eq_cont.90392:
+eq_cont.90390:
+	j	eq_cont.90388
+eq_else.90387:
 	mov	$2, $1
-eq_cont.89898:
-eq_cont.89896:
-	j	eq_cont.89894
-eq_else.89893:
+eq_cont.90388:
+eq_cont.90386:
+	j	eq_cont.90384
+eq_else.90383:
 	mov	$2, $1
-eq_cont.89894:
-eq_cont.89892:
-	bne	$2, $0, eq_else.89915
+eq_cont.90384:
+eq_cont.90382:
+	bne	$2, $0, eq_else.90405
 	lw	$5, 134($3)
 	mov	$2, $1
 	sw	$31, 135($3)
@@ -21167,13 +21002,13 @@ eq_cont.89892:
 	jal	shadow_check_one_or_matrix.2980
 	addi	$3, $3, -136
 	lw	$31, 135($3)
-	j	eq_cont.89916
-eq_else.89915:
+	j	eq_cont.90406
+eq_else.90405:
 	mov	$2, $1
-eq_cont.89916:
-eq_cont.89890:
-eq_cont.89808:
-	bne	$2, $0, eq_else.89917
+eq_cont.90406:
+eq_cont.90380:
+eq_cont.90298:
+	bne	$2, $0, eq_else.90407
 	lf	$f0, 3129($0)
 	lf	$f1, 3067($0)
 	fmul	$f0, $f0, $f1
@@ -21181,19 +21016,17 @@ eq_cont.89808:
 	lf	$f2, 3067($1)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	addi	$2, $0, 2
-	lf	$f1, 3129($2)
-	addi	$2, $0, 2
-	lf	$f2, 3067($2)
+	lf	$f1, 3129($26)
+	lf	$f2, 3067($26)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	fneg	$f0, $f0
 	sltf	$2, $f30, $f0
-	bne	$2, $0, eq_else.89918
+	bne	$2, $0, eq_else.90408
 	movf	$f0, $f30
-	j	eq_cont.89919
-eq_else.89918:
-eq_cont.89919:
+	j	eq_cont.90409
+eq_else.90408:
+eq_cont.90409:
 	lf	$f1, 0($3)
 	fmul	$f0, $f1, $f0
 	lw	$2, 2($3)
@@ -21210,21 +21043,18 @@ eq_cont.89919:
 	fmul	$f2, $f0, $f2
 	fadd	$f1, $f1, $f2
 	sf	$f1, 3135($1)
-	addi	$2, $0, 2
-	addi	$5, $0, 2
-	lf	$f1, 3135($5)
-	addi	$5, $0, 2
-	lf	$f2, 3132($5)
+	lf	$f1, 3135($26)
+	lf	$f2, 3132($26)
 	fmul	$f0, $f0, $f2
 	fadd	$f0, $f1, $f0
-	sf	$f0, 3135($2)
+	sf	$f0, 3135($26)
 	jr $31
-eq_else.89917:
+eq_else.90407:
 	jr $31
 iter_trace_diffuse_rays.3041:
-	bge	$7, $0, ge.89922
+	bge	$7, $0, ge.90412
 	jr $31
-ge.89922:
+ge.90412:
 	add	$30, $2, $7
 	lw	$8, 0($30)
 	lw	$8, 0($8)
@@ -21244,7 +21074,7 @@ ge.89922:
 	sw	$5, 1($3)
 	sw	$2, 2($3)
 	sw	$7, 3($3)
-	bne	$8, $0, eq_else.89924
+	bne	$8, $0, eq_else.90414
 	add	$30, $2, $7
 	lw	$8, 0($30)
 	lf	$f1, 3356($0) # 150.000000
@@ -21256,16 +21086,16 @@ ge.89922:
 	lw	$11, 0($10)
 	sf	$f0, 4($3)
 	sw	$8, 5($3)
-	bne	$11, $28, eq_else.89926
-	j	eq_cont.89927
-eq_else.89926:
+	bne	$11, $28, eq_else.90416
+	j	eq_cont.90417
+eq_else.90416:
 	sw	$9, 6($3)
 	addi	$30, $0, 99
-	bne	$11, $30, eq_else.89928
+	bne	$11, $30, eq_else.90418
 	lw	$11, 1($10)
-	bne	$11, $28, eq_else.89930
-	j	eq_cont.89931
-eq_else.89930:
+	bne	$11, $28, eq_else.90420
+	j	eq_cont.90421
+eq_else.90420:
 	lw	$11, 3071($11)
 	sw	$10, 7($3)
 	mov	$6, $8
@@ -21278,9 +21108,9 @@ eq_else.89930:
 	lw	$31, 8($3)
 	lw	$2, 7($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.89932
-	j	eq_cont.89933
-eq_else.89932:
+	bne	$5, $28, eq_else.90422
+	j	eq_cont.90423
+eq_else.90422:
 	lw	$5, 3071($5)
 	lw	$6, 5($3)
 	mov	$2, $0
@@ -21291,9 +21121,9 @@ eq_else.89932:
 	lw	$31, 8($3)
 	lw	$2, 7($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.89934
-	j	eq_cont.89935
-eq_else.89934:
+	bne	$5, $28, eq_else.90424
+	j	eq_cont.90425
+eq_else.90424:
 	lw	$5, 3071($5)
 	lw	$6, 5($3)
 	mov	$2, $0
@@ -21304,9 +21134,9 @@ eq_else.89934:
 	lw	$31, 8($3)
 	lw	$2, 7($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.89936
-	j	eq_cont.89937
-eq_else.89936:
+	bne	$5, $28, eq_else.90426
+	j	eq_cont.90427
+eq_else.90426:
 	lw	$5, 3071($5)
 	lw	$6, 5($3)
 	mov	$2, $0
@@ -21323,12 +21153,12 @@ eq_else.89936:
 	jal	solve_one_or_network_fast.3001
 	addi	$3, $3, -9
 	lw	$31, 8($3)
-eq_cont.89937:
-eq_cont.89935:
-eq_cont.89933:
-eq_cont.89931:
-	j	eq_cont.89929
-eq_else.89928:
+eq_cont.90427:
+eq_cont.90425:
+eq_cont.90423:
+eq_cont.90421:
+	j	eq_cont.90419
+eq_else.90418:
 	lw	$12, 3001($11)
 	lw	$13, 10($12)
 	lf	$f1, 0($13)
@@ -21338,7 +21168,7 @@ eq_else.89928:
 	add	$30, $14, $11
 	lw	$11, 0($30)
 	lw	$14, 1($12)
-	bne	$14, $1, eq_else.89938
+	bne	$14, $1, eq_else.90428
 	lw	$13, 0($8)
 	lf	$f4, 0($11)
 	fsub	$f4, $f4, $f1
@@ -21351,10 +21181,10 @@ eq_else.89928:
 	lw	$14, 4($12)
 	lf	$f6, 1($14)
 	sltf	$14, $f5, $f6
-	bne	$14, $0, eq_else.89940
+	bne	$14, $0, eq_else.90430
 	mov	$14, $0
-	j	eq_cont.89941
-eq_else.89940:
+	j	eq_cont.90431
+eq_else.90430:
 	lf	$f5, 2($13)
 	fmul	$f5, $f4, $f5
 	fadd	$f5, $f5, $f3
@@ -21362,26 +21192,26 @@ eq_else.89940:
 	lw	$14, 4($12)
 	lf	$f6, 2($14)
 	sltf	$14, $f5, $f6
-	bne	$14, $0, eq_else.89942
+	bne	$14, $0, eq_else.90432
 	mov	$14, $0
-	j	eq_cont.89943
-eq_else.89942:
+	j	eq_cont.90433
+eq_else.90432:
 	lf	$f5, 1($11)
-	beqf	$f5, $f30, feq.89944
+	beqf	$f5, $f30, feq.90434
 	mov	$14, $0
-	j	feq_cont.89945
-feq.89944:
+	j	feq_cont.90435
+feq.90434:
 	mov	$14, $1
-feq_cont.89945:
-	bne	$14, $0, eq_else.89946
+feq_cont.90435:
+	bne	$14, $0, eq_else.90436
 	mov	$14, $1
-	j	eq_cont.89947
-eq_else.89946:
+	j	eq_cont.90437
+eq_else.90436:
 	mov	$14, $0
-eq_cont.89947:
-eq_cont.89943:
-eq_cont.89941:
-	bne	$14, $0, eq_else.89948
+eq_cont.90437:
+eq_cont.90433:
+eq_cont.90431:
+	bne	$14, $0, eq_else.90438
 	lf	$f4, 2($11)
 	fsub	$f4, $f4, $f2
 	lf	$f5, 3($11)
@@ -21393,10 +21223,10 @@ eq_cont.89941:
 	lw	$14, 4($12)
 	lf	$f6, 0($14)
 	sltf	$14, $f5, $f6
-	bne	$14, $0, eq_else.89950
+	bne	$14, $0, eq_else.90440
 	mov	$14, $0
-	j	eq_cont.89951
-eq_else.89950:
+	j	eq_cont.90441
+eq_else.90440:
 	lf	$f5, 2($13)
 	fmul	$f5, $f4, $f5
 	fadd	$f5, $f5, $f3
@@ -21404,26 +21234,26 @@ eq_else.89950:
 	lw	$14, 4($12)
 	lf	$f6, 2($14)
 	sltf	$14, $f5, $f6
-	bne	$14, $0, eq_else.89952
+	bne	$14, $0, eq_else.90442
 	mov	$14, $0
-	j	eq_cont.89953
-eq_else.89952:
+	j	eq_cont.90443
+eq_else.90442:
 	lf	$f5, 3($11)
-	beqf	$f5, $f30, feq.89954
+	beqf	$f5, $f30, feq.90444
 	mov	$14, $0
-	j	feq_cont.89955
-feq.89954:
+	j	feq_cont.90445
+feq.90444:
 	mov	$14, $1
-feq_cont.89955:
-	bne	$14, $0, eq_else.89956
+feq_cont.90445:
+	bne	$14, $0, eq_else.90446
 	mov	$14, $1
-	j	eq_cont.89957
-eq_else.89956:
+	j	eq_cont.90447
+eq_else.90446:
 	mov	$14, $0
-eq_cont.89957:
-eq_cont.89953:
-eq_cont.89951:
-	bne	$14, $0, eq_else.89958
+eq_cont.90447:
+eq_cont.90443:
+eq_cont.90441:
+	bne	$14, $0, eq_else.90448
 	lf	$f4, 4($11)
 	fsub	$f3, $f4, $f3
 	lf	$f4, 5($11)
@@ -21435,10 +21265,10 @@ eq_cont.89951:
 	lw	$14, 4($12)
 	lf	$f4, 0($14)
 	sltf	$14, $f1, $f4
-	bne	$14, $0, eq_else.89960
+	bne	$14, $0, eq_else.90450
 	mov	$11, $0
-	j	eq_cont.89961
-eq_else.89960:
+	j	eq_cont.90451
+eq_else.90450:
 	lf	$f1, 1($13)
 	fmul	$f1, $f3, $f1
 	fadd	$f1, $f1, $f2
@@ -21446,68 +21276,68 @@ eq_else.89960:
 	lw	$12, 4($12)
 	lf	$f2, 1($12)
 	sltf	$12, $f1, $f2
-	bne	$12, $0, eq_else.89962
+	bne	$12, $0, eq_else.90452
 	mov	$11, $0
-	j	eq_cont.89963
-eq_else.89962:
+	j	eq_cont.90453
+eq_else.90452:
 	lf	$f1, 5($11)
-	beqf	$f1, $f30, feq.89964
+	beqf	$f1, $f30, feq.90454
 	mov	$11, $0
-	j	feq_cont.89965
-feq.89964:
+	j	feq_cont.90455
+feq.90454:
 	mov	$11, $1
-feq_cont.89965:
-	bne	$11, $0, eq_else.89966
+feq_cont.90455:
+	bne	$11, $0, eq_else.90456
 	mov	$11, $1
-	j	eq_cont.89967
-eq_else.89966:
+	j	eq_cont.90457
+eq_else.90456:
 	mov	$11, $0
-eq_cont.89967:
-eq_cont.89963:
-eq_cont.89961:
-	bne	$11, $0, eq_else.89968
+eq_cont.90457:
+eq_cont.90453:
+eq_cont.90451:
+	bne	$11, $0, eq_else.90458
 	mov	$11, $0
-	j	eq_cont.89969
-eq_else.89968:
+	j	eq_cont.90459
+eq_else.90458:
 	sf	$f3, 3122($0)
-	addi	$11, $0, 3
-eq_cont.89969:
-	j	eq_cont.89959
-eq_else.89958:
+	mov	$11, $27
+eq_cont.90459:
+	j	eq_cont.90449
+eq_else.90448:
 	sf	$f4, 3122($0)
-	addi	$11, $0, 2
-eq_cont.89959:
-	j	eq_cont.89949
-eq_else.89948:
+	mov	$11, $26
+eq_cont.90449:
+	j	eq_cont.90439
+eq_else.90438:
 	sf	$f4, 3122($0)
 	mov	$11, $1
-eq_cont.89949:
-	j	eq_cont.89939
-eq_else.89938:
+eq_cont.90439:
+	j	eq_cont.90429
+eq_else.90428:
 	addi	$30, $0, 2
-	bne	$14, $30, eq_else.89970
+	bne	$14, $30, eq_else.90460
 	lf	$f1, 0($11)
 	sltf	$12, $f1, $f30
-	bne	$12, $0, eq_else.89972
+	bne	$12, $0, eq_else.90462
 	mov	$11, $0
-	j	eq_cont.89973
-eq_else.89972:
+	j	eq_cont.90463
+eq_else.90462:
 	lf	$f1, 0($11)
 	lf	$f2, 3($13)
 	fmul	$f1, $f1, $f2
 	sf	$f1, 3122($0)
 	mov	$11, $1
-eq_cont.89973:
-	j	eq_cont.89971
-eq_else.89970:
+eq_cont.90463:
+	j	eq_cont.90461
+eq_else.90460:
 	lf	$f4, 0($11)
-	beqf	$f4, $f30, feq.89974
+	beqf	$f4, $f30, feq.90464
 	mov	$14, $0
-	j	feq_cont.89975
-feq.89974:
+	j	feq_cont.90465
+feq.90464:
 	mov	$14, $1
-feq_cont.89975:
-	bne	$14, $0, eq_else.89976
+feq_cont.90465:
+	bne	$14, $0, eq_else.90466
 	lf	$f5, 1($11)
 	fmul	$f1, $f5, $f1
 	lf	$f5, 2($11)
@@ -21521,46 +21351,46 @@ feq_cont.89975:
 	fmul	$f2, $f4, $f2
 	fsub	$f2, $f3, $f2
 	sltf	$13, $f30, $f2
-	bne	$13, $0, eq_else.89978
+	bne	$13, $0, eq_else.90468
 	mov	$11, $0
-	j	eq_cont.89979
-eq_else.89978:
+	j	eq_cont.90469
+eq_else.90468:
 	lw	$12, 6($12)
-	bne	$12, $0, eq_else.89980
+	bne	$12, $0, eq_else.90470
 	sqrt	$f2, $f2
 	fsub	$f1, $f1, $f2
 	lf	$f2, 4($11)
 	fmul	$f1, $f1, $f2
 	sf	$f1, 3122($0)
-	j	eq_cont.89981
-eq_else.89980:
+	j	eq_cont.90471
+eq_else.90470:
 	sqrt	$f2, $f2
 	fadd	$f1, $f1, $f2
 	lf	$f2, 4($11)
 	fmul	$f1, $f1, $f2
 	sf	$f1, 3122($0)
-eq_cont.89981:
+eq_cont.90471:
 	mov	$11, $1
-eq_cont.89979:
-	j	eq_cont.89977
-eq_else.89976:
+eq_cont.90469:
+	j	eq_cont.90467
+eq_else.90466:
 	mov	$11, $0
-eq_cont.89977:
-eq_cont.89971:
-eq_cont.89939:
-	bne	$11, $0, eq_else.89982
-	j	eq_cont.89983
-eq_else.89982:
+eq_cont.90467:
+eq_cont.90461:
+eq_cont.90429:
+	bne	$11, $0, eq_else.90472
+	j	eq_cont.90473
+eq_else.90472:
 	lf	$f1, 3122($0)
 	lf	$f2, 3124($0)
 	sltf	$11, $f1, $f2
-	bne	$11, $0, eq_else.89984
-	j	eq_cont.89985
-eq_else.89984:
+	bne	$11, $0, eq_else.90474
+	j	eq_cont.90475
+eq_else.90474:
 	lw	$11, 1($10)
-	bne	$11, $28, eq_else.89986
-	j	eq_cont.89987
-eq_else.89986:
+	bne	$11, $28, eq_else.90476
+	j	eq_cont.90477
+eq_else.90476:
 	lw	$11, 3071($11)
 	sw	$10, 7($3)
 	mov	$6, $8
@@ -21573,9 +21403,9 @@ eq_else.89986:
 	lw	$31, 8($3)
 	lw	$2, 7($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.89988
-	j	eq_cont.89989
-eq_else.89988:
+	bne	$5, $28, eq_else.90478
+	j	eq_cont.90479
+eq_else.90478:
 	lw	$5, 3071($5)
 	lw	$6, 5($3)
 	mov	$2, $0
@@ -21586,9 +21416,9 @@ eq_else.89988:
 	lw	$31, 8($3)
 	lw	$2, 7($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.89990
-	j	eq_cont.89991
-eq_else.89990:
+	bne	$5, $28, eq_else.90480
+	j	eq_cont.90481
+eq_else.90480:
 	lw	$5, 3071($5)
 	lw	$6, 5($3)
 	mov	$2, $0
@@ -21599,9 +21429,9 @@ eq_else.89990:
 	lw	$31, 8($3)
 	lw	$2, 7($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.89992
-	j	eq_cont.89993
-eq_else.89992:
+	bne	$5, $28, eq_else.90482
+	j	eq_cont.90483
+eq_else.90482:
 	lw	$5, 3071($5)
 	lw	$6, 5($3)
 	mov	$2, $0
@@ -21618,13 +21448,13 @@ eq_else.89992:
 	jal	solve_one_or_network_fast.3001
 	addi	$3, $3, -9
 	lw	$31, 8($3)
-eq_cont.89993:
-eq_cont.89991:
-eq_cont.89989:
-eq_cont.89987:
-eq_cont.89985:
-eq_cont.89983:
-eq_cont.89929:
+eq_cont.90483:
+eq_cont.90481:
+eq_cont.90479:
+eq_cont.90477:
+eq_cont.90475:
+eq_cont.90473:
+eq_cont.90419:
 	lw	$5, 6($3)
 	lw	$6, 5($3)
 	mov	$2, $1
@@ -21633,64 +21463,63 @@ eq_cont.89929:
 	jal	trace_or_matrix_fast.3005
 	addi	$3, $3, -9
 	lw	$31, 8($3)
-eq_cont.89927:
+eq_cont.90417:
 	lf	$f0, 3124($0)
 	lf	$f1, 3382($0) # -0.100000
 	sltf	$2, $f1, $f0
-	bne	$2, $0, eq_else.89994
+	bne	$2, $0, eq_else.90484
 	mov	$2, $0
-	j	eq_cont.89995
-eq_else.89994:
+	j	eq_cont.90485
+eq_else.90484:
 	lf	$f1, 3380($0) # 100000000.000000
-	bltf	$f0, $f1, fle.89996
+	bltf	$f0, $f1, fle.90486
 	mov	$2, $0
-	j	fle_cont.89997
-fle.89996:
+	j	fle_cont.90487
+fle.90486:
 	mov	$2, $1
-fle_cont.89997:
-eq_cont.89995:
-	bne	$2, $0, eq_else.89998
-	j	eq_cont.89999
-eq_else.89998:
+fle_cont.90487:
+eq_cont.90485:
+	bne	$2, $0, eq_else.90488
+	j	eq_cont.90489
+eq_else.90488:
 	lw	$2, 3128($0)
 	lw	$2, 3001($2)
 	lw	$5, 5($3)
 	lw	$5, 0($5)
 	lw	$6, 1($2)
-	bne	$6, $1, eq_else.90000
+	bne	$6, $1, eq_else.90490
 	lw	$6, 3123($0)
 	sf	$f30, 3129($0)
 	sf	$f30, 3129($1)
-	addi	$7, $0, 2
-	sf	$f30, 3129($7)
+	sf	$f30, 3129($26)
 	addi	$7, $6, -1
 	addi	$6, $6, -1
 	add	$30, $5, $6
 	lf	$f0, 0($30)
-	beqf	$f0, $f30, feq.90002
+	beqf	$f0, $f30, feq.90492
 	mov	$5, $0
-	j	feq_cont.90003
-feq.90002:
+	j	feq_cont.90493
+feq.90492:
 	mov	$5, $1
-feq_cont.90003:
-	bne	$5, $0, eq_else.90004
+feq_cont.90493:
+	bne	$5, $0, eq_else.90494
 	sltf	$5, $f30, $f0
-	bne	$5, $0, eq_else.90006
+	bne	$5, $0, eq_else.90496
 	movf	$f0, $f29
-	j	eq_cont.90007
-eq_else.90006:
+	j	eq_cont.90497
+eq_else.90496:
 	movf	$f0, $f28
-eq_cont.90007:
-	j	eq_cont.90005
-eq_else.90004:
+eq_cont.90497:
+	j	eq_cont.90495
+eq_else.90494:
 	movf	$f0, $f30
-eq_cont.90005:
+eq_cont.90495:
 	fneg	$f0, $f0
 	sf	$f0, 3129($7)
-	j	eq_cont.90001
-eq_else.90000:
+	j	eq_cont.90491
+eq_else.90490:
 	addi	$30, $0, 2
-	bne	$6, $30, eq_else.90008
+	bne	$6, $30, eq_else.90498
 	lw	$5, 4($2)
 	lf	$f0, 0($5)
 	fneg	$f0, $f0
@@ -21699,13 +21528,12 @@ eq_else.90000:
 	lf	$f0, 1($5)
 	fneg	$f0, $f0
 	sf	$f0, 3129($1)
-	addi	$5, $0, 2
-	lw	$6, 4($2)
-	lf	$f0, 2($6)
+	lw	$5, 4($2)
+	lf	$f0, 2($5)
 	fneg	$f0, $f0
-	sf	$f0, 3129($5)
-	j	eq_cont.90009
-eq_else.90008:
+	sf	$f0, 3129($26)
+	j	eq_cont.90499
+eq_else.90498:
 	lf	$f0, 3125($0)
 	lw	$5, 5($2)
 	lf	$f1, 0($5)
@@ -21714,8 +21542,7 @@ eq_else.90008:
 	lw	$5, 5($2)
 	lf	$f2, 1($5)
 	fsub	$f1, $f1, $f2
-	addi	$5, $0, 2
-	lf	$f2, 3125($5)
+	lf	$f2, 3125($26)
 	lw	$5, 5($2)
 	lf	$f3, 2($5)
 	fsub	$f2, $f2, $f3
@@ -21729,13 +21556,12 @@ eq_else.90008:
 	lf	$f5, 2($5)
 	fmul	$f5, $f2, $f5
 	lw	$5, 3($2)
-	bne	$5, $0, eq_else.90010
+	bne	$5, $0, eq_else.90500
 	sf	$f3, 3129($0)
 	sf	$f4, 3129($1)
-	addi	$5, $0, 2
-	sf	$f5, 3129($5)
-	j	eq_cont.90011
-eq_else.90010:
+	sf	$f5, 3129($26)
+	j	eq_cont.90501
+eq_else.90500:
 	lw	$5, 9($2)
 	lf	$f6, 2($5)
 	fmul	$f6, $f1, $f6
@@ -21758,60 +21584,56 @@ eq_else.90010:
 	fmul	$f2, $f2, $f3
 	fadd	$f2, $f4, $f2
 	sf	$f2, 3129($1)
-	addi	$5, $0, 2
-	lw	$6, 9($2)
-	lf	$f2, 1($6)
+	lw	$5, 9($2)
+	lf	$f2, 1($5)
 	fmul	$f0, $f0, $f2
-	lw	$6, 9($2)
-	lf	$f2, 0($6)
+	lw	$5, 9($2)
+	lf	$f2, 0($5)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	lf	$f1, 3388($0) # 0.500000
 	fmul	$f0, $f0, $f1
 	fadd	$f0, $f5, $f0
-	sf	$f0, 3129($5)
-eq_cont.90011:
+	sf	$f0, 3129($26)
+eq_cont.90501:
 	lw	$5, 6($2)
 	lf	$f0, 3129($0)
 	fmul	$f0, $f0, $f0
 	lf	$f1, 3129($1)
 	fmul	$f1, $f1, $f1
 	fadd	$f0, $f0, $f1
-	addi	$6, $0, 2
-	lf	$f1, 3129($6)
+	lf	$f1, 3129($26)
 	fmul	$f1, $f1, $f1
 	fadd	$f0, $f0, $f1
 	sqrt	$f0, $f0
-	beqf	$f0, $f30, feq.90012
+	beqf	$f0, $f30, feq.90502
 	mov	$6, $0
-	j	feq_cont.90013
-feq.90012:
+	j	feq_cont.90503
+feq.90502:
 	mov	$6, $1
-feq_cont.90013:
-	bne	$6, $0, eq_else.90014
-	bne	$5, $0, eq_else.90016
+feq_cont.90503:
+	bne	$6, $0, eq_else.90504
+	bne	$5, $0, eq_else.90506
 	fdiv	$f0, $f28, $f0
-	j	eq_cont.90017
-eq_else.90016:
+	j	eq_cont.90507
+eq_else.90506:
 	fdiv	$f0, $f29, $f0
-eq_cont.90017:
-	j	eq_cont.90015
-eq_else.90014:
+eq_cont.90507:
+	j	eq_cont.90505
+eq_else.90504:
 	movf	$f0, $f28
-eq_cont.90015:
+eq_cont.90505:
 	lf	$f1, 3129($0)
 	fmul	$f1, $f1, $f0
 	sf	$f1, 3129($0)
 	lf	$f1, 3129($1)
 	fmul	$f1, $f1, $f0
 	sf	$f1, 3129($1)
-	addi	$5, $0, 2
-	addi	$6, $0, 2
-	lf	$f1, 3129($6)
+	lf	$f1, 3129($26)
 	fmul	$f0, $f1, $f0
-	sf	$f0, 3129($5)
-eq_cont.90009:
-eq_cont.90001:
+	sf	$f0, 3129($26)
+eq_cont.90499:
+eq_cont.90491:
 	lw	$5, 0($2)
 	lw	$6, 8($2)
 	lf	$f0, 0($6)
@@ -21819,12 +21641,11 @@ eq_cont.90001:
 	lw	$6, 8($2)
 	lf	$f0, 1($6)
 	sf	$f0, 3132($1)
-	addi	$6, $0, 2
-	lw	$7, 8($2)
-	lf	$f0, 2($7)
-	sf	$f0, 3132($6)
+	lw	$6, 8($2)
+	lf	$f0, 2($6)
+	sf	$f0, 3132($26)
 	sw	$2, 8($3)
-	bne	$5, $1, eq_else.90018
+	bne	$5, $1, eq_else.90508
 	lf	$f0, 3125($0)
 	lw	$5, 5($2)
 	lf	$f1, 0($5)
@@ -21837,8 +21658,7 @@ eq_cont.90001:
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3364($0) # 10.000000
 	sltf	$5, $f0, $f1
-	addi	$6, $0, 2
-	lf	$f0, 3125($6)
+	lf	$f0, 3125($26)
 	lw	$6, 5($2)
 	lf	$f1, 2($6)
 	fsub	$f0, $f0, $f1
@@ -21850,60 +21670,59 @@ eq_cont.90001:
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3364($0) # 10.000000
 	sltf	$6, $f0, $f1
-	bne	$5, $0, eq_else.90020
-	bne	$6, $0, eq_else.90022
+	bne	$5, $0, eq_else.90510
+	bne	$6, $0, eq_else.90512
 	lf	$f0, 3366($0) # 255.000000
-	j	eq_cont.90023
-eq_else.90022:
+	j	eq_cont.90513
+eq_else.90512:
 	movf	$f0, $f30
-eq_cont.90023:
-	j	eq_cont.90021
-eq_else.90020:
-	bne	$6, $0, eq_else.90024
+eq_cont.90513:
+	j	eq_cont.90511
+eq_else.90510:
+	bne	$6, $0, eq_else.90514
 	movf	$f0, $f30
-	j	eq_cont.90025
-eq_else.90024:
+	j	eq_cont.90515
+eq_else.90514:
 	lf	$f0, 3366($0) # 255.000000
-eq_cont.90025:
-eq_cont.90021:
+eq_cont.90515:
+eq_cont.90511:
 	sf	$f0, 3132($1)
-	j	eq_cont.90019
-eq_else.90018:
+	j	eq_cont.90509
+eq_else.90508:
 	addi	$30, $0, 2
-	bne	$5, $30, eq_else.90026
+	bne	$5, $30, eq_else.90516
 	lf	$f0, 3125($1)
 	lf	$f1, 3363($0) # 0.250000
 	fmul	$f0, $f0, $f1
-	bltf	$f30, $f0, fle.90028
+	bltf	$f30, $f0, fle.90518
 	movf	$f1, $f29
-	j	fle_cont.90029
-fle.90028:
+	j	fle_cont.90519
+fle.90518:
 	movf	$f1, $f28
-fle_cont.90029:
+fle_cont.90519:
 	fmul	$f0, $f1, $f0
 	lf	$f2, 3395($0) # 6.283185
 	fdiv	$f3, $f0, $f2
 	floor	$f3, $f3
 	fmul	$f2, $f3, $f2
 	fsub	$f0, $f0, $f2
-	bltf	$f0, $f31, fle.90030
+	bltf	$f0, $f31, fle.90520
 	fsub	$f0, $f0, $f31
 	fneg	$f1, $f1
 	lf	$f2, 3393($0) # 1.570796
-	bltf	$f0, $f2, fle.90032
+	bltf	$f0, $f2, fle.90522
 	fsub	$f0, $f31, $f0
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.90034
+	bltf	$f2, $f0, fle.90524
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f1, 9($3)
 	sf	$f4, 10($3)
 	sf	$f3, 11($3)
 	sf	$f0, 12($3)
 	sf	$f2, 13($3)
-	mov	$2, $5
+	mov	$2, $27
 	sw	$31, 14($3)
 	addi	$3, $3, 15
 	jal	pow.2646
@@ -21940,20 +21759,19 @@ fle_cont.90029:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 9($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90035
-fle.90034:
+	j	fle_cont.90525
+fle.90524:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f1, 9($3)
 	sf	$f4, 16($3)
 	sf	$f3, 17($3)
 	sf	$f0, 18($3)
 	sf	$f2, 19($3)
-	mov	$2, $5
+	mov	$2, $26
 	sw	$31, 20($3)
 	addi	$3, $3, 21
 	jal	pow.2646
@@ -21990,21 +21808,20 @@ fle.90034:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 9($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90035:
-	j	fle_cont.90033
-fle.90032:
+fle_cont.90525:
+	j	fle_cont.90523
+fle.90522:
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.90036
+	bltf	$f2, $f0, fle.90526
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f1, 9($3)
 	sf	$f4, 22($3)
 	sf	$f3, 23($3)
 	sf	$f0, 24($3)
 	sf	$f2, 25($3)
-	mov	$2, $5
+	mov	$2, $27
 	sw	$31, 26($3)
 	addi	$3, $3, 27
 	jal	pow.2646
@@ -22041,20 +21858,19 @@ fle.90032:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 9($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90037
-fle.90036:
+	j	fle_cont.90527
+fle.90526:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f1, 9($3)
 	sf	$f4, 28($3)
 	sf	$f3, 29($3)
 	sf	$f0, 30($3)
 	sf	$f2, 31($3)
-	mov	$2, $5
+	mov	$2, $26
 	sw	$31, 32($3)
 	addi	$3, $3, 33
 	jal	pow.2646
@@ -22091,25 +21907,24 @@ fle.90036:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 9($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90037:
-fle_cont.90033:
-	j	fle_cont.90031
-fle.90030:
+fle_cont.90527:
+fle_cont.90523:
+	j	fle_cont.90521
+fle.90520:
 	lf	$f2, 3393($0) # 1.570796
-	bltf	$f0, $f2, fle.90038
+	bltf	$f0, $f2, fle.90528
 	fsub	$f0, $f31, $f0
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.90040
+	bltf	$f2, $f0, fle.90530
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f1, 34($3)
 	sf	$f4, 35($3)
 	sf	$f3, 36($3)
 	sf	$f0, 37($3)
 	sf	$f2, 38($3)
-	mov	$2, $5
+	mov	$2, $27
 	sw	$31, 39($3)
 	addi	$3, $3, 40
 	jal	pow.2646
@@ -22146,20 +21961,19 @@ fle.90030:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 34($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90041
-fle.90040:
+	j	fle_cont.90531
+fle.90530:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f1, 34($3)
 	sf	$f4, 41($3)
 	sf	$f3, 42($3)
 	sf	$f0, 43($3)
 	sf	$f2, 44($3)
-	mov	$2, $5
+	mov	$2, $26
 	sw	$31, 45($3)
 	addi	$3, $3, 46
 	jal	pow.2646
@@ -22196,21 +22010,20 @@ fle.90040:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 34($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90041:
-	j	fle_cont.90039
-fle.90038:
+fle_cont.90531:
+	j	fle_cont.90529
+fle.90528:
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.90042
+	bltf	$f2, $f0, fle.90532
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f1, 34($3)
 	sf	$f4, 47($3)
 	sf	$f3, 48($3)
 	sf	$f0, 49($3)
 	sf	$f2, 50($3)
-	mov	$2, $5
+	mov	$2, $27
 	sw	$31, 51($3)
 	addi	$3, $3, 52
 	jal	pow.2646
@@ -22247,20 +22060,19 @@ fle.90038:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 34($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90043
-fle.90042:
+	j	fle_cont.90533
+fle.90532:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f1, 34($3)
 	sf	$f4, 53($3)
 	sf	$f3, 54($3)
 	sf	$f0, 55($3)
 	sf	$f2, 56($3)
-	mov	$2, $5
+	mov	$2, $26
 	sw	$31, 57($3)
 	addi	$3, $3, 58
 	jal	pow.2646
@@ -22297,9 +22109,9 @@ fle.90042:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 34($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90043:
-fle_cont.90039:
-fle_cont.90031:
+fle_cont.90533:
+fle_cont.90529:
+fle_cont.90521:
 	fmul	$f0, $f0, $f0
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f1, $f1, $f0
@@ -22308,16 +22120,15 @@ fle_cont.90031:
 	fsub	$f0, $f28, $f0
 	fmul	$f0, $f1, $f0
 	sf	$f0, 3132($1)
-	j	eq_cont.90027
-eq_else.90026:
+	j	eq_cont.90517
+eq_else.90516:
 	addi	$30, $0, 3
-	bne	$5, $30, eq_else.90044
+	bne	$5, $30, eq_else.90534
 	lf	$f0, 3125($0)
 	lw	$5, 5($2)
 	lf	$f1, 0($5)
 	fsub	$f0, $f0, $f1
-	addi	$5, $0, 2
-	lf	$f1, 3125($5)
+	lf	$f1, 3125($26)
 	lw	$5, 5($2)
 	lf	$f2, 2($5)
 	fsub	$f1, $f1, $f2
@@ -22331,34 +22142,33 @@ eq_else.90026:
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3368($0) # 3.141593
 	fmul	$f0, $f0, $f1
-	bltf	$f30, $f0, fle.90046
+	bltf	$f30, $f0, fle.90536
 	movf	$f1, $f29
-	j	fle_cont.90047
-fle.90046:
+	j	fle_cont.90537
+fle.90536:
 	movf	$f1, $f28
-fle_cont.90047:
+fle_cont.90537:
 	fmul	$f0, $f1, $f0
 	lf	$f1, 3395($0) # 6.283185
 	fdiv	$f2, $f0, $f1
 	floor	$f2, $f2
 	fmul	$f1, $f2, $f1
 	fsub	$f0, $f0, $f1
-	bltf	$f0, $f31, fle.90048
+	bltf	$f0, $f31, fle.90538
 	fsub	$f0, $f0, $f31
 	lf	$f1, 3393($0) # 1.570796
-	bltf	$f0, $f1, fle.90050
+	bltf	$f0, $f1, fle.90540
 	fsub	$f0, $f31, $f0
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.90052
+	bltf	$f1, $f0, fle.90542
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f3, 59($3)
 	sf	$f2, 60($3)
 	sf	$f0, 61($3)
 	sf	$f1, 62($3)
-	mov	$2, $5
+	mov	$2, $26
 	sw	$31, 63($3)
 	addi	$3, $3, 64
 	jal	pow.2646
@@ -22394,19 +22204,18 @@ fle_cont.90047:
 	lf	$f1, 64($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-	j	fle_cont.90053
-fle.90052:
+	j	fle_cont.90543
+fle.90542:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
 	lf	$f2, 3390($0) # 0.008333
 	lf	$f3, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f3, 65($3)
 	sf	$f2, 66($3)
 	sf	$f0, 67($3)
 	sf	$f1, 68($3)
-	mov	$2, $5
+	mov	$2, $27
 	sw	$31, 69($3)
 	addi	$3, $3, 70
 	jal	pow.2646
@@ -22442,20 +22251,19 @@ fle.90052:
 	lf	$f1, 70($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-fle_cont.90053:
-	j	fle_cont.90051
-fle.90050:
+fle_cont.90543:
+	j	fle_cont.90541
+fle.90540:
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.90054
+	bltf	$f1, $f0, fle.90544
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f3, 71($3)
 	sf	$f2, 72($3)
 	sf	$f0, 73($3)
 	sf	$f1, 74($3)
-	mov	$2, $5
+	mov	$2, $26
 	sw	$31, 75($3)
 	addi	$3, $3, 76
 	jal	pow.2646
@@ -22491,19 +22299,18 @@ fle.90050:
 	lf	$f1, 76($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-	j	fle_cont.90055
-fle.90054:
+	j	fle_cont.90545
+fle.90544:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
 	lf	$f2, 3390($0) # 0.008333
 	lf	$f3, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f3, 77($3)
 	sf	$f2, 78($3)
 	sf	$f0, 79($3)
 	sf	$f1, 80($3)
-	mov	$2, $5
+	mov	$2, $27
 	sw	$31, 81($3)
 	addi	$3, $3, 82
 	jal	pow.2646
@@ -22539,24 +22346,23 @@ fle.90054:
 	lf	$f1, 82($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-fle_cont.90055:
-fle_cont.90051:
-	j	fle_cont.90049
-fle.90048:
+fle_cont.90545:
+fle_cont.90541:
+	j	fle_cont.90539
+fle.90538:
 	lf	$f1, 3393($0) # 1.570796
-	bltf	$f0, $f1, fle.90056
+	bltf	$f0, $f1, fle.90546
 	fsub	$f0, $f31, $f0
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.90058
+	bltf	$f1, $f0, fle.90548
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f3, 83($3)
 	sf	$f2, 84($3)
 	sf	$f0, 85($3)
 	sf	$f1, 86($3)
-	mov	$2, $5
+	mov	$2, $26
 	sw	$31, 87($3)
 	addi	$3, $3, 88
 	jal	pow.2646
@@ -22592,19 +22398,18 @@ fle.90048:
 	lf	$f1, 88($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-	j	fle_cont.90059
-fle.90058:
+	j	fle_cont.90549
+fle.90548:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
 	lf	$f2, 3390($0) # 0.008333
 	lf	$f3, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f3, 89($3)
 	sf	$f2, 90($3)
 	sf	$f0, 91($3)
 	sf	$f1, 92($3)
-	mov	$2, $5
+	mov	$2, $27
 	sw	$31, 93($3)
 	addi	$3, $3, 94
 	jal	pow.2646
@@ -22640,20 +22445,19 @@ fle.90058:
 	lf	$f1, 94($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-fle_cont.90059:
-	j	fle_cont.90057
-fle.90056:
+fle_cont.90549:
+	j	fle_cont.90547
+fle.90546:
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.90060
+	bltf	$f1, $f0, fle.90550
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f3, 95($3)
 	sf	$f2, 96($3)
 	sf	$f0, 97($3)
 	sf	$f1, 98($3)
-	mov	$2, $5
+	mov	$2, $26
 	sw	$31, 99($3)
 	addi	$3, $3, 100
 	jal	pow.2646
@@ -22689,19 +22493,18 @@ fle.90056:
 	lf	$f1, 100($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-	j	fle_cont.90061
-fle.90060:
+	j	fle_cont.90551
+fle.90550:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
 	lf	$f2, 3390($0) # 0.008333
 	lf	$f3, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f3, 101($3)
 	sf	$f2, 102($3)
 	sf	$f0, 103($3)
 	sf	$f1, 104($3)
-	mov	$2, $5
+	mov	$2, $27
 	sw	$31, 105($3)
 	addi	$3, $3, 106
 	jal	pow.2646
@@ -22737,22 +22540,21 @@ fle.90060:
 	lf	$f1, 106($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-fle_cont.90061:
-fle_cont.90057:
-fle_cont.90049:
+fle_cont.90551:
+fle_cont.90547:
+fle_cont.90539:
 	fmul	$f0, $f0, $f0
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f1, $f0, $f1
 	sf	$f1, 3132($1)
-	addi	$2, $0, 2
 	fsub	$f0, $f28, $f0
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f0, $f0, $f1
-	sf	$f0, 3132($2)
-	j	eq_cont.90045
-eq_else.90044:
+	sf	$f0, 3132($26)
+	j	eq_cont.90535
+eq_else.90534:
 	addi	$30, $0, 4
-	bne	$5, $30, eq_else.90062
+	bne	$5, $30, eq_else.90552
 	lf	$f0, 3125($0)
 	lw	$5, 5($2)
 	lf	$f1, 0($5)
@@ -22761,8 +22563,7 @@ eq_else.90044:
 	lf	$f1, 0($5)
 	sqrt	$f1, $f1
 	fmul	$f0, $f0, $f1
-	addi	$5, $0, 2
-	lf	$f1, 3125($5)
+	lf	$f1, 3125($26)
 	lw	$5, 5($2)
 	lf	$f2, 2($5)
 	fsub	$f1, $f1, $f2
@@ -22777,20 +22578,20 @@ eq_else.90044:
 	lf	$f4, 3379($0) # 0.000100
 	sltf	$5, $f3, $f4
 	sf	$f2, 107($3)
-	bne	$5, $0, eq_else.90064
+	bne	$5, $0, eq_else.90554
 	fdiv	$f0, $f1, $f0
 	fabs	$f0, $f0
-	bltf	$f30, $f0, fle.90066
+	bltf	$f30, $f0, fle.90556
 	movf	$f1, $f29
-	j	fle_cont.90067
-fle.90066:
+	j	fle_cont.90557
+fle.90556:
 	movf	$f1, $f28
-fle_cont.90067:
+fle_cont.90557:
 	fmul	$f0, $f1, $f0
 	lf	$f3, 3377($0) # 0.437500
-	bltf	$f0, $f3, fle.90068
+	bltf	$f0, $f3, fle.90558
 	lf	$f3, 3370($0) # 2.437500
-	bltf	$f0, $f3, fle.90070
+	bltf	$f0, $f3, fle.90560
 	lf	$f3, 3393($0) # 1.570796
 	fdiv	$f0, $f28, $f0
 	fmul	$f4, $f0, $f28
@@ -22896,8 +22697,8 @@ fle_cont.90067:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 108($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90071
-fle.90070:
+	j	fle_cont.90561
+fle.90560:
 	lf	$f3, 3392($0) # 0.785398
 	fsub	$f4, $f0, $f28
 	fadd	$f0, $f0, $f28
@@ -23005,9 +22806,9 @@ fle.90070:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 108($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90071:
-	j	fle_cont.90069
-fle.90068:
+fle_cont.90561:
+	j	fle_cont.90559
+fle.90558:
 	fmul	$f3, $f0, $f28
 	fmul	$f3, $f3, $f28
 	fmul	$f4, $f0, $f3
@@ -23108,15 +22909,15 @@ fle.90068:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 108($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90069:
+fle_cont.90559:
 	lf	$f1, 3369($0) # 30.000000
 	fmul	$f0, $f0, $f1
 	lf	$f1, 3368($0) # 3.141593
 	fdiv	$f0, $f0, $f1
-	j	eq_cont.90065
-eq_else.90064:
+	j	eq_cont.90555
+eq_else.90554:
 	lf	$f0, 3378($0) # 15.000000
-eq_cont.90065:
+eq_cont.90555:
 	floor	$f1, $f0
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3125($1)
@@ -23133,20 +22934,20 @@ eq_cont.90065:
 	lf	$f4, 3379($0) # 0.000100
 	sltf	$5, $f3, $f4
 	sf	$f0, 129($3)
-	bne	$5, $0, eq_else.90072
+	bne	$5, $0, eq_else.90562
 	fdiv	$f1, $f1, $f2
 	fabs	$f1, $f1
-	bltf	$f30, $f1, fle.90074
+	bltf	$f30, $f1, fle.90564
 	movf	$f2, $f29
-	j	fle_cont.90075
-fle.90074:
+	j	fle_cont.90565
+fle.90564:
 	movf	$f2, $f28
-fle_cont.90075:
+fle_cont.90565:
 	fmul	$f1, $f2, $f1
 	lf	$f3, 3377($0) # 0.437500
-	bltf	$f1, $f3, fle.90076
+	bltf	$f1, $f3, fle.90566
 	lf	$f3, 3370($0) # 2.437500
-	bltf	$f1, $f3, fle.90078
+	bltf	$f1, $f3, fle.90568
 	lf	$f3, 3393($0) # 1.570796
 	fdiv	$f1, $f28, $f1
 	fmul	$f4, $f1, $f28
@@ -23253,8 +23054,8 @@ fle_cont.90075:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 130($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90079
-fle.90078:
+	j	fle_cont.90569
+fle.90568:
 	lf	$f3, 3392($0) # 0.785398
 	fsub	$f4, $f1, $f28
 	fadd	$f1, $f1, $f28
@@ -23363,9 +23164,9 @@ fle.90078:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 130($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90079:
-	j	fle_cont.90077
-fle.90076:
+fle_cont.90569:
+	j	fle_cont.90567
+fle.90566:
 	fmul	$f3, $f1, $f28
 	fmul	$f3, $f3, $f28
 	fmul	$f4, $f1, $f3
@@ -23467,15 +23268,15 @@ fle.90076:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 130($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90077:
+fle_cont.90567:
 	lf	$f1, 3369($0) # 30.000000
 	fmul	$f0, $f0, $f1
 	lf	$f1, 3368($0) # 3.141593
 	fdiv	$f0, $f0, $f1
-	j	eq_cont.90073
-eq_else.90072:
+	j	eq_cont.90563
+eq_else.90562:
 	lf	$f0, 3378($0) # 15.000000
-eq_cont.90073:
+eq_cont.90563:
 	floor	$f1, $f0
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3367($0) # 0.150000
@@ -23489,23 +23290,22 @@ eq_cont.90073:
 	fmul	$f0, $f0, $f0
 	fsub	$f0, $f1, $f0
 	sltf	$2, $f0, $f30
-	bne	$2, $0, eq_else.90080
-	j	eq_cont.90081
-eq_else.90080:
+	bne	$2, $0, eq_else.90570
+	j	eq_cont.90571
+eq_else.90570:
 	movf	$f0, $f30
-eq_cont.90081:
-	addi	$2, $0, 2
+eq_cont.90571:
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f0, $f1, $f0
 	lf	$f1, 3365($0) # 0.300000
 	fdiv	$f0, $f0, $f1
-	sf	$f0, 3132($2)
-	j	eq_cont.90063
-eq_else.90062:
-eq_cont.90063:
-eq_cont.90045:
-eq_cont.90027:
-eq_cont.90019:
+	sf	$f0, 3132($26)
+	j	eq_cont.90553
+eq_else.90552:
+eq_cont.90553:
+eq_cont.90535:
+eq_cont.90517:
+eq_cont.90509:
 	lw	$5, 3121($0)
 	mov	$2, $0
 	sw	$31, 151($3)
@@ -23513,7 +23313,7 @@ eq_cont.90019:
 	jal	shadow_check_one_or_matrix.2980
 	addi	$3, $3, -152
 	lw	$31, 151($3)
-	bne	$2, $0, eq_else.90082
+	bne	$2, $0, eq_else.90572
 	lf	$f0, 3129($0)
 	lf	$f1, 3067($0)
 	fmul	$f0, $f0, $f1
@@ -23521,19 +23321,17 @@ eq_cont.90019:
 	lf	$f2, 3067($1)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	addi	$2, $0, 2
-	lf	$f1, 3129($2)
-	addi	$2, $0, 2
-	lf	$f2, 3067($2)
+	lf	$f1, 3129($26)
+	lf	$f2, 3067($26)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	fneg	$f0, $f0
 	sltf	$2, $f30, $f0
-	bne	$2, $0, eq_else.90084
+	bne	$2, $0, eq_else.90574
 	movf	$f0, $f30
-	j	eq_cont.90085
-eq_else.90084:
-eq_cont.90085:
+	j	eq_cont.90575
+eq_else.90574:
+eq_cont.90575:
 	lf	$f1, 4($3)
 	fmul	$f0, $f1, $f0
 	lw	$2, 8($3)
@@ -23550,20 +23348,17 @@ eq_cont.90085:
 	fmul	$f2, $f0, $f2
 	fadd	$f1, $f1, $f2
 	sf	$f1, 3135($1)
-	addi	$2, $0, 2
-	addi	$5, $0, 2
-	lf	$f1, 3135($5)
-	addi	$5, $0, 2
-	lf	$f2, 3132($5)
+	lf	$f1, 3135($26)
+	lf	$f2, 3132($26)
 	fmul	$f0, $f0, $f2
 	fadd	$f0, $f1, $f0
-	sf	$f0, 3135($2)
-	j	eq_cont.90083
-eq_else.90082:
-eq_cont.90083:
-eq_cont.89999:
-	j	eq_cont.89925
-eq_else.89924:
+	sf	$f0, 3135($26)
+	j	eq_cont.90573
+eq_else.90572:
+eq_cont.90573:
+eq_cont.90489:
+	j	eq_cont.90415
+eq_else.90414:
 	addi	$8, $7, 1
 	add	$30, $2, $8
 	lw	$8, 0($30)
@@ -23576,16 +23371,16 @@ eq_else.89924:
 	lw	$11, 0($10)
 	sf	$f0, 151($3)
 	sw	$8, 152($3)
-	bne	$11, $28, eq_else.90086
-	j	eq_cont.90087
-eq_else.90086:
+	bne	$11, $28, eq_else.90576
+	j	eq_cont.90577
+eq_else.90576:
 	sw	$9, 153($3)
 	addi	$30, $0, 99
-	bne	$11, $30, eq_else.90088
+	bne	$11, $30, eq_else.90578
 	lw	$11, 1($10)
-	bne	$11, $28, eq_else.90090
-	j	eq_cont.90091
-eq_else.90090:
+	bne	$11, $28, eq_else.90580
+	j	eq_cont.90581
+eq_else.90580:
 	lw	$11, 3071($11)
 	sw	$10, 154($3)
 	mov	$6, $8
@@ -23598,9 +23393,9 @@ eq_else.90090:
 	lw	$31, 155($3)
 	lw	$2, 154($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.90092
-	j	eq_cont.90093
-eq_else.90092:
+	bne	$5, $28, eq_else.90582
+	j	eq_cont.90583
+eq_else.90582:
 	lw	$5, 3071($5)
 	lw	$6, 152($3)
 	mov	$2, $0
@@ -23611,9 +23406,9 @@ eq_else.90092:
 	lw	$31, 155($3)
 	lw	$2, 154($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.90094
-	j	eq_cont.90095
-eq_else.90094:
+	bne	$5, $28, eq_else.90584
+	j	eq_cont.90585
+eq_else.90584:
 	lw	$5, 3071($5)
 	lw	$6, 152($3)
 	mov	$2, $0
@@ -23624,9 +23419,9 @@ eq_else.90094:
 	lw	$31, 155($3)
 	lw	$2, 154($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.90096
-	j	eq_cont.90097
-eq_else.90096:
+	bne	$5, $28, eq_else.90586
+	j	eq_cont.90587
+eq_else.90586:
 	lw	$5, 3071($5)
 	lw	$6, 152($3)
 	mov	$2, $0
@@ -23643,12 +23438,12 @@ eq_else.90096:
 	jal	solve_one_or_network_fast.3001
 	addi	$3, $3, -156
 	lw	$31, 155($3)
-eq_cont.90097:
-eq_cont.90095:
-eq_cont.90093:
-eq_cont.90091:
-	j	eq_cont.90089
-eq_else.90088:
+eq_cont.90587:
+eq_cont.90585:
+eq_cont.90583:
+eq_cont.90581:
+	j	eq_cont.90579
+eq_else.90578:
 	lw	$12, 3001($11)
 	lw	$13, 10($12)
 	lf	$f1, 0($13)
@@ -23658,7 +23453,7 @@ eq_else.90088:
 	add	$30, $14, $11
 	lw	$11, 0($30)
 	lw	$14, 1($12)
-	bne	$14, $1, eq_else.90098
+	bne	$14, $1, eq_else.90588
 	lw	$13, 0($8)
 	lf	$f4, 0($11)
 	fsub	$f4, $f4, $f1
@@ -23671,10 +23466,10 @@ eq_else.90088:
 	lw	$14, 4($12)
 	lf	$f6, 1($14)
 	sltf	$14, $f5, $f6
-	bne	$14, $0, eq_else.90100
+	bne	$14, $0, eq_else.90590
 	mov	$14, $0
-	j	eq_cont.90101
-eq_else.90100:
+	j	eq_cont.90591
+eq_else.90590:
 	lf	$f5, 2($13)
 	fmul	$f5, $f4, $f5
 	fadd	$f5, $f5, $f3
@@ -23682,26 +23477,26 @@ eq_else.90100:
 	lw	$14, 4($12)
 	lf	$f6, 2($14)
 	sltf	$14, $f5, $f6
-	bne	$14, $0, eq_else.90102
+	bne	$14, $0, eq_else.90592
 	mov	$14, $0
-	j	eq_cont.90103
-eq_else.90102:
+	j	eq_cont.90593
+eq_else.90592:
 	lf	$f5, 1($11)
-	beqf	$f5, $f30, feq.90104
+	beqf	$f5, $f30, feq.90594
 	mov	$14, $0
-	j	feq_cont.90105
-feq.90104:
+	j	feq_cont.90595
+feq.90594:
 	mov	$14, $1
-feq_cont.90105:
-	bne	$14, $0, eq_else.90106
+feq_cont.90595:
+	bne	$14, $0, eq_else.90596
 	mov	$14, $1
-	j	eq_cont.90107
-eq_else.90106:
+	j	eq_cont.90597
+eq_else.90596:
 	mov	$14, $0
-eq_cont.90107:
-eq_cont.90103:
-eq_cont.90101:
-	bne	$14, $0, eq_else.90108
+eq_cont.90597:
+eq_cont.90593:
+eq_cont.90591:
+	bne	$14, $0, eq_else.90598
 	lf	$f4, 2($11)
 	fsub	$f4, $f4, $f2
 	lf	$f5, 3($11)
@@ -23713,10 +23508,10 @@ eq_cont.90101:
 	lw	$14, 4($12)
 	lf	$f6, 0($14)
 	sltf	$14, $f5, $f6
-	bne	$14, $0, eq_else.90110
+	bne	$14, $0, eq_else.90600
 	mov	$14, $0
-	j	eq_cont.90111
-eq_else.90110:
+	j	eq_cont.90601
+eq_else.90600:
 	lf	$f5, 2($13)
 	fmul	$f5, $f4, $f5
 	fadd	$f5, $f5, $f3
@@ -23724,26 +23519,26 @@ eq_else.90110:
 	lw	$14, 4($12)
 	lf	$f6, 2($14)
 	sltf	$14, $f5, $f6
-	bne	$14, $0, eq_else.90112
+	bne	$14, $0, eq_else.90602
 	mov	$14, $0
-	j	eq_cont.90113
-eq_else.90112:
+	j	eq_cont.90603
+eq_else.90602:
 	lf	$f5, 3($11)
-	beqf	$f5, $f30, feq.90114
+	beqf	$f5, $f30, feq.90604
 	mov	$14, $0
-	j	feq_cont.90115
-feq.90114:
+	j	feq_cont.90605
+feq.90604:
 	mov	$14, $1
-feq_cont.90115:
-	bne	$14, $0, eq_else.90116
+feq_cont.90605:
+	bne	$14, $0, eq_else.90606
 	mov	$14, $1
-	j	eq_cont.90117
-eq_else.90116:
+	j	eq_cont.90607
+eq_else.90606:
 	mov	$14, $0
-eq_cont.90117:
-eq_cont.90113:
-eq_cont.90111:
-	bne	$14, $0, eq_else.90118
+eq_cont.90607:
+eq_cont.90603:
+eq_cont.90601:
+	bne	$14, $0, eq_else.90608
 	lf	$f4, 4($11)
 	fsub	$f3, $f4, $f3
 	lf	$f4, 5($11)
@@ -23755,10 +23550,10 @@ eq_cont.90111:
 	lw	$14, 4($12)
 	lf	$f4, 0($14)
 	sltf	$14, $f1, $f4
-	bne	$14, $0, eq_else.90120
+	bne	$14, $0, eq_else.90610
 	mov	$11, $0
-	j	eq_cont.90121
-eq_else.90120:
+	j	eq_cont.90611
+eq_else.90610:
 	lf	$f1, 1($13)
 	fmul	$f1, $f3, $f1
 	fadd	$f1, $f1, $f2
@@ -23766,68 +23561,68 @@ eq_else.90120:
 	lw	$12, 4($12)
 	lf	$f2, 1($12)
 	sltf	$12, $f1, $f2
-	bne	$12, $0, eq_else.90122
+	bne	$12, $0, eq_else.90612
 	mov	$11, $0
-	j	eq_cont.90123
-eq_else.90122:
+	j	eq_cont.90613
+eq_else.90612:
 	lf	$f1, 5($11)
-	beqf	$f1, $f30, feq.90124
+	beqf	$f1, $f30, feq.90614
 	mov	$11, $0
-	j	feq_cont.90125
-feq.90124:
+	j	feq_cont.90615
+feq.90614:
 	mov	$11, $1
-feq_cont.90125:
-	bne	$11, $0, eq_else.90126
+feq_cont.90615:
+	bne	$11, $0, eq_else.90616
 	mov	$11, $1
-	j	eq_cont.90127
-eq_else.90126:
+	j	eq_cont.90617
+eq_else.90616:
 	mov	$11, $0
-eq_cont.90127:
-eq_cont.90123:
-eq_cont.90121:
-	bne	$11, $0, eq_else.90128
+eq_cont.90617:
+eq_cont.90613:
+eq_cont.90611:
+	bne	$11, $0, eq_else.90618
 	mov	$11, $0
-	j	eq_cont.90129
-eq_else.90128:
+	j	eq_cont.90619
+eq_else.90618:
 	sf	$f3, 3122($0)
-	addi	$11, $0, 3
-eq_cont.90129:
-	j	eq_cont.90119
-eq_else.90118:
+	mov	$11, $27
+eq_cont.90619:
+	j	eq_cont.90609
+eq_else.90608:
 	sf	$f4, 3122($0)
-	addi	$11, $0, 2
-eq_cont.90119:
-	j	eq_cont.90109
-eq_else.90108:
+	mov	$11, $26
+eq_cont.90609:
+	j	eq_cont.90599
+eq_else.90598:
 	sf	$f4, 3122($0)
 	mov	$11, $1
-eq_cont.90109:
-	j	eq_cont.90099
-eq_else.90098:
+eq_cont.90599:
+	j	eq_cont.90589
+eq_else.90588:
 	addi	$30, $0, 2
-	bne	$14, $30, eq_else.90130
+	bne	$14, $30, eq_else.90620
 	lf	$f1, 0($11)
 	sltf	$12, $f1, $f30
-	bne	$12, $0, eq_else.90132
+	bne	$12, $0, eq_else.90622
 	mov	$11, $0
-	j	eq_cont.90133
-eq_else.90132:
+	j	eq_cont.90623
+eq_else.90622:
 	lf	$f1, 0($11)
 	lf	$f2, 3($13)
 	fmul	$f1, $f1, $f2
 	sf	$f1, 3122($0)
 	mov	$11, $1
-eq_cont.90133:
-	j	eq_cont.90131
-eq_else.90130:
+eq_cont.90623:
+	j	eq_cont.90621
+eq_else.90620:
 	lf	$f4, 0($11)
-	beqf	$f4, $f30, feq.90134
+	beqf	$f4, $f30, feq.90624
 	mov	$14, $0
-	j	feq_cont.90135
-feq.90134:
+	j	feq_cont.90625
+feq.90624:
 	mov	$14, $1
-feq_cont.90135:
-	bne	$14, $0, eq_else.90136
+feq_cont.90625:
+	bne	$14, $0, eq_else.90626
 	lf	$f5, 1($11)
 	fmul	$f1, $f5, $f1
 	lf	$f5, 2($11)
@@ -23841,46 +23636,46 @@ feq_cont.90135:
 	fmul	$f2, $f4, $f2
 	fsub	$f2, $f3, $f2
 	sltf	$13, $f30, $f2
-	bne	$13, $0, eq_else.90138
+	bne	$13, $0, eq_else.90628
 	mov	$11, $0
-	j	eq_cont.90139
-eq_else.90138:
+	j	eq_cont.90629
+eq_else.90628:
 	lw	$12, 6($12)
-	bne	$12, $0, eq_else.90140
+	bne	$12, $0, eq_else.90630
 	sqrt	$f2, $f2
 	fsub	$f1, $f1, $f2
 	lf	$f2, 4($11)
 	fmul	$f1, $f1, $f2
 	sf	$f1, 3122($0)
-	j	eq_cont.90141
-eq_else.90140:
+	j	eq_cont.90631
+eq_else.90630:
 	sqrt	$f2, $f2
 	fadd	$f1, $f1, $f2
 	lf	$f2, 4($11)
 	fmul	$f1, $f1, $f2
 	sf	$f1, 3122($0)
-eq_cont.90141:
+eq_cont.90631:
 	mov	$11, $1
-eq_cont.90139:
-	j	eq_cont.90137
-eq_else.90136:
+eq_cont.90629:
+	j	eq_cont.90627
+eq_else.90626:
 	mov	$11, $0
-eq_cont.90137:
-eq_cont.90131:
-eq_cont.90099:
-	bne	$11, $0, eq_else.90142
-	j	eq_cont.90143
-eq_else.90142:
+eq_cont.90627:
+eq_cont.90621:
+eq_cont.90589:
+	bne	$11, $0, eq_else.90632
+	j	eq_cont.90633
+eq_else.90632:
 	lf	$f1, 3122($0)
 	lf	$f2, 3124($0)
 	sltf	$11, $f1, $f2
-	bne	$11, $0, eq_else.90144
-	j	eq_cont.90145
-eq_else.90144:
+	bne	$11, $0, eq_else.90634
+	j	eq_cont.90635
+eq_else.90634:
 	lw	$11, 1($10)
-	bne	$11, $28, eq_else.90146
-	j	eq_cont.90147
-eq_else.90146:
+	bne	$11, $28, eq_else.90636
+	j	eq_cont.90637
+eq_else.90636:
 	lw	$11, 3071($11)
 	sw	$10, 154($3)
 	mov	$6, $8
@@ -23893,9 +23688,9 @@ eq_else.90146:
 	lw	$31, 155($3)
 	lw	$2, 154($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.90148
-	j	eq_cont.90149
-eq_else.90148:
+	bne	$5, $28, eq_else.90638
+	j	eq_cont.90639
+eq_else.90638:
 	lw	$5, 3071($5)
 	lw	$6, 152($3)
 	mov	$2, $0
@@ -23906,9 +23701,9 @@ eq_else.90148:
 	lw	$31, 155($3)
 	lw	$2, 154($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.90150
-	j	eq_cont.90151
-eq_else.90150:
+	bne	$5, $28, eq_else.90640
+	j	eq_cont.90641
+eq_else.90640:
 	lw	$5, 3071($5)
 	lw	$6, 152($3)
 	mov	$2, $0
@@ -23919,9 +23714,9 @@ eq_else.90150:
 	lw	$31, 155($3)
 	lw	$2, 154($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.90152
-	j	eq_cont.90153
-eq_else.90152:
+	bne	$5, $28, eq_else.90642
+	j	eq_cont.90643
+eq_else.90642:
 	lw	$5, 3071($5)
 	lw	$6, 152($3)
 	mov	$2, $0
@@ -23938,13 +23733,13 @@ eq_else.90152:
 	jal	solve_one_or_network_fast.3001
 	addi	$3, $3, -156
 	lw	$31, 155($3)
-eq_cont.90153:
-eq_cont.90151:
-eq_cont.90149:
-eq_cont.90147:
-eq_cont.90145:
-eq_cont.90143:
-eq_cont.90089:
+eq_cont.90643:
+eq_cont.90641:
+eq_cont.90639:
+eq_cont.90637:
+eq_cont.90635:
+eq_cont.90633:
+eq_cont.90579:
 	lw	$5, 153($3)
 	lw	$6, 152($3)
 	mov	$2, $1
@@ -23953,64 +23748,63 @@ eq_cont.90089:
 	jal	trace_or_matrix_fast.3005
 	addi	$3, $3, -156
 	lw	$31, 155($3)
-eq_cont.90087:
+eq_cont.90577:
 	lf	$f0, 3124($0)
 	lf	$f1, 3382($0) # -0.100000
 	sltf	$2, $f1, $f0
-	bne	$2, $0, eq_else.90154
+	bne	$2, $0, eq_else.90644
 	mov	$2, $0
-	j	eq_cont.90155
-eq_else.90154:
+	j	eq_cont.90645
+eq_else.90644:
 	lf	$f1, 3380($0) # 100000000.000000
-	bltf	$f0, $f1, fle.90156
+	bltf	$f0, $f1, fle.90646
 	mov	$2, $0
-	j	fle_cont.90157
-fle.90156:
+	j	fle_cont.90647
+fle.90646:
 	mov	$2, $1
-fle_cont.90157:
-eq_cont.90155:
-	bne	$2, $0, eq_else.90158
-	j	eq_cont.90159
-eq_else.90158:
+fle_cont.90647:
+eq_cont.90645:
+	bne	$2, $0, eq_else.90648
+	j	eq_cont.90649
+eq_else.90648:
 	lw	$2, 3128($0)
 	lw	$2, 3001($2)
 	lw	$5, 152($3)
 	lw	$5, 0($5)
 	lw	$6, 1($2)
-	bne	$6, $1, eq_else.90160
+	bne	$6, $1, eq_else.90650
 	lw	$6, 3123($0)
 	sf	$f30, 3129($0)
 	sf	$f30, 3129($1)
-	addi	$7, $0, 2
-	sf	$f30, 3129($7)
+	sf	$f30, 3129($26)
 	addi	$7, $6, -1
 	addi	$6, $6, -1
 	add	$30, $5, $6
 	lf	$f0, 0($30)
-	beqf	$f0, $f30, feq.90162
+	beqf	$f0, $f30, feq.90652
 	mov	$5, $0
-	j	feq_cont.90163
-feq.90162:
+	j	feq_cont.90653
+feq.90652:
 	mov	$5, $1
-feq_cont.90163:
-	bne	$5, $0, eq_else.90164
+feq_cont.90653:
+	bne	$5, $0, eq_else.90654
 	sltf	$5, $f30, $f0
-	bne	$5, $0, eq_else.90166
+	bne	$5, $0, eq_else.90656
 	movf	$f0, $f29
-	j	eq_cont.90167
-eq_else.90166:
+	j	eq_cont.90657
+eq_else.90656:
 	movf	$f0, $f28
-eq_cont.90167:
-	j	eq_cont.90165
-eq_else.90164:
+eq_cont.90657:
+	j	eq_cont.90655
+eq_else.90654:
 	movf	$f0, $f30
-eq_cont.90165:
+eq_cont.90655:
 	fneg	$f0, $f0
 	sf	$f0, 3129($7)
-	j	eq_cont.90161
-eq_else.90160:
+	j	eq_cont.90651
+eq_else.90650:
 	addi	$30, $0, 2
-	bne	$6, $30, eq_else.90168
+	bne	$6, $30, eq_else.90658
 	lw	$5, 4($2)
 	lf	$f0, 0($5)
 	fneg	$f0, $f0
@@ -24019,13 +23813,12 @@ eq_else.90160:
 	lf	$f0, 1($5)
 	fneg	$f0, $f0
 	sf	$f0, 3129($1)
-	addi	$5, $0, 2
-	lw	$6, 4($2)
-	lf	$f0, 2($6)
+	lw	$5, 4($2)
+	lf	$f0, 2($5)
 	fneg	$f0, $f0
-	sf	$f0, 3129($5)
-	j	eq_cont.90169
-eq_else.90168:
+	sf	$f0, 3129($26)
+	j	eq_cont.90659
+eq_else.90658:
 	lf	$f0, 3125($0)
 	lw	$5, 5($2)
 	lf	$f1, 0($5)
@@ -24034,8 +23827,7 @@ eq_else.90168:
 	lw	$5, 5($2)
 	lf	$f2, 1($5)
 	fsub	$f1, $f1, $f2
-	addi	$5, $0, 2
-	lf	$f2, 3125($5)
+	lf	$f2, 3125($26)
 	lw	$5, 5($2)
 	lf	$f3, 2($5)
 	fsub	$f2, $f2, $f3
@@ -24049,13 +23841,12 @@ eq_else.90168:
 	lf	$f5, 2($5)
 	fmul	$f5, $f2, $f5
 	lw	$5, 3($2)
-	bne	$5, $0, eq_else.90170
+	bne	$5, $0, eq_else.90660
 	sf	$f3, 3129($0)
 	sf	$f4, 3129($1)
-	addi	$5, $0, 2
-	sf	$f5, 3129($5)
-	j	eq_cont.90171
-eq_else.90170:
+	sf	$f5, 3129($26)
+	j	eq_cont.90661
+eq_else.90660:
 	lw	$5, 9($2)
 	lf	$f6, 2($5)
 	fmul	$f6, $f1, $f6
@@ -24078,60 +23869,56 @@ eq_else.90170:
 	fmul	$f2, $f2, $f3
 	fadd	$f2, $f4, $f2
 	sf	$f2, 3129($1)
-	addi	$5, $0, 2
-	lw	$6, 9($2)
-	lf	$f2, 1($6)
+	lw	$5, 9($2)
+	lf	$f2, 1($5)
 	fmul	$f0, $f0, $f2
-	lw	$6, 9($2)
-	lf	$f2, 0($6)
+	lw	$5, 9($2)
+	lf	$f2, 0($5)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	lf	$f1, 3388($0) # 0.500000
 	fmul	$f0, $f0, $f1
 	fadd	$f0, $f5, $f0
-	sf	$f0, 3129($5)
-eq_cont.90171:
+	sf	$f0, 3129($26)
+eq_cont.90661:
 	lw	$5, 6($2)
 	lf	$f0, 3129($0)
 	fmul	$f0, $f0, $f0
 	lf	$f1, 3129($1)
 	fmul	$f1, $f1, $f1
 	fadd	$f0, $f0, $f1
-	addi	$6, $0, 2
-	lf	$f1, 3129($6)
+	lf	$f1, 3129($26)
 	fmul	$f1, $f1, $f1
 	fadd	$f0, $f0, $f1
 	sqrt	$f0, $f0
-	beqf	$f0, $f30, feq.90172
+	beqf	$f0, $f30, feq.90662
 	mov	$6, $0
-	j	feq_cont.90173
-feq.90172:
+	j	feq_cont.90663
+feq.90662:
 	mov	$6, $1
-feq_cont.90173:
-	bne	$6, $0, eq_else.90174
-	bne	$5, $0, eq_else.90176
+feq_cont.90663:
+	bne	$6, $0, eq_else.90664
+	bne	$5, $0, eq_else.90666
 	fdiv	$f0, $f28, $f0
-	j	eq_cont.90177
-eq_else.90176:
+	j	eq_cont.90667
+eq_else.90666:
 	fdiv	$f0, $f29, $f0
-eq_cont.90177:
-	j	eq_cont.90175
-eq_else.90174:
+eq_cont.90667:
+	j	eq_cont.90665
+eq_else.90664:
 	movf	$f0, $f28
-eq_cont.90175:
+eq_cont.90665:
 	lf	$f1, 3129($0)
 	fmul	$f1, $f1, $f0
 	sf	$f1, 3129($0)
 	lf	$f1, 3129($1)
 	fmul	$f1, $f1, $f0
 	sf	$f1, 3129($1)
-	addi	$5, $0, 2
-	addi	$6, $0, 2
-	lf	$f1, 3129($6)
+	lf	$f1, 3129($26)
 	fmul	$f0, $f1, $f0
-	sf	$f0, 3129($5)
-eq_cont.90169:
-eq_cont.90161:
+	sf	$f0, 3129($26)
+eq_cont.90659:
+eq_cont.90651:
 	lw	$5, 0($2)
 	lw	$6, 8($2)
 	lf	$f0, 0($6)
@@ -24139,12 +23926,11 @@ eq_cont.90161:
 	lw	$6, 8($2)
 	lf	$f0, 1($6)
 	sf	$f0, 3132($1)
-	addi	$6, $0, 2
-	lw	$7, 8($2)
-	lf	$f0, 2($7)
-	sf	$f0, 3132($6)
+	lw	$6, 8($2)
+	lf	$f0, 2($6)
+	sf	$f0, 3132($26)
 	sw	$2, 155($3)
-	bne	$5, $1, eq_else.90178
+	bne	$5, $1, eq_else.90668
 	lf	$f0, 3125($0)
 	lw	$5, 5($2)
 	lf	$f1, 0($5)
@@ -24157,8 +23943,7 @@ eq_cont.90161:
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3364($0) # 10.000000
 	sltf	$5, $f0, $f1
-	addi	$6, $0, 2
-	lf	$f0, 3125($6)
+	lf	$f0, 3125($26)
 	lw	$6, 5($2)
 	lf	$f1, 2($6)
 	fsub	$f0, $f0, $f1
@@ -24170,60 +23955,59 @@ eq_cont.90161:
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3364($0) # 10.000000
 	sltf	$6, $f0, $f1
-	bne	$5, $0, eq_else.90180
-	bne	$6, $0, eq_else.90182
+	bne	$5, $0, eq_else.90670
+	bne	$6, $0, eq_else.90672
 	lf	$f0, 3366($0) # 255.000000
-	j	eq_cont.90183
-eq_else.90182:
+	j	eq_cont.90673
+eq_else.90672:
 	movf	$f0, $f30
-eq_cont.90183:
-	j	eq_cont.90181
-eq_else.90180:
-	bne	$6, $0, eq_else.90184
+eq_cont.90673:
+	j	eq_cont.90671
+eq_else.90670:
+	bne	$6, $0, eq_else.90674
 	movf	$f0, $f30
-	j	eq_cont.90185
-eq_else.90184:
+	j	eq_cont.90675
+eq_else.90674:
 	lf	$f0, 3366($0) # 255.000000
-eq_cont.90185:
-eq_cont.90181:
+eq_cont.90675:
+eq_cont.90671:
 	sf	$f0, 3132($1)
-	j	eq_cont.90179
-eq_else.90178:
+	j	eq_cont.90669
+eq_else.90668:
 	addi	$30, $0, 2
-	bne	$5, $30, eq_else.90186
+	bne	$5, $30, eq_else.90676
 	lf	$f0, 3125($1)
 	lf	$f1, 3363($0) # 0.250000
 	fmul	$f0, $f0, $f1
-	bltf	$f30, $f0, fle.90188
+	bltf	$f30, $f0, fle.90678
 	movf	$f1, $f29
-	j	fle_cont.90189
-fle.90188:
+	j	fle_cont.90679
+fle.90678:
 	movf	$f1, $f28
-fle_cont.90189:
+fle_cont.90679:
 	fmul	$f0, $f1, $f0
 	lf	$f2, 3395($0) # 6.283185
 	fdiv	$f3, $f0, $f2
 	floor	$f3, $f3
 	fmul	$f2, $f3, $f2
 	fsub	$f0, $f0, $f2
-	bltf	$f0, $f31, fle.90190
+	bltf	$f0, $f31, fle.90680
 	fsub	$f0, $f0, $f31
 	fneg	$f1, $f1
 	lf	$f2, 3393($0) # 1.570796
-	bltf	$f0, $f2, fle.90192
+	bltf	$f0, $f2, fle.90682
 	fsub	$f0, $f31, $f0
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.90194
+	bltf	$f2, $f0, fle.90684
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f1, 156($3)
 	sf	$f4, 157($3)
 	sf	$f3, 158($3)
 	sf	$f0, 159($3)
 	sf	$f2, 160($3)
-	mov	$2, $5
+	mov	$2, $27
 	sw	$31, 161($3)
 	addi	$3, $3, 162
 	jal	pow.2646
@@ -24260,20 +24044,19 @@ fle_cont.90189:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 156($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90195
-fle.90194:
+	j	fle_cont.90685
+fle.90684:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f1, 156($3)
 	sf	$f4, 163($3)
 	sf	$f3, 164($3)
 	sf	$f0, 165($3)
 	sf	$f2, 166($3)
-	mov	$2, $5
+	mov	$2, $26
 	sw	$31, 167($3)
 	addi	$3, $3, 168
 	jal	pow.2646
@@ -24310,21 +24093,20 @@ fle.90194:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 156($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90195:
-	j	fle_cont.90193
-fle.90192:
+fle_cont.90685:
+	j	fle_cont.90683
+fle.90682:
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.90196
+	bltf	$f2, $f0, fle.90686
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f1, 156($3)
 	sf	$f4, 169($3)
 	sf	$f3, 170($3)
 	sf	$f0, 171($3)
 	sf	$f2, 172($3)
-	mov	$2, $5
+	mov	$2, $27
 	sw	$31, 173($3)
 	addi	$3, $3, 174
 	jal	pow.2646
@@ -24361,20 +24143,19 @@ fle.90192:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 156($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90197
-fle.90196:
+	j	fle_cont.90687
+fle.90686:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f1, 156($3)
 	sf	$f4, 175($3)
 	sf	$f3, 176($3)
 	sf	$f0, 177($3)
 	sf	$f2, 178($3)
-	mov	$2, $5
+	mov	$2, $26
 	sw	$31, 179($3)
 	addi	$3, $3, 180
 	jal	pow.2646
@@ -24411,25 +24192,24 @@ fle.90196:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 156($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90197:
-fle_cont.90193:
-	j	fle_cont.90191
-fle.90190:
+fle_cont.90687:
+fle_cont.90683:
+	j	fle_cont.90681
+fle.90680:
 	lf	$f2, 3393($0) # 1.570796
-	bltf	$f0, $f2, fle.90198
+	bltf	$f0, $f2, fle.90688
 	fsub	$f0, $f31, $f0
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.90200
+	bltf	$f2, $f0, fle.90690
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f1, 181($3)
 	sf	$f4, 182($3)
 	sf	$f3, 183($3)
 	sf	$f0, 184($3)
 	sf	$f2, 185($3)
-	mov	$2, $5
+	mov	$2, $27
 	sw	$31, 186($3)
 	addi	$3, $3, 187
 	jal	pow.2646
@@ -24466,20 +24246,19 @@ fle.90190:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 181($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90201
-fle.90200:
+	j	fle_cont.90691
+fle.90690:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f1, 181($3)
 	sf	$f4, 188($3)
 	sf	$f3, 189($3)
 	sf	$f0, 190($3)
 	sf	$f2, 191($3)
-	mov	$2, $5
+	mov	$2, $26
 	sw	$31, 192($3)
 	addi	$3, $3, 193
 	jal	pow.2646
@@ -24516,21 +24295,20 @@ fle.90200:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 181($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90201:
-	j	fle_cont.90199
-fle.90198:
+fle_cont.90691:
+	j	fle_cont.90689
+fle.90688:
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.90202
+	bltf	$f2, $f0, fle.90692
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f1, 181($3)
 	sf	$f4, 194($3)
 	sf	$f3, 195($3)
 	sf	$f0, 196($3)
 	sf	$f2, 197($3)
-	mov	$2, $5
+	mov	$2, $27
 	sw	$31, 198($3)
 	addi	$3, $3, 199
 	jal	pow.2646
@@ -24567,20 +24345,19 @@ fle.90198:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 181($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90203
-fle.90202:
+	j	fle_cont.90693
+fle.90692:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f1, 181($3)
 	sf	$f4, 200($3)
 	sf	$f3, 201($3)
 	sf	$f0, 202($3)
 	sf	$f2, 203($3)
-	mov	$2, $5
+	mov	$2, $26
 	sw	$31, 204($3)
 	addi	$3, $3, 205
 	jal	pow.2646
@@ -24617,9 +24394,9 @@ fle.90202:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 181($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90203:
-fle_cont.90199:
-fle_cont.90191:
+fle_cont.90693:
+fle_cont.90689:
+fle_cont.90681:
 	fmul	$f0, $f0, $f0
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f1, $f1, $f0
@@ -24628,16 +24405,15 @@ fle_cont.90191:
 	fsub	$f0, $f28, $f0
 	fmul	$f0, $f1, $f0
 	sf	$f0, 3132($1)
-	j	eq_cont.90187
-eq_else.90186:
+	j	eq_cont.90677
+eq_else.90676:
 	addi	$30, $0, 3
-	bne	$5, $30, eq_else.90204
+	bne	$5, $30, eq_else.90694
 	lf	$f0, 3125($0)
 	lw	$5, 5($2)
 	lf	$f1, 0($5)
 	fsub	$f0, $f0, $f1
-	addi	$5, $0, 2
-	lf	$f1, 3125($5)
+	lf	$f1, 3125($26)
 	lw	$5, 5($2)
 	lf	$f2, 2($5)
 	fsub	$f1, $f1, $f2
@@ -24651,34 +24427,33 @@ eq_else.90186:
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3368($0) # 3.141593
 	fmul	$f0, $f0, $f1
-	bltf	$f30, $f0, fle.90206
+	bltf	$f30, $f0, fle.90696
 	movf	$f1, $f29
-	j	fle_cont.90207
-fle.90206:
+	j	fle_cont.90697
+fle.90696:
 	movf	$f1, $f28
-fle_cont.90207:
+fle_cont.90697:
 	fmul	$f0, $f1, $f0
 	lf	$f1, 3395($0) # 6.283185
 	fdiv	$f2, $f0, $f1
 	floor	$f2, $f2
 	fmul	$f1, $f2, $f1
 	fsub	$f0, $f0, $f1
-	bltf	$f0, $f31, fle.90208
+	bltf	$f0, $f31, fle.90698
 	fsub	$f0, $f0, $f31
 	lf	$f1, 3393($0) # 1.570796
-	bltf	$f0, $f1, fle.90210
+	bltf	$f0, $f1, fle.90700
 	fsub	$f0, $f31, $f0
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.90212
+	bltf	$f1, $f0, fle.90702
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f3, 206($3)
 	sf	$f2, 207($3)
 	sf	$f0, 208($3)
 	sf	$f1, 209($3)
-	mov	$2, $5
+	mov	$2, $26
 	sw	$31, 210($3)
 	addi	$3, $3, 211
 	jal	pow.2646
@@ -24714,19 +24489,18 @@ fle_cont.90207:
 	lf	$f1, 211($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-	j	fle_cont.90213
-fle.90212:
+	j	fle_cont.90703
+fle.90702:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
 	lf	$f2, 3390($0) # 0.008333
 	lf	$f3, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f3, 212($3)
 	sf	$f2, 213($3)
 	sf	$f0, 214($3)
 	sf	$f1, 215($3)
-	mov	$2, $5
+	mov	$2, $27
 	sw	$31, 216($3)
 	addi	$3, $3, 217
 	jal	pow.2646
@@ -24762,20 +24536,19 @@ fle.90212:
 	lf	$f1, 217($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-fle_cont.90213:
-	j	fle_cont.90211
-fle.90210:
+fle_cont.90703:
+	j	fle_cont.90701
+fle.90700:
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.90214
+	bltf	$f1, $f0, fle.90704
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f3, 218($3)
 	sf	$f2, 219($3)
 	sf	$f0, 220($3)
 	sf	$f1, 221($3)
-	mov	$2, $5
+	mov	$2, $26
 	sw	$31, 222($3)
 	addi	$3, $3, 223
 	jal	pow.2646
@@ -24811,19 +24584,18 @@ fle.90210:
 	lf	$f1, 223($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-	j	fle_cont.90215
-fle.90214:
+	j	fle_cont.90705
+fle.90704:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
 	lf	$f2, 3390($0) # 0.008333
 	lf	$f3, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f3, 224($3)
 	sf	$f2, 225($3)
 	sf	$f0, 226($3)
 	sf	$f1, 227($3)
-	mov	$2, $5
+	mov	$2, $27
 	sw	$31, 228($3)
 	addi	$3, $3, 229
 	jal	pow.2646
@@ -24859,24 +24631,23 @@ fle.90214:
 	lf	$f1, 229($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-fle_cont.90215:
-fle_cont.90211:
-	j	fle_cont.90209
-fle.90208:
+fle_cont.90705:
+fle_cont.90701:
+	j	fle_cont.90699
+fle.90698:
 	lf	$f1, 3393($0) # 1.570796
-	bltf	$f0, $f1, fle.90216
+	bltf	$f0, $f1, fle.90706
 	fsub	$f0, $f31, $f0
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.90218
+	bltf	$f1, $f0, fle.90708
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f3, 230($3)
 	sf	$f2, 231($3)
 	sf	$f0, 232($3)
 	sf	$f1, 233($3)
-	mov	$2, $5
+	mov	$2, $26
 	sw	$31, 234($3)
 	addi	$3, $3, 235
 	jal	pow.2646
@@ -24912,19 +24683,18 @@ fle.90208:
 	lf	$f1, 235($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-	j	fle_cont.90219
-fle.90218:
+	j	fle_cont.90709
+fle.90708:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
 	lf	$f2, 3390($0) # 0.008333
 	lf	$f3, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f3, 236($3)
 	sf	$f2, 237($3)
 	sf	$f0, 238($3)
 	sf	$f1, 239($3)
-	mov	$2, $5
+	mov	$2, $27
 	sw	$31, 240($3)
 	addi	$3, $3, 241
 	jal	pow.2646
@@ -24960,20 +24730,19 @@ fle.90218:
 	lf	$f1, 241($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-fle_cont.90219:
-	j	fle_cont.90217
-fle.90216:
+fle_cont.90709:
+	j	fle_cont.90707
+fle.90706:
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.90220
+	bltf	$f1, $f0, fle.90710
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
-	addi	$5, $0, 2
 	sf	$f3, 242($3)
 	sf	$f2, 243($3)
 	sf	$f0, 244($3)
 	sf	$f1, 245($3)
-	mov	$2, $5
+	mov	$2, $26
 	sw	$31, 246($3)
 	addi	$3, $3, 247
 	jal	pow.2646
@@ -25009,19 +24778,18 @@ fle.90216:
 	lf	$f1, 247($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-	j	fle_cont.90221
-fle.90220:
+	j	fle_cont.90711
+fle.90710:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
 	lf	$f2, 3390($0) # 0.008333
 	lf	$f3, 3389($0) # 0.000196
-	addi	$5, $0, 3
 	sf	$f3, 248($3)
 	sf	$f2, 249($3)
 	sf	$f0, 250($3)
 	sf	$f1, 251($3)
-	mov	$2, $5
+	mov	$2, $27
 	sw	$31, 252($3)
 	addi	$3, $3, 253
 	jal	pow.2646
@@ -25057,22 +24825,21 @@ fle.90220:
 	lf	$f1, 253($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-fle_cont.90221:
-fle_cont.90217:
-fle_cont.90209:
+fle_cont.90711:
+fle_cont.90707:
+fle_cont.90699:
 	fmul	$f0, $f0, $f0
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f1, $f0, $f1
 	sf	$f1, 3132($1)
-	addi	$2, $0, 2
 	fsub	$f0, $f28, $f0
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f0, $f0, $f1
-	sf	$f0, 3132($2)
-	j	eq_cont.90205
-eq_else.90204:
+	sf	$f0, 3132($26)
+	j	eq_cont.90695
+eq_else.90694:
 	addi	$30, $0, 4
-	bne	$5, $30, eq_else.90222
+	bne	$5, $30, eq_else.90712
 	lf	$f0, 3125($0)
 	lw	$5, 5($2)
 	lf	$f1, 0($5)
@@ -25081,8 +24848,7 @@ eq_else.90204:
 	lf	$f1, 0($5)
 	sqrt	$f1, $f1
 	fmul	$f0, $f0, $f1
-	addi	$5, $0, 2
-	lf	$f1, 3125($5)
+	lf	$f1, 3125($26)
 	lw	$5, 5($2)
 	lf	$f2, 2($5)
 	fsub	$f1, $f1, $f2
@@ -25097,20 +24863,20 @@ eq_else.90204:
 	lf	$f4, 3379($0) # 0.000100
 	sltf	$5, $f3, $f4
 	sf	$f2, 254($3)
-	bne	$5, $0, eq_else.90224
+	bne	$5, $0, eq_else.90714
 	fdiv	$f0, $f1, $f0
 	fabs	$f0, $f0
-	bltf	$f30, $f0, fle.90226
+	bltf	$f30, $f0, fle.90716
 	movf	$f1, $f29
-	j	fle_cont.90227
-fle.90226:
+	j	fle_cont.90717
+fle.90716:
 	movf	$f1, $f28
-fle_cont.90227:
+fle_cont.90717:
 	fmul	$f0, $f1, $f0
 	lf	$f3, 3377($0) # 0.437500
-	bltf	$f0, $f3, fle.90228
+	bltf	$f0, $f3, fle.90718
 	lf	$f3, 3370($0) # 2.437500
-	bltf	$f0, $f3, fle.90230
+	bltf	$f0, $f3, fle.90720
 	lf	$f3, 3393($0) # 1.570796
 	fdiv	$f0, $f28, $f0
 	fmul	$f4, $f0, $f28
@@ -25216,8 +24982,8 @@ fle_cont.90227:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 255($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90231
-fle.90230:
+	j	fle_cont.90721
+fle.90720:
 	lf	$f3, 3392($0) # 0.785398
 	fsub	$f4, $f0, $f28
 	fadd	$f0, $f0, $f28
@@ -25325,9 +25091,9 @@ fle.90230:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 255($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90231:
-	j	fle_cont.90229
-fle.90228:
+fle_cont.90721:
+	j	fle_cont.90719
+fle.90718:
 	fmul	$f3, $f0, $f28
 	fmul	$f3, $f3, $f28
 	fmul	$f4, $f0, $f3
@@ -25428,15 +25194,15 @@ fle.90228:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 255($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90229:
+fle_cont.90719:
 	lf	$f1, 3369($0) # 30.000000
 	fmul	$f0, $f0, $f1
 	lf	$f1, 3368($0) # 3.141593
 	fdiv	$f0, $f0, $f1
-	j	eq_cont.90225
-eq_else.90224:
+	j	eq_cont.90715
+eq_else.90714:
 	lf	$f0, 3378($0) # 15.000000
-eq_cont.90225:
+eq_cont.90715:
 	floor	$f1, $f0
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3125($1)
@@ -25453,20 +25219,20 @@ eq_cont.90225:
 	lf	$f4, 3379($0) # 0.000100
 	sltf	$5, $f3, $f4
 	sf	$f0, 276($3)
-	bne	$5, $0, eq_else.90232
+	bne	$5, $0, eq_else.90722
 	fdiv	$f1, $f1, $f2
 	fabs	$f1, $f1
-	bltf	$f30, $f1, fle.90234
+	bltf	$f30, $f1, fle.90724
 	movf	$f2, $f29
-	j	fle_cont.90235
-fle.90234:
+	j	fle_cont.90725
+fle.90724:
 	movf	$f2, $f28
-fle_cont.90235:
+fle_cont.90725:
 	fmul	$f1, $f2, $f1
 	lf	$f3, 3377($0) # 0.437500
-	bltf	$f1, $f3, fle.90236
+	bltf	$f1, $f3, fle.90726
 	lf	$f3, 3370($0) # 2.437500
-	bltf	$f1, $f3, fle.90238
+	bltf	$f1, $f3, fle.90728
 	lf	$f3, 3393($0) # 1.570796
 	fdiv	$f1, $f28, $f1
 	fmul	$f4, $f1, $f28
@@ -25573,8 +25339,8 @@ fle_cont.90235:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 277($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90239
-fle.90238:
+	j	fle_cont.90729
+fle.90728:
 	lf	$f3, 3392($0) # 0.785398
 	fsub	$f4, $f1, $f28
 	fadd	$f1, $f1, $f28
@@ -25683,9 +25449,9 @@ fle.90238:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 277($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90239:
-	j	fle_cont.90237
-fle.90236:
+fle_cont.90729:
+	j	fle_cont.90727
+fle.90726:
 	fmul	$f3, $f1, $f28
 	fmul	$f3, $f3, $f28
 	fmul	$f4, $f1, $f3
@@ -25787,15 +25553,15 @@ fle.90236:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 277($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90237:
+fle_cont.90727:
 	lf	$f1, 3369($0) # 30.000000
 	fmul	$f0, $f0, $f1
 	lf	$f1, 3368($0) # 3.141593
 	fdiv	$f0, $f0, $f1
-	j	eq_cont.90233
-eq_else.90232:
+	j	eq_cont.90723
+eq_else.90722:
 	lf	$f0, 3378($0) # 15.000000
-eq_cont.90233:
+eq_cont.90723:
 	floor	$f1, $f0
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3367($0) # 0.150000
@@ -25809,23 +25575,22 @@ eq_cont.90233:
 	fmul	$f0, $f0, $f0
 	fsub	$f0, $f1, $f0
 	sltf	$2, $f0, $f30
-	bne	$2, $0, eq_else.90240
-	j	eq_cont.90241
-eq_else.90240:
+	bne	$2, $0, eq_else.90730
+	j	eq_cont.90731
+eq_else.90730:
 	movf	$f0, $f30
-eq_cont.90241:
-	addi	$2, $0, 2
+eq_cont.90731:
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f0, $f1, $f0
 	lf	$f1, 3365($0) # 0.300000
 	fdiv	$f0, $f0, $f1
-	sf	$f0, 3132($2)
-	j	eq_cont.90223
-eq_else.90222:
-eq_cont.90223:
-eq_cont.90205:
-eq_cont.90187:
-eq_cont.90179:
+	sf	$f0, 3132($26)
+	j	eq_cont.90713
+eq_else.90712:
+eq_cont.90713:
+eq_cont.90695:
+eq_cont.90677:
+eq_cont.90669:
 	lw	$5, 3121($0)
 	mov	$2, $0
 	sw	$31, 298($3)
@@ -25833,7 +25598,7 @@ eq_cont.90179:
 	jal	shadow_check_one_or_matrix.2980
 	addi	$3, $3, -299
 	lw	$31, 298($3)
-	bne	$2, $0, eq_else.90242
+	bne	$2, $0, eq_else.90732
 	lf	$f0, 3129($0)
 	lf	$f1, 3067($0)
 	fmul	$f0, $f0, $f1
@@ -25841,19 +25606,17 @@ eq_cont.90179:
 	lf	$f2, 3067($1)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	addi	$2, $0, 2
-	lf	$f1, 3129($2)
-	addi	$2, $0, 2
-	lf	$f2, 3067($2)
+	lf	$f1, 3129($26)
+	lf	$f2, 3067($26)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	fneg	$f0, $f0
 	sltf	$2, $f30, $f0
-	bne	$2, $0, eq_else.90244
+	bne	$2, $0, eq_else.90734
 	movf	$f0, $f30
-	j	eq_cont.90245
-eq_else.90244:
-eq_cont.90245:
+	j	eq_cont.90735
+eq_else.90734:
+eq_cont.90735:
 	lf	$f1, 151($3)
 	fmul	$f0, $f1, $f0
 	lw	$2, 155($3)
@@ -25870,24 +25633,21 @@ eq_cont.90245:
 	fmul	$f2, $f0, $f2
 	fadd	$f1, $f1, $f2
 	sf	$f1, 3135($1)
-	addi	$2, $0, 2
-	addi	$5, $0, 2
-	lf	$f1, 3135($5)
-	addi	$5, $0, 2
-	lf	$f2, 3132($5)
+	lf	$f1, 3135($26)
+	lf	$f2, 3132($26)
 	fmul	$f0, $f0, $f2
 	fadd	$f0, $f1, $f0
-	sf	$f0, 3135($2)
-	j	eq_cont.90243
-eq_else.90242:
-eq_cont.90243:
-eq_cont.90159:
-eq_cont.89925:
+	sf	$f0, 3135($26)
+	j	eq_cont.90733
+eq_else.90732:
+eq_cont.90733:
+eq_cont.90649:
+eq_cont.90415:
 	lw	$2, 3($3)
 	addi	$2, $2, -2
-	bge	$2, $0, ge.90246
+	bge	$2, $0, ge.90736
 	jr $31
-ge.90246:
+ge.90736:
 	lw	$5, 2($3)
 	add	$30, $5, $2
 	lw	$6, 0($30)
@@ -25906,7 +25666,7 @@ ge.90246:
 	fadd	$f0, $f0, $f1
 	sltf	$6, $f0, $f30
 	sw	$2, 298($3)
-	bne	$6, $0, eq_else.90248
+	bne	$6, $0, eq_else.90738
 	add	$30, $5, $2
 	lw	$6, 0($30)
 	lf	$f1, 3356($0) # 150.000000
@@ -25926,60 +25686,59 @@ ge.90246:
 	lf	$f0, 3124($0)
 	lf	$f1, 3382($0) # -0.100000
 	sltf	$2, $f1, $f0
-	bne	$2, $0, eq_else.90250
+	bne	$2, $0, eq_else.90740
 	mov	$2, $0
-	j	eq_cont.90251
-eq_else.90250:
+	j	eq_cont.90741
+eq_else.90740:
 	lf	$f1, 3380($0) # 100000000.000000
-	bltf	$f0, $f1, fle.90252
+	bltf	$f0, $f1, fle.90742
 	mov	$2, $0
-	j	fle_cont.90253
-fle.90252:
+	j	fle_cont.90743
+fle.90742:
 	mov	$2, $1
-fle_cont.90253:
-eq_cont.90251:
-	bne	$2, $0, eq_else.90254
-	j	eq_cont.90255
-eq_else.90254:
+fle_cont.90743:
+eq_cont.90741:
+	bne	$2, $0, eq_else.90744
+	j	eq_cont.90745
+eq_else.90744:
 	lw	$2, 3128($0)
 	lw	$2, 3001($2)
 	lw	$5, 300($3)
 	lw	$5, 0($5)
 	lw	$6, 1($2)
-	bne	$6, $1, eq_else.90256
+	bne	$6, $1, eq_else.90746
 	lw	$6, 3123($0)
 	sf	$f30, 3129($0)
 	sf	$f30, 3129($1)
-	addi	$7, $0, 2
-	sf	$f30, 3129($7)
+	sf	$f30, 3129($26)
 	addi	$7, $6, -1
 	addi	$6, $6, -1
 	add	$30, $5, $6
 	lf	$f0, 0($30)
-	beqf	$f0, $f30, feq.90258
+	beqf	$f0, $f30, feq.90748
 	mov	$5, $0
-	j	feq_cont.90259
-feq.90258:
+	j	feq_cont.90749
+feq.90748:
 	mov	$5, $1
-feq_cont.90259:
-	bne	$5, $0, eq_else.90260
+feq_cont.90749:
+	bne	$5, $0, eq_else.90750
 	sltf	$5, $f30, $f0
-	bne	$5, $0, eq_else.90262
+	bne	$5, $0, eq_else.90752
 	movf	$f0, $f29
-	j	eq_cont.90263
-eq_else.90262:
+	j	eq_cont.90753
+eq_else.90752:
 	movf	$f0, $f28
-eq_cont.90263:
-	j	eq_cont.90261
-eq_else.90260:
+eq_cont.90753:
+	j	eq_cont.90751
+eq_else.90750:
 	movf	$f0, $f30
-eq_cont.90261:
+eq_cont.90751:
 	fneg	$f0, $f0
 	sf	$f0, 3129($7)
-	j	eq_cont.90257
-eq_else.90256:
+	j	eq_cont.90747
+eq_else.90746:
 	addi	$30, $0, 2
-	bne	$6, $30, eq_else.90264
+	bne	$6, $30, eq_else.90754
 	lw	$5, 4($2)
 	lf	$f0, 0($5)
 	fneg	$f0, $f0
@@ -25988,13 +25747,12 @@ eq_else.90256:
 	lf	$f0, 1($5)
 	fneg	$f0, $f0
 	sf	$f0, 3129($1)
-	addi	$5, $0, 2
-	lw	$6, 4($2)
-	lf	$f0, 2($6)
+	lw	$5, 4($2)
+	lf	$f0, 2($5)
 	fneg	$f0, $f0
-	sf	$f0, 3129($5)
-	j	eq_cont.90265
-eq_else.90264:
+	sf	$f0, 3129($26)
+	j	eq_cont.90755
+eq_else.90754:
 	lf	$f0, 3125($0)
 	lw	$5, 5($2)
 	lf	$f1, 0($5)
@@ -26003,8 +25761,7 @@ eq_else.90264:
 	lw	$5, 5($2)
 	lf	$f2, 1($5)
 	fsub	$f1, $f1, $f2
-	addi	$5, $0, 2
-	lf	$f2, 3125($5)
+	lf	$f2, 3125($26)
 	lw	$5, 5($2)
 	lf	$f3, 2($5)
 	fsub	$f2, $f2, $f3
@@ -26018,13 +25775,12 @@ eq_else.90264:
 	lf	$f5, 2($5)
 	fmul	$f5, $f2, $f5
 	lw	$5, 3($2)
-	bne	$5, $0, eq_else.90266
+	bne	$5, $0, eq_else.90756
 	sf	$f3, 3129($0)
 	sf	$f4, 3129($1)
-	addi	$5, $0, 2
-	sf	$f5, 3129($5)
-	j	eq_cont.90267
-eq_else.90266:
+	sf	$f5, 3129($26)
+	j	eq_cont.90757
+eq_else.90756:
 	lw	$5, 9($2)
 	lf	$f6, 2($5)
 	fmul	$f6, $f1, $f6
@@ -26047,60 +25803,56 @@ eq_else.90266:
 	fmul	$f2, $f2, $f3
 	fadd	$f2, $f4, $f2
 	sf	$f2, 3129($1)
-	addi	$5, $0, 2
-	lw	$6, 9($2)
-	lf	$f2, 1($6)
+	lw	$5, 9($2)
+	lf	$f2, 1($5)
 	fmul	$f0, $f0, $f2
-	lw	$6, 9($2)
-	lf	$f2, 0($6)
+	lw	$5, 9($2)
+	lf	$f2, 0($5)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	lf	$f1, 3388($0) # 0.500000
 	fmul	$f0, $f0, $f1
 	fadd	$f0, $f5, $f0
-	sf	$f0, 3129($5)
-eq_cont.90267:
+	sf	$f0, 3129($26)
+eq_cont.90757:
 	lw	$5, 6($2)
 	lf	$f0, 3129($0)
 	fmul	$f0, $f0, $f0
 	lf	$f1, 3129($1)
 	fmul	$f1, $f1, $f1
 	fadd	$f0, $f0, $f1
-	addi	$6, $0, 2
-	lf	$f1, 3129($6)
+	lf	$f1, 3129($26)
 	fmul	$f1, $f1, $f1
 	fadd	$f0, $f0, $f1
 	sqrt	$f0, $f0
-	beqf	$f0, $f30, feq.90268
+	beqf	$f0, $f30, feq.90758
 	mov	$6, $0
-	j	feq_cont.90269
-feq.90268:
+	j	feq_cont.90759
+feq.90758:
 	mov	$6, $1
-feq_cont.90269:
-	bne	$6, $0, eq_else.90270
-	bne	$5, $0, eq_else.90272
+feq_cont.90759:
+	bne	$6, $0, eq_else.90760
+	bne	$5, $0, eq_else.90762
 	fdiv	$f0, $f28, $f0
-	j	eq_cont.90273
-eq_else.90272:
+	j	eq_cont.90763
+eq_else.90762:
 	fdiv	$f0, $f29, $f0
-eq_cont.90273:
-	j	eq_cont.90271
-eq_else.90270:
+eq_cont.90763:
+	j	eq_cont.90761
+eq_else.90760:
 	movf	$f0, $f28
-eq_cont.90271:
+eq_cont.90761:
 	lf	$f1, 3129($0)
 	fmul	$f1, $f1, $f0
 	sf	$f1, 3129($0)
 	lf	$f1, 3129($1)
 	fmul	$f1, $f1, $f0
 	sf	$f1, 3129($1)
-	addi	$5, $0, 2
-	addi	$6, $0, 2
-	lf	$f1, 3129($6)
+	lf	$f1, 3129($26)
 	fmul	$f0, $f1, $f0
-	sf	$f0, 3129($5)
-eq_cont.90265:
-eq_cont.90257:
+	sf	$f0, 3129($26)
+eq_cont.90755:
+eq_cont.90747:
 	lw	$5, 0($2)
 	lw	$6, 8($2)
 	lf	$f0, 0($6)
@@ -26108,12 +25860,11 @@ eq_cont.90257:
 	lw	$6, 8($2)
 	lf	$f0, 1($6)
 	sf	$f0, 3132($1)
-	addi	$6, $0, 2
-	lw	$7, 8($2)
-	lf	$f0, 2($7)
-	sf	$f0, 3132($6)
+	lw	$6, 8($2)
+	lf	$f0, 2($6)
+	sf	$f0, 3132($26)
 	sw	$2, 301($3)
-	bne	$5, $1, eq_else.90274
+	bne	$5, $1, eq_else.90764
 	lf	$f0, 3125($0)
 	lw	$5, 5($2)
 	lf	$f1, 0($5)
@@ -26126,8 +25877,7 @@ eq_cont.90257:
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3364($0) # 10.000000
 	sltf	$5, $f0, $f1
-	addi	$6, $0, 2
-	lf	$f0, 3125($6)
+	lf	$f0, 3125($26)
 	lw	$6, 5($2)
 	lf	$f1, 2($6)
 	fsub	$f0, $f0, $f1
@@ -26139,50 +25889,50 @@ eq_cont.90257:
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3364($0) # 10.000000
 	sltf	$6, $f0, $f1
-	bne	$5, $0, eq_else.90276
-	bne	$6, $0, eq_else.90278
+	bne	$5, $0, eq_else.90766
+	bne	$6, $0, eq_else.90768
 	lf	$f0, 3366($0) # 255.000000
-	j	eq_cont.90279
-eq_else.90278:
+	j	eq_cont.90769
+eq_else.90768:
 	movf	$f0, $f30
-eq_cont.90279:
-	j	eq_cont.90277
-eq_else.90276:
-	bne	$6, $0, eq_else.90280
+eq_cont.90769:
+	j	eq_cont.90767
+eq_else.90766:
+	bne	$6, $0, eq_else.90770
 	movf	$f0, $f30
-	j	eq_cont.90281
-eq_else.90280:
+	j	eq_cont.90771
+eq_else.90770:
 	lf	$f0, 3366($0) # 255.000000
-eq_cont.90281:
-eq_cont.90277:
+eq_cont.90771:
+eq_cont.90767:
 	sf	$f0, 3132($1)
-	j	eq_cont.90275
-eq_else.90274:
+	j	eq_cont.90765
+eq_else.90764:
 	addi	$30, $0, 2
-	bne	$5, $30, eq_else.90282
+	bne	$5, $30, eq_else.90772
 	lf	$f0, 3125($1)
 	lf	$f1, 3363($0) # 0.250000
 	fmul	$f0, $f0, $f1
-	bltf	$f30, $f0, fle.90284
+	bltf	$f30, $f0, fle.90774
 	movf	$f1, $f29
-	j	fle_cont.90285
-fle.90284:
+	j	fle_cont.90775
+fle.90774:
 	movf	$f1, $f28
-fle_cont.90285:
+fle_cont.90775:
 	fmul	$f0, $f1, $f0
 	lf	$f2, 3395($0) # 6.283185
 	fdiv	$f3, $f0, $f2
 	floor	$f3, $f3
 	fmul	$f2, $f3, $f2
 	fsub	$f0, $f0, $f2
-	bltf	$f0, $f31, fle.90286
+	bltf	$f0, $f31, fle.90776
 	fsub	$f0, $f0, $f31
 	fneg	$f1, $f1
 	lf	$f2, 3393($0) # 1.570796
-	bltf	$f0, $f2, fle.90288
+	bltf	$f0, $f2, fle.90778
 	fsub	$f0, $f31, $f0
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.90290
+	bltf	$f2, $f0, fle.90780
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
@@ -26208,8 +25958,8 @@ fle_cont.90285:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90291
-fle.90290:
+	j	fle_cont.90781
+fle.90780:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3388($0) # 0.500000
@@ -26234,11 +25984,11 @@ fle.90290:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-fle_cont.90291:
-	j	fle_cont.90289
-fle.90288:
+fle_cont.90781:
+	j	fle_cont.90779
+fle.90778:
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.90292
+	bltf	$f2, $f0, fle.90782
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
@@ -26264,8 +26014,8 @@ fle.90288:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90293
-fle.90292:
+	j	fle_cont.90783
+fle.90782:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3388($0) # 0.500000
@@ -26290,15 +26040,15 @@ fle.90292:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-fle_cont.90293:
-fle_cont.90289:
-	j	fle_cont.90287
-fle.90286:
+fle_cont.90783:
+fle_cont.90779:
+	j	fle_cont.90777
+fle.90776:
 	lf	$f2, 3393($0) # 1.570796
-	bltf	$f0, $f2, fle.90294
+	bltf	$f0, $f2, fle.90784
 	fsub	$f0, $f31, $f0
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.90296
+	bltf	$f2, $f0, fle.90786
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
@@ -26324,8 +26074,8 @@ fle.90286:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90297
-fle.90296:
+	j	fle_cont.90787
+fle.90786:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3388($0) # 0.500000
@@ -26350,11 +26100,11 @@ fle.90296:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-fle_cont.90297:
-	j	fle_cont.90295
-fle.90294:
+fle_cont.90787:
+	j	fle_cont.90785
+fle.90784:
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.90298
+	bltf	$f2, $f0, fle.90788
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
@@ -26380,8 +26130,8 @@ fle.90294:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90299
-fle.90298:
+	j	fle_cont.90789
+fle.90788:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3388($0) # 0.500000
@@ -26406,9 +26156,9 @@ fle.90298:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-fle_cont.90299:
-fle_cont.90295:
-fle_cont.90287:
+fle_cont.90789:
+fle_cont.90785:
+fle_cont.90777:
 	fmul	$f0, $f0, $f0
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f1, $f1, $f0
@@ -26417,16 +26167,15 @@ fle_cont.90287:
 	fsub	$f0, $f28, $f0
 	fmul	$f0, $f1, $f0
 	sf	$f0, 3132($1)
-	j	eq_cont.90283
-eq_else.90282:
+	j	eq_cont.90773
+eq_else.90772:
 	addi	$30, $0, 3
-	bne	$5, $30, eq_else.90300
+	bne	$5, $30, eq_else.90790
 	lf	$f0, 3125($0)
 	lw	$5, 5($2)
 	lf	$f1, 0($5)
 	fsub	$f0, $f0, $f1
-	addi	$5, $0, 2
-	lf	$f1, 3125($5)
+	lf	$f1, 3125($26)
 	lw	$5, 5($2)
 	lf	$f2, 2($5)
 	fsub	$f1, $f1, $f2
@@ -26440,25 +26189,25 @@ eq_else.90282:
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3368($0) # 3.141593
 	fmul	$f0, $f0, $f1
-	bltf	$f30, $f0, fle.90302
+	bltf	$f30, $f0, fle.90792
 	movf	$f1, $f29
-	j	fle_cont.90303
-fle.90302:
+	j	fle_cont.90793
+fle.90792:
 	movf	$f1, $f28
-fle_cont.90303:
+fle_cont.90793:
 	fmul	$f0, $f1, $f0
 	lf	$f1, 3395($0) # 6.283185
 	fdiv	$f2, $f0, $f1
 	floor	$f2, $f2
 	fmul	$f1, $f2, $f1
 	fsub	$f0, $f0, $f1
-	bltf	$f0, $f31, fle.90304
+	bltf	$f0, $f31, fle.90794
 	fsub	$f0, $f0, $f31
 	lf	$f1, 3393($0) # 1.570796
-	bltf	$f0, $f1, fle.90306
+	bltf	$f0, $f1, fle.90796
 	fsub	$f0, $f31, $f0
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.90308
+	bltf	$f1, $f0, fle.90798
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
@@ -26481,8 +26230,8 @@ fle_cont.90303:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-	j	fle_cont.90309
-fle.90308:
+	j	fle_cont.90799
+fle.90798:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
@@ -26510,11 +26259,11 @@ fle.90308:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-fle_cont.90309:
-	j	fle_cont.90307
-fle.90306:
+fle_cont.90799:
+	j	fle_cont.90797
+fle.90796:
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.90310
+	bltf	$f1, $f0, fle.90800
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
@@ -26537,8 +26286,8 @@ fle.90306:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-	j	fle_cont.90311
-fle.90310:
+	j	fle_cont.90801
+fle.90800:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
@@ -26566,15 +26315,15 @@ fle.90310:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-fle_cont.90311:
-fle_cont.90307:
-	j	fle_cont.90305
-fle.90304:
+fle_cont.90801:
+fle_cont.90797:
+	j	fle_cont.90795
+fle.90794:
 	lf	$f1, 3393($0) # 1.570796
-	bltf	$f0, $f1, fle.90312
+	bltf	$f0, $f1, fle.90802
 	fsub	$f0, $f31, $f0
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.90314
+	bltf	$f1, $f0, fle.90804
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
@@ -26597,8 +26346,8 @@ fle.90304:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-	j	fle_cont.90315
-fle.90314:
+	j	fle_cont.90805
+fle.90804:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
@@ -26626,11 +26375,11 @@ fle.90314:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-fle_cont.90315:
-	j	fle_cont.90313
-fle.90312:
+fle_cont.90805:
+	j	fle_cont.90803
+fle.90802:
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.90316
+	bltf	$f1, $f0, fle.90806
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
@@ -26653,8 +26402,8 @@ fle.90312:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-	j	fle_cont.90317
-fle.90316:
+	j	fle_cont.90807
+fle.90806:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
@@ -26682,22 +26431,21 @@ fle.90316:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-fle_cont.90317:
-fle_cont.90313:
-fle_cont.90305:
+fle_cont.90807:
+fle_cont.90803:
+fle_cont.90795:
 	fmul	$f0, $f0, $f0
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f1, $f0, $f1
 	sf	$f1, 3132($1)
-	addi	$5, $0, 2
 	fsub	$f0, $f28, $f0
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f0, $f0, $f1
-	sf	$f0, 3132($5)
-	j	eq_cont.90301
-eq_else.90300:
+	sf	$f0, 3132($26)
+	j	eq_cont.90791
+eq_else.90790:
 	addi	$30, $0, 4
-	bne	$5, $30, eq_else.90318
+	bne	$5, $30, eq_else.90808
 	lf	$f0, 3125($0)
 	lw	$5, 5($2)
 	lf	$f1, 0($5)
@@ -26706,8 +26454,7 @@ eq_else.90300:
 	lf	$f1, 0($5)
 	sqrt	$f1, $f1
 	fmul	$f0, $f0, $f1
-	addi	$5, $0, 2
-	lf	$f1, 3125($5)
+	lf	$f1, 3125($26)
 	lw	$5, 5($2)
 	lf	$f2, 2($5)
 	fsub	$f1, $f1, $f2
@@ -26722,20 +26469,20 @@ eq_else.90300:
 	lf	$f4, 3379($0) # 0.000100
 	sltf	$5, $f3, $f4
 	sf	$f2, 302($3)
-	bne	$5, $0, eq_else.90320
+	bne	$5, $0, eq_else.90810
 	fdiv	$f0, $f1, $f0
 	fabs	$f0, $f0
-	bltf	$f30, $f0, fle.90322
+	bltf	$f30, $f0, fle.90812
 	movf	$f1, $f29
-	j	fle_cont.90323
-fle.90322:
+	j	fle_cont.90813
+fle.90812:
 	movf	$f1, $f28
-fle_cont.90323:
+fle_cont.90813:
 	fmul	$f0, $f1, $f0
 	lf	$f3, 3377($0) # 0.437500
-	bltf	$f0, $f3, fle.90324
+	bltf	$f0, $f3, fle.90814
 	lf	$f3, 3370($0) # 2.437500
-	bltf	$f0, $f3, fle.90326
+	bltf	$f0, $f3, fle.90816
 	lf	$f3, 3393($0) # 1.570796
 	fdiv	$f0, $f28, $f0
 	sf	$f1, 303($3)
@@ -26788,8 +26535,8 @@ fle_cont.90323:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 307($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 308($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 309($3)
 	addi	$3, $3, 310
@@ -26804,8 +26551,8 @@ fle_cont.90323:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 308($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 309($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 310($3)
 	addi	$3, $3, 311
@@ -26821,8 +26568,8 @@ fle_cont.90323:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 309($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 310($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 311($3)
 	addi	$3, $3, 312
@@ -26841,8 +26588,8 @@ fle_cont.90323:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 303($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90327
-fle.90326:
+	j	fle_cont.90817
+fle.90816:
 	lf	$f3, 3392($0) # 0.785398
 	fsub	$f4, $f0, $f28
 	fadd	$f0, $f0, $f28
@@ -26897,8 +26644,8 @@ fle.90326:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 314($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 315($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 316($3)
 	addi	$3, $3, 317
@@ -26913,8 +26660,8 @@ fle.90326:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 315($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 316($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 317($3)
 	addi	$3, $3, 318
@@ -26930,8 +26677,8 @@ fle.90326:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 316($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 317($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 318($3)
 	addi	$3, $3, 319
@@ -26950,9 +26697,9 @@ fle.90326:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 303($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90327:
-	j	fle_cont.90325
-fle.90324:
+fle_cont.90817:
+	j	fle_cont.90815
+fle.90814:
 	sf	$f1, 303($3)
 	sf	$f0, 318($3)
 	mov	$2, $0
@@ -27002,8 +26749,8 @@ fle.90324:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 320($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 321($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 322($3)
 	addi	$3, $3, 323
@@ -27018,8 +26765,8 @@ fle.90324:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 321($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 322($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 323($3)
 	addi	$3, $3, 324
@@ -27035,8 +26782,8 @@ fle.90324:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 322($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 323($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 324($3)
 	addi	$3, $3, 325
@@ -27053,15 +26800,15 @@ fle.90324:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 303($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90325:
+fle_cont.90815:
 	lf	$f1, 3369($0) # 30.000000
 	fmul	$f0, $f0, $f1
 	lf	$f1, 3368($0) # 3.141593
 	fdiv	$f0, $f0, $f1
-	j	eq_cont.90321
-eq_else.90320:
+	j	eq_cont.90811
+eq_else.90810:
 	lf	$f0, 3378($0) # 15.000000
-eq_cont.90321:
+eq_cont.90811:
 	floor	$f1, $f0
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3125($1)
@@ -27078,20 +26825,20 @@ eq_cont.90321:
 	lf	$f4, 3379($0) # 0.000100
 	sltf	$5, $f3, $f4
 	sf	$f0, 324($3)
-	bne	$5, $0, eq_else.90328
+	bne	$5, $0, eq_else.90818
 	fdiv	$f1, $f1, $f2
 	fabs	$f1, $f1
-	bltf	$f30, $f1, fle.90330
+	bltf	$f30, $f1, fle.90820
 	movf	$f2, $f29
-	j	fle_cont.90331
-fle.90330:
+	j	fle_cont.90821
+fle.90820:
 	movf	$f2, $f28
-fle_cont.90331:
+fle_cont.90821:
 	fmul	$f1, $f2, $f1
 	lf	$f3, 3377($0) # 0.437500
-	bltf	$f1, $f3, fle.90332
+	bltf	$f1, $f3, fle.90822
 	lf	$f3, 3370($0) # 2.437500
-	bltf	$f1, $f3, fle.90334
+	bltf	$f1, $f3, fle.90824
 	lf	$f3, 3393($0) # 1.570796
 	fdiv	$f1, $f28, $f1
 	sf	$f2, 325($3)
@@ -27145,8 +26892,8 @@ fle_cont.90331:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 329($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 330($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 331($3)
 	addi	$3, $3, 332
@@ -27161,8 +26908,8 @@ fle_cont.90331:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 330($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 331($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 332($3)
 	addi	$3, $3, 333
@@ -27178,8 +26925,8 @@ fle_cont.90331:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 331($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 332($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 333($3)
 	addi	$3, $3, 334
@@ -27198,8 +26945,8 @@ fle_cont.90331:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 325($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90335
-fle.90334:
+	j	fle_cont.90825
+fle.90824:
 	lf	$f3, 3392($0) # 0.785398
 	fsub	$f4, $f1, $f28
 	fadd	$f1, $f1, $f28
@@ -27255,8 +27002,8 @@ fle.90334:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 336($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 337($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 338($3)
 	addi	$3, $3, 339
@@ -27271,8 +27018,8 @@ fle.90334:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 337($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 338($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 339($3)
 	addi	$3, $3, 340
@@ -27288,8 +27035,8 @@ fle.90334:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 338($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 339($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 340($3)
 	addi	$3, $3, 341
@@ -27308,9 +27055,9 @@ fle.90334:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 325($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90335:
-	j	fle_cont.90333
-fle.90332:
+fle_cont.90825:
+	j	fle_cont.90823
+fle.90822:
 	sf	$f2, 325($3)
 	sf	$f1, 340($3)
 	mov	$2, $0
@@ -27361,8 +27108,8 @@ fle.90332:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 342($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 343($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 344($3)
 	addi	$3, $3, 345
@@ -27377,8 +27124,8 @@ fle.90332:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 343($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 344($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 345($3)
 	addi	$3, $3, 346
@@ -27394,8 +27141,8 @@ fle.90332:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 344($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 345($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 346($3)
 	addi	$3, $3, 347
@@ -27412,15 +27159,15 @@ fle.90332:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 325($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90333:
+fle_cont.90823:
 	lf	$f1, 3369($0) # 30.000000
 	fmul	$f0, $f0, $f1
 	lf	$f1, 3368($0) # 3.141593
 	fdiv	$f0, $f0, $f1
-	j	eq_cont.90329
-eq_else.90328:
+	j	eq_cont.90819
+eq_else.90818:
 	lf	$f0, 3378($0) # 15.000000
-eq_cont.90329:
+eq_cont.90819:
 	floor	$f1, $f0
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3367($0) # 0.150000
@@ -27434,37 +27181,36 @@ eq_cont.90329:
 	fmul	$f0, $f0, $f0
 	fsub	$f0, $f1, $f0
 	sltf	$2, $f0, $f30
-	bne	$2, $0, eq_else.90336
-	j	eq_cont.90337
-eq_else.90336:
+	bne	$2, $0, eq_else.90826
+	j	eq_cont.90827
+eq_else.90826:
 	movf	$f0, $f30
-eq_cont.90337:
-	addi	$2, $0, 2
+eq_cont.90827:
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f0, $f1, $f0
 	lf	$f1, 3365($0) # 0.300000
 	fdiv	$f0, $f0, $f1
-	sf	$f0, 3132($2)
-	j	eq_cont.90319
-eq_else.90318:
-eq_cont.90319:
-eq_cont.90301:
-eq_cont.90283:
-eq_cont.90275:
+	sf	$f0, 3132($26)
+	j	eq_cont.90809
+eq_else.90808:
+eq_cont.90809:
+eq_cont.90791:
+eq_cont.90773:
+eq_cont.90765:
 	lw	$5, 3121($0)
 	lw	$2, 0($5)
 	lw	$6, 0($2)
-	bne	$6, $28, eq_else.90338
+	bne	$6, $28, eq_else.90828
 	mov	$2, $0
-	j	eq_cont.90339
-eq_else.90338:
+	j	eq_cont.90829
+eq_else.90828:
 	sw	$2, 346($3)
 	sw	$5, 347($3)
 	addi	$30, $0, 99
-	bne	$6, $30, eq_else.90340
+	bne	$6, $30, eq_else.90830
 	mov	$2, $1
-	j	eq_cont.90341
-eq_else.90340:
+	j	eq_cont.90831
+eq_else.90830:
 	lw	$7, 3001($6)
 	lf	$f0, 3125($0)
 	lw	$8, 5($7)
@@ -27474,8 +27220,7 @@ eq_else.90340:
 	lw	$8, 5($7)
 	lf	$f2, 1($8)
 	fsub	$f1, $f1, $f2
-	addi	$8, $0, 2
-	lf	$f2, 3125($8)
+	lf	$f2, 3125($26)
 	lw	$8, 5($7)
 	lf	$f3, 2($8)
 	fsub	$f2, $f2, $f3
@@ -27484,7 +27229,7 @@ eq_else.90340:
 	add	$30, $8, $6
 	lw	$6, 0($30)
 	lw	$8, 1($7)
-	bne	$8, $1, eq_else.90342
+	bne	$8, $1, eq_else.90832
 	addi	$8, $0, 3169
 	lw	$8, 0($8)
 	lf	$f3, 0($6)
@@ -27498,10 +27243,10 @@ eq_else.90340:
 	lw	$9, 4($7)
 	lf	$f5, 1($9)
 	sltf	$9, $f4, $f5
-	bne	$9, $0, eq_else.90344
+	bne	$9, $0, eq_else.90834
 	mov	$9, $0
-	j	eq_cont.90345
-eq_else.90344:
+	j	eq_cont.90835
+eq_else.90834:
 	lf	$f4, 2($8)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
@@ -27509,26 +27254,26 @@ eq_else.90344:
 	lw	$9, 4($7)
 	lf	$f5, 2($9)
 	sltf	$9, $f4, $f5
-	bne	$9, $0, eq_else.90346
+	bne	$9, $0, eq_else.90836
 	mov	$9, $0
-	j	eq_cont.90347
-eq_else.90346:
+	j	eq_cont.90837
+eq_else.90836:
 	lf	$f4, 1($6)
-	beqf	$f4, $f30, feq.90348
+	beqf	$f4, $f30, feq.90838
 	mov	$9, $0
-	j	feq_cont.90349
-feq.90348:
+	j	feq_cont.90839
+feq.90838:
 	mov	$9, $1
-feq_cont.90349:
-	bne	$9, $0, eq_else.90350
+feq_cont.90839:
+	bne	$9, $0, eq_else.90840
 	mov	$9, $1
-	j	eq_cont.90351
-eq_else.90350:
+	j	eq_cont.90841
+eq_else.90840:
 	mov	$9, $0
-eq_cont.90351:
-eq_cont.90347:
-eq_cont.90345:
-	bne	$9, $0, eq_else.90352
+eq_cont.90841:
+eq_cont.90837:
+eq_cont.90835:
+	bne	$9, $0, eq_else.90842
 	lf	$f3, 2($6)
 	fsub	$f3, $f3, $f1
 	lf	$f4, 3($6)
@@ -27540,10 +27285,10 @@ eq_cont.90345:
 	lw	$9, 4($7)
 	lf	$f5, 0($9)
 	sltf	$9, $f4, $f5
-	bne	$9, $0, eq_else.90354
+	bne	$9, $0, eq_else.90844
 	mov	$9, $0
-	j	eq_cont.90355
-eq_else.90354:
+	j	eq_cont.90845
+eq_else.90844:
 	lf	$f4, 2($8)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
@@ -27551,26 +27296,26 @@ eq_else.90354:
 	lw	$9, 4($7)
 	lf	$f5, 2($9)
 	sltf	$9, $f4, $f5
-	bne	$9, $0, eq_else.90356
+	bne	$9, $0, eq_else.90846
 	mov	$9, $0
-	j	eq_cont.90357
-eq_else.90356:
+	j	eq_cont.90847
+eq_else.90846:
 	lf	$f4, 3($6)
-	beqf	$f4, $f30, feq.90358
+	beqf	$f4, $f30, feq.90848
 	mov	$9, $0
-	j	feq_cont.90359
-feq.90358:
+	j	feq_cont.90849
+feq.90848:
 	mov	$9, $1
-feq_cont.90359:
-	bne	$9, $0, eq_else.90360
+feq_cont.90849:
+	bne	$9, $0, eq_else.90850
 	mov	$9, $1
-	j	eq_cont.90361
-eq_else.90360:
+	j	eq_cont.90851
+eq_else.90850:
 	mov	$9, $0
-eq_cont.90361:
-eq_cont.90357:
-eq_cont.90355:
-	bne	$9, $0, eq_else.90362
+eq_cont.90851:
+eq_cont.90847:
+eq_cont.90845:
+	bne	$9, $0, eq_else.90852
 	lf	$f3, 4($6)
 	fsub	$f2, $f3, $f2
 	lf	$f3, 5($6)
@@ -27582,10 +27327,10 @@ eq_cont.90355:
 	lw	$9, 4($7)
 	lf	$f3, 0($9)
 	sltf	$9, $f0, $f3
-	bne	$9, $0, eq_else.90364
+	bne	$9, $0, eq_else.90854
 	mov	$6, $0
-	j	eq_cont.90365
-eq_else.90364:
+	j	eq_cont.90855
+eq_else.90854:
 	lf	$f0, 1($8)
 	fmul	$f0, $f2, $f0
 	fadd	$f0, $f0, $f1
@@ -27593,52 +27338,52 @@ eq_else.90364:
 	lw	$7, 4($7)
 	lf	$f1, 1($7)
 	sltf	$7, $f0, $f1
-	bne	$7, $0, eq_else.90366
+	bne	$7, $0, eq_else.90856
 	mov	$6, $0
-	j	eq_cont.90367
-eq_else.90366:
+	j	eq_cont.90857
+eq_else.90856:
 	lf	$f0, 5($6)
-	beqf	$f0, $f30, feq.90368
+	beqf	$f0, $f30, feq.90858
 	mov	$6, $0
-	j	feq_cont.90369
-feq.90368:
+	j	feq_cont.90859
+feq.90858:
 	mov	$6, $1
-feq_cont.90369:
-	bne	$6, $0, eq_else.90370
+feq_cont.90859:
+	bne	$6, $0, eq_else.90860
 	mov	$6, $1
-	j	eq_cont.90371
-eq_else.90370:
+	j	eq_cont.90861
+eq_else.90860:
 	mov	$6, $0
-eq_cont.90371:
-eq_cont.90367:
-eq_cont.90365:
-	bne	$6, $0, eq_else.90372
+eq_cont.90861:
+eq_cont.90857:
+eq_cont.90855:
+	bne	$6, $0, eq_else.90862
 	mov	$6, $0
-	j	eq_cont.90373
-eq_else.90372:
+	j	eq_cont.90863
+eq_else.90862:
 	sf	$f2, 3122($0)
-	addi	$6, $0, 3
-eq_cont.90373:
-	j	eq_cont.90363
-eq_else.90362:
+	mov	$6, $27
+eq_cont.90863:
+	j	eq_cont.90853
+eq_else.90852:
 	sf	$f3, 3122($0)
-	addi	$6, $0, 2
-eq_cont.90363:
-	j	eq_cont.90353
-eq_else.90352:
+	mov	$6, $26
+eq_cont.90853:
+	j	eq_cont.90843
+eq_else.90842:
 	sf	$f3, 3122($0)
 	mov	$6, $1
-eq_cont.90353:
-	j	eq_cont.90343
-eq_else.90342:
+eq_cont.90843:
+	j	eq_cont.90833
+eq_else.90832:
 	addi	$30, $0, 2
-	bne	$8, $30, eq_else.90374
+	bne	$8, $30, eq_else.90864
 	lf	$f3, 0($6)
 	sltf	$7, $f3, $f30
-	bne	$7, $0, eq_else.90376
+	bne	$7, $0, eq_else.90866
 	mov	$6, $0
-	j	eq_cont.90377
-eq_else.90376:
+	j	eq_cont.90867
+eq_else.90866:
 	lf	$f3, 1($6)
 	fmul	$f0, $f3, $f0
 	lf	$f3, 2($6)
@@ -27649,17 +27394,17 @@ eq_else.90376:
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3122($0)
 	mov	$6, $1
-eq_cont.90377:
-	j	eq_cont.90375
-eq_else.90374:
+eq_cont.90867:
+	j	eq_cont.90865
+eq_else.90864:
 	lf	$f3, 0($6)
-	beqf	$f3, $f30, feq.90378
+	beqf	$f3, $f30, feq.90868
 	mov	$8, $0
-	j	feq_cont.90379
-feq.90378:
+	j	feq_cont.90869
+feq.90868:
 	mov	$8, $1
-feq_cont.90379:
-	bne	$8, $0, eq_else.90380
+feq_cont.90869:
+	bne	$8, $0, eq_else.90870
 	lf	$f4, 1($6)
 	fmul	$f4, $f4, $f0
 	lf	$f5, 2($6)
@@ -27683,10 +27428,10 @@ feq_cont.90379:
 	fmul	$f6, $f6, $f7
 	fadd	$f5, $f5, $f6
 	lw	$8, 3($7)
-	bne	$8, $0, eq_else.90382
+	bne	$8, $0, eq_else.90872
 	movf	$f0, $f5
-	j	eq_cont.90383
-eq_else.90382:
+	j	eq_cont.90873
+eq_else.90872:
 	fmul	$f6, $f1, $f2
 	lw	$8, 9($7)
 	lf	$f7, 0($8)
@@ -27702,61 +27447,61 @@ eq_else.90382:
 	lf	$f1, 2($8)
 	fmul	$f0, $f0, $f1
 	fadd	$f0, $f2, $f0
-eq_cont.90383:
+eq_cont.90873:
 	lw	$8, 1($7)
 	addi	$30, $0, 3
-	bne	$8, $30, eq_else.90384
+	bne	$8, $30, eq_else.90874
 	fsub	$f0, $f0, $f28
-	j	eq_cont.90385
-eq_else.90384:
-eq_cont.90385:
+	j	eq_cont.90875
+eq_else.90874:
+eq_cont.90875:
 	fmul	$f1, $f4, $f4
 	fmul	$f0, $f3, $f0
 	fsub	$f0, $f1, $f0
 	sltf	$8, $f30, $f0
-	bne	$8, $0, eq_else.90386
+	bne	$8, $0, eq_else.90876
 	mov	$6, $0
-	j	eq_cont.90387
-eq_else.90386:
+	j	eq_cont.90877
+eq_else.90876:
 	lw	$7, 6($7)
-	bne	$7, $0, eq_else.90388
+	bne	$7, $0, eq_else.90878
 	sqrt	$f0, $f0
 	fsub	$f0, $f4, $f0
 	lf	$f1, 4($6)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
-	j	eq_cont.90389
-eq_else.90388:
+	j	eq_cont.90879
+eq_else.90878:
 	sqrt	$f0, $f0
 	fadd	$f0, $f4, $f0
 	lf	$f1, 4($6)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
-eq_cont.90389:
+eq_cont.90879:
 	mov	$6, $1
-eq_cont.90387:
-	j	eq_cont.90381
-eq_else.90380:
+eq_cont.90877:
+	j	eq_cont.90871
+eq_else.90870:
 	mov	$6, $0
-eq_cont.90381:
-eq_cont.90375:
-eq_cont.90343:
-	bne	$6, $0, eq_else.90390
+eq_cont.90871:
+eq_cont.90865:
+eq_cont.90833:
+	bne	$6, $0, eq_else.90880
 	mov	$2, $0
-	j	eq_cont.90391
-eq_else.90390:
+	j	eq_cont.90881
+eq_else.90880:
 	lf	$f0, 3122($0)
 	lf	$f1, 3382($0) # -0.100000
 	sltf	$6, $f0, $f1
-	bne	$6, $0, eq_else.90392
+	bne	$6, $0, eq_else.90882
 	mov	$2, $0
-	j	eq_cont.90393
-eq_else.90392:
+	j	eq_cont.90883
+eq_else.90882:
 	lw	$6, 1($2)
-	bne	$6, $28, eq_else.90394
+	bne	$6, $28, eq_else.90884
 	mov	$2, $0
-	j	eq_cont.90395
-eq_else.90394:
+	j	eq_cont.90885
+eq_else.90884:
 	lw	$6, 3071($6)
 	mov	$5, $6
 	mov	$2, $0
@@ -27765,13 +27510,13 @@ eq_else.90394:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -349
 	lw	$31, 348($3)
-	bne	$2, $0, eq_else.90396
+	bne	$2, $0, eq_else.90886
 	lw	$2, 346($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.90398
+	bne	$5, $28, eq_else.90888
 	mov	$2, $0
-	j	eq_cont.90399
-eq_else.90398:
+	j	eq_cont.90889
+eq_else.90888:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 348($3)
@@ -27779,13 +27524,13 @@ eq_else.90398:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -349
 	lw	$31, 348($3)
-	bne	$2, $0, eq_else.90400
+	bne	$2, $0, eq_else.90890
 	lw	$2, 346($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.90402
+	bne	$5, $28, eq_else.90892
 	mov	$2, $0
-	j	eq_cont.90403
-eq_else.90402:
+	j	eq_cont.90893
+eq_else.90892:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 348($3)
@@ -27793,13 +27538,13 @@ eq_else.90402:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -349
 	lw	$31, 348($3)
-	bne	$2, $0, eq_else.90404
+	bne	$2, $0, eq_else.90894
 	lw	$2, 346($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.90406
+	bne	$5, $28, eq_else.90896
 	mov	$2, $0
-	j	eq_cont.90407
-eq_else.90406:
+	j	eq_cont.90897
+eq_else.90896:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 348($3)
@@ -27807,7 +27552,7 @@ eq_else.90406:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -349
 	lw	$31, 348($3)
-	bne	$2, $0, eq_else.90408
+	bne	$2, $0, eq_else.90898
 	addi	$2, $0, 5
 	lw	$5, 346($3)
 	sw	$31, 348($3)
@@ -27815,36 +27560,36 @@ eq_else.90406:
 	jal	shadow_check_one_or_group.2977
 	addi	$3, $3, -349
 	lw	$31, 348($3)
-	j	eq_cont.90409
-eq_else.90408:
+	j	eq_cont.90899
+eq_else.90898:
 	mov	$2, $1
-eq_cont.90409:
-eq_cont.90407:
-	j	eq_cont.90405
-eq_else.90404:
+eq_cont.90899:
+eq_cont.90897:
+	j	eq_cont.90895
+eq_else.90894:
 	mov	$2, $1
-eq_cont.90405:
-eq_cont.90403:
-	j	eq_cont.90401
-eq_else.90400:
+eq_cont.90895:
+eq_cont.90893:
+	j	eq_cont.90891
+eq_else.90890:
 	mov	$2, $1
-eq_cont.90401:
-eq_cont.90399:
-	j	eq_cont.90397
-eq_else.90396:
+eq_cont.90891:
+eq_cont.90889:
+	j	eq_cont.90887
+eq_else.90886:
 	mov	$2, $1
-eq_cont.90397:
-eq_cont.90395:
-	bne	$2, $0, eq_else.90410
+eq_cont.90887:
+eq_cont.90885:
+	bne	$2, $0, eq_else.90900
 	mov	$2, $0
-	j	eq_cont.90411
-eq_else.90410:
+	j	eq_cont.90901
+eq_else.90900:
 	mov	$2, $1
-eq_cont.90411:
-eq_cont.90393:
-eq_cont.90391:
-eq_cont.90341:
-	bne	$2, $0, eq_else.90412
+eq_cont.90901:
+eq_cont.90883:
+eq_cont.90881:
+eq_cont.90831:
+	bne	$2, $0, eq_else.90902
 	lw	$5, 347($3)
 	mov	$2, $1
 	sw	$31, 348($3)
@@ -27852,14 +27597,14 @@ eq_cont.90341:
 	jal	shadow_check_one_or_matrix.2980
 	addi	$3, $3, -349
 	lw	$31, 348($3)
-	j	eq_cont.90413
-eq_else.90412:
+	j	eq_cont.90903
+eq_else.90902:
 	lw	$2, 346($3)
 	lw	$5, 1($2)
-	bne	$5, $28, eq_else.90414
+	bne	$5, $28, eq_else.90904
 	mov	$2, $0
-	j	eq_cont.90415
-eq_else.90414:
+	j	eq_cont.90905
+eq_else.90904:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 348($3)
@@ -27867,13 +27612,13 @@ eq_else.90414:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -349
 	lw	$31, 348($3)
-	bne	$2, $0, eq_else.90416
+	bne	$2, $0, eq_else.90906
 	lw	$2, 346($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.90418
+	bne	$5, $28, eq_else.90908
 	mov	$2, $0
-	j	eq_cont.90419
-eq_else.90418:
+	j	eq_cont.90909
+eq_else.90908:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 348($3)
@@ -27881,13 +27626,13 @@ eq_else.90418:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -349
 	lw	$31, 348($3)
-	bne	$2, $0, eq_else.90420
+	bne	$2, $0, eq_else.90910
 	lw	$2, 346($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.90422
+	bne	$5, $28, eq_else.90912
 	mov	$2, $0
-	j	eq_cont.90423
-eq_else.90422:
+	j	eq_cont.90913
+eq_else.90912:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 348($3)
@@ -27895,13 +27640,13 @@ eq_else.90422:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -349
 	lw	$31, 348($3)
-	bne	$2, $0, eq_else.90424
+	bne	$2, $0, eq_else.90914
 	lw	$2, 346($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.90426
+	bne	$5, $28, eq_else.90916
 	mov	$2, $0
-	j	eq_cont.90427
-eq_else.90426:
+	j	eq_cont.90917
+eq_else.90916:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 348($3)
@@ -27909,7 +27654,7 @@ eq_else.90426:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -349
 	lw	$31, 348($3)
-	bne	$2, $0, eq_else.90428
+	bne	$2, $0, eq_else.90918
 	addi	$2, $0, 5
 	lw	$5, 346($3)
 	sw	$31, 348($3)
@@ -27917,27 +27662,27 @@ eq_else.90426:
 	jal	shadow_check_one_or_group.2977
 	addi	$3, $3, -349
 	lw	$31, 348($3)
-	j	eq_cont.90429
-eq_else.90428:
+	j	eq_cont.90919
+eq_else.90918:
 	mov	$2, $1
-eq_cont.90429:
-eq_cont.90427:
-	j	eq_cont.90425
-eq_else.90424:
+eq_cont.90919:
+eq_cont.90917:
+	j	eq_cont.90915
+eq_else.90914:
 	mov	$2, $1
-eq_cont.90425:
-eq_cont.90423:
-	j	eq_cont.90421
-eq_else.90420:
+eq_cont.90915:
+eq_cont.90913:
+	j	eq_cont.90911
+eq_else.90910:
 	mov	$2, $1
-eq_cont.90421:
-eq_cont.90419:
-	j	eq_cont.90417
-eq_else.90416:
+eq_cont.90911:
+eq_cont.90909:
+	j	eq_cont.90907
+eq_else.90906:
 	mov	$2, $1
-eq_cont.90417:
-eq_cont.90415:
-	bne	$2, $0, eq_else.90430
+eq_cont.90907:
+eq_cont.90905:
+	bne	$2, $0, eq_else.90920
 	lw	$5, 347($3)
 	mov	$2, $1
 	sw	$31, 348($3)
@@ -27945,13 +27690,13 @@ eq_cont.90415:
 	jal	shadow_check_one_or_matrix.2980
 	addi	$3, $3, -349
 	lw	$31, 348($3)
-	j	eq_cont.90431
-eq_else.90430:
+	j	eq_cont.90921
+eq_else.90920:
 	mov	$2, $1
-eq_cont.90431:
-eq_cont.90413:
-eq_cont.90339:
-	bne	$2, $0, eq_else.90432
+eq_cont.90921:
+eq_cont.90903:
+eq_cont.90829:
+	bne	$2, $0, eq_else.90922
 	lf	$f0, 3129($0)
 	lf	$f1, 3067($0)
 	fmul	$f0, $f0, $f1
@@ -27959,19 +27704,17 @@ eq_cont.90339:
 	lf	$f2, 3067($1)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	addi	$2, $0, 2
-	lf	$f1, 3129($2)
-	addi	$2, $0, 2
-	lf	$f2, 3067($2)
+	lf	$f1, 3129($26)
+	lf	$f2, 3067($26)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	fneg	$f0, $f0
 	sltf	$2, $f30, $f0
-	bne	$2, $0, eq_else.90434
+	bne	$2, $0, eq_else.90924
 	movf	$f0, $f30
-	j	eq_cont.90435
-eq_else.90434:
-eq_cont.90435:
+	j	eq_cont.90925
+eq_else.90924:
+eq_cont.90925:
 	lf	$f1, 299($3)
 	fmul	$f0, $f1, $f0
 	lw	$2, 301($3)
@@ -27988,20 +27731,17 @@ eq_cont.90435:
 	fmul	$f2, $f0, $f2
 	fadd	$f1, $f1, $f2
 	sf	$f1, 3135($1)
-	addi	$2, $0, 2
-	addi	$5, $0, 2
-	lf	$f1, 3135($5)
-	addi	$5, $0, 2
-	lf	$f2, 3132($5)
+	lf	$f1, 3135($26)
+	lf	$f2, 3132($26)
 	fmul	$f0, $f0, $f2
 	fadd	$f0, $f1, $f0
-	sf	$f0, 3135($2)
-	j	eq_cont.90433
-eq_else.90432:
-eq_cont.90433:
-eq_cont.90255:
-	j	eq_cont.90249
-eq_else.90248:
+	sf	$f0, 3135($26)
+	j	eq_cont.90923
+eq_else.90922:
+eq_cont.90923:
+eq_cont.90745:
+	j	eq_cont.90739
+eq_else.90738:
 	addi	$6, $2, 1
 	add	$30, $5, $6
 	lw	$6, 0($30)
@@ -28022,60 +27762,59 @@ eq_else.90248:
 	lf	$f0, 3124($0)
 	lf	$f1, 3382($0) # -0.100000
 	sltf	$2, $f1, $f0
-	bne	$2, $0, eq_else.90436
+	bne	$2, $0, eq_else.90926
 	mov	$2, $0
-	j	eq_cont.90437
-eq_else.90436:
+	j	eq_cont.90927
+eq_else.90926:
 	lf	$f1, 3380($0) # 100000000.000000
-	bltf	$f0, $f1, fle.90438
+	bltf	$f0, $f1, fle.90928
 	mov	$2, $0
-	j	fle_cont.90439
-fle.90438:
+	j	fle_cont.90929
+fle.90928:
 	mov	$2, $1
-fle_cont.90439:
-eq_cont.90437:
-	bne	$2, $0, eq_else.90440
-	j	eq_cont.90441
-eq_else.90440:
+fle_cont.90929:
+eq_cont.90927:
+	bne	$2, $0, eq_else.90930
+	j	eq_cont.90931
+eq_else.90930:
 	lw	$2, 3128($0)
 	lw	$2, 3001($2)
 	lw	$5, 349($3)
 	lw	$5, 0($5)
 	lw	$6, 1($2)
-	bne	$6, $1, eq_else.90442
+	bne	$6, $1, eq_else.90932
 	lw	$6, 3123($0)
 	sf	$f30, 3129($0)
 	sf	$f30, 3129($1)
-	addi	$7, $0, 2
-	sf	$f30, 3129($7)
+	sf	$f30, 3129($26)
 	addi	$7, $6, -1
 	addi	$6, $6, -1
 	add	$30, $5, $6
 	lf	$f0, 0($30)
-	beqf	$f0, $f30, feq.90444
+	beqf	$f0, $f30, feq.90934
 	mov	$5, $0
-	j	feq_cont.90445
-feq.90444:
+	j	feq_cont.90935
+feq.90934:
 	mov	$5, $1
-feq_cont.90445:
-	bne	$5, $0, eq_else.90446
+feq_cont.90935:
+	bne	$5, $0, eq_else.90936
 	sltf	$5, $f30, $f0
-	bne	$5, $0, eq_else.90448
+	bne	$5, $0, eq_else.90938
 	movf	$f0, $f29
-	j	eq_cont.90449
-eq_else.90448:
+	j	eq_cont.90939
+eq_else.90938:
 	movf	$f0, $f28
-eq_cont.90449:
-	j	eq_cont.90447
-eq_else.90446:
+eq_cont.90939:
+	j	eq_cont.90937
+eq_else.90936:
 	movf	$f0, $f30
-eq_cont.90447:
+eq_cont.90937:
 	fneg	$f0, $f0
 	sf	$f0, 3129($7)
-	j	eq_cont.90443
-eq_else.90442:
+	j	eq_cont.90933
+eq_else.90932:
 	addi	$30, $0, 2
-	bne	$6, $30, eq_else.90450
+	bne	$6, $30, eq_else.90940
 	lw	$5, 4($2)
 	lf	$f0, 0($5)
 	fneg	$f0, $f0
@@ -28084,13 +27823,12 @@ eq_else.90442:
 	lf	$f0, 1($5)
 	fneg	$f0, $f0
 	sf	$f0, 3129($1)
-	addi	$5, $0, 2
-	lw	$6, 4($2)
-	lf	$f0, 2($6)
+	lw	$5, 4($2)
+	lf	$f0, 2($5)
 	fneg	$f0, $f0
-	sf	$f0, 3129($5)
-	j	eq_cont.90451
-eq_else.90450:
+	sf	$f0, 3129($26)
+	j	eq_cont.90941
+eq_else.90940:
 	lf	$f0, 3125($0)
 	lw	$5, 5($2)
 	lf	$f1, 0($5)
@@ -28099,8 +27837,7 @@ eq_else.90450:
 	lw	$5, 5($2)
 	lf	$f2, 1($5)
 	fsub	$f1, $f1, $f2
-	addi	$5, $0, 2
-	lf	$f2, 3125($5)
+	lf	$f2, 3125($26)
 	lw	$5, 5($2)
 	lf	$f3, 2($5)
 	fsub	$f2, $f2, $f3
@@ -28114,13 +27851,12 @@ eq_else.90450:
 	lf	$f5, 2($5)
 	fmul	$f5, $f2, $f5
 	lw	$5, 3($2)
-	bne	$5, $0, eq_else.90452
+	bne	$5, $0, eq_else.90942
 	sf	$f3, 3129($0)
 	sf	$f4, 3129($1)
-	addi	$5, $0, 2
-	sf	$f5, 3129($5)
-	j	eq_cont.90453
-eq_else.90452:
+	sf	$f5, 3129($26)
+	j	eq_cont.90943
+eq_else.90942:
 	lw	$5, 9($2)
 	lf	$f6, 2($5)
 	fmul	$f6, $f1, $f6
@@ -28143,60 +27879,56 @@ eq_else.90452:
 	fmul	$f2, $f2, $f3
 	fadd	$f2, $f4, $f2
 	sf	$f2, 3129($1)
-	addi	$5, $0, 2
-	lw	$6, 9($2)
-	lf	$f2, 1($6)
+	lw	$5, 9($2)
+	lf	$f2, 1($5)
 	fmul	$f0, $f0, $f2
-	lw	$6, 9($2)
-	lf	$f2, 0($6)
+	lw	$5, 9($2)
+	lf	$f2, 0($5)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	lf	$f1, 3388($0) # 0.500000
 	fmul	$f0, $f0, $f1
 	fadd	$f0, $f5, $f0
-	sf	$f0, 3129($5)
-eq_cont.90453:
+	sf	$f0, 3129($26)
+eq_cont.90943:
 	lw	$5, 6($2)
 	lf	$f0, 3129($0)
 	fmul	$f0, $f0, $f0
 	lf	$f1, 3129($1)
 	fmul	$f1, $f1, $f1
 	fadd	$f0, $f0, $f1
-	addi	$6, $0, 2
-	lf	$f1, 3129($6)
+	lf	$f1, 3129($26)
 	fmul	$f1, $f1, $f1
 	fadd	$f0, $f0, $f1
 	sqrt	$f0, $f0
-	beqf	$f0, $f30, feq.90454
+	beqf	$f0, $f30, feq.90944
 	mov	$6, $0
-	j	feq_cont.90455
-feq.90454:
+	j	feq_cont.90945
+feq.90944:
 	mov	$6, $1
-feq_cont.90455:
-	bne	$6, $0, eq_else.90456
-	bne	$5, $0, eq_else.90458
+feq_cont.90945:
+	bne	$6, $0, eq_else.90946
+	bne	$5, $0, eq_else.90948
 	fdiv	$f0, $f28, $f0
-	j	eq_cont.90459
-eq_else.90458:
+	j	eq_cont.90949
+eq_else.90948:
 	fdiv	$f0, $f29, $f0
-eq_cont.90459:
-	j	eq_cont.90457
-eq_else.90456:
+eq_cont.90949:
+	j	eq_cont.90947
+eq_else.90946:
 	movf	$f0, $f28
-eq_cont.90457:
+eq_cont.90947:
 	lf	$f1, 3129($0)
 	fmul	$f1, $f1, $f0
 	sf	$f1, 3129($0)
 	lf	$f1, 3129($1)
 	fmul	$f1, $f1, $f0
 	sf	$f1, 3129($1)
-	addi	$5, $0, 2
-	addi	$6, $0, 2
-	lf	$f1, 3129($6)
+	lf	$f1, 3129($26)
 	fmul	$f0, $f1, $f0
-	sf	$f0, 3129($5)
-eq_cont.90451:
-eq_cont.90443:
+	sf	$f0, 3129($26)
+eq_cont.90941:
+eq_cont.90933:
 	lw	$5, 0($2)
 	lw	$6, 8($2)
 	lf	$f0, 0($6)
@@ -28204,12 +27936,11 @@ eq_cont.90443:
 	lw	$6, 8($2)
 	lf	$f0, 1($6)
 	sf	$f0, 3132($1)
-	addi	$6, $0, 2
-	lw	$7, 8($2)
-	lf	$f0, 2($7)
-	sf	$f0, 3132($6)
+	lw	$6, 8($2)
+	lf	$f0, 2($6)
+	sf	$f0, 3132($26)
 	sw	$2, 350($3)
-	bne	$5, $1, eq_else.90460
+	bne	$5, $1, eq_else.90950
 	lf	$f0, 3125($0)
 	lw	$5, 5($2)
 	lf	$f1, 0($5)
@@ -28222,8 +27953,7 @@ eq_cont.90443:
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3364($0) # 10.000000
 	sltf	$5, $f0, $f1
-	addi	$6, $0, 2
-	lf	$f0, 3125($6)
+	lf	$f0, 3125($26)
 	lw	$6, 5($2)
 	lf	$f1, 2($6)
 	fsub	$f0, $f0, $f1
@@ -28235,50 +27965,50 @@ eq_cont.90443:
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3364($0) # 10.000000
 	sltf	$6, $f0, $f1
-	bne	$5, $0, eq_else.90462
-	bne	$6, $0, eq_else.90464
+	bne	$5, $0, eq_else.90952
+	bne	$6, $0, eq_else.90954
 	lf	$f0, 3366($0) # 255.000000
-	j	eq_cont.90465
-eq_else.90464:
+	j	eq_cont.90955
+eq_else.90954:
 	movf	$f0, $f30
-eq_cont.90465:
-	j	eq_cont.90463
-eq_else.90462:
-	bne	$6, $0, eq_else.90466
+eq_cont.90955:
+	j	eq_cont.90953
+eq_else.90952:
+	bne	$6, $0, eq_else.90956
 	movf	$f0, $f30
-	j	eq_cont.90467
-eq_else.90466:
+	j	eq_cont.90957
+eq_else.90956:
 	lf	$f0, 3366($0) # 255.000000
-eq_cont.90467:
-eq_cont.90463:
+eq_cont.90957:
+eq_cont.90953:
 	sf	$f0, 3132($1)
-	j	eq_cont.90461
-eq_else.90460:
+	j	eq_cont.90951
+eq_else.90950:
 	addi	$30, $0, 2
-	bne	$5, $30, eq_else.90468
+	bne	$5, $30, eq_else.90958
 	lf	$f0, 3125($1)
 	lf	$f1, 3363($0) # 0.250000
 	fmul	$f0, $f0, $f1
-	bltf	$f30, $f0, fle.90470
+	bltf	$f30, $f0, fle.90960
 	movf	$f1, $f29
-	j	fle_cont.90471
-fle.90470:
+	j	fle_cont.90961
+fle.90960:
 	movf	$f1, $f28
-fle_cont.90471:
+fle_cont.90961:
 	fmul	$f0, $f1, $f0
 	lf	$f2, 3395($0) # 6.283185
 	fdiv	$f3, $f0, $f2
 	floor	$f3, $f3
 	fmul	$f2, $f3, $f2
 	fsub	$f0, $f0, $f2
-	bltf	$f0, $f31, fle.90472
+	bltf	$f0, $f31, fle.90962
 	fsub	$f0, $f0, $f31
 	fneg	$f1, $f1
 	lf	$f2, 3393($0) # 1.570796
-	bltf	$f0, $f2, fle.90474
+	bltf	$f0, $f2, fle.90964
 	fsub	$f0, $f31, $f0
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.90476
+	bltf	$f2, $f0, fle.90966
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
@@ -28304,8 +28034,8 @@ fle_cont.90471:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90477
-fle.90476:
+	j	fle_cont.90967
+fle.90966:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3388($0) # 0.500000
@@ -28330,11 +28060,11 @@ fle.90476:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-fle_cont.90477:
-	j	fle_cont.90475
-fle.90474:
+fle_cont.90967:
+	j	fle_cont.90965
+fle.90964:
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.90478
+	bltf	$f2, $f0, fle.90968
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
@@ -28360,8 +28090,8 @@ fle.90474:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90479
-fle.90478:
+	j	fle_cont.90969
+fle.90968:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3388($0) # 0.500000
@@ -28386,15 +28116,15 @@ fle.90478:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-fle_cont.90479:
-fle_cont.90475:
-	j	fle_cont.90473
-fle.90472:
+fle_cont.90969:
+fle_cont.90965:
+	j	fle_cont.90963
+fle.90962:
 	lf	$f2, 3393($0) # 1.570796
-	bltf	$f0, $f2, fle.90480
+	bltf	$f0, $f2, fle.90970
 	fsub	$f0, $f31, $f0
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.90482
+	bltf	$f2, $f0, fle.90972
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
@@ -28420,8 +28150,8 @@ fle.90472:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90483
-fle.90482:
+	j	fle_cont.90973
+fle.90972:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3388($0) # 0.500000
@@ -28446,11 +28176,11 @@ fle.90482:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-fle_cont.90483:
-	j	fle_cont.90481
-fle.90480:
+fle_cont.90973:
+	j	fle_cont.90971
+fle.90970:
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.90484
+	bltf	$f2, $f0, fle.90974
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
@@ -28476,8 +28206,8 @@ fle.90480:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90485
-fle.90484:
+	j	fle_cont.90975
+fle.90974:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3388($0) # 0.500000
@@ -28502,9 +28232,9 @@ fle.90484:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-fle_cont.90485:
-fle_cont.90481:
-fle_cont.90473:
+fle_cont.90975:
+fle_cont.90971:
+fle_cont.90963:
 	fmul	$f0, $f0, $f0
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f1, $f1, $f0
@@ -28513,16 +28243,15 @@ fle_cont.90473:
 	fsub	$f0, $f28, $f0
 	fmul	$f0, $f1, $f0
 	sf	$f0, 3132($1)
-	j	eq_cont.90469
-eq_else.90468:
+	j	eq_cont.90959
+eq_else.90958:
 	addi	$30, $0, 3
-	bne	$5, $30, eq_else.90486
+	bne	$5, $30, eq_else.90976
 	lf	$f0, 3125($0)
 	lw	$5, 5($2)
 	lf	$f1, 0($5)
 	fsub	$f0, $f0, $f1
-	addi	$5, $0, 2
-	lf	$f1, 3125($5)
+	lf	$f1, 3125($26)
 	lw	$5, 5($2)
 	lf	$f2, 2($5)
 	fsub	$f1, $f1, $f2
@@ -28536,25 +28265,25 @@ eq_else.90468:
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3368($0) # 3.141593
 	fmul	$f0, $f0, $f1
-	bltf	$f30, $f0, fle.90488
+	bltf	$f30, $f0, fle.90978
 	movf	$f1, $f29
-	j	fle_cont.90489
-fle.90488:
+	j	fle_cont.90979
+fle.90978:
 	movf	$f1, $f28
-fle_cont.90489:
+fle_cont.90979:
 	fmul	$f0, $f1, $f0
 	lf	$f1, 3395($0) # 6.283185
 	fdiv	$f2, $f0, $f1
 	floor	$f2, $f2
 	fmul	$f1, $f2, $f1
 	fsub	$f0, $f0, $f1
-	bltf	$f0, $f31, fle.90490
+	bltf	$f0, $f31, fle.90980
 	fsub	$f0, $f0, $f31
 	lf	$f1, 3393($0) # 1.570796
-	bltf	$f0, $f1, fle.90492
+	bltf	$f0, $f1, fle.90982
 	fsub	$f0, $f31, $f0
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.90494
+	bltf	$f1, $f0, fle.90984
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
@@ -28577,8 +28306,8 @@ fle_cont.90489:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-	j	fle_cont.90495
-fle.90494:
+	j	fle_cont.90985
+fle.90984:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
@@ -28606,11 +28335,11 @@ fle.90494:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-fle_cont.90495:
-	j	fle_cont.90493
-fle.90492:
+fle_cont.90985:
+	j	fle_cont.90983
+fle.90982:
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.90496
+	bltf	$f1, $f0, fle.90986
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
@@ -28633,8 +28362,8 @@ fle.90492:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-	j	fle_cont.90497
-fle.90496:
+	j	fle_cont.90987
+fle.90986:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
@@ -28662,15 +28391,15 @@ fle.90496:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-fle_cont.90497:
-fle_cont.90493:
-	j	fle_cont.90491
-fle.90490:
+fle_cont.90987:
+fle_cont.90983:
+	j	fle_cont.90981
+fle.90980:
 	lf	$f1, 3393($0) # 1.570796
-	bltf	$f0, $f1, fle.90498
+	bltf	$f0, $f1, fle.90988
 	fsub	$f0, $f31, $f0
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.90500
+	bltf	$f1, $f0, fle.90990
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
@@ -28693,8 +28422,8 @@ fle.90490:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-	j	fle_cont.90501
-fle.90500:
+	j	fle_cont.90991
+fle.90990:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
@@ -28722,11 +28451,11 @@ fle.90500:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-fle_cont.90501:
-	j	fle_cont.90499
-fle.90498:
+fle_cont.90991:
+	j	fle_cont.90989
+fle.90988:
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.90502
+	bltf	$f1, $f0, fle.90992
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
@@ -28749,8 +28478,8 @@ fle.90498:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-	j	fle_cont.90503
-fle.90502:
+	j	fle_cont.90993
+fle.90992:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
@@ -28778,22 +28507,21 @@ fle.90502:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-fle_cont.90503:
-fle_cont.90499:
-fle_cont.90491:
+fle_cont.90993:
+fle_cont.90989:
+fle_cont.90981:
 	fmul	$f0, $f0, $f0
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f1, $f0, $f1
 	sf	$f1, 3132($1)
-	addi	$5, $0, 2
 	fsub	$f0, $f28, $f0
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f0, $f0, $f1
-	sf	$f0, 3132($5)
-	j	eq_cont.90487
-eq_else.90486:
+	sf	$f0, 3132($26)
+	j	eq_cont.90977
+eq_else.90976:
 	addi	$30, $0, 4
-	bne	$5, $30, eq_else.90504
+	bne	$5, $30, eq_else.90994
 	lf	$f0, 3125($0)
 	lw	$5, 5($2)
 	lf	$f1, 0($5)
@@ -28802,8 +28530,7 @@ eq_else.90486:
 	lf	$f1, 0($5)
 	sqrt	$f1, $f1
 	fmul	$f0, $f0, $f1
-	addi	$5, $0, 2
-	lf	$f1, 3125($5)
+	lf	$f1, 3125($26)
 	lw	$5, 5($2)
 	lf	$f2, 2($5)
 	fsub	$f1, $f1, $f2
@@ -28818,20 +28545,20 @@ eq_else.90486:
 	lf	$f4, 3379($0) # 0.000100
 	sltf	$5, $f3, $f4
 	sf	$f2, 351($3)
-	bne	$5, $0, eq_else.90506
+	bne	$5, $0, eq_else.90996
 	fdiv	$f0, $f1, $f0
 	fabs	$f0, $f0
-	bltf	$f30, $f0, fle.90508
+	bltf	$f30, $f0, fle.90998
 	movf	$f1, $f29
-	j	fle_cont.90509
-fle.90508:
+	j	fle_cont.90999
+fle.90998:
 	movf	$f1, $f28
-fle_cont.90509:
+fle_cont.90999:
 	fmul	$f0, $f1, $f0
 	lf	$f3, 3377($0) # 0.437500
-	bltf	$f0, $f3, fle.90510
+	bltf	$f0, $f3, fle.91000
 	lf	$f3, 3370($0) # 2.437500
-	bltf	$f0, $f3, fle.90512
+	bltf	$f0, $f3, fle.91002
 	lf	$f3, 3393($0) # 1.570796
 	fdiv	$f0, $f28, $f0
 	sf	$f1, 352($3)
@@ -28884,8 +28611,8 @@ fle_cont.90509:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 356($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 357($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 358($3)
 	addi	$3, $3, 359
@@ -28900,8 +28627,8 @@ fle_cont.90509:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 357($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 358($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 359($3)
 	addi	$3, $3, 360
@@ -28917,8 +28644,8 @@ fle_cont.90509:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 358($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 359($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 360($3)
 	addi	$3, $3, 361
@@ -28937,8 +28664,8 @@ fle_cont.90509:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 352($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90513
-fle.90512:
+	j	fle_cont.91003
+fle.91002:
 	lf	$f3, 3392($0) # 0.785398
 	fsub	$f4, $f0, $f28
 	fadd	$f0, $f0, $f28
@@ -28993,8 +28720,8 @@ fle.90512:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 363($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 364($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 365($3)
 	addi	$3, $3, 366
@@ -29009,8 +28736,8 @@ fle.90512:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 364($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 365($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 366($3)
 	addi	$3, $3, 367
@@ -29026,8 +28753,8 @@ fle.90512:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 365($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 366($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 367($3)
 	addi	$3, $3, 368
@@ -29046,9 +28773,9 @@ fle.90512:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 352($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90513:
-	j	fle_cont.90511
-fle.90510:
+fle_cont.91003:
+	j	fle_cont.91001
+fle.91000:
 	sf	$f1, 352($3)
 	sf	$f0, 367($3)
 	mov	$2, $0
@@ -29098,8 +28825,8 @@ fle.90510:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 369($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 370($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 371($3)
 	addi	$3, $3, 372
@@ -29114,8 +28841,8 @@ fle.90510:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 370($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 371($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 372($3)
 	addi	$3, $3, 373
@@ -29131,8 +28858,8 @@ fle.90510:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 371($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 372($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 373($3)
 	addi	$3, $3, 374
@@ -29149,15 +28876,15 @@ fle.90510:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 352($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90511:
+fle_cont.91001:
 	lf	$f1, 3369($0) # 30.000000
 	fmul	$f0, $f0, $f1
 	lf	$f1, 3368($0) # 3.141593
 	fdiv	$f0, $f0, $f1
-	j	eq_cont.90507
-eq_else.90506:
+	j	eq_cont.90997
+eq_else.90996:
 	lf	$f0, 3378($0) # 15.000000
-eq_cont.90507:
+eq_cont.90997:
 	floor	$f1, $f0
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3125($1)
@@ -29174,20 +28901,20 @@ eq_cont.90507:
 	lf	$f4, 3379($0) # 0.000100
 	sltf	$5, $f3, $f4
 	sf	$f0, 373($3)
-	bne	$5, $0, eq_else.90514
+	bne	$5, $0, eq_else.91004
 	fdiv	$f1, $f1, $f2
 	fabs	$f1, $f1
-	bltf	$f30, $f1, fle.90516
+	bltf	$f30, $f1, fle.91006
 	movf	$f2, $f29
-	j	fle_cont.90517
-fle.90516:
+	j	fle_cont.91007
+fle.91006:
 	movf	$f2, $f28
-fle_cont.90517:
+fle_cont.91007:
 	fmul	$f1, $f2, $f1
 	lf	$f3, 3377($0) # 0.437500
-	bltf	$f1, $f3, fle.90518
+	bltf	$f1, $f3, fle.91008
 	lf	$f3, 3370($0) # 2.437500
-	bltf	$f1, $f3, fle.90520
+	bltf	$f1, $f3, fle.91010
 	lf	$f3, 3393($0) # 1.570796
 	fdiv	$f1, $f28, $f1
 	sf	$f2, 374($3)
@@ -29241,8 +28968,8 @@ fle_cont.90517:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 378($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 379($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 380($3)
 	addi	$3, $3, 381
@@ -29257,8 +28984,8 @@ fle_cont.90517:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 379($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 380($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 381($3)
 	addi	$3, $3, 382
@@ -29274,8 +29001,8 @@ fle_cont.90517:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 380($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 381($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 382($3)
 	addi	$3, $3, 383
@@ -29294,8 +29021,8 @@ fle_cont.90517:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 374($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90521
-fle.90520:
+	j	fle_cont.91011
+fle.91010:
 	lf	$f3, 3392($0) # 0.785398
 	fsub	$f4, $f1, $f28
 	fadd	$f1, $f1, $f28
@@ -29351,8 +29078,8 @@ fle.90520:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 385($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 386($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 387($3)
 	addi	$3, $3, 388
@@ -29367,8 +29094,8 @@ fle.90520:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 386($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 387($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 388($3)
 	addi	$3, $3, 389
@@ -29384,8 +29111,8 @@ fle.90520:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 387($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 388($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 389($3)
 	addi	$3, $3, 390
@@ -29404,9 +29131,9 @@ fle.90520:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 374($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90521:
-	j	fle_cont.90519
-fle.90518:
+fle_cont.91011:
+	j	fle_cont.91009
+fle.91008:
 	sf	$f2, 374($3)
 	sf	$f1, 389($3)
 	mov	$2, $0
@@ -29457,8 +29184,8 @@ fle.90518:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 391($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 392($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 393($3)
 	addi	$3, $3, 394
@@ -29473,8 +29200,8 @@ fle.90518:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 392($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 393($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 394($3)
 	addi	$3, $3, 395
@@ -29490,8 +29217,8 @@ fle.90518:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 393($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 394($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 395($3)
 	addi	$3, $3, 396
@@ -29508,15 +29235,15 @@ fle.90518:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 374($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90519:
+fle_cont.91009:
 	lf	$f1, 3369($0) # 30.000000
 	fmul	$f0, $f0, $f1
 	lf	$f1, 3368($0) # 3.141593
 	fdiv	$f0, $f0, $f1
-	j	eq_cont.90515
-eq_else.90514:
+	j	eq_cont.91005
+eq_else.91004:
 	lf	$f0, 3378($0) # 15.000000
-eq_cont.90515:
+eq_cont.91005:
 	floor	$f1, $f0
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3367($0) # 0.150000
@@ -29530,37 +29257,36 @@ eq_cont.90515:
 	fmul	$f0, $f0, $f0
 	fsub	$f0, $f1, $f0
 	sltf	$2, $f0, $f30
-	bne	$2, $0, eq_else.90522
-	j	eq_cont.90523
-eq_else.90522:
+	bne	$2, $0, eq_else.91012
+	j	eq_cont.91013
+eq_else.91012:
 	movf	$f0, $f30
-eq_cont.90523:
-	addi	$2, $0, 2
+eq_cont.91013:
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f0, $f1, $f0
 	lf	$f1, 3365($0) # 0.300000
 	fdiv	$f0, $f0, $f1
-	sf	$f0, 3132($2)
-	j	eq_cont.90505
-eq_else.90504:
-eq_cont.90505:
-eq_cont.90487:
-eq_cont.90469:
-eq_cont.90461:
+	sf	$f0, 3132($26)
+	j	eq_cont.90995
+eq_else.90994:
+eq_cont.90995:
+eq_cont.90977:
+eq_cont.90959:
+eq_cont.90951:
 	lw	$5, 3121($0)
 	lw	$2, 0($5)
 	lw	$6, 0($2)
-	bne	$6, $28, eq_else.90524
+	bne	$6, $28, eq_else.91014
 	mov	$2, $0
-	j	eq_cont.90525
-eq_else.90524:
+	j	eq_cont.91015
+eq_else.91014:
 	sw	$2, 395($3)
 	sw	$5, 396($3)
 	addi	$30, $0, 99
-	bne	$6, $30, eq_else.90526
+	bne	$6, $30, eq_else.91016
 	mov	$2, $1
-	j	eq_cont.90527
-eq_else.90526:
+	j	eq_cont.91017
+eq_else.91016:
 	lw	$7, 3001($6)
 	lf	$f0, 3125($0)
 	lw	$8, 5($7)
@@ -29570,8 +29296,7 @@ eq_else.90526:
 	lw	$8, 5($7)
 	lf	$f2, 1($8)
 	fsub	$f1, $f1, $f2
-	addi	$8, $0, 2
-	lf	$f2, 3125($8)
+	lf	$f2, 3125($26)
 	lw	$8, 5($7)
 	lf	$f3, 2($8)
 	fsub	$f2, $f2, $f3
@@ -29580,7 +29305,7 @@ eq_else.90526:
 	add	$30, $8, $6
 	lw	$6, 0($30)
 	lw	$8, 1($7)
-	bne	$8, $1, eq_else.90528
+	bne	$8, $1, eq_else.91018
 	addi	$8, $0, 3169
 	lw	$8, 0($8)
 	lf	$f3, 0($6)
@@ -29594,10 +29319,10 @@ eq_else.90526:
 	lw	$9, 4($7)
 	lf	$f5, 1($9)
 	sltf	$9, $f4, $f5
-	bne	$9, $0, eq_else.90530
+	bne	$9, $0, eq_else.91020
 	mov	$9, $0
-	j	eq_cont.90531
-eq_else.90530:
+	j	eq_cont.91021
+eq_else.91020:
 	lf	$f4, 2($8)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
@@ -29605,26 +29330,26 @@ eq_else.90530:
 	lw	$9, 4($7)
 	lf	$f5, 2($9)
 	sltf	$9, $f4, $f5
-	bne	$9, $0, eq_else.90532
+	bne	$9, $0, eq_else.91022
 	mov	$9, $0
-	j	eq_cont.90533
-eq_else.90532:
+	j	eq_cont.91023
+eq_else.91022:
 	lf	$f4, 1($6)
-	beqf	$f4, $f30, feq.90534
+	beqf	$f4, $f30, feq.91024
 	mov	$9, $0
-	j	feq_cont.90535
-feq.90534:
+	j	feq_cont.91025
+feq.91024:
 	mov	$9, $1
-feq_cont.90535:
-	bne	$9, $0, eq_else.90536
+feq_cont.91025:
+	bne	$9, $0, eq_else.91026
 	mov	$9, $1
-	j	eq_cont.90537
-eq_else.90536:
+	j	eq_cont.91027
+eq_else.91026:
 	mov	$9, $0
-eq_cont.90537:
-eq_cont.90533:
-eq_cont.90531:
-	bne	$9, $0, eq_else.90538
+eq_cont.91027:
+eq_cont.91023:
+eq_cont.91021:
+	bne	$9, $0, eq_else.91028
 	lf	$f3, 2($6)
 	fsub	$f3, $f3, $f1
 	lf	$f4, 3($6)
@@ -29636,10 +29361,10 @@ eq_cont.90531:
 	lw	$9, 4($7)
 	lf	$f5, 0($9)
 	sltf	$9, $f4, $f5
-	bne	$9, $0, eq_else.90540
+	bne	$9, $0, eq_else.91030
 	mov	$9, $0
-	j	eq_cont.90541
-eq_else.90540:
+	j	eq_cont.91031
+eq_else.91030:
 	lf	$f4, 2($8)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
@@ -29647,26 +29372,26 @@ eq_else.90540:
 	lw	$9, 4($7)
 	lf	$f5, 2($9)
 	sltf	$9, $f4, $f5
-	bne	$9, $0, eq_else.90542
+	bne	$9, $0, eq_else.91032
 	mov	$9, $0
-	j	eq_cont.90543
-eq_else.90542:
+	j	eq_cont.91033
+eq_else.91032:
 	lf	$f4, 3($6)
-	beqf	$f4, $f30, feq.90544
+	beqf	$f4, $f30, feq.91034
 	mov	$9, $0
-	j	feq_cont.90545
-feq.90544:
+	j	feq_cont.91035
+feq.91034:
 	mov	$9, $1
-feq_cont.90545:
-	bne	$9, $0, eq_else.90546
+feq_cont.91035:
+	bne	$9, $0, eq_else.91036
 	mov	$9, $1
-	j	eq_cont.90547
-eq_else.90546:
+	j	eq_cont.91037
+eq_else.91036:
 	mov	$9, $0
-eq_cont.90547:
-eq_cont.90543:
-eq_cont.90541:
-	bne	$9, $0, eq_else.90548
+eq_cont.91037:
+eq_cont.91033:
+eq_cont.91031:
+	bne	$9, $0, eq_else.91038
 	lf	$f3, 4($6)
 	fsub	$f2, $f3, $f2
 	lf	$f3, 5($6)
@@ -29678,10 +29403,10 @@ eq_cont.90541:
 	lw	$9, 4($7)
 	lf	$f3, 0($9)
 	sltf	$9, $f0, $f3
-	bne	$9, $0, eq_else.90550
+	bne	$9, $0, eq_else.91040
 	mov	$6, $0
-	j	eq_cont.90551
-eq_else.90550:
+	j	eq_cont.91041
+eq_else.91040:
 	lf	$f0, 1($8)
 	fmul	$f0, $f2, $f0
 	fadd	$f0, $f0, $f1
@@ -29689,52 +29414,52 @@ eq_else.90550:
 	lw	$7, 4($7)
 	lf	$f1, 1($7)
 	sltf	$7, $f0, $f1
-	bne	$7, $0, eq_else.90552
+	bne	$7, $0, eq_else.91042
 	mov	$6, $0
-	j	eq_cont.90553
-eq_else.90552:
+	j	eq_cont.91043
+eq_else.91042:
 	lf	$f0, 5($6)
-	beqf	$f0, $f30, feq.90554
+	beqf	$f0, $f30, feq.91044
 	mov	$6, $0
-	j	feq_cont.90555
-feq.90554:
+	j	feq_cont.91045
+feq.91044:
 	mov	$6, $1
-feq_cont.90555:
-	bne	$6, $0, eq_else.90556
+feq_cont.91045:
+	bne	$6, $0, eq_else.91046
 	mov	$6, $1
-	j	eq_cont.90557
-eq_else.90556:
+	j	eq_cont.91047
+eq_else.91046:
 	mov	$6, $0
-eq_cont.90557:
-eq_cont.90553:
-eq_cont.90551:
-	bne	$6, $0, eq_else.90558
+eq_cont.91047:
+eq_cont.91043:
+eq_cont.91041:
+	bne	$6, $0, eq_else.91048
 	mov	$6, $0
-	j	eq_cont.90559
-eq_else.90558:
+	j	eq_cont.91049
+eq_else.91048:
 	sf	$f2, 3122($0)
-	addi	$6, $0, 3
-eq_cont.90559:
-	j	eq_cont.90549
-eq_else.90548:
+	mov	$6, $27
+eq_cont.91049:
+	j	eq_cont.91039
+eq_else.91038:
 	sf	$f3, 3122($0)
-	addi	$6, $0, 2
-eq_cont.90549:
-	j	eq_cont.90539
-eq_else.90538:
+	mov	$6, $26
+eq_cont.91039:
+	j	eq_cont.91029
+eq_else.91028:
 	sf	$f3, 3122($0)
 	mov	$6, $1
-eq_cont.90539:
-	j	eq_cont.90529
-eq_else.90528:
+eq_cont.91029:
+	j	eq_cont.91019
+eq_else.91018:
 	addi	$30, $0, 2
-	bne	$8, $30, eq_else.90560
+	bne	$8, $30, eq_else.91050
 	lf	$f3, 0($6)
 	sltf	$7, $f3, $f30
-	bne	$7, $0, eq_else.90562
+	bne	$7, $0, eq_else.91052
 	mov	$6, $0
-	j	eq_cont.90563
-eq_else.90562:
+	j	eq_cont.91053
+eq_else.91052:
 	lf	$f3, 1($6)
 	fmul	$f0, $f3, $f0
 	lf	$f3, 2($6)
@@ -29745,17 +29470,17 @@ eq_else.90562:
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3122($0)
 	mov	$6, $1
-eq_cont.90563:
-	j	eq_cont.90561
-eq_else.90560:
+eq_cont.91053:
+	j	eq_cont.91051
+eq_else.91050:
 	lf	$f3, 0($6)
-	beqf	$f3, $f30, feq.90564
+	beqf	$f3, $f30, feq.91054
 	mov	$8, $0
-	j	feq_cont.90565
-feq.90564:
+	j	feq_cont.91055
+feq.91054:
 	mov	$8, $1
-feq_cont.90565:
-	bne	$8, $0, eq_else.90566
+feq_cont.91055:
+	bne	$8, $0, eq_else.91056
 	lf	$f4, 1($6)
 	fmul	$f4, $f4, $f0
 	lf	$f5, 2($6)
@@ -29779,10 +29504,10 @@ feq_cont.90565:
 	fmul	$f6, $f6, $f7
 	fadd	$f5, $f5, $f6
 	lw	$8, 3($7)
-	bne	$8, $0, eq_else.90568
+	bne	$8, $0, eq_else.91058
 	movf	$f0, $f5
-	j	eq_cont.90569
-eq_else.90568:
+	j	eq_cont.91059
+eq_else.91058:
 	fmul	$f6, $f1, $f2
 	lw	$8, 9($7)
 	lf	$f7, 0($8)
@@ -29798,61 +29523,61 @@ eq_else.90568:
 	lf	$f1, 2($8)
 	fmul	$f0, $f0, $f1
 	fadd	$f0, $f2, $f0
-eq_cont.90569:
+eq_cont.91059:
 	lw	$8, 1($7)
 	addi	$30, $0, 3
-	bne	$8, $30, eq_else.90570
+	bne	$8, $30, eq_else.91060
 	fsub	$f0, $f0, $f28
-	j	eq_cont.90571
-eq_else.90570:
-eq_cont.90571:
+	j	eq_cont.91061
+eq_else.91060:
+eq_cont.91061:
 	fmul	$f1, $f4, $f4
 	fmul	$f0, $f3, $f0
 	fsub	$f0, $f1, $f0
 	sltf	$8, $f30, $f0
-	bne	$8, $0, eq_else.90572
+	bne	$8, $0, eq_else.91062
 	mov	$6, $0
-	j	eq_cont.90573
-eq_else.90572:
+	j	eq_cont.91063
+eq_else.91062:
 	lw	$7, 6($7)
-	bne	$7, $0, eq_else.90574
+	bne	$7, $0, eq_else.91064
 	sqrt	$f0, $f0
 	fsub	$f0, $f4, $f0
 	lf	$f1, 4($6)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
-	j	eq_cont.90575
-eq_else.90574:
+	j	eq_cont.91065
+eq_else.91064:
 	sqrt	$f0, $f0
 	fadd	$f0, $f4, $f0
 	lf	$f1, 4($6)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
-eq_cont.90575:
+eq_cont.91065:
 	mov	$6, $1
-eq_cont.90573:
-	j	eq_cont.90567
-eq_else.90566:
+eq_cont.91063:
+	j	eq_cont.91057
+eq_else.91056:
 	mov	$6, $0
-eq_cont.90567:
-eq_cont.90561:
-eq_cont.90529:
-	bne	$6, $0, eq_else.90576
+eq_cont.91057:
+eq_cont.91051:
+eq_cont.91019:
+	bne	$6, $0, eq_else.91066
 	mov	$2, $0
-	j	eq_cont.90577
-eq_else.90576:
+	j	eq_cont.91067
+eq_else.91066:
 	lf	$f0, 3122($0)
 	lf	$f1, 3382($0) # -0.100000
 	sltf	$6, $f0, $f1
-	bne	$6, $0, eq_else.90578
+	bne	$6, $0, eq_else.91068
 	mov	$2, $0
-	j	eq_cont.90579
-eq_else.90578:
+	j	eq_cont.91069
+eq_else.91068:
 	lw	$6, 1($2)
-	bne	$6, $28, eq_else.90580
+	bne	$6, $28, eq_else.91070
 	mov	$2, $0
-	j	eq_cont.90581
-eq_else.90580:
+	j	eq_cont.91071
+eq_else.91070:
 	lw	$6, 3071($6)
 	mov	$5, $6
 	mov	$2, $0
@@ -29861,13 +29586,13 @@ eq_else.90580:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -398
 	lw	$31, 397($3)
-	bne	$2, $0, eq_else.90582
+	bne	$2, $0, eq_else.91072
 	lw	$2, 395($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.90584
+	bne	$5, $28, eq_else.91074
 	mov	$2, $0
-	j	eq_cont.90585
-eq_else.90584:
+	j	eq_cont.91075
+eq_else.91074:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 397($3)
@@ -29875,13 +29600,13 @@ eq_else.90584:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -398
 	lw	$31, 397($3)
-	bne	$2, $0, eq_else.90586
+	bne	$2, $0, eq_else.91076
 	lw	$2, 395($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.90588
+	bne	$5, $28, eq_else.91078
 	mov	$2, $0
-	j	eq_cont.90589
-eq_else.90588:
+	j	eq_cont.91079
+eq_else.91078:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 397($3)
@@ -29889,13 +29614,13 @@ eq_else.90588:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -398
 	lw	$31, 397($3)
-	bne	$2, $0, eq_else.90590
+	bne	$2, $0, eq_else.91080
 	lw	$2, 395($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.90592
+	bne	$5, $28, eq_else.91082
 	mov	$2, $0
-	j	eq_cont.90593
-eq_else.90592:
+	j	eq_cont.91083
+eq_else.91082:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 397($3)
@@ -29903,7 +29628,7 @@ eq_else.90592:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -398
 	lw	$31, 397($3)
-	bne	$2, $0, eq_else.90594
+	bne	$2, $0, eq_else.91084
 	addi	$2, $0, 5
 	lw	$5, 395($3)
 	sw	$31, 397($3)
@@ -29911,36 +29636,36 @@ eq_else.90592:
 	jal	shadow_check_one_or_group.2977
 	addi	$3, $3, -398
 	lw	$31, 397($3)
-	j	eq_cont.90595
-eq_else.90594:
+	j	eq_cont.91085
+eq_else.91084:
 	mov	$2, $1
-eq_cont.90595:
-eq_cont.90593:
-	j	eq_cont.90591
-eq_else.90590:
+eq_cont.91085:
+eq_cont.91083:
+	j	eq_cont.91081
+eq_else.91080:
 	mov	$2, $1
-eq_cont.90591:
-eq_cont.90589:
-	j	eq_cont.90587
-eq_else.90586:
+eq_cont.91081:
+eq_cont.91079:
+	j	eq_cont.91077
+eq_else.91076:
 	mov	$2, $1
-eq_cont.90587:
-eq_cont.90585:
-	j	eq_cont.90583
-eq_else.90582:
+eq_cont.91077:
+eq_cont.91075:
+	j	eq_cont.91073
+eq_else.91072:
 	mov	$2, $1
-eq_cont.90583:
-eq_cont.90581:
-	bne	$2, $0, eq_else.90596
+eq_cont.91073:
+eq_cont.91071:
+	bne	$2, $0, eq_else.91086
 	mov	$2, $0
-	j	eq_cont.90597
-eq_else.90596:
+	j	eq_cont.91087
+eq_else.91086:
 	mov	$2, $1
-eq_cont.90597:
-eq_cont.90579:
-eq_cont.90577:
-eq_cont.90527:
-	bne	$2, $0, eq_else.90598
+eq_cont.91087:
+eq_cont.91069:
+eq_cont.91067:
+eq_cont.91017:
+	bne	$2, $0, eq_else.91088
 	lw	$5, 396($3)
 	mov	$2, $1
 	sw	$31, 397($3)
@@ -29948,14 +29673,14 @@ eq_cont.90527:
 	jal	shadow_check_one_or_matrix.2980
 	addi	$3, $3, -398
 	lw	$31, 397($3)
-	j	eq_cont.90599
-eq_else.90598:
+	j	eq_cont.91089
+eq_else.91088:
 	lw	$2, 395($3)
 	lw	$5, 1($2)
-	bne	$5, $28, eq_else.90600
+	bne	$5, $28, eq_else.91090
 	mov	$2, $0
-	j	eq_cont.90601
-eq_else.90600:
+	j	eq_cont.91091
+eq_else.91090:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 397($3)
@@ -29963,13 +29688,13 @@ eq_else.90600:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -398
 	lw	$31, 397($3)
-	bne	$2, $0, eq_else.90602
+	bne	$2, $0, eq_else.91092
 	lw	$2, 395($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.90604
+	bne	$5, $28, eq_else.91094
 	mov	$2, $0
-	j	eq_cont.90605
-eq_else.90604:
+	j	eq_cont.91095
+eq_else.91094:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 397($3)
@@ -29977,13 +29702,13 @@ eq_else.90604:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -398
 	lw	$31, 397($3)
-	bne	$2, $0, eq_else.90606
+	bne	$2, $0, eq_else.91096
 	lw	$2, 395($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.90608
+	bne	$5, $28, eq_else.91098
 	mov	$2, $0
-	j	eq_cont.90609
-eq_else.90608:
+	j	eq_cont.91099
+eq_else.91098:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 397($3)
@@ -29991,13 +29716,13 @@ eq_else.90608:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -398
 	lw	$31, 397($3)
-	bne	$2, $0, eq_else.90610
+	bne	$2, $0, eq_else.91100
 	lw	$2, 395($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.90612
+	bne	$5, $28, eq_else.91102
 	mov	$2, $0
-	j	eq_cont.90613
-eq_else.90612:
+	j	eq_cont.91103
+eq_else.91102:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 397($3)
@@ -30005,7 +29730,7 @@ eq_else.90612:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -398
 	lw	$31, 397($3)
-	bne	$2, $0, eq_else.90614
+	bne	$2, $0, eq_else.91104
 	addi	$2, $0, 5
 	lw	$5, 395($3)
 	sw	$31, 397($3)
@@ -30013,27 +29738,27 @@ eq_else.90612:
 	jal	shadow_check_one_or_group.2977
 	addi	$3, $3, -398
 	lw	$31, 397($3)
-	j	eq_cont.90615
-eq_else.90614:
+	j	eq_cont.91105
+eq_else.91104:
 	mov	$2, $1
-eq_cont.90615:
-eq_cont.90613:
-	j	eq_cont.90611
-eq_else.90610:
+eq_cont.91105:
+eq_cont.91103:
+	j	eq_cont.91101
+eq_else.91100:
 	mov	$2, $1
-eq_cont.90611:
-eq_cont.90609:
-	j	eq_cont.90607
-eq_else.90606:
+eq_cont.91101:
+eq_cont.91099:
+	j	eq_cont.91097
+eq_else.91096:
 	mov	$2, $1
-eq_cont.90607:
-eq_cont.90605:
-	j	eq_cont.90603
-eq_else.90602:
+eq_cont.91097:
+eq_cont.91095:
+	j	eq_cont.91093
+eq_else.91092:
 	mov	$2, $1
-eq_cont.90603:
-eq_cont.90601:
-	bne	$2, $0, eq_else.90616
+eq_cont.91093:
+eq_cont.91091:
+	bne	$2, $0, eq_else.91106
 	lw	$5, 396($3)
 	mov	$2, $1
 	sw	$31, 397($3)
@@ -30041,13 +29766,13 @@ eq_cont.90601:
 	jal	shadow_check_one_or_matrix.2980
 	addi	$3, $3, -398
 	lw	$31, 397($3)
-	j	eq_cont.90617
-eq_else.90616:
+	j	eq_cont.91107
+eq_else.91106:
 	mov	$2, $1
-eq_cont.90617:
-eq_cont.90599:
-eq_cont.90525:
-	bne	$2, $0, eq_else.90618
+eq_cont.91107:
+eq_cont.91089:
+eq_cont.91015:
+	bne	$2, $0, eq_else.91108
 	lf	$f0, 3129($0)
 	lf	$f1, 3067($0)
 	fmul	$f0, $f0, $f1
@@ -30055,19 +29780,17 @@ eq_cont.90525:
 	lf	$f2, 3067($1)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	addi	$2, $0, 2
-	lf	$f1, 3129($2)
-	addi	$2, $0, 2
-	lf	$f2, 3067($2)
+	lf	$f1, 3129($26)
+	lf	$f2, 3067($26)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	fneg	$f0, $f0
 	sltf	$2, $f30, $f0
-	bne	$2, $0, eq_else.90620
+	bne	$2, $0, eq_else.91110
 	movf	$f0, $f30
-	j	eq_cont.90621
-eq_else.90620:
-eq_cont.90621:
+	j	eq_cont.91111
+eq_else.91110:
+eq_cont.91111:
 	lf	$f1, 348($3)
 	fmul	$f0, $f1, $f0
 	lw	$2, 350($3)
@@ -30084,19 +29807,16 @@ eq_cont.90621:
 	fmul	$f2, $f0, $f2
 	fadd	$f1, $f1, $f2
 	sf	$f1, 3135($1)
-	addi	$2, $0, 2
-	addi	$5, $0, 2
-	lf	$f1, 3135($5)
-	addi	$5, $0, 2
-	lf	$f2, 3132($5)
+	lf	$f1, 3135($26)
+	lf	$f2, 3132($26)
 	fmul	$f0, $f0, $f2
 	fadd	$f0, $f1, $f0
-	sf	$f0, 3135($2)
-	j	eq_cont.90619
-eq_else.90618:
-eq_cont.90619:
-eq_cont.90441:
-eq_cont.90249:
+	sf	$f0, 3135($26)
+	j	eq_cont.91109
+eq_else.91108:
+eq_cont.91109:
+eq_cont.90931:
+eq_cont.90739:
 	lw	$2, 298($3)
 	addi	$7, $2, -2
 	lw	$2, 2($3)
@@ -30138,7 +29858,7 @@ trace_diffuse_rays.3046:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.90622
+	bne	$5, $0, eq_else.91112
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -30158,60 +29878,59 @@ trace_diffuse_rays.3046:
 	lf	$f0, 3124($0)
 	lf	$f1, 3382($0) # -0.100000
 	sltf	$2, $f1, $f0
-	bne	$2, $0, eq_else.90624
+	bne	$2, $0, eq_else.91114
 	mov	$2, $0
-	j	eq_cont.90625
-eq_else.90624:
+	j	eq_cont.91115
+eq_else.91114:
 	lf	$f1, 3380($0) # 100000000.000000
-	bltf	$f0, $f1, fle.90626
+	bltf	$f0, $f1, fle.91116
 	mov	$2, $0
-	j	fle_cont.90627
-fle.90626:
+	j	fle_cont.91117
+fle.91116:
 	mov	$2, $1
-fle_cont.90627:
-eq_cont.90625:
-	bne	$2, $0, eq_else.90628
-	j	eq_cont.90629
-eq_else.90628:
+fle_cont.91117:
+eq_cont.91115:
+	bne	$2, $0, eq_else.91118
+	j	eq_cont.91119
+eq_else.91118:
 	lw	$2, 3128($0)
 	lw	$2, 3001($2)
 	lw	$5, 4($3)
 	lw	$5, 0($5)
 	lw	$6, 1($2)
-	bne	$6, $1, eq_else.90630
+	bne	$6, $1, eq_else.91120
 	lw	$6, 3123($0)
 	sf	$f30, 3129($0)
 	sf	$f30, 3129($1)
-	addi	$7, $0, 2
-	sf	$f30, 3129($7)
+	sf	$f30, 3129($26)
 	addi	$7, $6, -1
 	addi	$6, $6, -1
 	add	$30, $5, $6
 	lf	$f0, 0($30)
-	beqf	$f0, $f30, feq.90632
+	beqf	$f0, $f30, feq.91122
 	mov	$5, $0
-	j	feq_cont.90633
-feq.90632:
+	j	feq_cont.91123
+feq.91122:
 	mov	$5, $1
-feq_cont.90633:
-	bne	$5, $0, eq_else.90634
+feq_cont.91123:
+	bne	$5, $0, eq_else.91124
 	sltf	$5, $f30, $f0
-	bne	$5, $0, eq_else.90636
+	bne	$5, $0, eq_else.91126
 	movf	$f0, $f29
-	j	eq_cont.90637
-eq_else.90636:
+	j	eq_cont.91127
+eq_else.91126:
 	movf	$f0, $f28
-eq_cont.90637:
-	j	eq_cont.90635
-eq_else.90634:
+eq_cont.91127:
+	j	eq_cont.91125
+eq_else.91124:
 	movf	$f0, $f30
-eq_cont.90635:
+eq_cont.91125:
 	fneg	$f0, $f0
 	sf	$f0, 3129($7)
-	j	eq_cont.90631
-eq_else.90630:
+	j	eq_cont.91121
+eq_else.91120:
 	addi	$30, $0, 2
-	bne	$6, $30, eq_else.90638
+	bne	$6, $30, eq_else.91128
 	lw	$5, 4($2)
 	lf	$f0, 0($5)
 	fneg	$f0, $f0
@@ -30220,13 +29939,12 @@ eq_else.90630:
 	lf	$f0, 1($5)
 	fneg	$f0, $f0
 	sf	$f0, 3129($1)
-	addi	$5, $0, 2
-	lw	$6, 4($2)
-	lf	$f0, 2($6)
+	lw	$5, 4($2)
+	lf	$f0, 2($5)
 	fneg	$f0, $f0
-	sf	$f0, 3129($5)
-	j	eq_cont.90639
-eq_else.90638:
+	sf	$f0, 3129($26)
+	j	eq_cont.91129
+eq_else.91128:
 	lf	$f0, 3125($0)
 	lw	$5, 5($2)
 	lf	$f1, 0($5)
@@ -30235,8 +29953,7 @@ eq_else.90638:
 	lw	$5, 5($2)
 	lf	$f2, 1($5)
 	fsub	$f1, $f1, $f2
-	addi	$5, $0, 2
-	lf	$f2, 3125($5)
+	lf	$f2, 3125($26)
 	lw	$5, 5($2)
 	lf	$f3, 2($5)
 	fsub	$f2, $f2, $f3
@@ -30250,13 +29967,12 @@ eq_else.90638:
 	lf	$f5, 2($5)
 	fmul	$f5, $f2, $f5
 	lw	$5, 3($2)
-	bne	$5, $0, eq_else.90640
+	bne	$5, $0, eq_else.91130
 	sf	$f3, 3129($0)
 	sf	$f4, 3129($1)
-	addi	$5, $0, 2
-	sf	$f5, 3129($5)
-	j	eq_cont.90641
-eq_else.90640:
+	sf	$f5, 3129($26)
+	j	eq_cont.91131
+eq_else.91130:
 	lw	$5, 9($2)
 	lf	$f6, 2($5)
 	fmul	$f6, $f1, $f6
@@ -30279,60 +29995,56 @@ eq_else.90640:
 	fmul	$f2, $f2, $f3
 	fadd	$f2, $f4, $f2
 	sf	$f2, 3129($1)
-	addi	$5, $0, 2
-	lw	$6, 9($2)
-	lf	$f2, 1($6)
+	lw	$5, 9($2)
+	lf	$f2, 1($5)
 	fmul	$f0, $f0, $f2
-	lw	$6, 9($2)
-	lf	$f2, 0($6)
+	lw	$5, 9($2)
+	lf	$f2, 0($5)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	lf	$f1, 3388($0) # 0.500000
 	fmul	$f0, $f0, $f1
 	fadd	$f0, $f5, $f0
-	sf	$f0, 3129($5)
-eq_cont.90641:
+	sf	$f0, 3129($26)
+eq_cont.91131:
 	lw	$5, 6($2)
 	lf	$f0, 3129($0)
 	fmul	$f0, $f0, $f0
 	lf	$f1, 3129($1)
 	fmul	$f1, $f1, $f1
 	fadd	$f0, $f0, $f1
-	addi	$6, $0, 2
-	lf	$f1, 3129($6)
+	lf	$f1, 3129($26)
 	fmul	$f1, $f1, $f1
 	fadd	$f0, $f0, $f1
 	sqrt	$f0, $f0
-	beqf	$f0, $f30, feq.90642
+	beqf	$f0, $f30, feq.91132
 	mov	$6, $0
-	j	feq_cont.90643
-feq.90642:
+	j	feq_cont.91133
+feq.91132:
 	mov	$6, $1
-feq_cont.90643:
-	bne	$6, $0, eq_else.90644
-	bne	$5, $0, eq_else.90646
+feq_cont.91133:
+	bne	$6, $0, eq_else.91134
+	bne	$5, $0, eq_else.91136
 	fdiv	$f0, $f28, $f0
-	j	eq_cont.90647
-eq_else.90646:
+	j	eq_cont.91137
+eq_else.91136:
 	fdiv	$f0, $f29, $f0
-eq_cont.90647:
-	j	eq_cont.90645
-eq_else.90644:
+eq_cont.91137:
+	j	eq_cont.91135
+eq_else.91134:
 	movf	$f0, $f28
-eq_cont.90645:
+eq_cont.91135:
 	lf	$f1, 3129($0)
 	fmul	$f1, $f1, $f0
 	sf	$f1, 3129($0)
 	lf	$f1, 3129($1)
 	fmul	$f1, $f1, $f0
 	sf	$f1, 3129($1)
-	addi	$5, $0, 2
-	addi	$6, $0, 2
-	lf	$f1, 3129($6)
+	lf	$f1, 3129($26)
 	fmul	$f0, $f1, $f0
-	sf	$f0, 3129($5)
-eq_cont.90639:
-eq_cont.90631:
+	sf	$f0, 3129($26)
+eq_cont.91129:
+eq_cont.91121:
 	lw	$5, 0($2)
 	lw	$6, 8($2)
 	lf	$f0, 0($6)
@@ -30340,12 +30052,11 @@ eq_cont.90631:
 	lw	$6, 8($2)
 	lf	$f0, 1($6)
 	sf	$f0, 3132($1)
-	addi	$6, $0, 2
-	lw	$7, 8($2)
-	lf	$f0, 2($7)
-	sf	$f0, 3132($6)
+	lw	$6, 8($2)
+	lf	$f0, 2($6)
+	sf	$f0, 3132($26)
 	sw	$2, 5($3)
-	bne	$5, $1, eq_else.90648
+	bne	$5, $1, eq_else.91138
 	lf	$f0, 3125($0)
 	lw	$5, 5($2)
 	lf	$f1, 0($5)
@@ -30358,8 +30069,7 @@ eq_cont.90631:
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3364($0) # 10.000000
 	sltf	$5, $f0, $f1
-	addi	$6, $0, 2
-	lf	$f0, 3125($6)
+	lf	$f0, 3125($26)
 	lw	$6, 5($2)
 	lf	$f1, 2($6)
 	fsub	$f0, $f0, $f1
@@ -30371,50 +30081,50 @@ eq_cont.90631:
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3364($0) # 10.000000
 	sltf	$6, $f0, $f1
-	bne	$5, $0, eq_else.90650
-	bne	$6, $0, eq_else.90652
+	bne	$5, $0, eq_else.91140
+	bne	$6, $0, eq_else.91142
 	lf	$f0, 3366($0) # 255.000000
-	j	eq_cont.90653
-eq_else.90652:
+	j	eq_cont.91143
+eq_else.91142:
 	movf	$f0, $f30
-eq_cont.90653:
-	j	eq_cont.90651
-eq_else.90650:
-	bne	$6, $0, eq_else.90654
+eq_cont.91143:
+	j	eq_cont.91141
+eq_else.91140:
+	bne	$6, $0, eq_else.91144
 	movf	$f0, $f30
-	j	eq_cont.90655
-eq_else.90654:
+	j	eq_cont.91145
+eq_else.91144:
 	lf	$f0, 3366($0) # 255.000000
-eq_cont.90655:
-eq_cont.90651:
+eq_cont.91145:
+eq_cont.91141:
 	sf	$f0, 3132($1)
-	j	eq_cont.90649
-eq_else.90648:
+	j	eq_cont.91139
+eq_else.91138:
 	addi	$30, $0, 2
-	bne	$5, $30, eq_else.90656
+	bne	$5, $30, eq_else.91146
 	lf	$f0, 3125($1)
 	lf	$f1, 3363($0) # 0.250000
 	fmul	$f0, $f0, $f1
-	bltf	$f30, $f0, fle.90658
+	bltf	$f30, $f0, fle.91148
 	movf	$f1, $f29
-	j	fle_cont.90659
-fle.90658:
+	j	fle_cont.91149
+fle.91148:
 	movf	$f1, $f28
-fle_cont.90659:
+fle_cont.91149:
 	fmul	$f0, $f1, $f0
 	lf	$f2, 3395($0) # 6.283185
 	fdiv	$f3, $f0, $f2
 	floor	$f3, $f3
 	fmul	$f2, $f3, $f2
 	fsub	$f0, $f0, $f2
-	bltf	$f0, $f31, fle.90660
+	bltf	$f0, $f31, fle.91150
 	fsub	$f0, $f0, $f31
 	fneg	$f1, $f1
 	lf	$f2, 3393($0) # 1.570796
-	bltf	$f0, $f2, fle.90662
+	bltf	$f0, $f2, fle.91152
 	fsub	$f0, $f31, $f0
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.90664
+	bltf	$f2, $f0, fle.91154
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
@@ -30440,8 +30150,8 @@ fle_cont.90659:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90665
-fle.90664:
+	j	fle_cont.91155
+fle.91154:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3388($0) # 0.500000
@@ -30466,11 +30176,11 @@ fle.90664:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-fle_cont.90665:
-	j	fle_cont.90663
-fle.90662:
+fle_cont.91155:
+	j	fle_cont.91153
+fle.91152:
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.90666
+	bltf	$f2, $f0, fle.91156
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
@@ -30496,8 +30206,8 @@ fle.90662:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90667
-fle.90666:
+	j	fle_cont.91157
+fle.91156:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3388($0) # 0.500000
@@ -30522,15 +30232,15 @@ fle.90666:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-fle_cont.90667:
-fle_cont.90663:
-	j	fle_cont.90661
-fle.90660:
+fle_cont.91157:
+fle_cont.91153:
+	j	fle_cont.91151
+fle.91150:
 	lf	$f2, 3393($0) # 1.570796
-	bltf	$f0, $f2, fle.90668
+	bltf	$f0, $f2, fle.91158
 	fsub	$f0, $f31, $f0
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.90670
+	bltf	$f2, $f0, fle.91160
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
@@ -30556,8 +30266,8 @@ fle.90660:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90671
-fle.90670:
+	j	fle_cont.91161
+fle.91160:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3388($0) # 0.500000
@@ -30582,11 +30292,11 @@ fle.90670:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-fle_cont.90671:
-	j	fle_cont.90669
-fle.90668:
+fle_cont.91161:
+	j	fle_cont.91159
+fle.91158:
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.90672
+	bltf	$f2, $f0, fle.91162
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
@@ -30612,8 +30322,8 @@ fle.90668:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90673
-fle.90672:
+	j	fle_cont.91163
+fle.91162:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3388($0) # 0.500000
@@ -30638,9 +30348,9 @@ fle.90672:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-fle_cont.90673:
-fle_cont.90669:
-fle_cont.90661:
+fle_cont.91163:
+fle_cont.91159:
+fle_cont.91151:
 	fmul	$f0, $f0, $f0
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f1, $f1, $f0
@@ -30649,16 +30359,15 @@ fle_cont.90661:
 	fsub	$f0, $f28, $f0
 	fmul	$f0, $f1, $f0
 	sf	$f0, 3132($1)
-	j	eq_cont.90657
-eq_else.90656:
+	j	eq_cont.91147
+eq_else.91146:
 	addi	$30, $0, 3
-	bne	$5, $30, eq_else.90674
+	bne	$5, $30, eq_else.91164
 	lf	$f0, 3125($0)
 	lw	$5, 5($2)
 	lf	$f1, 0($5)
 	fsub	$f0, $f0, $f1
-	addi	$5, $0, 2
-	lf	$f1, 3125($5)
+	lf	$f1, 3125($26)
 	lw	$5, 5($2)
 	lf	$f2, 2($5)
 	fsub	$f1, $f1, $f2
@@ -30672,25 +30381,25 @@ eq_else.90656:
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3368($0) # 3.141593
 	fmul	$f0, $f0, $f1
-	bltf	$f30, $f0, fle.90676
+	bltf	$f30, $f0, fle.91166
 	movf	$f1, $f29
-	j	fle_cont.90677
-fle.90676:
+	j	fle_cont.91167
+fle.91166:
 	movf	$f1, $f28
-fle_cont.90677:
+fle_cont.91167:
 	fmul	$f0, $f1, $f0
 	lf	$f1, 3395($0) # 6.283185
 	fdiv	$f2, $f0, $f1
 	floor	$f2, $f2
 	fmul	$f1, $f2, $f1
 	fsub	$f0, $f0, $f1
-	bltf	$f0, $f31, fle.90678
+	bltf	$f0, $f31, fle.91168
 	fsub	$f0, $f0, $f31
 	lf	$f1, 3393($0) # 1.570796
-	bltf	$f0, $f1, fle.90680
+	bltf	$f0, $f1, fle.91170
 	fsub	$f0, $f31, $f0
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.90682
+	bltf	$f1, $f0, fle.91172
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
@@ -30713,8 +30422,8 @@ fle_cont.90677:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-	j	fle_cont.90683
-fle.90682:
+	j	fle_cont.91173
+fle.91172:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
@@ -30742,11 +30451,11 @@ fle.90682:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-fle_cont.90683:
-	j	fle_cont.90681
-fle.90680:
+fle_cont.91173:
+	j	fle_cont.91171
+fle.91170:
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.90684
+	bltf	$f1, $f0, fle.91174
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
@@ -30769,8 +30478,8 @@ fle.90680:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-	j	fle_cont.90685
-fle.90684:
+	j	fle_cont.91175
+fle.91174:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
@@ -30798,15 +30507,15 @@ fle.90684:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-fle_cont.90685:
-fle_cont.90681:
-	j	fle_cont.90679
-fle.90678:
+fle_cont.91175:
+fle_cont.91171:
+	j	fle_cont.91169
+fle.91168:
 	lf	$f1, 3393($0) # 1.570796
-	bltf	$f0, $f1, fle.90686
+	bltf	$f0, $f1, fle.91176
 	fsub	$f0, $f31, $f0
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.90688
+	bltf	$f1, $f0, fle.91178
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
@@ -30829,8 +30538,8 @@ fle.90678:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-	j	fle_cont.90689
-fle.90688:
+	j	fle_cont.91179
+fle.91178:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
@@ -30858,11 +30567,11 @@ fle.90688:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-fle_cont.90689:
-	j	fle_cont.90687
-fle.90686:
+fle_cont.91179:
+	j	fle_cont.91177
+fle.91176:
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.90690
+	bltf	$f1, $f0, fle.91180
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
@@ -30885,8 +30594,8 @@ fle.90686:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-	j	fle_cont.90691
-fle.90690:
+	j	fle_cont.91181
+fle.91180:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
@@ -30914,22 +30623,21 @@ fle.90690:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-fle_cont.90691:
-fle_cont.90687:
-fle_cont.90679:
+fle_cont.91181:
+fle_cont.91177:
+fle_cont.91169:
 	fmul	$f0, $f0, $f0
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f1, $f0, $f1
 	sf	$f1, 3132($1)
-	addi	$5, $0, 2
 	fsub	$f0, $f28, $f0
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f0, $f0, $f1
-	sf	$f0, 3132($5)
-	j	eq_cont.90675
-eq_else.90674:
+	sf	$f0, 3132($26)
+	j	eq_cont.91165
+eq_else.91164:
 	addi	$30, $0, 4
-	bne	$5, $30, eq_else.90692
+	bne	$5, $30, eq_else.91182
 	lf	$f0, 3125($0)
 	lw	$5, 5($2)
 	lf	$f1, 0($5)
@@ -30938,8 +30646,7 @@ eq_else.90674:
 	lf	$f1, 0($5)
 	sqrt	$f1, $f1
 	fmul	$f0, $f0, $f1
-	addi	$5, $0, 2
-	lf	$f1, 3125($5)
+	lf	$f1, 3125($26)
 	lw	$5, 5($2)
 	lf	$f2, 2($5)
 	fsub	$f1, $f1, $f2
@@ -30954,20 +30661,20 @@ eq_else.90674:
 	lf	$f4, 3379($0) # 0.000100
 	sltf	$5, $f3, $f4
 	sf	$f2, 6($3)
-	bne	$5, $0, eq_else.90694
+	bne	$5, $0, eq_else.91184
 	fdiv	$f0, $f1, $f0
 	fabs	$f0, $f0
-	bltf	$f30, $f0, fle.90696
+	bltf	$f30, $f0, fle.91186
 	movf	$f1, $f29
-	j	fle_cont.90697
-fle.90696:
+	j	fle_cont.91187
+fle.91186:
 	movf	$f1, $f28
-fle_cont.90697:
+fle_cont.91187:
 	fmul	$f0, $f1, $f0
 	lf	$f3, 3377($0) # 0.437500
-	bltf	$f0, $f3, fle.90698
+	bltf	$f0, $f3, fle.91188
 	lf	$f3, 3370($0) # 2.437500
-	bltf	$f0, $f3, fle.90700
+	bltf	$f0, $f3, fle.91190
 	lf	$f3, 3393($0) # 1.570796
 	fdiv	$f0, $f28, $f0
 	sf	$f1, 7($3)
@@ -31020,8 +30727,8 @@ fle_cont.90697:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 11($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 12($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 13($3)
 	addi	$3, $3, 14
@@ -31036,8 +30743,8 @@ fle_cont.90697:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 12($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 13($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 14($3)
 	addi	$3, $3, 15
@@ -31053,8 +30760,8 @@ fle_cont.90697:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 13($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 14($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 15($3)
 	addi	$3, $3, 16
@@ -31073,8 +30780,8 @@ fle_cont.90697:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 7($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90701
-fle.90700:
+	j	fle_cont.91191
+fle.91190:
 	lf	$f3, 3392($0) # 0.785398
 	fsub	$f4, $f0, $f28
 	fadd	$f0, $f0, $f28
@@ -31129,8 +30836,8 @@ fle.90700:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 18($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 19($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 20($3)
 	addi	$3, $3, 21
@@ -31145,8 +30852,8 @@ fle.90700:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 19($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 20($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 21($3)
 	addi	$3, $3, 22
@@ -31162,8 +30869,8 @@ fle.90700:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 20($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 21($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 22($3)
 	addi	$3, $3, 23
@@ -31182,9 +30889,9 @@ fle.90700:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 7($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90701:
-	j	fle_cont.90699
-fle.90698:
+fle_cont.91191:
+	j	fle_cont.91189
+fle.91188:
 	sf	$f1, 7($3)
 	sf	$f0, 22($3)
 	mov	$2, $0
@@ -31234,8 +30941,8 @@ fle.90698:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 24($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 25($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 26($3)
 	addi	$3, $3, 27
@@ -31250,8 +30957,8 @@ fle.90698:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 25($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 26($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 27($3)
 	addi	$3, $3, 28
@@ -31267,8 +30974,8 @@ fle.90698:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 26($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 27($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 28($3)
 	addi	$3, $3, 29
@@ -31285,15 +30992,15 @@ fle.90698:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 7($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90699:
+fle_cont.91189:
 	lf	$f1, 3369($0) # 30.000000
 	fmul	$f0, $f0, $f1
 	lf	$f1, 3368($0) # 3.141593
 	fdiv	$f0, $f0, $f1
-	j	eq_cont.90695
-eq_else.90694:
+	j	eq_cont.91185
+eq_else.91184:
 	lf	$f0, 3378($0) # 15.000000
-eq_cont.90695:
+eq_cont.91185:
 	floor	$f1, $f0
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3125($1)
@@ -31310,20 +31017,20 @@ eq_cont.90695:
 	lf	$f4, 3379($0) # 0.000100
 	sltf	$5, $f3, $f4
 	sf	$f0, 28($3)
-	bne	$5, $0, eq_else.90702
+	bne	$5, $0, eq_else.91192
 	fdiv	$f1, $f1, $f2
 	fabs	$f1, $f1
-	bltf	$f30, $f1, fle.90704
+	bltf	$f30, $f1, fle.91194
 	movf	$f2, $f29
-	j	fle_cont.90705
-fle.90704:
+	j	fle_cont.91195
+fle.91194:
 	movf	$f2, $f28
-fle_cont.90705:
+fle_cont.91195:
 	fmul	$f1, $f2, $f1
 	lf	$f3, 3377($0) # 0.437500
-	bltf	$f1, $f3, fle.90706
+	bltf	$f1, $f3, fle.91196
 	lf	$f3, 3370($0) # 2.437500
-	bltf	$f1, $f3, fle.90708
+	bltf	$f1, $f3, fle.91198
 	lf	$f3, 3393($0) # 1.570796
 	fdiv	$f1, $f28, $f1
 	sf	$f2, 29($3)
@@ -31377,8 +31084,8 @@ fle_cont.90705:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 33($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 34($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 35($3)
 	addi	$3, $3, 36
@@ -31393,8 +31100,8 @@ fle_cont.90705:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 34($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 35($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 36($3)
 	addi	$3, $3, 37
@@ -31410,8 +31117,8 @@ fle_cont.90705:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 35($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 36($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 37($3)
 	addi	$3, $3, 38
@@ -31430,8 +31137,8 @@ fle_cont.90705:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 29($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90709
-fle.90708:
+	j	fle_cont.91199
+fle.91198:
 	lf	$f3, 3392($0) # 0.785398
 	fsub	$f4, $f1, $f28
 	fadd	$f1, $f1, $f28
@@ -31487,8 +31194,8 @@ fle.90708:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 40($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 41($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 42($3)
 	addi	$3, $3, 43
@@ -31503,8 +31210,8 @@ fle.90708:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 41($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 42($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 43($3)
 	addi	$3, $3, 44
@@ -31520,8 +31227,8 @@ fle.90708:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 42($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 43($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 44($3)
 	addi	$3, $3, 45
@@ -31540,9 +31247,9 @@ fle.90708:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 29($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90709:
-	j	fle_cont.90707
-fle.90706:
+fle_cont.91199:
+	j	fle_cont.91197
+fle.91196:
 	sf	$f2, 29($3)
 	sf	$f1, 44($3)
 	mov	$2, $0
@@ -31593,8 +31300,8 @@ fle.90706:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 46($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 47($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 48($3)
 	addi	$3, $3, 49
@@ -31609,8 +31316,8 @@ fle.90706:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 47($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 48($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 49($3)
 	addi	$3, $3, 50
@@ -31626,8 +31333,8 @@ fle.90706:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 48($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 49($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 50($3)
 	addi	$3, $3, 51
@@ -31644,15 +31351,15 @@ fle.90706:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 29($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90707:
+fle_cont.91197:
 	lf	$f1, 3369($0) # 30.000000
 	fmul	$f0, $f0, $f1
 	lf	$f1, 3368($0) # 3.141593
 	fdiv	$f0, $f0, $f1
-	j	eq_cont.90703
-eq_else.90702:
+	j	eq_cont.91193
+eq_else.91192:
 	lf	$f0, 3378($0) # 15.000000
-eq_cont.90703:
+eq_cont.91193:
 	floor	$f1, $f0
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3367($0) # 0.150000
@@ -31666,37 +31373,36 @@ eq_cont.90703:
 	fmul	$f0, $f0, $f0
 	fsub	$f0, $f1, $f0
 	sltf	$2, $f0, $f30
-	bne	$2, $0, eq_else.90710
-	j	eq_cont.90711
-eq_else.90710:
+	bne	$2, $0, eq_else.91200
+	j	eq_cont.91201
+eq_else.91200:
 	movf	$f0, $f30
-eq_cont.90711:
-	addi	$2, $0, 2
+eq_cont.91201:
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f0, $f1, $f0
 	lf	$f1, 3365($0) # 0.300000
 	fdiv	$f0, $f0, $f1
-	sf	$f0, 3132($2)
-	j	eq_cont.90693
-eq_else.90692:
-eq_cont.90693:
-eq_cont.90675:
-eq_cont.90657:
-eq_cont.90649:
+	sf	$f0, 3132($26)
+	j	eq_cont.91183
+eq_else.91182:
+eq_cont.91183:
+eq_cont.91165:
+eq_cont.91147:
+eq_cont.91139:
 	lw	$5, 3121($0)
 	lw	$2, 0($5)
 	lw	$6, 0($2)
-	bne	$6, $28, eq_else.90712
+	bne	$6, $28, eq_else.91202
 	mov	$2, $0
-	j	eq_cont.90713
-eq_else.90712:
+	j	eq_cont.91203
+eq_else.91202:
 	sw	$2, 50($3)
 	sw	$5, 51($3)
 	addi	$30, $0, 99
-	bne	$6, $30, eq_else.90714
+	bne	$6, $30, eq_else.91204
 	mov	$2, $1
-	j	eq_cont.90715
-eq_else.90714:
+	j	eq_cont.91205
+eq_else.91204:
 	lw	$7, 3001($6)
 	lf	$f0, 3125($0)
 	lw	$8, 5($7)
@@ -31706,8 +31412,7 @@ eq_else.90714:
 	lw	$8, 5($7)
 	lf	$f2, 1($8)
 	fsub	$f1, $f1, $f2
-	addi	$8, $0, 2
-	lf	$f2, 3125($8)
+	lf	$f2, 3125($26)
 	lw	$8, 5($7)
 	lf	$f3, 2($8)
 	fsub	$f2, $f2, $f3
@@ -31716,7 +31421,7 @@ eq_else.90714:
 	add	$30, $8, $6
 	lw	$6, 0($30)
 	lw	$8, 1($7)
-	bne	$8, $1, eq_else.90716
+	bne	$8, $1, eq_else.91206
 	addi	$8, $0, 3169
 	lw	$8, 0($8)
 	lf	$f3, 0($6)
@@ -31730,10 +31435,10 @@ eq_else.90714:
 	lw	$9, 4($7)
 	lf	$f5, 1($9)
 	sltf	$9, $f4, $f5
-	bne	$9, $0, eq_else.90718
+	bne	$9, $0, eq_else.91208
 	mov	$9, $0
-	j	eq_cont.90719
-eq_else.90718:
+	j	eq_cont.91209
+eq_else.91208:
 	lf	$f4, 2($8)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
@@ -31741,26 +31446,26 @@ eq_else.90718:
 	lw	$9, 4($7)
 	lf	$f5, 2($9)
 	sltf	$9, $f4, $f5
-	bne	$9, $0, eq_else.90720
+	bne	$9, $0, eq_else.91210
 	mov	$9, $0
-	j	eq_cont.90721
-eq_else.90720:
+	j	eq_cont.91211
+eq_else.91210:
 	lf	$f4, 1($6)
-	beqf	$f4, $f30, feq.90722
+	beqf	$f4, $f30, feq.91212
 	mov	$9, $0
-	j	feq_cont.90723
-feq.90722:
+	j	feq_cont.91213
+feq.91212:
 	mov	$9, $1
-feq_cont.90723:
-	bne	$9, $0, eq_else.90724
+feq_cont.91213:
+	bne	$9, $0, eq_else.91214
 	mov	$9, $1
-	j	eq_cont.90725
-eq_else.90724:
+	j	eq_cont.91215
+eq_else.91214:
 	mov	$9, $0
-eq_cont.90725:
-eq_cont.90721:
-eq_cont.90719:
-	bne	$9, $0, eq_else.90726
+eq_cont.91215:
+eq_cont.91211:
+eq_cont.91209:
+	bne	$9, $0, eq_else.91216
 	lf	$f3, 2($6)
 	fsub	$f3, $f3, $f1
 	lf	$f4, 3($6)
@@ -31772,10 +31477,10 @@ eq_cont.90719:
 	lw	$9, 4($7)
 	lf	$f5, 0($9)
 	sltf	$9, $f4, $f5
-	bne	$9, $0, eq_else.90728
+	bne	$9, $0, eq_else.91218
 	mov	$9, $0
-	j	eq_cont.90729
-eq_else.90728:
+	j	eq_cont.91219
+eq_else.91218:
 	lf	$f4, 2($8)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
@@ -31783,26 +31488,26 @@ eq_else.90728:
 	lw	$9, 4($7)
 	lf	$f5, 2($9)
 	sltf	$9, $f4, $f5
-	bne	$9, $0, eq_else.90730
+	bne	$9, $0, eq_else.91220
 	mov	$9, $0
-	j	eq_cont.90731
-eq_else.90730:
+	j	eq_cont.91221
+eq_else.91220:
 	lf	$f4, 3($6)
-	beqf	$f4, $f30, feq.90732
+	beqf	$f4, $f30, feq.91222
 	mov	$9, $0
-	j	feq_cont.90733
-feq.90732:
+	j	feq_cont.91223
+feq.91222:
 	mov	$9, $1
-feq_cont.90733:
-	bne	$9, $0, eq_else.90734
+feq_cont.91223:
+	bne	$9, $0, eq_else.91224
 	mov	$9, $1
-	j	eq_cont.90735
-eq_else.90734:
+	j	eq_cont.91225
+eq_else.91224:
 	mov	$9, $0
-eq_cont.90735:
-eq_cont.90731:
-eq_cont.90729:
-	bne	$9, $0, eq_else.90736
+eq_cont.91225:
+eq_cont.91221:
+eq_cont.91219:
+	bne	$9, $0, eq_else.91226
 	lf	$f3, 4($6)
 	fsub	$f2, $f3, $f2
 	lf	$f3, 5($6)
@@ -31814,10 +31519,10 @@ eq_cont.90729:
 	lw	$9, 4($7)
 	lf	$f3, 0($9)
 	sltf	$9, $f0, $f3
-	bne	$9, $0, eq_else.90738
+	bne	$9, $0, eq_else.91228
 	mov	$6, $0
-	j	eq_cont.90739
-eq_else.90738:
+	j	eq_cont.91229
+eq_else.91228:
 	lf	$f0, 1($8)
 	fmul	$f0, $f2, $f0
 	fadd	$f0, $f0, $f1
@@ -31825,52 +31530,52 @@ eq_else.90738:
 	lw	$7, 4($7)
 	lf	$f1, 1($7)
 	sltf	$7, $f0, $f1
-	bne	$7, $0, eq_else.90740
+	bne	$7, $0, eq_else.91230
 	mov	$6, $0
-	j	eq_cont.90741
-eq_else.90740:
+	j	eq_cont.91231
+eq_else.91230:
 	lf	$f0, 5($6)
-	beqf	$f0, $f30, feq.90742
+	beqf	$f0, $f30, feq.91232
 	mov	$6, $0
-	j	feq_cont.90743
-feq.90742:
+	j	feq_cont.91233
+feq.91232:
 	mov	$6, $1
-feq_cont.90743:
-	bne	$6, $0, eq_else.90744
+feq_cont.91233:
+	bne	$6, $0, eq_else.91234
 	mov	$6, $1
-	j	eq_cont.90745
-eq_else.90744:
+	j	eq_cont.91235
+eq_else.91234:
 	mov	$6, $0
-eq_cont.90745:
-eq_cont.90741:
-eq_cont.90739:
-	bne	$6, $0, eq_else.90746
+eq_cont.91235:
+eq_cont.91231:
+eq_cont.91229:
+	bne	$6, $0, eq_else.91236
 	mov	$6, $0
-	j	eq_cont.90747
-eq_else.90746:
+	j	eq_cont.91237
+eq_else.91236:
 	sf	$f2, 3122($0)
-	addi	$6, $0, 3
-eq_cont.90747:
-	j	eq_cont.90737
-eq_else.90736:
+	mov	$6, $27
+eq_cont.91237:
+	j	eq_cont.91227
+eq_else.91226:
 	sf	$f3, 3122($0)
-	addi	$6, $0, 2
-eq_cont.90737:
-	j	eq_cont.90727
-eq_else.90726:
+	mov	$6, $26
+eq_cont.91227:
+	j	eq_cont.91217
+eq_else.91216:
 	sf	$f3, 3122($0)
 	mov	$6, $1
-eq_cont.90727:
-	j	eq_cont.90717
-eq_else.90716:
+eq_cont.91217:
+	j	eq_cont.91207
+eq_else.91206:
 	addi	$30, $0, 2
-	bne	$8, $30, eq_else.90748
+	bne	$8, $30, eq_else.91238
 	lf	$f3, 0($6)
 	sltf	$7, $f3, $f30
-	bne	$7, $0, eq_else.90750
+	bne	$7, $0, eq_else.91240
 	mov	$6, $0
-	j	eq_cont.90751
-eq_else.90750:
+	j	eq_cont.91241
+eq_else.91240:
 	lf	$f3, 1($6)
 	fmul	$f0, $f3, $f0
 	lf	$f3, 2($6)
@@ -31881,17 +31586,17 @@ eq_else.90750:
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3122($0)
 	mov	$6, $1
-eq_cont.90751:
-	j	eq_cont.90749
-eq_else.90748:
+eq_cont.91241:
+	j	eq_cont.91239
+eq_else.91238:
 	lf	$f3, 0($6)
-	beqf	$f3, $f30, feq.90752
+	beqf	$f3, $f30, feq.91242
 	mov	$8, $0
-	j	feq_cont.90753
-feq.90752:
+	j	feq_cont.91243
+feq.91242:
 	mov	$8, $1
-feq_cont.90753:
-	bne	$8, $0, eq_else.90754
+feq_cont.91243:
+	bne	$8, $0, eq_else.91244
 	lf	$f4, 1($6)
 	fmul	$f4, $f4, $f0
 	lf	$f5, 2($6)
@@ -31915,10 +31620,10 @@ feq_cont.90753:
 	fmul	$f6, $f6, $f7
 	fadd	$f5, $f5, $f6
 	lw	$8, 3($7)
-	bne	$8, $0, eq_else.90756
+	bne	$8, $0, eq_else.91246
 	movf	$f0, $f5
-	j	eq_cont.90757
-eq_else.90756:
+	j	eq_cont.91247
+eq_else.91246:
 	fmul	$f6, $f1, $f2
 	lw	$8, 9($7)
 	lf	$f7, 0($8)
@@ -31934,61 +31639,61 @@ eq_else.90756:
 	lf	$f1, 2($8)
 	fmul	$f0, $f0, $f1
 	fadd	$f0, $f2, $f0
-eq_cont.90757:
+eq_cont.91247:
 	lw	$8, 1($7)
 	addi	$30, $0, 3
-	bne	$8, $30, eq_else.90758
+	bne	$8, $30, eq_else.91248
 	fsub	$f0, $f0, $f28
-	j	eq_cont.90759
-eq_else.90758:
-eq_cont.90759:
+	j	eq_cont.91249
+eq_else.91248:
+eq_cont.91249:
 	fmul	$f1, $f4, $f4
 	fmul	$f0, $f3, $f0
 	fsub	$f0, $f1, $f0
 	sltf	$8, $f30, $f0
-	bne	$8, $0, eq_else.90760
+	bne	$8, $0, eq_else.91250
 	mov	$6, $0
-	j	eq_cont.90761
-eq_else.90760:
+	j	eq_cont.91251
+eq_else.91250:
 	lw	$7, 6($7)
-	bne	$7, $0, eq_else.90762
+	bne	$7, $0, eq_else.91252
 	sqrt	$f0, $f0
 	fsub	$f0, $f4, $f0
 	lf	$f1, 4($6)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
-	j	eq_cont.90763
-eq_else.90762:
+	j	eq_cont.91253
+eq_else.91252:
 	sqrt	$f0, $f0
 	fadd	$f0, $f4, $f0
 	lf	$f1, 4($6)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
-eq_cont.90763:
+eq_cont.91253:
 	mov	$6, $1
-eq_cont.90761:
-	j	eq_cont.90755
-eq_else.90754:
+eq_cont.91251:
+	j	eq_cont.91245
+eq_else.91244:
 	mov	$6, $0
-eq_cont.90755:
-eq_cont.90749:
-eq_cont.90717:
-	bne	$6, $0, eq_else.90764
+eq_cont.91245:
+eq_cont.91239:
+eq_cont.91207:
+	bne	$6, $0, eq_else.91254
 	mov	$2, $0
-	j	eq_cont.90765
-eq_else.90764:
+	j	eq_cont.91255
+eq_else.91254:
 	lf	$f0, 3122($0)
 	lf	$f1, 3382($0) # -0.100000
 	sltf	$6, $f0, $f1
-	bne	$6, $0, eq_else.90766
+	bne	$6, $0, eq_else.91256
 	mov	$2, $0
-	j	eq_cont.90767
-eq_else.90766:
+	j	eq_cont.91257
+eq_else.91256:
 	lw	$6, 1($2)
-	bne	$6, $28, eq_else.90768
+	bne	$6, $28, eq_else.91258
 	mov	$2, $0
-	j	eq_cont.90769
-eq_else.90768:
+	j	eq_cont.91259
+eq_else.91258:
 	lw	$6, 3071($6)
 	mov	$5, $6
 	mov	$2, $0
@@ -31997,13 +31702,13 @@ eq_else.90768:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -53
 	lw	$31, 52($3)
-	bne	$2, $0, eq_else.90770
+	bne	$2, $0, eq_else.91260
 	lw	$2, 50($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.90772
+	bne	$5, $28, eq_else.91262
 	mov	$2, $0
-	j	eq_cont.90773
-eq_else.90772:
+	j	eq_cont.91263
+eq_else.91262:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 52($3)
@@ -32011,13 +31716,13 @@ eq_else.90772:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -53
 	lw	$31, 52($3)
-	bne	$2, $0, eq_else.90774
+	bne	$2, $0, eq_else.91264
 	lw	$2, 50($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.90776
+	bne	$5, $28, eq_else.91266
 	mov	$2, $0
-	j	eq_cont.90777
-eq_else.90776:
+	j	eq_cont.91267
+eq_else.91266:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 52($3)
@@ -32025,13 +31730,13 @@ eq_else.90776:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -53
 	lw	$31, 52($3)
-	bne	$2, $0, eq_else.90778
+	bne	$2, $0, eq_else.91268
 	lw	$2, 50($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.90780
+	bne	$5, $28, eq_else.91270
 	mov	$2, $0
-	j	eq_cont.90781
-eq_else.90780:
+	j	eq_cont.91271
+eq_else.91270:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 52($3)
@@ -32039,7 +31744,7 @@ eq_else.90780:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -53
 	lw	$31, 52($3)
-	bne	$2, $0, eq_else.90782
+	bne	$2, $0, eq_else.91272
 	addi	$2, $0, 5
 	lw	$5, 50($3)
 	sw	$31, 52($3)
@@ -32047,36 +31752,36 @@ eq_else.90780:
 	jal	shadow_check_one_or_group.2977
 	addi	$3, $3, -53
 	lw	$31, 52($3)
-	j	eq_cont.90783
-eq_else.90782:
+	j	eq_cont.91273
+eq_else.91272:
 	mov	$2, $1
-eq_cont.90783:
-eq_cont.90781:
-	j	eq_cont.90779
-eq_else.90778:
+eq_cont.91273:
+eq_cont.91271:
+	j	eq_cont.91269
+eq_else.91268:
 	mov	$2, $1
-eq_cont.90779:
-eq_cont.90777:
-	j	eq_cont.90775
-eq_else.90774:
+eq_cont.91269:
+eq_cont.91267:
+	j	eq_cont.91265
+eq_else.91264:
 	mov	$2, $1
-eq_cont.90775:
-eq_cont.90773:
-	j	eq_cont.90771
-eq_else.90770:
+eq_cont.91265:
+eq_cont.91263:
+	j	eq_cont.91261
+eq_else.91260:
 	mov	$2, $1
-eq_cont.90771:
-eq_cont.90769:
-	bne	$2, $0, eq_else.90784
+eq_cont.91261:
+eq_cont.91259:
+	bne	$2, $0, eq_else.91274
 	mov	$2, $0
-	j	eq_cont.90785
-eq_else.90784:
+	j	eq_cont.91275
+eq_else.91274:
 	mov	$2, $1
-eq_cont.90785:
-eq_cont.90767:
-eq_cont.90765:
-eq_cont.90715:
-	bne	$2, $0, eq_else.90786
+eq_cont.91275:
+eq_cont.91257:
+eq_cont.91255:
+eq_cont.91205:
+	bne	$2, $0, eq_else.91276
 	lw	$5, 51($3)
 	mov	$2, $1
 	sw	$31, 52($3)
@@ -32084,14 +31789,14 @@ eq_cont.90715:
 	jal	shadow_check_one_or_matrix.2980
 	addi	$3, $3, -53
 	lw	$31, 52($3)
-	j	eq_cont.90787
-eq_else.90786:
+	j	eq_cont.91277
+eq_else.91276:
 	lw	$2, 50($3)
 	lw	$5, 1($2)
-	bne	$5, $28, eq_else.90788
+	bne	$5, $28, eq_else.91278
 	mov	$2, $0
-	j	eq_cont.90789
-eq_else.90788:
+	j	eq_cont.91279
+eq_else.91278:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 52($3)
@@ -32099,13 +31804,13 @@ eq_else.90788:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -53
 	lw	$31, 52($3)
-	bne	$2, $0, eq_else.90790
+	bne	$2, $0, eq_else.91280
 	lw	$2, 50($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.90792
+	bne	$5, $28, eq_else.91282
 	mov	$2, $0
-	j	eq_cont.90793
-eq_else.90792:
+	j	eq_cont.91283
+eq_else.91282:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 52($3)
@@ -32113,13 +31818,13 @@ eq_else.90792:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -53
 	lw	$31, 52($3)
-	bne	$2, $0, eq_else.90794
+	bne	$2, $0, eq_else.91284
 	lw	$2, 50($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.90796
+	bne	$5, $28, eq_else.91286
 	mov	$2, $0
-	j	eq_cont.90797
-eq_else.90796:
+	j	eq_cont.91287
+eq_else.91286:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 52($3)
@@ -32127,13 +31832,13 @@ eq_else.90796:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -53
 	lw	$31, 52($3)
-	bne	$2, $0, eq_else.90798
+	bne	$2, $0, eq_else.91288
 	lw	$2, 50($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.90800
+	bne	$5, $28, eq_else.91290
 	mov	$2, $0
-	j	eq_cont.90801
-eq_else.90800:
+	j	eq_cont.91291
+eq_else.91290:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 52($3)
@@ -32141,7 +31846,7 @@ eq_else.90800:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -53
 	lw	$31, 52($3)
-	bne	$2, $0, eq_else.90802
+	bne	$2, $0, eq_else.91292
 	addi	$2, $0, 5
 	lw	$5, 50($3)
 	sw	$31, 52($3)
@@ -32149,27 +31854,27 @@ eq_else.90800:
 	jal	shadow_check_one_or_group.2977
 	addi	$3, $3, -53
 	lw	$31, 52($3)
-	j	eq_cont.90803
-eq_else.90802:
+	j	eq_cont.91293
+eq_else.91292:
 	mov	$2, $1
-eq_cont.90803:
-eq_cont.90801:
-	j	eq_cont.90799
-eq_else.90798:
+eq_cont.91293:
+eq_cont.91291:
+	j	eq_cont.91289
+eq_else.91288:
 	mov	$2, $1
-eq_cont.90799:
-eq_cont.90797:
-	j	eq_cont.90795
-eq_else.90794:
+eq_cont.91289:
+eq_cont.91287:
+	j	eq_cont.91285
+eq_else.91284:
 	mov	$2, $1
-eq_cont.90795:
-eq_cont.90793:
-	j	eq_cont.90791
-eq_else.90790:
+eq_cont.91285:
+eq_cont.91283:
+	j	eq_cont.91281
+eq_else.91280:
 	mov	$2, $1
-eq_cont.90791:
-eq_cont.90789:
-	bne	$2, $0, eq_else.90804
+eq_cont.91281:
+eq_cont.91279:
+	bne	$2, $0, eq_else.91294
 	lw	$5, 51($3)
 	mov	$2, $1
 	sw	$31, 52($3)
@@ -32177,13 +31882,13 @@ eq_cont.90789:
 	jal	shadow_check_one_or_matrix.2980
 	addi	$3, $3, -53
 	lw	$31, 52($3)
-	j	eq_cont.90805
-eq_else.90804:
+	j	eq_cont.91295
+eq_else.91294:
 	mov	$2, $1
-eq_cont.90805:
-eq_cont.90787:
-eq_cont.90713:
-	bne	$2, $0, eq_else.90806
+eq_cont.91295:
+eq_cont.91277:
+eq_cont.91203:
+	bne	$2, $0, eq_else.91296
 	lf	$f0, 3129($0)
 	lf	$f1, 3067($0)
 	fmul	$f0, $f0, $f1
@@ -32191,19 +31896,17 @@ eq_cont.90713:
 	lf	$f2, 3067($1)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	addi	$2, $0, 2
-	lf	$f1, 3129($2)
-	addi	$2, $0, 2
-	lf	$f2, 3067($2)
+	lf	$f1, 3129($26)
+	lf	$f2, 3067($26)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	fneg	$f0, $f0
 	sltf	$2, $f30, $f0
-	bne	$2, $0, eq_else.90808
+	bne	$2, $0, eq_else.91298
 	movf	$f0, $f30
-	j	eq_cont.90809
-eq_else.90808:
-eq_cont.90809:
+	j	eq_cont.91299
+eq_else.91298:
+eq_cont.91299:
 	lf	$f1, 3($3)
 	fmul	$f0, $f1, $f0
 	lw	$2, 5($3)
@@ -32220,20 +31923,17 @@ eq_cont.90809:
 	fmul	$f2, $f0, $f2
 	fadd	$f1, $f1, $f2
 	sf	$f1, 3135($1)
-	addi	$2, $0, 2
-	addi	$5, $0, 2
-	lf	$f1, 3135($5)
-	addi	$5, $0, 2
-	lf	$f2, 3132($5)
+	lf	$f1, 3135($26)
+	lf	$f2, 3132($26)
 	fmul	$f0, $f0, $f2
 	fadd	$f0, $f1, $f0
-	sf	$f0, 3135($2)
-	j	eq_cont.90807
-eq_else.90806:
-eq_cont.90807:
-eq_cont.90629:
-	j	eq_cont.90623
-eq_else.90622:
+	sf	$f0, 3135($26)
+	j	eq_cont.91297
+eq_else.91296:
+eq_cont.91297:
+eq_cont.91119:
+	j	eq_cont.91113
+eq_else.91112:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -32253,60 +31953,59 @@ eq_else.90622:
 	lf	$f0, 3124($0)
 	lf	$f1, 3382($0) # -0.100000
 	sltf	$2, $f1, $f0
-	bne	$2, $0, eq_else.90810
+	bne	$2, $0, eq_else.91300
 	mov	$2, $0
-	j	eq_cont.90811
-eq_else.90810:
+	j	eq_cont.91301
+eq_else.91300:
 	lf	$f1, 3380($0) # 100000000.000000
-	bltf	$f0, $f1, fle.90812
+	bltf	$f0, $f1, fle.91302
 	mov	$2, $0
-	j	fle_cont.90813
-fle.90812:
+	j	fle_cont.91303
+fle.91302:
 	mov	$2, $1
-fle_cont.90813:
-eq_cont.90811:
-	bne	$2, $0, eq_else.90814
-	j	eq_cont.90815
-eq_else.90814:
+fle_cont.91303:
+eq_cont.91301:
+	bne	$2, $0, eq_else.91304
+	j	eq_cont.91305
+eq_else.91304:
 	lw	$2, 3128($0)
 	lw	$2, 3001($2)
 	lw	$5, 53($3)
 	lw	$5, 0($5)
 	lw	$6, 1($2)
-	bne	$6, $1, eq_else.90816
+	bne	$6, $1, eq_else.91306
 	lw	$6, 3123($0)
 	sf	$f30, 3129($0)
 	sf	$f30, 3129($1)
-	addi	$7, $0, 2
-	sf	$f30, 3129($7)
+	sf	$f30, 3129($26)
 	addi	$7, $6, -1
 	addi	$6, $6, -1
 	add	$30, $5, $6
 	lf	$f0, 0($30)
-	beqf	$f0, $f30, feq.90818
+	beqf	$f0, $f30, feq.91308
 	mov	$5, $0
-	j	feq_cont.90819
-feq.90818:
+	j	feq_cont.91309
+feq.91308:
 	mov	$5, $1
-feq_cont.90819:
-	bne	$5, $0, eq_else.90820
+feq_cont.91309:
+	bne	$5, $0, eq_else.91310
 	sltf	$5, $f30, $f0
-	bne	$5, $0, eq_else.90822
+	bne	$5, $0, eq_else.91312
 	movf	$f0, $f29
-	j	eq_cont.90823
-eq_else.90822:
+	j	eq_cont.91313
+eq_else.91312:
 	movf	$f0, $f28
-eq_cont.90823:
-	j	eq_cont.90821
-eq_else.90820:
+eq_cont.91313:
+	j	eq_cont.91311
+eq_else.91310:
 	movf	$f0, $f30
-eq_cont.90821:
+eq_cont.91311:
 	fneg	$f0, $f0
 	sf	$f0, 3129($7)
-	j	eq_cont.90817
-eq_else.90816:
+	j	eq_cont.91307
+eq_else.91306:
 	addi	$30, $0, 2
-	bne	$6, $30, eq_else.90824
+	bne	$6, $30, eq_else.91314
 	lw	$5, 4($2)
 	lf	$f0, 0($5)
 	fneg	$f0, $f0
@@ -32315,13 +32014,12 @@ eq_else.90816:
 	lf	$f0, 1($5)
 	fneg	$f0, $f0
 	sf	$f0, 3129($1)
-	addi	$5, $0, 2
-	lw	$6, 4($2)
-	lf	$f0, 2($6)
+	lw	$5, 4($2)
+	lf	$f0, 2($5)
 	fneg	$f0, $f0
-	sf	$f0, 3129($5)
-	j	eq_cont.90825
-eq_else.90824:
+	sf	$f0, 3129($26)
+	j	eq_cont.91315
+eq_else.91314:
 	lf	$f0, 3125($0)
 	lw	$5, 5($2)
 	lf	$f1, 0($5)
@@ -32330,8 +32028,7 @@ eq_else.90824:
 	lw	$5, 5($2)
 	lf	$f2, 1($5)
 	fsub	$f1, $f1, $f2
-	addi	$5, $0, 2
-	lf	$f2, 3125($5)
+	lf	$f2, 3125($26)
 	lw	$5, 5($2)
 	lf	$f3, 2($5)
 	fsub	$f2, $f2, $f3
@@ -32345,13 +32042,12 @@ eq_else.90824:
 	lf	$f5, 2($5)
 	fmul	$f5, $f2, $f5
 	lw	$5, 3($2)
-	bne	$5, $0, eq_else.90826
+	bne	$5, $0, eq_else.91316
 	sf	$f3, 3129($0)
 	sf	$f4, 3129($1)
-	addi	$5, $0, 2
-	sf	$f5, 3129($5)
-	j	eq_cont.90827
-eq_else.90826:
+	sf	$f5, 3129($26)
+	j	eq_cont.91317
+eq_else.91316:
 	lw	$5, 9($2)
 	lf	$f6, 2($5)
 	fmul	$f6, $f1, $f6
@@ -32374,60 +32070,56 @@ eq_else.90826:
 	fmul	$f2, $f2, $f3
 	fadd	$f2, $f4, $f2
 	sf	$f2, 3129($1)
-	addi	$5, $0, 2
-	lw	$6, 9($2)
-	lf	$f2, 1($6)
+	lw	$5, 9($2)
+	lf	$f2, 1($5)
 	fmul	$f0, $f0, $f2
-	lw	$6, 9($2)
-	lf	$f2, 0($6)
+	lw	$5, 9($2)
+	lf	$f2, 0($5)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	lf	$f1, 3388($0) # 0.500000
 	fmul	$f0, $f0, $f1
 	fadd	$f0, $f5, $f0
-	sf	$f0, 3129($5)
-eq_cont.90827:
+	sf	$f0, 3129($26)
+eq_cont.91317:
 	lw	$5, 6($2)
 	lf	$f0, 3129($0)
 	fmul	$f0, $f0, $f0
 	lf	$f1, 3129($1)
 	fmul	$f1, $f1, $f1
 	fadd	$f0, $f0, $f1
-	addi	$6, $0, 2
-	lf	$f1, 3129($6)
+	lf	$f1, 3129($26)
 	fmul	$f1, $f1, $f1
 	fadd	$f0, $f0, $f1
 	sqrt	$f0, $f0
-	beqf	$f0, $f30, feq.90828
+	beqf	$f0, $f30, feq.91318
 	mov	$6, $0
-	j	feq_cont.90829
-feq.90828:
+	j	feq_cont.91319
+feq.91318:
 	mov	$6, $1
-feq_cont.90829:
-	bne	$6, $0, eq_else.90830
-	bne	$5, $0, eq_else.90832
+feq_cont.91319:
+	bne	$6, $0, eq_else.91320
+	bne	$5, $0, eq_else.91322
 	fdiv	$f0, $f28, $f0
-	j	eq_cont.90833
-eq_else.90832:
+	j	eq_cont.91323
+eq_else.91322:
 	fdiv	$f0, $f29, $f0
-eq_cont.90833:
-	j	eq_cont.90831
-eq_else.90830:
+eq_cont.91323:
+	j	eq_cont.91321
+eq_else.91320:
 	movf	$f0, $f28
-eq_cont.90831:
+eq_cont.91321:
 	lf	$f1, 3129($0)
 	fmul	$f1, $f1, $f0
 	sf	$f1, 3129($0)
 	lf	$f1, 3129($1)
 	fmul	$f1, $f1, $f0
 	sf	$f1, 3129($1)
-	addi	$5, $0, 2
-	addi	$6, $0, 2
-	lf	$f1, 3129($6)
+	lf	$f1, 3129($26)
 	fmul	$f0, $f1, $f0
-	sf	$f0, 3129($5)
-eq_cont.90825:
-eq_cont.90817:
+	sf	$f0, 3129($26)
+eq_cont.91315:
+eq_cont.91307:
 	lw	$5, 0($2)
 	lw	$6, 8($2)
 	lf	$f0, 0($6)
@@ -32435,12 +32127,11 @@ eq_cont.90817:
 	lw	$6, 8($2)
 	lf	$f0, 1($6)
 	sf	$f0, 3132($1)
-	addi	$6, $0, 2
-	lw	$7, 8($2)
-	lf	$f0, 2($7)
-	sf	$f0, 3132($6)
+	lw	$6, 8($2)
+	lf	$f0, 2($6)
+	sf	$f0, 3132($26)
 	sw	$2, 54($3)
-	bne	$5, $1, eq_else.90834
+	bne	$5, $1, eq_else.91324
 	lf	$f0, 3125($0)
 	lw	$5, 5($2)
 	lf	$f1, 0($5)
@@ -32453,8 +32144,7 @@ eq_cont.90817:
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3364($0) # 10.000000
 	sltf	$5, $f0, $f1
-	addi	$6, $0, 2
-	lf	$f0, 3125($6)
+	lf	$f0, 3125($26)
 	lw	$6, 5($2)
 	lf	$f1, 2($6)
 	fsub	$f0, $f0, $f1
@@ -32466,50 +32156,50 @@ eq_cont.90817:
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3364($0) # 10.000000
 	sltf	$6, $f0, $f1
-	bne	$5, $0, eq_else.90836
-	bne	$6, $0, eq_else.90838
+	bne	$5, $0, eq_else.91326
+	bne	$6, $0, eq_else.91328
 	lf	$f0, 3366($0) # 255.000000
-	j	eq_cont.90839
-eq_else.90838:
+	j	eq_cont.91329
+eq_else.91328:
 	movf	$f0, $f30
-eq_cont.90839:
-	j	eq_cont.90837
-eq_else.90836:
-	bne	$6, $0, eq_else.90840
+eq_cont.91329:
+	j	eq_cont.91327
+eq_else.91326:
+	bne	$6, $0, eq_else.91330
 	movf	$f0, $f30
-	j	eq_cont.90841
-eq_else.90840:
+	j	eq_cont.91331
+eq_else.91330:
 	lf	$f0, 3366($0) # 255.000000
-eq_cont.90841:
-eq_cont.90837:
+eq_cont.91331:
+eq_cont.91327:
 	sf	$f0, 3132($1)
-	j	eq_cont.90835
-eq_else.90834:
+	j	eq_cont.91325
+eq_else.91324:
 	addi	$30, $0, 2
-	bne	$5, $30, eq_else.90842
+	bne	$5, $30, eq_else.91332
 	lf	$f0, 3125($1)
 	lf	$f1, 3363($0) # 0.250000
 	fmul	$f0, $f0, $f1
-	bltf	$f30, $f0, fle.90844
+	bltf	$f30, $f0, fle.91334
 	movf	$f1, $f29
-	j	fle_cont.90845
-fle.90844:
+	j	fle_cont.91335
+fle.91334:
 	movf	$f1, $f28
-fle_cont.90845:
+fle_cont.91335:
 	fmul	$f0, $f1, $f0
 	lf	$f2, 3395($0) # 6.283185
 	fdiv	$f3, $f0, $f2
 	floor	$f3, $f3
 	fmul	$f2, $f3, $f2
 	fsub	$f0, $f0, $f2
-	bltf	$f0, $f31, fle.90846
+	bltf	$f0, $f31, fle.91336
 	fsub	$f0, $f0, $f31
 	fneg	$f1, $f1
 	lf	$f2, 3393($0) # 1.570796
-	bltf	$f0, $f2, fle.90848
+	bltf	$f0, $f2, fle.91338
 	fsub	$f0, $f31, $f0
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.90850
+	bltf	$f2, $f0, fle.91340
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
@@ -32535,8 +32225,8 @@ fle_cont.90845:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90851
-fle.90850:
+	j	fle_cont.91341
+fle.91340:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3388($0) # 0.500000
@@ -32561,11 +32251,11 @@ fle.90850:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-fle_cont.90851:
-	j	fle_cont.90849
-fle.90848:
+fle_cont.91341:
+	j	fle_cont.91339
+fle.91338:
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.90852
+	bltf	$f2, $f0, fle.91342
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
@@ -32591,8 +32281,8 @@ fle.90848:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90853
-fle.90852:
+	j	fle_cont.91343
+fle.91342:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3388($0) # 0.500000
@@ -32617,15 +32307,15 @@ fle.90852:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-fle_cont.90853:
-fle_cont.90849:
-	j	fle_cont.90847
-fle.90846:
+fle_cont.91343:
+fle_cont.91339:
+	j	fle_cont.91337
+fle.91336:
 	lf	$f2, 3393($0) # 1.570796
-	bltf	$f0, $f2, fle.90854
+	bltf	$f0, $f2, fle.91344
 	fsub	$f0, $f31, $f0
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.90856
+	bltf	$f2, $f0, fle.91346
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
@@ -32651,8 +32341,8 @@ fle.90846:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90857
-fle.90856:
+	j	fle_cont.91347
+fle.91346:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3388($0) # 0.500000
@@ -32677,11 +32367,11 @@ fle.90856:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-fle_cont.90857:
-	j	fle_cont.90855
-fle.90854:
+fle_cont.91347:
+	j	fle_cont.91345
+fle.91344:
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.90858
+	bltf	$f2, $f0, fle.91348
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
@@ -32707,8 +32397,8 @@ fle.90854:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90859
-fle.90858:
+	j	fle_cont.91349
+fle.91348:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3388($0) # 0.500000
@@ -32733,9 +32423,9 @@ fle.90858:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f1, $f0
-fle_cont.90859:
-fle_cont.90855:
-fle_cont.90847:
+fle_cont.91349:
+fle_cont.91345:
+fle_cont.91337:
 	fmul	$f0, $f0, $f0
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f1, $f1, $f0
@@ -32744,16 +32434,15 @@ fle_cont.90847:
 	fsub	$f0, $f28, $f0
 	fmul	$f0, $f1, $f0
 	sf	$f0, 3132($1)
-	j	eq_cont.90843
-eq_else.90842:
+	j	eq_cont.91333
+eq_else.91332:
 	addi	$30, $0, 3
-	bne	$5, $30, eq_else.90860
+	bne	$5, $30, eq_else.91350
 	lf	$f0, 3125($0)
 	lw	$5, 5($2)
 	lf	$f1, 0($5)
 	fsub	$f0, $f0, $f1
-	addi	$5, $0, 2
-	lf	$f1, 3125($5)
+	lf	$f1, 3125($26)
 	lw	$5, 5($2)
 	lf	$f2, 2($5)
 	fsub	$f1, $f1, $f2
@@ -32767,25 +32456,25 @@ eq_else.90842:
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3368($0) # 3.141593
 	fmul	$f0, $f0, $f1
-	bltf	$f30, $f0, fle.90862
+	bltf	$f30, $f0, fle.91352
 	movf	$f1, $f29
-	j	fle_cont.90863
-fle.90862:
+	j	fle_cont.91353
+fle.91352:
 	movf	$f1, $f28
-fle_cont.90863:
+fle_cont.91353:
 	fmul	$f0, $f1, $f0
 	lf	$f1, 3395($0) # 6.283185
 	fdiv	$f2, $f0, $f1
 	floor	$f2, $f2
 	fmul	$f1, $f2, $f1
 	fsub	$f0, $f0, $f1
-	bltf	$f0, $f31, fle.90864
+	bltf	$f0, $f31, fle.91354
 	fsub	$f0, $f0, $f31
 	lf	$f1, 3393($0) # 1.570796
-	bltf	$f0, $f1, fle.90866
+	bltf	$f0, $f1, fle.91356
 	fsub	$f0, $f31, $f0
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.90868
+	bltf	$f1, $f0, fle.91358
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
@@ -32808,8 +32497,8 @@ fle_cont.90863:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-	j	fle_cont.90869
-fle.90868:
+	j	fle_cont.91359
+fle.91358:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
@@ -32837,11 +32526,11 @@ fle.90868:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-fle_cont.90869:
-	j	fle_cont.90867
-fle.90866:
+fle_cont.91359:
+	j	fle_cont.91357
+fle.91356:
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.90870
+	bltf	$f1, $f0, fle.91360
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
@@ -32864,8 +32553,8 @@ fle.90866:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-	j	fle_cont.90871
-fle.90870:
+	j	fle_cont.91361
+fle.91360:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
@@ -32893,15 +32582,15 @@ fle.90870:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-fle_cont.90871:
-fle_cont.90867:
-	j	fle_cont.90865
-fle.90864:
+fle_cont.91361:
+fle_cont.91357:
+	j	fle_cont.91355
+fle.91354:
 	lf	$f1, 3393($0) # 1.570796
-	bltf	$f0, $f1, fle.90872
+	bltf	$f0, $f1, fle.91362
 	fsub	$f0, $f31, $f0
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.90874
+	bltf	$f1, $f0, fle.91364
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
@@ -32924,8 +32613,8 @@ fle.90864:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-	j	fle_cont.90875
-fle.90874:
+	j	fle_cont.91365
+fle.91364:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
@@ -32953,11 +32642,11 @@ fle.90874:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-fle_cont.90875:
-	j	fle_cont.90873
-fle.90872:
+fle_cont.91365:
+	j	fle_cont.91363
+fle.91362:
 	lf	$f1, 3392($0) # 0.785398
-	bltf	$f1, $f0, fle.90876
+	bltf	$f1, $f0, fle.91366
 	lf	$f1, 3388($0) # 0.500000
 	lf	$f2, 3387($0) # 0.041664
 	lf	$f3, 3386($0) # 0.001370
@@ -32980,8 +32669,8 @@ fle.90872:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-	j	fle_cont.90877
-fle.90876:
+	j	fle_cont.91367
+fle.91366:
 	lf	$f1, 3393($0) # 1.570796
 	fsub	$f0, $f1, $f0
 	lf	$f1, 3391($0) # 0.166667
@@ -33009,22 +32698,21 @@ fle.90876:
 	fmul	$f0, $f0, $f3
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-fle_cont.90877:
-fle_cont.90873:
-fle_cont.90865:
+fle_cont.91367:
+fle_cont.91363:
+fle_cont.91355:
 	fmul	$f0, $f0, $f0
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f1, $f0, $f1
 	sf	$f1, 3132($1)
-	addi	$5, $0, 2
 	fsub	$f0, $f28, $f0
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f0, $f0, $f1
-	sf	$f0, 3132($5)
-	j	eq_cont.90861
-eq_else.90860:
+	sf	$f0, 3132($26)
+	j	eq_cont.91351
+eq_else.91350:
 	addi	$30, $0, 4
-	bne	$5, $30, eq_else.90878
+	bne	$5, $30, eq_else.91368
 	lf	$f0, 3125($0)
 	lw	$5, 5($2)
 	lf	$f1, 0($5)
@@ -33033,8 +32721,7 @@ eq_else.90860:
 	lf	$f1, 0($5)
 	sqrt	$f1, $f1
 	fmul	$f0, $f0, $f1
-	addi	$5, $0, 2
-	lf	$f1, 3125($5)
+	lf	$f1, 3125($26)
 	lw	$5, 5($2)
 	lf	$f2, 2($5)
 	fsub	$f1, $f1, $f2
@@ -33049,20 +32736,20 @@ eq_else.90860:
 	lf	$f4, 3379($0) # 0.000100
 	sltf	$5, $f3, $f4
 	sf	$f2, 55($3)
-	bne	$5, $0, eq_else.90880
+	bne	$5, $0, eq_else.91370
 	fdiv	$f0, $f1, $f0
 	fabs	$f0, $f0
-	bltf	$f30, $f0, fle.90882
+	bltf	$f30, $f0, fle.91372
 	movf	$f1, $f29
-	j	fle_cont.90883
-fle.90882:
+	j	fle_cont.91373
+fle.91372:
 	movf	$f1, $f28
-fle_cont.90883:
+fle_cont.91373:
 	fmul	$f0, $f1, $f0
 	lf	$f3, 3377($0) # 0.437500
-	bltf	$f0, $f3, fle.90884
+	bltf	$f0, $f3, fle.91374
 	lf	$f3, 3370($0) # 2.437500
-	bltf	$f0, $f3, fle.90886
+	bltf	$f0, $f3, fle.91376
 	lf	$f3, 3393($0) # 1.570796
 	fdiv	$f0, $f28, $f0
 	sf	$f1, 56($3)
@@ -33115,8 +32802,8 @@ fle_cont.90883:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 60($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 61($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 62($3)
 	addi	$3, $3, 63
@@ -33131,8 +32818,8 @@ fle_cont.90883:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 61($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 62($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 63($3)
 	addi	$3, $3, 64
@@ -33148,8 +32835,8 @@ fle_cont.90883:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 62($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 63($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 64($3)
 	addi	$3, $3, 65
@@ -33168,8 +32855,8 @@ fle_cont.90883:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 56($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90887
-fle.90886:
+	j	fle_cont.91377
+fle.91376:
 	lf	$f3, 3392($0) # 0.785398
 	fsub	$f4, $f0, $f28
 	fadd	$f0, $f0, $f28
@@ -33224,8 +32911,8 @@ fle.90886:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 67($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 68($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 69($3)
 	addi	$3, $3, 70
@@ -33240,8 +32927,8 @@ fle.90886:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 68($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 69($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 70($3)
 	addi	$3, $3, 71
@@ -33257,8 +32944,8 @@ fle.90886:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 69($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 70($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 71($3)
 	addi	$3, $3, 72
@@ -33277,9 +32964,9 @@ fle.90886:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 56($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90887:
-	j	fle_cont.90885
-fle.90884:
+fle_cont.91377:
+	j	fle_cont.91375
+fle.91374:
 	sf	$f1, 56($3)
 	sf	$f0, 71($3)
 	mov	$2, $0
@@ -33329,8 +33016,8 @@ fle.90884:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 73($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 74($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 75($3)
 	addi	$3, $3, 76
@@ -33345,8 +33032,8 @@ fle.90884:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 74($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 75($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 76($3)
 	addi	$3, $3, 77
@@ -33362,8 +33049,8 @@ fle.90884:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 75($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 76($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 77($3)
 	addi	$3, $3, 78
@@ -33380,15 +33067,15 @@ fle.90884:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 56($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90885:
+fle_cont.91375:
 	lf	$f1, 3369($0) # 30.000000
 	fmul	$f0, $f0, $f1
 	lf	$f1, 3368($0) # 3.141593
 	fdiv	$f0, $f0, $f1
-	j	eq_cont.90881
-eq_else.90880:
+	j	eq_cont.91371
+eq_else.91370:
 	lf	$f0, 3378($0) # 15.000000
-eq_cont.90881:
+eq_cont.91371:
 	floor	$f1, $f0
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3125($1)
@@ -33405,20 +33092,20 @@ eq_cont.90881:
 	lf	$f4, 3379($0) # 0.000100
 	sltf	$5, $f3, $f4
 	sf	$f0, 77($3)
-	bne	$5, $0, eq_else.90888
+	bne	$5, $0, eq_else.91378
 	fdiv	$f1, $f1, $f2
 	fabs	$f1, $f1
-	bltf	$f30, $f1, fle.90890
+	bltf	$f30, $f1, fle.91380
 	movf	$f2, $f29
-	j	fle_cont.90891
-fle.90890:
+	j	fle_cont.91381
+fle.91380:
 	movf	$f2, $f28
-fle_cont.90891:
+fle_cont.91381:
 	fmul	$f1, $f2, $f1
 	lf	$f3, 3377($0) # 0.437500
-	bltf	$f1, $f3, fle.90892
+	bltf	$f1, $f3, fle.91382
 	lf	$f3, 3370($0) # 2.437500
-	bltf	$f1, $f3, fle.90894
+	bltf	$f1, $f3, fle.91384
 	lf	$f3, 3393($0) # 1.570796
 	fdiv	$f1, $f28, $f1
 	sf	$f2, 78($3)
@@ -33472,8 +33159,8 @@ fle_cont.90891:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 82($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 83($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 84($3)
 	addi	$3, $3, 85
@@ -33488,8 +33175,8 @@ fle_cont.90891:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 83($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 84($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 85($3)
 	addi	$3, $3, 86
@@ -33505,8 +33192,8 @@ fle_cont.90891:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 84($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 85($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 86($3)
 	addi	$3, $3, 87
@@ -33525,8 +33212,8 @@ fle_cont.90891:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 78($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.90895
-fle.90894:
+	j	fle_cont.91385
+fle.91384:
 	lf	$f3, 3392($0) # 0.785398
 	fsub	$f4, $f1, $f28
 	fadd	$f1, $f1, $f28
@@ -33582,8 +33269,8 @@ fle.90894:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 89($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 90($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 91($3)
 	addi	$3, $3, 92
@@ -33598,8 +33285,8 @@ fle.90894:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 90($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 91($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 92($3)
 	addi	$3, $3, 93
@@ -33615,8 +33302,8 @@ fle.90894:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 91($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 92($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 93($3)
 	addi	$3, $3, 94
@@ -33635,9 +33322,9 @@ fle.90894:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 78($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90895:
-	j	fle_cont.90893
-fle.90892:
+fle_cont.91385:
+	j	fle_cont.91383
+fle.91382:
 	sf	$f2, 78($3)
 	sf	$f1, 93($3)
 	mov	$2, $0
@@ -33688,8 +33375,8 @@ fle.90892:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 95($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 96($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 97($3)
 	addi	$3, $3, 98
@@ -33704,8 +33391,8 @@ fle.90892:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 96($3)
 	fadd	$f0, $f2, $f0
-	addi	$2, $0, 2
 	sf	$f0, 97($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 98($3)
 	addi	$3, $3, 99
@@ -33721,8 +33408,8 @@ fle.90892:
 	fmul	$f0, $f0, $f2
 	lf	$f2, 97($3)
 	fsub	$f0, $f2, $f0
-	addi	$2, $0, 3
 	sf	$f0, 98($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 99($3)
 	addi	$3, $3, 100
@@ -33739,15 +33426,15 @@ fle.90892:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 78($3)
 	fmul	$f0, $f1, $f0
-fle_cont.90893:
+fle_cont.91383:
 	lf	$f1, 3369($0) # 30.000000
 	fmul	$f0, $f0, $f1
 	lf	$f1, 3368($0) # 3.141593
 	fdiv	$f0, $f0, $f1
-	j	eq_cont.90889
-eq_else.90888:
+	j	eq_cont.91379
+eq_else.91378:
 	lf	$f0, 3378($0) # 15.000000
-eq_cont.90889:
+eq_cont.91379:
 	floor	$f1, $f0
 	fsub	$f0, $f0, $f1
 	lf	$f1, 3367($0) # 0.150000
@@ -33761,37 +33448,36 @@ eq_cont.90889:
 	fmul	$f0, $f0, $f0
 	fsub	$f0, $f1, $f0
 	sltf	$2, $f0, $f30
-	bne	$2, $0, eq_else.90896
-	j	eq_cont.90897
-eq_else.90896:
+	bne	$2, $0, eq_else.91386
+	j	eq_cont.91387
+eq_else.91386:
 	movf	$f0, $f30
-eq_cont.90897:
-	addi	$2, $0, 2
+eq_cont.91387:
 	lf	$f1, 3366($0) # 255.000000
 	fmul	$f0, $f1, $f0
 	lf	$f1, 3365($0) # 0.300000
 	fdiv	$f0, $f0, $f1
-	sf	$f0, 3132($2)
-	j	eq_cont.90879
-eq_else.90878:
-eq_cont.90879:
-eq_cont.90861:
-eq_cont.90843:
-eq_cont.90835:
+	sf	$f0, 3132($26)
+	j	eq_cont.91369
+eq_else.91368:
+eq_cont.91369:
+eq_cont.91351:
+eq_cont.91333:
+eq_cont.91325:
 	lw	$5, 3121($0)
 	lw	$2, 0($5)
 	lw	$6, 0($2)
-	bne	$6, $28, eq_else.90898
+	bne	$6, $28, eq_else.91388
 	mov	$2, $0
-	j	eq_cont.90899
-eq_else.90898:
+	j	eq_cont.91389
+eq_else.91388:
 	sw	$2, 99($3)
 	sw	$5, 100($3)
 	addi	$30, $0, 99
-	bne	$6, $30, eq_else.90900
+	bne	$6, $30, eq_else.91390
 	mov	$2, $1
-	j	eq_cont.90901
-eq_else.90900:
+	j	eq_cont.91391
+eq_else.91390:
 	lw	$7, 3001($6)
 	lf	$f0, 3125($0)
 	lw	$8, 5($7)
@@ -33801,8 +33487,7 @@ eq_else.90900:
 	lw	$8, 5($7)
 	lf	$f2, 1($8)
 	fsub	$f1, $f1, $f2
-	addi	$8, $0, 2
-	lf	$f2, 3125($8)
+	lf	$f2, 3125($26)
 	lw	$8, 5($7)
 	lf	$f3, 2($8)
 	fsub	$f2, $f2, $f3
@@ -33811,7 +33496,7 @@ eq_else.90900:
 	add	$30, $8, $6
 	lw	$6, 0($30)
 	lw	$8, 1($7)
-	bne	$8, $1, eq_else.90902
+	bne	$8, $1, eq_else.91392
 	addi	$8, $0, 3169
 	lw	$8, 0($8)
 	lf	$f3, 0($6)
@@ -33825,10 +33510,10 @@ eq_else.90900:
 	lw	$9, 4($7)
 	lf	$f5, 1($9)
 	sltf	$9, $f4, $f5
-	bne	$9, $0, eq_else.90904
+	bne	$9, $0, eq_else.91394
 	mov	$9, $0
-	j	eq_cont.90905
-eq_else.90904:
+	j	eq_cont.91395
+eq_else.91394:
 	lf	$f4, 2($8)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
@@ -33836,26 +33521,26 @@ eq_else.90904:
 	lw	$9, 4($7)
 	lf	$f5, 2($9)
 	sltf	$9, $f4, $f5
-	bne	$9, $0, eq_else.90906
+	bne	$9, $0, eq_else.91396
 	mov	$9, $0
-	j	eq_cont.90907
-eq_else.90906:
+	j	eq_cont.91397
+eq_else.91396:
 	lf	$f4, 1($6)
-	beqf	$f4, $f30, feq.90908
+	beqf	$f4, $f30, feq.91398
 	mov	$9, $0
-	j	feq_cont.90909
-feq.90908:
+	j	feq_cont.91399
+feq.91398:
 	mov	$9, $1
-feq_cont.90909:
-	bne	$9, $0, eq_else.90910
+feq_cont.91399:
+	bne	$9, $0, eq_else.91400
 	mov	$9, $1
-	j	eq_cont.90911
-eq_else.90910:
+	j	eq_cont.91401
+eq_else.91400:
 	mov	$9, $0
-eq_cont.90911:
-eq_cont.90907:
-eq_cont.90905:
-	bne	$9, $0, eq_else.90912
+eq_cont.91401:
+eq_cont.91397:
+eq_cont.91395:
+	bne	$9, $0, eq_else.91402
 	lf	$f3, 2($6)
 	fsub	$f3, $f3, $f1
 	lf	$f4, 3($6)
@@ -33867,10 +33552,10 @@ eq_cont.90905:
 	lw	$9, 4($7)
 	lf	$f5, 0($9)
 	sltf	$9, $f4, $f5
-	bne	$9, $0, eq_else.90914
+	bne	$9, $0, eq_else.91404
 	mov	$9, $0
-	j	eq_cont.90915
-eq_else.90914:
+	j	eq_cont.91405
+eq_else.91404:
 	lf	$f4, 2($8)
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f2
@@ -33878,26 +33563,26 @@ eq_else.90914:
 	lw	$9, 4($7)
 	lf	$f5, 2($9)
 	sltf	$9, $f4, $f5
-	bne	$9, $0, eq_else.90916
+	bne	$9, $0, eq_else.91406
 	mov	$9, $0
-	j	eq_cont.90917
-eq_else.90916:
+	j	eq_cont.91407
+eq_else.91406:
 	lf	$f4, 3($6)
-	beqf	$f4, $f30, feq.90918
+	beqf	$f4, $f30, feq.91408
 	mov	$9, $0
-	j	feq_cont.90919
-feq.90918:
+	j	feq_cont.91409
+feq.91408:
 	mov	$9, $1
-feq_cont.90919:
-	bne	$9, $0, eq_else.90920
+feq_cont.91409:
+	bne	$9, $0, eq_else.91410
 	mov	$9, $1
-	j	eq_cont.90921
-eq_else.90920:
+	j	eq_cont.91411
+eq_else.91410:
 	mov	$9, $0
-eq_cont.90921:
-eq_cont.90917:
-eq_cont.90915:
-	bne	$9, $0, eq_else.90922
+eq_cont.91411:
+eq_cont.91407:
+eq_cont.91405:
+	bne	$9, $0, eq_else.91412
 	lf	$f3, 4($6)
 	fsub	$f2, $f3, $f2
 	lf	$f3, 5($6)
@@ -33909,10 +33594,10 @@ eq_cont.90915:
 	lw	$9, 4($7)
 	lf	$f3, 0($9)
 	sltf	$9, $f0, $f3
-	bne	$9, $0, eq_else.90924
+	bne	$9, $0, eq_else.91414
 	mov	$6, $0
-	j	eq_cont.90925
-eq_else.90924:
+	j	eq_cont.91415
+eq_else.91414:
 	lf	$f0, 1($8)
 	fmul	$f0, $f2, $f0
 	fadd	$f0, $f0, $f1
@@ -33920,52 +33605,52 @@ eq_else.90924:
 	lw	$7, 4($7)
 	lf	$f1, 1($7)
 	sltf	$7, $f0, $f1
-	bne	$7, $0, eq_else.90926
+	bne	$7, $0, eq_else.91416
 	mov	$6, $0
-	j	eq_cont.90927
-eq_else.90926:
+	j	eq_cont.91417
+eq_else.91416:
 	lf	$f0, 5($6)
-	beqf	$f0, $f30, feq.90928
+	beqf	$f0, $f30, feq.91418
 	mov	$6, $0
-	j	feq_cont.90929
-feq.90928:
+	j	feq_cont.91419
+feq.91418:
 	mov	$6, $1
-feq_cont.90929:
-	bne	$6, $0, eq_else.90930
+feq_cont.91419:
+	bne	$6, $0, eq_else.91420
 	mov	$6, $1
-	j	eq_cont.90931
-eq_else.90930:
+	j	eq_cont.91421
+eq_else.91420:
 	mov	$6, $0
-eq_cont.90931:
-eq_cont.90927:
-eq_cont.90925:
-	bne	$6, $0, eq_else.90932
+eq_cont.91421:
+eq_cont.91417:
+eq_cont.91415:
+	bne	$6, $0, eq_else.91422
 	mov	$6, $0
-	j	eq_cont.90933
-eq_else.90932:
+	j	eq_cont.91423
+eq_else.91422:
 	sf	$f2, 3122($0)
-	addi	$6, $0, 3
-eq_cont.90933:
-	j	eq_cont.90923
-eq_else.90922:
+	mov	$6, $27
+eq_cont.91423:
+	j	eq_cont.91413
+eq_else.91412:
 	sf	$f3, 3122($0)
-	addi	$6, $0, 2
-eq_cont.90923:
-	j	eq_cont.90913
-eq_else.90912:
+	mov	$6, $26
+eq_cont.91413:
+	j	eq_cont.91403
+eq_else.91402:
 	sf	$f3, 3122($0)
 	mov	$6, $1
-eq_cont.90913:
-	j	eq_cont.90903
-eq_else.90902:
+eq_cont.91403:
+	j	eq_cont.91393
+eq_else.91392:
 	addi	$30, $0, 2
-	bne	$8, $30, eq_else.90934
+	bne	$8, $30, eq_else.91424
 	lf	$f3, 0($6)
 	sltf	$7, $f3, $f30
-	bne	$7, $0, eq_else.90936
+	bne	$7, $0, eq_else.91426
 	mov	$6, $0
-	j	eq_cont.90937
-eq_else.90936:
+	j	eq_cont.91427
+eq_else.91426:
 	lf	$f3, 1($6)
 	fmul	$f0, $f3, $f0
 	lf	$f3, 2($6)
@@ -33976,17 +33661,17 @@ eq_else.90936:
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3122($0)
 	mov	$6, $1
-eq_cont.90937:
-	j	eq_cont.90935
-eq_else.90934:
+eq_cont.91427:
+	j	eq_cont.91425
+eq_else.91424:
 	lf	$f3, 0($6)
-	beqf	$f3, $f30, feq.90938
+	beqf	$f3, $f30, feq.91428
 	mov	$8, $0
-	j	feq_cont.90939
-feq.90938:
+	j	feq_cont.91429
+feq.91428:
 	mov	$8, $1
-feq_cont.90939:
-	bne	$8, $0, eq_else.90940
+feq_cont.91429:
+	bne	$8, $0, eq_else.91430
 	lf	$f4, 1($6)
 	fmul	$f4, $f4, $f0
 	lf	$f5, 2($6)
@@ -34010,10 +33695,10 @@ feq_cont.90939:
 	fmul	$f6, $f6, $f7
 	fadd	$f5, $f5, $f6
 	lw	$8, 3($7)
-	bne	$8, $0, eq_else.90942
+	bne	$8, $0, eq_else.91432
 	movf	$f0, $f5
-	j	eq_cont.90943
-eq_else.90942:
+	j	eq_cont.91433
+eq_else.91432:
 	fmul	$f6, $f1, $f2
 	lw	$8, 9($7)
 	lf	$f7, 0($8)
@@ -34029,61 +33714,61 @@ eq_else.90942:
 	lf	$f1, 2($8)
 	fmul	$f0, $f0, $f1
 	fadd	$f0, $f2, $f0
-eq_cont.90943:
+eq_cont.91433:
 	lw	$8, 1($7)
 	addi	$30, $0, 3
-	bne	$8, $30, eq_else.90944
+	bne	$8, $30, eq_else.91434
 	fsub	$f0, $f0, $f28
-	j	eq_cont.90945
-eq_else.90944:
-eq_cont.90945:
+	j	eq_cont.91435
+eq_else.91434:
+eq_cont.91435:
 	fmul	$f1, $f4, $f4
 	fmul	$f0, $f3, $f0
 	fsub	$f0, $f1, $f0
 	sltf	$8, $f30, $f0
-	bne	$8, $0, eq_else.90946
+	bne	$8, $0, eq_else.91436
 	mov	$6, $0
-	j	eq_cont.90947
-eq_else.90946:
+	j	eq_cont.91437
+eq_else.91436:
 	lw	$7, 6($7)
-	bne	$7, $0, eq_else.90948
+	bne	$7, $0, eq_else.91438
 	sqrt	$f0, $f0
 	fsub	$f0, $f4, $f0
 	lf	$f1, 4($6)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
-	j	eq_cont.90949
-eq_else.90948:
+	j	eq_cont.91439
+eq_else.91438:
 	sqrt	$f0, $f0
 	fadd	$f0, $f4, $f0
 	lf	$f1, 4($6)
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3122($0)
-eq_cont.90949:
+eq_cont.91439:
 	mov	$6, $1
-eq_cont.90947:
-	j	eq_cont.90941
-eq_else.90940:
+eq_cont.91437:
+	j	eq_cont.91431
+eq_else.91430:
 	mov	$6, $0
-eq_cont.90941:
-eq_cont.90935:
-eq_cont.90903:
-	bne	$6, $0, eq_else.90950
+eq_cont.91431:
+eq_cont.91425:
+eq_cont.91393:
+	bne	$6, $0, eq_else.91440
 	mov	$2, $0
-	j	eq_cont.90951
-eq_else.90950:
+	j	eq_cont.91441
+eq_else.91440:
 	lf	$f0, 3122($0)
 	lf	$f1, 3382($0) # -0.100000
 	sltf	$6, $f0, $f1
-	bne	$6, $0, eq_else.90952
+	bne	$6, $0, eq_else.91442
 	mov	$2, $0
-	j	eq_cont.90953
-eq_else.90952:
+	j	eq_cont.91443
+eq_else.91442:
 	lw	$6, 1($2)
-	bne	$6, $28, eq_else.90954
+	bne	$6, $28, eq_else.91444
 	mov	$2, $0
-	j	eq_cont.90955
-eq_else.90954:
+	j	eq_cont.91445
+eq_else.91444:
 	lw	$6, 3071($6)
 	mov	$5, $6
 	mov	$2, $0
@@ -34092,13 +33777,13 @@ eq_else.90954:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -102
 	lw	$31, 101($3)
-	bne	$2, $0, eq_else.90956
+	bne	$2, $0, eq_else.91446
 	lw	$2, 99($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.90958
+	bne	$5, $28, eq_else.91448
 	mov	$2, $0
-	j	eq_cont.90959
-eq_else.90958:
+	j	eq_cont.91449
+eq_else.91448:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 101($3)
@@ -34106,13 +33791,13 @@ eq_else.90958:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -102
 	lw	$31, 101($3)
-	bne	$2, $0, eq_else.90960
+	bne	$2, $0, eq_else.91450
 	lw	$2, 99($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.90962
+	bne	$5, $28, eq_else.91452
 	mov	$2, $0
-	j	eq_cont.90963
-eq_else.90962:
+	j	eq_cont.91453
+eq_else.91452:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 101($3)
@@ -34120,13 +33805,13 @@ eq_else.90962:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -102
 	lw	$31, 101($3)
-	bne	$2, $0, eq_else.90964
+	bne	$2, $0, eq_else.91454
 	lw	$2, 99($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.90966
+	bne	$5, $28, eq_else.91456
 	mov	$2, $0
-	j	eq_cont.90967
-eq_else.90966:
+	j	eq_cont.91457
+eq_else.91456:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 101($3)
@@ -34134,7 +33819,7 @@ eq_else.90966:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -102
 	lw	$31, 101($3)
-	bne	$2, $0, eq_else.90968
+	bne	$2, $0, eq_else.91458
 	addi	$2, $0, 5
 	lw	$5, 99($3)
 	sw	$31, 101($3)
@@ -34142,36 +33827,36 @@ eq_else.90966:
 	jal	shadow_check_one_or_group.2977
 	addi	$3, $3, -102
 	lw	$31, 101($3)
-	j	eq_cont.90969
-eq_else.90968:
+	j	eq_cont.91459
+eq_else.91458:
 	mov	$2, $1
-eq_cont.90969:
-eq_cont.90967:
-	j	eq_cont.90965
-eq_else.90964:
+eq_cont.91459:
+eq_cont.91457:
+	j	eq_cont.91455
+eq_else.91454:
 	mov	$2, $1
-eq_cont.90965:
-eq_cont.90963:
-	j	eq_cont.90961
-eq_else.90960:
+eq_cont.91455:
+eq_cont.91453:
+	j	eq_cont.91451
+eq_else.91450:
 	mov	$2, $1
-eq_cont.90961:
-eq_cont.90959:
-	j	eq_cont.90957
-eq_else.90956:
+eq_cont.91451:
+eq_cont.91449:
+	j	eq_cont.91447
+eq_else.91446:
 	mov	$2, $1
-eq_cont.90957:
-eq_cont.90955:
-	bne	$2, $0, eq_else.90970
+eq_cont.91447:
+eq_cont.91445:
+	bne	$2, $0, eq_else.91460
 	mov	$2, $0
-	j	eq_cont.90971
-eq_else.90970:
+	j	eq_cont.91461
+eq_else.91460:
 	mov	$2, $1
-eq_cont.90971:
-eq_cont.90953:
-eq_cont.90951:
-eq_cont.90901:
-	bne	$2, $0, eq_else.90972
+eq_cont.91461:
+eq_cont.91443:
+eq_cont.91441:
+eq_cont.91391:
+	bne	$2, $0, eq_else.91462
 	lw	$5, 100($3)
 	mov	$2, $1
 	sw	$31, 101($3)
@@ -34179,14 +33864,14 @@ eq_cont.90901:
 	jal	shadow_check_one_or_matrix.2980
 	addi	$3, $3, -102
 	lw	$31, 101($3)
-	j	eq_cont.90973
-eq_else.90972:
+	j	eq_cont.91463
+eq_else.91462:
 	lw	$2, 99($3)
 	lw	$5, 1($2)
-	bne	$5, $28, eq_else.90974
+	bne	$5, $28, eq_else.91464
 	mov	$2, $0
-	j	eq_cont.90975
-eq_else.90974:
+	j	eq_cont.91465
+eq_else.91464:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 101($3)
@@ -34194,13 +33879,13 @@ eq_else.90974:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -102
 	lw	$31, 101($3)
-	bne	$2, $0, eq_else.90976
+	bne	$2, $0, eq_else.91466
 	lw	$2, 99($3)
 	lw	$5, 2($2)
-	bne	$5, $28, eq_else.90978
+	bne	$5, $28, eq_else.91468
 	mov	$2, $0
-	j	eq_cont.90979
-eq_else.90978:
+	j	eq_cont.91469
+eq_else.91468:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 101($3)
@@ -34208,13 +33893,13 @@ eq_else.90978:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -102
 	lw	$31, 101($3)
-	bne	$2, $0, eq_else.90980
+	bne	$2, $0, eq_else.91470
 	lw	$2, 99($3)
 	lw	$5, 3($2)
-	bne	$5, $28, eq_else.90982
+	bne	$5, $28, eq_else.91472
 	mov	$2, $0
-	j	eq_cont.90983
-eq_else.90982:
+	j	eq_cont.91473
+eq_else.91472:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 101($3)
@@ -34222,13 +33907,13 @@ eq_else.90982:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -102
 	lw	$31, 101($3)
-	bne	$2, $0, eq_else.90984
+	bne	$2, $0, eq_else.91474
 	lw	$2, 99($3)
 	lw	$5, 4($2)
-	bne	$5, $28, eq_else.90986
+	bne	$5, $28, eq_else.91476
 	mov	$2, $0
-	j	eq_cont.90987
-eq_else.90986:
+	j	eq_cont.91477
+eq_else.91476:
 	lw	$5, 3071($5)
 	mov	$2, $0
 	sw	$31, 101($3)
@@ -34236,7 +33921,7 @@ eq_else.90986:
 	jal	shadow_check_and_group.2974
 	addi	$3, $3, -102
 	lw	$31, 101($3)
-	bne	$2, $0, eq_else.90988
+	bne	$2, $0, eq_else.91478
 	addi	$2, $0, 5
 	lw	$5, 99($3)
 	sw	$31, 101($3)
@@ -34244,27 +33929,27 @@ eq_else.90986:
 	jal	shadow_check_one_or_group.2977
 	addi	$3, $3, -102
 	lw	$31, 101($3)
-	j	eq_cont.90989
-eq_else.90988:
+	j	eq_cont.91479
+eq_else.91478:
 	mov	$2, $1
-eq_cont.90989:
-eq_cont.90987:
-	j	eq_cont.90985
-eq_else.90984:
+eq_cont.91479:
+eq_cont.91477:
+	j	eq_cont.91475
+eq_else.91474:
 	mov	$2, $1
-eq_cont.90985:
-eq_cont.90983:
-	j	eq_cont.90981
-eq_else.90980:
+eq_cont.91475:
+eq_cont.91473:
+	j	eq_cont.91471
+eq_else.91470:
 	mov	$2, $1
-eq_cont.90981:
-eq_cont.90979:
-	j	eq_cont.90977
-eq_else.90976:
+eq_cont.91471:
+eq_cont.91469:
+	j	eq_cont.91467
+eq_else.91466:
 	mov	$2, $1
-eq_cont.90977:
-eq_cont.90975:
-	bne	$2, $0, eq_else.90990
+eq_cont.91467:
+eq_cont.91465:
+	bne	$2, $0, eq_else.91480
 	lw	$5, 100($3)
 	mov	$2, $1
 	sw	$31, 101($3)
@@ -34272,13 +33957,13 @@ eq_cont.90975:
 	jal	shadow_check_one_or_matrix.2980
 	addi	$3, $3, -102
 	lw	$31, 101($3)
-	j	eq_cont.90991
-eq_else.90990:
+	j	eq_cont.91481
+eq_else.91480:
 	mov	$2, $1
-eq_cont.90991:
-eq_cont.90973:
-eq_cont.90899:
-	bne	$2, $0, eq_else.90992
+eq_cont.91481:
+eq_cont.91463:
+eq_cont.91389:
+	bne	$2, $0, eq_else.91482
 	lf	$f0, 3129($0)
 	lf	$f1, 3067($0)
 	fmul	$f0, $f0, $f1
@@ -34286,19 +33971,17 @@ eq_cont.90899:
 	lf	$f2, 3067($1)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	addi	$2, $0, 2
-	lf	$f1, 3129($2)
-	addi	$2, $0, 2
-	lf	$f2, 3067($2)
+	lf	$f1, 3129($26)
+	lf	$f2, 3067($26)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	fneg	$f0, $f0
 	sltf	$2, $f30, $f0
-	bne	$2, $0, eq_else.90994
+	bne	$2, $0, eq_else.91484
 	movf	$f0, $f30
-	j	eq_cont.90995
-eq_else.90994:
-eq_cont.90995:
+	j	eq_cont.91485
+eq_else.91484:
+eq_cont.91485:
 	lf	$f1, 52($3)
 	fmul	$f0, $f1, $f0
 	lw	$2, 54($3)
@@ -34315,19 +33998,16 @@ eq_cont.90995:
 	fmul	$f2, $f0, $f2
 	fadd	$f1, $f1, $f2
 	sf	$f1, 3135($1)
-	addi	$2, $0, 2
-	addi	$5, $0, 2
-	lf	$f1, 3135($5)
-	addi	$5, $0, 2
-	lf	$f2, 3132($5)
+	lf	$f1, 3135($26)
+	lf	$f2, 3132($26)
 	fmul	$f0, $f0, $f2
 	fadd	$f0, $f1, $f0
-	sf	$f0, 3135($2)
-	j	eq_cont.90993
-eq_else.90992:
-eq_cont.90993:
-eq_cont.90815:
-eq_cont.90623:
+	sf	$f0, 3135($26)
+	j	eq_cont.91483
+eq_else.91482:
+eq_cont.91483:
+eq_cont.91305:
+eq_cont.91113:
 	addi	$7, $0, 116
 	lw	$2, 2($3)
 	lw	$5, 1($3)
@@ -34335,23 +34015,23 @@ eq_cont.90623:
 	j	iter_trace_diffuse_rays.3041
 do_without_neighbors.3063:
 	addi	$30, $0, 4
-	ble	$5, $30, le.90996
+	ble	$5, $30, le.91486
 	jr $31
-le.90996:
+le.91486:
 	lw	$6, 2($2)
 	add	$30, $6, $5
 	lw	$6, 0($30)
-	bge	$6, $0, ge.90998
+	bge	$6, $0, ge.91488
 	jr $31
-ge.90998:
+ge.91488:
 	lw	$6, 3($2)
 	add	$30, $6, $5
 	lw	$6, 0($30)
 	sw	$2, 0($3)
 	sw	$5, 1($3)
-	bne	$6, $0, eq_else.91000
-	j	eq_cont.91001
-eq_else.91000:
+	bne	$6, $0, eq_else.91490
+	j	eq_cont.91491
+eq_else.91490:
 	lw	$6, 5($2)
 	lw	$7, 7($2)
 	lw	$8, 1($2)
@@ -34362,9 +34042,8 @@ eq_else.91000:
 	sf	$f0, 3135($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3135($1)
-	addi	$10, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3135($10)
+	sf	$f0, 3135($26)
 	lw	$6, 6($2)
 	lw	$6, 0($6)
 	add	$30, $7, $5
@@ -34375,17 +34054,16 @@ eq_else.91000:
 	sw	$7, 3($3)
 	sw	$8, 4($3)
 	sw	$6, 5($3)
-	bne	$6, $0, eq_else.91002
-	j	eq_cont.91003
-eq_else.91002:
+	bne	$6, $0, eq_else.91492
+	j	eq_cont.91493
+eq_else.91492:
 	lw	$10, 3164($0)
 	lf	$f0, 0($8)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($8)
 	sf	$f0, 3149($1)
-	addi	$11, $0, 2
 	lf	$f0, 2($8)
-	sf	$f0, 3149($11)
+	sf	$f0, 3149($26)
 	lw	$11, 3000($0)
 	addi	$11, $11, -1
 	sw	$10, 6($3)
@@ -34405,20 +34083,19 @@ eq_else.91002:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -8
 	lw	$31, 7($3)
-eq_cont.91003:
+eq_cont.91493:
 	lw	$2, 5($3)
-	bne	$2, $1, eq_else.91004
-	j	eq_cont.91005
-eq_else.91004:
+	bne	$2, $1, eq_else.91494
+	j	eq_cont.91495
+eq_else.91494:
 	lw	$5, 3164($1)
 	lw	$6, 4($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 7($3)
@@ -34438,22 +34115,20 @@ eq_else.91004:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -9
 	lw	$31, 8($3)
-eq_cont.91005:
+eq_cont.91495:
 	lw	$2, 5($3)
 	addi	$30, $0, 2
-	bne	$2, $30, eq_else.91006
-	j	eq_cont.91007
-eq_else.91006:
-	addi	$5, $0, 2
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91496
+	j	eq_cont.91497
+eq_else.91496:
+	lw	$5, 3164($26)
 	lw	$6, 4($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 8($3)
@@ -34473,22 +34148,20 @@ eq_else.91006:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -10
 	lw	$31, 9($3)
-eq_cont.91007:
+eq_cont.91497:
 	lw	$2, 5($3)
 	addi	$30, $0, 3
-	bne	$2, $30, eq_else.91008
-	j	eq_cont.91009
-eq_else.91008:
-	addi	$5, $0, 3
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91498
+	j	eq_cont.91499
+eq_else.91498:
+	lw	$5, 3164($27)
 	lw	$6, 4($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 9($3)
@@ -34508,12 +34181,12 @@ eq_else.91008:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -11
 	lw	$31, 10($3)
-eq_cont.91009:
+eq_cont.91499:
 	lw	$2, 5($3)
 	addi	$30, $0, 4
-	bne	$2, $30, eq_else.91010
-	j	eq_cont.91011
-eq_else.91010:
+	bne	$2, $30, eq_else.91500
+	j	eq_cont.91501
+eq_else.91500:
 	addi	$2, $0, 4
 	lw	$2, 3164($2)
 	lw	$5, 4($3)
@@ -34521,9 +34194,8 @@ eq_else.91010:
 	sf	$f0, 3149($0)
 	lf	$f0, 1($5)
 	sf	$f0, 3149($1)
-	addi	$6, $0, 2
 	lf	$f0, 2($5)
-	sf	$f0, 3149($6)
+	sf	$f0, 3149($26)
 	lw	$6, 3000($0)
 	addi	$6, $6, -1
 	sw	$2, 10($3)
@@ -34543,7 +34215,7 @@ eq_else.91010:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -12
 	lw	$31, 11($3)
-eq_cont.91011:
+eq_cont.91501:
 	lw	$2, 1($3)
 	lw	$5, 2($3)
 	add	$30, $5, $2
@@ -34560,35 +34232,32 @@ eq_cont.91011:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3138($1)
-	addi	$6, $0, 2
-	addi	$7, $0, 2
-	lf	$f0, 3138($7)
+	lf	$f0, 3138($26)
 	lf	$f1, 2($5)
-	addi	$5, $0, 2
-	lf	$f2, 3135($5)
+	lf	$f2, 3135($26)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3138($6)
-eq_cont.91001:
+	sf	$f0, 3138($26)
+eq_cont.91491:
 	lw	$2, 1($3)
 	addi	$2, $2, 1
 	addi	$30, $0, 4
-	ble	$2, $30, le.91012
+	ble	$2, $30, le.91502
 	jr $31
-le.91012:
+le.91502:
 	lw	$5, 0($3)
 	lw	$6, 2($5)
 	add	$30, $6, $2
 	lw	$6, 0($30)
-	bge	$6, $0, ge.91014
+	bge	$6, $0, ge.91504
 	jr $31
-ge.91014:
+ge.91504:
 	lw	$6, 3($5)
 	add	$30, $6, $2
 	lw	$6, 0($30)
-	bne	$6, $0, eq_else.91016
-	j	eq_cont.91017
-eq_else.91016:
+	bne	$6, $0, eq_else.91506
+	j	eq_cont.91507
+eq_else.91506:
 	lw	$6, 5($5)
 	lw	$7, 7($5)
 	lw	$8, 1($5)
@@ -34599,9 +34268,8 @@ eq_else.91016:
 	sf	$f0, 3135($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3135($1)
-	addi	$10, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3135($10)
+	sf	$f0, 3135($26)
 	lw	$6, 6($5)
 	lw	$6, 0($6)
 	add	$30, $7, $2
@@ -34613,9 +34281,9 @@ eq_else.91016:
 	sw	$8, 13($3)
 	sw	$7, 14($3)
 	sw	$6, 15($3)
-	bne	$6, $0, eq_else.91018
-	j	eq_cont.91019
-eq_else.91018:
+	bne	$6, $0, eq_else.91508
+	j	eq_cont.91509
+eq_else.91508:
 	lw	$10, 3164($0)
 	mov	$6, $8
 	mov	$5, $7
@@ -34625,11 +34293,11 @@ eq_else.91018:
 	jal	trace_diffuse_rays.3046
 	addi	$3, $3, -17
 	lw	$31, 16($3)
-eq_cont.91019:
+eq_cont.91509:
 	lw	$2, 15($3)
-	bne	$2, $1, eq_else.91020
-	j	eq_cont.91021
-eq_else.91020:
+	bne	$2, $1, eq_else.91510
+	j	eq_cont.91511
+eq_else.91510:
 	lw	$5, 3164($1)
 	lw	$6, 14($3)
 	lw	$7, 13($3)
@@ -34641,14 +34309,13 @@ eq_else.91020:
 	jal	trace_diffuse_rays.3046
 	addi	$3, $3, -17
 	lw	$31, 16($3)
-eq_cont.91021:
+eq_cont.91511:
 	lw	$2, 15($3)
 	addi	$30, $0, 2
-	bne	$2, $30, eq_else.91022
-	j	eq_cont.91023
-eq_else.91022:
-	addi	$5, $0, 2
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91512
+	j	eq_cont.91513
+eq_else.91512:
+	lw	$5, 3164($26)
 	lw	$6, 14($3)
 	lw	$7, 13($3)
 	mov	$2, $5
@@ -34659,14 +34326,13 @@ eq_else.91022:
 	jal	trace_diffuse_rays.3046
 	addi	$3, $3, -17
 	lw	$31, 16($3)
-eq_cont.91023:
+eq_cont.91513:
 	lw	$2, 15($3)
 	addi	$30, $0, 3
-	bne	$2, $30, eq_else.91024
-	j	eq_cont.91025
-eq_else.91024:
-	addi	$5, $0, 3
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91514
+	j	eq_cont.91515
+eq_else.91514:
+	lw	$5, 3164($27)
 	lw	$6, 14($3)
 	lw	$7, 13($3)
 	mov	$2, $5
@@ -34677,12 +34343,12 @@ eq_else.91024:
 	jal	trace_diffuse_rays.3046
 	addi	$3, $3, -17
 	lw	$31, 16($3)
-eq_cont.91025:
+eq_cont.91515:
 	lw	$2, 15($3)
 	addi	$30, $0, 4
-	bne	$2, $30, eq_else.91026
-	j	eq_cont.91027
-eq_else.91026:
+	bne	$2, $30, eq_else.91516
+	j	eq_cont.91517
+eq_else.91516:
 	addi	$2, $0, 4
 	lw	$2, 3164($2)
 	lw	$5, 14($3)
@@ -34692,7 +34358,7 @@ eq_else.91026:
 	jal	trace_diffuse_rays.3046
 	addi	$3, $3, -17
 	lw	$31, 16($3)
-eq_cont.91027:
+eq_cont.91517:
 	lw	$2, 11($3)
 	lw	$5, 12($3)
 	add	$30, $5, $2
@@ -34709,34 +34375,31 @@ eq_cont.91027:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3138($1)
-	addi	$6, $0, 2
-	addi	$7, $0, 2
-	lf	$f0, 3138($7)
+	lf	$f0, 3138($26)
 	lf	$f1, 2($5)
-	addi	$5, $0, 2
-	lf	$f2, 3135($5)
+	lf	$f2, 3135($26)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3138($6)
-eq_cont.91017:
+	sf	$f0, 3138($26)
+eq_cont.91507:
 	addi	$2, $2, 1
 	addi	$30, $0, 4
-	ble	$2, $30, le.91028
+	ble	$2, $30, le.91518
 	jr $31
-le.91028:
+le.91518:
 	lw	$5, 0($3)
 	lw	$6, 2($5)
 	add	$30, $6, $2
 	lw	$6, 0($30)
-	bge	$6, $0, ge.91030
+	bge	$6, $0, ge.91520
 	jr $31
-ge.91030:
+ge.91520:
 	lw	$6, 3($5)
 	add	$30, $6, $2
 	lw	$6, 0($30)
-	bne	$6, $0, eq_else.91032
-	j	eq_cont.91033
-eq_else.91032:
+	bne	$6, $0, eq_else.91522
+	j	eq_cont.91523
+eq_else.91522:
 	lw	$6, 5($5)
 	lw	$7, 7($5)
 	lw	$8, 1($5)
@@ -34747,9 +34410,8 @@ eq_else.91032:
 	sf	$f0, 3135($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3135($1)
-	addi	$10, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3135($10)
+	sf	$f0, 3135($26)
 	lw	$6, 6($5)
 	lw	$6, 0($6)
 	add	$30, $7, $2
@@ -34761,17 +34423,16 @@ eq_else.91032:
 	sw	$7, 18($3)
 	sw	$8, 19($3)
 	sw	$6, 20($3)
-	bne	$6, $0, eq_else.91034
-	j	eq_cont.91035
-eq_else.91034:
+	bne	$6, $0, eq_else.91524
+	j	eq_cont.91525
+eq_else.91524:
 	lw	$10, 3164($0)
 	lf	$f0, 0($8)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($8)
 	sf	$f0, 3149($1)
-	addi	$11, $0, 2
 	lf	$f0, 2($8)
-	sf	$f0, 3149($11)
+	sf	$f0, 3149($26)
 	lw	$11, 3000($0)
 	addi	$11, $11, -1
 	sw	$10, 21($3)
@@ -34791,20 +34452,19 @@ eq_else.91034:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -23
 	lw	$31, 22($3)
-eq_cont.91035:
+eq_cont.91525:
 	lw	$2, 20($3)
-	bne	$2, $1, eq_else.91036
-	j	eq_cont.91037
-eq_else.91036:
+	bne	$2, $1, eq_else.91526
+	j	eq_cont.91527
+eq_else.91526:
 	lw	$5, 3164($1)
 	lw	$6, 19($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 22($3)
@@ -34824,22 +34484,20 @@ eq_else.91036:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -24
 	lw	$31, 23($3)
-eq_cont.91037:
+eq_cont.91527:
 	lw	$2, 20($3)
 	addi	$30, $0, 2
-	bne	$2, $30, eq_else.91038
-	j	eq_cont.91039
-eq_else.91038:
-	addi	$5, $0, 2
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91528
+	j	eq_cont.91529
+eq_else.91528:
+	lw	$5, 3164($26)
 	lw	$6, 19($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 23($3)
@@ -34859,22 +34517,20 @@ eq_else.91038:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -25
 	lw	$31, 24($3)
-eq_cont.91039:
+eq_cont.91529:
 	lw	$2, 20($3)
 	addi	$30, $0, 3
-	bne	$2, $30, eq_else.91040
-	j	eq_cont.91041
-eq_else.91040:
-	addi	$5, $0, 3
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91530
+	j	eq_cont.91531
+eq_else.91530:
+	lw	$5, 3164($27)
 	lw	$6, 19($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 24($3)
@@ -34894,12 +34550,12 @@ eq_else.91040:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -26
 	lw	$31, 25($3)
-eq_cont.91041:
+eq_cont.91531:
 	lw	$2, 20($3)
 	addi	$30, $0, 4
-	bne	$2, $30, eq_else.91042
-	j	eq_cont.91043
-eq_else.91042:
+	bne	$2, $30, eq_else.91532
+	j	eq_cont.91533
+eq_else.91532:
 	addi	$2, $0, 4
 	lw	$2, 3164($2)
 	lw	$5, 19($3)
@@ -34907,9 +34563,8 @@ eq_else.91042:
 	sf	$f0, 3149($0)
 	lf	$f0, 1($5)
 	sf	$f0, 3149($1)
-	addi	$6, $0, 2
 	lf	$f0, 2($5)
-	sf	$f0, 3149($6)
+	sf	$f0, 3149($26)
 	lw	$6, 3000($0)
 	addi	$6, $6, -1
 	sw	$2, 25($3)
@@ -34929,7 +34584,7 @@ eq_else.91042:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -27
 	lw	$31, 26($3)
-eq_cont.91043:
+eq_cont.91533:
 	lw	$2, 16($3)
 	lw	$5, 17($3)
 	add	$30, $5, $2
@@ -34946,34 +34601,31 @@ eq_cont.91043:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3138($1)
-	addi	$6, $0, 2
-	addi	$7, $0, 2
-	lf	$f0, 3138($7)
+	lf	$f0, 3138($26)
 	lf	$f1, 2($5)
-	addi	$5, $0, 2
-	lf	$f2, 3135($5)
+	lf	$f2, 3135($26)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3138($6)
-eq_cont.91033:
+	sf	$f0, 3138($26)
+eq_cont.91523:
 	addi	$2, $2, 1
 	addi	$30, $0, 4
-	ble	$2, $30, le.91044
+	ble	$2, $30, le.91534
 	jr $31
-le.91044:
+le.91534:
 	lw	$5, 0($3)
 	lw	$6, 2($5)
 	add	$30, $6, $2
 	lw	$6, 0($30)
-	bge	$6, $0, ge.91046
+	bge	$6, $0, ge.91536
 	jr $31
-ge.91046:
+ge.91536:
 	lw	$6, 3($5)
 	add	$30, $6, $2
 	lw	$6, 0($30)
-	bne	$6, $0, eq_else.91048
-	j	eq_cont.91049
-eq_else.91048:
+	bne	$6, $0, eq_else.91538
+	j	eq_cont.91539
+eq_else.91538:
 	lw	$6, 5($5)
 	lw	$7, 7($5)
 	lw	$8, 1($5)
@@ -34984,9 +34636,8 @@ eq_else.91048:
 	sf	$f0, 3135($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3135($1)
-	addi	$10, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3135($10)
+	sf	$f0, 3135($26)
 	lw	$6, 6($5)
 	lw	$6, 0($6)
 	add	$30, $7, $2
@@ -34998,17 +34649,16 @@ eq_else.91048:
 	sw	$7, 28($3)
 	sw	$8, 29($3)
 	sw	$6, 30($3)
-	bne	$6, $0, eq_else.91050
-	j	eq_cont.91051
-eq_else.91050:
+	bne	$6, $0, eq_else.91540
+	j	eq_cont.91541
+eq_else.91540:
 	lw	$10, 3164($0)
 	lf	$f0, 0($8)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($8)
 	sf	$f0, 3149($1)
-	addi	$11, $0, 2
 	lf	$f0, 2($8)
-	sf	$f0, 3149($11)
+	sf	$f0, 3149($26)
 	lw	$11, 3000($0)
 	addi	$11, $11, -1
 	sw	$10, 31($3)
@@ -35035,7 +34685,7 @@ eq_else.91050:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91052
+	bne	$5, $0, eq_else.91542
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -35045,8 +34695,8 @@ eq_else.91050:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -33
 	lw	$31, 32($3)
-	j	eq_cont.91053
-eq_else.91052:
+	j	eq_cont.91543
+eq_else.91542:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -35056,7 +34706,7 @@ eq_else.91052:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -33
 	lw	$31, 32($3)
-eq_cont.91053:
+eq_cont.91543:
 	addi	$7, $0, 116
 	lw	$2, 31($3)
 	lw	$5, 28($3)
@@ -35066,20 +34716,19 @@ eq_cont.91053:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -33
 	lw	$31, 32($3)
-eq_cont.91051:
+eq_cont.91541:
 	lw	$2, 30($3)
-	bne	$2, $1, eq_else.91054
-	j	eq_cont.91055
-eq_else.91054:
+	bne	$2, $1, eq_else.91544
+	j	eq_cont.91545
+eq_else.91544:
 	lw	$5, 3164($1)
 	lw	$6, 29($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 32($3)
@@ -35106,7 +34755,7 @@ eq_else.91054:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91056
+	bne	$5, $0, eq_else.91546
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -35116,8 +34765,8 @@ eq_else.91054:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -34
 	lw	$31, 33($3)
-	j	eq_cont.91057
-eq_else.91056:
+	j	eq_cont.91547
+eq_else.91546:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -35127,7 +34776,7 @@ eq_else.91056:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -34
 	lw	$31, 33($3)
-eq_cont.91057:
+eq_cont.91547:
 	addi	$7, $0, 116
 	lw	$2, 32($3)
 	lw	$5, 28($3)
@@ -35137,22 +34786,20 @@ eq_cont.91057:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -34
 	lw	$31, 33($3)
-eq_cont.91055:
+eq_cont.91545:
 	lw	$2, 30($3)
 	addi	$30, $0, 2
-	bne	$2, $30, eq_else.91058
-	j	eq_cont.91059
-eq_else.91058:
-	addi	$5, $0, 2
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91548
+	j	eq_cont.91549
+eq_else.91548:
+	lw	$5, 3164($26)
 	lw	$6, 29($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 33($3)
@@ -35179,7 +34826,7 @@ eq_else.91058:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91060
+	bne	$5, $0, eq_else.91550
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -35189,8 +34836,8 @@ eq_else.91058:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -35
 	lw	$31, 34($3)
-	j	eq_cont.91061
-eq_else.91060:
+	j	eq_cont.91551
+eq_else.91550:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -35200,7 +34847,7 @@ eq_else.91060:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -35
 	lw	$31, 34($3)
-eq_cont.91061:
+eq_cont.91551:
 	addi	$7, $0, 116
 	lw	$2, 33($3)
 	lw	$5, 28($3)
@@ -35210,22 +34857,20 @@ eq_cont.91061:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -35
 	lw	$31, 34($3)
-eq_cont.91059:
+eq_cont.91549:
 	lw	$2, 30($3)
 	addi	$30, $0, 3
-	bne	$2, $30, eq_else.91062
-	j	eq_cont.91063
-eq_else.91062:
-	addi	$5, $0, 3
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91552
+	j	eq_cont.91553
+eq_else.91552:
+	lw	$5, 3164($27)
 	lw	$6, 29($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 34($3)
@@ -35252,7 +34897,7 @@ eq_else.91062:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91064
+	bne	$5, $0, eq_else.91554
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -35262,8 +34907,8 @@ eq_else.91062:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -36
 	lw	$31, 35($3)
-	j	eq_cont.91065
-eq_else.91064:
+	j	eq_cont.91555
+eq_else.91554:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -35273,7 +34918,7 @@ eq_else.91064:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -36
 	lw	$31, 35($3)
-eq_cont.91065:
+eq_cont.91555:
 	addi	$7, $0, 116
 	lw	$2, 34($3)
 	lw	$5, 28($3)
@@ -35283,12 +34928,12 @@ eq_cont.91065:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -36
 	lw	$31, 35($3)
-eq_cont.91063:
+eq_cont.91553:
 	lw	$2, 30($3)
 	addi	$30, $0, 4
-	bne	$2, $30, eq_else.91066
-	j	eq_cont.91067
-eq_else.91066:
+	bne	$2, $30, eq_else.91556
+	j	eq_cont.91557
+eq_else.91556:
 	addi	$2, $0, 4
 	lw	$2, 3164($2)
 	lw	$5, 29($3)
@@ -35296,9 +34941,8 @@ eq_else.91066:
 	sf	$f0, 3149($0)
 	lf	$f0, 1($5)
 	sf	$f0, 3149($1)
-	addi	$6, $0, 2
 	lf	$f0, 2($5)
-	sf	$f0, 3149($6)
+	sf	$f0, 3149($26)
 	lw	$6, 3000($0)
 	addi	$6, $6, -1
 	sw	$2, 35($3)
@@ -35325,7 +34969,7 @@ eq_else.91066:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91068
+	bne	$5, $0, eq_else.91558
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -35335,8 +34979,8 @@ eq_else.91066:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -37
 	lw	$31, 36($3)
-	j	eq_cont.91069
-eq_else.91068:
+	j	eq_cont.91559
+eq_else.91558:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -35346,7 +34990,7 @@ eq_else.91068:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -37
 	lw	$31, 36($3)
-eq_cont.91069:
+eq_cont.91559:
 	addi	$7, $0, 116
 	lw	$2, 35($3)
 	lw	$5, 28($3)
@@ -35356,7 +35000,7 @@ eq_cont.91069:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -37
 	lw	$31, 36($3)
-eq_cont.91067:
+eq_cont.91557:
 	lw	$2, 26($3)
 	lw	$5, 27($3)
 	add	$30, $5, $2
@@ -35373,16 +35017,13 @@ eq_cont.91067:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3138($1)
-	addi	$6, $0, 2
-	addi	$7, $0, 2
-	lf	$f0, 3138($7)
+	lf	$f0, 3138($26)
 	lf	$f1, 2($5)
-	addi	$5, $0, 2
-	lf	$f2, 3135($5)
+	lf	$f2, 3135($26)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3138($6)
-eq_cont.91049:
+	sf	$f0, 3138($26)
+eq_cont.91539:
 	addi	$5, $2, 1
 	lw	$2, 0($3)
 	j	do_without_neighbors.3063
@@ -35390,15 +35031,15 @@ try_exploit_neighbors.3079:
 	add	$30, $7, $2
 	lw	$10, 0($30)
 	addi	$30, $0, 4
-	ble	$9, $30, le.91070
+	ble	$9, $30, le.91560
 	jr $31
-le.91070:
+le.91560:
 	lw	$11, 2($10)
 	add	$30, $11, $9
 	lw	$11, 0($30)
-	bge	$11, $0, ge.91072
+	bge	$11, $0, ge.91562
 	jr $31
-ge.91072:
+ge.91562:
 	add	$30, $7, $2
 	lw	$11, 0($30)
 	lw	$11, 2($11)
@@ -35409,65 +35050,65 @@ ge.91072:
 	lw	$12, 2($12)
 	add	$30, $12, $9
 	lw	$12, 0($30)
-	bne	$12, $11, eq_else.91074
+	bne	$12, $11, eq_else.91564
 	add	$30, $8, $2
 	lw	$12, 0($30)
 	lw	$12, 2($12)
 	add	$30, $12, $9
 	lw	$12, 0($30)
-	bne	$12, $11, eq_else.91076
+	bne	$12, $11, eq_else.91566
 	addi	$12, $2, -1
 	add	$30, $7, $12
 	lw	$12, 0($30)
 	lw	$12, 2($12)
 	add	$30, $12, $9
 	lw	$12, 0($30)
-	bne	$12, $11, eq_else.91078
+	bne	$12, $11, eq_else.91568
 	addi	$12, $2, 1
 	add	$30, $7, $12
 	lw	$12, 0($30)
 	lw	$12, 2($12)
 	add	$30, $12, $9
 	lw	$12, 0($30)
-	bne	$12, $11, eq_else.91080
+	bne	$12, $11, eq_else.91570
 	mov	$11, $1
-	j	eq_cont.91081
-eq_else.91080:
+	j	eq_cont.91571
+eq_else.91570:
 	mov	$11, $0
-eq_cont.91081:
-	j	eq_cont.91079
-eq_else.91078:
+eq_cont.91571:
+	j	eq_cont.91569
+eq_else.91568:
 	mov	$11, $0
-eq_cont.91079:
-	j	eq_cont.91077
-eq_else.91076:
+eq_cont.91569:
+	j	eq_cont.91567
+eq_else.91566:
 	mov	$11, $0
-eq_cont.91077:
-	j	eq_cont.91075
-eq_else.91074:
+eq_cont.91567:
+	j	eq_cont.91565
+eq_else.91564:
 	mov	$11, $0
-eq_cont.91075:
-	bne	$11, $0, eq_else.91082
+eq_cont.91565:
+	bne	$11, $0, eq_else.91572
 	add	$30, $7, $2
 	lw	$2, 0($30)
 	addi	$30, $0, 4
-	ble	$9, $30, le.91083
+	ble	$9, $30, le.91573
 	jr $31
-le.91083:
+le.91573:
 	lw	$5, 2($2)
 	add	$30, $5, $9
 	lw	$5, 0($30)
-	bge	$5, $0, ge.91085
+	bge	$5, $0, ge.91575
 	jr $31
-ge.91085:
+ge.91575:
 	lw	$5, 3($2)
 	add	$30, $5, $9
 	lw	$5, 0($30)
 	sw	$2, 0($3)
 	sw	$9, 1($3)
-	bne	$5, $0, eq_else.91087
-	j	eq_cont.91088
-eq_else.91087:
+	bne	$5, $0, eq_else.91577
+	j	eq_cont.91578
+eq_else.91577:
 	lw	$5, 5($2)
 	lw	$6, 7($2)
 	lw	$7, 1($2)
@@ -35478,9 +35119,8 @@ eq_else.91087:
 	sf	$f0, 3135($0)
 	lf	$f0, 1($5)
 	sf	$f0, 3135($1)
-	addi	$10, $0, 2
 	lf	$f0, 2($5)
-	sf	$f0, 3135($10)
+	sf	$f0, 3135($26)
 	lw	$5, 6($2)
 	lw	$5, 0($5)
 	add	$30, $6, $9
@@ -35491,9 +35131,9 @@ eq_else.91087:
 	sw	$7, 3($3)
 	sw	$6, 4($3)
 	sw	$5, 5($3)
-	bne	$5, $0, eq_else.91089
-	j	eq_cont.91090
-eq_else.91089:
+	bne	$5, $0, eq_else.91579
+	j	eq_cont.91580
+eq_else.91579:
 	lw	$10, 3164($0)
 	mov	$5, $6
 	mov	$2, $10
@@ -35503,11 +35143,11 @@ eq_else.91089:
 	jal	trace_diffuse_rays.3046
 	addi	$3, $3, -7
 	lw	$31, 6($3)
-eq_cont.91090:
+eq_cont.91580:
 	lw	$2, 5($3)
-	bne	$2, $1, eq_else.91091
-	j	eq_cont.91092
-eq_else.91091:
+	bne	$2, $1, eq_else.91581
+	j	eq_cont.91582
+eq_else.91581:
 	lw	$5, 3164($1)
 	lw	$6, 4($3)
 	lw	$7, 3($3)
@@ -35519,14 +35159,13 @@ eq_else.91091:
 	jal	trace_diffuse_rays.3046
 	addi	$3, $3, -7
 	lw	$31, 6($3)
-eq_cont.91092:
+eq_cont.91582:
 	lw	$2, 5($3)
 	addi	$30, $0, 2
-	bne	$2, $30, eq_else.91093
-	j	eq_cont.91094
-eq_else.91093:
-	addi	$5, $0, 2
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91583
+	j	eq_cont.91584
+eq_else.91583:
+	lw	$5, 3164($26)
 	lw	$6, 4($3)
 	lw	$7, 3($3)
 	mov	$2, $5
@@ -35537,14 +35176,13 @@ eq_else.91093:
 	jal	trace_diffuse_rays.3046
 	addi	$3, $3, -7
 	lw	$31, 6($3)
-eq_cont.91094:
+eq_cont.91584:
 	lw	$2, 5($3)
 	addi	$30, $0, 3
-	bne	$2, $30, eq_else.91095
-	j	eq_cont.91096
-eq_else.91095:
-	addi	$5, $0, 3
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91585
+	j	eq_cont.91586
+eq_else.91585:
+	lw	$5, 3164($27)
 	lw	$6, 4($3)
 	lw	$7, 3($3)
 	mov	$2, $5
@@ -35555,12 +35193,12 @@ eq_else.91095:
 	jal	trace_diffuse_rays.3046
 	addi	$3, $3, -7
 	lw	$31, 6($3)
-eq_cont.91096:
+eq_cont.91586:
 	lw	$2, 5($3)
 	addi	$30, $0, 4
-	bne	$2, $30, eq_else.91097
-	j	eq_cont.91098
-eq_else.91097:
+	bne	$2, $30, eq_else.91587
+	j	eq_cont.91588
+eq_else.91587:
 	addi	$2, $0, 4
 	lw	$2, 3164($2)
 	lw	$5, 4($3)
@@ -35570,7 +35208,7 @@ eq_else.91097:
 	jal	trace_diffuse_rays.3046
 	addi	$3, $3, -7
 	lw	$31, 6($3)
-eq_cont.91098:
+eq_cont.91588:
 	lw	$2, 1($3)
 	lw	$5, 2($3)
 	add	$30, $5, $2
@@ -35587,35 +35225,32 @@ eq_cont.91098:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3138($1)
-	addi	$6, $0, 2
-	addi	$7, $0, 2
-	lf	$f0, 3138($7)
+	lf	$f0, 3138($26)
 	lf	$f1, 2($5)
-	addi	$5, $0, 2
-	lf	$f2, 3135($5)
+	lf	$f2, 3135($26)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3138($6)
-eq_cont.91088:
+	sf	$f0, 3138($26)
+eq_cont.91578:
 	lw	$2, 1($3)
 	addi	$2, $2, 1
 	addi	$30, $0, 4
-	ble	$2, $30, le.91099
+	ble	$2, $30, le.91589
 	jr $31
-le.91099:
+le.91589:
 	lw	$5, 0($3)
 	lw	$6, 2($5)
 	add	$30, $6, $2
 	lw	$6, 0($30)
-	bge	$6, $0, ge.91101
+	bge	$6, $0, ge.91591
 	jr $31
-ge.91101:
+ge.91591:
 	lw	$6, 3($5)
 	add	$30, $6, $2
 	lw	$6, 0($30)
-	bne	$6, $0, eq_else.91103
-	j	eq_cont.91104
-eq_else.91103:
+	bne	$6, $0, eq_else.91593
+	j	eq_cont.91594
+eq_else.91593:
 	lw	$6, 5($5)
 	lw	$7, 7($5)
 	lw	$8, 1($5)
@@ -35626,9 +35261,8 @@ eq_else.91103:
 	sf	$f0, 3135($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3135($1)
-	addi	$10, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3135($10)
+	sf	$f0, 3135($26)
 	lw	$6, 6($5)
 	lw	$6, 0($6)
 	add	$30, $7, $2
@@ -35640,17 +35274,16 @@ eq_else.91103:
 	sw	$7, 8($3)
 	sw	$8, 9($3)
 	sw	$6, 10($3)
-	bne	$6, $0, eq_else.91105
-	j	eq_cont.91106
-eq_else.91105:
+	bne	$6, $0, eq_else.91595
+	j	eq_cont.91596
+eq_else.91595:
 	lw	$10, 3164($0)
 	lf	$f0, 0($8)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($8)
 	sf	$f0, 3149($1)
-	addi	$11, $0, 2
 	lf	$f0, 2($8)
-	sf	$f0, 3149($11)
+	sf	$f0, 3149($26)
 	lw	$11, 3000($0)
 	addi	$11, $11, -1
 	sw	$10, 11($3)
@@ -35670,20 +35303,19 @@ eq_else.91105:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -13
 	lw	$31, 12($3)
-eq_cont.91106:
+eq_cont.91596:
 	lw	$2, 10($3)
-	bne	$2, $1, eq_else.91107
-	j	eq_cont.91108
-eq_else.91107:
+	bne	$2, $1, eq_else.91597
+	j	eq_cont.91598
+eq_else.91597:
 	lw	$5, 3164($1)
 	lw	$6, 9($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 12($3)
@@ -35703,22 +35335,20 @@ eq_else.91107:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -14
 	lw	$31, 13($3)
-eq_cont.91108:
+eq_cont.91598:
 	lw	$2, 10($3)
 	addi	$30, $0, 2
-	bne	$2, $30, eq_else.91109
-	j	eq_cont.91110
-eq_else.91109:
-	addi	$5, $0, 2
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91599
+	j	eq_cont.91600
+eq_else.91599:
+	lw	$5, 3164($26)
 	lw	$6, 9($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 13($3)
@@ -35738,22 +35368,20 @@ eq_else.91109:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -15
 	lw	$31, 14($3)
-eq_cont.91110:
+eq_cont.91600:
 	lw	$2, 10($3)
 	addi	$30, $0, 3
-	bne	$2, $30, eq_else.91111
-	j	eq_cont.91112
-eq_else.91111:
-	addi	$5, $0, 3
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91601
+	j	eq_cont.91602
+eq_else.91601:
+	lw	$5, 3164($27)
 	lw	$6, 9($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 14($3)
@@ -35773,12 +35401,12 @@ eq_else.91111:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -16
 	lw	$31, 15($3)
-eq_cont.91112:
+eq_cont.91602:
 	lw	$2, 10($3)
 	addi	$30, $0, 4
-	bne	$2, $30, eq_else.91113
-	j	eq_cont.91114
-eq_else.91113:
+	bne	$2, $30, eq_else.91603
+	j	eq_cont.91604
+eq_else.91603:
 	addi	$2, $0, 4
 	lw	$2, 3164($2)
 	lw	$5, 9($3)
@@ -35786,9 +35414,8 @@ eq_else.91113:
 	sf	$f0, 3149($0)
 	lf	$f0, 1($5)
 	sf	$f0, 3149($1)
-	addi	$6, $0, 2
 	lf	$f0, 2($5)
-	sf	$f0, 3149($6)
+	sf	$f0, 3149($26)
 	lw	$6, 3000($0)
 	addi	$6, $6, -1
 	sw	$2, 15($3)
@@ -35808,7 +35435,7 @@ eq_else.91113:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -17
 	lw	$31, 16($3)
-eq_cont.91114:
+eq_cont.91604:
 	lw	$2, 6($3)
 	lw	$5, 7($3)
 	add	$30, $5, $2
@@ -35825,34 +35452,31 @@ eq_cont.91114:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3138($1)
-	addi	$6, $0, 2
-	addi	$7, $0, 2
-	lf	$f0, 3138($7)
+	lf	$f0, 3138($26)
 	lf	$f1, 2($5)
-	addi	$5, $0, 2
-	lf	$f2, 3135($5)
+	lf	$f2, 3135($26)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3138($6)
-eq_cont.91104:
+	sf	$f0, 3138($26)
+eq_cont.91594:
 	addi	$2, $2, 1
 	addi	$30, $0, 4
-	ble	$2, $30, le.91115
+	ble	$2, $30, le.91605
 	jr $31
-le.91115:
+le.91605:
 	lw	$5, 0($3)
 	lw	$6, 2($5)
 	add	$30, $6, $2
 	lw	$6, 0($30)
-	bge	$6, $0, ge.91117
+	bge	$6, $0, ge.91607
 	jr $31
-ge.91117:
+ge.91607:
 	lw	$6, 3($5)
 	add	$30, $6, $2
 	lw	$6, 0($30)
-	bne	$6, $0, eq_else.91119
-	j	eq_cont.91120
-eq_else.91119:
+	bne	$6, $0, eq_else.91609
+	j	eq_cont.91610
+eq_else.91609:
 	lw	$6, 5($5)
 	lw	$7, 7($5)
 	lw	$8, 1($5)
@@ -35863,9 +35487,8 @@ eq_else.91119:
 	sf	$f0, 3135($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3135($1)
-	addi	$10, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3135($10)
+	sf	$f0, 3135($26)
 	lw	$6, 6($5)
 	lw	$6, 0($6)
 	add	$30, $7, $2
@@ -35877,17 +35500,16 @@ eq_else.91119:
 	sw	$7, 18($3)
 	sw	$8, 19($3)
 	sw	$6, 20($3)
-	bne	$6, $0, eq_else.91121
-	j	eq_cont.91122
-eq_else.91121:
+	bne	$6, $0, eq_else.91611
+	j	eq_cont.91612
+eq_else.91611:
 	lw	$10, 3164($0)
 	lf	$f0, 0($8)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($8)
 	sf	$f0, 3149($1)
-	addi	$11, $0, 2
 	lf	$f0, 2($8)
-	sf	$f0, 3149($11)
+	sf	$f0, 3149($26)
 	lw	$11, 3000($0)
 	addi	$11, $11, -1
 	sw	$10, 21($3)
@@ -35914,7 +35536,7 @@ eq_else.91121:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91123
+	bne	$5, $0, eq_else.91613
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -35924,8 +35546,8 @@ eq_else.91121:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -23
 	lw	$31, 22($3)
-	j	eq_cont.91124
-eq_else.91123:
+	j	eq_cont.91614
+eq_else.91613:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -35935,7 +35557,7 @@ eq_else.91123:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -23
 	lw	$31, 22($3)
-eq_cont.91124:
+eq_cont.91614:
 	addi	$7, $0, 116
 	lw	$2, 21($3)
 	lw	$5, 18($3)
@@ -35945,20 +35567,19 @@ eq_cont.91124:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -23
 	lw	$31, 22($3)
-eq_cont.91122:
+eq_cont.91612:
 	lw	$2, 20($3)
-	bne	$2, $1, eq_else.91125
-	j	eq_cont.91126
-eq_else.91125:
+	bne	$2, $1, eq_else.91615
+	j	eq_cont.91616
+eq_else.91615:
 	lw	$5, 3164($1)
 	lw	$6, 19($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 22($3)
@@ -35985,7 +35606,7 @@ eq_else.91125:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91127
+	bne	$5, $0, eq_else.91617
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -35995,8 +35616,8 @@ eq_else.91125:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -24
 	lw	$31, 23($3)
-	j	eq_cont.91128
-eq_else.91127:
+	j	eq_cont.91618
+eq_else.91617:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -36006,7 +35627,7 @@ eq_else.91127:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -24
 	lw	$31, 23($3)
-eq_cont.91128:
+eq_cont.91618:
 	addi	$7, $0, 116
 	lw	$2, 22($3)
 	lw	$5, 18($3)
@@ -36016,22 +35637,20 @@ eq_cont.91128:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -24
 	lw	$31, 23($3)
-eq_cont.91126:
+eq_cont.91616:
 	lw	$2, 20($3)
 	addi	$30, $0, 2
-	bne	$2, $30, eq_else.91129
-	j	eq_cont.91130
-eq_else.91129:
-	addi	$5, $0, 2
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91619
+	j	eq_cont.91620
+eq_else.91619:
+	lw	$5, 3164($26)
 	lw	$6, 19($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 23($3)
@@ -36058,7 +35677,7 @@ eq_else.91129:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91131
+	bne	$5, $0, eq_else.91621
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -36068,8 +35687,8 @@ eq_else.91129:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -25
 	lw	$31, 24($3)
-	j	eq_cont.91132
-eq_else.91131:
+	j	eq_cont.91622
+eq_else.91621:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -36079,7 +35698,7 @@ eq_else.91131:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -25
 	lw	$31, 24($3)
-eq_cont.91132:
+eq_cont.91622:
 	addi	$7, $0, 116
 	lw	$2, 23($3)
 	lw	$5, 18($3)
@@ -36089,22 +35708,20 @@ eq_cont.91132:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -25
 	lw	$31, 24($3)
-eq_cont.91130:
+eq_cont.91620:
 	lw	$2, 20($3)
 	addi	$30, $0, 3
-	bne	$2, $30, eq_else.91133
-	j	eq_cont.91134
-eq_else.91133:
-	addi	$5, $0, 3
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91623
+	j	eq_cont.91624
+eq_else.91623:
+	lw	$5, 3164($27)
 	lw	$6, 19($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 24($3)
@@ -36131,7 +35748,7 @@ eq_else.91133:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91135
+	bne	$5, $0, eq_else.91625
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -36141,8 +35758,8 @@ eq_else.91133:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -26
 	lw	$31, 25($3)
-	j	eq_cont.91136
-eq_else.91135:
+	j	eq_cont.91626
+eq_else.91625:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -36152,7 +35769,7 @@ eq_else.91135:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -26
 	lw	$31, 25($3)
-eq_cont.91136:
+eq_cont.91626:
 	addi	$7, $0, 116
 	lw	$2, 24($3)
 	lw	$5, 18($3)
@@ -36162,12 +35779,12 @@ eq_cont.91136:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -26
 	lw	$31, 25($3)
-eq_cont.91134:
+eq_cont.91624:
 	lw	$2, 20($3)
 	addi	$30, $0, 4
-	bne	$2, $30, eq_else.91137
-	j	eq_cont.91138
-eq_else.91137:
+	bne	$2, $30, eq_else.91627
+	j	eq_cont.91628
+eq_else.91627:
 	addi	$2, $0, 4
 	lw	$2, 3164($2)
 	lw	$5, 19($3)
@@ -36175,9 +35792,8 @@ eq_else.91137:
 	sf	$f0, 3149($0)
 	lf	$f0, 1($5)
 	sf	$f0, 3149($1)
-	addi	$6, $0, 2
 	lf	$f0, 2($5)
-	sf	$f0, 3149($6)
+	sf	$f0, 3149($26)
 	lw	$6, 3000($0)
 	addi	$6, $6, -1
 	sw	$2, 25($3)
@@ -36204,7 +35820,7 @@ eq_else.91137:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91139
+	bne	$5, $0, eq_else.91629
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -36214,8 +35830,8 @@ eq_else.91137:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -27
 	lw	$31, 26($3)
-	j	eq_cont.91140
-eq_else.91139:
+	j	eq_cont.91630
+eq_else.91629:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -36225,7 +35841,7 @@ eq_else.91139:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -27
 	lw	$31, 26($3)
-eq_cont.91140:
+eq_cont.91630:
 	addi	$7, $0, 116
 	lw	$2, 25($3)
 	lw	$5, 18($3)
@@ -36235,7 +35851,7 @@ eq_cont.91140:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -27
 	lw	$31, 26($3)
-eq_cont.91138:
+eq_cont.91628:
 	lw	$2, 16($3)
 	lw	$5, 17($3)
 	add	$30, $5, $2
@@ -36252,26 +35868,23 @@ eq_cont.91138:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3138($1)
-	addi	$6, $0, 2
-	addi	$7, $0, 2
-	lf	$f0, 3138($7)
+	lf	$f0, 3138($26)
 	lf	$f1, 2($5)
-	addi	$5, $0, 2
-	lf	$f2, 3135($5)
+	lf	$f2, 3135($26)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3138($6)
-eq_cont.91120:
+	sf	$f0, 3138($26)
+eq_cont.91610:
 	addi	$5, $2, 1
 	lw	$2, 0($3)
 	j	do_without_neighbors.3063
-eq_else.91082:
+eq_else.91572:
 	lw	$10, 3($10)
 	add	$30, $10, $9
 	lw	$10, 0($30)
-	bne	$10, $0, eq_else.91141
-	j	eq_cont.91142
-eq_else.91141:
+	bne	$10, $0, eq_else.91631
+	j	eq_cont.91632
+eq_else.91631:
 	add	$30, $6, $2
 	lw	$10, 0($30)
 	lw	$10, 5($10)
@@ -36295,9 +35908,8 @@ eq_else.91141:
 	sf	$f0, 3135($0)
 	lf	$f0, 1($10)
 	sf	$f0, 3135($1)
-	addi	$15, $0, 2
 	lf	$f0, 2($10)
-	sf	$f0, 3135($15)
+	sf	$f0, 3135($26)
 	add	$30, $11, $9
 	lw	$10, 0($30)
 	lf	$f0, 3135($0)
@@ -36308,12 +35920,10 @@ eq_else.91141:
 	lf	$f1, 1($10)
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3135($1)
-	addi	$11, $0, 2
-	addi	$15, $0, 2
-	lf	$f0, 3135($15)
+	lf	$f0, 3135($26)
 	lf	$f1, 2($10)
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3135($11)
+	sf	$f0, 3135($26)
 	add	$30, $12, $9
 	lw	$10, 0($30)
 	lf	$f0, 3135($0)
@@ -36324,12 +35934,10 @@ eq_else.91141:
 	lf	$f1, 1($10)
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3135($1)
-	addi	$11, $0, 2
-	addi	$12, $0, 2
-	lf	$f0, 3135($12)
+	lf	$f0, 3135($26)
 	lf	$f1, 2($10)
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3135($11)
+	sf	$f0, 3135($26)
 	add	$30, $13, $9
 	lw	$10, 0($30)
 	lf	$f0, 3135($0)
@@ -36340,12 +35948,10 @@ eq_else.91141:
 	lf	$f1, 1($10)
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3135($1)
-	addi	$11, $0, 2
-	addi	$12, $0, 2
-	lf	$f0, 3135($12)
+	lf	$f0, 3135($26)
 	lf	$f1, 2($10)
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3135($11)
+	sf	$f0, 3135($26)
 	add	$30, $14, $9
 	lw	$10, 0($30)
 	lf	$f0, 3135($0)
@@ -36356,12 +35962,10 @@ eq_else.91141:
 	lf	$f1, 1($10)
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3135($1)
-	addi	$11, $0, 2
-	addi	$12, $0, 2
-	lf	$f0, 3135($12)
+	lf	$f0, 3135($26)
 	lf	$f1, 2($10)
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3135($11)
+	sf	$f0, 3135($26)
 	add	$30, $7, $2
 	lw	$10, 0($30)
 	lw	$10, 4($10)
@@ -36379,29 +35983,26 @@ eq_else.91141:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3138($1)
-	addi	$11, $0, 2
-	addi	$12, $0, 2
-	lf	$f0, 3138($12)
+	lf	$f0, 3138($26)
 	lf	$f1, 2($10)
-	addi	$10, $0, 2
-	lf	$f2, 3135($10)
+	lf	$f2, 3135($26)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3138($11)
-eq_cont.91142:
+	sf	$f0, 3138($26)
+eq_cont.91632:
 	addi	$9, $9, 1
 	add	$30, $7, $2
 	lw	$10, 0($30)
 	addi	$30, $0, 4
-	ble	$9, $30, le.91143
+	ble	$9, $30, le.91633
 	jr $31
-le.91143:
+le.91633:
 	lw	$11, 2($10)
 	add	$30, $11, $9
 	lw	$11, 0($30)
-	bge	$11, $0, ge.91145
+	bge	$11, $0, ge.91635
 	jr $31
-ge.91145:
+ge.91635:
 	add	$30, $7, $2
 	lw	$11, 0($30)
 	lw	$11, 2($11)
@@ -36412,65 +36013,65 @@ ge.91145:
 	lw	$12, 2($12)
 	add	$30, $12, $9
 	lw	$12, 0($30)
-	bne	$12, $11, eq_else.91147
+	bne	$12, $11, eq_else.91637
 	add	$30, $8, $2
 	lw	$12, 0($30)
 	lw	$12, 2($12)
 	add	$30, $12, $9
 	lw	$12, 0($30)
-	bne	$12, $11, eq_else.91149
+	bne	$12, $11, eq_else.91639
 	addi	$12, $2, -1
 	add	$30, $7, $12
 	lw	$12, 0($30)
 	lw	$12, 2($12)
 	add	$30, $12, $9
 	lw	$12, 0($30)
-	bne	$12, $11, eq_else.91151
+	bne	$12, $11, eq_else.91641
 	addi	$12, $2, 1
 	add	$30, $7, $12
 	lw	$12, 0($30)
 	lw	$12, 2($12)
 	add	$30, $12, $9
 	lw	$12, 0($30)
-	bne	$12, $11, eq_else.91153
+	bne	$12, $11, eq_else.91643
 	mov	$11, $1
-	j	eq_cont.91154
-eq_else.91153:
+	j	eq_cont.91644
+eq_else.91643:
 	mov	$11, $0
-eq_cont.91154:
-	j	eq_cont.91152
-eq_else.91151:
+eq_cont.91644:
+	j	eq_cont.91642
+eq_else.91641:
 	mov	$11, $0
-eq_cont.91152:
-	j	eq_cont.91150
-eq_else.91149:
+eq_cont.91642:
+	j	eq_cont.91640
+eq_else.91639:
 	mov	$11, $0
-eq_cont.91150:
-	j	eq_cont.91148
-eq_else.91147:
+eq_cont.91640:
+	j	eq_cont.91638
+eq_else.91637:
 	mov	$11, $0
-eq_cont.91148:
-	bne	$11, $0, eq_else.91155
+eq_cont.91638:
+	bne	$11, $0, eq_else.91645
 	add	$30, $7, $2
 	lw	$2, 0($30)
 	addi	$30, $0, 4
-	ble	$9, $30, le.91156
+	ble	$9, $30, le.91646
 	jr $31
-le.91156:
+le.91646:
 	lw	$5, 2($2)
 	add	$30, $5, $9
 	lw	$5, 0($30)
-	bge	$5, $0, ge.91158
+	bge	$5, $0, ge.91648
 	jr $31
-ge.91158:
+ge.91648:
 	lw	$5, 3($2)
 	add	$30, $5, $9
 	lw	$5, 0($30)
 	sw	$2, 26($3)
 	sw	$9, 27($3)
-	bne	$5, $0, eq_else.91160
-	j	eq_cont.91161
-eq_else.91160:
+	bne	$5, $0, eq_else.91650
+	j	eq_cont.91651
+eq_else.91650:
 	lw	$5, 5($2)
 	lw	$6, 7($2)
 	lw	$7, 1($2)
@@ -36481,9 +36082,8 @@ eq_else.91160:
 	sf	$f0, 3135($0)
 	lf	$f0, 1($5)
 	sf	$f0, 3135($1)
-	addi	$10, $0, 2
 	lf	$f0, 2($5)
-	sf	$f0, 3135($10)
+	sf	$f0, 3135($26)
 	lw	$5, 6($2)
 	lw	$5, 0($5)
 	add	$30, $6, $9
@@ -36494,17 +36094,16 @@ eq_else.91160:
 	sw	$6, 29($3)
 	sw	$7, 30($3)
 	sw	$5, 31($3)
-	bne	$5, $0, eq_else.91162
-	j	eq_cont.91163
-eq_else.91162:
+	bne	$5, $0, eq_else.91652
+	j	eq_cont.91653
+eq_else.91652:
 	lw	$10, 3164($0)
 	lf	$f0, 0($7)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($7)
 	sf	$f0, 3149($1)
-	addi	$11, $0, 2
 	lf	$f0, 2($7)
-	sf	$f0, 3149($11)
+	sf	$f0, 3149($26)
 	lw	$11, 3000($0)
 	addi	$11, $11, -1
 	sw	$10, 32($3)
@@ -36524,20 +36123,19 @@ eq_else.91162:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -34
 	lw	$31, 33($3)
-eq_cont.91163:
+eq_cont.91653:
 	lw	$2, 31($3)
-	bne	$2, $1, eq_else.91164
-	j	eq_cont.91165
-eq_else.91164:
+	bne	$2, $1, eq_else.91654
+	j	eq_cont.91655
+eq_else.91654:
 	lw	$5, 3164($1)
 	lw	$6, 30($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 33($3)
@@ -36557,22 +36155,20 @@ eq_else.91164:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -35
 	lw	$31, 34($3)
-eq_cont.91165:
+eq_cont.91655:
 	lw	$2, 31($3)
 	addi	$30, $0, 2
-	bne	$2, $30, eq_else.91166
-	j	eq_cont.91167
-eq_else.91166:
-	addi	$5, $0, 2
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91656
+	j	eq_cont.91657
+eq_else.91656:
+	lw	$5, 3164($26)
 	lw	$6, 30($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 34($3)
@@ -36592,22 +36188,20 @@ eq_else.91166:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -36
 	lw	$31, 35($3)
-eq_cont.91167:
+eq_cont.91657:
 	lw	$2, 31($3)
 	addi	$30, $0, 3
-	bne	$2, $30, eq_else.91168
-	j	eq_cont.91169
-eq_else.91168:
-	addi	$5, $0, 3
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91658
+	j	eq_cont.91659
+eq_else.91658:
+	lw	$5, 3164($27)
 	lw	$6, 30($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 35($3)
@@ -36627,12 +36221,12 @@ eq_else.91168:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -37
 	lw	$31, 36($3)
-eq_cont.91169:
+eq_cont.91659:
 	lw	$2, 31($3)
 	addi	$30, $0, 4
-	bne	$2, $30, eq_else.91170
-	j	eq_cont.91171
-eq_else.91170:
+	bne	$2, $30, eq_else.91660
+	j	eq_cont.91661
+eq_else.91660:
 	addi	$2, $0, 4
 	lw	$2, 3164($2)
 	lw	$5, 30($3)
@@ -36640,9 +36234,8 @@ eq_else.91170:
 	sf	$f0, 3149($0)
 	lf	$f0, 1($5)
 	sf	$f0, 3149($1)
-	addi	$6, $0, 2
 	lf	$f0, 2($5)
-	sf	$f0, 3149($6)
+	sf	$f0, 3149($26)
 	lw	$6, 3000($0)
 	addi	$6, $6, -1
 	sw	$2, 36($3)
@@ -36662,7 +36255,7 @@ eq_else.91170:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -38
 	lw	$31, 37($3)
-eq_cont.91171:
+eq_cont.91661:
 	lw	$2, 27($3)
 	lw	$5, 28($3)
 	add	$30, $5, $2
@@ -36679,35 +36272,32 @@ eq_cont.91171:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3138($1)
-	addi	$6, $0, 2
-	addi	$7, $0, 2
-	lf	$f0, 3138($7)
+	lf	$f0, 3138($26)
 	lf	$f1, 2($5)
-	addi	$5, $0, 2
-	lf	$f2, 3135($5)
+	lf	$f2, 3135($26)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3138($6)
-eq_cont.91161:
+	sf	$f0, 3138($26)
+eq_cont.91651:
 	lw	$2, 27($3)
 	addi	$2, $2, 1
 	addi	$30, $0, 4
-	ble	$2, $30, le.91172
+	ble	$2, $30, le.91662
 	jr $31
-le.91172:
+le.91662:
 	lw	$5, 26($3)
 	lw	$6, 2($5)
 	add	$30, $6, $2
 	lw	$6, 0($30)
-	bge	$6, $0, ge.91174
+	bge	$6, $0, ge.91664
 	jr $31
-ge.91174:
+ge.91664:
 	lw	$6, 3($5)
 	add	$30, $6, $2
 	lw	$6, 0($30)
-	bne	$6, $0, eq_else.91176
-	j	eq_cont.91177
-eq_else.91176:
+	bne	$6, $0, eq_else.91666
+	j	eq_cont.91667
+eq_else.91666:
 	lw	$6, 5($5)
 	lw	$7, 7($5)
 	lw	$8, 1($5)
@@ -36718,9 +36308,8 @@ eq_else.91176:
 	sf	$f0, 3135($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3135($1)
-	addi	$10, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3135($10)
+	sf	$f0, 3135($26)
 	lw	$6, 6($5)
 	lw	$6, 0($6)
 	add	$30, $7, $2
@@ -36732,17 +36321,16 @@ eq_else.91176:
 	sw	$7, 39($3)
 	sw	$8, 40($3)
 	sw	$6, 41($3)
-	bne	$6, $0, eq_else.91178
-	j	eq_cont.91179
-eq_else.91178:
+	bne	$6, $0, eq_else.91668
+	j	eq_cont.91669
+eq_else.91668:
 	lw	$10, 3164($0)
 	lf	$f0, 0($8)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($8)
 	sf	$f0, 3149($1)
-	addi	$11, $0, 2
 	lf	$f0, 2($8)
-	sf	$f0, 3149($11)
+	sf	$f0, 3149($26)
 	lw	$11, 3000($0)
 	addi	$11, $11, -1
 	sw	$10, 42($3)
@@ -36769,7 +36357,7 @@ eq_else.91178:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91180
+	bne	$5, $0, eq_else.91670
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -36779,8 +36367,8 @@ eq_else.91178:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -44
 	lw	$31, 43($3)
-	j	eq_cont.91181
-eq_else.91180:
+	j	eq_cont.91671
+eq_else.91670:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -36790,7 +36378,7 @@ eq_else.91180:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -44
 	lw	$31, 43($3)
-eq_cont.91181:
+eq_cont.91671:
 	addi	$7, $0, 116
 	lw	$2, 42($3)
 	lw	$5, 39($3)
@@ -36800,20 +36388,19 @@ eq_cont.91181:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -44
 	lw	$31, 43($3)
-eq_cont.91179:
+eq_cont.91669:
 	lw	$2, 41($3)
-	bne	$2, $1, eq_else.91182
-	j	eq_cont.91183
-eq_else.91182:
+	bne	$2, $1, eq_else.91672
+	j	eq_cont.91673
+eq_else.91672:
 	lw	$5, 3164($1)
 	lw	$6, 40($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 43($3)
@@ -36840,7 +36427,7 @@ eq_else.91182:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91184
+	bne	$5, $0, eq_else.91674
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -36850,8 +36437,8 @@ eq_else.91182:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -45
 	lw	$31, 44($3)
-	j	eq_cont.91185
-eq_else.91184:
+	j	eq_cont.91675
+eq_else.91674:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -36861,7 +36448,7 @@ eq_else.91184:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -45
 	lw	$31, 44($3)
-eq_cont.91185:
+eq_cont.91675:
 	addi	$7, $0, 116
 	lw	$2, 43($3)
 	lw	$5, 39($3)
@@ -36871,22 +36458,20 @@ eq_cont.91185:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -45
 	lw	$31, 44($3)
-eq_cont.91183:
+eq_cont.91673:
 	lw	$2, 41($3)
 	addi	$30, $0, 2
-	bne	$2, $30, eq_else.91186
-	j	eq_cont.91187
-eq_else.91186:
-	addi	$5, $0, 2
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91676
+	j	eq_cont.91677
+eq_else.91676:
+	lw	$5, 3164($26)
 	lw	$6, 40($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 44($3)
@@ -36913,7 +36498,7 @@ eq_else.91186:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91188
+	bne	$5, $0, eq_else.91678
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -36923,8 +36508,8 @@ eq_else.91186:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -46
 	lw	$31, 45($3)
-	j	eq_cont.91189
-eq_else.91188:
+	j	eq_cont.91679
+eq_else.91678:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -36934,7 +36519,7 @@ eq_else.91188:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -46
 	lw	$31, 45($3)
-eq_cont.91189:
+eq_cont.91679:
 	addi	$7, $0, 116
 	lw	$2, 44($3)
 	lw	$5, 39($3)
@@ -36944,22 +36529,20 @@ eq_cont.91189:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -46
 	lw	$31, 45($3)
-eq_cont.91187:
+eq_cont.91677:
 	lw	$2, 41($3)
 	addi	$30, $0, 3
-	bne	$2, $30, eq_else.91190
-	j	eq_cont.91191
-eq_else.91190:
-	addi	$5, $0, 3
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91680
+	j	eq_cont.91681
+eq_else.91680:
+	lw	$5, 3164($27)
 	lw	$6, 40($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 45($3)
@@ -36986,7 +36569,7 @@ eq_else.91190:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91192
+	bne	$5, $0, eq_else.91682
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -36996,8 +36579,8 @@ eq_else.91190:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -47
 	lw	$31, 46($3)
-	j	eq_cont.91193
-eq_else.91192:
+	j	eq_cont.91683
+eq_else.91682:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -37007,7 +36590,7 @@ eq_else.91192:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -47
 	lw	$31, 46($3)
-eq_cont.91193:
+eq_cont.91683:
 	addi	$7, $0, 116
 	lw	$2, 45($3)
 	lw	$5, 39($3)
@@ -37017,12 +36600,12 @@ eq_cont.91193:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -47
 	lw	$31, 46($3)
-eq_cont.91191:
+eq_cont.91681:
 	lw	$2, 41($3)
 	addi	$30, $0, 4
-	bne	$2, $30, eq_else.91194
-	j	eq_cont.91195
-eq_else.91194:
+	bne	$2, $30, eq_else.91684
+	j	eq_cont.91685
+eq_else.91684:
 	addi	$2, $0, 4
 	lw	$2, 3164($2)
 	lw	$5, 40($3)
@@ -37030,9 +36613,8 @@ eq_else.91194:
 	sf	$f0, 3149($0)
 	lf	$f0, 1($5)
 	sf	$f0, 3149($1)
-	addi	$6, $0, 2
 	lf	$f0, 2($5)
-	sf	$f0, 3149($6)
+	sf	$f0, 3149($26)
 	lw	$6, 3000($0)
 	addi	$6, $6, -1
 	sw	$2, 46($3)
@@ -37059,7 +36641,7 @@ eq_else.91194:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91196
+	bne	$5, $0, eq_else.91686
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -37069,8 +36651,8 @@ eq_else.91194:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -48
 	lw	$31, 47($3)
-	j	eq_cont.91197
-eq_else.91196:
+	j	eq_cont.91687
+eq_else.91686:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -37080,7 +36662,7 @@ eq_else.91196:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -48
 	lw	$31, 47($3)
-eq_cont.91197:
+eq_cont.91687:
 	addi	$7, $0, 116
 	lw	$2, 46($3)
 	lw	$5, 39($3)
@@ -37090,7 +36672,7 @@ eq_cont.91197:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -48
 	lw	$31, 47($3)
-eq_cont.91195:
+eq_cont.91685:
 	lw	$2, 37($3)
 	lw	$5, 38($3)
 	add	$30, $5, $2
@@ -37107,26 +36689,23 @@ eq_cont.91195:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3138($1)
-	addi	$6, $0, 2
-	addi	$7, $0, 2
-	lf	$f0, 3138($7)
+	lf	$f0, 3138($26)
 	lf	$f1, 2($5)
-	addi	$5, $0, 2
-	lf	$f2, 3135($5)
+	lf	$f2, 3135($26)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3138($6)
-eq_cont.91177:
+	sf	$f0, 3138($26)
+eq_cont.91667:
 	addi	$5, $2, 1
 	lw	$2, 26($3)
 	j	do_without_neighbors.3063
-eq_else.91155:
+eq_else.91645:
 	lw	$10, 3($10)
 	add	$30, $10, $9
 	lw	$10, 0($30)
-	bne	$10, $0, eq_else.91198
-	j	eq_cont.91199
-eq_else.91198:
+	bne	$10, $0, eq_else.91688
+	j	eq_cont.91689
+eq_else.91688:
 	add	$30, $6, $2
 	lw	$10, 0($30)
 	lw	$10, 5($10)
@@ -37150,9 +36729,8 @@ eq_else.91198:
 	sf	$f0, 3135($0)
 	lf	$f0, 1($10)
 	sf	$f0, 3135($1)
-	addi	$15, $0, 2
 	lf	$f0, 2($10)
-	sf	$f0, 3135($15)
+	sf	$f0, 3135($26)
 	add	$30, $11, $9
 	lw	$10, 0($30)
 	lf	$f0, 3135($0)
@@ -37163,12 +36741,10 @@ eq_else.91198:
 	lf	$f1, 1($10)
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3135($1)
-	addi	$11, $0, 2
-	addi	$15, $0, 2
-	lf	$f0, 3135($15)
+	lf	$f0, 3135($26)
 	lf	$f1, 2($10)
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3135($11)
+	sf	$f0, 3135($26)
 	add	$30, $12, $9
 	lw	$10, 0($30)
 	lf	$f0, 3135($0)
@@ -37179,12 +36755,10 @@ eq_else.91198:
 	lf	$f1, 1($10)
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3135($1)
-	addi	$11, $0, 2
-	addi	$12, $0, 2
-	lf	$f0, 3135($12)
+	lf	$f0, 3135($26)
 	lf	$f1, 2($10)
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3135($11)
+	sf	$f0, 3135($26)
 	add	$30, $13, $9
 	lw	$10, 0($30)
 	lf	$f0, 3135($0)
@@ -37195,12 +36769,10 @@ eq_else.91198:
 	lf	$f1, 1($10)
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3135($1)
-	addi	$11, $0, 2
-	addi	$12, $0, 2
-	lf	$f0, 3135($12)
+	lf	$f0, 3135($26)
 	lf	$f1, 2($10)
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3135($11)
+	sf	$f0, 3135($26)
 	add	$30, $14, $9
 	lw	$10, 0($30)
 	lf	$f0, 3135($0)
@@ -37211,12 +36783,10 @@ eq_else.91198:
 	lf	$f1, 1($10)
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3135($1)
-	addi	$11, $0, 2
-	addi	$12, $0, 2
-	lf	$f0, 3135($12)
+	lf	$f0, 3135($26)
 	lf	$f1, 2($10)
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3135($11)
+	sf	$f0, 3135($26)
 	add	$30, $7, $2
 	lw	$10, 0($30)
 	lw	$10, 4($10)
@@ -37234,42 +36804,38 @@ eq_else.91198:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3138($1)
-	addi	$11, $0, 2
-	addi	$12, $0, 2
-	lf	$f0, 3138($12)
+	lf	$f0, 3138($26)
 	lf	$f1, 2($10)
-	addi	$10, $0, 2
-	lf	$f2, 3135($10)
+	lf	$f2, 3135($26)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3138($11)
-eq_cont.91199:
+	sf	$f0, 3138($26)
+eq_cont.91689:
 	addi	$9, $9, 1
 	j	try_exploit_neighbors.3079
 pretrace_diffuse_rays.3092:
 	addi	$30, $0, 4
-	ble	$5, $30, le.91200
+	ble	$5, $30, le.91690
 	jr $31
-le.91200:
+le.91690:
 	lw	$6, 2($2)
 	add	$30, $6, $5
 	lw	$6, 0($30)
-	bge	$6, $0, ge.91202
+	bge	$6, $0, ge.91692
 	jr $31
-ge.91202:
+ge.91692:
 	lw	$6, 3($2)
 	add	$30, $6, $5
 	lw	$6, 0($30)
 	sw	$5, 0($3)
-	bne	$6, $0, eq_else.91204
-	j	eq_cont.91205
-eq_else.91204:
+	bne	$6, $0, eq_else.91694
+	j	eq_cont.91695
+eq_else.91694:
 	lw	$6, 6($2)
 	lw	$6, 0($6)
 	sf	$f30, 3135($0)
 	sf	$f30, 3135($1)
-	addi	$7, $0, 2
-	sf	$f30, 3135($7)
+	sf	$f30, 3135($26)
 	lw	$7, 7($2)
 	lw	$8, 1($2)
 	lw	$6, 3164($6)
@@ -37281,9 +36847,8 @@ eq_else.91204:
 	sf	$f0, 3149($0)
 	lf	$f0, 1($8)
 	sf	$f0, 3149($1)
-	addi	$9, $0, 2
 	lf	$f0, 2($8)
-	sf	$f0, 3149($9)
+	sf	$f0, 3149($26)
 	lw	$9, 3000($0)
 	addi	$9, $9, -1
 	sw	$2, 1($3)
@@ -37315,35 +36880,33 @@ eq_else.91204:
 	sf	$f0, 0($5)
 	lf	$f0, 3135($1)
 	sf	$f0, 1($5)
-	addi	$7, $0, 2
-	lf	$f0, 3135($7)
+	lf	$f0, 3135($26)
 	sf	$f0, 2($5)
-eq_cont.91205:
+eq_cont.91695:
 	lw	$5, 0($3)
 	addi	$5, $5, 1
 	addi	$30, $0, 4
-	ble	$5, $30, le.91206
+	ble	$5, $30, le.91696
 	jr $31
-le.91206:
+le.91696:
 	lw	$6, 2($2)
 	add	$30, $6, $5
 	lw	$6, 0($30)
-	bge	$6, $0, ge.91208
+	bge	$6, $0, ge.91698
 	jr $31
-ge.91208:
+ge.91698:
 	lw	$6, 3($2)
 	add	$30, $6, $5
 	lw	$6, 0($30)
 	sw	$5, 5($3)
-	bne	$6, $0, eq_else.91210
-	j	eq_cont.91211
-eq_else.91210:
+	bne	$6, $0, eq_else.91700
+	j	eq_cont.91701
+eq_else.91700:
 	lw	$6, 6($2)
 	lw	$6, 0($6)
 	sf	$f30, 3135($0)
 	sf	$f30, 3135($1)
-	addi	$7, $0, 2
-	sf	$f30, 3135($7)
+	sf	$f30, 3135($26)
 	lw	$7, 7($2)
 	lw	$8, 1($2)
 	lw	$6, 3164($6)
@@ -37355,9 +36918,8 @@ eq_else.91210:
 	sf	$f0, 3149($0)
 	lf	$f0, 1($8)
 	sf	$f0, 3149($1)
-	addi	$9, $0, 2
 	lf	$f0, 2($8)
-	sf	$f0, 3149($9)
+	sf	$f0, 3149($26)
 	lw	$9, 3000($0)
 	addi	$9, $9, -1
 	sw	$2, 1($3)
@@ -37387,7 +36949,7 @@ eq_else.91210:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91212
+	bne	$5, $0, eq_else.91702
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -37397,8 +36959,8 @@ eq_else.91210:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -10
 	lw	$31, 9($3)
-	j	eq_cont.91213
-eq_else.91212:
+	j	eq_cont.91703
+eq_else.91702:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -37408,7 +36970,7 @@ eq_else.91212:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -10
 	lw	$31, 9($3)
-eq_cont.91213:
+eq_cont.91703:
 	addi	$7, $0, 116
 	lw	$2, 8($3)
 	lw	$5, 7($3)
@@ -37427,17 +36989,16 @@ eq_cont.91213:
 	sf	$f0, 0($5)
 	lf	$f0, 3135($1)
 	sf	$f0, 1($5)
-	addi	$7, $0, 2
-	lf	$f0, 3135($7)
+	lf	$f0, 3135($26)
 	sf	$f0, 2($5)
-eq_cont.91211:
+eq_cont.91701:
 	lw	$5, 5($3)
 	addi	$5, $5, 1
 	j	pretrace_diffuse_rays.3092
 pretrace_pixels.3095:
-	bge	$5, $0, ge.91214
+	bge	$5, $0, ge.91704
 	jr $31
-ge.91214:
+ge.91704:
 	lf	$f3, 3145($0)
 	lw	$7, 3143($0)
 	sub	$7, $5, $7
@@ -37451,57 +37012,49 @@ ge.91214:
 	fmul	$f4, $f3, $f4
 	fadd	$f4, $f4, $f1
 	sf	$f4, 3161($1)
-	addi	$7, $0, 2
-	addi	$8, $0, 2
-	lf	$f4, 3152($8)
+	lf	$f4, 3152($26)
 	fmul	$f3, $f3, $f4
 	fadd	$f3, $f3, $f2
-	sf	$f3, 3161($7)
+	sf	$f3, 3161($26)
 	lf	$f3, 3161($0)
 	fmul	$f3, $f3, $f3
 	lf	$f4, 3161($1)
 	fmul	$f4, $f4, $f4
 	fadd	$f3, $f3, $f4
-	addi	$7, $0, 2
-	lf	$f4, 3161($7)
+	lf	$f4, 3161($26)
 	fmul	$f4, $f4, $f4
 	fadd	$f3, $f3, $f4
 	sqrt	$f3, $f3
-	beqf	$f3, $f30, feq.91216
+	beqf	$f3, $f30, feq.91706
 	mov	$7, $0
-	j	feq_cont.91217
-feq.91216:
+	j	feq_cont.91707
+feq.91706:
 	mov	$7, $1
-feq_cont.91217:
-	bne	$7, $0, eq_else.91218
+feq_cont.91707:
+	bne	$7, $0, eq_else.91708
 	fdiv	$f3, $f28, $f3
-	j	eq_cont.91219
-eq_else.91218:
+	j	eq_cont.91709
+eq_else.91708:
 	movf	$f3, $f28
-eq_cont.91219:
+eq_cont.91709:
 	lf	$f4, 3161($0)
 	fmul	$f4, $f4, $f3
 	sf	$f4, 3161($0)
 	lf	$f4, 3161($1)
 	fmul	$f4, $f4, $f3
 	sf	$f4, 3161($1)
-	addi	$7, $0, 2
-	addi	$8, $0, 2
-	lf	$f4, 3161($8)
+	lf	$f4, 3161($26)
 	fmul	$f3, $f4, $f3
-	sf	$f3, 3161($7)
+	sf	$f3, 3161($26)
 	sf	$f30, 3138($0)
 	sf	$f30, 3138($1)
-	addi	$7, $0, 2
-	sf	$f30, 3138($7)
+	sf	$f30, 3138($26)
 	lf	$f3, 3064($0)
 	sf	$f3, 3146($0)
 	lf	$f3, 3064($1)
 	sf	$f3, 3146($1)
-	addi	$7, $0, 2
-	addi	$8, $0, 2
-	lf	$f3, 3064($8)
-	sf	$f3, 3146($7)
+	lf	$f3, 3064($26)
+	sf	$f3, 3146($26)
 	add	$30, $2, $5
 	lw	$7, 0($30)
 	addi	$8, $0, 3161
@@ -37530,8 +37083,7 @@ eq_cont.91219:
 	sf	$f0, 0($6)
 	lf	$f0, 3138($1)
 	sf	$f0, 1($6)
-	addi	$7, $0, 2
-	lf	$f0, 3138($7)
+	lf	$f0, 3138($26)
 	sf	$f0, 2($6)
 	add	$30, $5, $2
 	lw	$6, 0($30)
@@ -37542,21 +37094,20 @@ eq_cont.91219:
 	lw	$6, 0($30)
 	lw	$8, 2($6)
 	lw	$8, 0($8)
-	bge	$8, $0, ge_else.91220
-	j	ge_cont.91221
-ge_else.91220:
+	bge	$8, $0, ge_else.91710
+	j	ge_cont.91711
+ge_else.91710:
 	lw	$8, 3($6)
 	lw	$8, 0($8)
 	sw	$6, 6($3)
-	bne	$8, $0, eq_else.91222
-	j	eq_cont.91223
-eq_else.91222:
+	bne	$8, $0, eq_else.91712
+	j	eq_cont.91713
+eq_else.91712:
 	lw	$8, 6($6)
 	lw	$8, 0($8)
 	sf	$f30, 3135($0)
 	sf	$f30, 3135($1)
-	addi	$9, $0, 2
-	sf	$f30, 3135($9)
+	sf	$f30, 3135($26)
 	lw	$9, 7($6)
 	lw	$10, 1($6)
 	lw	$8, 3164($8)
@@ -37566,9 +37117,8 @@ eq_else.91222:
 	sf	$f0, 3149($0)
 	lf	$f0, 1($10)
 	sf	$f0, 3149($1)
-	addi	$11, $0, 2
 	lf	$f0, 2($10)
-	sf	$f0, 3149($11)
+	sf	$f0, 3149($26)
 	lw	$11, 3000($0)
 	addi	$11, $11, -1
 	sw	$10, 7($3)
@@ -37597,7 +37147,7 @@ eq_else.91222:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91224
+	bne	$5, $0, eq_else.91714
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -37607,8 +37157,8 @@ eq_else.91222:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -11
 	lw	$31, 10($3)
-	j	eq_cont.91225
-eq_else.91224:
+	j	eq_cont.91715
+eq_else.91714:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -37618,7 +37168,7 @@ eq_else.91224:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -11
 	lw	$31, 10($3)
-eq_cont.91225:
+eq_cont.91715:
 	addi	$7, $0, 116
 	lw	$2, 9($3)
 	lw	$5, 8($3)
@@ -37635,10 +37185,9 @@ eq_cont.91225:
 	sf	$f0, 0($5)
 	lf	$f0, 3135($1)
 	sf	$f0, 1($5)
-	addi	$6, $0, 2
-	lf	$f0, 3135($6)
+	lf	$f0, 3135($26)
 	sf	$f0, 2($5)
-eq_cont.91223:
+eq_cont.91713:
 	lw	$2, 6($3)
 	mov	$5, $1
 	sw	$31, 10($3)
@@ -37646,18 +37195,18 @@ eq_cont.91223:
 	jal	pretrace_diffuse_rays.3092
 	addi	$3, $3, -11
 	lw	$31, 10($3)
-ge_cont.91221:
+ge_cont.91711:
 	lw	$2, 4($3)
 	addi	$5, $2, -1
 	lw	$2, 3($3)
 	addi	$2, $2, 1
 	addi	$30, $0, 5
-	bge	$2, $30, ge_else.91226
+	bge	$2, $30, ge_else.91716
 	mov	$6, $2
-	j	ge_cont.91227
-ge_else.91226:
+	j	ge_cont.91717
+ge_else.91716:
 	addi	$6, $2, -5
-ge_cont.91227:
+ge_cont.91717:
 	lf	$f0, 2($3)
 	lf	$f1, 1($3)
 	lf	$f2, 0($3)
@@ -37665,7 +37214,7 @@ ge_cont.91227:
 	j	pretrace_pixels.3095
 scan_pixel.3106:
 	lw	$9, 3141($0)
-	ble	$9, $2, le.91228
+	ble	$9, $2, le.91718
 	add	$30, $7, $2
 	lw	$9, 0($30)
 	lw	$9, 0($9)
@@ -37673,53 +37222,52 @@ scan_pixel.3106:
 	sf	$f0, 3138($0)
 	lf	$f0, 1($9)
 	sf	$f0, 3138($1)
-	addi	$10, $0, 2
 	lf	$f0, 2($9)
-	sf	$f0, 3138($10)
+	sf	$f0, 3138($26)
 	lw	$9, 3141($1)
 	addi	$10, $5, 1
-	ble	$9, $10, le_else.91229
-	ble	$5, $0, le_else.91231
+	ble	$9, $10, le_else.91719
+	ble	$5, $0, le_else.91721
 	lw	$9, 3141($0)
 	addi	$10, $2, 1
-	ble	$9, $10, le_else.91233
-	ble	$2, $0, le_else.91235
+	ble	$9, $10, le_else.91723
+	ble	$2, $0, le_else.91725
 	mov	$9, $1
-	j	le_cont.91236
-le_else.91235:
+	j	le_cont.91726
+le_else.91725:
 	mov	$9, $0
-le_cont.91236:
-	j	le_cont.91234
-le_else.91233:
+le_cont.91726:
+	j	le_cont.91724
+le_else.91723:
 	mov	$9, $0
-le_cont.91234:
-	j	le_cont.91232
-le_else.91231:
+le_cont.91724:
+	j	le_cont.91722
+le_else.91721:
 	mov	$9, $0
-le_cont.91232:
-	j	le_cont.91230
-le_else.91229:
+le_cont.91722:
+	j	le_cont.91720
+le_else.91719:
 	mov	$9, $0
-le_cont.91230:
+le_cont.91720:
 	sw	$8, 0($3)
 	sw	$6, 1($3)
 	sw	$5, 2($3)
 	sw	$7, 3($3)
 	sw	$2, 4($3)
-	bne	$9, $0, eq_else.91237
+	bne	$9, $0, eq_else.91727
 	add	$30, $7, $2
 	lw	$9, 0($30)
 	lw	$10, 2($9)
 	lw	$10, 0($10)
-	bge	$10, $0, ge_else.91239
-	j	ge_cont.91240
-ge_else.91239:
+	bge	$10, $0, ge_else.91729
+	j	ge_cont.91730
+ge_else.91729:
 	lw	$10, 3($9)
 	lw	$10, 0($10)
 	sw	$9, 5($3)
-	bne	$10, $0, eq_else.91241
-	j	eq_cont.91242
-eq_else.91241:
+	bne	$10, $0, eq_else.91731
+	j	eq_cont.91732
+eq_else.91731:
 	lw	$10, 5($9)
 	lw	$11, 7($9)
 	lw	$12, 1($9)
@@ -37729,9 +37277,8 @@ eq_else.91241:
 	sf	$f0, 3135($0)
 	lf	$f0, 1($10)
 	sf	$f0, 3135($1)
-	addi	$14, $0, 2
 	lf	$f0, 2($10)
-	sf	$f0, 3135($14)
+	sf	$f0, 3135($26)
 	lw	$10, 6($9)
 	lw	$10, 0($10)
 	lw	$11, 0($11)
@@ -37740,9 +37287,9 @@ eq_else.91241:
 	sw	$12, 7($3)
 	sw	$11, 8($3)
 	sw	$10, 9($3)
-	bne	$10, $0, eq_else.91243
-	j	eq_cont.91244
-eq_else.91243:
+	bne	$10, $0, eq_else.91733
+	j	eq_cont.91734
+eq_else.91733:
 	lw	$14, 3164($0)
 	mov	$6, $12
 	mov	$5, $11
@@ -37752,11 +37299,11 @@ eq_else.91243:
 	jal	trace_diffuse_rays.3046
 	addi	$3, $3, -11
 	lw	$31, 10($3)
-eq_cont.91244:
+eq_cont.91734:
 	lw	$2, 9($3)
-	bne	$2, $1, eq_else.91245
-	j	eq_cont.91246
-eq_else.91245:
+	bne	$2, $1, eq_else.91735
+	j	eq_cont.91736
+eq_else.91735:
 	lw	$5, 3164($1)
 	lw	$6, 8($3)
 	lw	$7, 7($3)
@@ -37768,14 +37315,13 @@ eq_else.91245:
 	jal	trace_diffuse_rays.3046
 	addi	$3, $3, -11
 	lw	$31, 10($3)
-eq_cont.91246:
+eq_cont.91736:
 	lw	$2, 9($3)
 	addi	$30, $0, 2
-	bne	$2, $30, eq_else.91247
-	j	eq_cont.91248
-eq_else.91247:
-	addi	$5, $0, 2
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91737
+	j	eq_cont.91738
+eq_else.91737:
+	lw	$5, 3164($26)
 	lw	$6, 8($3)
 	lw	$7, 7($3)
 	mov	$2, $5
@@ -37786,14 +37332,13 @@ eq_else.91247:
 	jal	trace_diffuse_rays.3046
 	addi	$3, $3, -11
 	lw	$31, 10($3)
-eq_cont.91248:
+eq_cont.91738:
 	lw	$2, 9($3)
 	addi	$30, $0, 3
-	bne	$2, $30, eq_else.91249
-	j	eq_cont.91250
-eq_else.91249:
-	addi	$5, $0, 3
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91739
+	j	eq_cont.91740
+eq_else.91739:
+	lw	$5, 3164($27)
 	lw	$6, 8($3)
 	lw	$7, 7($3)
 	mov	$2, $5
@@ -37804,12 +37349,12 @@ eq_else.91249:
 	jal	trace_diffuse_rays.3046
 	addi	$3, $3, -11
 	lw	$31, 10($3)
-eq_cont.91250:
+eq_cont.91740:
 	lw	$2, 9($3)
 	addi	$30, $0, 4
-	bne	$2, $30, eq_else.91251
-	j	eq_cont.91252
-eq_else.91251:
+	bne	$2, $30, eq_else.91741
+	j	eq_cont.91742
+eq_else.91741:
 	addi	$2, $0, 4
 	lw	$2, 3164($2)
 	lw	$5, 8($3)
@@ -37819,7 +37364,7 @@ eq_else.91251:
 	jal	trace_diffuse_rays.3046
 	addi	$3, $3, -11
 	lw	$31, 10($3)
-eq_cont.91252:
+eq_cont.91742:
 	lw	$2, 6($3)
 	lw	$2, 0($2)
 	lf	$f0, 3138($0)
@@ -37834,27 +37379,24 @@ eq_cont.91252:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3138($1)
-	addi	$5, $0, 2
-	addi	$6, $0, 2
-	lf	$f0, 3138($6)
+	lf	$f0, 3138($26)
 	lf	$f1, 2($2)
-	addi	$2, $0, 2
-	lf	$f2, 3135($2)
+	lf	$f2, 3135($26)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3138($5)
-eq_cont.91242:
+	sf	$f0, 3138($26)
+eq_cont.91732:
 	lw	$2, 5($3)
 	lw	$5, 2($2)
 	lw	$5, 1($5)
-	bge	$5, $0, ge_else.91253
-	j	ge_cont.91254
-ge_else.91253:
+	bge	$5, $0, ge_else.91743
+	j	ge_cont.91744
+ge_else.91743:
 	lw	$5, 3($2)
 	lw	$5, 1($5)
-	bne	$5, $0, eq_else.91255
-	j	eq_cont.91256
-eq_else.91255:
+	bne	$5, $0, eq_else.91745
+	j	eq_cont.91746
+eq_else.91745:
 	lw	$5, 5($2)
 	lw	$6, 7($2)
 	lw	$7, 1($2)
@@ -37864,9 +37406,8 @@ eq_else.91255:
 	sf	$f0, 3135($0)
 	lf	$f0, 1($5)
 	sf	$f0, 3135($1)
-	addi	$9, $0, 2
 	lf	$f0, 2($5)
-	sf	$f0, 3135($9)
+	sf	$f0, 3135($26)
 	lw	$5, 6($2)
 	lw	$5, 0($5)
 	lw	$6, 1($6)
@@ -37875,17 +37416,16 @@ eq_else.91255:
 	sw	$6, 11($3)
 	sw	$7, 12($3)
 	sw	$5, 13($3)
-	bne	$5, $0, eq_else.91257
-	j	eq_cont.91258
-eq_else.91257:
+	bne	$5, $0, eq_else.91747
+	j	eq_cont.91748
+eq_else.91747:
 	lw	$9, 3164($0)
 	lf	$f0, 0($7)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($7)
 	sf	$f0, 3149($1)
-	addi	$10, $0, 2
 	lf	$f0, 2($7)
-	sf	$f0, 3149($10)
+	sf	$f0, 3149($26)
 	lw	$10, 3000($0)
 	addi	$10, $10, -1
 	sw	$9, 14($3)
@@ -37905,20 +37445,19 @@ eq_else.91257:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -16
 	lw	$31, 15($3)
-eq_cont.91258:
+eq_cont.91748:
 	lw	$2, 13($3)
-	bne	$2, $1, eq_else.91259
-	j	eq_cont.91260
-eq_else.91259:
+	bne	$2, $1, eq_else.91749
+	j	eq_cont.91750
+eq_else.91749:
 	lw	$5, 3164($1)
 	lw	$6, 12($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 15($3)
@@ -37938,22 +37477,20 @@ eq_else.91259:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -17
 	lw	$31, 16($3)
-eq_cont.91260:
+eq_cont.91750:
 	lw	$2, 13($3)
 	addi	$30, $0, 2
-	bne	$2, $30, eq_else.91261
-	j	eq_cont.91262
-eq_else.91261:
-	addi	$5, $0, 2
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91751
+	j	eq_cont.91752
+eq_else.91751:
+	lw	$5, 3164($26)
 	lw	$6, 12($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 16($3)
@@ -37973,22 +37510,20 @@ eq_else.91261:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -18
 	lw	$31, 17($3)
-eq_cont.91262:
+eq_cont.91752:
 	lw	$2, 13($3)
 	addi	$30, $0, 3
-	bne	$2, $30, eq_else.91263
-	j	eq_cont.91264
-eq_else.91263:
-	addi	$5, $0, 3
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91753
+	j	eq_cont.91754
+eq_else.91753:
+	lw	$5, 3164($27)
 	lw	$6, 12($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 17($3)
@@ -38008,12 +37543,12 @@ eq_else.91263:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -19
 	lw	$31, 18($3)
-eq_cont.91264:
+eq_cont.91754:
 	lw	$2, 13($3)
 	addi	$30, $0, 4
-	bne	$2, $30, eq_else.91265
-	j	eq_cont.91266
-eq_else.91265:
+	bne	$2, $30, eq_else.91755
+	j	eq_cont.91756
+eq_else.91755:
 	addi	$2, $0, 4
 	lw	$2, 3164($2)
 	lw	$5, 12($3)
@@ -38021,9 +37556,8 @@ eq_else.91265:
 	sf	$f0, 3149($0)
 	lf	$f0, 1($5)
 	sf	$f0, 3149($1)
-	addi	$6, $0, 2
 	lf	$f0, 2($5)
-	sf	$f0, 3149($6)
+	sf	$f0, 3149($26)
 	lw	$6, 3000($0)
 	addi	$6, $6, -1
 	sw	$2, 18($3)
@@ -38043,7 +37577,7 @@ eq_else.91265:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -20
 	lw	$31, 19($3)
-eq_cont.91266:
+eq_cont.91756:
 	lw	$2, 10($3)
 	lw	$2, 1($2)
 	lf	$f0, 3138($0)
@@ -38058,27 +37592,24 @@ eq_cont.91266:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3138($1)
-	addi	$5, $0, 2
-	addi	$6, $0, 2
-	lf	$f0, 3138($6)
+	lf	$f0, 3138($26)
 	lf	$f1, 2($2)
-	addi	$2, $0, 2
-	lf	$f2, 3135($2)
+	lf	$f2, 3135($26)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3138($5)
-eq_cont.91256:
+	sf	$f0, 3138($26)
+eq_cont.91746:
 	lw	$2, 5($3)
 	lw	$5, 2($2)
 	lw	$5, 2($5)
-	bge	$5, $0, ge_else.91267
-	j	ge_cont.91268
-ge_else.91267:
+	bge	$5, $0, ge_else.91757
+	j	ge_cont.91758
+ge_else.91757:
 	lw	$5, 3($2)
 	lw	$5, 2($5)
-	bne	$5, $0, eq_else.91269
-	j	eq_cont.91270
-eq_else.91269:
+	bne	$5, $0, eq_else.91759
+	j	eq_cont.91760
+eq_else.91759:
 	lw	$5, 5($2)
 	lw	$6, 7($2)
 	lw	$7, 1($2)
@@ -38088,9 +37619,8 @@ eq_else.91269:
 	sf	$f0, 3135($0)
 	lf	$f0, 1($5)
 	sf	$f0, 3135($1)
-	addi	$9, $0, 2
 	lf	$f0, 2($5)
-	sf	$f0, 3135($9)
+	sf	$f0, 3135($26)
 	lw	$5, 6($2)
 	lw	$5, 0($5)
 	lw	$6, 2($6)
@@ -38099,17 +37629,16 @@ eq_else.91269:
 	sw	$6, 20($3)
 	sw	$7, 21($3)
 	sw	$5, 22($3)
-	bne	$5, $0, eq_else.91271
-	j	eq_cont.91272
-eq_else.91271:
+	bne	$5, $0, eq_else.91761
+	j	eq_cont.91762
+eq_else.91761:
 	lw	$9, 3164($0)
 	lf	$f0, 0($7)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($7)
 	sf	$f0, 3149($1)
-	addi	$10, $0, 2
 	lf	$f0, 2($7)
-	sf	$f0, 3149($10)
+	sf	$f0, 3149($26)
 	lw	$10, 3000($0)
 	addi	$10, $10, -1
 	sw	$9, 23($3)
@@ -38136,7 +37665,7 @@ eq_else.91271:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91273
+	bne	$5, $0, eq_else.91763
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -38146,8 +37675,8 @@ eq_else.91271:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -25
 	lw	$31, 24($3)
-	j	eq_cont.91274
-eq_else.91273:
+	j	eq_cont.91764
+eq_else.91763:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -38157,7 +37686,7 @@ eq_else.91273:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -25
 	lw	$31, 24($3)
-eq_cont.91274:
+eq_cont.91764:
 	addi	$7, $0, 116
 	lw	$2, 23($3)
 	lw	$5, 20($3)
@@ -38167,20 +37696,19 @@ eq_cont.91274:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -25
 	lw	$31, 24($3)
-eq_cont.91272:
+eq_cont.91762:
 	lw	$2, 22($3)
-	bne	$2, $1, eq_else.91275
-	j	eq_cont.91276
-eq_else.91275:
+	bne	$2, $1, eq_else.91765
+	j	eq_cont.91766
+eq_else.91765:
 	lw	$5, 3164($1)
 	lw	$6, 21($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 24($3)
@@ -38207,7 +37735,7 @@ eq_else.91275:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91277
+	bne	$5, $0, eq_else.91767
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -38217,8 +37745,8 @@ eq_else.91275:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -26
 	lw	$31, 25($3)
-	j	eq_cont.91278
-eq_else.91277:
+	j	eq_cont.91768
+eq_else.91767:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -38228,7 +37756,7 @@ eq_else.91277:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -26
 	lw	$31, 25($3)
-eq_cont.91278:
+eq_cont.91768:
 	addi	$7, $0, 116
 	lw	$2, 24($3)
 	lw	$5, 20($3)
@@ -38238,22 +37766,20 @@ eq_cont.91278:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -26
 	lw	$31, 25($3)
-eq_cont.91276:
+eq_cont.91766:
 	lw	$2, 22($3)
 	addi	$30, $0, 2
-	bne	$2, $30, eq_else.91279
-	j	eq_cont.91280
-eq_else.91279:
-	addi	$5, $0, 2
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91769
+	j	eq_cont.91770
+eq_else.91769:
+	lw	$5, 3164($26)
 	lw	$6, 21($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 25($3)
@@ -38280,7 +37806,7 @@ eq_else.91279:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91281
+	bne	$5, $0, eq_else.91771
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -38290,8 +37816,8 @@ eq_else.91279:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -27
 	lw	$31, 26($3)
-	j	eq_cont.91282
-eq_else.91281:
+	j	eq_cont.91772
+eq_else.91771:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -38301,7 +37827,7 @@ eq_else.91281:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -27
 	lw	$31, 26($3)
-eq_cont.91282:
+eq_cont.91772:
 	addi	$7, $0, 116
 	lw	$2, 25($3)
 	lw	$5, 20($3)
@@ -38311,22 +37837,20 @@ eq_cont.91282:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -27
 	lw	$31, 26($3)
-eq_cont.91280:
+eq_cont.91770:
 	lw	$2, 22($3)
 	addi	$30, $0, 3
-	bne	$2, $30, eq_else.91283
-	j	eq_cont.91284
-eq_else.91283:
-	addi	$5, $0, 3
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91773
+	j	eq_cont.91774
+eq_else.91773:
+	lw	$5, 3164($27)
 	lw	$6, 21($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 26($3)
@@ -38353,7 +37877,7 @@ eq_else.91283:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91285
+	bne	$5, $0, eq_else.91775
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -38363,8 +37887,8 @@ eq_else.91283:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -28
 	lw	$31, 27($3)
-	j	eq_cont.91286
-eq_else.91285:
+	j	eq_cont.91776
+eq_else.91775:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -38374,7 +37898,7 @@ eq_else.91285:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -28
 	lw	$31, 27($3)
-eq_cont.91286:
+eq_cont.91776:
 	addi	$7, $0, 116
 	lw	$2, 26($3)
 	lw	$5, 20($3)
@@ -38384,12 +37908,12 @@ eq_cont.91286:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -28
 	lw	$31, 27($3)
-eq_cont.91284:
+eq_cont.91774:
 	lw	$2, 22($3)
 	addi	$30, $0, 4
-	bne	$2, $30, eq_else.91287
-	j	eq_cont.91288
-eq_else.91287:
+	bne	$2, $30, eq_else.91777
+	j	eq_cont.91778
+eq_else.91777:
 	addi	$2, $0, 4
 	lw	$2, 3164($2)
 	lw	$5, 21($3)
@@ -38397,9 +37921,8 @@ eq_else.91287:
 	sf	$f0, 3149($0)
 	lf	$f0, 1($5)
 	sf	$f0, 3149($1)
-	addi	$6, $0, 2
 	lf	$f0, 2($5)
-	sf	$f0, 3149($6)
+	sf	$f0, 3149($26)
 	lw	$6, 3000($0)
 	addi	$6, $6, -1
 	sw	$2, 27($3)
@@ -38426,7 +37949,7 @@ eq_else.91287:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91289
+	bne	$5, $0, eq_else.91779
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -38436,8 +37959,8 @@ eq_else.91287:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -29
 	lw	$31, 28($3)
-	j	eq_cont.91290
-eq_else.91289:
+	j	eq_cont.91780
+eq_else.91779:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -38447,7 +37970,7 @@ eq_else.91289:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -29
 	lw	$31, 28($3)
-eq_cont.91290:
+eq_cont.91780:
 	addi	$7, $0, 116
 	lw	$2, 27($3)
 	lw	$5, 20($3)
@@ -38457,7 +37980,7 @@ eq_cont.91290:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -29
 	lw	$31, 28($3)
-eq_cont.91288:
+eq_cont.91778:
 	lw	$2, 19($3)
 	lw	$2, 2($2)
 	lf	$f0, 3138($0)
@@ -38472,35 +37995,32 @@ eq_cont.91288:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3138($1)
-	addi	$5, $0, 2
-	addi	$6, $0, 2
-	lf	$f0, 3138($6)
+	lf	$f0, 3138($26)
 	lf	$f1, 2($2)
-	addi	$2, $0, 2
-	lf	$f2, 3135($2)
+	lf	$f2, 3135($26)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3138($5)
-eq_cont.91270:
-	addi	$5, $0, 3
+	sf	$f0, 3138($26)
+eq_cont.91760:
 	lw	$2, 5($3)
+	mov	$5, $27
 	sw	$31, 28($3)
 	addi	$3, $3, 29
 	jal	do_without_neighbors.3063
 	addi	$3, $3, -29
 	lw	$31, 28($3)
-ge_cont.91268:
-ge_cont.91254:
-ge_cont.91240:
-	j	eq_cont.91238
-eq_else.91237:
+ge_cont.91758:
+ge_cont.91744:
+ge_cont.91730:
+	j	eq_cont.91728
+eq_else.91727:
 	add	$30, $7, $2
 	lw	$9, 0($30)
 	lw	$10, 2($9)
 	lw	$10, 0($10)
-	bge	$10, $0, ge_else.91291
-	j	ge_cont.91292
-ge_else.91291:
+	bge	$10, $0, ge_else.91781
+	j	ge_cont.91782
+ge_else.91781:
 	add	$30, $7, $2
 	lw	$10, 0($30)
 	lw	$10, 2($10)
@@ -38509,55 +38029,55 @@ ge_else.91291:
 	lw	$11, 0($30)
 	lw	$11, 2($11)
 	lw	$11, 0($11)
-	bne	$11, $10, eq_else.91293
+	bne	$11, $10, eq_else.91783
 	add	$30, $8, $2
 	lw	$11, 0($30)
 	lw	$11, 2($11)
 	lw	$11, 0($11)
-	bne	$11, $10, eq_else.91295
+	bne	$11, $10, eq_else.91785
 	addi	$11, $2, -1
 	add	$30, $7, $11
 	lw	$11, 0($30)
 	lw	$11, 2($11)
 	lw	$11, 0($11)
-	bne	$11, $10, eq_else.91297
+	bne	$11, $10, eq_else.91787
 	addi	$11, $2, 1
 	add	$30, $7, $11
 	lw	$11, 0($30)
 	lw	$11, 2($11)
 	lw	$11, 0($11)
-	bne	$11, $10, eq_else.91299
+	bne	$11, $10, eq_else.91789
 	mov	$10, $1
-	j	eq_cont.91300
-eq_else.91299:
+	j	eq_cont.91790
+eq_else.91789:
 	mov	$10, $0
-eq_cont.91300:
-	j	eq_cont.91298
-eq_else.91297:
+eq_cont.91790:
+	j	eq_cont.91788
+eq_else.91787:
 	mov	$10, $0
-eq_cont.91298:
-	j	eq_cont.91296
-eq_else.91295:
+eq_cont.91788:
+	j	eq_cont.91786
+eq_else.91785:
 	mov	$10, $0
-eq_cont.91296:
-	j	eq_cont.91294
-eq_else.91293:
+eq_cont.91786:
+	j	eq_cont.91784
+eq_else.91783:
 	mov	$10, $0
-eq_cont.91294:
-	bne	$10, $0, eq_else.91301
+eq_cont.91784:
+	bne	$10, $0, eq_else.91791
 	add	$30, $7, $2
 	lw	$9, 0($30)
 	lw	$10, 2($9)
 	lw	$10, 0($10)
-	bge	$10, $0, ge_else.91303
-	j	ge_cont.91304
-ge_else.91303:
+	bge	$10, $0, ge_else.91793
+	j	ge_cont.91794
+ge_else.91793:
 	lw	$10, 3($9)
 	lw	$10, 0($10)
 	sw	$9, 28($3)
-	bne	$10, $0, eq_else.91305
-	j	eq_cont.91306
-eq_else.91305:
+	bne	$10, $0, eq_else.91795
+	j	eq_cont.91796
+eq_else.91795:
 	lw	$10, 5($9)
 	lw	$11, 7($9)
 	lw	$12, 1($9)
@@ -38567,9 +38087,8 @@ eq_else.91305:
 	sf	$f0, 3135($0)
 	lf	$f0, 1($10)
 	sf	$f0, 3135($1)
-	addi	$14, $0, 2
 	lf	$f0, 2($10)
-	sf	$f0, 3135($14)
+	sf	$f0, 3135($26)
 	lw	$10, 6($9)
 	lw	$10, 0($10)
 	lw	$11, 0($11)
@@ -38578,17 +38097,16 @@ eq_else.91305:
 	sw	$11, 30($3)
 	sw	$12, 31($3)
 	sw	$10, 32($3)
-	bne	$10, $0, eq_else.91307
-	j	eq_cont.91308
-eq_else.91307:
+	bne	$10, $0, eq_else.91797
+	j	eq_cont.91798
+eq_else.91797:
 	lw	$14, 3164($0)
 	lf	$f0, 0($12)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($12)
 	sf	$f0, 3149($1)
-	addi	$15, $0, 2
 	lf	$f0, 2($12)
-	sf	$f0, 3149($15)
+	sf	$f0, 3149($26)
 	lw	$15, 3000($0)
 	addi	$15, $15, -1
 	sw	$14, 33($3)
@@ -38608,20 +38126,19 @@ eq_else.91307:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -35
 	lw	$31, 34($3)
-eq_cont.91308:
+eq_cont.91798:
 	lw	$2, 32($3)
-	bne	$2, $1, eq_else.91309
-	j	eq_cont.91310
-eq_else.91309:
+	bne	$2, $1, eq_else.91799
+	j	eq_cont.91800
+eq_else.91799:
 	lw	$5, 3164($1)
 	lw	$6, 31($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 34($3)
@@ -38641,22 +38158,20 @@ eq_else.91309:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -36
 	lw	$31, 35($3)
-eq_cont.91310:
+eq_cont.91800:
 	lw	$2, 32($3)
 	addi	$30, $0, 2
-	bne	$2, $30, eq_else.91311
-	j	eq_cont.91312
-eq_else.91311:
-	addi	$5, $0, 2
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91801
+	j	eq_cont.91802
+eq_else.91801:
+	lw	$5, 3164($26)
 	lw	$6, 31($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 35($3)
@@ -38676,22 +38191,20 @@ eq_else.91311:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -37
 	lw	$31, 36($3)
-eq_cont.91312:
+eq_cont.91802:
 	lw	$2, 32($3)
 	addi	$30, $0, 3
-	bne	$2, $30, eq_else.91313
-	j	eq_cont.91314
-eq_else.91313:
-	addi	$5, $0, 3
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91803
+	j	eq_cont.91804
+eq_else.91803:
+	lw	$5, 3164($27)
 	lw	$6, 31($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 36($3)
@@ -38711,12 +38224,12 @@ eq_else.91313:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -38
 	lw	$31, 37($3)
-eq_cont.91314:
+eq_cont.91804:
 	lw	$2, 32($3)
 	addi	$30, $0, 4
-	bne	$2, $30, eq_else.91315
-	j	eq_cont.91316
-eq_else.91315:
+	bne	$2, $30, eq_else.91805
+	j	eq_cont.91806
+eq_else.91805:
 	addi	$2, $0, 4
 	lw	$2, 3164($2)
 	lw	$5, 31($3)
@@ -38724,9 +38237,8 @@ eq_else.91315:
 	sf	$f0, 3149($0)
 	lf	$f0, 1($5)
 	sf	$f0, 3149($1)
-	addi	$6, $0, 2
 	lf	$f0, 2($5)
-	sf	$f0, 3149($6)
+	sf	$f0, 3149($26)
 	lw	$6, 3000($0)
 	addi	$6, $6, -1
 	sw	$2, 37($3)
@@ -38746,7 +38258,7 @@ eq_else.91315:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -39
 	lw	$31, 38($3)
-eq_cont.91316:
+eq_cont.91806:
 	lw	$2, 29($3)
 	lw	$2, 0($2)
 	lf	$f0, 3138($0)
@@ -38761,27 +38273,24 @@ eq_cont.91316:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3138($1)
-	addi	$5, $0, 2
-	addi	$6, $0, 2
-	lf	$f0, 3138($6)
+	lf	$f0, 3138($26)
 	lf	$f1, 2($2)
-	addi	$2, $0, 2
-	lf	$f2, 3135($2)
+	lf	$f2, 3135($26)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3138($5)
-eq_cont.91306:
+	sf	$f0, 3138($26)
+eq_cont.91796:
 	lw	$2, 28($3)
 	lw	$5, 2($2)
 	lw	$5, 1($5)
-	bge	$5, $0, ge_else.91317
-	j	ge_cont.91318
-ge_else.91317:
+	bge	$5, $0, ge_else.91807
+	j	ge_cont.91808
+ge_else.91807:
 	lw	$5, 3($2)
 	lw	$5, 1($5)
-	bne	$5, $0, eq_else.91319
-	j	eq_cont.91320
-eq_else.91319:
+	bne	$5, $0, eq_else.91809
+	j	eq_cont.91810
+eq_else.91809:
 	lw	$5, 5($2)
 	lw	$6, 7($2)
 	lw	$7, 1($2)
@@ -38791,9 +38300,8 @@ eq_else.91319:
 	sf	$f0, 3135($0)
 	lf	$f0, 1($5)
 	sf	$f0, 3135($1)
-	addi	$9, $0, 2
 	lf	$f0, 2($5)
-	sf	$f0, 3135($9)
+	sf	$f0, 3135($26)
 	lw	$5, 6($2)
 	lw	$5, 0($5)
 	lw	$6, 1($6)
@@ -38802,17 +38310,16 @@ eq_else.91319:
 	sw	$6, 39($3)
 	sw	$7, 40($3)
 	sw	$5, 41($3)
-	bne	$5, $0, eq_else.91321
-	j	eq_cont.91322
-eq_else.91321:
+	bne	$5, $0, eq_else.91811
+	j	eq_cont.91812
+eq_else.91811:
 	lw	$9, 3164($0)
 	lf	$f0, 0($7)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($7)
 	sf	$f0, 3149($1)
-	addi	$10, $0, 2
 	lf	$f0, 2($7)
-	sf	$f0, 3149($10)
+	sf	$f0, 3149($26)
 	lw	$10, 3000($0)
 	addi	$10, $10, -1
 	sw	$9, 42($3)
@@ -38839,7 +38346,7 @@ eq_else.91321:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91323
+	bne	$5, $0, eq_else.91813
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -38849,8 +38356,8 @@ eq_else.91321:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -44
 	lw	$31, 43($3)
-	j	eq_cont.91324
-eq_else.91323:
+	j	eq_cont.91814
+eq_else.91813:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -38860,7 +38367,7 @@ eq_else.91323:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -44
 	lw	$31, 43($3)
-eq_cont.91324:
+eq_cont.91814:
 	addi	$7, $0, 116
 	lw	$2, 42($3)
 	lw	$5, 39($3)
@@ -38870,20 +38377,19 @@ eq_cont.91324:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -44
 	lw	$31, 43($3)
-eq_cont.91322:
+eq_cont.91812:
 	lw	$2, 41($3)
-	bne	$2, $1, eq_else.91325
-	j	eq_cont.91326
-eq_else.91325:
+	bne	$2, $1, eq_else.91815
+	j	eq_cont.91816
+eq_else.91815:
 	lw	$5, 3164($1)
 	lw	$6, 40($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 43($3)
@@ -38910,7 +38416,7 @@ eq_else.91325:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91327
+	bne	$5, $0, eq_else.91817
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -38920,8 +38426,8 @@ eq_else.91325:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -45
 	lw	$31, 44($3)
-	j	eq_cont.91328
-eq_else.91327:
+	j	eq_cont.91818
+eq_else.91817:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -38931,7 +38437,7 @@ eq_else.91327:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -45
 	lw	$31, 44($3)
-eq_cont.91328:
+eq_cont.91818:
 	addi	$7, $0, 116
 	lw	$2, 43($3)
 	lw	$5, 39($3)
@@ -38941,22 +38447,20 @@ eq_cont.91328:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -45
 	lw	$31, 44($3)
-eq_cont.91326:
+eq_cont.91816:
 	lw	$2, 41($3)
 	addi	$30, $0, 2
-	bne	$2, $30, eq_else.91329
-	j	eq_cont.91330
-eq_else.91329:
-	addi	$5, $0, 2
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91819
+	j	eq_cont.91820
+eq_else.91819:
+	lw	$5, 3164($26)
 	lw	$6, 40($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 44($3)
@@ -38983,7 +38487,7 @@ eq_else.91329:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91331
+	bne	$5, $0, eq_else.91821
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -38993,8 +38497,8 @@ eq_else.91329:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -46
 	lw	$31, 45($3)
-	j	eq_cont.91332
-eq_else.91331:
+	j	eq_cont.91822
+eq_else.91821:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -39004,7 +38508,7 @@ eq_else.91331:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -46
 	lw	$31, 45($3)
-eq_cont.91332:
+eq_cont.91822:
 	addi	$7, $0, 116
 	lw	$2, 44($3)
 	lw	$5, 39($3)
@@ -39014,22 +38518,20 @@ eq_cont.91332:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -46
 	lw	$31, 45($3)
-eq_cont.91330:
+eq_cont.91820:
 	lw	$2, 41($3)
 	addi	$30, $0, 3
-	bne	$2, $30, eq_else.91333
-	j	eq_cont.91334
-eq_else.91333:
-	addi	$5, $0, 3
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91823
+	j	eq_cont.91824
+eq_else.91823:
+	lw	$5, 3164($27)
 	lw	$6, 40($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 45($3)
@@ -39056,7 +38558,7 @@ eq_else.91333:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91335
+	bne	$5, $0, eq_else.91825
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -39066,8 +38568,8 @@ eq_else.91333:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -47
 	lw	$31, 46($3)
-	j	eq_cont.91336
-eq_else.91335:
+	j	eq_cont.91826
+eq_else.91825:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -39077,7 +38579,7 @@ eq_else.91335:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -47
 	lw	$31, 46($3)
-eq_cont.91336:
+eq_cont.91826:
 	addi	$7, $0, 116
 	lw	$2, 45($3)
 	lw	$5, 39($3)
@@ -39087,12 +38589,12 @@ eq_cont.91336:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -47
 	lw	$31, 46($3)
-eq_cont.91334:
+eq_cont.91824:
 	lw	$2, 41($3)
 	addi	$30, $0, 4
-	bne	$2, $30, eq_else.91337
-	j	eq_cont.91338
-eq_else.91337:
+	bne	$2, $30, eq_else.91827
+	j	eq_cont.91828
+eq_else.91827:
 	addi	$2, $0, 4
 	lw	$2, 3164($2)
 	lw	$5, 40($3)
@@ -39100,9 +38602,8 @@ eq_else.91337:
 	sf	$f0, 3149($0)
 	lf	$f0, 1($5)
 	sf	$f0, 3149($1)
-	addi	$6, $0, 2
 	lf	$f0, 2($5)
-	sf	$f0, 3149($6)
+	sf	$f0, 3149($26)
 	lw	$6, 3000($0)
 	addi	$6, $6, -1
 	sw	$2, 46($3)
@@ -39129,7 +38630,7 @@ eq_else.91337:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91339
+	bne	$5, $0, eq_else.91829
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -39139,8 +38640,8 @@ eq_else.91337:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -48
 	lw	$31, 47($3)
-	j	eq_cont.91340
-eq_else.91339:
+	j	eq_cont.91830
+eq_else.91829:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -39150,7 +38651,7 @@ eq_else.91339:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -48
 	lw	$31, 47($3)
-eq_cont.91340:
+eq_cont.91830:
 	addi	$7, $0, 116
 	lw	$2, 46($3)
 	lw	$5, 39($3)
@@ -39160,7 +38661,7 @@ eq_cont.91340:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -48
 	lw	$31, 47($3)
-eq_cont.91338:
+eq_cont.91828:
 	lw	$2, 38($3)
 	lw	$2, 1($2)
 	lf	$f0, 3138($0)
@@ -39175,32 +38676,29 @@ eq_cont.91338:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3138($1)
-	addi	$5, $0, 2
-	addi	$6, $0, 2
-	lf	$f0, 3138($6)
+	lf	$f0, 3138($26)
 	lf	$f1, 2($2)
-	addi	$2, $0, 2
-	lf	$f2, 3135($2)
+	lf	$f2, 3135($26)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3138($5)
-eq_cont.91320:
-	addi	$5, $0, 2
+	sf	$f0, 3138($26)
+eq_cont.91810:
 	lw	$2, 28($3)
+	mov	$5, $26
 	sw	$31, 47($3)
 	addi	$3, $3, 48
 	jal	do_without_neighbors.3063
 	addi	$3, $3, -48
 	lw	$31, 47($3)
-ge_cont.91318:
-ge_cont.91304:
-	j	eq_cont.91302
-eq_else.91301:
+ge_cont.91808:
+ge_cont.91794:
+	j	eq_cont.91792
+eq_else.91791:
 	lw	$9, 3($9)
 	lw	$9, 0($9)
-	bne	$9, $0, eq_else.91341
-	j	eq_cont.91342
-eq_else.91341:
+	bne	$9, $0, eq_else.91831
+	j	eq_cont.91832
+eq_else.91831:
 	add	$30, $6, $2
 	lw	$9, 0($30)
 	lw	$9, 5($9)
@@ -39223,9 +38721,8 @@ eq_else.91341:
 	sf	$f0, 3135($0)
 	lf	$f0, 1($9)
 	sf	$f0, 3135($1)
-	addi	$14, $0, 2
 	lf	$f0, 2($9)
-	sf	$f0, 3135($14)
+	sf	$f0, 3135($26)
 	lw	$9, 0($10)
 	lf	$f0, 3135($0)
 	lf	$f1, 0($9)
@@ -39235,12 +38732,10 @@ eq_else.91341:
 	lf	$f1, 1($9)
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3135($1)
-	addi	$10, $0, 2
-	addi	$14, $0, 2
-	lf	$f0, 3135($14)
+	lf	$f0, 3135($26)
 	lf	$f1, 2($9)
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3135($10)
+	sf	$f0, 3135($26)
 	lw	$9, 0($11)
 	lf	$f0, 3135($0)
 	lf	$f1, 0($9)
@@ -39250,12 +38745,10 @@ eq_else.91341:
 	lf	$f1, 1($9)
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3135($1)
-	addi	$10, $0, 2
-	addi	$11, $0, 2
-	lf	$f0, 3135($11)
+	lf	$f0, 3135($26)
 	lf	$f1, 2($9)
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3135($10)
+	sf	$f0, 3135($26)
 	lw	$9, 0($12)
 	lf	$f0, 3135($0)
 	lf	$f1, 0($9)
@@ -39265,12 +38758,10 @@ eq_else.91341:
 	lf	$f1, 1($9)
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3135($1)
-	addi	$10, $0, 2
-	addi	$11, $0, 2
-	lf	$f0, 3135($11)
+	lf	$f0, 3135($26)
 	lf	$f1, 2($9)
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3135($10)
+	sf	$f0, 3135($26)
 	lw	$9, 0($13)
 	lf	$f0, 3135($0)
 	lf	$f1, 0($9)
@@ -39280,12 +38771,10 @@ eq_else.91341:
 	lf	$f1, 1($9)
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3135($1)
-	addi	$10, $0, 2
-	addi	$11, $0, 2
-	lf	$f0, 3135($11)
+	lf	$f0, 3135($26)
 	lf	$f1, 2($9)
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3135($10)
+	sf	$f0, 3135($26)
 	add	$30, $7, $2
 	lw	$9, 0($30)
 	lw	$9, 4($9)
@@ -39302,72 +38791,68 @@ eq_else.91341:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3138($1)
-	addi	$10, $0, 2
-	addi	$11, $0, 2
-	lf	$f0, 3138($11)
+	lf	$f0, 3138($26)
 	lf	$f1, 2($9)
-	addi	$9, $0, 2
-	lf	$f2, 3135($9)
+	lf	$f2, 3135($26)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3138($10)
-eq_cont.91342:
+	sf	$f0, 3138($26)
+eq_cont.91832:
 	mov	$9, $1
 	sw	$31, 47($3)
 	addi	$3, $3, 48
 	jal	try_exploit_neighbors.3079
 	addi	$3, $3, -48
 	lw	$31, 47($3)
-eq_cont.91302:
-ge_cont.91292:
-eq_cont.91238:
+eq_cont.91792:
+ge_cont.91782:
+eq_cont.91728:
 	lf	$f0, 3138($0)
 	ftoi	$2, $f0
 	addi	$30, $0, 255
-	ble	$2, $30, le_else.91343
+	ble	$2, $30, le_else.91833
 	addi	$2, $0, 255
-	j	le_cont.91344
-le_else.91343:
-	bge	$2, $0, ge_else.91345
+	j	le_cont.91834
+le_else.91833:
+	bge	$2, $0, ge_else.91835
 	mov	$2, $0
-	j	ge_cont.91346
-ge_else.91345:
-ge_cont.91346:
-le_cont.91344:
+	j	ge_cont.91836
+ge_else.91835:
+ge_cont.91836:
+le_cont.91834:
 	outb	$2
 	lf	$f0, 3138($1)
 	ftoi	$2, $f0
 	addi	$30, $0, 255
-	ble	$2, $30, le_else.91347
+	ble	$2, $30, le_else.91837
 	addi	$2, $0, 255
-	j	le_cont.91348
-le_else.91347:
-	bge	$2, $0, ge_else.91349
+	j	le_cont.91838
+le_else.91837:
+	bge	$2, $0, ge_else.91839
 	mov	$2, $0
-	j	ge_cont.91350
-ge_else.91349:
-ge_cont.91350:
-le_cont.91348:
+	j	ge_cont.91840
+ge_else.91839:
+ge_cont.91840:
+le_cont.91838:
 	outb	$2
-	addi	$2, $0, 2
-	lf	$f0, 3138($2)
+	lf	$f0, 3138($26)
 	ftoi	$2, $f0
 	addi	$30, $0, 255
-	ble	$2, $30, le_else.91351
+	ble	$2, $30, le_else.91841
 	addi	$2, $0, 255
-	j	le_cont.91352
-le_else.91351:
-	bge	$2, $0, ge_else.91353
+	j	le_cont.91842
+le_else.91841:
+	bge	$2, $0, ge_else.91843
 	mov	$2, $0
-	j	ge_cont.91354
-ge_else.91353:
-ge_cont.91354:
-le_cont.91352:
+	j	ge_cont.91844
+ge_else.91843:
+ge_cont.91844:
+le_cont.91842:
 	outb	$2
 	lw	$2, 4($3)
 	addi	$2, $2, 1
 	lw	$5, 3141($0)
-	ble	$5, $2, le.91355
+	ble	$5, $2, le.91845
 	lw	$7, 3($3)
 	add	$30, $7, $2
 	lw	$5, 0($30)
@@ -39376,50 +38861,49 @@ le_cont.91352:
 	sf	$f0, 3138($0)
 	lf	$f0, 1($5)
 	sf	$f0, 3138($1)
-	addi	$6, $0, 2
 	lf	$f0, 2($5)
-	sf	$f0, 3138($6)
+	sf	$f0, 3138($26)
 	lw	$5, 3141($1)
 	lw	$6, 2($3)
 	addi	$8, $6, 1
-	ble	$5, $8, le_else.91356
-	ble	$6, $0, le_else.91358
+	ble	$5, $8, le_else.91846
+	ble	$6, $0, le_else.91848
 	lw	$5, 3141($0)
 	addi	$8, $2, 1
-	ble	$5, $8, le_else.91360
-	ble	$2, $0, le_else.91362
+	ble	$5, $8, le_else.91850
+	ble	$2, $0, le_else.91852
 	mov	$5, $1
-	j	le_cont.91363
-le_else.91362:
+	j	le_cont.91853
+le_else.91852:
 	mov	$5, $0
-le_cont.91363:
-	j	le_cont.91361
-le_else.91360:
+le_cont.91853:
+	j	le_cont.91851
+le_else.91850:
 	mov	$5, $0
-le_cont.91361:
-	j	le_cont.91359
-le_else.91358:
+le_cont.91851:
+	j	le_cont.91849
+le_else.91848:
 	mov	$5, $0
-le_cont.91359:
-	j	le_cont.91357
-le_else.91356:
+le_cont.91849:
+	j	le_cont.91847
+le_else.91846:
 	mov	$5, $0
-le_cont.91357:
+le_cont.91847:
 	sw	$2, 47($3)
-	bne	$5, $0, eq_else.91364
+	bne	$5, $0, eq_else.91854
 	add	$30, $7, $2
 	lw	$5, 0($30)
 	lw	$8, 2($5)
 	lw	$8, 0($8)
-	bge	$8, $0, ge_else.91366
-	j	ge_cont.91367
-ge_else.91366:
+	bge	$8, $0, ge_else.91856
+	j	ge_cont.91857
+ge_else.91856:
 	lw	$8, 3($5)
 	lw	$8, 0($8)
 	sw	$5, 48($3)
-	bne	$8, $0, eq_else.91368
-	j	eq_cont.91369
-eq_else.91368:
+	bne	$8, $0, eq_else.91858
+	j	eq_cont.91859
+eq_else.91858:
 	lw	$8, 5($5)
 	lw	$9, 7($5)
 	lw	$10, 1($5)
@@ -39429,9 +38913,8 @@ eq_else.91368:
 	sf	$f0, 3135($0)
 	lf	$f0, 1($8)
 	sf	$f0, 3135($1)
-	addi	$12, $0, 2
 	lf	$f0, 2($8)
-	sf	$f0, 3135($12)
+	sf	$f0, 3135($26)
 	lw	$8, 6($5)
 	lw	$8, 0($8)
 	lw	$9, 0($9)
@@ -39440,17 +38923,16 @@ eq_else.91368:
 	sw	$9, 50($3)
 	sw	$10, 51($3)
 	sw	$8, 52($3)
-	bne	$8, $0, eq_else.91370
-	j	eq_cont.91371
-eq_else.91370:
+	bne	$8, $0, eq_else.91860
+	j	eq_cont.91861
+eq_else.91860:
 	lw	$12, 3164($0)
 	lf	$f0, 0($10)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($10)
 	sf	$f0, 3149($1)
-	addi	$13, $0, 2
 	lf	$f0, 2($10)
-	sf	$f0, 3149($13)
+	sf	$f0, 3149($26)
 	lw	$13, 3000($0)
 	addi	$13, $13, -1
 	sw	$12, 53($3)
@@ -39470,20 +38952,19 @@ eq_else.91370:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -55
 	lw	$31, 54($3)
-eq_cont.91371:
+eq_cont.91861:
 	lw	$2, 52($3)
-	bne	$2, $1, eq_else.91372
-	j	eq_cont.91373
-eq_else.91372:
+	bne	$2, $1, eq_else.91862
+	j	eq_cont.91863
+eq_else.91862:
 	lw	$5, 3164($1)
 	lw	$6, 51($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 54($3)
@@ -39503,22 +38984,20 @@ eq_else.91372:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -56
 	lw	$31, 55($3)
-eq_cont.91373:
+eq_cont.91863:
 	lw	$2, 52($3)
 	addi	$30, $0, 2
-	bne	$2, $30, eq_else.91374
-	j	eq_cont.91375
-eq_else.91374:
-	addi	$5, $0, 2
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91864
+	j	eq_cont.91865
+eq_else.91864:
+	lw	$5, 3164($26)
 	lw	$6, 51($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 55($3)
@@ -39538,22 +39017,20 @@ eq_else.91374:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -57
 	lw	$31, 56($3)
-eq_cont.91375:
+eq_cont.91865:
 	lw	$2, 52($3)
 	addi	$30, $0, 3
-	bne	$2, $30, eq_else.91376
-	j	eq_cont.91377
-eq_else.91376:
-	addi	$5, $0, 3
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91866
+	j	eq_cont.91867
+eq_else.91866:
+	lw	$5, 3164($27)
 	lw	$6, 51($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 56($3)
@@ -39573,12 +39050,12 @@ eq_else.91376:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -58
 	lw	$31, 57($3)
-eq_cont.91377:
+eq_cont.91867:
 	lw	$2, 52($3)
 	addi	$30, $0, 4
-	bne	$2, $30, eq_else.91378
-	j	eq_cont.91379
-eq_else.91378:
+	bne	$2, $30, eq_else.91868
+	j	eq_cont.91869
+eq_else.91868:
 	addi	$2, $0, 4
 	lw	$2, 3164($2)
 	lw	$5, 51($3)
@@ -39586,9 +39063,8 @@ eq_else.91378:
 	sf	$f0, 3149($0)
 	lf	$f0, 1($5)
 	sf	$f0, 3149($1)
-	addi	$6, $0, 2
 	lf	$f0, 2($5)
-	sf	$f0, 3149($6)
+	sf	$f0, 3149($26)
 	lw	$6, 3000($0)
 	addi	$6, $6, -1
 	sw	$2, 57($3)
@@ -39608,7 +39084,7 @@ eq_else.91378:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -59
 	lw	$31, 58($3)
-eq_cont.91379:
+eq_cont.91869:
 	lw	$2, 49($3)
 	lw	$2, 0($2)
 	lf	$f0, 3138($0)
@@ -39623,27 +39099,24 @@ eq_cont.91379:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3138($1)
-	addi	$5, $0, 2
-	addi	$6, $0, 2
-	lf	$f0, 3138($6)
+	lf	$f0, 3138($26)
 	lf	$f1, 2($2)
-	addi	$2, $0, 2
-	lf	$f2, 3135($2)
+	lf	$f2, 3135($26)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3138($5)
-eq_cont.91369:
+	sf	$f0, 3138($26)
+eq_cont.91859:
 	lw	$2, 48($3)
 	lw	$5, 2($2)
 	lw	$5, 1($5)
-	bge	$5, $0, ge_else.91380
-	j	ge_cont.91381
-ge_else.91380:
+	bge	$5, $0, ge_else.91870
+	j	ge_cont.91871
+ge_else.91870:
 	lw	$5, 3($2)
 	lw	$5, 1($5)
-	bne	$5, $0, eq_else.91382
-	j	eq_cont.91383
-eq_else.91382:
+	bne	$5, $0, eq_else.91872
+	j	eq_cont.91873
+eq_else.91872:
 	lw	$5, 5($2)
 	lw	$6, 7($2)
 	lw	$7, 1($2)
@@ -39653,9 +39126,8 @@ eq_else.91382:
 	sf	$f0, 3135($0)
 	lf	$f0, 1($5)
 	sf	$f0, 3135($1)
-	addi	$9, $0, 2
 	lf	$f0, 2($5)
-	sf	$f0, 3135($9)
+	sf	$f0, 3135($26)
 	lw	$5, 6($2)
 	lw	$5, 0($5)
 	lw	$6, 1($6)
@@ -39664,17 +39136,16 @@ eq_else.91382:
 	sw	$6, 59($3)
 	sw	$7, 60($3)
 	sw	$5, 61($3)
-	bne	$5, $0, eq_else.91384
-	j	eq_cont.91385
-eq_else.91384:
+	bne	$5, $0, eq_else.91874
+	j	eq_cont.91875
+eq_else.91874:
 	lw	$9, 3164($0)
 	lf	$f0, 0($7)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($7)
 	sf	$f0, 3149($1)
-	addi	$10, $0, 2
 	lf	$f0, 2($7)
-	sf	$f0, 3149($10)
+	sf	$f0, 3149($26)
 	lw	$10, 3000($0)
 	addi	$10, $10, -1
 	sw	$9, 62($3)
@@ -39701,7 +39172,7 @@ eq_else.91384:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91386
+	bne	$5, $0, eq_else.91876
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -39711,8 +39182,8 @@ eq_else.91384:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -64
 	lw	$31, 63($3)
-	j	eq_cont.91387
-eq_else.91386:
+	j	eq_cont.91877
+eq_else.91876:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -39722,7 +39193,7 @@ eq_else.91386:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -64
 	lw	$31, 63($3)
-eq_cont.91387:
+eq_cont.91877:
 	addi	$7, $0, 116
 	lw	$2, 62($3)
 	lw	$5, 59($3)
@@ -39732,20 +39203,19 @@ eq_cont.91387:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -64
 	lw	$31, 63($3)
-eq_cont.91385:
+eq_cont.91875:
 	lw	$2, 61($3)
-	bne	$2, $1, eq_else.91388
-	j	eq_cont.91389
-eq_else.91388:
+	bne	$2, $1, eq_else.91878
+	j	eq_cont.91879
+eq_else.91878:
 	lw	$5, 3164($1)
 	lw	$6, 60($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 63($3)
@@ -39772,7 +39242,7 @@ eq_else.91388:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91390
+	bne	$5, $0, eq_else.91880
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -39782,8 +39252,8 @@ eq_else.91388:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -65
 	lw	$31, 64($3)
-	j	eq_cont.91391
-eq_else.91390:
+	j	eq_cont.91881
+eq_else.91880:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -39793,7 +39263,7 @@ eq_else.91390:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -65
 	lw	$31, 64($3)
-eq_cont.91391:
+eq_cont.91881:
 	addi	$7, $0, 116
 	lw	$2, 63($3)
 	lw	$5, 59($3)
@@ -39803,22 +39273,20 @@ eq_cont.91391:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -65
 	lw	$31, 64($3)
-eq_cont.91389:
+eq_cont.91879:
 	lw	$2, 61($3)
 	addi	$30, $0, 2
-	bne	$2, $30, eq_else.91392
-	j	eq_cont.91393
-eq_else.91392:
-	addi	$5, $0, 2
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91882
+	j	eq_cont.91883
+eq_else.91882:
+	lw	$5, 3164($26)
 	lw	$6, 60($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 64($3)
@@ -39845,7 +39313,7 @@ eq_else.91392:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91394
+	bne	$5, $0, eq_else.91884
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -39855,8 +39323,8 @@ eq_else.91392:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -66
 	lw	$31, 65($3)
-	j	eq_cont.91395
-eq_else.91394:
+	j	eq_cont.91885
+eq_else.91884:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -39866,7 +39334,7 @@ eq_else.91394:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -66
 	lw	$31, 65($3)
-eq_cont.91395:
+eq_cont.91885:
 	addi	$7, $0, 116
 	lw	$2, 64($3)
 	lw	$5, 59($3)
@@ -39876,22 +39344,20 @@ eq_cont.91395:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -66
 	lw	$31, 65($3)
-eq_cont.91393:
+eq_cont.91883:
 	lw	$2, 61($3)
 	addi	$30, $0, 3
-	bne	$2, $30, eq_else.91396
-	j	eq_cont.91397
-eq_else.91396:
-	addi	$5, $0, 3
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91886
+	j	eq_cont.91887
+eq_else.91886:
+	lw	$5, 3164($27)
 	lw	$6, 60($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 65($3)
@@ -39918,7 +39384,7 @@ eq_else.91396:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91398
+	bne	$5, $0, eq_else.91888
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -39928,8 +39394,8 @@ eq_else.91396:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -67
 	lw	$31, 66($3)
-	j	eq_cont.91399
-eq_else.91398:
+	j	eq_cont.91889
+eq_else.91888:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -39939,7 +39405,7 @@ eq_else.91398:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -67
 	lw	$31, 66($3)
-eq_cont.91399:
+eq_cont.91889:
 	addi	$7, $0, 116
 	lw	$2, 65($3)
 	lw	$5, 59($3)
@@ -39949,12 +39415,12 @@ eq_cont.91399:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -67
 	lw	$31, 66($3)
-eq_cont.91397:
+eq_cont.91887:
 	lw	$2, 61($3)
 	addi	$30, $0, 4
-	bne	$2, $30, eq_else.91400
-	j	eq_cont.91401
-eq_else.91400:
+	bne	$2, $30, eq_else.91890
+	j	eq_cont.91891
+eq_else.91890:
 	addi	$2, $0, 4
 	lw	$2, 3164($2)
 	lw	$5, 60($3)
@@ -39962,9 +39428,8 @@ eq_else.91400:
 	sf	$f0, 3149($0)
 	lf	$f0, 1($5)
 	sf	$f0, 3149($1)
-	addi	$6, $0, 2
 	lf	$f0, 2($5)
-	sf	$f0, 3149($6)
+	sf	$f0, 3149($26)
 	lw	$6, 3000($0)
 	addi	$6, $6, -1
 	sw	$2, 66($3)
@@ -39991,7 +39456,7 @@ eq_else.91400:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91402
+	bne	$5, $0, eq_else.91892
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -40001,8 +39466,8 @@ eq_else.91400:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -68
 	lw	$31, 67($3)
-	j	eq_cont.91403
-eq_else.91402:
+	j	eq_cont.91893
+eq_else.91892:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -40012,7 +39477,7 @@ eq_else.91402:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -68
 	lw	$31, 67($3)
-eq_cont.91403:
+eq_cont.91893:
 	addi	$7, $0, 116
 	lw	$2, 66($3)
 	lw	$5, 59($3)
@@ -40022,7 +39487,7 @@ eq_cont.91403:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -68
 	lw	$31, 67($3)
-eq_cont.91401:
+eq_cont.91891:
 	lw	$2, 58($3)
 	lw	$2, 1($2)
 	lf	$f0, 3138($0)
@@ -40037,81 +39502,77 @@ eq_cont.91401:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3138($1)
-	addi	$5, $0, 2
-	addi	$6, $0, 2
-	lf	$f0, 3138($6)
+	lf	$f0, 3138($26)
 	lf	$f1, 2($2)
-	addi	$2, $0, 2
-	lf	$f2, 3135($2)
+	lf	$f2, 3135($26)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3138($5)
-eq_cont.91383:
-	addi	$5, $0, 2
+	sf	$f0, 3138($26)
+eq_cont.91873:
 	lw	$2, 48($3)
+	mov	$5, $26
 	sw	$31, 67($3)
 	addi	$3, $3, 68
 	jal	do_without_neighbors.3063
 	addi	$3, $3, -68
 	lw	$31, 67($3)
-ge_cont.91381:
-ge_cont.91367:
-	j	eq_cont.91365
-eq_else.91364:
+ge_cont.91871:
+ge_cont.91857:
+	j	eq_cont.91855
+eq_else.91854:
 	lw	$5, 1($3)
 	lw	$8, 0($3)
 	mov	$9, $0
-	mov	$26, $6
+	mov	$24, $6
 	mov	$6, $5
-	mov	$5, $26
+	mov	$5, $24
 	sw	$31, 67($3)
 	addi	$3, $3, 68
 	jal	try_exploit_neighbors.3079
 	addi	$3, $3, -68
 	lw	$31, 67($3)
-eq_cont.91365:
+eq_cont.91855:
 	lf	$f0, 3138($0)
 	ftoi	$2, $f0
 	addi	$30, $0, 255
-	ble	$2, $30, le_else.91404
+	ble	$2, $30, le_else.91894
 	addi	$2, $0, 255
-	j	le_cont.91405
-le_else.91404:
-	bge	$2, $0, ge_else.91406
+	j	le_cont.91895
+le_else.91894:
+	bge	$2, $0, ge_else.91896
 	mov	$2, $0
-	j	ge_cont.91407
-ge_else.91406:
-ge_cont.91407:
-le_cont.91405:
+	j	ge_cont.91897
+ge_else.91896:
+ge_cont.91897:
+le_cont.91895:
 	outb	$2
 	lf	$f0, 3138($1)
 	ftoi	$2, $f0
 	addi	$30, $0, 255
-	ble	$2, $30, le_else.91408
+	ble	$2, $30, le_else.91898
 	addi	$2, $0, 255
-	j	le_cont.91409
-le_else.91408:
-	bge	$2, $0, ge_else.91410
+	j	le_cont.91899
+le_else.91898:
+	bge	$2, $0, ge_else.91900
 	mov	$2, $0
-	j	ge_cont.91411
-ge_else.91410:
-ge_cont.91411:
-le_cont.91409:
+	j	ge_cont.91901
+ge_else.91900:
+ge_cont.91901:
+le_cont.91899:
 	outb	$2
-	addi	$2, $0, 2
-	lf	$f0, 3138($2)
+	lf	$f0, 3138($26)
 	ftoi	$2, $f0
 	addi	$30, $0, 255
-	ble	$2, $30, le_else.91412
+	ble	$2, $30, le_else.91902
 	addi	$2, $0, 255
-	j	le_cont.91413
-le_else.91412:
-	bge	$2, $0, ge_else.91414
+	j	le_cont.91903
+le_else.91902:
+	bge	$2, $0, ge_else.91904
 	mov	$2, $0
-	j	ge_cont.91415
-ge_else.91414:
-ge_cont.91415:
-le_cont.91413:
+	j	ge_cont.91905
+ge_else.91904:
+ge_cont.91905:
+le_cont.91903:
 	outb	$2
 	lw	$2, 47($3)
 	addi	$2, $2, 1
@@ -40120,13 +39581,13 @@ le_cont.91413:
 	lw	$7, 3($3)
 	lw	$8, 0($3)
 	j	scan_pixel.3106
-le.91355:
+le.91845:
 	jr $31
-le.91228:
+le.91718:
 	jr $31
 scan_line.3112:
 	lw	$9, 3142($0)
-	ble	$9, $2, le.91418
+	ble	$9, $2, le.91908
 	lw	$9, 3141($1)
 	addi	$9, $9, -1
 	sw	$8, 0($3)
@@ -40134,7 +39595,7 @@ scan_line.3112:
 	sw	$5, 2($3)
 	sw	$2, 3($3)
 	sw	$6, 4($3)
-	ble	$9, $2, le_else.91419
+	ble	$9, $2, le_else.91909
 	addi	$9, $2, 1
 	lf	$f0, 3145($0)
 	lw	$10, 3143($1)
@@ -40149,11 +39610,9 @@ scan_line.3112:
 	fmul	$f2, $f0, $f2
 	lf	$f3, 3158($1)
 	fadd	$f2, $f2, $f3
-	addi	$9, $0, 2
-	lf	$f3, 3155($9)
+	lf	$f3, 3155($26)
 	fmul	$f0, $f0, $f3
-	addi	$9, $0, 2
-	lf	$f3, 3158($9)
+	lf	$f3, 3158($26)
 	fadd	$f0, $f0, $f3
 	lw	$9, 3141($0)
 	addi	$9, $9, -1
@@ -40169,11 +39628,11 @@ scan_line.3112:
 	jal	pretrace_pixels.3095
 	addi	$3, $3, -6
 	lw	$31, 5($3)
-	j	le_cont.91420
-le_else.91419:
-le_cont.91420:
+	j	le_cont.91910
+le_else.91909:
+le_cont.91910:
 	lw	$2, 3141($0)
-	ble	$2, $0, le_else.91421
+	ble	$2, $0, le_else.91911
 	lw	$7, 4($3)
 	lw	$2, 0($7)
 	lw	$2, 0($2)
@@ -40181,42 +39640,41 @@ le_cont.91420:
 	sf	$f0, 3138($0)
 	lf	$f0, 1($2)
 	sf	$f0, 3138($1)
-	addi	$5, $0, 2
 	lf	$f0, 2($2)
-	sf	$f0, 3138($5)
+	sf	$f0, 3138($26)
 	lw	$2, 3141($1)
 	lw	$5, 3($3)
 	addi	$6, $5, 1
-	ble	$2, $6, le_else.91423
-	ble	$5, $0, le_else.91425
+	ble	$2, $6, le_else.91913
+	ble	$5, $0, le_else.91915
 	lw	$2, 3141($0)
-	ble	$2, $1, le_else.91427
+	ble	$2, $1, le_else.91917
 	mov	$2, $0
-	j	le_cont.91428
-le_else.91427:
+	j	le_cont.91918
+le_else.91917:
 	mov	$2, $0
-le_cont.91428:
-	j	le_cont.91426
-le_else.91425:
+le_cont.91918:
+	j	le_cont.91916
+le_else.91915:
 	mov	$2, $0
-le_cont.91426:
-	j	le_cont.91424
-le_else.91423:
+le_cont.91916:
+	j	le_cont.91914
+le_else.91913:
 	mov	$2, $0
-le_cont.91424:
-	bne	$2, $0, eq_else.91429
+le_cont.91914:
+	bne	$2, $0, eq_else.91919
 	lw	$2, 0($7)
 	lw	$6, 2($2)
 	lw	$6, 0($6)
-	bge	$6, $0, ge_else.91431
-	j	ge_cont.91432
-ge_else.91431:
+	bge	$6, $0, ge_else.91921
+	j	ge_cont.91922
+ge_else.91921:
 	lw	$6, 3($2)
 	lw	$6, 0($6)
 	sw	$2, 5($3)
-	bne	$6, $0, eq_else.91433
-	j	eq_cont.91434
-eq_else.91433:
+	bne	$6, $0, eq_else.91923
+	j	eq_cont.91924
+eq_else.91923:
 	lw	$6, 5($2)
 	lw	$8, 7($2)
 	lw	$9, 1($2)
@@ -40226,9 +39684,8 @@ eq_else.91433:
 	sf	$f0, 3135($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3135($1)
-	addi	$11, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3135($11)
+	sf	$f0, 3135($26)
 	lw	$6, 6($2)
 	lw	$6, 0($6)
 	lw	$8, 0($8)
@@ -40237,17 +39694,16 @@ eq_else.91433:
 	sw	$8, 7($3)
 	sw	$9, 8($3)
 	sw	$6, 9($3)
-	bne	$6, $0, eq_else.91435
-	j	eq_cont.91436
-eq_else.91435:
+	bne	$6, $0, eq_else.91925
+	j	eq_cont.91926
+eq_else.91925:
 	lw	$11, 3164($0)
 	lf	$f0, 0($9)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($9)
 	sf	$f0, 3149($1)
-	addi	$12, $0, 2
 	lf	$f0, 2($9)
-	sf	$f0, 3149($12)
+	sf	$f0, 3149($26)
 	lw	$12, 3000($0)
 	addi	$12, $12, -1
 	sw	$11, 10($3)
@@ -40267,20 +39723,19 @@ eq_else.91435:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -12
 	lw	$31, 11($3)
-eq_cont.91436:
+eq_cont.91926:
 	lw	$2, 9($3)
-	bne	$2, $1, eq_else.91437
-	j	eq_cont.91438
-eq_else.91437:
+	bne	$2, $1, eq_else.91927
+	j	eq_cont.91928
+eq_else.91927:
 	lw	$5, 3164($1)
 	lw	$6, 8($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 11($3)
@@ -40300,22 +39755,20 @@ eq_else.91437:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -13
 	lw	$31, 12($3)
-eq_cont.91438:
+eq_cont.91928:
 	lw	$2, 9($3)
 	addi	$30, $0, 2
-	bne	$2, $30, eq_else.91439
-	j	eq_cont.91440
-eq_else.91439:
-	addi	$5, $0, 2
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91929
+	j	eq_cont.91930
+eq_else.91929:
+	lw	$5, 3164($26)
 	lw	$6, 8($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 12($3)
@@ -40335,22 +39788,20 @@ eq_else.91439:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -14
 	lw	$31, 13($3)
-eq_cont.91440:
+eq_cont.91930:
 	lw	$2, 9($3)
 	addi	$30, $0, 3
-	bne	$2, $30, eq_else.91441
-	j	eq_cont.91442
-eq_else.91441:
-	addi	$5, $0, 3
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91931
+	j	eq_cont.91932
+eq_else.91931:
+	lw	$5, 3164($27)
 	lw	$6, 8($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 13($3)
@@ -40370,12 +39821,12 @@ eq_else.91441:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -15
 	lw	$31, 14($3)
-eq_cont.91442:
+eq_cont.91932:
 	lw	$2, 9($3)
 	addi	$30, $0, 4
-	bne	$2, $30, eq_else.91443
-	j	eq_cont.91444
-eq_else.91443:
+	bne	$2, $30, eq_else.91933
+	j	eq_cont.91934
+eq_else.91933:
 	addi	$2, $0, 4
 	lw	$2, 3164($2)
 	lw	$5, 8($3)
@@ -40383,9 +39834,8 @@ eq_else.91443:
 	sf	$f0, 3149($0)
 	lf	$f0, 1($5)
 	sf	$f0, 3149($1)
-	addi	$6, $0, 2
 	lf	$f0, 2($5)
-	sf	$f0, 3149($6)
+	sf	$f0, 3149($26)
 	lw	$6, 3000($0)
 	addi	$6, $6, -1
 	sw	$2, 14($3)
@@ -40405,7 +39855,7 @@ eq_else.91443:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -16
 	lw	$31, 15($3)
-eq_cont.91444:
+eq_cont.91934:
 	lw	$2, 6($3)
 	lw	$2, 0($2)
 	lf	$f0, 3138($0)
@@ -40420,27 +39870,24 @@ eq_cont.91444:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3138($1)
-	addi	$5, $0, 2
-	addi	$6, $0, 2
-	lf	$f0, 3138($6)
+	lf	$f0, 3138($26)
 	lf	$f1, 2($2)
-	addi	$2, $0, 2
-	lf	$f2, 3135($2)
+	lf	$f2, 3135($26)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3138($5)
-eq_cont.91434:
+	sf	$f0, 3138($26)
+eq_cont.91924:
 	lw	$2, 5($3)
 	lw	$5, 2($2)
 	lw	$5, 1($5)
-	bge	$5, $0, ge_else.91445
-	j	ge_cont.91446
-ge_else.91445:
+	bge	$5, $0, ge_else.91935
+	j	ge_cont.91936
+ge_else.91935:
 	lw	$5, 3($2)
 	lw	$5, 1($5)
-	bne	$5, $0, eq_else.91447
-	j	eq_cont.91448
-eq_else.91447:
+	bne	$5, $0, eq_else.91937
+	j	eq_cont.91938
+eq_else.91937:
 	lw	$5, 5($2)
 	lw	$6, 7($2)
 	lw	$7, 1($2)
@@ -40450,9 +39897,8 @@ eq_else.91447:
 	sf	$f0, 3135($0)
 	lf	$f0, 1($5)
 	sf	$f0, 3135($1)
-	addi	$9, $0, 2
 	lf	$f0, 2($5)
-	sf	$f0, 3135($9)
+	sf	$f0, 3135($26)
 	lw	$5, 6($2)
 	lw	$5, 0($5)
 	lw	$6, 1($6)
@@ -40461,17 +39907,16 @@ eq_else.91447:
 	sw	$6, 16($3)
 	sw	$7, 17($3)
 	sw	$5, 18($3)
-	bne	$5, $0, eq_else.91449
-	j	eq_cont.91450
-eq_else.91449:
+	bne	$5, $0, eq_else.91939
+	j	eq_cont.91940
+eq_else.91939:
 	lw	$9, 3164($0)
 	lf	$f0, 0($7)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($7)
 	sf	$f0, 3149($1)
-	addi	$10, $0, 2
 	lf	$f0, 2($7)
-	sf	$f0, 3149($10)
+	sf	$f0, 3149($26)
 	lw	$10, 3000($0)
 	addi	$10, $10, -1
 	sw	$9, 19($3)
@@ -40498,7 +39943,7 @@ eq_else.91449:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91451
+	bne	$5, $0, eq_else.91941
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -40508,8 +39953,8 @@ eq_else.91449:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -21
 	lw	$31, 20($3)
-	j	eq_cont.91452
-eq_else.91451:
+	j	eq_cont.91942
+eq_else.91941:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -40519,7 +39964,7 @@ eq_else.91451:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -21
 	lw	$31, 20($3)
-eq_cont.91452:
+eq_cont.91942:
 	addi	$7, $0, 116
 	lw	$2, 19($3)
 	lw	$5, 16($3)
@@ -40529,20 +39974,19 @@ eq_cont.91452:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -21
 	lw	$31, 20($3)
-eq_cont.91450:
+eq_cont.91940:
 	lw	$2, 18($3)
-	bne	$2, $1, eq_else.91453
-	j	eq_cont.91454
-eq_else.91453:
+	bne	$2, $1, eq_else.91943
+	j	eq_cont.91944
+eq_else.91943:
 	lw	$5, 3164($1)
 	lw	$6, 17($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 20($3)
@@ -40569,7 +40013,7 @@ eq_else.91453:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91455
+	bne	$5, $0, eq_else.91945
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -40579,8 +40023,8 @@ eq_else.91453:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -22
 	lw	$31, 21($3)
-	j	eq_cont.91456
-eq_else.91455:
+	j	eq_cont.91946
+eq_else.91945:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -40590,7 +40034,7 @@ eq_else.91455:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -22
 	lw	$31, 21($3)
-eq_cont.91456:
+eq_cont.91946:
 	addi	$7, $0, 116
 	lw	$2, 20($3)
 	lw	$5, 16($3)
@@ -40600,22 +40044,20 @@ eq_cont.91456:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -22
 	lw	$31, 21($3)
-eq_cont.91454:
+eq_cont.91944:
 	lw	$2, 18($3)
 	addi	$30, $0, 2
-	bne	$2, $30, eq_else.91457
-	j	eq_cont.91458
-eq_else.91457:
-	addi	$5, $0, 2
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91947
+	j	eq_cont.91948
+eq_else.91947:
+	lw	$5, 3164($26)
 	lw	$6, 17($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 21($3)
@@ -40642,7 +40084,7 @@ eq_else.91457:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91459
+	bne	$5, $0, eq_else.91949
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -40652,8 +40094,8 @@ eq_else.91457:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -23
 	lw	$31, 22($3)
-	j	eq_cont.91460
-eq_else.91459:
+	j	eq_cont.91950
+eq_else.91949:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -40663,7 +40105,7 @@ eq_else.91459:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -23
 	lw	$31, 22($3)
-eq_cont.91460:
+eq_cont.91950:
 	addi	$7, $0, 116
 	lw	$2, 21($3)
 	lw	$5, 16($3)
@@ -40673,22 +40115,20 @@ eq_cont.91460:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -23
 	lw	$31, 22($3)
-eq_cont.91458:
+eq_cont.91948:
 	lw	$2, 18($3)
 	addi	$30, $0, 3
-	bne	$2, $30, eq_else.91461
-	j	eq_cont.91462
-eq_else.91461:
-	addi	$5, $0, 3
-	lw	$5, 3164($5)
+	bne	$2, $30, eq_else.91951
+	j	eq_cont.91952
+eq_else.91951:
+	lw	$5, 3164($27)
 	lw	$6, 17($3)
 	lf	$f0, 0($6)
 	sf	$f0, 3149($0)
 	lf	$f0, 1($6)
 	sf	$f0, 3149($1)
-	addi	$7, $0, 2
 	lf	$f0, 2($6)
-	sf	$f0, 3149($7)
+	sf	$f0, 3149($26)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$5, 22($3)
@@ -40715,7 +40155,7 @@ eq_else.91461:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91463
+	bne	$5, $0, eq_else.91953
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -40725,8 +40165,8 @@ eq_else.91461:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -24
 	lw	$31, 23($3)
-	j	eq_cont.91464
-eq_else.91463:
+	j	eq_cont.91954
+eq_else.91953:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -40736,7 +40176,7 @@ eq_else.91463:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -24
 	lw	$31, 23($3)
-eq_cont.91464:
+eq_cont.91954:
 	addi	$7, $0, 116
 	lw	$2, 22($3)
 	lw	$5, 16($3)
@@ -40746,12 +40186,12 @@ eq_cont.91464:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -24
 	lw	$31, 23($3)
-eq_cont.91462:
+eq_cont.91952:
 	lw	$2, 18($3)
 	addi	$30, $0, 4
-	bne	$2, $30, eq_else.91465
-	j	eq_cont.91466
-eq_else.91465:
+	bne	$2, $30, eq_else.91955
+	j	eq_cont.91956
+eq_else.91955:
 	addi	$2, $0, 4
 	lw	$2, 3164($2)
 	lw	$5, 17($3)
@@ -40759,9 +40199,8 @@ eq_else.91465:
 	sf	$f0, 3149($0)
 	lf	$f0, 1($5)
 	sf	$f0, 3149($1)
-	addi	$6, $0, 2
 	lf	$f0, 2($5)
-	sf	$f0, 3149($6)
+	sf	$f0, 3149($26)
 	lw	$6, 3000($0)
 	addi	$6, $6, -1
 	sw	$2, 23($3)
@@ -40788,7 +40227,7 @@ eq_else.91465:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f0, $f30
-	bne	$5, $0, eq_else.91467
+	bne	$5, $0, eq_else.91957
 	lw	$5, 118($2)
 	lf	$f1, 3356($0) # 150.000000
 	fdiv	$f0, $f0, $f1
@@ -40798,8 +40237,8 @@ eq_else.91465:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -25
 	lw	$31, 24($3)
-	j	eq_cont.91468
-eq_else.91467:
+	j	eq_cont.91958
+eq_else.91957:
 	lw	$5, 119($2)
 	lf	$f1, 3357($0) # -150.000000
 	fdiv	$f0, $f0, $f1
@@ -40809,7 +40248,7 @@ eq_else.91467:
 	jal	trace_diffuse_ray.3038
 	addi	$3, $3, -25
 	lw	$31, 24($3)
-eq_cont.91468:
+eq_cont.91958:
 	addi	$7, $0, 116
 	lw	$2, 23($3)
 	lw	$5, 16($3)
@@ -40819,7 +40258,7 @@ eq_cont.91468:
 	jal	iter_trace_diffuse_rays.3041
 	addi	$3, $3, -25
 	lw	$31, 24($3)
-eq_cont.91466:
+eq_cont.91956:
 	lw	$2, 15($3)
 	lw	$2, 1($2)
 	lf	$f0, 3138($0)
@@ -40834,27 +40273,24 @@ eq_cont.91466:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sf	$f0, 3138($1)
-	addi	$5, $0, 2
-	addi	$6, $0, 2
-	lf	$f0, 3138($6)
+	lf	$f0, 3138($26)
 	lf	$f1, 2($2)
-	addi	$2, $0, 2
-	lf	$f2, 3135($2)
+	lf	$f2, 3135($26)
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
-	sf	$f0, 3138($5)
-eq_cont.91448:
-	addi	$5, $0, 2
+	sf	$f0, 3138($26)
+eq_cont.91938:
 	lw	$2, 5($3)
+	mov	$5, $26
 	sw	$31, 24($3)
 	addi	$3, $3, 25
 	jal	do_without_neighbors.3063
 	addi	$3, $3, -25
 	lw	$31, 24($3)
-ge_cont.91446:
-ge_cont.91432:
-	j	eq_cont.91430
-eq_else.91429:
+ge_cont.91936:
+ge_cont.91922:
+	j	eq_cont.91920
+eq_else.91919:
 	lw	$6, 2($3)
 	lw	$8, 1($3)
 	mov	$9, $0
@@ -40864,49 +40300,48 @@ eq_else.91429:
 	jal	try_exploit_neighbors.3079
 	addi	$3, $3, -25
 	lw	$31, 24($3)
-eq_cont.91430:
+eq_cont.91920:
 	lf	$f0, 3138($0)
 	ftoi	$2, $f0
 	addi	$30, $0, 255
-	ble	$2, $30, le_else.91469
+	ble	$2, $30, le_else.91959
 	addi	$2, $0, 255
-	j	le_cont.91470
-le_else.91469:
-	bge	$2, $0, ge_else.91471
+	j	le_cont.91960
+le_else.91959:
+	bge	$2, $0, ge_else.91961
 	mov	$2, $0
-	j	ge_cont.91472
-ge_else.91471:
-ge_cont.91472:
-le_cont.91470:
+	j	ge_cont.91962
+ge_else.91961:
+ge_cont.91962:
+le_cont.91960:
 	outb	$2
 	lf	$f0, 3138($1)
 	ftoi	$2, $f0
 	addi	$30, $0, 255
-	ble	$2, $30, le_else.91473
+	ble	$2, $30, le_else.91963
 	addi	$2, $0, 255
-	j	le_cont.91474
-le_else.91473:
-	bge	$2, $0, ge_else.91475
+	j	le_cont.91964
+le_else.91963:
+	bge	$2, $0, ge_else.91965
 	mov	$2, $0
-	j	ge_cont.91476
-ge_else.91475:
-ge_cont.91476:
-le_cont.91474:
+	j	ge_cont.91966
+ge_else.91965:
+ge_cont.91966:
+le_cont.91964:
 	outb	$2
-	addi	$2, $0, 2
-	lf	$f0, 3138($2)
+	lf	$f0, 3138($26)
 	ftoi	$2, $f0
 	addi	$30, $0, 255
-	ble	$2, $30, le_else.91477
+	ble	$2, $30, le_else.91967
 	addi	$2, $0, 255
-	j	le_cont.91478
-le_else.91477:
-	bge	$2, $0, ge_else.91479
+	j	le_cont.91968
+le_else.91967:
+	bge	$2, $0, ge_else.91969
 	mov	$2, $0
-	j	ge_cont.91480
-ge_else.91479:
-ge_cont.91480:
-le_cont.91478:
+	j	ge_cont.91970
+ge_else.91969:
+ge_cont.91970:
+le_cont.91968:
 	outb	$2
 	lw	$5, 3($3)
 	lw	$6, 2($3)
@@ -40918,27 +40353,27 @@ le_cont.91478:
 	jal	scan_pixel.3106
 	addi	$3, $3, -25
 	lw	$31, 24($3)
-	j	le_cont.91422
-le_else.91421:
-le_cont.91422:
+	j	le_cont.91912
+le_else.91911:
+le_cont.91912:
 	lw	$2, 3($3)
 	addi	$5, $2, 1
 	lw	$2, 0($3)
 	addi	$2, $2, 2
 	addi	$30, $0, 5
-	bge	$2, $30, ge_else.91481
+	bge	$2, $30, ge_else.91971
 	mov	$6, $2
-	j	ge_cont.91482
-ge_else.91481:
+	j	ge_cont.91972
+ge_else.91971:
 	addi	$6, $2, -5
-ge_cont.91482:
+ge_cont.91972:
 	lw	$2, 3141($1)
-	ble	$2, $5, le.91483
+	ble	$2, $5, le.91973
 	lw	$2, 3141($1)
 	addi	$2, $2, -1
 	sw	$6, 24($3)
 	sw	$5, 25($3)
-	ble	$2, $5, le_else.91484
+	ble	$2, $5, le_else.91974
 	addi	$2, $5, 1
 	lf	$f0, 3145($0)
 	lw	$7, 3143($1)
@@ -40953,11 +40388,9 @@ ge_cont.91482:
 	fmul	$f2, $f0, $f2
 	lf	$f3, 3158($1)
 	fadd	$f2, $f2, $f3
-	addi	$2, $0, 2
-	lf	$f3, 3155($2)
+	lf	$f3, 3155($26)
 	fmul	$f0, $f0, $f3
-	addi	$2, $0, 2
-	lf	$f3, 3158($2)
+	lf	$f3, 3158($26)
 	fadd	$f0, $f0, $f3
 	lw	$2, 3141($0)
 	addi	$2, $2, -1
@@ -40973,9 +40406,9 @@ ge_cont.91482:
 	jal	pretrace_pixels.3095
 	addi	$3, $3, -27
 	lw	$31, 26($3)
-	j	le_cont.91485
-le_else.91484:
-le_cont.91485:
+	j	le_cont.91975
+le_else.91974:
+le_cont.91975:
 	lw	$5, 25($3)
 	lw	$6, 4($3)
 	lw	$7, 1($3)
@@ -40991,37 +40424,35 @@ le_cont.91485:
 	lw	$5, 24($3)
 	addi	$5, $5, 2
 	addi	$30, $0, 5
-	bge	$5, $30, ge_else.91486
+	bge	$5, $30, ge_else.91976
 	mov	$8, $5
-	j	ge_cont.91487
-ge_else.91486:
+	j	ge_cont.91977
+ge_else.91976:
 	addi	$8, $5, -5
-ge_cont.91487:
+ge_cont.91977:
 	lw	$5, 1($3)
 	lw	$6, 2($3)
 	lw	$7, 4($3)
 	j	scan_line.3112
-le.91483:
+le.91973:
 	jr $31
-le.91418:
+le.91908:
 	jr $31
 init_line_elements.3122:
-	bge	$5, $0, ge.91490
+	bge	$5, $0, ge.91980
 	jr $31
-ge.91490:
-	addi	$6, $0, 3
+ge.91980:
 	sw	$5, 0($3)
 	sw	$2, 1($3)
-	mov	$2, $6
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 2($3)
 	addi	$3, $3, 3
 	jal	min_caml_create_float_array
 	addi	$3, $3, -3
 	lw	$31, 2($3)
-	addi	$5, $0, 3
 	sw	$2, 2($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 3($3)
 	addi	$3, $3, 4
@@ -41035,9 +40466,8 @@ ge.91490:
 	jal	min_caml_create_array
 	addi	$3, $3, -4
 	lw	$31, 3($3)
-	addi	$5, $0, 3
 	sw	$2, 3($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 4($3)
 	addi	$3, $3, 5
@@ -41046,7 +40476,7 @@ ge.91490:
 	lw	$31, 4($3)
 	lw	$5, 3($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 4($3)
 	addi	$3, $3, 5
@@ -41055,7 +40485,7 @@ ge.91490:
 	lw	$31, 4($3)
 	lw	$5, 3($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 4($3)
 	addi	$3, $3, 5
@@ -41064,7 +40494,7 @@ ge.91490:
 	lw	$31, 4($3)
 	lw	$5, 3($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 4($3)
 	addi	$3, $3, 5
@@ -41089,9 +40519,8 @@ ge.91490:
 	jal	min_caml_create_array
 	addi	$3, $3, -6
 	lw	$31, 5($3)
-	addi	$5, $0, 3
 	sw	$2, 5($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 6($3)
 	addi	$3, $3, 7
@@ -41105,9 +40534,8 @@ ge.91490:
 	jal	min_caml_create_array
 	addi	$3, $3, -7
 	lw	$31, 6($3)
-	addi	$5, $0, 3
 	sw	$2, 6($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 7($3)
 	addi	$3, $3, 8
@@ -41116,7 +40544,7 @@ ge.91490:
 	lw	$31, 7($3)
 	lw	$5, 6($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 7($3)
 	addi	$3, $3, 8
@@ -41125,7 +40553,7 @@ ge.91490:
 	lw	$31, 7($3)
 	lw	$5, 6($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 7($3)
 	addi	$3, $3, 8
@@ -41134,7 +40562,7 @@ ge.91490:
 	lw	$31, 7($3)
 	lw	$5, 6($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 7($3)
 	addi	$3, $3, 8
@@ -41143,7 +40571,7 @@ ge.91490:
 	lw	$31, 7($3)
 	lw	$5, 6($3)
 	sw	$2, 4($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 7($3)
 	addi	$3, $3, 8
@@ -41157,9 +40585,8 @@ ge.91490:
 	jal	min_caml_create_array
 	addi	$3, $3, -8
 	lw	$31, 7($3)
-	addi	$5, $0, 3
 	sw	$2, 7($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 8($3)
 	addi	$3, $3, 9
@@ -41168,7 +40595,7 @@ ge.91490:
 	lw	$31, 8($3)
 	lw	$5, 7($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 8($3)
 	addi	$3, $3, 9
@@ -41177,7 +40604,7 @@ ge.91490:
 	lw	$31, 8($3)
 	lw	$5, 7($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 8($3)
 	addi	$3, $3, 9
@@ -41186,7 +40613,7 @@ ge.91490:
 	lw	$31, 8($3)
 	lw	$5, 7($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 8($3)
 	addi	$3, $3, 9
@@ -41202,9 +40629,8 @@ ge.91490:
 	jal	min_caml_create_array
 	addi	$3, $3, -9
 	lw	$31, 8($3)
-	addi	$5, $0, 3
 	sw	$2, 8($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 9($3)
 	addi	$3, $3, 10
@@ -41218,9 +40644,8 @@ ge.91490:
 	jal	min_caml_create_array
 	addi	$3, $3, -10
 	lw	$31, 9($3)
-	addi	$5, $0, 3
 	sw	$2, 9($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 10($3)
 	addi	$3, $3, 11
@@ -41229,7 +40654,7 @@ ge.91490:
 	lw	$31, 10($3)
 	lw	$5, 9($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 10($3)
 	addi	$3, $3, 11
@@ -41238,7 +40663,7 @@ ge.91490:
 	lw	$31, 10($3)
 	lw	$5, 9($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 10($3)
 	addi	$3, $3, 11
@@ -41247,7 +40672,7 @@ ge.91490:
 	lw	$31, 10($3)
 	lw	$5, 9($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 10($3)
 	addi	$3, $3, 11
@@ -41278,22 +40703,20 @@ ge.91490:
 	add $30, $6, $5
 	sw	$2, 0($30)
 	addi	$2, $5, -1
-	bge	$2, $0, ge.91491
+	bge	$2, $0, ge.91981
 	mov	$2, $6
 	jr $31
-ge.91491:
-	addi	$5, $0, 3
+ge.91981:
 	sw	$2, 10($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 11($3)
 	addi	$3, $3, 12
 	jal	min_caml_create_float_array
 	addi	$3, $3, -12
 	lw	$31, 11($3)
-	addi	$5, $0, 3
 	sw	$2, 11($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 12($3)
 	addi	$3, $3, 13
@@ -41307,9 +40730,8 @@ ge.91491:
 	jal	min_caml_create_array
 	addi	$3, $3, -13
 	lw	$31, 12($3)
-	addi	$5, $0, 3
 	sw	$2, 12($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 13($3)
 	addi	$3, $3, 14
@@ -41318,7 +40740,7 @@ ge.91491:
 	lw	$31, 13($3)
 	lw	$5, 12($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 13($3)
 	addi	$3, $3, 14
@@ -41327,7 +40749,7 @@ ge.91491:
 	lw	$31, 13($3)
 	lw	$5, 12($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 13($3)
 	addi	$3, $3, 14
@@ -41336,7 +40758,7 @@ ge.91491:
 	lw	$31, 13($3)
 	lw	$5, 12($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 13($3)
 	addi	$3, $3, 14
@@ -41361,9 +40783,8 @@ ge.91491:
 	jal	min_caml_create_array
 	addi	$3, $3, -15
 	lw	$31, 14($3)
-	addi	$5, $0, 3
 	sw	$2, 14($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 15($3)
 	addi	$3, $3, 16
@@ -41377,9 +40798,8 @@ ge.91491:
 	jal	min_caml_create_array
 	addi	$3, $3, -16
 	lw	$31, 15($3)
-	addi	$5, $0, 3
 	sw	$2, 15($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 16($3)
 	addi	$3, $3, 17
@@ -41388,7 +40808,7 @@ ge.91491:
 	lw	$31, 16($3)
 	lw	$5, 15($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 16($3)
 	addi	$3, $3, 17
@@ -41397,7 +40817,7 @@ ge.91491:
 	lw	$31, 16($3)
 	lw	$5, 15($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 16($3)
 	addi	$3, $3, 17
@@ -41406,7 +40826,7 @@ ge.91491:
 	lw	$31, 16($3)
 	lw	$5, 15($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 16($3)
 	addi	$3, $3, 17
@@ -41415,7 +40835,7 @@ ge.91491:
 	lw	$31, 16($3)
 	lw	$5, 15($3)
 	sw	$2, 4($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 16($3)
 	addi	$3, $3, 17
@@ -41429,9 +40849,8 @@ ge.91491:
 	jal	min_caml_create_array
 	addi	$3, $3, -17
 	lw	$31, 16($3)
-	addi	$5, $0, 3
 	sw	$2, 16($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 17($3)
 	addi	$3, $3, 18
@@ -41440,7 +40859,7 @@ ge.91491:
 	lw	$31, 17($3)
 	lw	$5, 16($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 17($3)
 	addi	$3, $3, 18
@@ -41449,7 +40868,7 @@ ge.91491:
 	lw	$31, 17($3)
 	lw	$5, 16($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 17($3)
 	addi	$3, $3, 18
@@ -41458,7 +40877,7 @@ ge.91491:
 	lw	$31, 17($3)
 	lw	$5, 16($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 17($3)
 	addi	$3, $3, 18
@@ -41474,9 +40893,8 @@ ge.91491:
 	jal	min_caml_create_array
 	addi	$3, $3, -18
 	lw	$31, 17($3)
-	addi	$5, $0, 3
 	sw	$2, 17($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 18($3)
 	addi	$3, $3, 19
@@ -41490,9 +40908,8 @@ ge.91491:
 	jal	min_caml_create_array
 	addi	$3, $3, -19
 	lw	$31, 18($3)
-	addi	$5, $0, 3
 	sw	$2, 18($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 19($3)
 	addi	$3, $3, 20
@@ -41501,7 +40918,7 @@ ge.91491:
 	lw	$31, 19($3)
 	lw	$5, 18($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 19($3)
 	addi	$3, $3, 20
@@ -41510,7 +40927,7 @@ ge.91491:
 	lw	$31, 19($3)
 	lw	$5, 18($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 19($3)
 	addi	$3, $3, 20
@@ -41519,7 +40936,7 @@ ge.91491:
 	lw	$31, 19($3)
 	lw	$5, 18($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 19($3)
 	addi	$3, $3, 20
@@ -41550,22 +40967,20 @@ ge.91491:
 	add $30, $6, $5
 	sw	$2, 0($30)
 	addi	$2, $5, -1
-	bge	$2, $0, ge.91492
+	bge	$2, $0, ge.91982
 	mov	$2, $6
 	jr $31
-ge.91492:
-	addi	$5, $0, 3
+ge.91982:
 	sw	$2, 19($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 20($3)
 	addi	$3, $3, 21
 	jal	min_caml_create_float_array
 	addi	$3, $3, -21
 	lw	$31, 20($3)
-	addi	$5, $0, 3
 	sw	$2, 20($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 21($3)
 	addi	$3, $3, 22
@@ -41579,9 +40994,8 @@ ge.91492:
 	jal	min_caml_create_array
 	addi	$3, $3, -22
 	lw	$31, 21($3)
-	addi	$5, $0, 3
 	sw	$2, 21($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 22($3)
 	addi	$3, $3, 23
@@ -41590,7 +41004,7 @@ ge.91492:
 	lw	$31, 22($3)
 	lw	$5, 21($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 22($3)
 	addi	$3, $3, 23
@@ -41599,7 +41013,7 @@ ge.91492:
 	lw	$31, 22($3)
 	lw	$5, 21($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 22($3)
 	addi	$3, $3, 23
@@ -41608,7 +41022,7 @@ ge.91492:
 	lw	$31, 22($3)
 	lw	$5, 21($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 22($3)
 	addi	$3, $3, 23
@@ -41633,9 +41047,8 @@ ge.91492:
 	jal	min_caml_create_array
 	addi	$3, $3, -24
 	lw	$31, 23($3)
-	addi	$5, $0, 3
 	sw	$2, 23($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 24($3)
 	addi	$3, $3, 25
@@ -41649,9 +41062,8 @@ ge.91492:
 	jal	min_caml_create_array
 	addi	$3, $3, -25
 	lw	$31, 24($3)
-	addi	$5, $0, 3
 	sw	$2, 24($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 25($3)
 	addi	$3, $3, 26
@@ -41660,7 +41072,7 @@ ge.91492:
 	lw	$31, 25($3)
 	lw	$5, 24($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 25($3)
 	addi	$3, $3, 26
@@ -41669,7 +41081,7 @@ ge.91492:
 	lw	$31, 25($3)
 	lw	$5, 24($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 25($3)
 	addi	$3, $3, 26
@@ -41678,7 +41090,7 @@ ge.91492:
 	lw	$31, 25($3)
 	lw	$5, 24($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 25($3)
 	addi	$3, $3, 26
@@ -41687,7 +41099,7 @@ ge.91492:
 	lw	$31, 25($3)
 	lw	$5, 24($3)
 	sw	$2, 4($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 25($3)
 	addi	$3, $3, 26
@@ -41701,9 +41113,8 @@ ge.91492:
 	jal	min_caml_create_array
 	addi	$3, $3, -26
 	lw	$31, 25($3)
-	addi	$5, $0, 3
 	sw	$2, 25($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 26($3)
 	addi	$3, $3, 27
@@ -41712,7 +41123,7 @@ ge.91492:
 	lw	$31, 26($3)
 	lw	$5, 25($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 26($3)
 	addi	$3, $3, 27
@@ -41721,7 +41132,7 @@ ge.91492:
 	lw	$31, 26($3)
 	lw	$5, 25($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 26($3)
 	addi	$3, $3, 27
@@ -41730,7 +41141,7 @@ ge.91492:
 	lw	$31, 26($3)
 	lw	$5, 25($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 26($3)
 	addi	$3, $3, 27
@@ -41746,9 +41157,8 @@ ge.91492:
 	jal	min_caml_create_array
 	addi	$3, $3, -27
 	lw	$31, 26($3)
-	addi	$5, $0, 3
 	sw	$2, 26($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 27($3)
 	addi	$3, $3, 28
@@ -41762,9 +41172,8 @@ ge.91492:
 	jal	min_caml_create_array
 	addi	$3, $3, -28
 	lw	$31, 27($3)
-	addi	$5, $0, 3
 	sw	$2, 27($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 28($3)
 	addi	$3, $3, 29
@@ -41773,7 +41182,7 @@ ge.91492:
 	lw	$31, 28($3)
 	lw	$5, 27($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 28($3)
 	addi	$3, $3, 29
@@ -41782,7 +41191,7 @@ ge.91492:
 	lw	$31, 28($3)
 	lw	$5, 27($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 28($3)
 	addi	$3, $3, 29
@@ -41791,7 +41200,7 @@ ge.91492:
 	lw	$31, 28($3)
 	lw	$5, 27($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 28($3)
 	addi	$3, $3, 29
@@ -41822,22 +41231,20 @@ ge.91492:
 	add $30, $6, $5
 	sw	$2, 0($30)
 	addi	$2, $5, -1
-	bge	$2, $0, ge.91493
+	bge	$2, $0, ge.91983
 	mov	$2, $6
 	jr $31
-ge.91493:
-	addi	$5, $0, 3
+ge.91983:
 	sw	$2, 28($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 29($3)
 	addi	$3, $3, 30
 	jal	min_caml_create_float_array
 	addi	$3, $3, -30
 	lw	$31, 29($3)
-	addi	$5, $0, 3
 	sw	$2, 29($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 30($3)
 	addi	$3, $3, 31
@@ -41851,9 +41258,8 @@ ge.91493:
 	jal	min_caml_create_array
 	addi	$3, $3, -31
 	lw	$31, 30($3)
-	addi	$5, $0, 3
 	sw	$2, 30($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 31($3)
 	addi	$3, $3, 32
@@ -41862,7 +41268,7 @@ ge.91493:
 	lw	$31, 31($3)
 	lw	$5, 30($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 31($3)
 	addi	$3, $3, 32
@@ -41871,7 +41277,7 @@ ge.91493:
 	lw	$31, 31($3)
 	lw	$5, 30($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 31($3)
 	addi	$3, $3, 32
@@ -41880,7 +41286,7 @@ ge.91493:
 	lw	$31, 31($3)
 	lw	$5, 30($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 31($3)
 	addi	$3, $3, 32
@@ -41905,9 +41311,8 @@ ge.91493:
 	jal	min_caml_create_array
 	addi	$3, $3, -33
 	lw	$31, 32($3)
-	addi	$5, $0, 3
 	sw	$2, 32($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 33($3)
 	addi	$3, $3, 34
@@ -41921,9 +41326,8 @@ ge.91493:
 	jal	min_caml_create_array
 	addi	$3, $3, -34
 	lw	$31, 33($3)
-	addi	$5, $0, 3
 	sw	$2, 33($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 34($3)
 	addi	$3, $3, 35
@@ -41932,7 +41336,7 @@ ge.91493:
 	lw	$31, 34($3)
 	lw	$5, 33($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 34($3)
 	addi	$3, $3, 35
@@ -41941,7 +41345,7 @@ ge.91493:
 	lw	$31, 34($3)
 	lw	$5, 33($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 34($3)
 	addi	$3, $3, 35
@@ -41950,7 +41354,7 @@ ge.91493:
 	lw	$31, 34($3)
 	lw	$5, 33($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 34($3)
 	addi	$3, $3, 35
@@ -41959,7 +41363,7 @@ ge.91493:
 	lw	$31, 34($3)
 	lw	$5, 33($3)
 	sw	$2, 4($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 34($3)
 	addi	$3, $3, 35
@@ -41973,9 +41377,8 @@ ge.91493:
 	jal	min_caml_create_array
 	addi	$3, $3, -35
 	lw	$31, 34($3)
-	addi	$5, $0, 3
 	sw	$2, 34($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 35($3)
 	addi	$3, $3, 36
@@ -41984,7 +41387,7 @@ ge.91493:
 	lw	$31, 35($3)
 	lw	$5, 34($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 35($3)
 	addi	$3, $3, 36
@@ -41993,7 +41396,7 @@ ge.91493:
 	lw	$31, 35($3)
 	lw	$5, 34($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 35($3)
 	addi	$3, $3, 36
@@ -42002,7 +41405,7 @@ ge.91493:
 	lw	$31, 35($3)
 	lw	$5, 34($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 35($3)
 	addi	$3, $3, 36
@@ -42018,9 +41421,8 @@ ge.91493:
 	jal	min_caml_create_array
 	addi	$3, $3, -36
 	lw	$31, 35($3)
-	addi	$5, $0, 3
 	sw	$2, 35($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 36($3)
 	addi	$3, $3, 37
@@ -42034,9 +41436,8 @@ ge.91493:
 	jal	min_caml_create_array
 	addi	$3, $3, -37
 	lw	$31, 36($3)
-	addi	$5, $0, 3
 	sw	$2, 36($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 37($3)
 	addi	$3, $3, 38
@@ -42045,7 +41446,7 @@ ge.91493:
 	lw	$31, 37($3)
 	lw	$5, 36($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 37($3)
 	addi	$3, $3, 38
@@ -42054,7 +41455,7 @@ ge.91493:
 	lw	$31, 37($3)
 	lw	$5, 36($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 37($3)
 	addi	$3, $3, 38
@@ -42063,7 +41464,7 @@ ge.91493:
 	lw	$31, 37($3)
 	lw	$5, 36($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 37($3)
 	addi	$3, $3, 38
@@ -42098,18 +41499,18 @@ ge.91493:
 	j	init_line_elements.3122
 calc_dirvec.3132:
 	addi	$30, $0, 5
-	bge	$2, $30, ge.91494
+	bge	$2, $30, ge.91984
 	fmul	$f0, $f1, $f1
 	lf	$f1, 3358($0) # 0.100000
 	fadd	$f0, $f0, $f1
 	sqrt	$f0, $f0
 	fdiv	$f1, $f28, $f0
-	bltf	$f30, $f1, fle.91495
+	bltf	$f30, $f1, fle.91985
 	movf	$f4, $f29
-	j	fle_cont.91496
-fle.91495:
+	j	fle_cont.91986
+fle.91985:
 	movf	$f4, $f28
-fle_cont.91496:
+fle_cont.91986:
 	fmul	$f1, $f4, $f1
 	lf	$f5, 3377($0) # 0.437500
 	sw	$6, 0($3)
@@ -42118,9 +41519,9 @@ fle_cont.91496:
 	sw	$2, 3($3)
 	sf	$f0, 4($3)
 	sf	$f2, 5($3)
-	bltf	$f1, $f5, fle.91497
+	bltf	$f1, $f5, fle.91987
 	lf	$f5, 3370($0) # 2.437500
-	bltf	$f1, $f5, fle.91499
+	bltf	$f1, $f5, fle.91989
 	lf	$f5, 3393($0) # 1.570796
 	fdiv	$f1, $f28, $f1
 	fmul	$f6, $f1, $f28
@@ -42213,8 +41614,8 @@ fle_cont.91496:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 6($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.91500
-fle.91499:
+	j	fle_cont.91990
+fle.91989:
 	lf	$f5, 3392($0) # 0.785398
 	fsub	$f6, $f1, $f28
 	fadd	$f1, $f1, $f28
@@ -42309,9 +41710,9 @@ fle.91499:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 6($3)
 	fmul	$f0, $f1, $f0
-fle_cont.91500:
-	j	fle_cont.91498
-fle.91497:
+fle_cont.91990:
+	j	fle_cont.91988
+fle.91987:
 	fmul	$f5, $f1, $f28
 	fmul	$f5, $f5, $f28
 	fmul	$f6, $f1, $f5
@@ -42399,15 +41800,15 @@ fle.91497:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 6($3)
 	fmul	$f0, $f1, $f0
-fle_cont.91498:
+fle_cont.91988:
 	lf	$f1, 5($3)
 	fmul	$f0, $f0, $f1
-	bltf	$f30, $f0, fle.91501
+	bltf	$f30, $f0, fle.91991
 	movf	$f2, $f29
-	j	fle_cont.91502
-fle.91501:
+	j	fle_cont.91992
+fle.91991:
 	movf	$f2, $f28
-fle_cont.91502:
+fle_cont.91992:
 	fmul	$f3, $f2, $f0
 	lf	$f4, 3395($0) # 6.283185
 	fdiv	$f5, $f3, $f4
@@ -42415,23 +41816,23 @@ fle_cont.91502:
 	fmul	$f4, $f5, $f4
 	fsub	$f3, $f3, $f4
 	sf	$f0, 21($3)
-	bltf	$f3, $f31, fle.91503
+	bltf	$f3, $f31, fle.91993
 	fsub	$f3, $f3, $f31
 	fneg	$f2, $f2
 	lf	$f4, 3393($0) # 1.570796
-	bltf	$f3, $f4, fle.91505
+	bltf	$f3, $f4, fle.91995
 	fsub	$f3, $f31, $f3
 	lf	$f4, 3392($0) # 0.785398
-	bltf	$f4, $f3, fle.91507
+	bltf	$f4, $f3, fle.91997
 	lf	$f4, 3391($0) # 0.166667
 	lf	$f5, 3390($0) # 0.008333
 	lf	$f6, 3389($0) # 0.000196
-	addi	$2, $0, 3
 	sf	$f2, 22($3)
 	sf	$f6, 23($3)
 	sf	$f5, 24($3)
 	sf	$f3, 25($3)
 	sf	$f4, 26($3)
+	mov	$2, $27
 	movf	$f0, $f3
 	sw	$31, 27($3)
 	addi	$3, $3, 28
@@ -42469,19 +41870,19 @@ fle_cont.91502:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 22($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.91508
-fle.91507:
+	j	fle_cont.91998
+fle.91997:
 	lf	$f4, 3393($0) # 1.570796
 	fsub	$f3, $f4, $f3
 	lf	$f4, 3388($0) # 0.500000
 	lf	$f5, 3387($0) # 0.041664
 	lf	$f6, 3386($0) # 0.001370
-	addi	$2, $0, 2
 	sf	$f2, 22($3)
 	sf	$f6, 29($3)
 	sf	$f5, 30($3)
 	sf	$f3, 31($3)
 	sf	$f4, 32($3)
+	mov	$2, $26
 	movf	$f0, $f3
 	sw	$31, 33($3)
 	addi	$3, $3, 34
@@ -42519,20 +41920,20 @@ fle.91507:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 22($3)
 	fmul	$f0, $f1, $f0
-fle_cont.91508:
-	j	fle_cont.91506
-fle.91505:
+fle_cont.91998:
+	j	fle_cont.91996
+fle.91995:
 	lf	$f4, 3392($0) # 0.785398
-	bltf	$f4, $f3, fle.91509
+	bltf	$f4, $f3, fle.91999
 	lf	$f4, 3391($0) # 0.166667
 	lf	$f5, 3390($0) # 0.008333
 	lf	$f6, 3389($0) # 0.000196
-	addi	$2, $0, 3
 	sf	$f2, 22($3)
 	sf	$f6, 35($3)
 	sf	$f5, 36($3)
 	sf	$f3, 37($3)
 	sf	$f4, 38($3)
+	mov	$2, $27
 	movf	$f0, $f3
 	sw	$31, 39($3)
 	addi	$3, $3, 40
@@ -42570,19 +41971,19 @@ fle.91505:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 22($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.91510
-fle.91509:
+	j	fle_cont.92000
+fle.91999:
 	lf	$f4, 3393($0) # 1.570796
 	fsub	$f3, $f4, $f3
 	lf	$f4, 3388($0) # 0.500000
 	lf	$f5, 3387($0) # 0.041664
 	lf	$f6, 3386($0) # 0.001370
-	addi	$2, $0, 2
 	sf	$f2, 22($3)
 	sf	$f6, 41($3)
 	sf	$f5, 42($3)
 	sf	$f3, 43($3)
 	sf	$f4, 44($3)
+	mov	$2, $26
 	movf	$f0, $f3
 	sw	$31, 45($3)
 	addi	$3, $3, 46
@@ -42620,24 +42021,24 @@ fle.91509:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 22($3)
 	fmul	$f0, $f1, $f0
-fle_cont.91510:
-fle_cont.91506:
-	j	fle_cont.91504
-fle.91503:
+fle_cont.92000:
+fle_cont.91996:
+	j	fle_cont.91994
+fle.91993:
 	lf	$f4, 3393($0) # 1.570796
-	bltf	$f3, $f4, fle.91511
+	bltf	$f3, $f4, fle.92001
 	fsub	$f3, $f31, $f3
 	lf	$f4, 3392($0) # 0.785398
-	bltf	$f4, $f3, fle.91513
+	bltf	$f4, $f3, fle.92003
 	lf	$f4, 3391($0) # 0.166667
 	lf	$f5, 3390($0) # 0.008333
 	lf	$f6, 3389($0) # 0.000196
-	addi	$2, $0, 3
 	sf	$f2, 47($3)
 	sf	$f6, 48($3)
 	sf	$f5, 49($3)
 	sf	$f3, 50($3)
 	sf	$f4, 51($3)
+	mov	$2, $27
 	movf	$f0, $f3
 	sw	$31, 52($3)
 	addi	$3, $3, 53
@@ -42675,19 +42076,19 @@ fle.91503:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 47($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.91514
-fle.91513:
+	j	fle_cont.92004
+fle.92003:
 	lf	$f4, 3393($0) # 1.570796
 	fsub	$f3, $f4, $f3
 	lf	$f4, 3388($0) # 0.500000
 	lf	$f5, 3387($0) # 0.041664
 	lf	$f6, 3386($0) # 0.001370
-	addi	$2, $0, 2
 	sf	$f2, 47($3)
 	sf	$f6, 54($3)
 	sf	$f5, 55($3)
 	sf	$f3, 56($3)
 	sf	$f4, 57($3)
+	mov	$2, $26
 	movf	$f0, $f3
 	sw	$31, 58($3)
 	addi	$3, $3, 59
@@ -42725,20 +42126,20 @@ fle.91513:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 47($3)
 	fmul	$f0, $f1, $f0
-fle_cont.91514:
-	j	fle_cont.91512
-fle.91511:
+fle_cont.92004:
+	j	fle_cont.92002
+fle.92001:
 	lf	$f4, 3392($0) # 0.785398
-	bltf	$f4, $f3, fle.91515
+	bltf	$f4, $f3, fle.92005
 	lf	$f4, 3391($0) # 0.166667
 	lf	$f5, 3390($0) # 0.008333
 	lf	$f6, 3389($0) # 0.000196
-	addi	$2, $0, 3
 	sf	$f2, 47($3)
 	sf	$f6, 60($3)
 	sf	$f5, 61($3)
 	sf	$f3, 62($3)
 	sf	$f4, 63($3)
+	mov	$2, $27
 	movf	$f0, $f3
 	sw	$31, 64($3)
 	addi	$3, $3, 65
@@ -42776,19 +42177,19 @@ fle.91511:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 47($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.91516
-fle.91515:
+	j	fle_cont.92006
+fle.92005:
 	lf	$f4, 3393($0) # 1.570796
 	fsub	$f3, $f4, $f3
 	lf	$f4, 3388($0) # 0.500000
 	lf	$f5, 3387($0) # 0.041664
 	lf	$f6, 3386($0) # 0.001370
-	addi	$2, $0, 2
 	sf	$f2, 47($3)
 	sf	$f6, 66($3)
 	sf	$f5, 67($3)
 	sf	$f3, 68($3)
 	sf	$f4, 69($3)
+	mov	$2, $26
 	movf	$f0, $f3
 	sw	$31, 70($3)
 	addi	$3, $3, 71
@@ -42826,16 +42227,16 @@ fle.91515:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 47($3)
 	fmul	$f0, $f1, $f0
-fle_cont.91516:
-fle_cont.91512:
-fle_cont.91504:
+fle_cont.92006:
+fle_cont.92002:
+fle_cont.91994:
 	lf	$f1, 21($3)
-	bltf	$f30, $f1, fle.91517
+	bltf	$f30, $f1, fle.92007
 	movf	$f2, $f29
-	j	fle_cont.91518
-fle.91517:
+	j	fle_cont.92008
+fle.92007:
 	movf	$f2, $f28
-fle_cont.91518:
+fle_cont.92008:
 	fmul	$f1, $f2, $f1
 	lf	$f2, 3395($0) # 6.283185
 	fdiv	$f3, $f1, $f2
@@ -42843,21 +42244,21 @@ fle_cont.91518:
 	fmul	$f2, $f3, $f2
 	fsub	$f1, $f1, $f2
 	sf	$f0, 72($3)
-	bltf	$f1, $f31, fle.91519
+	bltf	$f1, $f31, fle.92009
 	fsub	$f1, $f1, $f31
 	lf	$f2, 3393($0) # 1.570796
-	bltf	$f1, $f2, fle.91521
+	bltf	$f1, $f2, fle.92011
 	fsub	$f1, $f31, $f1
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f1, fle.91523
+	bltf	$f2, $f1, fle.92013
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
-	addi	$2, $0, 2
 	sf	$f4, 73($3)
 	sf	$f3, 74($3)
 	sf	$f1, 75($3)
 	sf	$f2, 76($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 77($3)
 	addi	$3, $3, 78
@@ -42894,18 +42295,18 @@ fle_cont.91518:
 	lf	$f1, 78($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-	j	fle_cont.91524
-fle.91523:
+	j	fle_cont.92014
+fle.92013:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f1, $f2, $f1
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
-	addi	$2, $0, 3
 	sf	$f4, 79($3)
 	sf	$f3, 80($3)
 	sf	$f1, 81($3)
 	sf	$f2, 82($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 83($3)
 	addi	$3, $3, 84
@@ -42942,19 +42343,19 @@ fle.91523:
 	lf	$f1, 84($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-fle_cont.91524:
-	j	fle_cont.91522
-fle.91521:
+fle_cont.92014:
+	j	fle_cont.92012
+fle.92011:
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f1, fle.91525
+	bltf	$f2, $f1, fle.92015
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
-	addi	$2, $0, 2
 	sf	$f4, 85($3)
 	sf	$f3, 86($3)
 	sf	$f1, 87($3)
 	sf	$f2, 88($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 89($3)
 	addi	$3, $3, 90
@@ -42991,18 +42392,18 @@ fle.91521:
 	lf	$f1, 90($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-	j	fle_cont.91526
-fle.91525:
+	j	fle_cont.92016
+fle.92015:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f1, $f2, $f1
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
-	addi	$2, $0, 3
 	sf	$f4, 91($3)
 	sf	$f3, 92($3)
 	sf	$f1, 93($3)
 	sf	$f2, 94($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 95($3)
 	addi	$3, $3, 96
@@ -43039,23 +42440,23 @@ fle.91525:
 	lf	$f1, 96($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-fle_cont.91526:
-fle_cont.91522:
-	j	fle_cont.91520
-fle.91519:
+fle_cont.92016:
+fle_cont.92012:
+	j	fle_cont.92010
+fle.92009:
 	lf	$f2, 3393($0) # 1.570796
-	bltf	$f1, $f2, fle.91527
+	bltf	$f1, $f2, fle.92017
 	fsub	$f1, $f31, $f1
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f1, fle.91529
+	bltf	$f2, $f1, fle.92019
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
-	addi	$2, $0, 2
 	sf	$f4, 97($3)
 	sf	$f3, 98($3)
 	sf	$f1, 99($3)
 	sf	$f2, 100($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 101($3)
 	addi	$3, $3, 102
@@ -43092,18 +42493,18 @@ fle.91519:
 	lf	$f1, 102($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-	j	fle_cont.91530
-fle.91529:
+	j	fle_cont.92020
+fle.92019:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f1, $f2, $f1
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
-	addi	$2, $0, 3
 	sf	$f4, 103($3)
 	sf	$f3, 104($3)
 	sf	$f1, 105($3)
 	sf	$f2, 106($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 107($3)
 	addi	$3, $3, 108
@@ -43140,19 +42541,19 @@ fle.91529:
 	lf	$f1, 108($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-fle_cont.91530:
-	j	fle_cont.91528
-fle.91527:
+fle_cont.92020:
+	j	fle_cont.92018
+fle.92017:
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f1, fle.91531
+	bltf	$f2, $f1, fle.92021
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
-	addi	$2, $0, 2
 	sf	$f4, 109($3)
 	sf	$f3, 110($3)
 	sf	$f1, 111($3)
 	sf	$f2, 112($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 113($3)
 	addi	$3, $3, 114
@@ -43189,18 +42590,18 @@ fle.91527:
 	lf	$f1, 114($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-	j	fle_cont.91532
-fle.91531:
+	j	fle_cont.92022
+fle.92021:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f1, $f2, $f1
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
-	addi	$2, $0, 3
 	sf	$f4, 115($3)
 	sf	$f3, 116($3)
 	sf	$f1, 117($3)
 	sf	$f2, 118($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 119($3)
 	addi	$3, $3, 120
@@ -43237,9 +42638,9 @@ fle.91531:
 	lf	$f1, 120($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-fle_cont.91532:
-fle_cont.91528:
-fle_cont.91520:
+fle_cont.92022:
+fle_cont.92018:
+fle_cont.92010:
 	lf	$f1, 72($3)
 	fdiv	$f0, $f1, $f0
 	lf	$f1, 4($3)
@@ -43251,20 +42652,20 @@ fle_cont.91520:
 	fadd	$f1, $f1, $f2
 	sqrt	$f1, $f1
 	fdiv	$f2, $f28, $f1
-	bltf	$f30, $f2, fle.91533
+	bltf	$f30, $f2, fle.92023
 	movf	$f3, $f29
-	j	fle_cont.91534
-fle.91533:
+	j	fle_cont.92024
+fle.92023:
 	movf	$f3, $f28
-fle_cont.91534:
+fle_cont.92024:
 	fmul	$f2, $f3, $f2
 	lf	$f4, 3377($0) # 0.437500
 	sf	$f0, 121($3)
 	sw	$2, 122($3)
 	sf	$f1, 123($3)
-	bltf	$f2, $f4, fle.91535
+	bltf	$f2, $f4, fle.92025
 	lf	$f4, 3370($0) # 2.437500
-	bltf	$f2, $f4, fle.91537
+	bltf	$f2, $f4, fle.92027
 	lf	$f4, 3393($0) # 1.570796
 	fdiv	$f2, $f28, $f2
 	fmul	$f5, $f2, $f28
@@ -43357,8 +42758,8 @@ fle_cont.91534:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 124($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.91538
-fle.91537:
+	j	fle_cont.92028
+fle.92027:
 	lf	$f4, 3392($0) # 0.785398
 	fsub	$f5, $f2, $f28
 	fadd	$f2, $f2, $f28
@@ -43453,9 +42854,9 @@ fle.91537:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 124($3)
 	fmul	$f0, $f1, $f0
-fle_cont.91538:
-	j	fle_cont.91536
-fle.91535:
+fle_cont.92028:
+	j	fle_cont.92026
+fle.92025:
 	fmul	$f4, $f2, $f28
 	fmul	$f4, $f4, $f28
 	fmul	$f5, $f2, $f4
@@ -43543,15 +42944,15 @@ fle.91535:
 	fadd	$f0, $f1, $f0
 	lf	$f1, 124($3)
 	fmul	$f0, $f1, $f0
-fle_cont.91536:
+fle_cont.92026:
 	lf	$f1, 2($3)
 	fmul	$f0, $f0, $f1
-	bltf	$f30, $f0, fle.91539
+	bltf	$f30, $f0, fle.92029
 	movf	$f2, $f29
-	j	fle_cont.91540
-fle.91539:
+	j	fle_cont.92030
+fle.92029:
 	movf	$f2, $f28
-fle_cont.91540:
+fle_cont.92030:
 	fmul	$f3, $f2, $f0
 	lf	$f4, 3395($0) # 6.283185
 	fdiv	$f5, $f3, $f4
@@ -43559,23 +42960,23 @@ fle_cont.91540:
 	fmul	$f4, $f5, $f4
 	fsub	$f3, $f3, $f4
 	sf	$f0, 139($3)
-	bltf	$f3, $f31, fle.91541
+	bltf	$f3, $f31, fle.92031
 	fsub	$f3, $f3, $f31
 	fneg	$f2, $f2
 	lf	$f4, 3393($0) # 1.570796
-	bltf	$f3, $f4, fle.91543
+	bltf	$f3, $f4, fle.92033
 	fsub	$f3, $f31, $f3
 	lf	$f4, 3392($0) # 0.785398
-	bltf	$f4, $f3, fle.91545
+	bltf	$f4, $f3, fle.92035
 	lf	$f4, 3391($0) # 0.166667
 	lf	$f5, 3390($0) # 0.008333
 	lf	$f6, 3389($0) # 0.000196
-	addi	$2, $0, 3
 	sf	$f2, 140($3)
 	sf	$f6, 141($3)
 	sf	$f5, 142($3)
 	sf	$f3, 143($3)
 	sf	$f4, 144($3)
+	mov	$2, $27
 	movf	$f0, $f3
 	sw	$31, 145($3)
 	addi	$3, $3, 146
@@ -43613,19 +43014,19 @@ fle_cont.91540:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 140($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.91546
-fle.91545:
+	j	fle_cont.92036
+fle.92035:
 	lf	$f4, 3393($0) # 1.570796
 	fsub	$f3, $f4, $f3
 	lf	$f4, 3388($0) # 0.500000
 	lf	$f5, 3387($0) # 0.041664
 	lf	$f6, 3386($0) # 0.001370
-	addi	$2, $0, 2
 	sf	$f2, 140($3)
 	sf	$f6, 147($3)
 	sf	$f5, 148($3)
 	sf	$f3, 149($3)
 	sf	$f4, 150($3)
+	mov	$2, $26
 	movf	$f0, $f3
 	sw	$31, 151($3)
 	addi	$3, $3, 152
@@ -43663,20 +43064,20 @@ fle.91545:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 140($3)
 	fmul	$f0, $f1, $f0
-fle_cont.91546:
-	j	fle_cont.91544
-fle.91543:
+fle_cont.92036:
+	j	fle_cont.92034
+fle.92033:
 	lf	$f4, 3392($0) # 0.785398
-	bltf	$f4, $f3, fle.91547
+	bltf	$f4, $f3, fle.92037
 	lf	$f4, 3391($0) # 0.166667
 	lf	$f5, 3390($0) # 0.008333
 	lf	$f6, 3389($0) # 0.000196
-	addi	$2, $0, 3
 	sf	$f2, 140($3)
 	sf	$f6, 153($3)
 	sf	$f5, 154($3)
 	sf	$f3, 155($3)
 	sf	$f4, 156($3)
+	mov	$2, $27
 	movf	$f0, $f3
 	sw	$31, 157($3)
 	addi	$3, $3, 158
@@ -43714,19 +43115,19 @@ fle.91543:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 140($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.91548
-fle.91547:
+	j	fle_cont.92038
+fle.92037:
 	lf	$f4, 3393($0) # 1.570796
 	fsub	$f3, $f4, $f3
 	lf	$f4, 3388($0) # 0.500000
 	lf	$f5, 3387($0) # 0.041664
 	lf	$f6, 3386($0) # 0.001370
-	addi	$2, $0, 2
 	sf	$f2, 140($3)
 	sf	$f6, 159($3)
 	sf	$f5, 160($3)
 	sf	$f3, 161($3)
 	sf	$f4, 162($3)
+	mov	$2, $26
 	movf	$f0, $f3
 	sw	$31, 163($3)
 	addi	$3, $3, 164
@@ -43764,24 +43165,24 @@ fle.91547:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 140($3)
 	fmul	$f0, $f1, $f0
-fle_cont.91548:
-fle_cont.91544:
-	j	fle_cont.91542
-fle.91541:
+fle_cont.92038:
+fle_cont.92034:
+	j	fle_cont.92032
+fle.92031:
 	lf	$f4, 3393($0) # 1.570796
-	bltf	$f3, $f4, fle.91549
+	bltf	$f3, $f4, fle.92039
 	fsub	$f3, $f31, $f3
 	lf	$f4, 3392($0) # 0.785398
-	bltf	$f4, $f3, fle.91551
+	bltf	$f4, $f3, fle.92041
 	lf	$f4, 3391($0) # 0.166667
 	lf	$f5, 3390($0) # 0.008333
 	lf	$f6, 3389($0) # 0.000196
-	addi	$2, $0, 3
 	sf	$f2, 165($3)
 	sf	$f6, 166($3)
 	sf	$f5, 167($3)
 	sf	$f3, 168($3)
 	sf	$f4, 169($3)
+	mov	$2, $27
 	movf	$f0, $f3
 	sw	$31, 170($3)
 	addi	$3, $3, 171
@@ -43819,19 +43220,19 @@ fle.91541:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 165($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.91552
-fle.91551:
+	j	fle_cont.92042
+fle.92041:
 	lf	$f4, 3393($0) # 1.570796
 	fsub	$f3, $f4, $f3
 	lf	$f4, 3388($0) # 0.500000
 	lf	$f5, 3387($0) # 0.041664
 	lf	$f6, 3386($0) # 0.001370
-	addi	$2, $0, 2
 	sf	$f2, 165($3)
 	sf	$f6, 172($3)
 	sf	$f5, 173($3)
 	sf	$f3, 174($3)
 	sf	$f4, 175($3)
+	mov	$2, $26
 	movf	$f0, $f3
 	sw	$31, 176($3)
 	addi	$3, $3, 177
@@ -43869,20 +43270,20 @@ fle.91551:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 165($3)
 	fmul	$f0, $f1, $f0
-fle_cont.91552:
-	j	fle_cont.91550
-fle.91549:
+fle_cont.92042:
+	j	fle_cont.92040
+fle.92039:
 	lf	$f4, 3392($0) # 0.785398
-	bltf	$f4, $f3, fle.91553
+	bltf	$f4, $f3, fle.92043
 	lf	$f4, 3391($0) # 0.166667
 	lf	$f5, 3390($0) # 0.008333
 	lf	$f6, 3389($0) # 0.000196
-	addi	$2, $0, 3
 	sf	$f2, 165($3)
 	sf	$f6, 178($3)
 	sf	$f5, 179($3)
 	sf	$f3, 180($3)
 	sf	$f4, 181($3)
+	mov	$2, $27
 	movf	$f0, $f3
 	sw	$31, 182($3)
 	addi	$3, $3, 183
@@ -43920,19 +43321,19 @@ fle.91549:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 165($3)
 	fmul	$f0, $f1, $f0
-	j	fle_cont.91554
-fle.91553:
+	j	fle_cont.92044
+fle.92043:
 	lf	$f4, 3393($0) # 1.570796
 	fsub	$f3, $f4, $f3
 	lf	$f4, 3388($0) # 0.500000
 	lf	$f5, 3387($0) # 0.041664
 	lf	$f6, 3386($0) # 0.001370
-	addi	$2, $0, 2
 	sf	$f2, 165($3)
 	sf	$f6, 184($3)
 	sf	$f5, 185($3)
 	sf	$f3, 186($3)
 	sf	$f4, 187($3)
+	mov	$2, $26
 	movf	$f0, $f3
 	sw	$31, 188($3)
 	addi	$3, $3, 189
@@ -43970,16 +43371,16 @@ fle.91553:
 	fsub	$f0, $f1, $f0
 	lf	$f1, 165($3)
 	fmul	$f0, $f1, $f0
-fle_cont.91554:
-fle_cont.91550:
-fle_cont.91542:
+fle_cont.92044:
+fle_cont.92040:
+fle_cont.92032:
 	lf	$f1, 139($3)
-	bltf	$f30, $f1, fle.91555
+	bltf	$f30, $f1, fle.92045
 	movf	$f2, $f29
-	j	fle_cont.91556
-fle.91555:
+	j	fle_cont.92046
+fle.92045:
 	movf	$f2, $f28
-fle_cont.91556:
+fle_cont.92046:
 	fmul	$f1, $f2, $f1
 	lf	$f2, 3395($0) # 6.283185
 	fdiv	$f3, $f1, $f2
@@ -43987,21 +43388,21 @@ fle_cont.91556:
 	fmul	$f2, $f3, $f2
 	fsub	$f1, $f1, $f2
 	sf	$f0, 190($3)
-	bltf	$f1, $f31, fle.91557
+	bltf	$f1, $f31, fle.92047
 	fsub	$f1, $f1, $f31
 	lf	$f2, 3393($0) # 1.570796
-	bltf	$f1, $f2, fle.91559
+	bltf	$f1, $f2, fle.92049
 	fsub	$f1, $f31, $f1
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f1, fle.91561
+	bltf	$f2, $f1, fle.92051
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
-	addi	$2, $0, 2
 	sf	$f4, 191($3)
 	sf	$f3, 192($3)
 	sf	$f1, 193($3)
 	sf	$f2, 194($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 195($3)
 	addi	$3, $3, 196
@@ -44038,18 +43439,18 @@ fle_cont.91556:
 	lf	$f1, 196($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-	j	fle_cont.91562
-fle.91561:
+	j	fle_cont.92052
+fle.92051:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f1, $f2, $f1
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
-	addi	$2, $0, 3
 	sf	$f4, 197($3)
 	sf	$f3, 198($3)
 	sf	$f1, 199($3)
 	sf	$f2, 200($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 201($3)
 	addi	$3, $3, 202
@@ -44086,19 +43487,19 @@ fle.91561:
 	lf	$f1, 202($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-fle_cont.91562:
-	j	fle_cont.91560
-fle.91559:
+fle_cont.92052:
+	j	fle_cont.92050
+fle.92049:
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f1, fle.91563
+	bltf	$f2, $f1, fle.92053
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
-	addi	$2, $0, 2
 	sf	$f4, 203($3)
 	sf	$f3, 204($3)
 	sf	$f1, 205($3)
 	sf	$f2, 206($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 207($3)
 	addi	$3, $3, 208
@@ -44135,18 +43536,18 @@ fle.91559:
 	lf	$f1, 208($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-	j	fle_cont.91564
-fle.91563:
+	j	fle_cont.92054
+fle.92053:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f1, $f2, $f1
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
-	addi	$2, $0, 3
 	sf	$f4, 209($3)
 	sf	$f3, 210($3)
 	sf	$f1, 211($3)
 	sf	$f2, 212($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 213($3)
 	addi	$3, $3, 214
@@ -44183,23 +43584,23 @@ fle.91563:
 	lf	$f1, 214($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-fle_cont.91564:
-fle_cont.91560:
-	j	fle_cont.91558
-fle.91557:
+fle_cont.92054:
+fle_cont.92050:
+	j	fle_cont.92048
+fle.92047:
 	lf	$f2, 3393($0) # 1.570796
-	bltf	$f1, $f2, fle.91565
+	bltf	$f1, $f2, fle.92055
 	fsub	$f1, $f31, $f1
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f1, fle.91567
+	bltf	$f2, $f1, fle.92057
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
-	addi	$2, $0, 2
 	sf	$f4, 215($3)
 	sf	$f3, 216($3)
 	sf	$f1, 217($3)
 	sf	$f2, 218($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 219($3)
 	addi	$3, $3, 220
@@ -44236,18 +43637,18 @@ fle.91557:
 	lf	$f1, 220($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-	j	fle_cont.91568
-fle.91567:
+	j	fle_cont.92058
+fle.92057:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f1, $f2, $f1
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
-	addi	$2, $0, 3
 	sf	$f4, 221($3)
 	sf	$f3, 222($3)
 	sf	$f1, 223($3)
 	sf	$f2, 224($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 225($3)
 	addi	$3, $3, 226
@@ -44284,19 +43685,19 @@ fle.91567:
 	lf	$f1, 226($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f29, $f0
-fle_cont.91568:
-	j	fle_cont.91566
-fle.91565:
+fle_cont.92058:
+	j	fle_cont.92056
+fle.92055:
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f1, fle.91569
+	bltf	$f2, $f1, fle.92059
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
-	addi	$2, $0, 2
 	sf	$f4, 227($3)
 	sf	$f3, 228($3)
 	sf	$f1, 229($3)
 	sf	$f2, 230($3)
+	mov	$2, $26
 	movf	$f0, $f1
 	sw	$31, 231($3)
 	addi	$3, $3, 232
@@ -44333,18 +43734,18 @@ fle.91565:
 	lf	$f1, 232($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-	j	fle_cont.91570
-fle.91569:
+	j	fle_cont.92060
+fle.92059:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f1, $f2, $f1
 	lf	$f2, 3391($0) # 0.166667
 	lf	$f3, 3390($0) # 0.008333
 	lf	$f4, 3389($0) # 0.000196
-	addi	$2, $0, 3
 	sf	$f4, 233($3)
 	sf	$f3, 234($3)
 	sf	$f1, 235($3)
 	sf	$f2, 236($3)
+	mov	$2, $27
 	movf	$f0, $f1
 	sw	$31, 237($3)
 	addi	$3, $3, 238
@@ -44381,9 +43782,9 @@ fle.91569:
 	lf	$f1, 238($3)
 	fsub	$f0, $f1, $f0
 	fmul	$f0, $f28, $f0
-fle_cont.91570:
-fle_cont.91566:
-fle_cont.91558:
+fle_cont.92060:
+fle_cont.92056:
+fle_cont.92048:
 	lf	$f1, 190($3)
 	fdiv	$f0, $f1, $f0
 	lf	$f1, 123($3)
@@ -44395,7 +43796,7 @@ fle_cont.91558:
 	lw	$5, 1($3)
 	lw	$6, 0($3)
 	j	calc_dirvec.3132
-ge.91494:
+ge.91984:
 	fmul	$f2, $f0, $f0
 	fmul	$f3, $f1, $f1
 	fadd	$f2, $f2, $f3
@@ -44457,9 +43858,9 @@ ge.91494:
 	sf	$f1, 2($2)
 	jr $31
 calc_dirvecs.3140:
-	bge	$2, $0, ge.91572
+	bge	$2, $0, ge.92062
 	jr $31
-ge.91572:
+ge.92062:
 	itof	$f1, $2
 	lf	$f2, 3375($0) # 0.200000
 	fmul	$f1, $f1, $f2
@@ -44502,14 +43903,14 @@ ge.91572:
 	lw	$5, 1($3)
 	addi	$5, $5, 1
 	addi	$30, $0, 5
-	bge	$5, $30, ge_else.91574
-	j	ge_cont.91575
-ge_else.91574:
+	bge	$5, $30, ge_else.92064
+	j	ge_cont.92065
+ge_else.92064:
 	addi	$5, $5, -5
-ge_cont.91575:
-	bge	$2, $0, ge.91576
+ge_cont.92065:
+	bge	$2, $0, ge.92066
 	jr $31
-ge.91576:
+ge.92066:
 	itof	$f0, $2
 	lf	$f1, 3375($0) # 0.200000
 	fmul	$f0, $f0, $f1
@@ -44551,18 +43952,18 @@ ge.91576:
 	lw	$5, 4($3)
 	addi	$5, $5, 1
 	addi	$30, $0, 5
-	bge	$5, $30, ge_else.91578
-	j	ge_cont.91579
-ge_else.91578:
+	bge	$5, $30, ge_else.92068
+	j	ge_cont.92069
+ge_else.92068:
 	addi	$5, $5, -5
-ge_cont.91579:
+ge_cont.92069:
 	lf	$f0, 0($3)
 	lw	$6, 2($3)
 	j	calc_dirvecs.3140
 calc_dirvec_rows.3145:
-	bge	$2, $0, ge.91580
+	bge	$2, $0, ge.92070
 	jr $31
-ge.91580:
+ge.92070:
 	itof	$f0, $2
 	lf	$f1, 3375($0) # 0.200000
 	fmul	$f0, $f0, $f1
@@ -44594,19 +43995,17 @@ ge.91580:
 	jal	calc_dirvec.3132
 	addi	$3, $3, -5
 	lw	$31, 4($3)
-	addi	$2, $0, 3
-	lw	$5, 2($3)
-	addi	$6, $5, 1
+	lw	$2, 2($3)
+	addi	$5, $2, 1
 	addi	$30, $0, 5
-	bge	$6, $30, ge_else.91582
-	j	ge_cont.91583
-ge_else.91582:
-	addi	$6, $6, -5
-ge_cont.91583:
+	bge	$5, $30, ge_else.92072
+	j	ge_cont.92073
+ge_else.92072:
+	addi	$5, $5, -5
+ge_cont.92073:
 	lf	$f0, 1($3)
-	lw	$7, 3($3)
-	mov	$5, $6
-	mov	$6, $7
+	lw	$6, 3($3)
+	mov	$2, $27
 	sw	$31, 4($3)
 	addi	$3, $3, 5
 	jal	calc_dirvecs.3140
@@ -44617,16 +44016,16 @@ ge_cont.91583:
 	lw	$5, 2($3)
 	addi	$5, $5, 2
 	addi	$30, $0, 5
-	bge	$5, $30, ge_else.91584
-	j	ge_cont.91585
-ge_else.91584:
+	bge	$5, $30, ge_else.92074
+	j	ge_cont.92075
+ge_else.92074:
 	addi	$5, $5, -5
-ge_cont.91585:
+ge_cont.92075:
 	lw	$6, 3($3)
 	addi	$6, $6, 4
-	bge	$2, $0, ge.91586
+	bge	$2, $0, ge.92076
 	jr $31
-ge.91586:
+ge.92076:
 	itof	$f0, $2
 	lf	$f1, 3375($0) # 0.200000
 	fmul	$f0, $f0, $f1
@@ -44647,22 +44046,21 @@ ge.91586:
 	lw	$5, 5($3)
 	addi	$5, $5, 2
 	addi	$30, $0, 5
-	bge	$5, $30, ge_else.91588
-	j	ge_cont.91589
-ge_else.91588:
+	bge	$5, $30, ge_else.92078
+	j	ge_cont.92079
+ge_else.92078:
 	addi	$5, $5, -5
-ge_cont.91589:
+ge_cont.92079:
 	lw	$6, 4($3)
 	addi	$6, $6, 4
 	j	calc_dirvec_rows.3145
 create_dirvec_elements.3151:
-	bge	$5, $0, ge.91590
+	bge	$5, $0, ge.92080
 	jr $31
-ge.91590:
-	addi	$6, $0, 3
+ge.92080:
 	sw	$5, 0($3)
 	sw	$2, 1($3)
-	mov	$2, $6
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 2($3)
 	addi	$3, $3, 3
@@ -44688,12 +44086,11 @@ ge.91590:
 	add $30, $6, $5
 	sw	$2, 0($30)
 	addi	$2, $5, -1
-	bge	$2, $0, ge.91592
+	bge	$2, $0, ge.92082
 	jr $31
-ge.91592:
-	addi	$5, $0, 3
+ge.92082:
 	sw	$2, 3($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 4($3)
 	addi	$3, $3, 5
@@ -44719,12 +44116,11 @@ ge.91592:
 	add $30, $6, $5
 	sw	$2, 0($30)
 	addi	$2, $5, -1
-	bge	$2, $0, ge.91594
+	bge	$2, $0, ge.92084
 	jr $31
-ge.91594:
-	addi	$5, $0, 3
+ge.92084:
 	sw	$2, 5($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 6($3)
 	addi	$3, $3, 7
@@ -44750,12 +44146,11 @@ ge.91594:
 	add $30, $6, $5
 	sw	$2, 0($30)
 	addi	$2, $5, -1
-	bge	$2, $0, ge.91596
+	bge	$2, $0, ge.92086
 	jr $31
-ge.91596:
-	addi	$5, $0, 3
+ge.92086:
 	sw	$2, 7($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 8($3)
 	addi	$3, $3, 9
@@ -44780,18 +44175,137 @@ ge.91596:
 	lw	$6, 1($3)
 	add $30, $6, $5
 	sw	$2, 0($30)
+	addi	$2, $5, -1
+	bge	$2, $0, ge.92088
+	jr $31
+ge.92088:
+	sw	$2, 9($3)
+	mov	$2, $27
+	movf	$f0, $f30
+	sw	$31, 10($3)
+	addi	$3, $3, 11
+	jal	min_caml_create_float_array
+	addi	$3, $3, -11
+	lw	$31, 10($3)
+	mov	$5, $2
+	lw	$2, 3000($0)
+	sw	$5, 10($3)
+	sw	$31, 11($3)
+	addi	$3, $3, 12
+	jal	min_caml_create_array
+	addi	$3, $3, -12
+	lw	$31, 11($3)
+	mov	$5, $4
+	addi	$4, $4, 2
+	sw	$2, 1($5)
+	lw	$2, 10($3)
+	sw	$2, 0($5)
+	mov	$2, $5
+	lw	$5, 9($3)
+	lw	$6, 1($3)
+	add $30, $6, $5
+	sw	$2, 0($30)
+	addi	$2, $5, -1
+	bge	$2, $0, ge.92090
+	jr $31
+ge.92090:
+	sw	$2, 11($3)
+	mov	$2, $27
+	movf	$f0, $f30
+	sw	$31, 12($3)
+	addi	$3, $3, 13
+	jal	min_caml_create_float_array
+	addi	$3, $3, -13
+	lw	$31, 12($3)
+	mov	$5, $2
+	lw	$2, 3000($0)
+	sw	$5, 12($3)
+	sw	$31, 13($3)
+	addi	$3, $3, 14
+	jal	min_caml_create_array
+	addi	$3, $3, -14
+	lw	$31, 13($3)
+	mov	$5, $4
+	addi	$4, $4, 2
+	sw	$2, 1($5)
+	lw	$2, 12($3)
+	sw	$2, 0($5)
+	mov	$2, $5
+	lw	$5, 11($3)
+	lw	$6, 1($3)
+	add $30, $6, $5
+	sw	$2, 0($30)
+	addi	$2, $5, -1
+	bge	$2, $0, ge.92092
+	jr $31
+ge.92092:
+	sw	$2, 13($3)
+	mov	$2, $27
+	movf	$f0, $f30
+	sw	$31, 14($3)
+	addi	$3, $3, 15
+	jal	min_caml_create_float_array
+	addi	$3, $3, -15
+	lw	$31, 14($3)
+	mov	$5, $2
+	lw	$2, 3000($0)
+	sw	$5, 14($3)
+	sw	$31, 15($3)
+	addi	$3, $3, 16
+	jal	min_caml_create_array
+	addi	$3, $3, -16
+	lw	$31, 15($3)
+	mov	$5, $4
+	addi	$4, $4, 2
+	sw	$2, 1($5)
+	lw	$2, 14($3)
+	sw	$2, 0($5)
+	mov	$2, $5
+	lw	$5, 13($3)
+	lw	$6, 1($3)
+	add $30, $6, $5
+	sw	$2, 0($30)
+	addi	$2, $5, -1
+	bge	$2, $0, ge.92094
+	jr $31
+ge.92094:
+	sw	$2, 15($3)
+	mov	$2, $27
+	movf	$f0, $f30
+	sw	$31, 16($3)
+	addi	$3, $3, 17
+	jal	min_caml_create_float_array
+	addi	$3, $3, -17
+	lw	$31, 16($3)
+	mov	$5, $2
+	lw	$2, 3000($0)
+	sw	$5, 16($3)
+	sw	$31, 17($3)
+	addi	$3, $3, 18
+	jal	min_caml_create_array
+	addi	$3, $3, -18
+	lw	$31, 17($3)
+	mov	$5, $4
+	addi	$4, $4, 2
+	sw	$2, 1($5)
+	lw	$2, 16($3)
+	sw	$2, 0($5)
+	mov	$2, $5
+	lw	$5, 15($3)
+	lw	$6, 1($3)
+	add $30, $6, $5
+	sw	$2, 0($30)
 	addi	$5, $5, -1
 	mov	$2, $6
 	j	create_dirvec_elements.3151
 create_dirvecs.3154:
-	bge	$2, $0, ge.91598
+	bge	$2, $0, ge.92096
 	jr $31
-ge.91598:
+ge.92096:
 	addi	$5, $0, 120
-	addi	$6, $0, 3
 	sw	$2, 0($3)
 	sw	$5, 1($3)
-	mov	$2, $6
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 2($3)
 	addi	$3, $3, 3
@@ -44820,9 +44334,8 @@ ge.91598:
 	lw	$5, 0($3)
 	sw	$2, 3164($5)
 	lw	$2, 3164($5)
-	addi	$6, $0, 3
 	sw	$2, 3($3)
-	mov	$2, $6
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 4($3)
 	addi	$3, $3, 5
@@ -44845,7 +44358,7 @@ ge.91598:
 	mov	$2, $5
 	lw	$5, 3($3)
 	sw	$2, 118($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 5($3)
 	addi	$3, $3, 6
@@ -44868,7 +44381,7 @@ ge.91598:
 	mov	$2, $5
 	lw	$5, 3($3)
 	sw	$2, 117($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 6($3)
 	addi	$3, $3, 7
@@ -44891,25 +44404,53 @@ ge.91598:
 	mov	$2, $5
 	lw	$5, 3($3)
 	sw	$2, 116($5)
-	addi	$2, $0, 115
-	mov	$26, $5
-	mov	$5, $2
-	mov	$2, $26
+	mov	$2, $27
+	movf	$f0, $f30
 	sw	$31, 7($3)
 	addi	$3, $3, 8
-	jal	create_dirvec_elements.3151
+	jal	min_caml_create_float_array
 	addi	$3, $3, -8
 	lw	$31, 7($3)
-	lw	$2, 0($3)
-	addi	$2, $2, -1
-	bge	$2, $0, ge.91600
-	jr $31
-ge.91600:
-	addi	$5, $0, 120
-	addi	$6, $0, 3
-	sw	$2, 7($3)
+	mov	$5, $2
+	lw	$2, 3000($0)
+	sw	$5, 7($3)
+	sw	$31, 8($3)
+	addi	$3, $3, 9
+	jal	min_caml_create_array
+	addi	$3, $3, -9
+	lw	$31, 8($3)
+	mov	$5, $4
+	addi	$4, $4, 2
+	sw	$2, 1($5)
+	lw	$2, 7($3)
+	sw	$2, 0($5)
+	mov	$2, $5
+	lw	$5, 3($3)
+	sw	$2, 115($5)
+	mov	$2, $27
+	movf	$f0, $f30
+	sw	$31, 8($3)
+	addi	$3, $3, 9
+	jal	min_caml_create_float_array
+	addi	$3, $3, -9
+	lw	$31, 8($3)
+	mov	$5, $2
+	lw	$2, 3000($0)
 	sw	$5, 8($3)
-	mov	$2, $6
+	sw	$31, 9($3)
+	addi	$3, $3, 10
+	jal	min_caml_create_array
+	addi	$3, $3, -10
+	lw	$31, 9($3)
+	mov	$5, $4
+	addi	$4, $4, 2
+	sw	$2, 1($5)
+	lw	$2, 8($3)
+	sw	$2, 0($5)
+	mov	$2, $5
+	lw	$5, 3($3)
+	sw	$2, 114($5)
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 9($3)
 	addi	$3, $3, 10
@@ -44929,82 +44470,80 @@ ge.91600:
 	sw	$2, 1($5)
 	lw	$2, 9($3)
 	sw	$2, 0($5)
-	lw	$2, 8($3)
+	mov	$2, $5
+	lw	$5, 3($3)
+	sw	$2, 113($5)
+	mov	$2, $27
+	movf	$f0, $f30
 	sw	$31, 10($3)
 	addi	$3, $3, 11
-	jal	min_caml_create_array
+	jal	min_caml_create_float_array
 	addi	$3, $3, -11
 	lw	$31, 10($3)
-	lw	$5, 7($3)
-	sw	$2, 3164($5)
-	lw	$2, 3164($5)
-	addi	$6, $0, 3
-	sw	$2, 10($3)
-	mov	$2, $6
-	movf	$f0, $f30
+	mov	$5, $2
+	lw	$2, 3000($0)
+	sw	$5, 10($3)
 	sw	$31, 11($3)
 	addi	$3, $3, 12
-	jal	min_caml_create_float_array
+	jal	min_caml_create_array
 	addi	$3, $3, -12
 	lw	$31, 11($3)
-	mov	$5, $2
-	lw	$2, 3000($0)
-	sw	$5, 11($3)
-	sw	$31, 12($3)
-	addi	$3, $3, 13
-	jal	min_caml_create_array
-	addi	$3, $3, -13
-	lw	$31, 12($3)
 	mov	$5, $4
 	addi	$4, $4, 2
 	sw	$2, 1($5)
-	lw	$2, 11($3)
+	lw	$2, 10($3)
 	sw	$2, 0($5)
 	mov	$2, $5
-	lw	$5, 10($3)
-	sw	$2, 118($5)
-	addi	$2, $0, 3
-	movf	$f0, $f30
-	sw	$31, 12($3)
-	addi	$3, $3, 13
-	jal	min_caml_create_float_array
-	addi	$3, $3, -13
-	lw	$31, 12($3)
+	lw	$5, 3($3)
+	sw	$2, 112($5)
+	addi	$2, $0, 111
+	mov	$24, $5
 	mov	$5, $2
-	lw	$2, 3000($0)
-	sw	$5, 12($3)
-	sw	$31, 13($3)
-	addi	$3, $3, 14
-	jal	min_caml_create_array
-	addi	$3, $3, -14
-	lw	$31, 13($3)
-	mov	$5, $4
-	addi	$4, $4, 2
-	sw	$2, 1($5)
-	lw	$2, 12($3)
-	sw	$2, 0($5)
-	mov	$2, $5
-	lw	$5, 10($3)
-	sw	$2, 117($5)
-	addi	$2, $0, 116
-	mov	$26, $5
-	mov	$5, $2
-	mov	$2, $26
-	sw	$31, 13($3)
-	addi	$3, $3, 14
+	mov	$2, $24
+	sw	$31, 11($3)
+	addi	$3, $3, 12
 	jal	create_dirvec_elements.3151
+	addi	$3, $3, -12
+	lw	$31, 11($3)
+	lw	$2, 0($3)
+	addi	$2, $2, -1
+	bge	$2, $0, ge.92098
+	jr $31
+ge.92098:
+	addi	$5, $0, 120
+	sw	$2, 11($3)
+	sw	$5, 12($3)
+	mov	$2, $27
+	movf	$f0, $f30
+	sw	$31, 13($3)
+	addi	$3, $3, 14
+	jal	min_caml_create_float_array
 	addi	$3, $3, -14
 	lw	$31, 13($3)
-	lw	$2, 7($3)
-	addi	$2, $2, -1
-	bge	$2, $0, ge.91602
-	jr $31
-ge.91602:
-	addi	$5, $0, 120
-	addi	$6, $0, 3
-	sw	$2, 13($3)
-	sw	$5, 14($3)
-	mov	$2, $6
+	mov	$5, $2
+	lw	$2, 3000($0)
+	sw	$5, 13($3)
+	sw	$31, 14($3)
+	addi	$3, $3, 15
+	jal	min_caml_create_array
+	addi	$3, $3, -15
+	lw	$31, 14($3)
+	mov	$5, $4
+	addi	$4, $4, 2
+	sw	$2, 1($5)
+	lw	$2, 13($3)
+	sw	$2, 0($5)
+	lw	$2, 12($3)
+	sw	$31, 14($3)
+	addi	$3, $3, 15
+	jal	min_caml_create_array
+	addi	$3, $3, -15
+	lw	$31, 14($3)
+	lw	$5, 11($3)
+	sw	$2, 3164($5)
+	lw	$2, 3164($5)
+	sw	$2, 14($3)
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 15($3)
 	addi	$3, $3, 16
@@ -45024,18 +44563,33 @@ ge.91602:
 	sw	$2, 1($5)
 	lw	$2, 15($3)
 	sw	$2, 0($5)
-	lw	$2, 14($3)
+	mov	$2, $5
+	lw	$5, 14($3)
+	sw	$2, 118($5)
+	mov	$2, $27
+	movf	$f0, $f30
 	sw	$31, 16($3)
 	addi	$3, $3, 17
-	jal	min_caml_create_array
+	jal	min_caml_create_float_array
 	addi	$3, $3, -17
 	lw	$31, 16($3)
-	lw	$5, 13($3)
-	sw	$2, 3164($5)
-	lw	$2, 3164($5)
-	addi	$6, $0, 3
-	sw	$2, 16($3)
-	mov	$2, $6
+	mov	$5, $2
+	lw	$2, 3000($0)
+	sw	$5, 16($3)
+	sw	$31, 17($3)
+	addi	$3, $3, 18
+	jal	min_caml_create_array
+	addi	$3, $3, -18
+	lw	$31, 17($3)
+	mov	$5, $4
+	addi	$4, $4, 2
+	sw	$2, 1($5)
+	lw	$2, 16($3)
+	sw	$2, 0($5)
+	mov	$2, $5
+	lw	$5, 14($3)
+	sw	$2, 117($5)
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 17($3)
 	addi	$3, $3, 18
@@ -45056,27 +44610,55 @@ ge.91602:
 	lw	$2, 17($3)
 	sw	$2, 0($5)
 	mov	$2, $5
-	lw	$5, 16($3)
-	sw	$2, 118($5)
-	addi	$2, $0, 117
-	mov	$26, $5
-	mov	$5, $2
-	mov	$2, $26
+	lw	$5, 14($3)
+	sw	$2, 116($5)
+	mov	$2, $27
+	movf	$f0, $f30
 	sw	$31, 18($3)
 	addi	$3, $3, 19
-	jal	create_dirvec_elements.3151
+	jal	min_caml_create_float_array
 	addi	$3, $3, -19
 	lw	$31, 18($3)
-	lw	$2, 13($3)
-	addi	$2, $2, -1
-	bge	$2, $0, ge.91604
-	jr $31
-ge.91604:
-	addi	$5, $0, 120
-	addi	$6, $0, 3
-	sw	$2, 18($3)
+	mov	$5, $2
+	lw	$2, 3000($0)
+	sw	$5, 18($3)
+	sw	$31, 19($3)
+	addi	$3, $3, 20
+	jal	min_caml_create_array
+	addi	$3, $3, -20
+	lw	$31, 19($3)
+	mov	$5, $4
+	addi	$4, $4, 2
+	sw	$2, 1($5)
+	lw	$2, 18($3)
+	sw	$2, 0($5)
+	mov	$2, $5
+	lw	$5, 14($3)
+	sw	$2, 115($5)
+	mov	$2, $27
+	movf	$f0, $f30
+	sw	$31, 19($3)
+	addi	$3, $3, 20
+	jal	min_caml_create_float_array
+	addi	$3, $3, -20
+	lw	$31, 19($3)
+	mov	$5, $2
+	lw	$2, 3000($0)
 	sw	$5, 19($3)
-	mov	$2, $6
+	sw	$31, 20($3)
+	addi	$3, $3, 21
+	jal	min_caml_create_array
+	addi	$3, $3, -21
+	lw	$31, 20($3)
+	mov	$5, $4
+	addi	$4, $4, 2
+	sw	$2, 1($5)
+	lw	$2, 19($3)
+	sw	$2, 0($5)
+	mov	$2, $5
+	lw	$5, 14($3)
+	sw	$2, 114($5)
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 20($3)
 	addi	$3, $3, 21
@@ -45096,29 +44678,326 @@ ge.91604:
 	sw	$2, 1($5)
 	lw	$2, 20($3)
 	sw	$2, 0($5)
-	lw	$2, 19($3)
-	sw	$31, 21($3)
-	addi	$3, $3, 22
-	jal	min_caml_create_array
-	addi	$3, $3, -22
-	lw	$31, 21($3)
-	lw	$5, 18($3)
-	sw	$2, 3164($5)
-	lw	$2, 3164($5)
-	addi	$6, $0, 118
-	mov	$5, $6
+	mov	$2, $5
+	lw	$5, 14($3)
+	sw	$2, 113($5)
+	addi	$2, $0, 112
+	mov	$24, $5
+	mov	$5, $2
+	mov	$2, $24
 	sw	$31, 21($3)
 	addi	$3, $3, 22
 	jal	create_dirvec_elements.3151
 	addi	$3, $3, -22
 	lw	$31, 21($3)
-	lw	$2, 18($3)
+	lw	$2, 11($3)
+	addi	$2, $2, -1
+	bge	$2, $0, ge.92100
+	jr $31
+ge.92100:
+	addi	$5, $0, 120
+	sw	$2, 21($3)
+	sw	$5, 22($3)
+	mov	$2, $27
+	movf	$f0, $f30
+	sw	$31, 23($3)
+	addi	$3, $3, 24
+	jal	min_caml_create_float_array
+	addi	$3, $3, -24
+	lw	$31, 23($3)
+	mov	$5, $2
+	lw	$2, 3000($0)
+	sw	$5, 23($3)
+	sw	$31, 24($3)
+	addi	$3, $3, 25
+	jal	min_caml_create_array
+	addi	$3, $3, -25
+	lw	$31, 24($3)
+	mov	$5, $4
+	addi	$4, $4, 2
+	sw	$2, 1($5)
+	lw	$2, 23($3)
+	sw	$2, 0($5)
+	lw	$2, 22($3)
+	sw	$31, 24($3)
+	addi	$3, $3, 25
+	jal	min_caml_create_array
+	addi	$3, $3, -25
+	lw	$31, 24($3)
+	lw	$5, 21($3)
+	sw	$2, 3164($5)
+	lw	$2, 3164($5)
+	sw	$2, 24($3)
+	mov	$2, $27
+	movf	$f0, $f30
+	sw	$31, 25($3)
+	addi	$3, $3, 26
+	jal	min_caml_create_float_array
+	addi	$3, $3, -26
+	lw	$31, 25($3)
+	mov	$5, $2
+	lw	$2, 3000($0)
+	sw	$5, 25($3)
+	sw	$31, 26($3)
+	addi	$3, $3, 27
+	jal	min_caml_create_array
+	addi	$3, $3, -27
+	lw	$31, 26($3)
+	mov	$5, $4
+	addi	$4, $4, 2
+	sw	$2, 1($5)
+	lw	$2, 25($3)
+	sw	$2, 0($5)
+	mov	$2, $5
+	lw	$5, 24($3)
+	sw	$2, 118($5)
+	mov	$2, $27
+	movf	$f0, $f30
+	sw	$31, 26($3)
+	addi	$3, $3, 27
+	jal	min_caml_create_float_array
+	addi	$3, $3, -27
+	lw	$31, 26($3)
+	mov	$5, $2
+	lw	$2, 3000($0)
+	sw	$5, 26($3)
+	sw	$31, 27($3)
+	addi	$3, $3, 28
+	jal	min_caml_create_array
+	addi	$3, $3, -28
+	lw	$31, 27($3)
+	mov	$5, $4
+	addi	$4, $4, 2
+	sw	$2, 1($5)
+	lw	$2, 26($3)
+	sw	$2, 0($5)
+	mov	$2, $5
+	lw	$5, 24($3)
+	sw	$2, 117($5)
+	mov	$2, $27
+	movf	$f0, $f30
+	sw	$31, 27($3)
+	addi	$3, $3, 28
+	jal	min_caml_create_float_array
+	addi	$3, $3, -28
+	lw	$31, 27($3)
+	mov	$5, $2
+	lw	$2, 3000($0)
+	sw	$5, 27($3)
+	sw	$31, 28($3)
+	addi	$3, $3, 29
+	jal	min_caml_create_array
+	addi	$3, $3, -29
+	lw	$31, 28($3)
+	mov	$5, $4
+	addi	$4, $4, 2
+	sw	$2, 1($5)
+	lw	$2, 27($3)
+	sw	$2, 0($5)
+	mov	$2, $5
+	lw	$5, 24($3)
+	sw	$2, 116($5)
+	mov	$2, $27
+	movf	$f0, $f30
+	sw	$31, 28($3)
+	addi	$3, $3, 29
+	jal	min_caml_create_float_array
+	addi	$3, $3, -29
+	lw	$31, 28($3)
+	mov	$5, $2
+	lw	$2, 3000($0)
+	sw	$5, 28($3)
+	sw	$31, 29($3)
+	addi	$3, $3, 30
+	jal	min_caml_create_array
+	addi	$3, $3, -30
+	lw	$31, 29($3)
+	mov	$5, $4
+	addi	$4, $4, 2
+	sw	$2, 1($5)
+	lw	$2, 28($3)
+	sw	$2, 0($5)
+	mov	$2, $5
+	lw	$5, 24($3)
+	sw	$2, 115($5)
+	mov	$2, $27
+	movf	$f0, $f30
+	sw	$31, 29($3)
+	addi	$3, $3, 30
+	jal	min_caml_create_float_array
+	addi	$3, $3, -30
+	lw	$31, 29($3)
+	mov	$5, $2
+	lw	$2, 3000($0)
+	sw	$5, 29($3)
+	sw	$31, 30($3)
+	addi	$3, $3, 31
+	jal	min_caml_create_array
+	addi	$3, $3, -31
+	lw	$31, 30($3)
+	mov	$5, $4
+	addi	$4, $4, 2
+	sw	$2, 1($5)
+	lw	$2, 29($3)
+	sw	$2, 0($5)
+	mov	$2, $5
+	lw	$5, 24($3)
+	sw	$2, 114($5)
+	addi	$2, $0, 113
+	mov	$24, $5
+	mov	$5, $2
+	mov	$2, $24
+	sw	$31, 30($3)
+	addi	$3, $3, 31
+	jal	create_dirvec_elements.3151
+	addi	$3, $3, -31
+	lw	$31, 30($3)
+	lw	$2, 21($3)
+	addi	$2, $2, -1
+	bge	$2, $0, ge.92102
+	jr $31
+ge.92102:
+	addi	$5, $0, 120
+	sw	$2, 30($3)
+	sw	$5, 31($3)
+	mov	$2, $27
+	movf	$f0, $f30
+	sw	$31, 32($3)
+	addi	$3, $3, 33
+	jal	min_caml_create_float_array
+	addi	$3, $3, -33
+	lw	$31, 32($3)
+	mov	$5, $2
+	lw	$2, 3000($0)
+	sw	$5, 32($3)
+	sw	$31, 33($3)
+	addi	$3, $3, 34
+	jal	min_caml_create_array
+	addi	$3, $3, -34
+	lw	$31, 33($3)
+	mov	$5, $4
+	addi	$4, $4, 2
+	sw	$2, 1($5)
+	lw	$2, 32($3)
+	sw	$2, 0($5)
+	lw	$2, 31($3)
+	sw	$31, 33($3)
+	addi	$3, $3, 34
+	jal	min_caml_create_array
+	addi	$3, $3, -34
+	lw	$31, 33($3)
+	lw	$5, 30($3)
+	sw	$2, 3164($5)
+	lw	$2, 3164($5)
+	sw	$2, 33($3)
+	mov	$2, $27
+	movf	$f0, $f30
+	sw	$31, 34($3)
+	addi	$3, $3, 35
+	jal	min_caml_create_float_array
+	addi	$3, $3, -35
+	lw	$31, 34($3)
+	mov	$5, $2
+	lw	$2, 3000($0)
+	sw	$5, 34($3)
+	sw	$31, 35($3)
+	addi	$3, $3, 36
+	jal	min_caml_create_array
+	addi	$3, $3, -36
+	lw	$31, 35($3)
+	mov	$5, $4
+	addi	$4, $4, 2
+	sw	$2, 1($5)
+	lw	$2, 34($3)
+	sw	$2, 0($5)
+	mov	$2, $5
+	lw	$5, 33($3)
+	sw	$2, 118($5)
+	mov	$2, $27
+	movf	$f0, $f30
+	sw	$31, 35($3)
+	addi	$3, $3, 36
+	jal	min_caml_create_float_array
+	addi	$3, $3, -36
+	lw	$31, 35($3)
+	mov	$5, $2
+	lw	$2, 3000($0)
+	sw	$5, 35($3)
+	sw	$31, 36($3)
+	addi	$3, $3, 37
+	jal	min_caml_create_array
+	addi	$3, $3, -37
+	lw	$31, 36($3)
+	mov	$5, $4
+	addi	$4, $4, 2
+	sw	$2, 1($5)
+	lw	$2, 35($3)
+	sw	$2, 0($5)
+	mov	$2, $5
+	lw	$5, 33($3)
+	sw	$2, 117($5)
+	mov	$2, $27
+	movf	$f0, $f30
+	sw	$31, 36($3)
+	addi	$3, $3, 37
+	jal	min_caml_create_float_array
+	addi	$3, $3, -37
+	lw	$31, 36($3)
+	mov	$5, $2
+	lw	$2, 3000($0)
+	sw	$5, 36($3)
+	sw	$31, 37($3)
+	addi	$3, $3, 38
+	jal	min_caml_create_array
+	addi	$3, $3, -38
+	lw	$31, 37($3)
+	mov	$5, $4
+	addi	$4, $4, 2
+	sw	$2, 1($5)
+	lw	$2, 36($3)
+	sw	$2, 0($5)
+	mov	$2, $5
+	lw	$5, 33($3)
+	sw	$2, 116($5)
+	mov	$2, $27
+	movf	$f0, $f30
+	sw	$31, 37($3)
+	addi	$3, $3, 38
+	jal	min_caml_create_float_array
+	addi	$3, $3, -38
+	lw	$31, 37($3)
+	mov	$5, $2
+	lw	$2, 3000($0)
+	sw	$5, 37($3)
+	sw	$31, 38($3)
+	addi	$3, $3, 39
+	jal	min_caml_create_array
+	addi	$3, $3, -39
+	lw	$31, 38($3)
+	mov	$5, $4
+	addi	$4, $4, 2
+	sw	$2, 1($5)
+	lw	$2, 37($3)
+	sw	$2, 0($5)
+	mov	$2, $5
+	lw	$5, 33($3)
+	sw	$2, 115($5)
+	addi	$2, $0, 114
+	mov	$24, $5
+	mov	$5, $2
+	mov	$2, $24
+	sw	$31, 38($3)
+	addi	$3, $3, 39
+	jal	create_dirvec_elements.3151
+	addi	$3, $3, -39
+	lw	$31, 38($3)
+	lw	$2, 30($3)
 	addi	$2, $2, -1
 	j	create_dirvecs.3154
 init_dirvec_constants.3156:
-	bge	$5, $0, ge.91606
+	bge	$5, $0, ge.92104
 	jr $31
-ge.91606:
+ge.92104:
 	add	$30, $2, $5
 	lw	$6, 0($30)
 	lw	$7, 3000($0)
@@ -45134,24 +45013,24 @@ ge.91606:
 	lw	$31, 2($3)
 	lw	$2, 1($3)
 	addi	$2, $2, -1
-	bge	$2, $0, ge.91608
+	bge	$2, $0, ge.92106
 	jr $31
-ge.91608:
+ge.92106:
 	lw	$5, 0($3)
 	add	$30, $5, $2
 	lw	$6, 0($30)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$2, 2($3)
-	bge	$7, $0, ge_else.91610
-	j	ge_cont.91611
-ge_else.91610:
+	bge	$7, $0, ge_else.92108
+	j	ge_cont.92109
+ge_else.92108:
 	lw	$8, 3001($7)
 	lw	$9, 1($6)
 	lw	$10, 0($6)
 	lw	$11, 1($8)
 	sw	$6, 3($3)
-	bne	$11, $1, eq_else.91612
+	bne	$11, $1, eq_else.92110
 	addi	$11, $0, 6
 	sw	$7, 4($3)
 	sw	$9, 5($3)
@@ -45166,13 +45045,13 @@ ge_else.91610:
 	lw	$31, 8($3)
 	lw	$5, 7($3)
 	lf	$f0, 0($5)
-	beqf	$f0, $f30, feq.91614
+	beqf	$f0, $f30, feq.92112
 	mov	$6, $0
-	j	feq_cont.91615
-feq.91614:
+	j	feq_cont.92113
+feq.92112:
 	mov	$6, $1
-feq_cont.91615:
-	bne	$6, $0, eq_else.91616
+feq_cont.92113:
+	bne	$6, $0, eq_else.92114
 	lw	$6, 6($3)
 	lw	$7, 6($6)
 	lf	$f0, 0($5)
@@ -45180,27 +45059,27 @@ feq_cont.91615:
 	xor	$7, $7, $8
 	lw	$8, 4($6)
 	lf	$f0, 0($8)
-	bne	$7, $0, eq_else.91618
+	bne	$7, $0, eq_else.92116
 	fneg	$f0, $f0
-	j	eq_cont.91619
-eq_else.91618:
-eq_cont.91619:
+	j	eq_cont.92117
+eq_else.92116:
+eq_cont.92117:
 	sf	$f0, 0($2)
 	lf	$f0, 0($5)
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 1($2)
-	j	eq_cont.91617
-eq_else.91616:
+	j	eq_cont.92115
+eq_else.92114:
 	sf	$f30, 1($2)
-eq_cont.91617:
+eq_cont.92115:
 	lf	$f0, 1($5)
-	beqf	$f0, $f30, feq.91620
+	beqf	$f0, $f30, feq.92118
 	mov	$6, $0
-	j	feq_cont.91621
-feq.91620:
+	j	feq_cont.92119
+feq.92118:
 	mov	$6, $1
-feq_cont.91621:
-	bne	$6, $0, eq_else.91622
+feq_cont.92119:
+	bne	$6, $0, eq_else.92120
 	lw	$6, 6($3)
 	lw	$7, 6($6)
 	lf	$f0, 1($5)
@@ -45208,27 +45087,27 @@ feq_cont.91621:
 	xor	$7, $7, $8
 	lw	$8, 4($6)
 	lf	$f0, 1($8)
-	bne	$7, $0, eq_else.91624
+	bne	$7, $0, eq_else.92122
 	fneg	$f0, $f0
-	j	eq_cont.91625
-eq_else.91624:
-eq_cont.91625:
+	j	eq_cont.92123
+eq_else.92122:
+eq_cont.92123:
 	sf	$f0, 2($2)
 	lf	$f0, 1($5)
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 3($2)
-	j	eq_cont.91623
-eq_else.91622:
+	j	eq_cont.92121
+eq_else.92120:
 	sf	$f30, 3($2)
-eq_cont.91623:
+eq_cont.92121:
 	lf	$f0, 2($5)
-	beqf	$f0, $f30, feq.91626
+	beqf	$f0, $f30, feq.92124
 	mov	$6, $0
-	j	feq_cont.91627
-feq.91626:
+	j	feq_cont.92125
+feq.92124:
 	mov	$6, $1
-feq_cont.91627:
-	bne	$6, $0, eq_else.91628
+feq_cont.92125:
+	bne	$6, $0, eq_else.92126
 	lw	$6, 6($3)
 	lw	$7, 6($6)
 	lf	$f0, 2($5)
@@ -45236,27 +45115,27 @@ feq_cont.91627:
 	xor	$7, $7, $8
 	lw	$6, 4($6)
 	lf	$f0, 2($6)
-	bne	$7, $0, eq_else.91630
+	bne	$7, $0, eq_else.92128
 	fneg	$f0, $f0
-	j	eq_cont.91631
-eq_else.91630:
-eq_cont.91631:
+	j	eq_cont.92129
+eq_else.92128:
+eq_cont.92129:
 	sf	$f0, 4($2)
 	lf	$f0, 2($5)
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 5($2)
-	j	eq_cont.91629
-eq_else.91628:
+	j	eq_cont.92127
+eq_else.92126:
 	sf	$f30, 5($2)
-eq_cont.91629:
+eq_cont.92127:
 	lw	$5, 4($3)
 	lw	$6, 5($3)
 	add $30, $6, $5
 	sw	$2, 0($30)
-	j	eq_cont.91613
-eq_else.91612:
+	j	eq_cont.92111
+eq_else.92110:
 	addi	$30, $0, 2
-	bne	$11, $30, eq_else.91632
+	bne	$11, $30, eq_else.92130
 	addi	$11, $0, 4
 	sw	$7, 4($3)
 	sw	$9, 5($3)
@@ -45286,10 +45165,10 @@ eq_else.91612:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f30, $f0
-	bne	$5, $0, eq_else.91634
+	bne	$5, $0, eq_else.92132
 	sf	$f30, 0($2)
-	j	eq_cont.91635
-eq_else.91634:
+	j	eq_cont.92133
+eq_else.92132:
 	fdiv	$f1, $f29, $f0
 	sf	$f1, 0($2)
 	lw	$5, 4($6)
@@ -45307,13 +45186,13 @@ eq_else.91634:
 	fdiv	$f0, $f1, $f0
 	fneg	$f0, $f0
 	sf	$f0, 3($2)
-eq_cont.91635:
+eq_cont.92133:
 	lw	$5, 4($3)
 	lw	$6, 5($3)
 	add $30, $6, $5
 	sw	$2, 0($30)
-	j	eq_cont.91633
-eq_else.91632:
+	j	eq_cont.92131
+eq_else.92130:
 	addi	$11, $0, 5
 	sw	$7, 4($3)
 	sw	$9, 5($3)
@@ -45346,10 +45225,10 @@ eq_else.91632:
 	fmul	$f4, $f4, $f5
 	fadd	$f3, $f3, $f4
 	lw	$7, 3($6)
-	bne	$7, $0, eq_else.91636
+	bne	$7, $0, eq_else.92134
 	movf	$f0, $f3
-	j	eq_cont.91637
-eq_else.91636:
+	j	eq_cont.92135
+eq_else.92134:
 	fmul	$f4, $f1, $f2
 	lw	$7, 9($6)
 	lf	$f5, 0($7)
@@ -45365,7 +45244,7 @@ eq_else.91636:
 	lf	$f1, 2($7)
 	fmul	$f0, $f0, $f1
 	fadd	$f0, $f2, $f0
-eq_cont.91637:
+eq_cont.92135:
 	lf	$f1, 0($5)
 	lw	$7, 4($6)
 	lf	$f2, 0($7)
@@ -45383,12 +45262,12 @@ eq_cont.91637:
 	fneg	$f3, $f3
 	sf	$f0, 0($2)
 	lw	$7, 3($6)
-	bne	$7, $0, eq_else.91638
+	bne	$7, $0, eq_else.92136
 	sf	$f1, 1($2)
 	sf	$f2, 2($2)
 	sf	$f3, 3($2)
-	j	eq_cont.91639
-eq_else.91638:
+	j	eq_cont.92137
+eq_else.92136:
 	lf	$f4, 2($5)
 	lw	$7, 9($6)
 	lf	$f5, 1($7)
@@ -45428,25 +45307,25 @@ eq_else.91638:
 	fmul	$f1, $f1, $f2
 	fsub	$f1, $f3, $f1
 	sf	$f1, 3($2)
-eq_cont.91639:
-	beqf	$f0, $f30, feq.91640
+eq_cont.92137:
+	beqf	$f0, $f30, feq.92138
 	mov	$5, $0
-	j	feq_cont.91641
-feq.91640:
+	j	feq_cont.92139
+feq.92138:
 	mov	$5, $1
-feq_cont.91641:
-	bne	$5, $0, eq_else.91642
+feq_cont.92139:
+	bne	$5, $0, eq_else.92140
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 4($2)
-	j	eq_cont.91643
-eq_else.91642:
-eq_cont.91643:
+	j	eq_cont.92141
+eq_else.92140:
+eq_cont.92141:
 	lw	$5, 4($3)
 	lw	$6, 5($3)
 	add $30, $6, $5
 	sw	$2, 0($30)
-eq_cont.91633:
-eq_cont.91613:
+eq_cont.92131:
+eq_cont.92111:
 	addi	$5, $5, -1
 	lw	$2, 3($3)
 	sw	$31, 8($3)
@@ -45454,12 +45333,12 @@ eq_cont.91613:
 	jal	iter_setup_dirvec_constants.2938
 	addi	$3, $3, -9
 	lw	$31, 8($3)
-ge_cont.91611:
+ge_cont.92109:
 	lw	$2, 2($3)
 	addi	$2, $2, -1
-	bge	$2, $0, ge.91644
+	bge	$2, $0, ge.92142
 	jr $31
-ge.91644:
+ge.92142:
 	lw	$5, 0($3)
 	add	$30, $5, $2
 	lw	$6, 0($30)
@@ -45475,24 +45354,24 @@ ge.91644:
 	lw	$31, 9($3)
 	lw	$2, 8($3)
 	addi	$2, $2, -1
-	bge	$2, $0, ge.91646
+	bge	$2, $0, ge.92144
 	jr $31
-ge.91646:
+ge.92144:
 	lw	$5, 0($3)
 	add	$30, $5, $2
 	lw	$6, 0($30)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$2, 9($3)
-	bge	$7, $0, ge_else.91648
-	j	ge_cont.91649
-ge_else.91648:
+	bge	$7, $0, ge_else.92146
+	j	ge_cont.92147
+ge_else.92146:
 	lw	$8, 3001($7)
 	lw	$9, 1($6)
 	lw	$10, 0($6)
 	lw	$11, 1($8)
 	sw	$6, 10($3)
-	bne	$11, $1, eq_else.91650
+	bne	$11, $1, eq_else.92148
 	addi	$11, $0, 6
 	sw	$7, 11($3)
 	sw	$9, 12($3)
@@ -45507,13 +45386,13 @@ ge_else.91648:
 	lw	$31, 15($3)
 	lw	$5, 14($3)
 	lf	$f0, 0($5)
-	beqf	$f0, $f30, feq.91652
+	beqf	$f0, $f30, feq.92150
 	mov	$6, $0
-	j	feq_cont.91653
-feq.91652:
+	j	feq_cont.92151
+feq.92150:
 	mov	$6, $1
-feq_cont.91653:
-	bne	$6, $0, eq_else.91654
+feq_cont.92151:
+	bne	$6, $0, eq_else.92152
 	lw	$6, 13($3)
 	lw	$7, 6($6)
 	lf	$f0, 0($5)
@@ -45521,27 +45400,27 @@ feq_cont.91653:
 	xor	$7, $7, $8
 	lw	$8, 4($6)
 	lf	$f0, 0($8)
-	bne	$7, $0, eq_else.91656
+	bne	$7, $0, eq_else.92154
 	fneg	$f0, $f0
-	j	eq_cont.91657
-eq_else.91656:
-eq_cont.91657:
+	j	eq_cont.92155
+eq_else.92154:
+eq_cont.92155:
 	sf	$f0, 0($2)
 	lf	$f0, 0($5)
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 1($2)
-	j	eq_cont.91655
-eq_else.91654:
+	j	eq_cont.92153
+eq_else.92152:
 	sf	$f30, 1($2)
-eq_cont.91655:
+eq_cont.92153:
 	lf	$f0, 1($5)
-	beqf	$f0, $f30, feq.91658
+	beqf	$f0, $f30, feq.92156
 	mov	$6, $0
-	j	feq_cont.91659
-feq.91658:
+	j	feq_cont.92157
+feq.92156:
 	mov	$6, $1
-feq_cont.91659:
-	bne	$6, $0, eq_else.91660
+feq_cont.92157:
+	bne	$6, $0, eq_else.92158
 	lw	$6, 13($3)
 	lw	$7, 6($6)
 	lf	$f0, 1($5)
@@ -45549,27 +45428,27 @@ feq_cont.91659:
 	xor	$7, $7, $8
 	lw	$8, 4($6)
 	lf	$f0, 1($8)
-	bne	$7, $0, eq_else.91662
+	bne	$7, $0, eq_else.92160
 	fneg	$f0, $f0
-	j	eq_cont.91663
-eq_else.91662:
-eq_cont.91663:
+	j	eq_cont.92161
+eq_else.92160:
+eq_cont.92161:
 	sf	$f0, 2($2)
 	lf	$f0, 1($5)
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 3($2)
-	j	eq_cont.91661
-eq_else.91660:
+	j	eq_cont.92159
+eq_else.92158:
 	sf	$f30, 3($2)
-eq_cont.91661:
+eq_cont.92159:
 	lf	$f0, 2($5)
-	beqf	$f0, $f30, feq.91664
+	beqf	$f0, $f30, feq.92162
 	mov	$6, $0
-	j	feq_cont.91665
-feq.91664:
+	j	feq_cont.92163
+feq.92162:
 	mov	$6, $1
-feq_cont.91665:
-	bne	$6, $0, eq_else.91666
+feq_cont.92163:
+	bne	$6, $0, eq_else.92164
 	lw	$6, 13($3)
 	lw	$7, 6($6)
 	lf	$f0, 2($5)
@@ -45577,27 +45456,27 @@ feq_cont.91665:
 	xor	$7, $7, $8
 	lw	$6, 4($6)
 	lf	$f0, 2($6)
-	bne	$7, $0, eq_else.91668
+	bne	$7, $0, eq_else.92166
 	fneg	$f0, $f0
-	j	eq_cont.91669
-eq_else.91668:
-eq_cont.91669:
+	j	eq_cont.92167
+eq_else.92166:
+eq_cont.92167:
 	sf	$f0, 4($2)
 	lf	$f0, 2($5)
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 5($2)
-	j	eq_cont.91667
-eq_else.91666:
+	j	eq_cont.92165
+eq_else.92164:
 	sf	$f30, 5($2)
-eq_cont.91667:
+eq_cont.92165:
 	lw	$5, 11($3)
 	lw	$6, 12($3)
 	add $30, $6, $5
 	sw	$2, 0($30)
-	j	eq_cont.91651
-eq_else.91650:
+	j	eq_cont.92149
+eq_else.92148:
 	addi	$30, $0, 2
-	bne	$11, $30, eq_else.91670
+	bne	$11, $30, eq_else.92168
 	addi	$11, $0, 4
 	sw	$7, 11($3)
 	sw	$9, 12($3)
@@ -45627,10 +45506,10 @@ eq_else.91650:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f30, $f0
-	bne	$5, $0, eq_else.91672
+	bne	$5, $0, eq_else.92170
 	sf	$f30, 0($2)
-	j	eq_cont.91673
-eq_else.91672:
+	j	eq_cont.92171
+eq_else.92170:
 	fdiv	$f1, $f29, $f0
 	sf	$f1, 0($2)
 	lw	$5, 4($6)
@@ -45648,13 +45527,13 @@ eq_else.91672:
 	fdiv	$f0, $f1, $f0
 	fneg	$f0, $f0
 	sf	$f0, 3($2)
-eq_cont.91673:
+eq_cont.92171:
 	lw	$5, 11($3)
 	lw	$6, 12($3)
 	add $30, $6, $5
 	sw	$2, 0($30)
-	j	eq_cont.91671
-eq_else.91670:
+	j	eq_cont.92169
+eq_else.92168:
 	addi	$11, $0, 5
 	sw	$7, 11($3)
 	sw	$9, 12($3)
@@ -45687,10 +45566,10 @@ eq_else.91670:
 	fmul	$f4, $f4, $f5
 	fadd	$f3, $f3, $f4
 	lw	$7, 3($6)
-	bne	$7, $0, eq_else.91674
+	bne	$7, $0, eq_else.92172
 	movf	$f0, $f3
-	j	eq_cont.91675
-eq_else.91674:
+	j	eq_cont.92173
+eq_else.92172:
 	fmul	$f4, $f1, $f2
 	lw	$7, 9($6)
 	lf	$f5, 0($7)
@@ -45706,7 +45585,7 @@ eq_else.91674:
 	lf	$f1, 2($7)
 	fmul	$f0, $f0, $f1
 	fadd	$f0, $f2, $f0
-eq_cont.91675:
+eq_cont.92173:
 	lf	$f1, 0($5)
 	lw	$7, 4($6)
 	lf	$f2, 0($7)
@@ -45724,12 +45603,12 @@ eq_cont.91675:
 	fneg	$f3, $f3
 	sf	$f0, 0($2)
 	lw	$7, 3($6)
-	bne	$7, $0, eq_else.91676
+	bne	$7, $0, eq_else.92174
 	sf	$f1, 1($2)
 	sf	$f2, 2($2)
 	sf	$f3, 3($2)
-	j	eq_cont.91677
-eq_else.91676:
+	j	eq_cont.92175
+eq_else.92174:
 	lf	$f4, 2($5)
 	lw	$7, 9($6)
 	lf	$f5, 1($7)
@@ -45769,25 +45648,25 @@ eq_else.91676:
 	fmul	$f1, $f1, $f2
 	fsub	$f1, $f3, $f1
 	sf	$f1, 3($2)
-eq_cont.91677:
-	beqf	$f0, $f30, feq.91678
+eq_cont.92175:
+	beqf	$f0, $f30, feq.92176
 	mov	$5, $0
-	j	feq_cont.91679
-feq.91678:
+	j	feq_cont.92177
+feq.92176:
 	mov	$5, $1
-feq_cont.91679:
-	bne	$5, $0, eq_else.91680
+feq_cont.92177:
+	bne	$5, $0, eq_else.92178
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 4($2)
-	j	eq_cont.91681
-eq_else.91680:
-eq_cont.91681:
+	j	eq_cont.92179
+eq_else.92178:
+eq_cont.92179:
 	lw	$5, 11($3)
 	lw	$6, 12($3)
 	add $30, $6, $5
 	sw	$2, 0($30)
-eq_cont.91671:
-eq_cont.91651:
+eq_cont.92169:
+eq_cont.92149:
 	addi	$5, $5, -1
 	lw	$2, 10($3)
 	sw	$31, 15($3)
@@ -45795,30 +45674,30 @@ eq_cont.91651:
 	jal	iter_setup_dirvec_constants.2938
 	addi	$3, $3, -16
 	lw	$31, 15($3)
-ge_cont.91649:
+ge_cont.92147:
 	lw	$2, 9($3)
 	addi	$5, $2, -1
 	lw	$2, 0($3)
 	j	init_dirvec_constants.3156
 init_vecset_constants.3159:
-	bge	$2, $0, ge.91682
+	bge	$2, $0, ge.92180
 	jr $31
-ge.91682:
+ge.92180:
 	lw	$5, 3164($2)
 	lw	$6, 119($5)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$2, 0($3)
 	sw	$5, 1($3)
-	bge	$7, $0, ge_else.91684
-	j	ge_cont.91685
-ge_else.91684:
+	bge	$7, $0, ge_else.92182
+	j	ge_cont.92183
+ge_else.92182:
 	lw	$8, 3001($7)
 	lw	$9, 1($6)
 	lw	$10, 0($6)
 	lw	$11, 1($8)
 	sw	$6, 2($3)
-	bne	$11, $1, eq_else.91686
+	bne	$11, $1, eq_else.92184
 	addi	$11, $0, 6
 	sw	$7, 3($3)
 	sw	$9, 4($3)
@@ -45833,13 +45712,13 @@ ge_else.91684:
 	lw	$31, 7($3)
 	lw	$5, 6($3)
 	lf	$f0, 0($5)
-	beqf	$f0, $f30, feq.91688
+	beqf	$f0, $f30, feq.92186
 	mov	$6, $0
-	j	feq_cont.91689
-feq.91688:
+	j	feq_cont.92187
+feq.92186:
 	mov	$6, $1
-feq_cont.91689:
-	bne	$6, $0, eq_else.91690
+feq_cont.92187:
+	bne	$6, $0, eq_else.92188
 	lw	$6, 5($3)
 	lw	$7, 6($6)
 	lf	$f0, 0($5)
@@ -45847,27 +45726,27 @@ feq_cont.91689:
 	xor	$7, $7, $8
 	lw	$8, 4($6)
 	lf	$f0, 0($8)
-	bne	$7, $0, eq_else.91692
+	bne	$7, $0, eq_else.92190
 	fneg	$f0, $f0
-	j	eq_cont.91693
-eq_else.91692:
-eq_cont.91693:
+	j	eq_cont.92191
+eq_else.92190:
+eq_cont.92191:
 	sf	$f0, 0($2)
 	lf	$f0, 0($5)
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 1($2)
-	j	eq_cont.91691
-eq_else.91690:
+	j	eq_cont.92189
+eq_else.92188:
 	sf	$f30, 1($2)
-eq_cont.91691:
+eq_cont.92189:
 	lf	$f0, 1($5)
-	beqf	$f0, $f30, feq.91694
+	beqf	$f0, $f30, feq.92192
 	mov	$6, $0
-	j	feq_cont.91695
-feq.91694:
+	j	feq_cont.92193
+feq.92192:
 	mov	$6, $1
-feq_cont.91695:
-	bne	$6, $0, eq_else.91696
+feq_cont.92193:
+	bne	$6, $0, eq_else.92194
 	lw	$6, 5($3)
 	lw	$7, 6($6)
 	lf	$f0, 1($5)
@@ -45875,27 +45754,27 @@ feq_cont.91695:
 	xor	$7, $7, $8
 	lw	$8, 4($6)
 	lf	$f0, 1($8)
-	bne	$7, $0, eq_else.91698
+	bne	$7, $0, eq_else.92196
 	fneg	$f0, $f0
-	j	eq_cont.91699
-eq_else.91698:
-eq_cont.91699:
+	j	eq_cont.92197
+eq_else.92196:
+eq_cont.92197:
 	sf	$f0, 2($2)
 	lf	$f0, 1($5)
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 3($2)
-	j	eq_cont.91697
-eq_else.91696:
+	j	eq_cont.92195
+eq_else.92194:
 	sf	$f30, 3($2)
-eq_cont.91697:
+eq_cont.92195:
 	lf	$f0, 2($5)
-	beqf	$f0, $f30, feq.91700
+	beqf	$f0, $f30, feq.92198
 	mov	$6, $0
-	j	feq_cont.91701
-feq.91700:
+	j	feq_cont.92199
+feq.92198:
 	mov	$6, $1
-feq_cont.91701:
-	bne	$6, $0, eq_else.91702
+feq_cont.92199:
+	bne	$6, $0, eq_else.92200
 	lw	$6, 5($3)
 	lw	$7, 6($6)
 	lf	$f0, 2($5)
@@ -45903,27 +45782,27 @@ feq_cont.91701:
 	xor	$7, $7, $8
 	lw	$6, 4($6)
 	lf	$f0, 2($6)
-	bne	$7, $0, eq_else.91704
+	bne	$7, $0, eq_else.92202
 	fneg	$f0, $f0
-	j	eq_cont.91705
-eq_else.91704:
-eq_cont.91705:
+	j	eq_cont.92203
+eq_else.92202:
+eq_cont.92203:
 	sf	$f0, 4($2)
 	lf	$f0, 2($5)
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 5($2)
-	j	eq_cont.91703
-eq_else.91702:
+	j	eq_cont.92201
+eq_else.92200:
 	sf	$f30, 5($2)
-eq_cont.91703:
+eq_cont.92201:
 	lw	$5, 3($3)
 	lw	$6, 4($3)
 	add $30, $6, $5
 	sw	$2, 0($30)
-	j	eq_cont.91687
-eq_else.91686:
+	j	eq_cont.92185
+eq_else.92184:
 	addi	$30, $0, 2
-	bne	$11, $30, eq_else.91706
+	bne	$11, $30, eq_else.92204
 	addi	$11, $0, 4
 	sw	$7, 3($3)
 	sw	$9, 4($3)
@@ -45953,10 +45832,10 @@ eq_else.91686:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f30, $f0
-	bne	$5, $0, eq_else.91708
+	bne	$5, $0, eq_else.92206
 	sf	$f30, 0($2)
-	j	eq_cont.91709
-eq_else.91708:
+	j	eq_cont.92207
+eq_else.92206:
 	fdiv	$f1, $f29, $f0
 	sf	$f1, 0($2)
 	lw	$5, 4($6)
@@ -45974,13 +45853,13 @@ eq_else.91708:
 	fdiv	$f0, $f1, $f0
 	fneg	$f0, $f0
 	sf	$f0, 3($2)
-eq_cont.91709:
+eq_cont.92207:
 	lw	$5, 3($3)
 	lw	$6, 4($3)
 	add $30, $6, $5
 	sw	$2, 0($30)
-	j	eq_cont.91707
-eq_else.91706:
+	j	eq_cont.92205
+eq_else.92204:
 	addi	$11, $0, 5
 	sw	$7, 3($3)
 	sw	$9, 4($3)
@@ -46013,10 +45892,10 @@ eq_else.91706:
 	fmul	$f4, $f4, $f5
 	fadd	$f3, $f3, $f4
 	lw	$7, 3($6)
-	bne	$7, $0, eq_else.91710
+	bne	$7, $0, eq_else.92208
 	movf	$f0, $f3
-	j	eq_cont.91711
-eq_else.91710:
+	j	eq_cont.92209
+eq_else.92208:
 	fmul	$f4, $f1, $f2
 	lw	$7, 9($6)
 	lf	$f5, 0($7)
@@ -46032,7 +45911,7 @@ eq_else.91710:
 	lf	$f1, 2($7)
 	fmul	$f0, $f0, $f1
 	fadd	$f0, $f2, $f0
-eq_cont.91711:
+eq_cont.92209:
 	lf	$f1, 0($5)
 	lw	$7, 4($6)
 	lf	$f2, 0($7)
@@ -46050,12 +45929,12 @@ eq_cont.91711:
 	fneg	$f3, $f3
 	sf	$f0, 0($2)
 	lw	$7, 3($6)
-	bne	$7, $0, eq_else.91712
+	bne	$7, $0, eq_else.92210
 	sf	$f1, 1($2)
 	sf	$f2, 2($2)
 	sf	$f3, 3($2)
-	j	eq_cont.91713
-eq_else.91712:
+	j	eq_cont.92211
+eq_else.92210:
 	lf	$f4, 2($5)
 	lw	$7, 9($6)
 	lf	$f5, 1($7)
@@ -46095,25 +45974,25 @@ eq_else.91712:
 	fmul	$f1, $f1, $f2
 	fsub	$f1, $f3, $f1
 	sf	$f1, 3($2)
-eq_cont.91713:
-	beqf	$f0, $f30, feq.91714
+eq_cont.92211:
+	beqf	$f0, $f30, feq.92212
 	mov	$5, $0
-	j	feq_cont.91715
-feq.91714:
+	j	feq_cont.92213
+feq.92212:
 	mov	$5, $1
-feq_cont.91715:
-	bne	$5, $0, eq_else.91716
+feq_cont.92213:
+	bne	$5, $0, eq_else.92214
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 4($2)
-	j	eq_cont.91717
-eq_else.91716:
-eq_cont.91717:
+	j	eq_cont.92215
+eq_else.92214:
+eq_cont.92215:
 	lw	$5, 3($3)
 	lw	$6, 4($3)
 	add $30, $6, $5
 	sw	$2, 0($30)
-eq_cont.91707:
-eq_cont.91687:
+eq_cont.92205:
+eq_cont.92185:
 	addi	$5, $5, -1
 	lw	$2, 2($3)
 	sw	$31, 7($3)
@@ -46121,7 +46000,7 @@ eq_cont.91687:
 	jal	iter_setup_dirvec_constants.2938
 	addi	$3, $3, -8
 	lw	$31, 7($3)
-ge_cont.91685:
+ge_cont.92183:
 	lw	$2, 1($3)
 	lw	$5, 118($2)
 	lw	$6, 3000($0)
@@ -46137,15 +46016,15 @@ ge_cont.91685:
 	lw	$5, 117($2)
 	lw	$6, 3000($0)
 	addi	$6, $6, -1
-	bge	$6, $0, ge_else.91718
-	j	ge_cont.91719
-ge_else.91718:
+	bge	$6, $0, ge_else.92216
+	j	ge_cont.92217
+ge_else.92216:
 	lw	$7, 3001($6)
 	lw	$8, 1($5)
 	lw	$9, 0($5)
 	lw	$10, 1($7)
 	sw	$5, 7($3)
-	bne	$10, $1, eq_else.91720
+	bne	$10, $1, eq_else.92218
 	addi	$10, $0, 6
 	sw	$6, 8($3)
 	sw	$8, 9($3)
@@ -46160,13 +46039,13 @@ ge_else.91718:
 	lw	$31, 12($3)
 	lw	$5, 11($3)
 	lf	$f0, 0($5)
-	beqf	$f0, $f30, feq.91722
+	beqf	$f0, $f30, feq.92220
 	mov	$6, $0
-	j	feq_cont.91723
-feq.91722:
+	j	feq_cont.92221
+feq.92220:
 	mov	$6, $1
-feq_cont.91723:
-	bne	$6, $0, eq_else.91724
+feq_cont.92221:
+	bne	$6, $0, eq_else.92222
 	lw	$6, 10($3)
 	lw	$7, 6($6)
 	lf	$f0, 0($5)
@@ -46174,27 +46053,27 @@ feq_cont.91723:
 	xor	$7, $7, $8
 	lw	$8, 4($6)
 	lf	$f0, 0($8)
-	bne	$7, $0, eq_else.91726
+	bne	$7, $0, eq_else.92224
 	fneg	$f0, $f0
-	j	eq_cont.91727
-eq_else.91726:
-eq_cont.91727:
+	j	eq_cont.92225
+eq_else.92224:
+eq_cont.92225:
 	sf	$f0, 0($2)
 	lf	$f0, 0($5)
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 1($2)
-	j	eq_cont.91725
-eq_else.91724:
+	j	eq_cont.92223
+eq_else.92222:
 	sf	$f30, 1($2)
-eq_cont.91725:
+eq_cont.92223:
 	lf	$f0, 1($5)
-	beqf	$f0, $f30, feq.91728
+	beqf	$f0, $f30, feq.92226
 	mov	$6, $0
-	j	feq_cont.91729
-feq.91728:
+	j	feq_cont.92227
+feq.92226:
 	mov	$6, $1
-feq_cont.91729:
-	bne	$6, $0, eq_else.91730
+feq_cont.92227:
+	bne	$6, $0, eq_else.92228
 	lw	$6, 10($3)
 	lw	$7, 6($6)
 	lf	$f0, 1($5)
@@ -46202,27 +46081,27 @@ feq_cont.91729:
 	xor	$7, $7, $8
 	lw	$8, 4($6)
 	lf	$f0, 1($8)
-	bne	$7, $0, eq_else.91732
+	bne	$7, $0, eq_else.92230
 	fneg	$f0, $f0
-	j	eq_cont.91733
-eq_else.91732:
-eq_cont.91733:
+	j	eq_cont.92231
+eq_else.92230:
+eq_cont.92231:
 	sf	$f0, 2($2)
 	lf	$f0, 1($5)
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 3($2)
-	j	eq_cont.91731
-eq_else.91730:
+	j	eq_cont.92229
+eq_else.92228:
 	sf	$f30, 3($2)
-eq_cont.91731:
+eq_cont.92229:
 	lf	$f0, 2($5)
-	beqf	$f0, $f30, feq.91734
+	beqf	$f0, $f30, feq.92232
 	mov	$6, $0
-	j	feq_cont.91735
-feq.91734:
+	j	feq_cont.92233
+feq.92232:
 	mov	$6, $1
-feq_cont.91735:
-	bne	$6, $0, eq_else.91736
+feq_cont.92233:
+	bne	$6, $0, eq_else.92234
 	lw	$6, 10($3)
 	lw	$7, 6($6)
 	lf	$f0, 2($5)
@@ -46230,27 +46109,27 @@ feq_cont.91735:
 	xor	$7, $7, $8
 	lw	$6, 4($6)
 	lf	$f0, 2($6)
-	bne	$7, $0, eq_else.91738
+	bne	$7, $0, eq_else.92236
 	fneg	$f0, $f0
-	j	eq_cont.91739
-eq_else.91738:
-eq_cont.91739:
+	j	eq_cont.92237
+eq_else.92236:
+eq_cont.92237:
 	sf	$f0, 4($2)
 	lf	$f0, 2($5)
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 5($2)
-	j	eq_cont.91737
-eq_else.91736:
+	j	eq_cont.92235
+eq_else.92234:
 	sf	$f30, 5($2)
-eq_cont.91737:
+eq_cont.92235:
 	lw	$5, 8($3)
 	lw	$6, 9($3)
 	add $30, $6, $5
 	sw	$2, 0($30)
-	j	eq_cont.91721
-eq_else.91720:
+	j	eq_cont.92219
+eq_else.92218:
 	addi	$30, $0, 2
-	bne	$10, $30, eq_else.91740
+	bne	$10, $30, eq_else.92238
 	addi	$10, $0, 4
 	sw	$6, 8($3)
 	sw	$8, 9($3)
@@ -46280,10 +46159,10 @@ eq_else.91720:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f30, $f0
-	bne	$5, $0, eq_else.91742
+	bne	$5, $0, eq_else.92240
 	sf	$f30, 0($2)
-	j	eq_cont.91743
-eq_else.91742:
+	j	eq_cont.92241
+eq_else.92240:
 	fdiv	$f1, $f29, $f0
 	sf	$f1, 0($2)
 	lw	$5, 4($6)
@@ -46301,13 +46180,13 @@ eq_else.91742:
 	fdiv	$f0, $f1, $f0
 	fneg	$f0, $f0
 	sf	$f0, 3($2)
-eq_cont.91743:
+eq_cont.92241:
 	lw	$5, 8($3)
 	lw	$6, 9($3)
 	add $30, $6, $5
 	sw	$2, 0($30)
-	j	eq_cont.91741
-eq_else.91740:
+	j	eq_cont.92239
+eq_else.92238:
 	addi	$10, $0, 5
 	sw	$6, 8($3)
 	sw	$8, 9($3)
@@ -46340,10 +46219,10 @@ eq_else.91740:
 	fmul	$f4, $f4, $f5
 	fadd	$f3, $f3, $f4
 	lw	$7, 3($6)
-	bne	$7, $0, eq_else.91744
+	bne	$7, $0, eq_else.92242
 	movf	$f0, $f3
-	j	eq_cont.91745
-eq_else.91744:
+	j	eq_cont.92243
+eq_else.92242:
 	fmul	$f4, $f1, $f2
 	lw	$7, 9($6)
 	lf	$f5, 0($7)
@@ -46359,7 +46238,7 @@ eq_else.91744:
 	lf	$f1, 2($7)
 	fmul	$f0, $f0, $f1
 	fadd	$f0, $f2, $f0
-eq_cont.91745:
+eq_cont.92243:
 	lf	$f1, 0($5)
 	lw	$7, 4($6)
 	lf	$f2, 0($7)
@@ -46377,12 +46256,12 @@ eq_cont.91745:
 	fneg	$f3, $f3
 	sf	$f0, 0($2)
 	lw	$7, 3($6)
-	bne	$7, $0, eq_else.91746
+	bne	$7, $0, eq_else.92244
 	sf	$f1, 1($2)
 	sf	$f2, 2($2)
 	sf	$f3, 3($2)
-	j	eq_cont.91747
-eq_else.91746:
+	j	eq_cont.92245
+eq_else.92244:
 	lf	$f4, 2($5)
 	lw	$7, 9($6)
 	lf	$f5, 1($7)
@@ -46422,25 +46301,25 @@ eq_else.91746:
 	fmul	$f1, $f1, $f2
 	fsub	$f1, $f3, $f1
 	sf	$f1, 3($2)
-eq_cont.91747:
-	beqf	$f0, $f30, feq.91748
+eq_cont.92245:
+	beqf	$f0, $f30, feq.92246
 	mov	$5, $0
-	j	feq_cont.91749
-feq.91748:
+	j	feq_cont.92247
+feq.92246:
 	mov	$5, $1
-feq_cont.91749:
-	bne	$5, $0, eq_else.91750
+feq_cont.92247:
+	bne	$5, $0, eq_else.92248
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 4($2)
-	j	eq_cont.91751
-eq_else.91750:
-eq_cont.91751:
+	j	eq_cont.92249
+eq_else.92248:
+eq_cont.92249:
 	lw	$5, 8($3)
 	lw	$6, 9($3)
 	add $30, $6, $5
 	sw	$2, 0($30)
-eq_cont.91741:
-eq_cont.91721:
+eq_cont.92239:
+eq_cont.92219:
 	addi	$5, $5, -1
 	lw	$2, 7($3)
 	sw	$31, 12($3)
@@ -46448,7 +46327,7 @@ eq_cont.91721:
 	jal	iter_setup_dirvec_constants.2938
 	addi	$3, $3, -13
 	lw	$31, 12($3)
-ge_cont.91719:
+ge_cont.92217:
 	addi	$5, $0, 116
 	lw	$2, 1($3)
 	sw	$31, 12($3)
@@ -46458,9 +46337,9 @@ ge_cont.91719:
 	lw	$31, 12($3)
 	lw	$2, 0($3)
 	addi	$2, $2, -1
-	bge	$2, $0, ge.91752
+	bge	$2, $0, ge.92250
 	jr $31
-ge.91752:
+ge.92250:
 	lw	$5, 3164($2)
 	lw	$6, 119($5)
 	lw	$7, 3000($0)
@@ -46478,15 +46357,15 @@ ge.91752:
 	lw	$5, 118($2)
 	lw	$6, 3000($0)
 	addi	$6, $6, -1
-	bge	$6, $0, ge_else.91754
-	j	ge_cont.91755
-ge_else.91754:
+	bge	$6, $0, ge_else.92252
+	j	ge_cont.92253
+ge_else.92252:
 	lw	$7, 3001($6)
 	lw	$8, 1($5)
 	lw	$9, 0($5)
 	lw	$10, 1($7)
 	sw	$5, 14($3)
-	bne	$10, $1, eq_else.91756
+	bne	$10, $1, eq_else.92254
 	addi	$10, $0, 6
 	sw	$6, 15($3)
 	sw	$8, 16($3)
@@ -46501,13 +46380,13 @@ ge_else.91754:
 	lw	$31, 19($3)
 	lw	$5, 18($3)
 	lf	$f0, 0($5)
-	beqf	$f0, $f30, feq.91758
+	beqf	$f0, $f30, feq.92256
 	mov	$6, $0
-	j	feq_cont.91759
-feq.91758:
+	j	feq_cont.92257
+feq.92256:
 	mov	$6, $1
-feq_cont.91759:
-	bne	$6, $0, eq_else.91760
+feq_cont.92257:
+	bne	$6, $0, eq_else.92258
 	lw	$6, 17($3)
 	lw	$7, 6($6)
 	lf	$f0, 0($5)
@@ -46515,27 +46394,27 @@ feq_cont.91759:
 	xor	$7, $7, $8
 	lw	$8, 4($6)
 	lf	$f0, 0($8)
-	bne	$7, $0, eq_else.91762
+	bne	$7, $0, eq_else.92260
 	fneg	$f0, $f0
-	j	eq_cont.91763
-eq_else.91762:
-eq_cont.91763:
+	j	eq_cont.92261
+eq_else.92260:
+eq_cont.92261:
 	sf	$f0, 0($2)
 	lf	$f0, 0($5)
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 1($2)
-	j	eq_cont.91761
-eq_else.91760:
+	j	eq_cont.92259
+eq_else.92258:
 	sf	$f30, 1($2)
-eq_cont.91761:
+eq_cont.92259:
 	lf	$f0, 1($5)
-	beqf	$f0, $f30, feq.91764
+	beqf	$f0, $f30, feq.92262
 	mov	$6, $0
-	j	feq_cont.91765
-feq.91764:
+	j	feq_cont.92263
+feq.92262:
 	mov	$6, $1
-feq_cont.91765:
-	bne	$6, $0, eq_else.91766
+feq_cont.92263:
+	bne	$6, $0, eq_else.92264
 	lw	$6, 17($3)
 	lw	$7, 6($6)
 	lf	$f0, 1($5)
@@ -46543,27 +46422,27 @@ feq_cont.91765:
 	xor	$7, $7, $8
 	lw	$8, 4($6)
 	lf	$f0, 1($8)
-	bne	$7, $0, eq_else.91768
+	bne	$7, $0, eq_else.92266
 	fneg	$f0, $f0
-	j	eq_cont.91769
-eq_else.91768:
-eq_cont.91769:
+	j	eq_cont.92267
+eq_else.92266:
+eq_cont.92267:
 	sf	$f0, 2($2)
 	lf	$f0, 1($5)
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 3($2)
-	j	eq_cont.91767
-eq_else.91766:
+	j	eq_cont.92265
+eq_else.92264:
 	sf	$f30, 3($2)
-eq_cont.91767:
+eq_cont.92265:
 	lf	$f0, 2($5)
-	beqf	$f0, $f30, feq.91770
+	beqf	$f0, $f30, feq.92268
 	mov	$6, $0
-	j	feq_cont.91771
-feq.91770:
+	j	feq_cont.92269
+feq.92268:
 	mov	$6, $1
-feq_cont.91771:
-	bne	$6, $0, eq_else.91772
+feq_cont.92269:
+	bne	$6, $0, eq_else.92270
 	lw	$6, 17($3)
 	lw	$7, 6($6)
 	lf	$f0, 2($5)
@@ -46571,27 +46450,27 @@ feq_cont.91771:
 	xor	$7, $7, $8
 	lw	$6, 4($6)
 	lf	$f0, 2($6)
-	bne	$7, $0, eq_else.91774
+	bne	$7, $0, eq_else.92272
 	fneg	$f0, $f0
-	j	eq_cont.91775
-eq_else.91774:
-eq_cont.91775:
+	j	eq_cont.92273
+eq_else.92272:
+eq_cont.92273:
 	sf	$f0, 4($2)
 	lf	$f0, 2($5)
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 5($2)
-	j	eq_cont.91773
-eq_else.91772:
+	j	eq_cont.92271
+eq_else.92270:
 	sf	$f30, 5($2)
-eq_cont.91773:
+eq_cont.92271:
 	lw	$5, 15($3)
 	lw	$6, 16($3)
 	add $30, $6, $5
 	sw	$2, 0($30)
-	j	eq_cont.91757
-eq_else.91756:
+	j	eq_cont.92255
+eq_else.92254:
 	addi	$30, $0, 2
-	bne	$10, $30, eq_else.91776
+	bne	$10, $30, eq_else.92274
 	addi	$10, $0, 4
 	sw	$6, 15($3)
 	sw	$8, 16($3)
@@ -46621,10 +46500,10 @@ eq_else.91756:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f30, $f0
-	bne	$5, $0, eq_else.91778
+	bne	$5, $0, eq_else.92276
 	sf	$f30, 0($2)
-	j	eq_cont.91779
-eq_else.91778:
+	j	eq_cont.92277
+eq_else.92276:
 	fdiv	$f1, $f29, $f0
 	sf	$f1, 0($2)
 	lw	$5, 4($6)
@@ -46642,13 +46521,13 @@ eq_else.91778:
 	fdiv	$f0, $f1, $f0
 	fneg	$f0, $f0
 	sf	$f0, 3($2)
-eq_cont.91779:
+eq_cont.92277:
 	lw	$5, 15($3)
 	lw	$6, 16($3)
 	add $30, $6, $5
 	sw	$2, 0($30)
-	j	eq_cont.91777
-eq_else.91776:
+	j	eq_cont.92275
+eq_else.92274:
 	addi	$10, $0, 5
 	sw	$6, 15($3)
 	sw	$8, 16($3)
@@ -46681,10 +46560,10 @@ eq_else.91776:
 	fmul	$f4, $f4, $f5
 	fadd	$f3, $f3, $f4
 	lw	$7, 3($6)
-	bne	$7, $0, eq_else.91780
+	bne	$7, $0, eq_else.92278
 	movf	$f0, $f3
-	j	eq_cont.91781
-eq_else.91780:
+	j	eq_cont.92279
+eq_else.92278:
 	fmul	$f4, $f1, $f2
 	lw	$7, 9($6)
 	lf	$f5, 0($7)
@@ -46700,7 +46579,7 @@ eq_else.91780:
 	lf	$f1, 2($7)
 	fmul	$f0, $f0, $f1
 	fadd	$f0, $f2, $f0
-eq_cont.91781:
+eq_cont.92279:
 	lf	$f1, 0($5)
 	lw	$7, 4($6)
 	lf	$f2, 0($7)
@@ -46718,12 +46597,12 @@ eq_cont.91781:
 	fneg	$f3, $f3
 	sf	$f0, 0($2)
 	lw	$7, 3($6)
-	bne	$7, $0, eq_else.91782
+	bne	$7, $0, eq_else.92280
 	sf	$f1, 1($2)
 	sf	$f2, 2($2)
 	sf	$f3, 3($2)
-	j	eq_cont.91783
-eq_else.91782:
+	j	eq_cont.92281
+eq_else.92280:
 	lf	$f4, 2($5)
 	lw	$7, 9($6)
 	lf	$f5, 1($7)
@@ -46763,25 +46642,25 @@ eq_else.91782:
 	fmul	$f1, $f1, $f2
 	fsub	$f1, $f3, $f1
 	sf	$f1, 3($2)
-eq_cont.91783:
-	beqf	$f0, $f30, feq.91784
+eq_cont.92281:
+	beqf	$f0, $f30, feq.92282
 	mov	$5, $0
-	j	feq_cont.91785
-feq.91784:
+	j	feq_cont.92283
+feq.92282:
 	mov	$5, $1
-feq_cont.91785:
-	bne	$5, $0, eq_else.91786
+feq_cont.92283:
+	bne	$5, $0, eq_else.92284
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 4($2)
-	j	eq_cont.91787
-eq_else.91786:
-eq_cont.91787:
+	j	eq_cont.92285
+eq_else.92284:
+eq_cont.92285:
 	lw	$5, 15($3)
 	lw	$6, 16($3)
 	add $30, $6, $5
 	sw	$2, 0($30)
-eq_cont.91777:
-eq_cont.91757:
+eq_cont.92275:
+eq_cont.92255:
 	addi	$5, $5, -1
 	lw	$2, 14($3)
 	sw	$31, 19($3)
@@ -46789,7 +46668,7 @@ eq_cont.91757:
 	jal	iter_setup_dirvec_constants.2938
 	addi	$3, $3, -20
 	lw	$31, 19($3)
-ge_cont.91755:
+ge_cont.92253:
 	addi	$5, $0, 117
 	lw	$2, 13($3)
 	sw	$31, 19($3)
@@ -46799,24 +46678,24 @@ ge_cont.91755:
 	lw	$31, 19($3)
 	lw	$2, 12($3)
 	addi	$2, $2, -1
-	bge	$2, $0, ge.91788
+	bge	$2, $0, ge.92286
 	jr $31
-ge.91788:
+ge.92286:
 	lw	$5, 3164($2)
 	lw	$6, 119($5)
 	lw	$7, 3000($0)
 	addi	$7, $7, -1
 	sw	$2, 19($3)
 	sw	$5, 20($3)
-	bge	$7, $0, ge_else.91790
-	j	ge_cont.91791
-ge_else.91790:
+	bge	$7, $0, ge_else.92288
+	j	ge_cont.92289
+ge_else.92288:
 	lw	$8, 3001($7)
 	lw	$9, 1($6)
 	lw	$10, 0($6)
 	lw	$11, 1($8)
 	sw	$6, 21($3)
-	bne	$11, $1, eq_else.91792
+	bne	$11, $1, eq_else.92290
 	addi	$11, $0, 6
 	sw	$7, 22($3)
 	sw	$9, 23($3)
@@ -46831,13 +46710,13 @@ ge_else.91790:
 	lw	$31, 26($3)
 	lw	$5, 25($3)
 	lf	$f0, 0($5)
-	beqf	$f0, $f30, feq.91794
+	beqf	$f0, $f30, feq.92292
 	mov	$6, $0
-	j	feq_cont.91795
-feq.91794:
+	j	feq_cont.92293
+feq.92292:
 	mov	$6, $1
-feq_cont.91795:
-	bne	$6, $0, eq_else.91796
+feq_cont.92293:
+	bne	$6, $0, eq_else.92294
 	lw	$6, 24($3)
 	lw	$7, 6($6)
 	lf	$f0, 0($5)
@@ -46845,27 +46724,27 @@ feq_cont.91795:
 	xor	$7, $7, $8
 	lw	$8, 4($6)
 	lf	$f0, 0($8)
-	bne	$7, $0, eq_else.91798
+	bne	$7, $0, eq_else.92296
 	fneg	$f0, $f0
-	j	eq_cont.91799
-eq_else.91798:
-eq_cont.91799:
+	j	eq_cont.92297
+eq_else.92296:
+eq_cont.92297:
 	sf	$f0, 0($2)
 	lf	$f0, 0($5)
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 1($2)
-	j	eq_cont.91797
-eq_else.91796:
+	j	eq_cont.92295
+eq_else.92294:
 	sf	$f30, 1($2)
-eq_cont.91797:
+eq_cont.92295:
 	lf	$f0, 1($5)
-	beqf	$f0, $f30, feq.91800
+	beqf	$f0, $f30, feq.92298
 	mov	$6, $0
-	j	feq_cont.91801
-feq.91800:
+	j	feq_cont.92299
+feq.92298:
 	mov	$6, $1
-feq_cont.91801:
-	bne	$6, $0, eq_else.91802
+feq_cont.92299:
+	bne	$6, $0, eq_else.92300
 	lw	$6, 24($3)
 	lw	$7, 6($6)
 	lf	$f0, 1($5)
@@ -46873,27 +46752,27 @@ feq_cont.91801:
 	xor	$7, $7, $8
 	lw	$8, 4($6)
 	lf	$f0, 1($8)
-	bne	$7, $0, eq_else.91804
+	bne	$7, $0, eq_else.92302
 	fneg	$f0, $f0
-	j	eq_cont.91805
-eq_else.91804:
-eq_cont.91805:
+	j	eq_cont.92303
+eq_else.92302:
+eq_cont.92303:
 	sf	$f0, 2($2)
 	lf	$f0, 1($5)
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 3($2)
-	j	eq_cont.91803
-eq_else.91802:
+	j	eq_cont.92301
+eq_else.92300:
 	sf	$f30, 3($2)
-eq_cont.91803:
+eq_cont.92301:
 	lf	$f0, 2($5)
-	beqf	$f0, $f30, feq.91806
+	beqf	$f0, $f30, feq.92304
 	mov	$6, $0
-	j	feq_cont.91807
-feq.91806:
+	j	feq_cont.92305
+feq.92304:
 	mov	$6, $1
-feq_cont.91807:
-	bne	$6, $0, eq_else.91808
+feq_cont.92305:
+	bne	$6, $0, eq_else.92306
 	lw	$6, 24($3)
 	lw	$7, 6($6)
 	lf	$f0, 2($5)
@@ -46901,27 +46780,27 @@ feq_cont.91807:
 	xor	$7, $7, $8
 	lw	$6, 4($6)
 	lf	$f0, 2($6)
-	bne	$7, $0, eq_else.91810
+	bne	$7, $0, eq_else.92308
 	fneg	$f0, $f0
-	j	eq_cont.91811
-eq_else.91810:
-eq_cont.91811:
+	j	eq_cont.92309
+eq_else.92308:
+eq_cont.92309:
 	sf	$f0, 4($2)
 	lf	$f0, 2($5)
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 5($2)
-	j	eq_cont.91809
-eq_else.91808:
+	j	eq_cont.92307
+eq_else.92306:
 	sf	$f30, 5($2)
-eq_cont.91809:
+eq_cont.92307:
 	lw	$5, 22($3)
 	lw	$6, 23($3)
 	add $30, $6, $5
 	sw	$2, 0($30)
-	j	eq_cont.91793
-eq_else.91792:
+	j	eq_cont.92291
+eq_else.92290:
 	addi	$30, $0, 2
-	bne	$11, $30, eq_else.91812
+	bne	$11, $30, eq_else.92310
 	addi	$11, $0, 4
 	sw	$7, 22($3)
 	sw	$9, 23($3)
@@ -46951,10 +46830,10 @@ eq_else.91792:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f30, $f0
-	bne	$5, $0, eq_else.91814
+	bne	$5, $0, eq_else.92312
 	sf	$f30, 0($2)
-	j	eq_cont.91815
-eq_else.91814:
+	j	eq_cont.92313
+eq_else.92312:
 	fdiv	$f1, $f29, $f0
 	sf	$f1, 0($2)
 	lw	$5, 4($6)
@@ -46972,13 +46851,13 @@ eq_else.91814:
 	fdiv	$f0, $f1, $f0
 	fneg	$f0, $f0
 	sf	$f0, 3($2)
-eq_cont.91815:
+eq_cont.92313:
 	lw	$5, 22($3)
 	lw	$6, 23($3)
 	add $30, $6, $5
 	sw	$2, 0($30)
-	j	eq_cont.91813
-eq_else.91812:
+	j	eq_cont.92311
+eq_else.92310:
 	addi	$11, $0, 5
 	sw	$7, 22($3)
 	sw	$9, 23($3)
@@ -47011,10 +46890,10 @@ eq_else.91812:
 	fmul	$f4, $f4, $f5
 	fadd	$f3, $f3, $f4
 	lw	$7, 3($6)
-	bne	$7, $0, eq_else.91816
+	bne	$7, $0, eq_else.92314
 	movf	$f0, $f3
-	j	eq_cont.91817
-eq_else.91816:
+	j	eq_cont.92315
+eq_else.92314:
 	fmul	$f4, $f1, $f2
 	lw	$7, 9($6)
 	lf	$f5, 0($7)
@@ -47030,7 +46909,7 @@ eq_else.91816:
 	lf	$f1, 2($7)
 	fmul	$f0, $f0, $f1
 	fadd	$f0, $f2, $f0
-eq_cont.91817:
+eq_cont.92315:
 	lf	$f1, 0($5)
 	lw	$7, 4($6)
 	lf	$f2, 0($7)
@@ -47048,12 +46927,12 @@ eq_cont.91817:
 	fneg	$f3, $f3
 	sf	$f0, 0($2)
 	lw	$7, 3($6)
-	bne	$7, $0, eq_else.91818
+	bne	$7, $0, eq_else.92316
 	sf	$f1, 1($2)
 	sf	$f2, 2($2)
 	sf	$f3, 3($2)
-	j	eq_cont.91819
-eq_else.91818:
+	j	eq_cont.92317
+eq_else.92316:
 	lf	$f4, 2($5)
 	lw	$7, 9($6)
 	lf	$f5, 1($7)
@@ -47093,25 +46972,25 @@ eq_else.91818:
 	fmul	$f1, $f1, $f2
 	fsub	$f1, $f3, $f1
 	sf	$f1, 3($2)
-eq_cont.91819:
-	beqf	$f0, $f30, feq.91820
+eq_cont.92317:
+	beqf	$f0, $f30, feq.92318
 	mov	$5, $0
-	j	feq_cont.91821
-feq.91820:
+	j	feq_cont.92319
+feq.92318:
 	mov	$5, $1
-feq_cont.91821:
-	bne	$5, $0, eq_else.91822
+feq_cont.92319:
+	bne	$5, $0, eq_else.92320
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 4($2)
-	j	eq_cont.91823
-eq_else.91822:
-eq_cont.91823:
+	j	eq_cont.92321
+eq_else.92320:
+eq_cont.92321:
 	lw	$5, 22($3)
 	lw	$6, 23($3)
 	add $30, $6, $5
 	sw	$2, 0($30)
-eq_cont.91813:
-eq_cont.91793:
+eq_cont.92311:
+eq_cont.92291:
 	addi	$5, $5, -1
 	lw	$2, 21($3)
 	sw	$31, 26($3)
@@ -47119,7 +46998,7 @@ eq_cont.91793:
 	jal	iter_setup_dirvec_constants.2938
 	addi	$3, $3, -27
 	lw	$31, 26($3)
-ge_cont.91791:
+ge_cont.92289:
 	addi	$5, $0, 118
 	lw	$2, 20($3)
 	sw	$31, 26($3)
@@ -47129,9 +47008,9 @@ ge_cont.91791:
 	lw	$31, 26($3)
 	lw	$2, 19($3)
 	addi	$2, $2, -1
-	bge	$2, $0, ge.91824
+	bge	$2, $0, ge.92322
 	jr $31
-ge.91824:
+ge.92322:
 	lw	$5, 3164($2)
 	addi	$6, $0, 119
 	sw	$2, 26($3)
@@ -47182,24 +47061,24 @@ Main:
 	jal	min_caml_create_global_array
 	addi	$3, $3, -1
 	lw	$31, 0($3)
-	addi	$5, $0, 3
 	addi	$2, $0, 3061
+	mov	$5, $27
 	movf	$f0, $f30
 	sw	$31, 0($3)
 	addi	$3, $3, 1
 	jal	min_caml_create_global_float_array
 	addi	$3, $3, -1
 	lw	$31, 0($3)
-	addi	$5, $0, 3
 	addi	$2, $0, 3064
+	mov	$5, $27
 	movf	$f0, $f30
 	sw	$31, 0($3)
 	addi	$3, $3, 1
 	jal	min_caml_create_global_float_array
 	addi	$3, $3, -1
 	lw	$31, 0($3)
-	addi	$5, $0, 3
 	addi	$2, $0, 3067
+	mov	$5, $27
 	movf	$f0, $f30
 	sw	$31, 0($3)
 	addi	$3, $3, 1
@@ -47270,8 +47149,8 @@ Main:
 	jal	min_caml_create_global_float_array
 	addi	$3, $3, -2
 	lw	$31, 1($3)
-	addi	$5, $0, 3
 	addi	$2, $0, 3125
+	mov	$5, $27
 	movf	$f0, $f30
 	sw	$31, 1($3)
 	addi	$3, $3, 2
@@ -47286,49 +47165,49 @@ Main:
 	jal	min_caml_create_global_array
 	addi	$3, $3, -2
 	lw	$31, 1($3)
-	addi	$5, $0, 3
 	addi	$2, $0, 3129
+	mov	$5, $27
 	movf	$f0, $f30
 	sw	$31, 1($3)
 	addi	$3, $3, 2
 	jal	min_caml_create_global_float_array
 	addi	$3, $3, -2
 	lw	$31, 1($3)
-	addi	$5, $0, 3
 	addi	$2, $0, 3132
+	mov	$5, $27
 	movf	$f0, $f30
 	sw	$31, 1($3)
 	addi	$3, $3, 2
 	jal	min_caml_create_global_float_array
 	addi	$3, $3, -2
 	lw	$31, 1($3)
-	addi	$5, $0, 3
 	addi	$2, $0, 3135
+	mov	$5, $27
 	movf	$f0, $f30
 	sw	$31, 1($3)
 	addi	$3, $3, 2
 	jal	min_caml_create_global_float_array
 	addi	$3, $3, -2
 	lw	$31, 1($3)
-	addi	$5, $0, 3
 	addi	$2, $0, 3138
+	mov	$5, $27
 	movf	$f0, $f30
 	sw	$31, 1($3)
 	addi	$3, $3, 2
 	jal	min_caml_create_global_float_array
 	addi	$3, $3, -2
 	lw	$31, 1($3)
-	addi	$5, $0, 2
 	addi	$2, $0, 3141
 	mov	$6, $0
+	mov	$5, $26
 	sw	$31, 1($3)
 	addi	$3, $3, 2
 	jal	min_caml_create_global_array
 	addi	$3, $3, -2
 	lw	$31, 1($3)
-	addi	$5, $0, 2
 	addi	$2, $0, 3143
 	mov	$6, $0
+	mov	$5, $26
 	sw	$31, 1($3)
 	addi	$3, $3, 2
 	jal	min_caml_create_global_array
@@ -47342,48 +47221,48 @@ Main:
 	jal	min_caml_create_global_float_array
 	addi	$3, $3, -2
 	lw	$31, 1($3)
-	addi	$5, $0, 3
 	addi	$2, $0, 3146
+	mov	$5, $27
 	movf	$f0, $f30
 	sw	$31, 1($3)
 	addi	$3, $3, 2
 	jal	min_caml_create_global_float_array
 	addi	$3, $3, -2
 	lw	$31, 1($3)
-	addi	$5, $0, 3
 	addi	$2, $0, 3149
+	mov	$5, $27
 	movf	$f0, $f30
 	sw	$31, 1($3)
 	addi	$3, $3, 2
 	jal	min_caml_create_global_float_array
 	addi	$3, $3, -2
 	lw	$31, 1($3)
-	addi	$5, $0, 3
 	addi	$2, $0, 3152
+	mov	$5, $27
 	movf	$f0, $f30
 	sw	$31, 1($3)
 	addi	$3, $3, 2
 	jal	min_caml_create_global_float_array
 	addi	$3, $3, -2
 	lw	$31, 1($3)
-	addi	$5, $0, 3
 	addi	$2, $0, 3155
+	mov	$5, $27
 	movf	$f0, $f30
 	sw	$31, 1($3)
 	addi	$3, $3, 2
 	jal	min_caml_create_global_float_array
 	addi	$3, $3, -2
 	lw	$31, 1($3)
-	addi	$5, $0, 3
 	addi	$2, $0, 3158
+	mov	$5, $27
 	movf	$f0, $f30
 	sw	$31, 1($3)
 	addi	$3, $3, 2
 	jal	min_caml_create_global_float_array
 	addi	$3, $3, -2
 	lw	$31, 1($3)
-	addi	$5, $0, 3
 	addi	$2, $0, 3161
+	mov	$5, $27
 	movf	$f0, $f30
 	sw	$31, 1($3)
 	addi	$3, $3, 2
@@ -47431,9 +47310,8 @@ Main:
 	jal	min_caml_create_float_array
 	addi	$3, $3, -3
 	lw	$31, 2($3)
-	addi	$5, $0, 3
 	sw	$2, 2($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 3($3)
 	addi	$3, $3, 4
@@ -47504,18 +47382,16 @@ Main:
 	sw	$2, 3144($0)
 	sf	$f28, 3145($0)
 	lw	$2, 3141($0)
-	addi	$5, $0, 3
 	sw	$2, 5($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 6($3)
 	addi	$3, $3, 7
 	jal	min_caml_create_float_array
 	addi	$3, $3, -7
 	lw	$31, 6($3)
-	addi	$5, $0, 3
 	sw	$2, 6($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 7($3)
 	addi	$3, $3, 8
@@ -47529,9 +47405,8 @@ Main:
 	jal	min_caml_create_array
 	addi	$3, $3, -8
 	lw	$31, 7($3)
-	addi	$5, $0, 3
 	sw	$2, 7($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 8($3)
 	addi	$3, $3, 9
@@ -47540,7 +47415,7 @@ Main:
 	lw	$31, 8($3)
 	lw	$5, 7($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 8($3)
 	addi	$3, $3, 9
@@ -47549,7 +47424,7 @@ Main:
 	lw	$31, 8($3)
 	lw	$5, 7($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 8($3)
 	addi	$3, $3, 9
@@ -47558,7 +47433,7 @@ Main:
 	lw	$31, 8($3)
 	lw	$5, 7($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 8($3)
 	addi	$3, $3, 9
@@ -47583,9 +47458,8 @@ Main:
 	jal	min_caml_create_array
 	addi	$3, $3, -10
 	lw	$31, 9($3)
-	addi	$5, $0, 3
 	sw	$2, 9($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 10($3)
 	addi	$3, $3, 11
@@ -47599,9 +47473,8 @@ Main:
 	jal	min_caml_create_array
 	addi	$3, $3, -11
 	lw	$31, 10($3)
-	addi	$5, $0, 3
 	sw	$2, 10($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 11($3)
 	addi	$3, $3, 12
@@ -47610,7 +47483,7 @@ Main:
 	lw	$31, 11($3)
 	lw	$5, 10($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 11($3)
 	addi	$3, $3, 12
@@ -47619,7 +47492,7 @@ Main:
 	lw	$31, 11($3)
 	lw	$5, 10($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 11($3)
 	addi	$3, $3, 12
@@ -47628,7 +47501,7 @@ Main:
 	lw	$31, 11($3)
 	lw	$5, 10($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 11($3)
 	addi	$3, $3, 12
@@ -47637,7 +47510,7 @@ Main:
 	lw	$31, 11($3)
 	lw	$5, 10($3)
 	sw	$2, 4($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 11($3)
 	addi	$3, $3, 12
@@ -47651,9 +47524,8 @@ Main:
 	jal	min_caml_create_array
 	addi	$3, $3, -12
 	lw	$31, 11($3)
-	addi	$5, $0, 3
 	sw	$2, 11($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 12($3)
 	addi	$3, $3, 13
@@ -47662,7 +47534,7 @@ Main:
 	lw	$31, 12($3)
 	lw	$5, 11($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 12($3)
 	addi	$3, $3, 13
@@ -47671,7 +47543,7 @@ Main:
 	lw	$31, 12($3)
 	lw	$5, 11($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 12($3)
 	addi	$3, $3, 13
@@ -47680,7 +47552,7 @@ Main:
 	lw	$31, 12($3)
 	lw	$5, 11($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 12($3)
 	addi	$3, $3, 13
@@ -47696,9 +47568,8 @@ Main:
 	jal	min_caml_create_array
 	addi	$3, $3, -13
 	lw	$31, 12($3)
-	addi	$5, $0, 3
 	sw	$2, 12($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 13($3)
 	addi	$3, $3, 14
@@ -47712,9 +47583,8 @@ Main:
 	jal	min_caml_create_array
 	addi	$3, $3, -14
 	lw	$31, 13($3)
-	addi	$5, $0, 3
 	sw	$2, 13($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 14($3)
 	addi	$3, $3, 15
@@ -47723,7 +47593,7 @@ Main:
 	lw	$31, 14($3)
 	lw	$5, 13($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 14($3)
 	addi	$3, $3, 15
@@ -47732,7 +47602,7 @@ Main:
 	lw	$31, 14($3)
 	lw	$5, 13($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 14($3)
 	addi	$3, $3, 15
@@ -47741,7 +47611,7 @@ Main:
 	lw	$31, 14($3)
 	lw	$5, 13($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 14($3)
 	addi	$3, $3, 15
@@ -47776,22 +47646,20 @@ Main:
 	lw	$31, 14($3)
 	lw	$5, 3141($0)
 	addi	$5, $5, -2
-	bge	$5, $0, ge_else.91826
-	j	ge_cont.91827
-ge_else.91826:
-	addi	$6, $0, 3
+	bge	$5, $0, ge_else.92324
+	j	ge_cont.92325
+ge_else.92324:
 	sw	$5, 14($3)
 	sw	$2, 15($3)
-	mov	$2, $6
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 16($3)
 	addi	$3, $3, 17
 	jal	min_caml_create_float_array
 	addi	$3, $3, -17
 	lw	$31, 16($3)
-	addi	$5, $0, 3
 	sw	$2, 16($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 17($3)
 	addi	$3, $3, 18
@@ -47805,9 +47673,8 @@ ge_else.91826:
 	jal	min_caml_create_array
 	addi	$3, $3, -18
 	lw	$31, 17($3)
-	addi	$5, $0, 3
 	sw	$2, 17($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 18($3)
 	addi	$3, $3, 19
@@ -47816,7 +47683,7 @@ ge_else.91826:
 	lw	$31, 18($3)
 	lw	$5, 17($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 18($3)
 	addi	$3, $3, 19
@@ -47825,7 +47692,7 @@ ge_else.91826:
 	lw	$31, 18($3)
 	lw	$5, 17($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 18($3)
 	addi	$3, $3, 19
@@ -47834,7 +47701,7 @@ ge_else.91826:
 	lw	$31, 18($3)
 	lw	$5, 17($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 18($3)
 	addi	$3, $3, 19
@@ -47859,9 +47726,8 @@ ge_else.91826:
 	jal	min_caml_create_array
 	addi	$3, $3, -20
 	lw	$31, 19($3)
-	addi	$5, $0, 3
 	sw	$2, 19($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 20($3)
 	addi	$3, $3, 21
@@ -47875,9 +47741,8 @@ ge_else.91826:
 	jal	min_caml_create_array
 	addi	$3, $3, -21
 	lw	$31, 20($3)
-	addi	$5, $0, 3
 	sw	$2, 20($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 21($3)
 	addi	$3, $3, 22
@@ -47886,7 +47751,7 @@ ge_else.91826:
 	lw	$31, 21($3)
 	lw	$5, 20($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 21($3)
 	addi	$3, $3, 22
@@ -47895,7 +47760,7 @@ ge_else.91826:
 	lw	$31, 21($3)
 	lw	$5, 20($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 21($3)
 	addi	$3, $3, 22
@@ -47904,7 +47769,7 @@ ge_else.91826:
 	lw	$31, 21($3)
 	lw	$5, 20($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 21($3)
 	addi	$3, $3, 22
@@ -47913,7 +47778,7 @@ ge_else.91826:
 	lw	$31, 21($3)
 	lw	$5, 20($3)
 	sw	$2, 4($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 21($3)
 	addi	$3, $3, 22
@@ -47927,9 +47792,8 @@ ge_else.91826:
 	jal	min_caml_create_array
 	addi	$3, $3, -22
 	lw	$31, 21($3)
-	addi	$5, $0, 3
 	sw	$2, 21($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 22($3)
 	addi	$3, $3, 23
@@ -47938,7 +47802,7 @@ ge_else.91826:
 	lw	$31, 22($3)
 	lw	$5, 21($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 22($3)
 	addi	$3, $3, 23
@@ -47947,7 +47811,7 @@ ge_else.91826:
 	lw	$31, 22($3)
 	lw	$5, 21($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 22($3)
 	addi	$3, $3, 23
@@ -47956,7 +47820,7 @@ ge_else.91826:
 	lw	$31, 22($3)
 	lw	$5, 21($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 22($3)
 	addi	$3, $3, 23
@@ -47972,9 +47836,8 @@ ge_else.91826:
 	jal	min_caml_create_array
 	addi	$3, $3, -23
 	lw	$31, 22($3)
-	addi	$5, $0, 3
 	sw	$2, 22($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 23($3)
 	addi	$3, $3, 24
@@ -47988,9 +47851,8 @@ ge_else.91826:
 	jal	min_caml_create_array
 	addi	$3, $3, -24
 	lw	$31, 23($3)
-	addi	$5, $0, 3
 	sw	$2, 23($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 24($3)
 	addi	$3, $3, 25
@@ -47999,7 +47861,7 @@ ge_else.91826:
 	lw	$31, 24($3)
 	lw	$5, 23($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 24($3)
 	addi	$3, $3, 25
@@ -48008,7 +47870,7 @@ ge_else.91826:
 	lw	$31, 24($3)
 	lw	$5, 23($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 24($3)
 	addi	$3, $3, 25
@@ -48017,7 +47879,7 @@ ge_else.91826:
 	lw	$31, 24($3)
 	lw	$5, 23($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 24($3)
 	addi	$3, $3, 25
@@ -48054,21 +47916,19 @@ ge_else.91826:
 	jal	init_line_elements.3122
 	addi	$3, $3, -25
 	lw	$31, 24($3)
-ge_cont.91827:
+ge_cont.92325:
 	lw	$5, 3141($0)
-	addi	$6, $0, 3
 	sw	$2, 24($3)
 	sw	$5, 25($3)
-	mov	$2, $6
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 26($3)
 	addi	$3, $3, 27
 	jal	min_caml_create_float_array
 	addi	$3, $3, -27
 	lw	$31, 26($3)
-	addi	$5, $0, 3
 	sw	$2, 26($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 27($3)
 	addi	$3, $3, 28
@@ -48082,9 +47942,8 @@ ge_cont.91827:
 	jal	min_caml_create_array
 	addi	$3, $3, -28
 	lw	$31, 27($3)
-	addi	$5, $0, 3
 	sw	$2, 27($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 28($3)
 	addi	$3, $3, 29
@@ -48093,7 +47952,7 @@ ge_cont.91827:
 	lw	$31, 28($3)
 	lw	$5, 27($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 28($3)
 	addi	$3, $3, 29
@@ -48102,7 +47961,7 @@ ge_cont.91827:
 	lw	$31, 28($3)
 	lw	$5, 27($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 28($3)
 	addi	$3, $3, 29
@@ -48111,7 +47970,7 @@ ge_cont.91827:
 	lw	$31, 28($3)
 	lw	$5, 27($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 28($3)
 	addi	$3, $3, 29
@@ -48136,9 +47995,8 @@ ge_cont.91827:
 	jal	min_caml_create_array
 	addi	$3, $3, -30
 	lw	$31, 29($3)
-	addi	$5, $0, 3
 	sw	$2, 29($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 30($3)
 	addi	$3, $3, 31
@@ -48152,9 +48010,8 @@ ge_cont.91827:
 	jal	min_caml_create_array
 	addi	$3, $3, -31
 	lw	$31, 30($3)
-	addi	$5, $0, 3
 	sw	$2, 30($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 31($3)
 	addi	$3, $3, 32
@@ -48163,7 +48020,7 @@ ge_cont.91827:
 	lw	$31, 31($3)
 	lw	$5, 30($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 31($3)
 	addi	$3, $3, 32
@@ -48172,7 +48029,7 @@ ge_cont.91827:
 	lw	$31, 31($3)
 	lw	$5, 30($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 31($3)
 	addi	$3, $3, 32
@@ -48181,7 +48038,7 @@ ge_cont.91827:
 	lw	$31, 31($3)
 	lw	$5, 30($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 31($3)
 	addi	$3, $3, 32
@@ -48190,7 +48047,7 @@ ge_cont.91827:
 	lw	$31, 31($3)
 	lw	$5, 30($3)
 	sw	$2, 4($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 31($3)
 	addi	$3, $3, 32
@@ -48204,9 +48061,8 @@ ge_cont.91827:
 	jal	min_caml_create_array
 	addi	$3, $3, -32
 	lw	$31, 31($3)
-	addi	$5, $0, 3
 	sw	$2, 31($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 32($3)
 	addi	$3, $3, 33
@@ -48215,7 +48071,7 @@ ge_cont.91827:
 	lw	$31, 32($3)
 	lw	$5, 31($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 32($3)
 	addi	$3, $3, 33
@@ -48224,7 +48080,7 @@ ge_cont.91827:
 	lw	$31, 32($3)
 	lw	$5, 31($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 32($3)
 	addi	$3, $3, 33
@@ -48233,7 +48089,7 @@ ge_cont.91827:
 	lw	$31, 32($3)
 	lw	$5, 31($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 32($3)
 	addi	$3, $3, 33
@@ -48249,9 +48105,8 @@ ge_cont.91827:
 	jal	min_caml_create_array
 	addi	$3, $3, -33
 	lw	$31, 32($3)
-	addi	$5, $0, 3
 	sw	$2, 32($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 33($3)
 	addi	$3, $3, 34
@@ -48265,9 +48120,8 @@ ge_cont.91827:
 	jal	min_caml_create_array
 	addi	$3, $3, -34
 	lw	$31, 33($3)
-	addi	$5, $0, 3
 	sw	$2, 33($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 34($3)
 	addi	$3, $3, 35
@@ -48276,7 +48130,7 @@ ge_cont.91827:
 	lw	$31, 34($3)
 	lw	$5, 33($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 34($3)
 	addi	$3, $3, 35
@@ -48285,7 +48139,7 @@ ge_cont.91827:
 	lw	$31, 34($3)
 	lw	$5, 33($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 34($3)
 	addi	$3, $3, 35
@@ -48294,7 +48148,7 @@ ge_cont.91827:
 	lw	$31, 34($3)
 	lw	$5, 33($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 34($3)
 	addi	$3, $3, 35
@@ -48329,22 +48183,20 @@ ge_cont.91827:
 	lw	$31, 34($3)
 	lw	$5, 3141($0)
 	addi	$5, $5, -2
-	bge	$5, $0, ge_else.91828
-	j	ge_cont.91829
-ge_else.91828:
-	addi	$6, $0, 3
+	bge	$5, $0, ge_else.92326
+	j	ge_cont.92327
+ge_else.92326:
 	sw	$5, 34($3)
 	sw	$2, 35($3)
-	mov	$2, $6
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 36($3)
 	addi	$3, $3, 37
 	jal	min_caml_create_float_array
 	addi	$3, $3, -37
 	lw	$31, 36($3)
-	addi	$5, $0, 3
 	sw	$2, 36($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 37($3)
 	addi	$3, $3, 38
@@ -48358,9 +48210,8 @@ ge_else.91828:
 	jal	min_caml_create_array
 	addi	$3, $3, -38
 	lw	$31, 37($3)
-	addi	$5, $0, 3
 	sw	$2, 37($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 38($3)
 	addi	$3, $3, 39
@@ -48369,7 +48220,7 @@ ge_else.91828:
 	lw	$31, 38($3)
 	lw	$5, 37($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 38($3)
 	addi	$3, $3, 39
@@ -48378,7 +48229,7 @@ ge_else.91828:
 	lw	$31, 38($3)
 	lw	$5, 37($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 38($3)
 	addi	$3, $3, 39
@@ -48387,7 +48238,7 @@ ge_else.91828:
 	lw	$31, 38($3)
 	lw	$5, 37($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 38($3)
 	addi	$3, $3, 39
@@ -48412,9 +48263,8 @@ ge_else.91828:
 	jal	min_caml_create_array
 	addi	$3, $3, -40
 	lw	$31, 39($3)
-	addi	$5, $0, 3
 	sw	$2, 39($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 40($3)
 	addi	$3, $3, 41
@@ -48428,9 +48278,8 @@ ge_else.91828:
 	jal	min_caml_create_array
 	addi	$3, $3, -41
 	lw	$31, 40($3)
-	addi	$5, $0, 3
 	sw	$2, 40($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 41($3)
 	addi	$3, $3, 42
@@ -48439,7 +48288,7 @@ ge_else.91828:
 	lw	$31, 41($3)
 	lw	$5, 40($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 41($3)
 	addi	$3, $3, 42
@@ -48448,7 +48297,7 @@ ge_else.91828:
 	lw	$31, 41($3)
 	lw	$5, 40($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 41($3)
 	addi	$3, $3, 42
@@ -48457,7 +48306,7 @@ ge_else.91828:
 	lw	$31, 41($3)
 	lw	$5, 40($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 41($3)
 	addi	$3, $3, 42
@@ -48466,7 +48315,7 @@ ge_else.91828:
 	lw	$31, 41($3)
 	lw	$5, 40($3)
 	sw	$2, 4($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 41($3)
 	addi	$3, $3, 42
@@ -48480,9 +48329,8 @@ ge_else.91828:
 	jal	min_caml_create_array
 	addi	$3, $3, -42
 	lw	$31, 41($3)
-	addi	$5, $0, 3
 	sw	$2, 41($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 42($3)
 	addi	$3, $3, 43
@@ -48491,7 +48339,7 @@ ge_else.91828:
 	lw	$31, 42($3)
 	lw	$5, 41($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 42($3)
 	addi	$3, $3, 43
@@ -48500,7 +48348,7 @@ ge_else.91828:
 	lw	$31, 42($3)
 	lw	$5, 41($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 42($3)
 	addi	$3, $3, 43
@@ -48509,7 +48357,7 @@ ge_else.91828:
 	lw	$31, 42($3)
 	lw	$5, 41($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 42($3)
 	addi	$3, $3, 43
@@ -48525,9 +48373,8 @@ ge_else.91828:
 	jal	min_caml_create_array
 	addi	$3, $3, -43
 	lw	$31, 42($3)
-	addi	$5, $0, 3
 	sw	$2, 42($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 43($3)
 	addi	$3, $3, 44
@@ -48541,9 +48388,8 @@ ge_else.91828:
 	jal	min_caml_create_array
 	addi	$3, $3, -44
 	lw	$31, 43($3)
-	addi	$5, $0, 3
 	sw	$2, 43($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 44($3)
 	addi	$3, $3, 45
@@ -48552,7 +48398,7 @@ ge_else.91828:
 	lw	$31, 44($3)
 	lw	$5, 43($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 44($3)
 	addi	$3, $3, 45
@@ -48561,7 +48407,7 @@ ge_else.91828:
 	lw	$31, 44($3)
 	lw	$5, 43($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 44($3)
 	addi	$3, $3, 45
@@ -48570,7 +48416,7 @@ ge_else.91828:
 	lw	$31, 44($3)
 	lw	$5, 43($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 44($3)
 	addi	$3, $3, 45
@@ -48607,21 +48453,19 @@ ge_else.91828:
 	jal	init_line_elements.3122
 	addi	$3, $3, -45
 	lw	$31, 44($3)
-ge_cont.91829:
+ge_cont.92327:
 	lw	$5, 3141($0)
-	addi	$6, $0, 3
 	sw	$2, 44($3)
 	sw	$5, 45($3)
-	mov	$2, $6
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 46($3)
 	addi	$3, $3, 47
 	jal	min_caml_create_float_array
 	addi	$3, $3, -47
 	lw	$31, 46($3)
-	addi	$5, $0, 3
 	sw	$2, 46($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 47($3)
 	addi	$3, $3, 48
@@ -48635,9 +48479,8 @@ ge_cont.91829:
 	jal	min_caml_create_array
 	addi	$3, $3, -48
 	lw	$31, 47($3)
-	addi	$5, $0, 3
 	sw	$2, 47($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 48($3)
 	addi	$3, $3, 49
@@ -48646,7 +48489,7 @@ ge_cont.91829:
 	lw	$31, 48($3)
 	lw	$5, 47($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 48($3)
 	addi	$3, $3, 49
@@ -48655,7 +48498,7 @@ ge_cont.91829:
 	lw	$31, 48($3)
 	lw	$5, 47($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 48($3)
 	addi	$3, $3, 49
@@ -48664,7 +48507,7 @@ ge_cont.91829:
 	lw	$31, 48($3)
 	lw	$5, 47($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 48($3)
 	addi	$3, $3, 49
@@ -48689,9 +48532,8 @@ ge_cont.91829:
 	jal	min_caml_create_array
 	addi	$3, $3, -50
 	lw	$31, 49($3)
-	addi	$5, $0, 3
 	sw	$2, 49($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 50($3)
 	addi	$3, $3, 51
@@ -48705,9 +48547,8 @@ ge_cont.91829:
 	jal	min_caml_create_array
 	addi	$3, $3, -51
 	lw	$31, 50($3)
-	addi	$5, $0, 3
 	sw	$2, 50($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 51($3)
 	addi	$3, $3, 52
@@ -48716,7 +48557,7 @@ ge_cont.91829:
 	lw	$31, 51($3)
 	lw	$5, 50($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 51($3)
 	addi	$3, $3, 52
@@ -48725,7 +48566,7 @@ ge_cont.91829:
 	lw	$31, 51($3)
 	lw	$5, 50($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 51($3)
 	addi	$3, $3, 52
@@ -48734,7 +48575,7 @@ ge_cont.91829:
 	lw	$31, 51($3)
 	lw	$5, 50($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 51($3)
 	addi	$3, $3, 52
@@ -48743,7 +48584,7 @@ ge_cont.91829:
 	lw	$31, 51($3)
 	lw	$5, 50($3)
 	sw	$2, 4($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 51($3)
 	addi	$3, $3, 52
@@ -48757,9 +48598,8 @@ ge_cont.91829:
 	jal	min_caml_create_array
 	addi	$3, $3, -52
 	lw	$31, 51($3)
-	addi	$5, $0, 3
 	sw	$2, 51($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 52($3)
 	addi	$3, $3, 53
@@ -48768,7 +48608,7 @@ ge_cont.91829:
 	lw	$31, 52($3)
 	lw	$5, 51($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 52($3)
 	addi	$3, $3, 53
@@ -48777,7 +48617,7 @@ ge_cont.91829:
 	lw	$31, 52($3)
 	lw	$5, 51($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 52($3)
 	addi	$3, $3, 53
@@ -48786,7 +48626,7 @@ ge_cont.91829:
 	lw	$31, 52($3)
 	lw	$5, 51($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 52($3)
 	addi	$3, $3, 53
@@ -48802,9 +48642,8 @@ ge_cont.91829:
 	jal	min_caml_create_array
 	addi	$3, $3, -53
 	lw	$31, 52($3)
-	addi	$5, $0, 3
 	sw	$2, 52($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 53($3)
 	addi	$3, $3, 54
@@ -48818,9 +48657,8 @@ ge_cont.91829:
 	jal	min_caml_create_array
 	addi	$3, $3, -54
 	lw	$31, 53($3)
-	addi	$5, $0, 3
 	sw	$2, 53($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 54($3)
 	addi	$3, $3, 55
@@ -48829,7 +48667,7 @@ ge_cont.91829:
 	lw	$31, 54($3)
 	lw	$5, 53($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 54($3)
 	addi	$3, $3, 55
@@ -48838,7 +48676,7 @@ ge_cont.91829:
 	lw	$31, 54($3)
 	lw	$5, 53($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 54($3)
 	addi	$3, $3, 55
@@ -48847,7 +48685,7 @@ ge_cont.91829:
 	lw	$31, 54($3)
 	lw	$5, 53($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 54($3)
 	addi	$3, $3, 55
@@ -48882,22 +48720,20 @@ ge_cont.91829:
 	lw	$31, 54($3)
 	lw	$5, 3141($0)
 	addi	$5, $5, -2
-	bge	$5, $0, ge_else.91830
-	j	ge_cont.91831
-ge_else.91830:
-	addi	$6, $0, 3
+	bge	$5, $0, ge_else.92328
+	j	ge_cont.92329
+ge_else.92328:
 	sw	$5, 54($3)
 	sw	$2, 55($3)
-	mov	$2, $6
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 56($3)
 	addi	$3, $3, 57
 	jal	min_caml_create_float_array
 	addi	$3, $3, -57
 	lw	$31, 56($3)
-	addi	$5, $0, 3
 	sw	$2, 56($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 57($3)
 	addi	$3, $3, 58
@@ -48911,9 +48747,8 @@ ge_else.91830:
 	jal	min_caml_create_array
 	addi	$3, $3, -58
 	lw	$31, 57($3)
-	addi	$5, $0, 3
 	sw	$2, 57($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 58($3)
 	addi	$3, $3, 59
@@ -48922,7 +48757,7 @@ ge_else.91830:
 	lw	$31, 58($3)
 	lw	$5, 57($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 58($3)
 	addi	$3, $3, 59
@@ -48931,7 +48766,7 @@ ge_else.91830:
 	lw	$31, 58($3)
 	lw	$5, 57($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 58($3)
 	addi	$3, $3, 59
@@ -48940,7 +48775,7 @@ ge_else.91830:
 	lw	$31, 58($3)
 	lw	$5, 57($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 58($3)
 	addi	$3, $3, 59
@@ -48965,9 +48800,8 @@ ge_else.91830:
 	jal	min_caml_create_array
 	addi	$3, $3, -60
 	lw	$31, 59($3)
-	addi	$5, $0, 3
 	sw	$2, 59($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 60($3)
 	addi	$3, $3, 61
@@ -48981,9 +48815,8 @@ ge_else.91830:
 	jal	min_caml_create_array
 	addi	$3, $3, -61
 	lw	$31, 60($3)
-	addi	$5, $0, 3
 	sw	$2, 60($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 61($3)
 	addi	$3, $3, 62
@@ -48992,7 +48825,7 @@ ge_else.91830:
 	lw	$31, 61($3)
 	lw	$5, 60($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 61($3)
 	addi	$3, $3, 62
@@ -49001,7 +48834,7 @@ ge_else.91830:
 	lw	$31, 61($3)
 	lw	$5, 60($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 61($3)
 	addi	$3, $3, 62
@@ -49010,7 +48843,7 @@ ge_else.91830:
 	lw	$31, 61($3)
 	lw	$5, 60($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 61($3)
 	addi	$3, $3, 62
@@ -49019,7 +48852,7 @@ ge_else.91830:
 	lw	$31, 61($3)
 	lw	$5, 60($3)
 	sw	$2, 4($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 61($3)
 	addi	$3, $3, 62
@@ -49033,9 +48866,8 @@ ge_else.91830:
 	jal	min_caml_create_array
 	addi	$3, $3, -62
 	lw	$31, 61($3)
-	addi	$5, $0, 3
 	sw	$2, 61($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 62($3)
 	addi	$3, $3, 63
@@ -49044,7 +48876,7 @@ ge_else.91830:
 	lw	$31, 62($3)
 	lw	$5, 61($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 62($3)
 	addi	$3, $3, 63
@@ -49053,7 +48885,7 @@ ge_else.91830:
 	lw	$31, 62($3)
 	lw	$5, 61($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 62($3)
 	addi	$3, $3, 63
@@ -49062,7 +48894,7 @@ ge_else.91830:
 	lw	$31, 62($3)
 	lw	$5, 61($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 62($3)
 	addi	$3, $3, 63
@@ -49078,9 +48910,8 @@ ge_else.91830:
 	jal	min_caml_create_array
 	addi	$3, $3, -63
 	lw	$31, 62($3)
-	addi	$5, $0, 3
 	sw	$2, 62($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 63($3)
 	addi	$3, $3, 64
@@ -49094,9 +48925,8 @@ ge_else.91830:
 	jal	min_caml_create_array
 	addi	$3, $3, -64
 	lw	$31, 63($3)
-	addi	$5, $0, 3
 	sw	$2, 63($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 64($3)
 	addi	$3, $3, 65
@@ -49105,7 +48935,7 @@ ge_else.91830:
 	lw	$31, 64($3)
 	lw	$5, 63($3)
 	sw	$2, 1($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 64($3)
 	addi	$3, $3, 65
@@ -49114,7 +48944,7 @@ ge_else.91830:
 	lw	$31, 64($3)
 	lw	$5, 63($3)
 	sw	$2, 2($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 64($3)
 	addi	$3, $3, 65
@@ -49123,7 +48953,7 @@ ge_else.91830:
 	lw	$31, 64($3)
 	lw	$5, 63($3)
 	sw	$2, 3($5)
-	addi	$2, $0, 3
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 64($3)
 	addi	$3, $3, 65
@@ -49160,7 +48990,7 @@ ge_else.91830:
 	jal	init_line_elements.3122
 	addi	$3, $3, -65
 	lw	$31, 64($3)
-ge_cont.91831:
+ge_cont.92329:
 	inf	$f0
 	sf	$f0, 3061($0)
 	inf	$f0
@@ -49170,25 +49000,25 @@ ge_cont.91831:
 	inf	$f0
 	lf	$f1, 3397($0) # 0.017453
 	fmul	$f0, $f0, $f1
-	bltf	$f30, $f0, fle.91832
+	bltf	$f30, $f0, fle.92330
 	movf	$f1, $f29
-	j	fle_cont.91833
-fle.91832:
+	j	fle_cont.92331
+fle.92330:
 	movf	$f1, $f28
-fle_cont.91833:
+fle_cont.92331:
 	fmul	$f1, $f1, $f0
 	lf	$f2, 3395($0) # 6.283185
 	fdiv	$f3, $f1, $f2
 	floor	$f3, $f3
 	fmul	$f2, $f3, $f2
 	fsub	$f1, $f1, $f2
-	bltf	$f1, $f31, fle.91834
+	bltf	$f1, $f31, fle.92332
 	fsub	$f1, $f1, $f31
 	lf	$f2, 3393($0) # 1.570796
-	bltf	$f1, $f2, fle.91836
+	bltf	$f1, $f2, fle.92334
 	fsub	$f1, $f31, $f1
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f1, fle.91838
+	bltf	$f2, $f1, fle.92336
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
@@ -49211,8 +49041,8 @@ fle_cont.91833:
 	fmul	$f1, $f1, $f4
 	fsub	$f1, $f2, $f1
 	fmul	$f1, $f28, $f1
-	j	fle_cont.91839
-fle.91838:
+	j	fle_cont.92337
+fle.92336:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f1, $f2, $f1
 	lf	$f2, 3391($0) # 0.166667
@@ -49240,11 +49070,11 @@ fle.91838:
 	fmul	$f1, $f1, $f4
 	fsub	$f1, $f2, $f1
 	fmul	$f1, $f28, $f1
-fle_cont.91839:
-	j	fle_cont.91837
-fle.91836:
+fle_cont.92337:
+	j	fle_cont.92335
+fle.92334:
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f1, fle.91840
+	bltf	$f2, $f1, fle.92338
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
@@ -49267,8 +49097,8 @@ fle.91836:
 	fmul	$f1, $f1, $f4
 	fsub	$f1, $f2, $f1
 	fmul	$f1, $f29, $f1
-	j	fle_cont.91841
-fle.91840:
+	j	fle_cont.92339
+fle.92338:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f1, $f2, $f1
 	lf	$f2, 3391($0) # 0.166667
@@ -49296,15 +49126,15 @@ fle.91840:
 	fmul	$f1, $f1, $f4
 	fsub	$f1, $f2, $f1
 	fmul	$f1, $f29, $f1
-fle_cont.91841:
-fle_cont.91837:
-	j	fle_cont.91835
-fle.91834:
+fle_cont.92339:
+fle_cont.92335:
+	j	fle_cont.92333
+fle.92332:
 	lf	$f2, 3393($0) # 1.570796
-	bltf	$f1, $f2, fle.91842
+	bltf	$f1, $f2, fle.92340
 	fsub	$f1, $f31, $f1
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f1, fle.91844
+	bltf	$f2, $f1, fle.92342
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
@@ -49327,8 +49157,8 @@ fle.91834:
 	fmul	$f1, $f1, $f4
 	fsub	$f1, $f2, $f1
 	fmul	$f1, $f29, $f1
-	j	fle_cont.91845
-fle.91844:
+	j	fle_cont.92343
+fle.92342:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f1, $f2, $f1
 	lf	$f2, 3391($0) # 0.166667
@@ -49356,11 +49186,11 @@ fle.91844:
 	fmul	$f1, $f1, $f4
 	fsub	$f1, $f2, $f1
 	fmul	$f1, $f29, $f1
-fle_cont.91845:
-	j	fle_cont.91843
-fle.91842:
+fle_cont.92343:
+	j	fle_cont.92341
+fle.92340:
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f1, fle.91846
+	bltf	$f2, $f1, fle.92344
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
@@ -49383,8 +49213,8 @@ fle.91842:
 	fmul	$f1, $f1, $f4
 	fsub	$f1, $f2, $f1
 	fmul	$f1, $f28, $f1
-	j	fle_cont.91847
-fle.91846:
+	j	fle_cont.92345
+fle.92344:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f1, $f2, $f1
 	lf	$f2, 3391($0) # 0.166667
@@ -49412,29 +49242,29 @@ fle.91846:
 	fmul	$f1, $f1, $f4
 	fsub	$f1, $f2, $f1
 	fmul	$f1, $f28, $f1
-fle_cont.91847:
-fle_cont.91843:
-fle_cont.91835:
-	bltf	$f30, $f0, fle.91848
+fle_cont.92345:
+fle_cont.92341:
+fle_cont.92333:
+	bltf	$f30, $f0, fle.92346
 	movf	$f2, $f29
-	j	fle_cont.91849
-fle.91848:
+	j	fle_cont.92347
+fle.92346:
 	movf	$f2, $f28
-fle_cont.91849:
+fle_cont.92347:
 	fmul	$f0, $f2, $f0
 	lf	$f3, 3395($0) # 6.283185
 	fdiv	$f4, $f0, $f3
 	floor	$f4, $f4
 	fmul	$f3, $f4, $f3
 	fsub	$f0, $f0, $f3
-	bltf	$f0, $f31, fle.91850
+	bltf	$f0, $f31, fle.92348
 	fsub	$f0, $f0, $f31
 	fneg	$f2, $f2
 	lf	$f3, 3393($0) # 1.570796
-	bltf	$f0, $f3, fle.91852
+	bltf	$f0, $f3, fle.92350
 	fsub	$f0, $f31, $f0
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f0, fle.91854
+	bltf	$f3, $f0, fle.92352
 	lf	$f3, 3391($0) # 0.166667
 	lf	$f4, 3390($0) # 0.008333
 	lf	$f5, 3389($0) # 0.000196
@@ -49460,8 +49290,8 @@ fle_cont.91849:
 	fmul	$f0, $f0, $f5
 	fsub	$f0, $f3, $f0
 	fmul	$f0, $f2, $f0
-	j	fle_cont.91855
-fle.91854:
+	j	fle_cont.92353
+fle.92352:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f0, $f3, $f0
 	lf	$f3, 3388($0) # 0.500000
@@ -49486,11 +49316,11 @@ fle.91854:
 	fmul	$f0, $f0, $f5
 	fsub	$f0, $f3, $f0
 	fmul	$f0, $f2, $f0
-fle_cont.91855:
-	j	fle_cont.91853
-fle.91852:
+fle_cont.92353:
+	j	fle_cont.92351
+fle.92350:
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f0, fle.91856
+	bltf	$f3, $f0, fle.92354
 	lf	$f3, 3391($0) # 0.166667
 	lf	$f4, 3390($0) # 0.008333
 	lf	$f5, 3389($0) # 0.000196
@@ -49516,8 +49346,8 @@ fle.91852:
 	fmul	$f0, $f0, $f5
 	fsub	$f0, $f3, $f0
 	fmul	$f0, $f2, $f0
-	j	fle_cont.91857
-fle.91856:
+	j	fle_cont.92355
+fle.92354:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f0, $f3, $f0
 	lf	$f3, 3388($0) # 0.500000
@@ -49542,15 +49372,15 @@ fle.91856:
 	fmul	$f0, $f0, $f5
 	fsub	$f0, $f3, $f0
 	fmul	$f0, $f2, $f0
-fle_cont.91857:
-fle_cont.91853:
-	j	fle_cont.91851
-fle.91850:
+fle_cont.92355:
+fle_cont.92351:
+	j	fle_cont.92349
+fle.92348:
 	lf	$f3, 3393($0) # 1.570796
-	bltf	$f0, $f3, fle.91858
+	bltf	$f0, $f3, fle.92356
 	fsub	$f0, $f31, $f0
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f0, fle.91860
+	bltf	$f3, $f0, fle.92358
 	lf	$f3, 3391($0) # 0.166667
 	lf	$f4, 3390($0) # 0.008333
 	lf	$f5, 3389($0) # 0.000196
@@ -49576,8 +49406,8 @@ fle.91850:
 	fmul	$f0, $f0, $f5
 	fsub	$f0, $f3, $f0
 	fmul	$f0, $f2, $f0
-	j	fle_cont.91861
-fle.91860:
+	j	fle_cont.92359
+fle.92358:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f0, $f3, $f0
 	lf	$f3, 3388($0) # 0.500000
@@ -49602,11 +49432,11 @@ fle.91860:
 	fmul	$f0, $f0, $f5
 	fsub	$f0, $f3, $f0
 	fmul	$f0, $f2, $f0
-fle_cont.91861:
-	j	fle_cont.91859
-fle.91858:
+fle_cont.92359:
+	j	fle_cont.92357
+fle.92356:
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f0, fle.91862
+	bltf	$f3, $f0, fle.92360
 	lf	$f3, 3391($0) # 0.166667
 	lf	$f4, 3390($0) # 0.008333
 	lf	$f5, 3389($0) # 0.000196
@@ -49632,8 +49462,8 @@ fle.91858:
 	fmul	$f0, $f0, $f5
 	fsub	$f0, $f3, $f0
 	fmul	$f0, $f2, $f0
-	j	fle_cont.91863
-fle.91862:
+	j	fle_cont.92361
+fle.92360:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f0, $f3, $f0
 	lf	$f3, 3388($0) # 0.500000
@@ -49658,31 +49488,31 @@ fle.91862:
 	fmul	$f0, $f0, $f5
 	fsub	$f0, $f3, $f0
 	fmul	$f0, $f2, $f0
-fle_cont.91863:
-fle_cont.91859:
-fle_cont.91851:
+fle_cont.92361:
+fle_cont.92357:
+fle_cont.92349:
 	inf	$f2
 	lf	$f3, 3397($0) # 0.017453
 	fmul	$f2, $f2, $f3
-	bltf	$f30, $f2, fle.91864
+	bltf	$f30, $f2, fle.92362
 	movf	$f3, $f29
-	j	fle_cont.91865
-fle.91864:
+	j	fle_cont.92363
+fle.92362:
 	movf	$f3, $f28
-fle_cont.91865:
+fle_cont.92363:
 	fmul	$f3, $f3, $f2
 	lf	$f4, 3395($0) # 6.283185
 	fdiv	$f5, $f3, $f4
 	floor	$f5, $f5
 	fmul	$f4, $f5, $f4
 	fsub	$f3, $f3, $f4
-	bltf	$f3, $f31, fle.91866
+	bltf	$f3, $f31, fle.92364
 	fsub	$f3, $f3, $f31
 	lf	$f4, 3393($0) # 1.570796
-	bltf	$f3, $f4, fle.91868
+	bltf	$f3, $f4, fle.92366
 	fsub	$f3, $f31, $f3
 	lf	$f4, 3392($0) # 0.785398
-	bltf	$f4, $f3, fle.91870
+	bltf	$f4, $f3, fle.92368
 	lf	$f4, 3388($0) # 0.500000
 	lf	$f5, 3387($0) # 0.041664
 	lf	$f6, 3386($0) # 0.001370
@@ -49705,8 +49535,8 @@ fle_cont.91865:
 	fmul	$f3, $f3, $f6
 	fsub	$f3, $f4, $f3
 	fmul	$f3, $f28, $f3
-	j	fle_cont.91871
-fle.91870:
+	j	fle_cont.92369
+fle.92368:
 	lf	$f4, 3393($0) # 1.570796
 	fsub	$f3, $f4, $f3
 	lf	$f4, 3391($0) # 0.166667
@@ -49734,11 +49564,11 @@ fle.91870:
 	fmul	$f3, $f3, $f6
 	fsub	$f3, $f4, $f3
 	fmul	$f3, $f28, $f3
-fle_cont.91871:
-	j	fle_cont.91869
-fle.91868:
+fle_cont.92369:
+	j	fle_cont.92367
+fle.92366:
 	lf	$f4, 3392($0) # 0.785398
-	bltf	$f4, $f3, fle.91872
+	bltf	$f4, $f3, fle.92370
 	lf	$f4, 3388($0) # 0.500000
 	lf	$f5, 3387($0) # 0.041664
 	lf	$f6, 3386($0) # 0.001370
@@ -49761,8 +49591,8 @@ fle.91868:
 	fmul	$f3, $f3, $f6
 	fsub	$f3, $f4, $f3
 	fmul	$f3, $f29, $f3
-	j	fle_cont.91873
-fle.91872:
+	j	fle_cont.92371
+fle.92370:
 	lf	$f4, 3393($0) # 1.570796
 	fsub	$f3, $f4, $f3
 	lf	$f4, 3391($0) # 0.166667
@@ -49790,15 +49620,15 @@ fle.91872:
 	fmul	$f3, $f3, $f6
 	fsub	$f3, $f4, $f3
 	fmul	$f3, $f29, $f3
-fle_cont.91873:
-fle_cont.91869:
-	j	fle_cont.91867
-fle.91866:
+fle_cont.92371:
+fle_cont.92367:
+	j	fle_cont.92365
+fle.92364:
 	lf	$f4, 3393($0) # 1.570796
-	bltf	$f3, $f4, fle.91874
+	bltf	$f3, $f4, fle.92372
 	fsub	$f3, $f31, $f3
 	lf	$f4, 3392($0) # 0.785398
-	bltf	$f4, $f3, fle.91876
+	bltf	$f4, $f3, fle.92374
 	lf	$f4, 3388($0) # 0.500000
 	lf	$f5, 3387($0) # 0.041664
 	lf	$f6, 3386($0) # 0.001370
@@ -49821,8 +49651,8 @@ fle.91866:
 	fmul	$f3, $f3, $f6
 	fsub	$f3, $f4, $f3
 	fmul	$f3, $f29, $f3
-	j	fle_cont.91877
-fle.91876:
+	j	fle_cont.92375
+fle.92374:
 	lf	$f4, 3393($0) # 1.570796
 	fsub	$f3, $f4, $f3
 	lf	$f4, 3391($0) # 0.166667
@@ -49850,11 +49680,11 @@ fle.91876:
 	fmul	$f3, $f3, $f6
 	fsub	$f3, $f4, $f3
 	fmul	$f3, $f29, $f3
-fle_cont.91877:
-	j	fle_cont.91875
-fle.91874:
+fle_cont.92375:
+	j	fle_cont.92373
+fle.92372:
 	lf	$f4, 3392($0) # 0.785398
-	bltf	$f4, $f3, fle.91878
+	bltf	$f4, $f3, fle.92376
 	lf	$f4, 3388($0) # 0.500000
 	lf	$f5, 3387($0) # 0.041664
 	lf	$f6, 3386($0) # 0.001370
@@ -49877,8 +49707,8 @@ fle.91874:
 	fmul	$f3, $f3, $f6
 	fsub	$f3, $f4, $f3
 	fmul	$f3, $f28, $f3
-	j	fle_cont.91879
-fle.91878:
+	j	fle_cont.92377
+fle.92376:
 	lf	$f4, 3393($0) # 1.570796
 	fsub	$f3, $f4, $f3
 	lf	$f4, 3391($0) # 0.166667
@@ -49906,29 +49736,29 @@ fle.91878:
 	fmul	$f3, $f3, $f6
 	fsub	$f3, $f4, $f3
 	fmul	$f3, $f28, $f3
-fle_cont.91879:
-fle_cont.91875:
-fle_cont.91867:
-	bltf	$f30, $f2, fle.91880
+fle_cont.92377:
+fle_cont.92373:
+fle_cont.92365:
+	bltf	$f30, $f2, fle.92378
 	movf	$f4, $f29
-	j	fle_cont.91881
-fle.91880:
+	j	fle_cont.92379
+fle.92378:
 	movf	$f4, $f28
-fle_cont.91881:
+fle_cont.92379:
 	fmul	$f2, $f4, $f2
 	lf	$f5, 3395($0) # 6.283185
 	fdiv	$f6, $f2, $f5
 	floor	$f6, $f6
 	fmul	$f5, $f6, $f5
 	fsub	$f2, $f2, $f5
-	bltf	$f2, $f31, fle.91882
+	bltf	$f2, $f31, fle.92380
 	fsub	$f2, $f2, $f31
 	fneg	$f4, $f4
 	lf	$f5, 3393($0) # 1.570796
-	bltf	$f2, $f5, fle.91884
+	bltf	$f2, $f5, fle.92382
 	fsub	$f2, $f31, $f2
 	lf	$f5, 3392($0) # 0.785398
-	bltf	$f5, $f2, fle.91886
+	bltf	$f5, $f2, fle.92384
 	lf	$f5, 3391($0) # 0.166667
 	lf	$f6, 3390($0) # 0.008333
 	lf	$f7, 3389($0) # 0.000196
@@ -49954,8 +49784,8 @@ fle_cont.91881:
 	fmul	$f2, $f2, $f7
 	fsub	$f2, $f5, $f2
 	fmul	$f2, $f4, $f2
-	j	fle_cont.91887
-fle.91886:
+	j	fle_cont.92385
+fle.92384:
 	lf	$f5, 3393($0) # 1.570796
 	fsub	$f2, $f5, $f2
 	lf	$f5, 3388($0) # 0.500000
@@ -49980,11 +49810,11 @@ fle.91886:
 	fmul	$f2, $f2, $f7
 	fsub	$f2, $f5, $f2
 	fmul	$f2, $f4, $f2
-fle_cont.91887:
-	j	fle_cont.91885
-fle.91884:
+fle_cont.92385:
+	j	fle_cont.92383
+fle.92382:
 	lf	$f5, 3392($0) # 0.785398
-	bltf	$f5, $f2, fle.91888
+	bltf	$f5, $f2, fle.92386
 	lf	$f5, 3391($0) # 0.166667
 	lf	$f6, 3390($0) # 0.008333
 	lf	$f7, 3389($0) # 0.000196
@@ -50010,8 +49840,8 @@ fle.91884:
 	fmul	$f2, $f2, $f7
 	fsub	$f2, $f5, $f2
 	fmul	$f2, $f4, $f2
-	j	fle_cont.91889
-fle.91888:
+	j	fle_cont.92387
+fle.92386:
 	lf	$f5, 3393($0) # 1.570796
 	fsub	$f2, $f5, $f2
 	lf	$f5, 3388($0) # 0.500000
@@ -50036,15 +49866,15 @@ fle.91888:
 	fmul	$f2, $f2, $f7
 	fsub	$f2, $f5, $f2
 	fmul	$f2, $f4, $f2
-fle_cont.91889:
-fle_cont.91885:
-	j	fle_cont.91883
-fle.91882:
+fle_cont.92387:
+fle_cont.92383:
+	j	fle_cont.92381
+fle.92380:
 	lf	$f5, 3393($0) # 1.570796
-	bltf	$f2, $f5, fle.91890
+	bltf	$f2, $f5, fle.92388
 	fsub	$f2, $f31, $f2
 	lf	$f5, 3392($0) # 0.785398
-	bltf	$f5, $f2, fle.91892
+	bltf	$f5, $f2, fle.92390
 	lf	$f5, 3391($0) # 0.166667
 	lf	$f6, 3390($0) # 0.008333
 	lf	$f7, 3389($0) # 0.000196
@@ -50070,8 +49900,8 @@ fle.91882:
 	fmul	$f2, $f2, $f7
 	fsub	$f2, $f5, $f2
 	fmul	$f2, $f4, $f2
-	j	fle_cont.91893
-fle.91892:
+	j	fle_cont.92391
+fle.92390:
 	lf	$f5, 3393($0) # 1.570796
 	fsub	$f2, $f5, $f2
 	lf	$f5, 3388($0) # 0.500000
@@ -50096,11 +49926,11 @@ fle.91892:
 	fmul	$f2, $f2, $f7
 	fsub	$f2, $f5, $f2
 	fmul	$f2, $f4, $f2
-fle_cont.91893:
-	j	fle_cont.91891
-fle.91890:
+fle_cont.92391:
+	j	fle_cont.92389
+fle.92388:
 	lf	$f5, 3392($0) # 0.785398
-	bltf	$f5, $f2, fle.91894
+	bltf	$f5, $f2, fle.92392
 	lf	$f5, 3391($0) # 0.166667
 	lf	$f6, 3390($0) # 0.008333
 	lf	$f7, 3389($0) # 0.000196
@@ -50126,8 +49956,8 @@ fle.91890:
 	fmul	$f2, $f2, $f7
 	fsub	$f2, $f5, $f2
 	fmul	$f2, $f4, $f2
-	j	fle_cont.91895
-fle.91894:
+	j	fle_cont.92393
+fle.92392:
 	lf	$f5, 3393($0) # 1.570796
 	fsub	$f2, $f5, $f2
 	lf	$f5, 3388($0) # 0.500000
@@ -50152,9 +49982,9 @@ fle.91894:
 	fmul	$f2, $f2, $f7
 	fsub	$f2, $f5, $f2
 	fmul	$f2, $f4, $f2
-fle_cont.91895:
-fle_cont.91891:
-fle_cont.91883:
+fle_cont.92393:
+fle_cont.92389:
+fle_cont.92381:
 	fmul	$f4, $f1, $f2
 	lf	$f5, 3353($0) # 200.000000
 	fmul	$f4, $f4, $f5
@@ -50194,26 +50024,26 @@ fle_cont.91883:
 	inf	$f0
 	lf	$f1, 3397($0) # 0.017453
 	fmul	$f0, $f0, $f1
-	bltf	$f30, $f0, fle.91896
+	bltf	$f30, $f0, fle.92394
 	movf	$f1, $f29
-	j	fle_cont.91897
-fle.91896:
+	j	fle_cont.92395
+fle.92394:
 	movf	$f1, $f28
-fle_cont.91897:
+fle_cont.92395:
 	fmul	$f2, $f1, $f0
 	lf	$f3, 3395($0) # 6.283185
 	fdiv	$f4, $f2, $f3
 	floor	$f4, $f4
 	fmul	$f3, $f4, $f3
 	fsub	$f2, $f2, $f3
-	bltf	$f2, $f31, fle.91898
+	bltf	$f2, $f31, fle.92396
 	fsub	$f2, $f2, $f31
 	fneg	$f1, $f1
 	lf	$f3, 3393($0) # 1.570796
-	bltf	$f2, $f3, fle.91900
+	bltf	$f2, $f3, fle.92398
 	fsub	$f2, $f31, $f2
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f2, fle.91902
+	bltf	$f3, $f2, fle.92400
 	lf	$f3, 3391($0) # 0.166667
 	lf	$f4, 3390($0) # 0.008333
 	lf	$f5, 3389($0) # 0.000196
@@ -50239,8 +50069,8 @@ fle_cont.91897:
 	fmul	$f2, $f2, $f5
 	fsub	$f2, $f3, $f2
 	fmul	$f1, $f1, $f2
-	j	fle_cont.91903
-fle.91902:
+	j	fle_cont.92401
+fle.92400:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f2, $f3, $f2
 	lf	$f3, 3388($0) # 0.500000
@@ -50265,11 +50095,11 @@ fle.91902:
 	fmul	$f2, $f2, $f5
 	fsub	$f2, $f3, $f2
 	fmul	$f1, $f1, $f2
-fle_cont.91903:
-	j	fle_cont.91901
-fle.91900:
+fle_cont.92401:
+	j	fle_cont.92399
+fle.92398:
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f2, fle.91904
+	bltf	$f3, $f2, fle.92402
 	lf	$f3, 3391($0) # 0.166667
 	lf	$f4, 3390($0) # 0.008333
 	lf	$f5, 3389($0) # 0.000196
@@ -50295,8 +50125,8 @@ fle.91900:
 	fmul	$f2, $f2, $f5
 	fsub	$f2, $f3, $f2
 	fmul	$f1, $f1, $f2
-	j	fle_cont.91905
-fle.91904:
+	j	fle_cont.92403
+fle.92402:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f2, $f3, $f2
 	lf	$f3, 3388($0) # 0.500000
@@ -50321,15 +50151,15 @@ fle.91904:
 	fmul	$f2, $f2, $f5
 	fsub	$f2, $f3, $f2
 	fmul	$f1, $f1, $f2
-fle_cont.91905:
-fle_cont.91901:
-	j	fle_cont.91899
-fle.91898:
+fle_cont.92403:
+fle_cont.92399:
+	j	fle_cont.92397
+fle.92396:
 	lf	$f3, 3393($0) # 1.570796
-	bltf	$f2, $f3, fle.91906
+	bltf	$f2, $f3, fle.92404
 	fsub	$f2, $f31, $f2
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f2, fle.91908
+	bltf	$f3, $f2, fle.92406
 	lf	$f3, 3391($0) # 0.166667
 	lf	$f4, 3390($0) # 0.008333
 	lf	$f5, 3389($0) # 0.000196
@@ -50355,8 +50185,8 @@ fle.91898:
 	fmul	$f2, $f2, $f5
 	fsub	$f2, $f3, $f2
 	fmul	$f1, $f1, $f2
-	j	fle_cont.91909
-fle.91908:
+	j	fle_cont.92407
+fle.92406:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f2, $f3, $f2
 	lf	$f3, 3388($0) # 0.500000
@@ -50381,11 +50211,11 @@ fle.91908:
 	fmul	$f2, $f2, $f5
 	fsub	$f2, $f3, $f2
 	fmul	$f1, $f1, $f2
-fle_cont.91909:
-	j	fle_cont.91907
-fle.91906:
+fle_cont.92407:
+	j	fle_cont.92405
+fle.92404:
 	lf	$f3, 3392($0) # 0.785398
-	bltf	$f3, $f2, fle.91910
+	bltf	$f3, $f2, fle.92408
 	lf	$f3, 3391($0) # 0.166667
 	lf	$f4, 3390($0) # 0.008333
 	lf	$f5, 3389($0) # 0.000196
@@ -50411,8 +50241,8 @@ fle.91906:
 	fmul	$f2, $f2, $f5
 	fsub	$f2, $f3, $f2
 	fmul	$f1, $f1, $f2
-	j	fle_cont.91911
-fle.91910:
+	j	fle_cont.92409
+fle.92408:
 	lf	$f3, 3393($0) # 1.570796
 	fsub	$f2, $f3, $f2
 	lf	$f3, 3388($0) # 0.500000
@@ -50437,33 +50267,33 @@ fle.91910:
 	fmul	$f2, $f2, $f5
 	fsub	$f2, $f3, $f2
 	fmul	$f1, $f1, $f2
-fle_cont.91911:
-fle_cont.91907:
-fle_cont.91899:
+fle_cont.92409:
+fle_cont.92405:
+fle_cont.92397:
 	fneg	$f1, $f1
 	sf	$f1, 3068($0)
 	inf	$f1
 	lf	$f2, 3397($0) # 0.017453
 	fmul	$f1, $f1, $f2
-	bltf	$f30, $f0, fle.91912
+	bltf	$f30, $f0, fle.92410
 	movf	$f2, $f29
-	j	fle_cont.91913
-fle.91912:
+	j	fle_cont.92411
+fle.92410:
 	movf	$f2, $f28
-fle_cont.91913:
+fle_cont.92411:
 	fmul	$f0, $f2, $f0
 	lf	$f2, 3395($0) # 6.283185
 	fdiv	$f3, $f0, $f2
 	floor	$f3, $f3
 	fmul	$f2, $f3, $f2
 	fsub	$f0, $f0, $f2
-	bltf	$f0, $f31, fle.91914
+	bltf	$f0, $f31, fle.92412
 	fsub	$f0, $f0, $f31
 	lf	$f2, 3393($0) # 1.570796
-	bltf	$f0, $f2, fle.91916
+	bltf	$f0, $f2, fle.92414
 	fsub	$f0, $f31, $f0
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.91918
+	bltf	$f2, $f0, fle.92416
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
@@ -50486,8 +50316,8 @@ fle_cont.91913:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f28, $f0
-	j	fle_cont.91919
-fle.91918:
+	j	fle_cont.92417
+fle.92416:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3391($0) # 0.166667
@@ -50515,11 +50345,11 @@ fle.91918:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f28, $f0
-fle_cont.91919:
-	j	fle_cont.91917
-fle.91916:
+fle_cont.92417:
+	j	fle_cont.92415
+fle.92414:
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.91920
+	bltf	$f2, $f0, fle.92418
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
@@ -50542,8 +50372,8 @@ fle.91916:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f29, $f0
-	j	fle_cont.91921
-fle.91920:
+	j	fle_cont.92419
+fle.92418:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3391($0) # 0.166667
@@ -50571,15 +50401,15 @@ fle.91920:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f29, $f0
-fle_cont.91921:
-fle_cont.91917:
-	j	fle_cont.91915
-fle.91914:
+fle_cont.92419:
+fle_cont.92415:
+	j	fle_cont.92413
+fle.92412:
 	lf	$f2, 3393($0) # 1.570796
-	bltf	$f0, $f2, fle.91922
+	bltf	$f0, $f2, fle.92420
 	fsub	$f0, $f31, $f0
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.91924
+	bltf	$f2, $f0, fle.92422
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
@@ -50602,8 +50432,8 @@ fle.91914:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f29, $f0
-	j	fle_cont.91925
-fle.91924:
+	j	fle_cont.92423
+fle.92422:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3391($0) # 0.166667
@@ -50631,11 +50461,11 @@ fle.91924:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f29, $f0
-fle_cont.91925:
-	j	fle_cont.91923
-fle.91922:
+fle_cont.92423:
+	j	fle_cont.92421
+fle.92420:
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f0, fle.91926
+	bltf	$f2, $f0, fle.92424
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
@@ -50658,8 +50488,8 @@ fle.91922:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f28, $f0
-	j	fle_cont.91927
-fle.91926:
+	j	fle_cont.92425
+fle.92424:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f0, $f2, $f0
 	lf	$f2, 3391($0) # 0.166667
@@ -50687,29 +50517,29 @@ fle.91926:
 	fmul	$f0, $f0, $f4
 	fsub	$f0, $f2, $f0
 	fmul	$f0, $f28, $f0
-fle_cont.91927:
-fle_cont.91923:
-fle_cont.91915:
-	bltf	$f30, $f1, fle.91928
+fle_cont.92425:
+fle_cont.92421:
+fle_cont.92413:
+	bltf	$f30, $f1, fle.92426
 	movf	$f2, $f29
-	j	fle_cont.91929
-fle.91928:
+	j	fle_cont.92427
+fle.92426:
 	movf	$f2, $f28
-fle_cont.91929:
+fle_cont.92427:
 	fmul	$f3, $f2, $f1
 	lf	$f4, 3395($0) # 6.283185
 	fdiv	$f5, $f3, $f4
 	floor	$f5, $f5
 	fmul	$f4, $f5, $f4
 	fsub	$f3, $f3, $f4
-	bltf	$f3, $f31, fle.91930
+	bltf	$f3, $f31, fle.92428
 	fsub	$f3, $f3, $f31
 	fneg	$f2, $f2
 	lf	$f4, 3393($0) # 1.570796
-	bltf	$f3, $f4, fle.91932
+	bltf	$f3, $f4, fle.92430
 	fsub	$f3, $f31, $f3
 	lf	$f4, 3392($0) # 0.785398
-	bltf	$f4, $f3, fle.91934
+	bltf	$f4, $f3, fle.92432
 	lf	$f4, 3391($0) # 0.166667
 	lf	$f5, 3390($0) # 0.008333
 	lf	$f6, 3389($0) # 0.000196
@@ -50735,8 +50565,8 @@ fle_cont.91929:
 	fmul	$f3, $f3, $f6
 	fsub	$f3, $f4, $f3
 	fmul	$f2, $f2, $f3
-	j	fle_cont.91935
-fle.91934:
+	j	fle_cont.92433
+fle.92432:
 	lf	$f4, 3393($0) # 1.570796
 	fsub	$f3, $f4, $f3
 	lf	$f4, 3388($0) # 0.500000
@@ -50761,11 +50591,11 @@ fle.91934:
 	fmul	$f3, $f3, $f6
 	fsub	$f3, $f4, $f3
 	fmul	$f2, $f2, $f3
-fle_cont.91935:
-	j	fle_cont.91933
-fle.91932:
+fle_cont.92433:
+	j	fle_cont.92431
+fle.92430:
 	lf	$f4, 3392($0) # 0.785398
-	bltf	$f4, $f3, fle.91936
+	bltf	$f4, $f3, fle.92434
 	lf	$f4, 3391($0) # 0.166667
 	lf	$f5, 3390($0) # 0.008333
 	lf	$f6, 3389($0) # 0.000196
@@ -50791,8 +50621,8 @@ fle.91932:
 	fmul	$f3, $f3, $f6
 	fsub	$f3, $f4, $f3
 	fmul	$f2, $f2, $f3
-	j	fle_cont.91937
-fle.91936:
+	j	fle_cont.92435
+fle.92434:
 	lf	$f4, 3393($0) # 1.570796
 	fsub	$f3, $f4, $f3
 	lf	$f4, 3388($0) # 0.500000
@@ -50817,15 +50647,15 @@ fle.91936:
 	fmul	$f3, $f3, $f6
 	fsub	$f3, $f4, $f3
 	fmul	$f2, $f2, $f3
-fle_cont.91937:
-fle_cont.91933:
-	j	fle_cont.91931
-fle.91930:
+fle_cont.92435:
+fle_cont.92431:
+	j	fle_cont.92429
+fle.92428:
 	lf	$f4, 3393($0) # 1.570796
-	bltf	$f3, $f4, fle.91938
+	bltf	$f3, $f4, fle.92436
 	fsub	$f3, $f31, $f3
 	lf	$f4, 3392($0) # 0.785398
-	bltf	$f4, $f3, fle.91940
+	bltf	$f4, $f3, fle.92438
 	lf	$f4, 3391($0) # 0.166667
 	lf	$f5, 3390($0) # 0.008333
 	lf	$f6, 3389($0) # 0.000196
@@ -50851,8 +50681,8 @@ fle.91930:
 	fmul	$f3, $f3, $f6
 	fsub	$f3, $f4, $f3
 	fmul	$f2, $f2, $f3
-	j	fle_cont.91941
-fle.91940:
+	j	fle_cont.92439
+fle.92438:
 	lf	$f4, 3393($0) # 1.570796
 	fsub	$f3, $f4, $f3
 	lf	$f4, 3388($0) # 0.500000
@@ -50877,11 +50707,11 @@ fle.91940:
 	fmul	$f3, $f3, $f6
 	fsub	$f3, $f4, $f3
 	fmul	$f2, $f2, $f3
-fle_cont.91941:
-	j	fle_cont.91939
-fle.91938:
+fle_cont.92439:
+	j	fle_cont.92437
+fle.92436:
 	lf	$f4, 3392($0) # 0.785398
-	bltf	$f4, $f3, fle.91942
+	bltf	$f4, $f3, fle.92440
 	lf	$f4, 3391($0) # 0.166667
 	lf	$f5, 3390($0) # 0.008333
 	lf	$f6, 3389($0) # 0.000196
@@ -50907,8 +50737,8 @@ fle.91938:
 	fmul	$f3, $f3, $f6
 	fsub	$f3, $f4, $f3
 	fmul	$f2, $f2, $f3
-	j	fle_cont.91943
-fle.91942:
+	j	fle_cont.92441
+fle.92440:
 	lf	$f4, 3393($0) # 1.570796
 	fsub	$f3, $f4, $f3
 	lf	$f4, 3388($0) # 0.500000
@@ -50933,30 +50763,30 @@ fle.91942:
 	fmul	$f3, $f3, $f6
 	fsub	$f3, $f4, $f3
 	fmul	$f2, $f2, $f3
-fle_cont.91943:
-fle_cont.91939:
-fle_cont.91931:
+fle_cont.92441:
+fle_cont.92437:
+fle_cont.92429:
 	fmul	$f2, $f0, $f2
 	sf	$f2, 3067($0)
-	bltf	$f30, $f1, fle.91944
+	bltf	$f30, $f1, fle.92442
 	movf	$f2, $f29
-	j	fle_cont.91945
-fle.91944:
+	j	fle_cont.92443
+fle.92442:
 	movf	$f2, $f28
-fle_cont.91945:
+fle_cont.92443:
 	fmul	$f1, $f2, $f1
 	lf	$f2, 3395($0) # 6.283185
 	fdiv	$f3, $f1, $f2
 	floor	$f3, $f3
 	fmul	$f2, $f3, $f2
 	fsub	$f1, $f1, $f2
-	bltf	$f1, $f31, fle.91946
+	bltf	$f1, $f31, fle.92444
 	fsub	$f1, $f1, $f31
 	lf	$f2, 3393($0) # 1.570796
-	bltf	$f1, $f2, fle.91948
+	bltf	$f1, $f2, fle.92446
 	fsub	$f1, $f31, $f1
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f1, fle.91950
+	bltf	$f2, $f1, fle.92448
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
@@ -50979,8 +50809,8 @@ fle_cont.91945:
 	fmul	$f1, $f1, $f4
 	fsub	$f1, $f2, $f1
 	fmul	$f1, $f28, $f1
-	j	fle_cont.91951
-fle.91950:
+	j	fle_cont.92449
+fle.92448:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f1, $f2, $f1
 	lf	$f2, 3391($0) # 0.166667
@@ -51008,11 +50838,11 @@ fle.91950:
 	fmul	$f1, $f1, $f4
 	fsub	$f1, $f2, $f1
 	fmul	$f1, $f28, $f1
-fle_cont.91951:
-	j	fle_cont.91949
-fle.91948:
+fle_cont.92449:
+	j	fle_cont.92447
+fle.92446:
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f1, fle.91952
+	bltf	$f2, $f1, fle.92450
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
@@ -51035,8 +50865,8 @@ fle.91948:
 	fmul	$f1, $f1, $f4
 	fsub	$f1, $f2, $f1
 	fmul	$f1, $f29, $f1
-	j	fle_cont.91953
-fle.91952:
+	j	fle_cont.92451
+fle.92450:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f1, $f2, $f1
 	lf	$f2, 3391($0) # 0.166667
@@ -51064,15 +50894,15 @@ fle.91952:
 	fmul	$f1, $f1, $f4
 	fsub	$f1, $f2, $f1
 	fmul	$f1, $f29, $f1
-fle_cont.91953:
-fle_cont.91949:
-	j	fle_cont.91947
-fle.91946:
+fle_cont.92451:
+fle_cont.92447:
+	j	fle_cont.92445
+fle.92444:
 	lf	$f2, 3393($0) # 1.570796
-	bltf	$f1, $f2, fle.91954
+	bltf	$f1, $f2, fle.92452
 	fsub	$f1, $f31, $f1
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f1, fle.91956
+	bltf	$f2, $f1, fle.92454
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
@@ -51095,8 +50925,8 @@ fle.91946:
 	fmul	$f1, $f1, $f4
 	fsub	$f1, $f2, $f1
 	fmul	$f1, $f29, $f1
-	j	fle_cont.91957
-fle.91956:
+	j	fle_cont.92455
+fle.92454:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f1, $f2, $f1
 	lf	$f2, 3391($0) # 0.166667
@@ -51124,11 +50954,11 @@ fle.91956:
 	fmul	$f1, $f1, $f4
 	fsub	$f1, $f2, $f1
 	fmul	$f1, $f29, $f1
-fle_cont.91957:
-	j	fle_cont.91955
-fle.91954:
+fle_cont.92455:
+	j	fle_cont.92453
+fle.92452:
 	lf	$f2, 3392($0) # 0.785398
-	bltf	$f2, $f1, fle.91958
+	bltf	$f2, $f1, fle.92456
 	lf	$f2, 3388($0) # 0.500000
 	lf	$f3, 3387($0) # 0.041664
 	lf	$f4, 3386($0) # 0.001370
@@ -51151,8 +50981,8 @@ fle.91954:
 	fmul	$f1, $f1, $f4
 	fsub	$f1, $f2, $f1
 	fmul	$f1, $f28, $f1
-	j	fle_cont.91959
-fle.91958:
+	j	fle_cont.92457
+fle.92456:
 	lf	$f2, 3393($0) # 1.570796
 	fsub	$f1, $f2, $f1
 	lf	$f2, 3391($0) # 0.166667
@@ -51180,9 +51010,9 @@ fle.91958:
 	fmul	$f1, $f1, $f4
 	fsub	$f1, $f2, $f1
 	fmul	$f1, $f28, $f1
-fle_cont.91959:
-fle_cont.91955:
-fle_cont.91947:
+fle_cont.92457:
+fle_cont.92453:
+fle_cont.92445:
 	fmul	$f0, $f0, $f1
 	sf	$f0, 3069($0)
 	inf	$f0
@@ -51195,7 +51025,7 @@ fle_cont.91947:
 	addi	$3, $3, -66
 	lw	$31, 65($3)
 	in	$2
-	bne	$2, $28, eq_else.91960
+	bne	$2, $28, eq_else.92458
 	mov	$5, $28
 	mov	$2, $1
 	sw	$31, 65($3)
@@ -51203,37 +51033,35 @@ fle_cont.91947:
 	jal	min_caml_create_array
 	addi	$3, $3, -66
 	lw	$31, 65($3)
-	j	eq_cont.91961
-eq_else.91960:
+	j	eq_cont.92459
+eq_else.92458:
 	in	$5
 	sw	$2, 65($3)
-	bne	$5, $28, eq_else.91962
-	addi	$5, $0, 2
-	mov	$2, $5
+	bne	$5, $28, eq_else.92460
 	mov	$5, $28
+	mov	$2, $26
 	sw	$31, 66($3)
 	addi	$3, $3, 67
 	jal	min_caml_create_array
 	addi	$3, $3, -67
 	lw	$31, 66($3)
-	j	eq_cont.91963
-eq_else.91962:
+	j	eq_cont.92461
+eq_else.92460:
 	in	$6
 	sw	$5, 66($3)
-	bne	$6, $28, eq_else.91964
-	addi	$6, $0, 3
+	bne	$6, $28, eq_else.92462
 	mov	$5, $28
-	mov	$2, $6
+	mov	$2, $27
 	sw	$31, 67($3)
 	addi	$3, $3, 68
 	jal	min_caml_create_array
 	addi	$3, $3, -68
 	lw	$31, 67($3)
-	j	eq_cont.91965
-eq_else.91964:
+	j	eq_cont.92463
+eq_else.92462:
 	in	$7
 	sw	$6, 67($3)
-	bne	$7, $28, eq_else.91966
+	bne	$7, $28, eq_else.92464
 	addi	$7, $0, 4
 	mov	$5, $28
 	mov	$2, $7
@@ -51242,8 +51070,8 @@ eq_else.91964:
 	jal	min_caml_create_array
 	addi	$3, $3, -69
 	lw	$31, 68($3)
-	j	eq_cont.91967
-eq_else.91966:
+	j	eq_cont.92465
+eq_else.92464:
 	addi	$8, $0, 4
 	sw	$7, 68($3)
 	mov	$2, $8
@@ -51254,20 +51082,20 @@ eq_else.91966:
 	lw	$31, 69($3)
 	lw	$5, 68($3)
 	sw	$5, 3($2)
-eq_cont.91967:
+eq_cont.92465:
 	lw	$5, 67($3)
 	sw	$5, 2($2)
-eq_cont.91965:
+eq_cont.92463:
 	lw	$5, 66($3)
 	sw	$5, 1($2)
-eq_cont.91963:
+eq_cont.92461:
 	lw	$5, 65($3)
 	sw	$5, 0($2)
-eq_cont.91961:
+eq_cont.92459:
 	lw	$5, 0($2)
-	bne	$5, $28, eq_else.91968
-	j	eq_cont.91969
-eq_else.91968:
+	bne	$5, $28, eq_else.92466
+	j	eq_cont.92467
+eq_else.92466:
 	sw	$2, 3071($0)
 	mov	$2, $1
 	sw	$31, 69($3)
@@ -51275,9 +51103,9 @@ eq_else.91968:
 	jal	read_and_network.2841
 	addi	$3, $3, -70
 	lw	$31, 69($3)
-eq_cont.91969:
+eq_cont.92467:
 	in	$2
-	bne	$2, $28, eq_else.91970
+	bne	$2, $28, eq_else.92468
 	mov	$5, $28
 	mov	$2, $1
 	sw	$31, 69($3)
@@ -51286,37 +51114,35 @@ eq_cont.91969:
 	addi	$3, $3, -70
 	lw	$31, 69($3)
 	mov	$5, $2
-	j	eq_cont.91971
-eq_else.91970:
+	j	eq_cont.92469
+eq_else.92468:
 	in	$5
 	sw	$2, 69($3)
-	bne	$5, $28, eq_else.91972
-	addi	$5, $0, 2
-	mov	$2, $5
+	bne	$5, $28, eq_else.92470
 	mov	$5, $28
+	mov	$2, $26
 	sw	$31, 70($3)
 	addi	$3, $3, 71
 	jal	min_caml_create_array
 	addi	$3, $3, -71
 	lw	$31, 70($3)
-	j	eq_cont.91973
-eq_else.91972:
+	j	eq_cont.92471
+eq_else.92470:
 	in	$6
 	sw	$5, 70($3)
-	bne	$6, $28, eq_else.91974
-	addi	$6, $0, 3
+	bne	$6, $28, eq_else.92472
 	mov	$5, $28
-	mov	$2, $6
+	mov	$2, $27
 	sw	$31, 71($3)
 	addi	$3, $3, 72
 	jal	min_caml_create_array
 	addi	$3, $3, -72
 	lw	$31, 71($3)
-	j	eq_cont.91975
-eq_else.91974:
+	j	eq_cont.92473
+eq_else.92472:
 	in	$7
 	sw	$6, 71($3)
-	bne	$7, $28, eq_else.91976
+	bne	$7, $28, eq_else.92474
 	addi	$7, $0, 4
 	mov	$5, $28
 	mov	$2, $7
@@ -51325,8 +51151,8 @@ eq_else.91974:
 	jal	min_caml_create_array
 	addi	$3, $3, -73
 	lw	$31, 72($3)
-	j	eq_cont.91977
-eq_else.91976:
+	j	eq_cont.92475
+eq_else.92474:
 	addi	$8, $0, 4
 	sw	$7, 72($3)
 	mov	$2, $8
@@ -51337,27 +51163,27 @@ eq_else.91976:
 	lw	$31, 73($3)
 	lw	$5, 72($3)
 	sw	$5, 3($2)
-eq_cont.91977:
+eq_cont.92475:
 	lw	$5, 71($3)
 	sw	$5, 2($2)
-eq_cont.91975:
+eq_cont.92473:
 	lw	$5, 70($3)
 	sw	$5, 1($2)
-eq_cont.91973:
+eq_cont.92471:
 	lw	$5, 69($3)
 	sw	$5, 0($2)
 	mov	$5, $2
-eq_cont.91971:
+eq_cont.92469:
 	lw	$2, 0($5)
-	bne	$2, $28, eq_else.91978
+	bne	$2, $28, eq_else.92476
 	mov	$2, $1
 	sw	$31, 73($3)
 	addi	$3, $3, 74
 	jal	min_caml_create_array
 	addi	$3, $3, -74
 	lw	$31, 73($3)
-	j	eq_cont.91979
-eq_else.91978:
+	j	eq_cont.92477
+eq_else.92476:
 	sw	$5, 73($3)
 	mov	$2, $1
 	sw	$31, 74($3)
@@ -51367,7 +51193,7 @@ eq_else.91978:
 	lw	$31, 74($3)
 	lw	$5, 73($3)
 	sw	$5, 0($2)
-eq_cont.91979:
+eq_cont.92477:
 	sw	$2, 3121($0)
 	addi	$2, $0, 80
 	outb	$2
@@ -51376,14 +51202,14 @@ eq_cont.91979:
 	addi	$2, $0, 10
 	outb	$2
 	lw	$2, 3141($0)
-	bne	$2, $0, eq_else.91980
+	bne	$2, $0, eq_else.92478
 	addi	$2, $0, 48
 	outb	$2
-	j	eq_cont.91981
-eq_else.91980:
-	bne	$2, $0, eq_else.91982
-	j	eq_cont.91983
-eq_else.91982:
+	j	eq_cont.92479
+eq_else.92478:
+	bne	$2, $0, eq_else.92480
+	j	eq_cont.92481
+eq_else.92480:
 	itof	$f0, $2
 	lf	$f1, 3364($0) # 10.000000
 	fdiv	$f0, $f0, $f1
@@ -51392,9 +51218,9 @@ eq_else.91982:
 	addi	$6, $0, 10
 	mul	$6, $5, $6
 	sub	$2, $2, $6
-	bne	$5, $0, eq_else.91984
-	j	eq_cont.91985
-eq_else.91984:
+	bne	$5, $0, eq_else.92482
+	j	eq_cont.92483
+eq_else.92482:
 	itof	$f0, $5
 	lf	$f1, 3364($0) # 10.000000
 	fdiv	$f0, $f0, $f1
@@ -51403,9 +51229,9 @@ eq_else.91984:
 	addi	$7, $0, 10
 	mul	$7, $6, $7
 	sub	$5, $5, $7
-	bne	$6, $0, eq_else.91986
-	j	eq_cont.91987
-eq_else.91986:
+	bne	$6, $0, eq_else.92484
+	j	eq_cont.92485
+eq_else.92484:
 	itof	$f0, $6
 	lf	$f1, 3364($0) # 10.000000
 	fdiv	$f0, $f0, $f1
@@ -51416,25 +51242,25 @@ eq_else.91986:
 	sub	$6, $6, $7
 	addi	$6, $6, 48
 	outb	$6
-eq_cont.91987:
+eq_cont.92485:
 	addi	$5, $5, 48
 	outb	$5
-eq_cont.91985:
+eq_cont.92483:
 	addi	$2, $2, 48
 	outb	$2
-eq_cont.91983:
-eq_cont.91981:
+eq_cont.92481:
+eq_cont.92479:
 	addi	$2, $0, 32
 	outb	$2
 	lw	$2, 3142($0)
-	bne	$2, $0, eq_else.91988
+	bne	$2, $0, eq_else.92486
 	addi	$2, $0, 48
 	outb	$2
-	j	eq_cont.91989
-eq_else.91988:
-	bne	$2, $0, eq_else.91990
-	j	eq_cont.91991
-eq_else.91990:
+	j	eq_cont.92487
+eq_else.92486:
+	bne	$2, $0, eq_else.92488
+	j	eq_cont.92489
+eq_else.92488:
 	itof	$f0, $2
 	lf	$f1, 3364($0) # 10.000000
 	fdiv	$f0, $f0, $f1
@@ -51443,9 +51269,9 @@ eq_else.91990:
 	addi	$6, $0, 10
 	mul	$6, $5, $6
 	sub	$2, $2, $6
-	bne	$5, $0, eq_else.91992
-	j	eq_cont.91993
-eq_else.91992:
+	bne	$5, $0, eq_else.92490
+	j	eq_cont.92491
+eq_else.92490:
 	itof	$f0, $5
 	lf	$f1, 3364($0) # 10.000000
 	fdiv	$f0, $f0, $f1
@@ -51454,9 +51280,9 @@ eq_else.91992:
 	addi	$7, $0, 10
 	mul	$7, $6, $7
 	sub	$5, $5, $7
-	bne	$6, $0, eq_else.91994
-	j	eq_cont.91995
-eq_else.91994:
+	bne	$6, $0, eq_else.92492
+	j	eq_cont.92493
+eq_else.92492:
 	itof	$f0, $6
 	lf	$f1, 3364($0) # 10.000000
 	fdiv	$f0, $f0, $f1
@@ -51467,14 +51293,14 @@ eq_else.91994:
 	sub	$6, $6, $7
 	addi	$6, $6, 48
 	outb	$6
-eq_cont.91995:
+eq_cont.92493:
 	addi	$5, $5, 48
 	outb	$5
-eq_cont.91993:
+eq_cont.92491:
 	addi	$2, $2, 48
 	outb	$2
-eq_cont.91991:
-eq_cont.91989:
+eq_cont.92489:
+eq_cont.92487:
 	addi	$2, $0, 32
 	outb	$2
 	addi	$2, $0, 50
@@ -51486,9 +51312,8 @@ eq_cont.91989:
 	addi	$2, $0, 10
 	outb	$2
 	addi	$2, $0, 120
-	addi	$5, $0, 3
 	sw	$2, 74($3)
-	mov	$2, $5
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 75($3)
 	addi	$3, $3, 76
@@ -51516,48 +51341,144 @@ eq_cont.91989:
 	lw	$31, 76($3)
 	sw	$2, 3168($0)
 	lw	$2, 3168($0)
-	addi	$5, $0, 118
-	sw	$31, 76($3)
-	addi	$3, $3, 77
+	sw	$2, 76($3)
+	mov	$2, $27
+	movf	$f0, $f30
+	sw	$31, 77($3)
+	addi	$3, $3, 78
+	jal	min_caml_create_float_array
+	addi	$3, $3, -78
+	lw	$31, 77($3)
+	mov	$5, $2
+	lw	$2, 3000($0)
+	sw	$5, 77($3)
+	sw	$31, 78($3)
+	addi	$3, $3, 79
+	jal	min_caml_create_array
+	addi	$3, $3, -79
+	lw	$31, 78($3)
+	mov	$5, $4
+	addi	$4, $4, 2
+	sw	$2, 1($5)
+	lw	$2, 77($3)
+	sw	$2, 0($5)
+	mov	$2, $5
+	lw	$5, 76($3)
+	sw	$2, 118($5)
+	mov	$2, $27
+	movf	$f0, $f30
+	sw	$31, 78($3)
+	addi	$3, $3, 79
+	jal	min_caml_create_float_array
+	addi	$3, $3, -79
+	lw	$31, 78($3)
+	mov	$5, $2
+	lw	$2, 3000($0)
+	sw	$5, 78($3)
+	sw	$31, 79($3)
+	addi	$3, $3, 80
+	jal	min_caml_create_array
+	addi	$3, $3, -80
+	lw	$31, 79($3)
+	mov	$5, $4
+	addi	$4, $4, 2
+	sw	$2, 1($5)
+	lw	$2, 78($3)
+	sw	$2, 0($5)
+	mov	$2, $5
+	lw	$5, 76($3)
+	sw	$2, 117($5)
+	mov	$2, $27
+	movf	$f0, $f30
+	sw	$31, 79($3)
+	addi	$3, $3, 80
+	jal	min_caml_create_float_array
+	addi	$3, $3, -80
+	lw	$31, 79($3)
+	mov	$5, $2
+	lw	$2, 3000($0)
+	sw	$5, 79($3)
+	sw	$31, 80($3)
+	addi	$3, $3, 81
+	jal	min_caml_create_array
+	addi	$3, $3, -81
+	lw	$31, 80($3)
+	mov	$5, $4
+	addi	$4, $4, 2
+	sw	$2, 1($5)
+	lw	$2, 79($3)
+	sw	$2, 0($5)
+	mov	$2, $5
+	lw	$5, 76($3)
+	sw	$2, 116($5)
+	mov	$2, $27
+	movf	$f0, $f30
+	sw	$31, 80($3)
+	addi	$3, $3, 81
+	jal	min_caml_create_float_array
+	addi	$3, $3, -81
+	lw	$31, 80($3)
+	mov	$5, $2
+	lw	$2, 3000($0)
+	sw	$5, 80($3)
+	sw	$31, 81($3)
+	addi	$3, $3, 82
+	jal	min_caml_create_array
+	addi	$3, $3, -82
+	lw	$31, 81($3)
+	mov	$5, $4
+	addi	$4, $4, 2
+	sw	$2, 1($5)
+	lw	$2, 80($3)
+	sw	$2, 0($5)
+	mov	$2, $5
+	lw	$5, 76($3)
+	sw	$2, 115($5)
+	addi	$2, $0, 114
+	mov	$24, $5
+	mov	$5, $2
+	mov	$2, $24
+	sw	$31, 81($3)
+	addi	$3, $3, 82
 	jal	create_dirvec_elements.3151
-	addi	$3, $3, -77
-	lw	$31, 76($3)
-	addi	$2, $0, 3
-	sw	$31, 76($3)
-	addi	$3, $3, 77
+	addi	$3, $3, -82
+	lw	$31, 81($3)
+	mov	$2, $27
+	sw	$31, 81($3)
+	addi	$3, $3, 82
 	jal	create_dirvecs.3154
-	addi	$3, $3, -77
-	lw	$31, 76($3)
+	addi	$3, $3, -82
+	lw	$31, 81($3)
 	lf	$f0, 3355($0) # 0.900000
 	addi	$2, $0, 4
 	mov	$6, $0
 	mov	$5, $0
-	sw	$31, 76($3)
-	addi	$3, $3, 77
+	sw	$31, 81($3)
+	addi	$3, $3, 82
 	jal	calc_dirvecs.3140
-	addi	$3, $3, -77
-	lw	$31, 76($3)
+	addi	$3, $3, -82
+	lw	$31, 81($3)
 	addi	$2, $0, 8
-	addi	$5, $0, 2
 	addi	$6, $0, 4
-	sw	$31, 76($3)
-	addi	$3, $3, 77
+	mov	$5, $26
+	sw	$31, 81($3)
+	addi	$3, $3, 82
 	jal	calc_dirvec_rows.3145
-	addi	$3, $3, -77
-	lw	$31, 76($3)
+	addi	$3, $3, -82
+	lw	$31, 81($3)
 	lw	$2, 3168($0)
 	addi	$5, $0, 119
-	sw	$31, 76($3)
-	addi	$3, $3, 77
+	sw	$31, 81($3)
+	addi	$3, $3, 82
 	jal	init_dirvec_constants.3156
-	addi	$3, $3, -77
-	lw	$31, 76($3)
-	addi	$2, $0, 3
-	sw	$31, 76($3)
-	addi	$3, $3, 77
+	addi	$3, $3, -82
+	lw	$31, 81($3)
+	mov	$2, $27
+	sw	$31, 81($3)
+	addi	$3, $3, 82
 	jal	init_vecset_constants.3159
-	addi	$3, $3, -77
-	lw	$31, 76($3)
+	addi	$3, $3, -82
+	lw	$31, 81($3)
 	lw	$2, 3169($0)
 	lf	$f0, 3067($0)
 	sf	$f0, 0($2)
@@ -51567,136 +51488,136 @@ eq_cont.91989:
 	sf	$f0, 2($2)
 	lw	$2, 3000($0)
 	addi	$2, $2, -1
-	bge	$2, $0, ge_else.91996
-	j	ge_cont.91997
-ge_else.91996:
+	bge	$2, $0, ge_else.92494
+	j	ge_cont.92495
+ge_else.92494:
 	lw	$5, 3001($2)
 	addi	$6, $0, 3169
 	lw	$6, 1($6)
 	addi	$7, $0, 3169
 	lw	$7, 0($7)
 	lw	$8, 1($5)
-	bne	$8, $1, eq_else.91998
+	bne	$8, $1, eq_else.92496
 	addi	$8, $0, 6
-	sw	$2, 76($3)
-	sw	$6, 77($3)
-	sw	$5, 78($3)
-	sw	$7, 79($3)
+	sw	$2, 81($3)
+	sw	$6, 82($3)
+	sw	$5, 83($3)
+	sw	$7, 84($3)
 	mov	$2, $8
 	movf	$f0, $f30
-	sw	$31, 80($3)
-	addi	$3, $3, 81
+	sw	$31, 85($3)
+	addi	$3, $3, 86
 	jal	min_caml_create_float_array
-	addi	$3, $3, -81
-	lw	$31, 80($3)
-	lw	$5, 79($3)
+	addi	$3, $3, -86
+	lw	$31, 85($3)
+	lw	$5, 84($3)
 	lf	$f0, 0($5)
-	beqf	$f0, $f30, feq.92000
+	beqf	$f0, $f30, feq.92498
 	mov	$6, $0
-	j	feq_cont.92001
-feq.92000:
+	j	feq_cont.92499
+feq.92498:
 	mov	$6, $1
-feq_cont.92001:
-	bne	$6, $0, eq_else.92002
-	lw	$6, 78($3)
+feq_cont.92499:
+	bne	$6, $0, eq_else.92500
+	lw	$6, 83($3)
 	lw	$7, 6($6)
 	lf	$f0, 0($5)
 	sltf	$8, $f0, $f30
 	xor	$7, $7, $8
 	lw	$8, 4($6)
 	lf	$f0, 0($8)
-	bne	$7, $0, eq_else.92004
+	bne	$7, $0, eq_else.92502
 	fneg	$f0, $f0
-	j	eq_cont.92005
-eq_else.92004:
-eq_cont.92005:
+	j	eq_cont.92503
+eq_else.92502:
+eq_cont.92503:
 	sf	$f0, 0($2)
 	lf	$f0, 0($5)
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 1($2)
-	j	eq_cont.92003
-eq_else.92002:
+	j	eq_cont.92501
+eq_else.92500:
 	sf	$f30, 1($2)
-eq_cont.92003:
+eq_cont.92501:
 	lf	$f0, 1($5)
-	beqf	$f0, $f30, feq.92006
+	beqf	$f0, $f30, feq.92504
 	mov	$6, $0
-	j	feq_cont.92007
-feq.92006:
+	j	feq_cont.92505
+feq.92504:
 	mov	$6, $1
-feq_cont.92007:
-	bne	$6, $0, eq_else.92008
-	lw	$6, 78($3)
+feq_cont.92505:
+	bne	$6, $0, eq_else.92506
+	lw	$6, 83($3)
 	lw	$7, 6($6)
 	lf	$f0, 1($5)
 	sltf	$8, $f0, $f30
 	xor	$7, $7, $8
 	lw	$8, 4($6)
 	lf	$f0, 1($8)
-	bne	$7, $0, eq_else.92010
+	bne	$7, $0, eq_else.92508
 	fneg	$f0, $f0
-	j	eq_cont.92011
-eq_else.92010:
-eq_cont.92011:
+	j	eq_cont.92509
+eq_else.92508:
+eq_cont.92509:
 	sf	$f0, 2($2)
 	lf	$f0, 1($5)
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 3($2)
-	j	eq_cont.92009
-eq_else.92008:
+	j	eq_cont.92507
+eq_else.92506:
 	sf	$f30, 3($2)
-eq_cont.92009:
+eq_cont.92507:
 	lf	$f0, 2($5)
-	beqf	$f0, $f30, feq.92012
+	beqf	$f0, $f30, feq.92510
 	mov	$6, $0
-	j	feq_cont.92013
-feq.92012:
+	j	feq_cont.92511
+feq.92510:
 	mov	$6, $1
-feq_cont.92013:
-	bne	$6, $0, eq_else.92014
-	lw	$6, 78($3)
+feq_cont.92511:
+	bne	$6, $0, eq_else.92512
+	lw	$6, 83($3)
 	lw	$7, 6($6)
 	lf	$f0, 2($5)
 	sltf	$8, $f0, $f30
 	xor	$7, $7, $8
 	lw	$6, 4($6)
 	lf	$f0, 2($6)
-	bne	$7, $0, eq_else.92016
+	bne	$7, $0, eq_else.92514
 	fneg	$f0, $f0
-	j	eq_cont.92017
-eq_else.92016:
-eq_cont.92017:
+	j	eq_cont.92515
+eq_else.92514:
+eq_cont.92515:
 	sf	$f0, 4($2)
 	lf	$f0, 2($5)
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 5($2)
-	j	eq_cont.92015
-eq_else.92014:
+	j	eq_cont.92513
+eq_else.92512:
 	sf	$f30, 5($2)
-eq_cont.92015:
-	lw	$5, 76($3)
-	lw	$6, 77($3)
+eq_cont.92513:
+	lw	$5, 81($3)
+	lw	$6, 82($3)
 	add $30, $6, $5
 	sw	$2, 0($30)
-	j	eq_cont.91999
-eq_else.91998:
+	j	eq_cont.92497
+eq_else.92496:
 	addi	$30, $0, 2
-	bne	$8, $30, eq_else.92018
+	bne	$8, $30, eq_else.92516
 	addi	$8, $0, 4
-	sw	$2, 76($3)
-	sw	$6, 77($3)
-	sw	$5, 78($3)
-	sw	$7, 79($3)
+	sw	$2, 81($3)
+	sw	$6, 82($3)
+	sw	$5, 83($3)
+	sw	$7, 84($3)
 	mov	$2, $8
 	movf	$f0, $f30
-	sw	$31, 80($3)
-	addi	$3, $3, 81
+	sw	$31, 85($3)
+	addi	$3, $3, 86
 	jal	min_caml_create_float_array
-	addi	$3, $3, -81
-	lw	$31, 80($3)
-	lw	$5, 79($3)
+	addi	$3, $3, -86
+	lw	$31, 85($3)
+	lw	$5, 84($3)
 	lf	$f0, 0($5)
-	lw	$6, 78($3)
+	lw	$6, 83($3)
 	lw	$7, 4($6)
 	lf	$f1, 0($7)
 	fmul	$f0, $f0, $f1
@@ -51711,10 +51632,10 @@ eq_else.91998:
 	fmul	$f1, $f1, $f2
 	fadd	$f0, $f0, $f1
 	sltf	$5, $f30, $f0
-	bne	$5, $0, eq_else.92020
+	bne	$5, $0, eq_else.92518
 	sf	$f30, 0($2)
-	j	eq_cont.92021
-eq_else.92020:
+	j	eq_cont.92519
+eq_else.92518:
 	fdiv	$f1, $f29, $f0
 	sf	$f1, 0($2)
 	lw	$5, 4($6)
@@ -51732,31 +51653,31 @@ eq_else.92020:
 	fdiv	$f0, $f1, $f0
 	fneg	$f0, $f0
 	sf	$f0, 3($2)
-eq_cont.92021:
-	lw	$5, 76($3)
-	lw	$6, 77($3)
+eq_cont.92519:
+	lw	$5, 81($3)
+	lw	$6, 82($3)
 	add $30, $6, $5
 	sw	$2, 0($30)
-	j	eq_cont.92019
-eq_else.92018:
+	j	eq_cont.92517
+eq_else.92516:
 	addi	$8, $0, 5
-	sw	$2, 76($3)
-	sw	$6, 77($3)
-	sw	$5, 78($3)
-	sw	$7, 79($3)
+	sw	$2, 81($3)
+	sw	$6, 82($3)
+	sw	$5, 83($3)
+	sw	$7, 84($3)
 	mov	$2, $8
 	movf	$f0, $f30
-	sw	$31, 80($3)
-	addi	$3, $3, 81
+	sw	$31, 85($3)
+	addi	$3, $3, 86
 	jal	min_caml_create_float_array
-	addi	$3, $3, -81
-	lw	$31, 80($3)
-	lw	$5, 79($3)
+	addi	$3, $3, -86
+	lw	$31, 85($3)
+	lw	$5, 84($3)
 	lf	$f0, 0($5)
 	lf	$f1, 1($5)
 	lf	$f2, 2($5)
 	fmul	$f3, $f0, $f0
-	lw	$6, 78($3)
+	lw	$6, 83($3)
 	lw	$7, 4($6)
 	lf	$f4, 0($7)
 	fmul	$f3, $f3, $f4
@@ -51771,10 +51692,10 @@ eq_else.92018:
 	fmul	$f4, $f4, $f5
 	fadd	$f3, $f3, $f4
 	lw	$7, 3($6)
-	bne	$7, $0, eq_else.92022
+	bne	$7, $0, eq_else.92520
 	movf	$f0, $f3
-	j	eq_cont.92023
-eq_else.92022:
+	j	eq_cont.92521
+eq_else.92520:
 	fmul	$f4, $f1, $f2
 	lw	$7, 9($6)
 	lf	$f5, 0($7)
@@ -51790,7 +51711,7 @@ eq_else.92022:
 	lf	$f1, 2($7)
 	fmul	$f0, $f0, $f1
 	fadd	$f0, $f2, $f0
-eq_cont.92023:
+eq_cont.92521:
 	lf	$f1, 0($5)
 	lw	$7, 4($6)
 	lf	$f2, 0($7)
@@ -51808,12 +51729,12 @@ eq_cont.92023:
 	fneg	$f3, $f3
 	sf	$f0, 0($2)
 	lw	$7, 3($6)
-	bne	$7, $0, eq_else.92024
+	bne	$7, $0, eq_else.92522
 	sf	$f1, 1($2)
 	sf	$f2, 2($2)
 	sf	$f3, 3($2)
-	j	eq_cont.92025
-eq_else.92024:
+	j	eq_cont.92523
+eq_else.92522:
 	lf	$f4, 2($5)
 	lw	$7, 9($6)
 	lf	$f5, 1($7)
@@ -51853,50 +51774,50 @@ eq_else.92024:
 	fmul	$f1, $f1, $f2
 	fsub	$f1, $f3, $f1
 	sf	$f1, 3($2)
-eq_cont.92025:
-	beqf	$f0, $f30, feq.92026
+eq_cont.92523:
+	beqf	$f0, $f30, feq.92524
 	mov	$5, $0
-	j	feq_cont.92027
-feq.92026:
+	j	feq_cont.92525
+feq.92524:
 	mov	$5, $1
-feq_cont.92027:
-	bne	$5, $0, eq_else.92028
+feq_cont.92525:
+	bne	$5, $0, eq_else.92526
 	fdiv	$f0, $f28, $f0
 	sf	$f0, 4($2)
-	j	eq_cont.92029
-eq_else.92028:
-eq_cont.92029:
-	lw	$5, 76($3)
-	lw	$6, 77($3)
+	j	eq_cont.92527
+eq_else.92526:
+eq_cont.92527:
+	lw	$5, 81($3)
+	lw	$6, 82($3)
 	add $30, $6, $5
 	sw	$2, 0($30)
-eq_cont.92019:
-eq_cont.91999:
+eq_cont.92517:
+eq_cont.92497:
 	addi	$5, $5, -1
 	addi	$2, $0, 3169
-	sw	$31, 80($3)
-	addi	$3, $3, 81
+	sw	$31, 85($3)
+	addi	$3, $3, 86
 	jal	iter_setup_dirvec_constants.2938
-	addi	$3, $3, -81
-	lw	$31, 80($3)
-ge_cont.91997:
+	addi	$3, $3, -86
+	lw	$31, 85($3)
+ge_cont.92495:
 	lw	$2, 3000($0)
 	addi	$2, $2, -1
-	bge	$2, $0, ge_else.92030
-	j	ge_cont.92031
-ge_else.92030:
+	bge	$2, $0, ge_else.92528
+	j	ge_cont.92529
+ge_else.92528:
 	lw	$5, 3001($2)
 	lw	$6, 2($5)
 	addi	$30, $0, 2
-	bne	$6, $30, eq_else.92032
+	bne	$6, $30, eq_else.92530
 	lw	$6, 7($5)
 	lf	$f0, 0($6)
 	sltf	$6, $f0, $f28
-	bne	$6, $0, eq_else.92034
-	j	eq_cont.92035
-eq_else.92034:
+	bne	$6, $0, eq_else.92532
+	j	eq_cont.92533
+eq_else.92532:
 	lw	$6, 1($5)
-	bne	$6, $1, eq_else.92036
+	bne	$6, $1, eq_else.92534
 	addi	$6, $0, 4
 	mul	$2, $2, $6
 	lw	$6, 3351($0)
@@ -51907,76 +51828,19 @@ eq_else.92034:
 	fneg	$f1, $f1
 	lf	$f2, 3067($1)
 	fneg	$f2, $f2
-	addi	$5, $0, 2
-	lf	$f3, 3067($5)
+	lf	$f3, 3067($26)
 	fneg	$f3, $f3
 	addi	$5, $2, 1
 	lf	$f4, 3067($0)
-	addi	$7, $0, 3
-	sf	$f1, 80($3)
-	sw	$2, 81($3)
-	sw	$6, 82($3)
-	sw	$5, 83($3)
-	sf	$f0, 84($3)
-	sf	$f3, 85($3)
-	sf	$f2, 86($3)
-	sf	$f4, 87($3)
-	mov	$2, $7
-	movf	$f0, $f30
-	sw	$31, 88($3)
-	addi	$3, $3, 89
-	jal	min_caml_create_float_array
-	addi	$3, $3, -89
-	lw	$31, 88($3)
-	mov	$5, $2
-	lw	$2, 3000($0)
+	sf	$f1, 85($3)
+	sw	$2, 86($3)
+	sw	$6, 87($3)
 	sw	$5, 88($3)
-	sw	$31, 89($3)
-	addi	$3, $3, 90
-	jal	min_caml_create_array
-	addi	$3, $3, -90
-	lw	$31, 89($3)
-	mov	$5, $4
-	addi	$4, $4, 2
-	sw	$2, 1($5)
-	lw	$2, 88($3)
-	sw	$2, 0($5)
-	lf	$f0, 87($3)
-	sf	$f0, 0($2)
-	lf	$f0, 86($3)
-	sf	$f0, 1($2)
-	lf	$f1, 85($3)
-	sf	$f1, 2($2)
-	lw	$2, 3000($0)
-	addi	$2, $2, -1
-	sw	$5, 89($3)
-	mov	$26, $5
-	mov	$5, $2
-	mov	$2, $26
-	sw	$31, 90($3)
-	addi	$3, $3, 91
-	jal	iter_setup_dirvec_constants.2938
-	addi	$3, $3, -91
-	lw	$31, 90($3)
-	mov	$2, $4
-	addi	$4, $4, 3
-	lf	$f0, 84($3)
-	sf	$f0, 2($2)
-	lw	$5, 89($3)
-	sw	$5, 1($2)
-	lw	$5, 83($3)
-	sw	$5, 0($2)
-	lw	$5, 82($3)
-	sw	$2, 3171($5)
-	addi	$2, $5, 1
-	lw	$6, 81($3)
-	addi	$7, $6, 2
-	lf	$f1, 3067($1)
-	addi	$8, $0, 3
-	sw	$2, 90($3)
-	sw	$7, 91($3)
-	sf	$f1, 92($3)
-	mov	$2, $8
+	sf	$f0, 89($3)
+	sf	$f3, 90($3)
+	sf	$f2, 91($3)
+	sf	$f4, 92($3)
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 93($3)
 	addi	$3, $3, 94
@@ -51996,18 +51860,18 @@ eq_else.92034:
 	sw	$2, 1($5)
 	lw	$2, 93($3)
 	sw	$2, 0($5)
-	lf	$f0, 80($3)
+	lf	$f0, 92($3)
 	sf	$f0, 0($2)
-	lf	$f1, 92($3)
-	sf	$f1, 1($2)
-	lf	$f1, 85($3)
+	lf	$f0, 91($3)
+	sf	$f0, 1($2)
+	lf	$f1, 90($3)
 	sf	$f1, 2($2)
 	lw	$2, 3000($0)
 	addi	$2, $2, -1
 	sw	$5, 94($3)
-	mov	$26, $5
+	mov	$24, $5
 	mov	$5, $2
-	mov	$2, $26
+	mov	$2, $24
 	sw	$31, 95($3)
 	addi	$3, $3, 96
 	jal	iter_setup_dirvec_constants.2938
@@ -52015,25 +51879,22 @@ eq_else.92034:
 	lw	$31, 95($3)
 	mov	$2, $4
 	addi	$4, $4, 3
-	lf	$f0, 84($3)
+	lf	$f0, 89($3)
 	sf	$f0, 2($2)
 	lw	$5, 94($3)
 	sw	$5, 1($2)
-	lw	$5, 91($3)
+	lw	$5, 88($3)
 	sw	$5, 0($2)
-	lw	$5, 90($3)
+	lw	$5, 87($3)
 	sw	$2, 3171($5)
-	lw	$2, 82($3)
-	addi	$5, $2, 2
-	lw	$6, 81($3)
-	addi	$6, $6, 3
-	addi	$7, $0, 2
-	lf	$f1, 3067($7)
-	addi	$7, $0, 3
-	sw	$5, 95($3)
-	sw	$6, 96($3)
+	addi	$2, $5, 1
+	lw	$6, 86($3)
+	addi	$7, $6, 2
+	lf	$f1, 3067($1)
+	sw	$2, 95($3)
+	sw	$7, 96($3)
 	sf	$f1, 97($3)
-	mov	$2, $7
+	mov	$2, $27
 	movf	$f0, $f30
 	sw	$31, 98($3)
 	addi	$3, $3, 99
@@ -52053,18 +51914,18 @@ eq_else.92034:
 	sw	$2, 1($5)
 	lw	$2, 98($3)
 	sw	$2, 0($5)
-	lf	$f0, 80($3)
+	lf	$f0, 85($3)
 	sf	$f0, 0($2)
-	lf	$f0, 86($3)
-	sf	$f0, 1($2)
-	lf	$f0, 97($3)
-	sf	$f0, 2($2)
+	lf	$f1, 97($3)
+	sf	$f1, 1($2)
+	lf	$f1, 90($3)
+	sf	$f1, 2($2)
 	lw	$2, 3000($0)
 	addi	$2, $2, -1
 	sw	$5, 99($3)
-	mov	$26, $5
+	mov	$24, $5
 	mov	$5, $2
-	mov	$2, $26
+	mov	$2, $24
 	sw	$31, 100($3)
 	addi	$3, $3, 101
 	jal	iter_setup_dirvec_constants.2938
@@ -52072,7 +51933,7 @@ eq_else.92034:
 	lw	$31, 100($3)
 	mov	$2, $4
 	addi	$4, $4, 3
-	lf	$f0, 84($3)
+	lf	$f0, 89($3)
 	sf	$f0, 2($2)
 	lw	$5, 99($3)
 	sw	$5, 1($2)
@@ -52080,13 +51941,68 @@ eq_else.92034:
 	sw	$5, 0($2)
 	lw	$5, 95($3)
 	sw	$2, 3171($5)
-	lw	$2, 82($3)
+	lw	$2, 87($3)
+	addi	$5, $2, 2
+	lw	$6, 86($3)
+	addi	$6, $6, 3
+	lf	$f1, 3067($26)
+	sw	$5, 100($3)
+	sw	$6, 101($3)
+	sf	$f1, 102($3)
+	mov	$2, $27
+	movf	$f0, $f30
+	sw	$31, 103($3)
+	addi	$3, $3, 104
+	jal	min_caml_create_float_array
+	addi	$3, $3, -104
+	lw	$31, 103($3)
+	mov	$5, $2
+	lw	$2, 3000($0)
+	sw	$5, 103($3)
+	sw	$31, 104($3)
+	addi	$3, $3, 105
+	jal	min_caml_create_array
+	addi	$3, $3, -105
+	lw	$31, 104($3)
+	mov	$5, $4
+	addi	$4, $4, 2
+	sw	$2, 1($5)
+	lw	$2, 103($3)
+	sw	$2, 0($5)
+	lf	$f0, 85($3)
+	sf	$f0, 0($2)
+	lf	$f0, 91($3)
+	sf	$f0, 1($2)
+	lf	$f0, 102($3)
+	sf	$f0, 2($2)
+	lw	$2, 3000($0)
+	addi	$2, $2, -1
+	sw	$5, 104($3)
+	mov	$24, $5
+	mov	$5, $2
+	mov	$2, $24
+	sw	$31, 105($3)
+	addi	$3, $3, 106
+	jal	iter_setup_dirvec_constants.2938
+	addi	$3, $3, -106
+	lw	$31, 105($3)
+	mov	$2, $4
+	addi	$4, $4, 3
+	lf	$f0, 89($3)
+	sf	$f0, 2($2)
+	lw	$5, 104($3)
+	sw	$5, 1($2)
+	lw	$5, 101($3)
+	sw	$5, 0($2)
+	lw	$5, 100($3)
+	sw	$2, 3171($5)
+	lw	$2, 87($3)
 	addi	$2, $2, 3
 	sw	$2, 3351($0)
-	j	eq_cont.92037
-eq_else.92036:
+	j	eq_cont.92535
+eq_else.92534:
 	addi	$30, $0, 2
-	bne	$6, $30, eq_else.92038
+	bne	$6, $30, eq_else.92536
 	addi	$6, $0, 4
 	mul	$2, $2, $6
 	addi	$2, $2, 1
@@ -52102,8 +52018,7 @@ eq_else.92036:
 	lf	$f3, 1($7)
 	fmul	$f2, $f2, $f3
 	fadd	$f1, $f1, $f2
-	addi	$8, $0, 2
-	lf	$f2, 3067($8)
+	lf	$f2, 3067($26)
 	lf	$f3, 2($7)
 	fmul	$f2, $f2, $f3
 	fadd	$f1, $f1, $f2
@@ -52126,74 +52041,72 @@ eq_else.92036:
 	lf	$f5, 2($5)
 	fmul	$f4, $f4, $f5
 	fmul	$f1, $f4, $f1
-	addi	$5, $0, 2
-	lf	$f4, 3067($5)
+	lf	$f4, 3067($26)
 	fsub	$f1, $f1, $f4
-	addi	$5, $0, 3
-	sw	$6, 100($3)
-	sw	$2, 101($3)
-	sf	$f0, 102($3)
-	sf	$f1, 103($3)
-	sf	$f3, 104($3)
-	sf	$f2, 105($3)
-	mov	$2, $5
+	sw	$6, 105($3)
+	sw	$2, 106($3)
+	sf	$f0, 107($3)
+	sf	$f1, 108($3)
+	sf	$f3, 109($3)
+	sf	$f2, 110($3)
+	mov	$2, $27
 	movf	$f0, $f30
-	sw	$31, 106($3)
-	addi	$3, $3, 107
+	sw	$31, 111($3)
+	addi	$3, $3, 112
 	jal	min_caml_create_float_array
-	addi	$3, $3, -107
-	lw	$31, 106($3)
+	addi	$3, $3, -112
+	lw	$31, 111($3)
 	mov	$5, $2
 	lw	$2, 3000($0)
-	sw	$5, 106($3)
-	sw	$31, 107($3)
-	addi	$3, $3, 108
+	sw	$5, 111($3)
+	sw	$31, 112($3)
+	addi	$3, $3, 113
 	jal	min_caml_create_array
-	addi	$3, $3, -108
-	lw	$31, 107($3)
+	addi	$3, $3, -113
+	lw	$31, 112($3)
 	mov	$5, $4
 	addi	$4, $4, 2
 	sw	$2, 1($5)
-	lw	$2, 106($3)
+	lw	$2, 111($3)
 	sw	$2, 0($5)
-	lf	$f0, 105($3)
+	lf	$f0, 110($3)
 	sf	$f0, 0($2)
-	lf	$f0, 104($3)
+	lf	$f0, 109($3)
 	sf	$f0, 1($2)
-	lf	$f0, 103($3)
+	lf	$f0, 108($3)
 	sf	$f0, 2($2)
 	lw	$2, 3000($0)
 	addi	$2, $2, -1
-	sw	$5, 107($3)
-	mov	$26, $5
+	sw	$5, 112($3)
+	mov	$24, $5
 	mov	$5, $2
-	mov	$2, $26
-	sw	$31, 108($3)
-	addi	$3, $3, 109
+	mov	$2, $24
+	sw	$31, 113($3)
+	addi	$3, $3, 114
 	jal	iter_setup_dirvec_constants.2938
-	addi	$3, $3, -109
-	lw	$31, 108($3)
+	addi	$3, $3, -114
+	lw	$31, 113($3)
 	mov	$2, $4
 	addi	$4, $4, 3
-	lf	$f0, 102($3)
+	lf	$f0, 107($3)
 	sf	$f0, 2($2)
-	lw	$5, 107($3)
+	lw	$5, 112($3)
 	sw	$5, 1($2)
-	lw	$5, 101($3)
+	lw	$5, 106($3)
 	sw	$5, 0($2)
-	lw	$5, 100($3)
+	lw	$5, 105($3)
 	sw	$2, 3171($5)
 	addi	$2, $5, 1
 	sw	$2, 3351($0)
-	j	eq_cont.92039
-eq_else.92038:
-eq_cont.92039:
-eq_cont.92037:
-eq_cont.92035:
-	j	eq_cont.92033
-eq_else.92032:
-eq_cont.92033:
-ge_cont.92031:
+	j	eq_cont.92537
+eq_else.92536:
+eq_cont.92537:
+eq_cont.92535:
+eq_cont.92533:
+	j	eq_cont.92531
+eq_else.92530:
+eq_cont.92531:
+ge_cont.92529:
 	lf	$f0, 3145($0)
 	lw	$2, 3144($0)
 	sub	$2, $0, $2
@@ -52219,21 +52132,21 @@ ge_cont.92031:
 	movf	$f2, $f0
 	movf	$f0, $f1
 	movf	$f1, $f27
-	sw	$31, 108($3)
-	addi	$3, $3, 109
+	sw	$31, 113($3)
+	addi	$3, $3, 114
 	jal	pretrace_pixels.3095
-	addi	$3, $3, -109
-	lw	$31, 108($3)
-	addi	$8, $0, 2
+	addi	$3, $3, -114
+	lw	$31, 113($3)
 	lw	$5, 24($3)
 	lw	$6, 44($3)
 	lw	$7, 64($3)
+	mov	$8, $26
 	mov	$2, $0
-	sw	$31, 108($3)
-	addi	$3, $3, 109
+	sw	$31, 113($3)
+	addi	$3, $3, 114
 	jal	scan_line.3112
-	addi	$3, $3, -109
-	lw	$31, 108($3)
+	addi	$3, $3, -114
+	lw	$31, 113($3)
 	j Exit
 #	main program ends
 #	create_array

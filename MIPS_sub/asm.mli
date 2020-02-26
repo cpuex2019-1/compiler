@@ -63,6 +63,8 @@ val reg_sw : Id.t
 val reg_fsw : Id.t
 val reg_zero : Id.t
 val reg_one : Id.t
+val reg_two : Id.t
+val reg_three : Id.t
 val reg_negone : Id.t
 val reg_fnegone : Id.t
 val reg_fone : Id.t

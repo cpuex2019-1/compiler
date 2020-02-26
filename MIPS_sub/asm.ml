@@ -67,8 +67,7 @@ let rec insert_end e1 xt com =
 let regs = (* Array.init 27 (fun i -> Printf.sprintf "_R_%d" i) *)
   [| "$2"; "$5"; "$6"; "$7"; "$8"; "$9"; "$10";
      "$11"; "$12"; "$13"; "$14"; "$15"; "$16"; "$17"; "$18";
-     "$19"; "$20"; "$21"; "$22"; "$23"; "$24"; "$25"; "$26";
-     "$27"|]
+     "$19"; "$20"; "$21"; "$22"; "$23"; "$24"; "$25"|]
 let fregs = Array.init 28 (fun i -> Printf.sprintf "$f%d" i)
 let allregs = Array.to_list regs
 let allfregs = Array.to_list fregs
@@ -77,6 +76,8 @@ let reg_sw = regs.(Array.length regs - 2) (* temporary for swap *)
 let reg_fsw = fregs.(Array.length fregs - 1) (* temporary for swap *)
 let reg_zero = "$0" (* zero register *)
 let reg_one = "$1" (* one register *)
+let reg_two = "$26" (* two register *)
+let reg_three = "$27" (* three register *)
 let reg_sp = "$3" (* stack pointer *)
 let reg_hp = "$4" (* heap pointer (caml2html: sparcasm_reghp) *)
 let reg_tmp = "$30" (* [XX] ad hoc *)
