@@ -87,11 +87,11 @@ let rec g e =
   | Ans(FLi(l)) when memf (float_imm l !float_imm_data) -> 
       Ans(FMr(findf (float_imm l !float_imm_data)))
   | Ans(IfEq(y,C(c),e1,e2)) when memi c -> 
-      Ans(IfEq(y,V(findi c),e1,e2))
+      Ans(IfEq(y,V(findi c),g e1,g e2))
   | Ans(IfLE(y,C(c),e1,e2)) when memi c -> 
-      Ans(IfLE(y,V(findi c),e1,e2))
+      Ans(IfLE(y,V(findi c),g e1,g e2))
   | Ans(IfGE(y,C(c),e1,e2)) when memi c -> 
-      Ans(IfGE(y,V(findi c),e1,e2))
+      Ans(IfGE(y,V(findi c),g e1,g e2))
 
   | Ans(IfEq(y,ioi,e1,e2)) -> Ans(IfEq(y,ioi,g e1,g e2))
   | Ans(IfLE(y,ioi,e1,e2)) -> Ans(IfLE(y,ioi,g e1,g e2))

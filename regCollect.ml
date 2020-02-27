@@ -23,14 +23,14 @@ let rec g_exp = function
   | Nop | SetL _ | Comment _ | Restore _ | FLi _  -> ()
   | Mr(x) | Neg(x) -> add x
   | Add(x, y') | Sub(x, y') | Mul(x, y') | Div(x, y') | Slw(x, y') | Xor(x, y') -> add x; add' y'
-  | Lwz(x, y') -> add x
-  | Stw(x, y, z') -> add x; add y
+  | Lwz(x, y') -> add x; add' y'
+  | Stw(x, y, z') -> add x; add y; add' z'
   | FMr(x) | FNeg(x) -> add x
   | FAdd(x, y) | FSub(x, y) | FMul(x, y) | FDiv(x, y) | Sltf(x, y) | Slt(x, y) -> add x; add y
   | Sqrt(x) | Floor(x) | FAbs(x) | Ftoi(x) | Itof(x) | Outb(x) -> add x
   | In | Inf -> ()
-  | Lfd(x, y') -> add x
-  | Stfd(x, y, z') -> add x; add y
+  | Lfd(x, y') -> add x; add' y'
+  | Stfd(x, y, z') -> add x; add y; add' z'
   | IfEq(x, y', e1, e2) -> add x; add' y'; g e1; g e2
   | IfLE(x, y', e1, e2) -> add x; add' y'; g e1; g e2
   | IfGE(x, y', e1, e2) -> add x; add' y'; g e1; g e2
@@ -39,6 +39,7 @@ let rec g_exp = function
   | CallCls(x, ys, zs)  -> (List.iter (fun y -> add y) ys); (List.iter (fun z -> add z) zs)
   | CallDir(Id.L(x), ys, zs) -> (List.iter (fun y -> add y) ys); (List.iter (fun z -> add z) zs)
   | Save(x, y) -> add x
+  | _ -> assert false
 
 and g = function 
   | Ans(exp) -> g_exp exp
@@ -49,6 +50,8 @@ and g = function
 
 
 let h { name = Id.L(x); args = ys; fargs = zs; body = e; ret = t } = 
+  List.iter (fun y -> add y) ys;
+  List.iter (fun z -> add z) zs;
   g e
 
 let f (Prog(data, fundefs, e)) = 

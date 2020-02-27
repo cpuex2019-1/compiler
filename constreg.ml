@@ -82,28 +82,29 @@ let rec g e =
   | Ans(Li(2)) -> Ans(Mr(reg_two))
   | Ans(Li(3)) -> Ans(Mr(reg_three))
   | Ans(Li(-1)) -> Ans(Mr(reg_negone))
+
   | Ans(FLi(l)) when float_imm l !float_imm_data = 0.0 -> Ans(FMr(reg_fzero))
   | Ans(FLi(l)) when float_imm l !float_imm_data = (-1.0) -> Ans(FMr(reg_fnegone))
   | Ans(FLi(l)) when float_imm l !float_imm_data = (1.0) -> Ans(FMr(reg_fone))
   | Ans(FLi(l)) when float_imm l !float_imm_data = (3.1415926535) -> Ans(FMr(reg_fpi))
 
-  | Ans(IfEq(y,C(-1),e1,e2)) -> Ans(IfEq(y,V(reg_negone),e1,e2))
-  | Ans(IfEq(y,C(0),e1,e2)) -> Ans(IfEq(y,V(reg_zero),e1,e2))
-  | Ans(IfEq(y,C(1),e1,e2)) -> Ans(IfEq(y,V(reg_one),e1,e2))
-  | Ans(IfEq(y,C(2),e1,e2)) -> Ans(IfEq(y,V(reg_two),e1,e2))
-  | Ans(IfEq(y,C(3),e1,e2)) -> Ans(IfEq(y,V(reg_three),e1,e2))
+  | Ans(IfEq(y,C(-1),e1,e2)) -> Ans(IfEq(y,V(reg_negone),g e1,g e2))
+  | Ans(IfEq(y,C(0),e1,e2)) -> Ans(IfEq(y,V(reg_zero),g e1,g e2))
+  | Ans(IfEq(y,C(1),e1,e2)) -> Ans(IfEq(y,V(reg_one),g e1,g e2))
+  | Ans(IfEq(y,C(2),e1,e2)) -> Ans(IfEq(y,V(reg_two),g e1,g e2))
+  | Ans(IfEq(y,C(3),e1,e2)) -> Ans(IfEq(y,V(reg_three),g e1,g e2))
 
-  | Ans(IfLE(y,C(-1),e1,e2)) -> Ans(IfLE(y,V(reg_negone),e1,e2))
-  | Ans(IfLE(y,C(0),e1,e2)) -> Ans(IfLE(y,V(reg_zero),e1,e2))
-  | Ans(IfLE(y,C(1),e1,e2)) -> Ans(IfLE(y,V(reg_one),e1,e2))
-  | Ans(IfLE(y,C(2),e1,e2)) -> Ans(IfLE(y,V(reg_two),e1,e2))
-  | Ans(IfLE(y,C(3),e1,e2)) -> Ans(IfLE(y,V(reg_three),e1,e2))
+  | Ans(IfLE(y,C(-1),e1,e2)) -> Ans(IfLE(y,V(reg_negone),g e1,g e2))
+  | Ans(IfLE(y,C(0),e1,e2)) -> Ans(IfLE(y,V(reg_zero),g e1,g e2))
+  | Ans(IfLE(y,C(1),e1,e2)) -> Ans(IfLE(y,V(reg_one),g e1,g e2))
+  | Ans(IfLE(y,C(2),e1,e2)) -> Ans(IfLE(y,V(reg_two),g e1,g e2))
+  | Ans(IfLE(y,C(3),e1,e2)) -> Ans(IfLE(y,V(reg_three),g e1, g e2))
 
-  | Ans(IfGE(y,C(-1),e1,e2)) -> Ans(IfGE(y,V(reg_negone),e1,e2))
-  | Ans(IfGE(y,C(0),e1,e2))  -> Ans(IfGE(y,V(reg_zero),e1,e2))
-  | Ans(IfGE(y,C(1),e1,e2))  -> Ans(IfGE(y,V(reg_one),e1,e2))
-  | Ans(IfGE(y,C(2),e1,e2))  -> Ans(IfGE(y,V(reg_two),e1,e2))
-  | Ans(IfGE(y,C(3),e1,e2))  -> Ans(IfGE(y,V(reg_three),e1,e2))
+  | Ans(IfGE(y,C(-1),e1,e2)) -> Ans(IfGE(y,V(reg_negone),g e1,g e2))
+  | Ans(IfGE(y,C(0),e1,e2))  -> Ans(IfGE(y,V(reg_zero),g e1,g e2))
+  | Ans(IfGE(y,C(1),e1,e2))  -> Ans(IfGE(y,V(reg_one),g e1,g e2))
+  | Ans(IfGE(y,C(2),e1,e2))  -> Ans(IfGE(y,V(reg_two),g e1,g e2))
+  | Ans(IfGE(y,C(3),e1,e2))  -> Ans(IfGE(y,V(reg_three),g e1,g e2))
 
   | Ans(IfEq(y,ioi,e1,e2)) -> Ans(IfEq(y,ioi,g e1,g e2))
   | Ans(IfLE(y,ioi,e1,e2)) -> Ans(IfLE(y,ioi,g e1,g e2))
@@ -111,11 +112,13 @@ let rec g e =
   | Ans(IfFEq(y,z,e1,e2)) -> Ans(IfFEq(y,z,g e1,g e2))
   | Ans(IfFLE(y,z,e1,e2)) -> Ans(IfFLE(y,z,g e1,g e2))
   | Ans(_) -> e
+
   | Let((x,t),Li(0),e2) -> opt_count := !opt_count+1; g (subst e2 x reg_zero)
   | Let((x,t),Li(1),e2) -> opt_count := !opt_count+1; g (subst e2 x reg_one)
   | Let((x,t),Li(2),e2) -> opt_count := !opt_count+1; g (subst e2 x reg_two)
   | Let((x,t),Li(3),e2) -> opt_count := !opt_count+1; g (subst e2 x reg_three)
   | Let((x,t),Li(-1),e2) -> opt_count := !opt_count+1; g (subst e2 x reg_negone)
+
   | Let((x,t),FLi(l),e2) when float_imm l !float_imm_data = 0.0  -> 
       Printf.eprintf "substitute %s for %s\n" x reg_fzero; 
       opt_count := !opt_count+1; g (subst e2 x reg_fzero)

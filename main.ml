@@ -63,9 +63,10 @@ let lexbuf outchan l = (* バッファをコンパイルしてチャンネルへ出力する (caml2htm
            (RegCollect.f
               (RegAlloc.f opt_asm))) in
       Emit.f outchan
-       (iter_asm2 !limit
+       (*(iter_asm2 !limit *) (
          (RegAllocSecond.f 
-           (iter_asm3 !limit
+           ((*iter_asm3 !limit *)
+             UnusedConstreg.f 
              opt_asm)))
     end
 (*
