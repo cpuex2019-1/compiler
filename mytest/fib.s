@@ -6,6 +6,7 @@ Init: # initialize float value and heap pointer
 	addi	$26, $0, 2
 	addi	$27, $0, 3
 	addi	$28, $0, -1
+	addi	$10, $0, 30
 	addi	$4, $0, 3000
 	addi	$30, $0, 0
 	sw	$30, 0($4)

@@ -15,7 +15,7 @@ let rec iter_asm n e = (* 最適化処理をくりかえす (caml2html: main_iter) *)
   if e = e' then e else
   iter_asm (n - 1) e'
 
-let rec iter_asm2 n e = (* 最適化処理をくりかえす (caml2html: main_iter) *)
+let rec iter_asm2 n e = (* レジスタ割当より後用 *)
   Format.eprintf "iteration2[asm] %d@." n;
   if n = 0 then e else
   let e' = Peephole.f (Elim_asm.f e) in
@@ -61,12 +61,20 @@ let lexbuf outchan l = (* バッファをコンパイルしてチャンネルへ出力する (caml2htm
       let _ =
          (MapConstToUnusedreg.f
            (RegCollect.f
-            (iter_asm2 !limit_asm
-              (RegAlloc.f opt_asm)))) in
+              (RegAlloc.f opt_asm))) in
       Emit.f outchan
-        (RegAllocSecond.f 
-          (iter_asm3 !limit_asm opt_asm))
+       (iter_asm2 !limit
+         (RegAllocSecond.f 
+           (iter_asm3 !limit
+             opt_asm)))
     end
+(*
+    begin
+      Emit.f outchan
+        (iter_asm2 !limit_asm
+          (RegAlloc.f opt_asm))
+    end
+*)
 
 (*
   Emit.f outchan

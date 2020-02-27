@@ -178,13 +178,16 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   | NonTail(x), Slw(y, C(z)) -> Printf.fprintf oc "\tslli\t%s, %s, %d\n" (reg x) (reg y) z
   | NonTail(x), Xor(y, V(z)) -> Printf.fprintf oc "\txor\t%s, %s, %s\n" (reg x) (reg y) (reg z)
   | NonTail(x), Xor(y, C(z)) -> Printf.fprintf oc "\txori\t%s, %s, %d\n" (reg x) (reg y) (z)
-  | NonTail(x), Lwz(y, V(z)) 
-    -> Printf.fprintf oc "\tadd\t%s, %s, %s\n" (reg reg_tmp) (reg y) (reg z);
-       Printf.fprintf oc "\tlw\t%s, 0(%s)\n" (reg x) (reg reg_tmp)
+  | NonTail(x), Lwz(y, V(z)) -> 
+(*
+      Printf.fprintf oc "\tadd\t%s, %s, %s\n" (reg reg_tmp) (reg y) (reg z);
+      Printf.fprintf oc "\tlw\t%s, 0(%s)\n" (reg x) (reg reg_tmp)
+*)
+      Printf.fprintf oc "\taddlw\t%s, %s, %s\n" x y z
   | NonTail(x), Lwz(y, C(z)) -> Printf.fprintf oc "\tlw\t%s, %d(%s)\n" (reg x) z (reg y)
   | NonTail(_), Stw(x, y, V(z)) -> 
       (* oukyu shochi *)
-      Printf.fprintf oc "\tadd %s, %s, %s\n" (reg reg_tmp) (reg y) (reg z);
+      Printf.fprintf oc "\tadd\t%s, %s, %s\n" (reg reg_tmp) (reg y) (reg z);
       Printf.fprintf oc "\tsw\t%s, 0(%s)\n" (reg x) (reg reg_tmp)
   | NonTail(_), Stw(x, y, C(z)) -> Printf.fprintf oc "\tsw\t%s, %d(%s)\n" (reg x) z (reg y)
   | NonTail(x), FMr(y) when x = y -> ()
@@ -196,8 +199,11 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   | NonTail(x), FDiv(y, z) -> Printf.fprintf oc "\tfdiv\t%s, %s, %s\n" (reg x) (reg y) (reg z)
   | NonTail(x), Sltf(y, z) -> Printf.fprintf oc "\tsltf\t%s, %s, %s\n" (reg x) (reg y) (reg z)
   | NonTail(x), Slt(y, z) -> Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg x) (reg y) (reg z)
-  | NonTail(x), Lfd(y, V(z)) 
-  -> Printf.fprintf oc "\tadd\t%s, %s, %s\n\tlf\t%s, 0(%s)\n" (reg reg_tmp) (reg y) (reg z) (reg x) (reg reg_tmp)
+  | NonTail(x), Lfd(y, V(z)) -> 
+(*
+      Printf.fprintf oc "\tadd\t%s, %s, %s\n\tlf\t%s, 0(%s)\n" (reg reg_tmp) (reg y) (reg z) (reg x) (reg reg_tmp)
+*)
+      Printf.fprintf oc "\taddlf\t%s, %s, %s\n" x y z
   | NonTail(x), Lfd(y, C(z)) -> Printf.fprintf oc "\tlf\t%s, %d(%s)\n" (reg x) z (reg y)
   | NonTail(_), Stfd(x, y, V(z))
   -> Printf.fprintf oc "\tadd\t%s, %s, %s\n\tsf\t%s, 0(%s)\n" (reg reg_tmp) (reg y) (reg z) (reg x) (reg reg_tmp)
@@ -604,7 +610,9 @@ let file_to_string fname =
 let f oc (Prog(data, fundefs, e)) = 
   (* let _ = ToBasicBlock.f (Prog(data, fundefs, e)) in *)
   Printf.eprintf "[emit]\n";
+(*
   print_prog stderr (Prog(data,fundefs,e));
+*)
   Format.eprintf "generating assembly...@.";
   Printf.fprintf oc "Init: # initialize float value and heap pointer\n";
 
@@ -618,8 +626,19 @@ let f oc (Prog(data, fundefs, e)) =
   load_imm oc (reg reg_three) 3;
   load_imm oc (reg reg_negone) (-1);
 
+                           
+
   (* initialize heap pointer *)
   load_imm oc (reg reg_hp) !(KNormal.hp_init);
+
+  (* initialize const registers *)
+  Printf.fprintf oc "# initialize const registers begin \n";
+  Hashtbl.iter (fun i r -> load_imm oc r i) MapConstToUnusedreg.int_to_reg;
+  Hashtbl.iter (fun d r -> load_imm oc reg_tmp (Int32.to_int (get d));
+                           Printf.fprintf oc "\tsw\t%s, 0(%s)\n" (reg reg_tmp) (reg reg_hp);
+                           Printf.fprintf oc "\tlf\t%s, 0(%s)\n # %f\n" r (reg reg_hp) d
+               ) MapConstToUnusedreg.float_to_reg;
+  Printf.fprintf oc "# end \n";
 
   load_imm oc reg_tmp (Int32.to_int (get 0.0));
   Printf.fprintf oc "\tsw\t%s, 0(%s)\n" (reg reg_tmp) (reg reg_hp);

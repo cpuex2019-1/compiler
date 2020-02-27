@@ -90,6 +90,8 @@ let rec g e =
       Ans(IfEq(y,V(findi c),e1,e2))
   | Ans(IfLE(y,C(c),e1,e2)) when memi c -> 
       Ans(IfLE(y,V(findi c),e1,e2))
+  | Ans(IfGE(y,C(c),e1,e2)) when memi c -> 
+      Ans(IfGE(y,V(findi c),e1,e2))
 
   | Ans(IfEq(y,ioi,e1,e2)) -> Ans(IfEq(y,ioi,g e1,g e2))
   | Ans(IfLE(y,ioi,e1,e2)) -> Ans(IfLE(y,ioi,g e1,g e2))
@@ -102,9 +104,9 @@ let rec g e =
       let r = findi c in
       opt_count := !opt_count+1; g (subst e2 x r)
   | Let((x,t),FLi(l),e2) when memf (float_imm l !float_imm_data)  -> 
-      Printf.eprintf "substitute %s for %s\n" x reg_fzero; 
       let r = findf (float_imm l !float_imm_data) in
-      opt_count := !opt_count+1; g (subst e2 x reg_fzero)
+      Printf.eprintf "substitute %s for %s\n" x r; 
+      opt_count := !opt_count+1; g (subst e2 x r)
 
   | Let((x,t),IfEq(y,C(c),e1,e2),e3) when memi c -> Let((x,t),IfEq(y,V(findi c),g e1,g e2),g e3)
   | Let((x,t),IfEq(y,ioi,e1,e2),e3) -> Let((x,t),IfEq(y,ioi,g e1,g e2),g e3)
