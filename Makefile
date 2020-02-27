@@ -29,7 +29,7 @@ syntax.ml parser.mly lexer.mll typing.mli typing.ml globalArray.mli globalArray.
 setGlobalArray.mli setGlobalArray.ml alpha.mli alpha.ml  beta.mli beta.ml assoc.mli assoc.ml \
 inline.mli inline.ml constFold.mli constFold.ml elim.mli elim.ml \
 closure.mli closure.ml asm.mli asm.ml virtual.mli virtual.ml \
-g.ml color.ml block.mli block.ml toBasicBlock.mli toBasicBlock.ml liveness.mli liveness.ml interferenceGraph.ml optimistic.mli optimistic.ml regAllocByColor.mli regAllocByColor.ml assem.mli assem.ml emitAssem.mli emitAssem.ml elimJumpChain.ml simm.mli simm.ml elim_asm.mli elim_asm.ml constFoldAsm.mli constFoldAsm.ml regAlloc.mli regAlloc.ml regCollect.ml mapConstToUnusedreg.ml constreg.ml constreg.mli unusedConstreg.ml peephole.mli peephole.ml regAllocSecond.ml emit.mli emit.ml asmToAssem.ml \
+g.ml color.ml block.mli block.ml toBasicBlock.mli toBasicBlock.ml liveness.mli liveness.ml interferenceGraph.ml optimistic.mli optimistic.ml regAllocByColor.mli regAllocByColor.ml assem.mli assem.ml emitAssem.mli emitAssem.ml elimJumpChain.ml simm.mli simm.ml elim_asm.mli elim_asm.ml constFoldAsm.mli constFoldAsm.ml regAlloc.mli regAlloc.ml regCollect.ml mapConstToUnusedreg.ml constreg.ml constreg.mli unusedConstreg.ml peephole.mli peephole.ml regAllocSecond.ml emit.mli emit.ml asmToAssem.ml schedule.ml \
 main.mli main.ml
 
 # ↓テストプログラムが増えたら、これも増やす

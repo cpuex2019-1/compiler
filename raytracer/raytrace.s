@@ -3367,8 +3367,8 @@ fle_cont.94232:
 	fsub  $f0, $f0, $f1
 	fneg  $f1, $f4
 	fmul  $f4, $f5, $f2
-	fmul  $f2, $f7, $f2
 	lw    $2, 5($3)
+	fmul  $f2, $f7, $f2
 	lf    $f5, 0($2)
 	lf    $f7, 1($2)
 	lf    $f11, 2($2)
@@ -3409,8 +3409,8 @@ fle_cont.94232:
 	fmul  $f14, $f11, $f4
 	fmul  $f14, $f14, $f2
 	fadd  $f13, $f13, $f14
-	fmul  $f12, $f12, $f13
 	lw    $2, 11($3)
+	fmul  $f12, $f12, $f13
 	sf    $f12, 0($2)
 	lf    $f12, 3385($0)
 # 2.000000
@@ -6637,38 +6637,38 @@ eq_else.94538:
 	lf    $f0, 0($5)
 	lf    $f1, 1($5)
 	lf    $f2, 2($5)
-	fmul  $f3, $f0, $f0
 	lw    $6, 3($3)
+	fmul  $f3, $f0, $f0
 	lw    $7, 4($6)
 	lf    $f4, 0($7)
 	fmul  $f3, $f3, $f4
-	fmul  $f4, $f1, $f1
 	lw    $7, 4($6)
+	fmul  $f4, $f1, $f1
 	lf    $f5, 1($7)
 	fmul  $f4, $f4, $f5
 	fadd  $f3, $f3, $f4
-	fmul  $f4, $f2, $f2
 	lw    $7, 4($6)
+	fmul  $f4, $f2, $f2
 	lf    $f5, 2($7)
 	fmul  $f4, $f4, $f5
-	fadd  $f3, $f3, $f4
 	lw    $7, 3($6)
+	fadd  $f3, $f3, $f4
 	bne   $7, $0, eq_else.94542
 	movf  $f0, $f3
 	j     eq_cont.94543
 eq_else.94542:
-	fmul  $f4, $f1, $f2
 	lw    $7, 9($6)
+	fmul  $f4, $f1, $f2
 	lf    $f5, 0($7)
 	fmul  $f4, $f4, $f5
 	fadd  $f3, $f3, $f4
-	fmul  $f2, $f2, $f0
 	lw    $7, 9($6)
+	fmul  $f2, $f2, $f0
 	lf    $f4, 1($7)
 	fmul  $f2, $f2, $f4
 	fadd  $f2, $f3, $f2
-	fmul  $f0, $f0, $f1
 	lw    $7, 9($6)
+	fmul  $f0, $f0, $f1
 	lf    $f1, 2($7)
 	fmul  $f0, $f0, $f1
 	fadd  $f0, $f2, $f0
@@ -6935,38 +6935,38 @@ eq_else.94572:
 	lf    $f0, 0($5)
 	lf    $f1, 1($5)
 	lf    $f2, 2($5)
-	fmul  $f3, $f0, $f0
 	lw    $6, 7($3)
+	fmul  $f3, $f0, $f0
 	lw    $7, 4($6)
 	lf    $f4, 0($7)
 	fmul  $f3, $f3, $f4
-	fmul  $f4, $f1, $f1
 	lw    $7, 4($6)
+	fmul  $f4, $f1, $f1
 	lf    $f5, 1($7)
 	fmul  $f4, $f4, $f5
 	fadd  $f3, $f3, $f4
-	fmul  $f4, $f2, $f2
 	lw    $7, 4($6)
+	fmul  $f4, $f2, $f2
 	lf    $f5, 2($7)
 	fmul  $f4, $f4, $f5
-	fadd  $f3, $f3, $f4
 	lw    $7, 3($6)
+	fadd  $f3, $f3, $f4
 	bne   $7, $0, eq_else.94576
 	movf  $f0, $f3
 	j     eq_cont.94577
 eq_else.94576:
-	fmul  $f4, $f1, $f2
 	lw    $7, 9($6)
+	fmul  $f4, $f1, $f2
 	lf    $f5, 0($7)
 	fmul  $f4, $f4, $f5
 	fadd  $f3, $f3, $f4
-	fmul  $f2, $f2, $f0
 	lw    $7, 9($6)
+	fmul  $f2, $f2, $f0
 	lf    $f4, 1($7)
 	fmul  $f2, $f2, $f4
 	fadd  $f2, $f3, $f2
-	fmul  $f0, $f0, $f1
 	lw    $7, 9($6)
+	fmul  $f0, $f0, $f1
 	lf    $f1, 2($7)
 	fmul  $f0, $f0, $f1
 	fadd  $f0, $f2, $f0
@@ -7094,37 +7094,37 @@ eq_else.94586:
 	lf    $f0, 0($7)
 	lf    $f1, 1($7)
 	lf    $f2, 2($7)
-	fmul  $f3, $f0, $f0
 	lw    $9, 4($6)
+	fmul  $f3, $f0, $f0
 	lf    $f4, 0($9)
 	fmul  $f3, $f3, $f4
-	fmul  $f4, $f1, $f1
 	lw    $9, 4($6)
+	fmul  $f4, $f1, $f1
 	lf    $f5, 1($9)
 	fmul  $f4, $f4, $f5
 	fadd  $f3, $f3, $f4
-	fmul  $f4, $f2, $f2
 	lw    $9, 4($6)
+	fmul  $f4, $f2, $f2
 	lf    $f5, 2($9)
 	fmul  $f4, $f4, $f5
-	fadd  $f3, $f3, $f4
 	lw    $9, 3($6)
+	fadd  $f3, $f3, $f4
 	bne   $9, $0, eq_else.94590
 	movf  $f0, $f3
 	j     eq_cont.94591
 eq_else.94590:
-	fmul  $f4, $f1, $f2
 	lw    $9, 9($6)
+	fmul  $f4, $f1, $f2
 	lf    $f5, 0($9)
 	fmul  $f4, $f4, $f5
 	fadd  $f3, $f3, $f4
-	fmul  $f2, $f2, $f0
 	lw    $9, 9($6)
+	fmul  $f2, $f2, $f0
 	lf    $f4, 1($9)
 	fmul  $f2, $f2, $f4
 	fadd  $f2, $f3, $f2
-	fmul  $f0, $f0, $f1
 	lw    $6, 9($6)
+	fmul  $f0, $f0, $f1
 	lf    $f1, 2($6)
 	fmul  $f0, $f0, $f1
 	fadd  $f0, $f2, $f0
@@ -7150,31 +7150,31 @@ eq_else.94594:
 	lw    $6, 3001($6)
 	lw    $7, 5($6)
 	lf    $f3, 0($7)
+	lw    $7, 5($6)
 	fsub  $f3, $f0, $f3
-	lw    $7, 5($6)
 	lf    $f4, 1($7)
-	fsub  $f4, $f1, $f4
 	lw    $7, 5($6)
+	fsub  $f4, $f1, $f4
 	lf    $f5, 2($7)
-	fsub  $f5, $f2, $f5
 	lw    $7, 1($6)
+	fsub  $f5, $f2, $f5
 	bne   $7, $1, eq_else.94595
-	fabs  $f3, $f3
 	lw    $7, 4($6)
+	fabs  $f3, $f3
 	lf    $f6, 0($7)
 	bltf  $f3, $f6, fle.94597
 	mov   $7, $0
 	j     fle_cont.94598
 fle.94597:
-	fabs  $f3, $f4
 	lw    $7, 4($6)
+	fabs  $f3, $f4
 	lf    $f4, 1($7)
 	bltf  $f3, $f4, fle.94599
 	mov   $7, $0
 	j     fle_cont.94600
 fle.94599:
-	fabs  $f3, $f5
 	lw    $7, 4($6)
+	fabs  $f3, $f5
 	lf    $f4, 2($7)
 	bltf  $f3, $f4, fle.94601
 	mov   $7, $0
@@ -7205,8 +7205,8 @@ eq_else.94595:
 	fadd  $f3, $f3, $f4
 	lf    $f4, 2($7)
 	fmul  $f4, $f4, $f5
-	fadd  $f3, $f3, $f4
 	lw    $6, 6($6)
+	fadd  $f3, $f3, $f4
 	sltf  $7, $f3, $f30
 	xor  $6, $6, $7
 	bne   $6, $0, eq_else.94609
@@ -7216,37 +7216,37 @@ eq_else.94609:
 	mov   $6, $0
 	j     eq_cont.94608
 eq_else.94607:
-	fmul  $f6, $f3, $f3
 	lw    $7, 4($6)
+	fmul  $f6, $f3, $f3
 	lf    $f7, 0($7)
 	fmul  $f6, $f6, $f7
-	fmul  $f7, $f4, $f4
 	lw    $7, 4($6)
+	fmul  $f7, $f4, $f4
 	lf    $f8, 1($7)
 	fmul  $f7, $f7, $f8
 	fadd  $f6, $f6, $f7
-	fmul  $f7, $f5, $f5
 	lw    $7, 4($6)
+	fmul  $f7, $f5, $f5
 	lf    $f8, 2($7)
 	fmul  $f7, $f7, $f8
-	fadd  $f6, $f6, $f7
 	lw    $7, 3($6)
+	fadd  $f6, $f6, $f7
 	bne   $7, $0, eq_else.94611
 	movf  $f3, $f6
 	j     eq_cont.94612
 eq_else.94611:
-	fmul  $f7, $f4, $f5
 	lw    $7, 9($6)
+	fmul  $f7, $f4, $f5
 	lf    $f8, 0($7)
 	fmul  $f7, $f7, $f8
 	fadd  $f6, $f6, $f7
-	fmul  $f5, $f5, $f3
 	lw    $7, 9($6)
+	fmul  $f5, $f5, $f3
 	lf    $f7, 1($7)
 	fmul  $f5, $f5, $f7
 	fadd  $f5, $f6, $f5
-	fmul  $f3, $f3, $f4
 	lw    $7, 9($6)
+	fmul  $f3, $f3, $f4
 	lf    $f4, 2($7)
 	fmul  $f3, $f3, $f4
 	fadd  $f3, $f5, $f3
@@ -7278,31 +7278,31 @@ eq_else.94618:
 	lw    $6, 3001($6)
 	lw    $7, 5($6)
 	lf    $f3, 0($7)
+	lw    $7, 5($6)
 	fsub  $f3, $f0, $f3
-	lw    $7, 5($6)
 	lf    $f4, 1($7)
-	fsub  $f4, $f1, $f4
 	lw    $7, 5($6)
+	fsub  $f4, $f1, $f4
 	lf    $f5, 2($7)
-	fsub  $f5, $f2, $f5
 	lw    $7, 1($6)
+	fsub  $f5, $f2, $f5
 	bne   $7, $1, eq_else.94619
-	fabs  $f3, $f3
 	lw    $7, 4($6)
+	fabs  $f3, $f3
 	lf    $f6, 0($7)
 	bltf  $f3, $f6, fle.94621
 	mov   $7, $0
 	j     fle_cont.94622
 fle.94621:
-	fabs  $f3, $f4
 	lw    $7, 4($6)
+	fabs  $f3, $f4
 	lf    $f4, 1($7)
 	bltf  $f3, $f4, fle.94623
 	mov   $7, $0
 	j     fle_cont.94624
 fle.94623:
-	fabs  $f3, $f5
 	lw    $7, 4($6)
+	fabs  $f3, $f5
 	lf    $f4, 2($7)
 	bltf  $f3, $f4, fle.94625
 	mov   $7, $0
@@ -7333,8 +7333,8 @@ eq_else.94619:
 	fadd  $f3, $f3, $f4
 	lf    $f4, 2($7)
 	fmul  $f4, $f4, $f5
-	fadd  $f3, $f3, $f4
 	lw    $6, 6($6)
+	fadd  $f3, $f3, $f4
 	sltf  $7, $f3, $f30
 	xor  $6, $6, $7
 	bne   $6, $0, eq_else.94633
@@ -7344,37 +7344,37 @@ eq_else.94633:
 	mov   $6, $0
 	j     eq_cont.94632
 eq_else.94631:
-	fmul  $f6, $f3, $f3
 	lw    $7, 4($6)
+	fmul  $f6, $f3, $f3
 	lf    $f7, 0($7)
 	fmul  $f6, $f6, $f7
-	fmul  $f7, $f4, $f4
 	lw    $7, 4($6)
+	fmul  $f7, $f4, $f4
 	lf    $f8, 1($7)
 	fmul  $f7, $f7, $f8
 	fadd  $f6, $f6, $f7
-	fmul  $f7, $f5, $f5
 	lw    $7, 4($6)
+	fmul  $f7, $f5, $f5
 	lf    $f8, 2($7)
 	fmul  $f7, $f7, $f8
-	fadd  $f6, $f6, $f7
 	lw    $7, 3($6)
+	fadd  $f6, $f6, $f7
 	bne   $7, $0, eq_else.94635
 	movf  $f3, $f6
 	j     eq_cont.94636
 eq_else.94635:
-	fmul  $f7, $f4, $f5
 	lw    $7, 9($6)
+	fmul  $f7, $f4, $f5
 	lf    $f8, 0($7)
 	fmul  $f7, $f7, $f8
 	fadd  $f6, $f6, $f7
-	fmul  $f5, $f5, $f3
 	lw    $7, 9($6)
+	fmul  $f5, $f5, $f3
 	lf    $f7, 1($7)
 	fmul  $f5, $f5, $f7
 	fadd  $f5, $f6, $f5
-	fmul  $f3, $f3, $f4
 	lw    $7, 9($6)
+	fmul  $f3, $f3, $f4
 	lf    $f4, 2($7)
 	fmul  $f3, $f3, $f4
 	fadd  $f3, $f5, $f3
@@ -7406,31 +7406,31 @@ eq_else.94642:
 	lw    $6, 3001($6)
 	lw    $7, 5($6)
 	lf    $f3, 0($7)
+	lw    $7, 5($6)
 	fsub  $f3, $f0, $f3
-	lw    $7, 5($6)
 	lf    $f4, 1($7)
-	fsub  $f4, $f1, $f4
 	lw    $7, 5($6)
+	fsub  $f4, $f1, $f4
 	lf    $f5, 2($7)
-	fsub  $f5, $f2, $f5
 	lw    $7, 1($6)
+	fsub  $f5, $f2, $f5
 	bne   $7, $1, eq_else.94643
-	fabs  $f3, $f3
 	lw    $7, 4($6)
+	fabs  $f3, $f3
 	lf    $f6, 0($7)
 	bltf  $f3, $f6, fle.94645
 	mov   $7, $0
 	j     fle_cont.94646
 fle.94645:
-	fabs  $f3, $f4
 	lw    $7, 4($6)
+	fabs  $f3, $f4
 	lf    $f4, 1($7)
 	bltf  $f3, $f4, fle.94647
 	mov   $7, $0
 	j     fle_cont.94648
 fle.94647:
-	fabs  $f3, $f5
 	lw    $7, 4($6)
+	fabs  $f3, $f5
 	lf    $f4, 2($7)
 	bltf  $f3, $f4, fle.94649
 	mov   $7, $0
@@ -7461,8 +7461,8 @@ eq_else.94643:
 	fadd  $f3, $f3, $f4
 	lf    $f4, 2($7)
 	fmul  $f4, $f4, $f5
-	fadd  $f3, $f3, $f4
 	lw    $6, 6($6)
+	fadd  $f3, $f3, $f4
 	sltf  $7, $f3, $f30
 	xor  $6, $6, $7
 	bne   $6, $0, eq_else.94657
@@ -7472,37 +7472,37 @@ eq_else.94657:
 	mov   $6, $0
 	j     eq_cont.94656
 eq_else.94655:
-	fmul  $f6, $f3, $f3
 	lw    $7, 4($6)
+	fmul  $f6, $f3, $f3
 	lf    $f7, 0($7)
 	fmul  $f6, $f6, $f7
-	fmul  $f7, $f4, $f4
 	lw    $7, 4($6)
+	fmul  $f7, $f4, $f4
 	lf    $f8, 1($7)
 	fmul  $f7, $f7, $f8
 	fadd  $f6, $f6, $f7
-	fmul  $f7, $f5, $f5
 	lw    $7, 4($6)
+	fmul  $f7, $f5, $f5
 	lf    $f8, 2($7)
 	fmul  $f7, $f7, $f8
-	fadd  $f6, $f6, $f7
 	lw    $7, 3($6)
+	fadd  $f6, $f6, $f7
 	bne   $7, $0, eq_else.94659
 	movf  $f3, $f6
 	j     eq_cont.94660
 eq_else.94659:
-	fmul  $f7, $f4, $f5
 	lw    $7, 9($6)
+	fmul  $f7, $f4, $f5
 	lf    $f8, 0($7)
 	fmul  $f7, $f7, $f8
 	fadd  $f6, $f6, $f7
-	fmul  $f5, $f5, $f3
 	lw    $7, 9($6)
+	fmul  $f5, $f5, $f3
 	lf    $f7, 1($7)
 	fmul  $f5, $f5, $f7
 	fadd  $f5, $f6, $f5
-	fmul  $f3, $f3, $f4
 	lw    $7, 9($6)
+	fmul  $f3, $f3, $f4
 	lf    $f4, 2($7)
 	fmul  $f3, $f3, $f4
 	fadd  $f3, $f5, $f3
@@ -7534,31 +7534,31 @@ eq_else.94666:
 	lw    $6, 3001($6)
 	lw    $7, 5($6)
 	lf    $f3, 0($7)
+	lw    $7, 5($6)
 	fsub  $f3, $f0, $f3
-	lw    $7, 5($6)
 	lf    $f4, 1($7)
-	fsub  $f4, $f1, $f4
 	lw    $7, 5($6)
+	fsub  $f4, $f1, $f4
 	lf    $f5, 2($7)
-	fsub  $f5, $f2, $f5
 	lw    $7, 1($6)
+	fsub  $f5, $f2, $f5
 	bne   $7, $1, eq_else.94667
-	fabs  $f3, $f3
 	lw    $7, 4($6)
+	fabs  $f3, $f3
 	lf    $f6, 0($7)
 	bltf  $f3, $f6, fle.94669
 	mov   $7, $0
 	j     fle_cont.94670
 fle.94669:
-	fabs  $f3, $f4
 	lw    $7, 4($6)
+	fabs  $f3, $f4
 	lf    $f4, 1($7)
 	bltf  $f3, $f4, fle.94671
 	mov   $7, $0
 	j     fle_cont.94672
 fle.94671:
-	fabs  $f3, $f5
 	lw    $7, 4($6)
+	fabs  $f3, $f5
 	lf    $f4, 2($7)
 	bltf  $f3, $f4, fle.94673
 	mov   $7, $0
@@ -7589,8 +7589,8 @@ eq_else.94667:
 	fadd  $f3, $f3, $f4
 	lf    $f4, 2($7)
 	fmul  $f4, $f4, $f5
-	fadd  $f3, $f3, $f4
 	lw    $6, 6($6)
+	fadd  $f3, $f3, $f4
 	sltf  $7, $f3, $f30
 	xor  $6, $6, $7
 	bne   $6, $0, eq_else.94681
@@ -7600,37 +7600,37 @@ eq_else.94681:
 	mov   $6, $0
 	j     eq_cont.94680
 eq_else.94679:
-	fmul  $f6, $f3, $f3
 	lw    $7, 4($6)
+	fmul  $f6, $f3, $f3
 	lf    $f7, 0($7)
 	fmul  $f6, $f6, $f7
-	fmul  $f7, $f4, $f4
 	lw    $7, 4($6)
+	fmul  $f7, $f4, $f4
 	lf    $f8, 1($7)
 	fmul  $f7, $f7, $f8
 	fadd  $f6, $f6, $f7
-	fmul  $f7, $f5, $f5
 	lw    $7, 4($6)
+	fmul  $f7, $f5, $f5
 	lf    $f8, 2($7)
 	fmul  $f7, $f7, $f8
-	fadd  $f6, $f6, $f7
 	lw    $7, 3($6)
+	fadd  $f6, $f6, $f7
 	bne   $7, $0, eq_else.94683
 	movf  $f3, $f6
 	j     eq_cont.94684
 eq_else.94683:
-	fmul  $f7, $f4, $f5
 	lw    $7, 9($6)
+	fmul  $f7, $f4, $f5
 	lf    $f8, 0($7)
 	fmul  $f7, $f7, $f8
 	fadd  $f6, $f6, $f7
-	fmul  $f5, $f5, $f3
 	lw    $7, 9($6)
+	fmul  $f5, $f5, $f3
 	lf    $f7, 1($7)
 	fmul  $f5, $f5, $f7
 	fadd  $f5, $f6, $f5
-	fmul  $f3, $f3, $f4
 	lw    $7, 9($6)
+	fmul  $f3, $f3, $f4
 	lf    $f4, 2($7)
 	fmul  $f3, $f3, $f4
 	fadd  $f3, $f5, $f3
@@ -7701,8 +7701,8 @@ eq_else.94690:
 	lf    $f4, 1($9)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f1
-	fabs  $f4, $f4
 	lw    $10, 4($7)
+	fabs  $f4, $f4
 	lf    $f5, 1($10)
 	bltf  $f4, $f5, fle.94693
 	mov   $10, $0
@@ -7711,8 +7711,8 @@ fle.94693:
 	lf    $f4, 2($9)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f2
-	fabs  $f4, $f4
 	lw    $10, 4($7)
+	fabs  $f4, $f4
 	lf    $f5, 2($10)
 	bltf  $f4, $f5, fle.94695
 	mov   $10, $0
@@ -7741,8 +7741,8 @@ fle_cont.94694:
 	lf    $f4, 0($9)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f0
-	fabs  $f4, $f4
 	lw    $10, 4($7)
+	fabs  $f4, $f4
 	lf    $f5, 0($10)
 	bltf  $f4, $f5, fle.94703
 	mov   $10, $0
@@ -7751,8 +7751,8 @@ fle.94703:
 	lf    $f4, 2($9)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f2
-	fabs  $f4, $f4
 	lw    $10, 4($7)
+	fabs  $f4, $f4
 	lf    $f5, 2($10)
 	bltf  $f4, $f5, fle.94705
 	mov   $10, $0
@@ -7781,8 +7781,8 @@ fle_cont.94704:
 	lf    $f3, 0($9)
 	fmul  $f3, $f2, $f3
 	fadd  $f0, $f3, $f0
-	fabs  $f0, $f0
 	lw    $10, 4($7)
+	fabs  $f0, $f0
 	lf    $f3, 0($10)
 	bltf  $f0, $f3, fle.94713
 	mov   $7, $0
@@ -7791,8 +7791,8 @@ fle.94713:
 	lf    $f0, 1($9)
 	fmul  $f0, $f2, $f0
 	fadd  $f0, $f0, $f1
-	fabs  $f0, $f0
 	lw    $7, 4($7)
+	fabs  $f0, $f0
 	lf    $f1, 1($7)
 	bltf  $f0, $f1, fle.94715
 	mov   $7, $0
@@ -7863,37 +7863,37 @@ feq_cont.94728:
 	lf    $f5, 3($8)
 	fmul  $f5, $f5, $f2
 	fadd  $f4, $f4, $f5
-	fmul  $f5, $f0, $f0
 	lw    $9, 4($7)
+	fmul  $f5, $f0, $f0
 	lf    $f6, 0($9)
 	fmul  $f5, $f5, $f6
-	fmul  $f6, $f1, $f1
 	lw    $9, 4($7)
+	fmul  $f6, $f1, $f1
 	lf    $f7, 1($9)
 	fmul  $f6, $f6, $f7
 	fadd  $f5, $f5, $f6
-	fmul  $f6, $f2, $f2
 	lw    $9, 4($7)
+	fmul  $f6, $f2, $f2
 	lf    $f7, 2($9)
 	fmul  $f6, $f6, $f7
-	fadd  $f5, $f5, $f6
 	lw    $9, 3($7)
+	fadd  $f5, $f5, $f6
 	bne   $9, $0, eq_else.94731
 	movf  $f0, $f5
 	j     eq_cont.94732
 eq_else.94731:
-	fmul  $f6, $f1, $f2
 	lw    $9, 9($7)
+	fmul  $f6, $f1, $f2
 	lf    $f7, 0($9)
 	fmul  $f6, $f6, $f7
 	fadd  $f5, $f5, $f6
-	fmul  $f2, $f2, $f0
 	lw    $9, 9($7)
+	fmul  $f2, $f2, $f0
 	lf    $f6, 1($9)
 	fmul  $f2, $f2, $f6
 	fadd  $f2, $f5, $f2
-	fmul  $f0, $f0, $f1
 	lw    $9, 9($7)
+	fmul  $f0, $f0, $f1
 	lf    $f1, 2($9)
 	fmul  $f0, $f0, $f1
 	fadd  $f0, $f2, $f0
@@ -7969,8 +7969,8 @@ eq_else.94743:
 	lf    $f3, 3067($26)
 	fmul  $f0, $f3, $f0
 	lf    $f3, 3125($26)
-	fadd  $f0, $f0, $f3
 	lw    $6, 0($5)
+	fadd  $f0, $f0, $f3
 	sw    $5, 0($3)
 	sw    $2, 1($3)
 	bne   $6, $28, eq_else.94745
@@ -7980,31 +7980,31 @@ eq_else.94745:
 	lw    $6, 3001($6)
 	lw    $7, 5($6)
 	lf    $f3, 0($7)
+	lw    $7, 5($6)
 	fsub  $f3, $f1, $f3
-	lw    $7, 5($6)
 	lf    $f4, 1($7)
-	fsub  $f4, $f2, $f4
 	lw    $7, 5($6)
+	fsub  $f4, $f2, $f4
 	lf    $f5, 2($7)
-	fsub  $f5, $f0, $f5
 	lw    $7, 1($6)
+	fsub  $f5, $f0, $f5
 	bne   $7, $1, eq_else.94747
-	fabs  $f3, $f3
 	lw    $7, 4($6)
+	fabs  $f3, $f3
 	lf    $f6, 0($7)
 	bltf  $f3, $f6, fle.94749
 	mov   $7, $0
 	j     fle_cont.94750
 fle.94749:
-	fabs  $f3, $f4
 	lw    $7, 4($6)
+	fabs  $f3, $f4
 	lf    $f4, 1($7)
 	bltf  $f3, $f4, fle.94751
 	mov   $7, $0
 	j     fle_cont.94752
 fle.94751:
-	fabs  $f3, $f5
 	lw    $7, 4($6)
+	fabs  $f3, $f5
 	lf    $f4, 2($7)
 	bltf  $f3, $f4, fle.94753
 	mov   $7, $0
@@ -8035,8 +8035,8 @@ eq_else.94747:
 	fadd  $f3, $f3, $f4
 	lf    $f4, 2($7)
 	fmul  $f4, $f4, $f5
-	fadd  $f3, $f3, $f4
 	lw    $6, 6($6)
+	fadd  $f3, $f3, $f4
 	sltf  $7, $f3, $f30
 	xor  $6, $6, $7
 	bne   $6, $0, eq_else.94761
@@ -8046,37 +8046,37 @@ eq_else.94761:
 	mov   $6, $0
 	j     eq_cont.94760
 eq_else.94759:
-	fmul  $f6, $f3, $f3
 	lw    $7, 4($6)
+	fmul  $f6, $f3, $f3
 	lf    $f7, 0($7)
 	fmul  $f6, $f6, $f7
-	fmul  $f7, $f4, $f4
 	lw    $7, 4($6)
+	fmul  $f7, $f4, $f4
 	lf    $f8, 1($7)
 	fmul  $f7, $f7, $f8
 	fadd  $f6, $f6, $f7
-	fmul  $f7, $f5, $f5
 	lw    $7, 4($6)
+	fmul  $f7, $f5, $f5
 	lf    $f8, 2($7)
 	fmul  $f7, $f7, $f8
-	fadd  $f6, $f6, $f7
 	lw    $7, 3($6)
+	fadd  $f6, $f6, $f7
 	bne   $7, $0, eq_else.94763
 	movf  $f3, $f6
 	j     eq_cont.94764
 eq_else.94763:
-	fmul  $f7, $f4, $f5
 	lw    $7, 9($6)
+	fmul  $f7, $f4, $f5
 	lf    $f8, 0($7)
 	fmul  $f7, $f7, $f8
 	fadd  $f6, $f6, $f7
-	fmul  $f5, $f5, $f3
 	lw    $7, 9($6)
+	fmul  $f5, $f5, $f3
 	lf    $f7, 1($7)
 	fmul  $f5, $f5, $f7
 	fadd  $f5, $f6, $f5
-	fmul  $f3, $f3, $f4
 	lw    $7, 9($6)
+	fmul  $f3, $f3, $f4
 	lf    $f4, 2($7)
 	fmul  $f3, $f3, $f4
 	fadd  $f3, $f5, $f3
@@ -8107,31 +8107,31 @@ eq_else.94771:
 	lw    $6, 3001($6)
 	lw    $7, 5($6)
 	lf    $f3, 0($7)
+	lw    $7, 5($6)
 	fsub  $f3, $f1, $f3
-	lw    $7, 5($6)
 	lf    $f4, 1($7)
-	fsub  $f4, $f2, $f4
 	lw    $7, 5($6)
+	fsub  $f4, $f2, $f4
 	lf    $f5, 2($7)
-	fsub  $f5, $f0, $f5
 	lw    $7, 1($6)
+	fsub  $f5, $f0, $f5
 	bne   $7, $1, eq_else.94773
-	fabs  $f3, $f3
 	lw    $7, 4($6)
+	fabs  $f3, $f3
 	lf    $f6, 0($7)
 	bltf  $f3, $f6, fle.94775
 	mov   $7, $0
 	j     fle_cont.94776
 fle.94775:
-	fabs  $f3, $f4
 	lw    $7, 4($6)
+	fabs  $f3, $f4
 	lf    $f4, 1($7)
 	bltf  $f3, $f4, fle.94777
 	mov   $7, $0
 	j     fle_cont.94778
 fle.94777:
-	fabs  $f3, $f5
 	lw    $7, 4($6)
+	fabs  $f3, $f5
 	lf    $f4, 2($7)
 	bltf  $f3, $f4, fle.94779
 	mov   $7, $0
@@ -8162,8 +8162,8 @@ eq_else.94773:
 	fadd  $f3, $f3, $f4
 	lf    $f4, 2($7)
 	fmul  $f4, $f4, $f5
-	fadd  $f3, $f3, $f4
 	lw    $6, 6($6)
+	fadd  $f3, $f3, $f4
 	sltf  $7, $f3, $f30
 	xor  $6, $6, $7
 	bne   $6, $0, eq_else.94787
@@ -8173,37 +8173,37 @@ eq_else.94787:
 	mov   $6, $0
 	j     eq_cont.94786
 eq_else.94785:
-	fmul  $f6, $f3, $f3
 	lw    $7, 4($6)
+	fmul  $f6, $f3, $f3
 	lf    $f7, 0($7)
 	fmul  $f6, $f6, $f7
-	fmul  $f7, $f4, $f4
 	lw    $7, 4($6)
+	fmul  $f7, $f4, $f4
 	lf    $f8, 1($7)
 	fmul  $f7, $f7, $f8
 	fadd  $f6, $f6, $f7
-	fmul  $f7, $f5, $f5
 	lw    $7, 4($6)
+	fmul  $f7, $f5, $f5
 	lf    $f8, 2($7)
 	fmul  $f7, $f7, $f8
-	fadd  $f6, $f6, $f7
 	lw    $7, 3($6)
+	fadd  $f6, $f6, $f7
 	bne   $7, $0, eq_else.94789
 	movf  $f3, $f6
 	j     eq_cont.94790
 eq_else.94789:
-	fmul  $f7, $f4, $f5
 	lw    $7, 9($6)
+	fmul  $f7, $f4, $f5
 	lf    $f8, 0($7)
 	fmul  $f7, $f7, $f8
 	fadd  $f6, $f6, $f7
-	fmul  $f5, $f5, $f3
 	lw    $7, 9($6)
+	fmul  $f5, $f5, $f3
 	lf    $f7, 1($7)
 	fmul  $f5, $f5, $f7
 	fadd  $f5, $f6, $f5
-	fmul  $f3, $f3, $f4
 	lw    $7, 9($6)
+	fmul  $f3, $f3, $f4
 	lf    $f4, 2($7)
 	fmul  $f3, $f3, $f4
 	fadd  $f3, $f5, $f3
@@ -8234,31 +8234,31 @@ eq_else.94797:
 	lw    $6, 3001($6)
 	lw    $7, 5($6)
 	lf    $f3, 0($7)
+	lw    $7, 5($6)
 	fsub  $f3, $f1, $f3
-	lw    $7, 5($6)
 	lf    $f4, 1($7)
-	fsub  $f4, $f2, $f4
 	lw    $7, 5($6)
+	fsub  $f4, $f2, $f4
 	lf    $f5, 2($7)
-	fsub  $f5, $f0, $f5
 	lw    $7, 1($6)
+	fsub  $f5, $f0, $f5
 	bne   $7, $1, eq_else.94799
-	fabs  $f3, $f3
 	lw    $7, 4($6)
+	fabs  $f3, $f3
 	lf    $f6, 0($7)
 	bltf  $f3, $f6, fle.94801
 	mov   $7, $0
 	j     fle_cont.94802
 fle.94801:
-	fabs  $f3, $f4
 	lw    $7, 4($6)
+	fabs  $f3, $f4
 	lf    $f4, 1($7)
 	bltf  $f3, $f4, fle.94803
 	mov   $7, $0
 	j     fle_cont.94804
 fle.94803:
-	fabs  $f3, $f5
 	lw    $7, 4($6)
+	fabs  $f3, $f5
 	lf    $f4, 2($7)
 	bltf  $f3, $f4, fle.94805
 	mov   $7, $0
@@ -8289,8 +8289,8 @@ eq_else.94799:
 	fadd  $f3, $f3, $f4
 	lf    $f4, 2($7)
 	fmul  $f4, $f4, $f5
-	fadd  $f3, $f3, $f4
 	lw    $6, 6($6)
+	fadd  $f3, $f3, $f4
 	sltf  $7, $f3, $f30
 	xor  $6, $6, $7
 	bne   $6, $0, eq_else.94813
@@ -8300,37 +8300,37 @@ eq_else.94813:
 	mov   $6, $0
 	j     eq_cont.94812
 eq_else.94811:
-	fmul  $f6, $f3, $f3
 	lw    $7, 4($6)
+	fmul  $f6, $f3, $f3
 	lf    $f7, 0($7)
 	fmul  $f6, $f6, $f7
-	fmul  $f7, $f4, $f4
 	lw    $7, 4($6)
+	fmul  $f7, $f4, $f4
 	lf    $f8, 1($7)
 	fmul  $f7, $f7, $f8
 	fadd  $f6, $f6, $f7
-	fmul  $f7, $f5, $f5
 	lw    $7, 4($6)
+	fmul  $f7, $f5, $f5
 	lf    $f8, 2($7)
 	fmul  $f7, $f7, $f8
-	fadd  $f6, $f6, $f7
 	lw    $7, 3($6)
+	fadd  $f6, $f6, $f7
 	bne   $7, $0, eq_else.94815
 	movf  $f3, $f6
 	j     eq_cont.94816
 eq_else.94815:
-	fmul  $f7, $f4, $f5
 	lw    $7, 9($6)
+	fmul  $f7, $f4, $f5
 	lf    $f8, 0($7)
 	fmul  $f7, $f7, $f8
 	fadd  $f6, $f6, $f7
-	fmul  $f5, $f5, $f3
 	lw    $7, 9($6)
+	fmul  $f5, $f5, $f3
 	lf    $f7, 1($7)
 	fmul  $f5, $f5, $f7
 	fadd  $f5, $f6, $f5
-	fmul  $f3, $f3, $f4
 	lw    $7, 9($6)
+	fmul  $f3, $f3, $f4
 	lf    $f4, 2($7)
 	fmul  $f3, $f3, $f4
 	fadd  $f3, $f5, $f3
@@ -8594,8 +8594,8 @@ eq_else.94841:
 	lf    $f4, 1($9)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f1
-	fabs  $f4, $f4
 	lw    $10, 4($8)
+	fabs  $f4, $f4
 	lf    $f5, 1($10)
 	bltf  $f4, $f5, fle.94845
 	mov   $10, $0
@@ -8604,8 +8604,8 @@ fle.94845:
 	lf    $f4, 2($9)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f2
-	fabs  $f4, $f4
 	lw    $10, 4($8)
+	fabs  $f4, $f4
 	lf    $f5, 2($10)
 	bltf  $f4, $f5, fle.94847
 	mov   $10, $0
@@ -8634,8 +8634,8 @@ fle_cont.94846:
 	lf    $f4, 0($9)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f0
-	fabs  $f4, $f4
 	lw    $10, 4($8)
+	fabs  $f4, $f4
 	lf    $f5, 0($10)
 	bltf  $f4, $f5, fle.94855
 	mov   $10, $0
@@ -8644,8 +8644,8 @@ fle.94855:
 	lf    $f4, 2($9)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f2
-	fabs  $f4, $f4
 	lw    $10, 4($8)
+	fabs  $f4, $f4
 	lf    $f5, 2($10)
 	bltf  $f4, $f5, fle.94857
 	mov   $10, $0
@@ -8674,8 +8674,8 @@ fle_cont.94856:
 	lf    $f3, 0($9)
 	fmul  $f3, $f2, $f3
 	fadd  $f0, $f3, $f0
-	fabs  $f0, $f0
 	lw    $10, 4($8)
+	fabs  $f0, $f0
 	lf    $f3, 0($10)
 	bltf  $f0, $f3, fle.94865
 	mov   $7, $0
@@ -8684,8 +8684,8 @@ fle.94865:
 	lf    $f0, 1($9)
 	fmul  $f0, $f2, $f0
 	fadd  $f0, $f0, $f1
-	fabs  $f0, $f0
 	lw    $8, 4($8)
+	fabs  $f0, $f0
 	lf    $f1, 1($8)
 	bltf  $f0, $f1, fle.94867
 	mov   $7, $0
@@ -8756,37 +8756,37 @@ feq_cont.94880:
 	lf    $f5, 3($7)
 	fmul  $f5, $f5, $f2
 	fadd  $f4, $f4, $f5
-	fmul  $f5, $f0, $f0
 	lw    $9, 4($8)
+	fmul  $f5, $f0, $f0
 	lf    $f6, 0($9)
 	fmul  $f5, $f5, $f6
-	fmul  $f6, $f1, $f1
 	lw    $9, 4($8)
+	fmul  $f6, $f1, $f1
 	lf    $f7, 1($9)
 	fmul  $f6, $f6, $f7
 	fadd  $f5, $f5, $f6
-	fmul  $f6, $f2, $f2
 	lw    $9, 4($8)
+	fmul  $f6, $f2, $f2
 	lf    $f7, 2($9)
 	fmul  $f6, $f6, $f7
-	fadd  $f5, $f5, $f6
 	lw    $9, 3($8)
+	fadd  $f5, $f5, $f6
 	bne   $9, $0, eq_else.94883
 	movf  $f0, $f5
 	j     eq_cont.94884
 eq_else.94883:
-	fmul  $f6, $f1, $f2
 	lw    $9, 9($8)
+	fmul  $f6, $f1, $f2
 	lf    $f7, 0($9)
 	fmul  $f6, $f6, $f7
 	fadd  $f5, $f5, $f6
-	fmul  $f2, $f2, $f0
 	lw    $9, 9($8)
+	fmul  $f2, $f2, $f0
 	lf    $f6, 1($9)
 	fmul  $f2, $f2, $f6
 	fadd  $f2, $f5, $f2
-	fmul  $f0, $f0, $f1
 	lw    $9, 9($8)
+	fmul  $f0, $f0, $f1
 	lf    $f1, 2($9)
 	fmul  $f0, $f0, $f1
 	fadd  $f0, $f2, $f0
@@ -9015,8 +9015,8 @@ eq_else.94927:
 	lf    $f4, 1($9)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f1
-	fabs  $f4, $f4
 	lw    $10, 4($8)
+	fabs  $f4, $f4
 	lf    $f5, 1($10)
 	bltf  $f4, $f5, fle.94931
 	mov   $10, $0
@@ -9025,8 +9025,8 @@ fle.94931:
 	lf    $f4, 2($9)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f2
-	fabs  $f4, $f4
 	lw    $10, 4($8)
+	fabs  $f4, $f4
 	lf    $f5, 2($10)
 	bltf  $f4, $f5, fle.94933
 	mov   $10, $0
@@ -9055,8 +9055,8 @@ fle_cont.94932:
 	lf    $f4, 0($9)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f0
-	fabs  $f4, $f4
 	lw    $10, 4($8)
+	fabs  $f4, $f4
 	lf    $f5, 0($10)
 	bltf  $f4, $f5, fle.94941
 	mov   $10, $0
@@ -9065,8 +9065,8 @@ fle.94941:
 	lf    $f4, 2($9)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f2
-	fabs  $f4, $f4
 	lw    $10, 4($8)
+	fabs  $f4, $f4
 	lf    $f5, 2($10)
 	bltf  $f4, $f5, fle.94943
 	mov   $10, $0
@@ -9095,8 +9095,8 @@ fle_cont.94942:
 	lf    $f3, 0($9)
 	fmul  $f3, $f2, $f3
 	fadd  $f0, $f3, $f0
-	fabs  $f0, $f0
 	lw    $10, 4($8)
+	fabs  $f0, $f0
 	lf    $f3, 0($10)
 	bltf  $f0, $f3, fle.94951
 	mov   $7, $0
@@ -9105,8 +9105,8 @@ fle.94951:
 	lf    $f0, 1($9)
 	fmul  $f0, $f2, $f0
 	fadd  $f0, $f0, $f1
-	fabs  $f0, $f0
 	lw    $8, 4($8)
+	fabs  $f0, $f0
 	lf    $f1, 1($8)
 	bltf  $f0, $f1, fle.94953
 	mov   $7, $0
@@ -9177,37 +9177,37 @@ feq_cont.94966:
 	lf    $f5, 3($7)
 	fmul  $f5, $f5, $f2
 	fadd  $f4, $f4, $f5
-	fmul  $f5, $f0, $f0
 	lw    $9, 4($8)
+	fmul  $f5, $f0, $f0
 	lf    $f6, 0($9)
 	fmul  $f5, $f5, $f6
-	fmul  $f6, $f1, $f1
 	lw    $9, 4($8)
+	fmul  $f6, $f1, $f1
 	lf    $f7, 1($9)
 	fmul  $f6, $f6, $f7
 	fadd  $f5, $f5, $f6
-	fmul  $f6, $f2, $f2
 	lw    $9, 4($8)
+	fmul  $f6, $f2, $f2
 	lf    $f7, 2($9)
 	fmul  $f6, $f6, $f7
-	fadd  $f5, $f5, $f6
 	lw    $9, 3($8)
+	fadd  $f5, $f5, $f6
 	bne   $9, $0, eq_else.94969
 	movf  $f0, $f5
 	j     eq_cont.94970
 eq_else.94969:
-	fmul  $f6, $f1, $f2
 	lw    $9, 9($8)
+	fmul  $f6, $f1, $f2
 	lf    $f7, 0($9)
 	fmul  $f6, $f6, $f7
 	fadd  $f5, $f5, $f6
-	fmul  $f2, $f2, $f0
 	lw    $9, 9($8)
+	fmul  $f2, $f2, $f0
 	lf    $f6, 1($9)
 	fmul  $f2, $f2, $f6
 	fadd  $f2, $f5, $f2
-	fmul  $f0, $f0, $f1
 	lw    $9, 9($8)
+	fmul  $f0, $f0, $f1
 	lf    $f1, 2($9)
 	fmul  $f0, $f0, $f1
 	fadd  $f0, $f2, $f0
@@ -9673,8 +9673,8 @@ eq_else.95063:
 	lf    $f4, 1($9)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f1
-	fabs  $f4, $f4
 	lw    $10, 4($8)
+	fabs  $f4, $f4
 	lf    $f5, 1($10)
 	bltf  $f4, $f5, fle.95067
 	mov   $10, $0
@@ -9683,8 +9683,8 @@ fle.95067:
 	lf    $f4, 2($9)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f2
-	fabs  $f4, $f4
 	lw    $10, 4($8)
+	fabs  $f4, $f4
 	lf    $f5, 2($10)
 	bltf  $f4, $f5, fle.95069
 	mov   $10, $0
@@ -9713,8 +9713,8 @@ fle_cont.95068:
 	lf    $f4, 0($9)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f0
-	fabs  $f4, $f4
 	lw    $10, 4($8)
+	fabs  $f4, $f4
 	lf    $f5, 0($10)
 	bltf  $f4, $f5, fle.95077
 	mov   $10, $0
@@ -9723,8 +9723,8 @@ fle.95077:
 	lf    $f4, 2($9)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f2
-	fabs  $f4, $f4
 	lw    $10, 4($8)
+	fabs  $f4, $f4
 	lf    $f5, 2($10)
 	bltf  $f4, $f5, fle.95079
 	mov   $10, $0
@@ -9753,8 +9753,8 @@ fle_cont.95078:
 	lf    $f3, 0($9)
 	fmul  $f3, $f2, $f3
 	fadd  $f0, $f3, $f0
-	fabs  $f0, $f0
 	lw    $10, 4($8)
+	fabs  $f0, $f0
 	lf    $f3, 0($10)
 	bltf  $f0, $f3, fle.95087
 	mov   $7, $0
@@ -9763,8 +9763,8 @@ fle.95087:
 	lf    $f0, 1($9)
 	fmul  $f0, $f2, $f0
 	fadd  $f0, $f0, $f1
-	fabs  $f0, $f0
 	lw    $8, 4($8)
+	fabs  $f0, $f0
 	lf    $f1, 1($8)
 	bltf  $f0, $f1, fle.95089
 	mov   $7, $0
@@ -9835,37 +9835,37 @@ feq_cont.95102:
 	lf    $f5, 3($7)
 	fmul  $f5, $f5, $f2
 	fadd  $f4, $f4, $f5
-	fmul  $f5, $f0, $f0
 	lw    $9, 4($8)
+	fmul  $f5, $f0, $f0
 	lf    $f6, 0($9)
 	fmul  $f5, $f5, $f6
-	fmul  $f6, $f1, $f1
 	lw    $9, 4($8)
+	fmul  $f6, $f1, $f1
 	lf    $f7, 1($9)
 	fmul  $f6, $f6, $f7
 	fadd  $f5, $f5, $f6
-	fmul  $f6, $f2, $f2
 	lw    $9, 4($8)
+	fmul  $f6, $f2, $f2
 	lf    $f7, 2($9)
 	fmul  $f6, $f6, $f7
-	fadd  $f5, $f5, $f6
 	lw    $9, 3($8)
+	fadd  $f5, $f5, $f6
 	bne   $9, $0, eq_else.95105
 	movf  $f0, $f5
 	j     eq_cont.95106
 eq_else.95105:
-	fmul  $f6, $f1, $f2
 	lw    $9, 9($8)
+	fmul  $f6, $f1, $f2
 	lf    $f7, 0($9)
 	fmul  $f6, $f6, $f7
 	fadd  $f5, $f5, $f6
-	fmul  $f2, $f2, $f0
 	lw    $9, 9($8)
+	fmul  $f2, $f2, $f0
 	lf    $f6, 1($9)
 	fmul  $f2, $f2, $f6
 	fadd  $f2, $f5, $f2
-	fmul  $f0, $f0, $f1
 	lw    $9, 9($8)
+	fmul  $f0, $f0, $f1
 	lf    $f1, 2($9)
 	fmul  $f0, $f0, $f1
 	fadd  $f0, $f2, $f0
@@ -10179,8 +10179,8 @@ eq_else.95169:
 	lf    $f2, 3146($26)
 	lw    $9, 5($8)
 	lf    $f3, 2($9)
-	fsub  $f2, $f2, $f3
 	lw    $9, 1($8)
+	fsub  $f2, $f2, $f3
 	bne   $9, $1, eq_else.95171
 	lf    $f3, 0($6)
 	beqf  $f3, $f30, feq.95173
@@ -10369,37 +10369,37 @@ eq_else.95209:
 	lf    $f3, 0($6)
 	lf    $f4, 1($6)
 	lf    $f5, 2($6)
-	fmul  $f6, $f3, $f3
 	lw    $9, 4($8)
+	fmul  $f6, $f3, $f3
 	lf    $f7, 0($9)
 	fmul  $f6, $f6, $f7
-	fmul  $f7, $f4, $f4
 	lw    $9, 4($8)
+	fmul  $f7, $f4, $f4
 	lf    $f8, 1($9)
 	fmul  $f7, $f7, $f8
 	fadd  $f6, $f6, $f7
-	fmul  $f7, $f5, $f5
 	lw    $9, 4($8)
+	fmul  $f7, $f5, $f5
 	lf    $f8, 2($9)
 	fmul  $f7, $f7, $f8
-	fadd  $f6, $f6, $f7
 	lw    $9, 3($8)
+	fadd  $f6, $f6, $f7
 	bne   $9, $0, eq_else.95213
 	movf  $f3, $f6
 	j     eq_cont.95214
 eq_else.95213:
-	fmul  $f7, $f4, $f5
 	lw    $9, 9($8)
+	fmul  $f7, $f4, $f5
 	lf    $f8, 0($9)
 	fmul  $f7, $f7, $f8
 	fadd  $f6, $f6, $f7
-	fmul  $f5, $f5, $f3
 	lw    $9, 9($8)
+	fmul  $f5, $f5, $f3
 	lf    $f7, 1($9)
 	fmul  $f5, $f5, $f7
 	fadd  $f5, $f6, $f5
-	fmul  $f3, $f3, $f4
 	lw    $9, 9($8)
+	fmul  $f3, $f3, $f4
 	lf    $f4, 2($9)
 	fmul  $f3, $f3, $f4
 	fadd  $f3, $f5, $f3
@@ -10414,79 +10414,79 @@ feq_cont.95216:
 	lf    $f4, 0($6)
 	lf    $f5, 1($6)
 	lf    $f6, 2($6)
-	fmul  $f7, $f4, $f0
 	lw    $9, 4($8)
+	fmul  $f7, $f4, $f0
 	lf    $f8, 0($9)
 	fmul  $f7, $f7, $f8
-	fmul  $f8, $f5, $f1
 	lw    $9, 4($8)
+	fmul  $f8, $f5, $f1
 	lf    $f9, 1($9)
 	fmul  $f8, $f8, $f9
 	fadd  $f7, $f7, $f8
-	fmul  $f8, $f6, $f2
 	lw    $9, 4($8)
+	fmul  $f8, $f6, $f2
 	lf    $f9, 2($9)
 	fmul  $f8, $f8, $f9
-	fadd  $f7, $f7, $f8
 	lw    $9, 3($8)
+	fadd  $f7, $f7, $f8
 	bne   $9, $0, eq_else.95219
 	movf  $f4, $f7
 	j     eq_cont.95220
 eq_else.95219:
 	fmul  $f8, $f6, $f1
 	fmul  $f9, $f5, $f2
-	fadd  $f8, $f8, $f9
 	lw    $9, 9($8)
+	fadd  $f8, $f8, $f9
 	lf    $f9, 0($9)
 	fmul  $f8, $f8, $f9
 	fmul  $f9, $f4, $f2
 	fmul  $f6, $f6, $f0
-	fadd  $f6, $f9, $f6
 	lw    $9, 9($8)
+	fadd  $f6, $f9, $f6
 	lf    $f9, 1($9)
 	fmul  $f6, $f6, $f9
 	fadd  $f6, $f8, $f6
 	fmul  $f4, $f4, $f1
 	fmul  $f5, $f5, $f0
-	fadd  $f4, $f4, $f5
 	lw    $9, 9($8)
+	fadd  $f4, $f4, $f5
 	lf    $f5, 2($9)
 	fmul  $f4, $f4, $f5
 	fadd  $f4, $f6, $f4
 	fmul  $f4, $f4, $f18
 	fadd  $f4, $f7, $f4
 eq_cont.95220:
-	fmul  $f5, $f0, $f0
 	lw    $9, 4($8)
+	fmul  $f5, $f0, $f0
 	lf    $f6, 0($9)
 	fmul  $f5, $f5, $f6
-	fmul  $f6, $f1, $f1
 	lw    $9, 4($8)
+	fmul  $f6, $f1, $f1
 	lf    $f7, 1($9)
 	fmul  $f6, $f6, $f7
 	fadd  $f5, $f5, $f6
-	fmul  $f6, $f2, $f2
 	lw    $9, 4($8)
+	fmul  $f6, $f2, $f2
 	lf    $f7, 2($9)
 	fmul  $f6, $f6, $f7
-	fadd  $f5, $f5, $f6
 	lw    $9, 3($8)
+	fadd  $f5, $f5, $f6
 	bne   $9, $0, eq_else.95221
 	movf  $f0, $f5
 	j     eq_cont.95222
 eq_else.95221:
-	fmul  $f6, $f1, $f2
 	lw    $9, 9($8)
+	fmul  $f6, $f1, $f2
 	lf    $f7, 0($9)
 	fmul  $f6, $f6, $f7
 	fadd  $f5, $f5, $f6
-	fmul  $f2, $f2, $f0
 	lw    $9, 9($8)
+	fmul  $f2, $f2, $f0
 	lf    $f6, 1($9)
 	fmul  $f2, $f2, $f6
 	fadd  $f2, $f5, $f2
-	fmul  $f0, $f0, $f1
 	lw    $9, 9($8)
+	fmul  $f0, $f0, $f1
 	lf    $f1, 2($9)
 	fmul  $f0, $f0, $f1
 	fadd  $f0, $f2, $f0
@@ -10504,8 +10504,8 @@ eq_cont.95224:
 	mov   $8, $0
 	j     eq_cont.95218
 fle.95225:
-	sqrt  $f0, $f0
 	lw    $8, 6($8)
+	sqrt  $f0, $f0
 	bne   $8, $0, eq_else.95227
 	fneg  $f0, $f0
 	j     eq_cont.95228
@@ -10553,8 +10553,8 @@ fle.95234:
 	lf    $f3, 2($6)
 	fmul  $f3, $f3, $f0
 	lf    $f4, 3146($26)
-	fadd  $f3, $f3, $f4
 	lw    $9, 0($5)
+	fadd  $f3, $f3, $f4
 	sw    $8, 3($3)
 	sw    $7, 4($3)
 	sf    $f3, 5($3)
@@ -10568,31 +10568,31 @@ eq_else.95236:
 	lw    $9, 3001($9)
 	lw    $10, 5($9)
 	lf    $f4, 0($10)
+	lw    $10, 5($9)
 	fsub  $f4, $f1, $f4
-	lw    $10, 5($9)
 	lf    $f5, 1($10)
-	fsub  $f5, $f2, $f5
 	lw    $10, 5($9)
+	fsub  $f5, $f2, $f5
 	lf    $f6, 2($10)
-	fsub  $f6, $f3, $f6
 	lw    $10, 1($9)
+	fsub  $f6, $f3, $f6
 	bne   $10, $1, eq_else.95238
-	fabs  $f4, $f4
 	lw    $10, 4($9)
+	fabs  $f4, $f4
 	lf    $f7, 0($10)
 	bltf  $f4, $f7, fle.95240
 	mov   $10, $0
 	j     fle_cont.95241
 fle.95240:
-	fabs  $f4, $f5
 	lw    $10, 4($9)
+	fabs  $f4, $f5
 	lf    $f5, 1($10)
 	bltf  $f4, $f5, fle.95242
 	mov   $10, $0
 	j     fle_cont.95243
 fle.95242:
-	fabs  $f4, $f6
 	lw    $10, 4($9)
+	fabs  $f4, $f6
 	lf    $f5, 2($10)
 	bltf  $f4, $f5, fle.95244
 	mov   $10, $0
@@ -10623,8 +10623,8 @@ eq_else.95238:
 	fadd  $f4, $f4, $f5
 	lf    $f5, 2($10)
 	fmul  $f5, $f5, $f6
-	fadd  $f4, $f4, $f5
 	lw    $9, 6($9)
+	fadd  $f4, $f4, $f5
 	sltf  $10, $f4, $f30
 	xor  $9, $9, $10
 	bne   $9, $0, eq_else.95252
@@ -10634,37 +10634,37 @@ eq_else.95252:
 	mov   $9, $0
 	j     eq_cont.95251
 eq_else.95250:
-	fmul  $f7, $f4, $f4
 	lw    $10, 4($9)
+	fmul  $f7, $f4, $f4
 	lf    $f8, 0($10)
 	fmul  $f7, $f7, $f8
-	fmul  $f8, $f5, $f5
 	lw    $10, 4($9)
+	fmul  $f8, $f5, $f5
 	lf    $f9, 1($10)
 	fmul  $f8, $f8, $f9
 	fadd  $f7, $f7, $f8
-	fmul  $f8, $f6, $f6
 	lw    $10, 4($9)
+	fmul  $f8, $f6, $f6
 	lf    $f9, 2($10)
 	fmul  $f8, $f8, $f9
-	fadd  $f7, $f7, $f8
 	lw    $10, 3($9)
+	fadd  $f7, $f7, $f8
 	bne   $10, $0, eq_else.95254
 	movf  $f4, $f7
 	j     eq_cont.95255
 eq_else.95254:
-	fmul  $f8, $f5, $f6
 	lw    $10, 9($9)
+	fmul  $f8, $f5, $f6
 	lf    $f9, 0($10)
 	fmul  $f8, $f8, $f9
 	fadd  $f7, $f7, $f8
-	fmul  $f6, $f6, $f4
 	lw    $10, 9($9)
+	fmul  $f6, $f6, $f4
 	lf    $f8, 1($10)
 	fmul  $f6, $f6, $f8
 	fadd  $f6, $f7, $f6
-	fmul  $f4, $f4, $f5
 	lw    $10, 9($9)
+	fmul  $f4, $f4, $f5
 	lf    $f5, 2($10)
 	fmul  $f4, $f4, $f5
 	fadd  $f4, $f6, $f4
@@ -10695,31 +10695,31 @@ eq_else.95262:
 	lw    $9, 3001($9)
 	lw    $10, 5($9)
 	lf    $f4, 0($10)
+	lw    $10, 5($9)
 	fsub  $f4, $f1, $f4
-	lw    $10, 5($9)
 	lf    $f5, 1($10)
-	fsub  $f5, $f2, $f5
 	lw    $10, 5($9)
+	fsub  $f5, $f2, $f5
 	lf    $f6, 2($10)
-	fsub  $f6, $f3, $f6
 	lw    $10, 1($9)
+	fsub  $f6, $f3, $f6
 	bne   $10, $1, eq_else.95264
-	fabs  $f4, $f4
 	lw    $10, 4($9)
+	fabs  $f4, $f4
 	lf    $f7, 0($10)
 	bltf  $f4, $f7, fle.95266
 	mov   $10, $0
 	j     fle_cont.95267
 fle.95266:
-	fabs  $f4, $f5
 	lw    $10, 4($9)
+	fabs  $f4, $f5
 	lf    $f5, 1($10)
 	bltf  $f4, $f5, fle.95268
 	mov   $10, $0
 	j     fle_cont.95269
 fle.95268:
-	fabs  $f4, $f6
 	lw    $10, 4($9)
+	fabs  $f4, $f6
 	lf    $f5, 2($10)
 	bltf  $f4, $f5, fle.95270
 	mov   $10, $0
@@ -10750,8 +10750,8 @@ eq_else.95264:
 	fadd  $f4, $f4, $f5
 	lf    $f5, 2($10)
 	fmul  $f5, $f5, $f6
-	fadd  $f4, $f4, $f5
 	lw    $9, 6($9)
+	fadd  $f4, $f4, $f5
 	sltf  $10, $f4, $f30
 	xor  $9, $9, $10
 	bne   $9, $0, eq_else.95278
@@ -10761,37 +10761,37 @@ eq_else.95278:
 	mov   $9, $0
 	j     eq_cont.95277
 eq_else.95276:
-	fmul  $f7, $f4, $f4
 	lw    $10, 4($9)
+	fmul  $f7, $f4, $f4
 	lf    $f8, 0($10)
 	fmul  $f7, $f7, $f8
-	fmul  $f8, $f5, $f5
 	lw    $10, 4($9)
+	fmul  $f8, $f5, $f5
 	lf    $f9, 1($10)
 	fmul  $f8, $f8, $f9
 	fadd  $f7, $f7, $f8
-	fmul  $f8, $f6, $f6
 	lw    $10, 4($9)
+	fmul  $f8, $f6, $f6
 	lf    $f9, 2($10)
 	fmul  $f8, $f8, $f9
-	fadd  $f7, $f7, $f8
 	lw    $10, 3($9)
+	fadd  $f7, $f7, $f8
 	bne   $10, $0, eq_else.95280
 	movf  $f4, $f7
 	j     eq_cont.95281
 eq_else.95280:
-	fmul  $f8, $f5, $f6
 	lw    $10, 9($9)
+	fmul  $f8, $f5, $f6
 	lf    $f9, 0($10)
 	fmul  $f8, $f8, $f9
 	fadd  $f7, $f7, $f8
-	fmul  $f6, $f6, $f4
 	lw    $10, 9($9)
+	fmul  $f6, $f6, $f4
 	lf    $f8, 1($10)
 	fmul  $f6, $f6, $f8
 	fadd  $f6, $f7, $f6
-	fmul  $f4, $f4, $f5
 	lw    $10, 9($9)
+	fmul  $f4, $f4, $f5
 	lf    $f5, 2($10)
 	fmul  $f4, $f4, $f5
 	fadd  $f4, $f6, $f4
@@ -10822,31 +10822,31 @@ eq_else.95288:
 	lw    $9, 3001($9)
 	lw    $10, 5($9)
 	lf    $f4, 0($10)
+	lw    $10, 5($9)
 	fsub  $f4, $f1, $f4
-	lw    $10, 5($9)
 	lf    $f5, 1($10)
-	fsub  $f5, $f2, $f5
 	lw    $10, 5($9)
+	fsub  $f5, $f2, $f5
 	lf    $f6, 2($10)
-	fsub  $f6, $f3, $f6
 	lw    $10, 1($9)
+	fsub  $f6, $f3, $f6
 	bne   $10, $1, eq_else.95290
-	fabs  $f4, $f4
 	lw    $10, 4($9)
+	fabs  $f4, $f4
 	lf    $f7, 0($10)
 	bltf  $f4, $f7, fle.95292
 	mov   $10, $0
 	j     fle_cont.95293
 fle.95292:
-	fabs  $f4, $f5
 	lw    $10, 4($9)
+	fabs  $f4, $f5
 	lf    $f5, 1($10)
 	bltf  $f4, $f5, fle.95294
 	mov   $10, $0
 	j     fle_cont.95295
 fle.95294:
-	fabs  $f4, $f6
 	lw    $10, 4($9)
+	fabs  $f4, $f6
 	lf    $f5, 2($10)
 	bltf  $f4, $f5, fle.95296
 	mov   $10, $0
@@ -10877,8 +10877,8 @@ eq_else.95290:
 	fadd  $f4, $f4, $f5
 	lf    $f5, 2($10)
 	fmul  $f5, $f5, $f6
-	fadd  $f4, $f4, $f5
 	lw    $9, 6($9)
+	fadd  $f4, $f4, $f5
 	sltf  $10, $f4, $f30
 	xor  $9, $9, $10
 	bne   $9, $0, eq_else.95304
@@ -10888,37 +10888,37 @@ eq_else.95304:
 	mov   $9, $0
 	j     eq_cont.95303
 eq_else.95302:
-	fmul  $f7, $f4, $f4
 	lw    $10, 4($9)
+	fmul  $f7, $f4, $f4
 	lf    $f8, 0($10)
 	fmul  $f7, $f7, $f8
-	fmul  $f8, $f5, $f5
 	lw    $10, 4($9)
+	fmul  $f8, $f5, $f5
 	lf    $f9, 1($10)
 	fmul  $f8, $f8, $f9
 	fadd  $f7, $f7, $f8
-	fmul  $f8, $f6, $f6
 	lw    $10, 4($9)
+	fmul  $f8, $f6, $f6
 	lf    $f9, 2($10)
 	fmul  $f8, $f8, $f9
-	fadd  $f7, $f7, $f8
 	lw    $10, 3($9)
+	fadd  $f7, $f7, $f8
 	bne   $10, $0, eq_else.95306
 	movf  $f4, $f7
 	j     eq_cont.95307
 eq_else.95306:
-	fmul  $f8, $f5, $f6
 	lw    $10, 9($9)
+	fmul  $f8, $f5, $f6
 	lf    $f9, 0($10)
 	fmul  $f8, $f8, $f9
 	fadd  $f7, $f7, $f8
-	fmul  $f6, $f6, $f4
 	lw    $10, 9($9)
+	fmul  $f6, $f6, $f4
 	lf    $f8, 1($10)
 	fmul  $f6, $f6, $f8
 	fadd  $f6, $f7, $f6
-	fmul  $f4, $f4, $f5
 	lw    $10, 9($9)
+	fmul  $f4, $f4, $f5
 	lf    $f5, 2($10)
 	fmul  $f4, $f4, $f5
 	fadd  $f4, $f6, $f4
@@ -11254,8 +11254,8 @@ eq_else.95334:
 	lf    $f2, 3146($26)
 	lw    $9, 5($8)
 	lf    $f3, 2($9)
-	fsub  $f2, $f2, $f3
 	lw    $9, 1($8)
+	fsub  $f2, $f2, $f3
 	bne   $9, $1, eq_else.95350
 	lf    $f3, 0($6)
 	beqf  $f3, $f30, feq.95352
@@ -11444,37 +11444,37 @@ eq_else.95388:
 	lf    $f3, 0($6)
 	lf    $f4, 1($6)
 	lf    $f5, 2($6)
-	fmul  $f6, $f3, $f3
 	lw    $9, 4($8)
+	fmul  $f6, $f3, $f3
 	lf    $f7, 0($9)
 	fmul  $f6, $f6, $f7
-	fmul  $f7, $f4, $f4
 	lw    $9, 4($8)
+	fmul  $f7, $f4, $f4
 	lf    $f8, 1($9)
 	fmul  $f7, $f7, $f8
 	fadd  $f6, $f6, $f7
-	fmul  $f7, $f5, $f5
 	lw    $9, 4($8)
+	fmul  $f7, $f5, $f5
 	lf    $f8, 2($9)
 	fmul  $f7, $f7, $f8
-	fadd  $f6, $f6, $f7
 	lw    $9, 3($8)
+	fadd  $f6, $f6, $f7
 	bne   $9, $0, eq_else.95392
 	movf  $f3, $f6
 	j     eq_cont.95393
 eq_else.95392:
-	fmul  $f7, $f4, $f5
 	lw    $9, 9($8)
+	fmul  $f7, $f4, $f5
 	lf    $f8, 0($9)
 	fmul  $f7, $f7, $f8
 	fadd  $f6, $f6, $f7
-	fmul  $f5, $f5, $f3
 	lw    $9, 9($8)
+	fmul  $f5, $f5, $f3
 	lf    $f7, 1($9)
 	fmul  $f5, $f5, $f7
 	fadd  $f5, $f6, $f5
-	fmul  $f3, $f3, $f4
 	lw    $9, 9($8)
+	fmul  $f3, $f3, $f4
 	lf    $f4, 2($9)
 	fmul  $f3, $f3, $f4
 	fadd  $f3, $f5, $f3
@@ -11489,79 +11489,79 @@ feq_cont.95395:
 	lf    $f4, 0($6)
 	lf    $f5, 1($6)
 	lf    $f6, 2($6)
-	fmul  $f7, $f4, $f0
 	lw    $9, 4($8)
+	fmul  $f7, $f4, $f0
 	lf    $f8, 0($9)
 	fmul  $f7, $f7, $f8
-	fmul  $f8, $f5, $f1
 	lw    $9, 4($8)
+	fmul  $f8, $f5, $f1
 	lf    $f9, 1($9)
 	fmul  $f8, $f8, $f9
 	fadd  $f7, $f7, $f8
-	fmul  $f8, $f6, $f2
 	lw    $9, 4($8)
+	fmul  $f8, $f6, $f2
 	lf    $f9, 2($9)
 	fmul  $f8, $f8, $f9
-	fadd  $f7, $f7, $f8
 	lw    $9, 3($8)
+	fadd  $f7, $f7, $f8
 	bne   $9, $0, eq_else.95398
 	movf  $f4, $f7
 	j     eq_cont.95399
 eq_else.95398:
 	fmul  $f8, $f6, $f1
 	fmul  $f9, $f5, $f2
-	fadd  $f8, $f8, $f9
 	lw    $9, 9($8)
+	fadd  $f8, $f8, $f9
 	lf    $f9, 0($9)
 	fmul  $f8, $f8, $f9
 	fmul  $f9, $f4, $f2
 	fmul  $f6, $f6, $f0
-	fadd  $f6, $f9, $f6
 	lw    $9, 9($8)
+	fadd  $f6, $f9, $f6
 	lf    $f9, 1($9)
 	fmul  $f6, $f6, $f9
 	fadd  $f6, $f8, $f6
 	fmul  $f4, $f4, $f1
 	fmul  $f5, $f5, $f0
-	fadd  $f4, $f4, $f5
 	lw    $9, 9($8)
+	fadd  $f4, $f4, $f5
 	lf    $f5, 2($9)
 	fmul  $f4, $f4, $f5
 	fadd  $f4, $f6, $f4
 	fmul  $f4, $f4, $f18
 	fadd  $f4, $f7, $f4
 eq_cont.95399:
-	fmul  $f5, $f0, $f0
 	lw    $9, 4($8)
+	fmul  $f5, $f0, $f0
 	lf    $f6, 0($9)
 	fmul  $f5, $f5, $f6
-	fmul  $f6, $f1, $f1
 	lw    $9, 4($8)
+	fmul  $f6, $f1, $f1
 	lf    $f7, 1($9)
 	fmul  $f6, $f6, $f7
 	fadd  $f5, $f5, $f6
-	fmul  $f6, $f2, $f2
 	lw    $9, 4($8)
+	fmul  $f6, $f2, $f2
 	lf    $f7, 2($9)
 	fmul  $f6, $f6, $f7
-	fadd  $f5, $f5, $f6
 	lw    $9, 3($8)
+	fadd  $f5, $f5, $f6
 	bne   $9, $0, eq_else.95400
 	movf  $f0, $f5
 	j     eq_cont.95401
 eq_else.95400:
-	fmul  $f6, $f1, $f2
 	lw    $9, 9($8)
+	fmul  $f6, $f1, $f2
 	lf    $f7, 0($9)
 	fmul  $f6, $f6, $f7
 	fadd  $f5, $f5, $f6
-	fmul  $f2, $f2, $f0
 	lw    $9, 9($8)
+	fmul  $f2, $f2, $f0
 	lf    $f6, 1($9)
 	fmul  $f2, $f2, $f6
 	fadd  $f2, $f5, $f2
-	fmul  $f0, $f0, $f1
 	lw    $9, 9($8)
+	fmul  $f0, $f0, $f1
 	lf    $f1, 2($9)
 	fmul  $f0, $f0, $f1
 	fadd  $f0, $f2, $f0
@@ -11579,8 +11579,8 @@ eq_cont.95403:
 	mov   $8, $0
 	j     eq_cont.95397
 fle.95404:
-	sqrt  $f0, $f0
 	lw    $8, 6($8)
+	sqrt  $f0, $f0
 	bne   $8, $0, eq_else.95406
 	fneg  $f0, $f0
 	j     eq_cont.95407
@@ -11825,8 +11825,8 @@ eq_else.95428:
 	lf    $f2, 3146($26)
 	lw    $8, 5($7)
 	lf    $f3, 2($8)
-	fsub  $f2, $f2, $f3
 	lw    $8, 1($7)
+	fsub  $f2, $f2, $f3
 	bne   $8, $1, eq_else.95442
 	lw    $8, 0($3)
 	lf    $f3, 0($8)
@@ -12018,37 +12018,37 @@ eq_else.95480:
 	lf    $f3, 0($8)
 	lf    $f4, 1($8)
 	lf    $f5, 2($8)
-	fmul  $f6, $f3, $f3
 	lw    $9, 4($7)
+	fmul  $f6, $f3, $f3
 	lf    $f7, 0($9)
 	fmul  $f6, $f6, $f7
-	fmul  $f7, $f4, $f4
 	lw    $9, 4($7)
+	fmul  $f7, $f4, $f4
 	lf    $f8, 1($9)
 	fmul  $f7, $f7, $f8
 	fadd  $f6, $f6, $f7
-	fmul  $f7, $f5, $f5
 	lw    $9, 4($7)
+	fmul  $f7, $f5, $f5
 	lf    $f8, 2($9)
 	fmul  $f7, $f7, $f8
-	fadd  $f6, $f6, $f7
 	lw    $9, 3($7)
+	fadd  $f6, $f6, $f7
 	bne   $9, $0, eq_else.95484
 	movf  $f3, $f6
 	j     eq_cont.95485
 eq_else.95484:
-	fmul  $f7, $f4, $f5
 	lw    $9, 9($7)
+	fmul  $f7, $f4, $f5
 	lf    $f8, 0($9)
 	fmul  $f7, $f7, $f8
 	fadd  $f6, $f6, $f7
-	fmul  $f5, $f5, $f3
 	lw    $9, 9($7)
+	fmul  $f5, $f5, $f3
 	lf    $f7, 1($9)
 	fmul  $f5, $f5, $f7
 	fadd  $f5, $f6, $f5
-	fmul  $f3, $f3, $f4
 	lw    $9, 9($7)
+	fmul  $f3, $f3, $f4
 	lf    $f4, 2($9)
 	fmul  $f3, $f3, $f4
 	fadd  $f3, $f5, $f3
@@ -12063,79 +12063,79 @@ feq_cont.95487:
 	lf    $f4, 0($8)
 	lf    $f5, 1($8)
 	lf    $f6, 2($8)
-	fmul  $f7, $f4, $f0
 	lw    $9, 4($7)
+	fmul  $f7, $f4, $f0
 	lf    $f8, 0($9)
 	fmul  $f7, $f7, $f8
-	fmul  $f8, $f5, $f1
 	lw    $9, 4($7)
+	fmul  $f8, $f5, $f1
 	lf    $f9, 1($9)
 	fmul  $f8, $f8, $f9
 	fadd  $f7, $f7, $f8
-	fmul  $f8, $f6, $f2
 	lw    $9, 4($7)
+	fmul  $f8, $f6, $f2
 	lf    $f9, 2($9)
 	fmul  $f8, $f8, $f9
-	fadd  $f7, $f7, $f8
 	lw    $9, 3($7)
+	fadd  $f7, $f7, $f8
 	bne   $9, $0, eq_else.95490
 	movf  $f4, $f7
 	j     eq_cont.95491
 eq_else.95490:
 	fmul  $f8, $f6, $f1
 	fmul  $f9, $f5, $f2
-	fadd  $f8, $f8, $f9
 	lw    $9, 9($7)
+	fadd  $f8, $f8, $f9
 	lf    $f9, 0($9)
 	fmul  $f8, $f8, $f9
 	fmul  $f9, $f4, $f2
 	fmul  $f6, $f6, $f0
-	fadd  $f6, $f9, $f6
 	lw    $9, 9($7)
+	fadd  $f6, $f9, $f6
 	lf    $f9, 1($9)
 	fmul  $f6, $f6, $f9
 	fadd  $f6, $f8, $f6
 	fmul  $f4, $f4, $f1
 	fmul  $f5, $f5, $f0
-	fadd  $f4, $f4, $f5
 	lw    $9, 9($7)
+	fadd  $f4, $f4, $f5
 	lf    $f5, 2($9)
 	fmul  $f4, $f4, $f5
 	fadd  $f4, $f6, $f4
 	fmul  $f4, $f4, $f18
 	fadd  $f4, $f7, $f4
 eq_cont.95491:
-	fmul  $f5, $f0, $f0
 	lw    $9, 4($7)
+	fmul  $f5, $f0, $f0
 	lf    $f6, 0($9)
 	fmul  $f5, $f5, $f6
-	fmul  $f6, $f1, $f1
 	lw    $9, 4($7)
+	fmul  $f6, $f1, $f1
 	lf    $f7, 1($9)
 	fmul  $f6, $f6, $f7
 	fadd  $f5, $f5, $f6
-	fmul  $f6, $f2, $f2
 	lw    $9, 4($7)
+	fmul  $f6, $f2, $f2
 	lf    $f7, 2($9)
 	fmul  $f6, $f6, $f7
-	fadd  $f5, $f5, $f6
 	lw    $9, 3($7)
+	fadd  $f5, $f5, $f6
 	bne   $9, $0, eq_else.95492
 	movf  $f0, $f5
 	j     eq_cont.95493
 eq_else.95492:
-	fmul  $f6, $f1, $f2
 	lw    $9, 9($7)
+	fmul  $f6, $f1, $f2
 	lf    $f7, 0($9)
 	fmul  $f6, $f6, $f7
 	fadd  $f5, $f5, $f6
-	fmul  $f2, $f2, $f0
 	lw    $9, 9($7)
+	fmul  $f2, $f2, $f0
 	lf    $f6, 1($9)
 	fmul  $f2, $f2, $f6
 	fadd  $f2, $f5, $f2
-	fmul  $f0, $f0, $f1
 	lw    $9, 9($7)
+	fmul  $f0, $f0, $f1
 	lf    $f1, 2($9)
 	fmul  $f0, $f0, $f1
 	fadd  $f0, $f2, $f0
@@ -12153,8 +12153,8 @@ eq_cont.95495:
 	mov   $7, $0
 	j     eq_cont.95489
 fle.95496:
-	sqrt  $f0, $f0
 	lw    $7, 6($7)
+	sqrt  $f0, $f0
 	bne   $7, $0, eq_else.95498
 	fneg  $f0, $f0
 	j     eq_cont.95499
@@ -12302,8 +12302,8 @@ eq_else.95516:
 	lf    $f4, 1($10)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f1
-	fabs  $f4, $f4
 	lw    $12, 4($9)
+	fabs  $f4, $f4
 	lf    $f5, 1($12)
 	bltf  $f4, $f5, fle.95520
 	mov   $12, $0
@@ -12312,8 +12312,8 @@ fle.95520:
 	lf    $f4, 2($10)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f2
-	fabs  $f4, $f4
 	lw    $12, 4($9)
+	fabs  $f4, $f4
 	lf    $f5, 2($12)
 	bltf  $f4, $f5, fle.95522
 	mov   $12, $0
@@ -12342,8 +12342,8 @@ fle_cont.95521:
 	lf    $f4, 0($10)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f0
-	fabs  $f4, $f4
 	lw    $12, 4($9)
+	fabs  $f4, $f4
 	lf    $f5, 0($12)
 	bltf  $f4, $f5, fle.95530
 	mov   $12, $0
@@ -12352,8 +12352,8 @@ fle.95530:
 	lf    $f4, 2($10)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f2
-	fabs  $f4, $f4
 	lw    $12, 4($9)
+	fabs  $f4, $f4
 	lf    $f5, 2($12)
 	bltf  $f4, $f5, fle.95532
 	mov   $12, $0
@@ -12382,8 +12382,8 @@ fle_cont.95531:
 	lf    $f3, 0($10)
 	fmul  $f3, $f2, $f3
 	fadd  $f0, $f3, $f0
-	fabs  $f0, $f0
 	lw    $12, 4($9)
+	fabs  $f0, $f0
 	lf    $f3, 0($12)
 	bltf  $f0, $f3, fle.95540
 	mov   $9, $0
@@ -12392,8 +12392,8 @@ fle.95540:
 	lf    $f0, 1($10)
 	fmul  $f0, $f2, $f0
 	fadd  $f0, $f0, $f1
-	fabs  $f0, $f0
 	lw    $9, 4($9)
+	fabs  $f0, $f0
 	lf    $f1, 1($9)
 	bltf  $f0, $f1, fle.95542
 	mov   $9, $0
@@ -12521,8 +12521,8 @@ fle.95567:
 	lf    $f3, 2($7)
 	fmul  $f3, $f3, $f0
 	lf    $f4, 3149($26)
-	fadd  $f3, $f3, $f4
 	lw    $7, 0($5)
+	fadd  $f3, $f3, $f4
 	sw    $9, 3($3)
 	sw    $8, 4($3)
 	sf    $f3, 5($3)
@@ -12536,31 +12536,31 @@ eq_else.95569:
 	lw    $7, 3001($7)
 	lw    $10, 5($7)
 	lf    $f4, 0($10)
+	lw    $10, 5($7)
 	fsub  $f4, $f1, $f4
-	lw    $10, 5($7)
 	lf    $f5, 1($10)
-	fsub  $f5, $f2, $f5
 	lw    $10, 5($7)
+	fsub  $f5, $f2, $f5
 	lf    $f6, 2($10)
-	fsub  $f6, $f3, $f6
 	lw    $10, 1($7)
+	fsub  $f6, $f3, $f6
 	bne   $10, $1, eq_else.95571
-	fabs  $f4, $f4
 	lw    $10, 4($7)
+	fabs  $f4, $f4
 	lf    $f7, 0($10)
 	bltf  $f4, $f7, fle.95573
 	mov   $10, $0
 	j     fle_cont.95574
 fle.95573:
-	fabs  $f4, $f5
 	lw    $10, 4($7)
+	fabs  $f4, $f5
 	lf    $f5, 1($10)
 	bltf  $f4, $f5, fle.95575
 	mov   $10, $0
 	j     fle_cont.95576
 fle.95575:
-	fabs  $f4, $f6
 	lw    $10, 4($7)
+	fabs  $f4, $f6
 	lf    $f5, 2($10)
 	bltf  $f4, $f5, fle.95577
 	mov   $10, $0
@@ -12591,8 +12591,8 @@ eq_else.95571:
 	fadd  $f4, $f4, $f5
 	lf    $f5, 2($10)
 	fmul  $f5, $f5, $f6
-	fadd  $f4, $f4, $f5
 	lw    $7, 6($7)
+	fadd  $f4, $f4, $f5
 	sltf  $10, $f4, $f30
 	xor  $7, $7, $10
 	bne   $7, $0, eq_else.95585
@@ -12602,37 +12602,37 @@ eq_else.95585:
 	mov   $7, $0
 	j     eq_cont.95584
 eq_else.95583:
-	fmul  $f7, $f4, $f4
 	lw    $10, 4($7)
+	fmul  $f7, $f4, $f4
 	lf    $f8, 0($10)
 	fmul  $f7, $f7, $f8
-	fmul  $f8, $f5, $f5
 	lw    $10, 4($7)
+	fmul  $f8, $f5, $f5
 	lf    $f9, 1($10)
 	fmul  $f8, $f8, $f9
 	fadd  $f7, $f7, $f8
-	fmul  $f8, $f6, $f6
 	lw    $10, 4($7)
+	fmul  $f8, $f6, $f6
 	lf    $f9, 2($10)
 	fmul  $f8, $f8, $f9
-	fadd  $f7, $f7, $f8
 	lw    $10, 3($7)
+	fadd  $f7, $f7, $f8
 	bne   $10, $0, eq_else.95587
 	movf  $f4, $f7
 	j     eq_cont.95588
 eq_else.95587:
-	fmul  $f8, $f5, $f6
 	lw    $10, 9($7)
+	fmul  $f8, $f5, $f6
 	lf    $f9, 0($10)
 	fmul  $f8, $f8, $f9
 	fadd  $f7, $f7, $f8
-	fmul  $f6, $f6, $f4
 	lw    $10, 9($7)
+	fmul  $f6, $f6, $f4
 	lf    $f8, 1($10)
 	fmul  $f6, $f6, $f8
 	fadd  $f6, $f7, $f6
-	fmul  $f4, $f4, $f5
 	lw    $10, 9($7)
+	fmul  $f4, $f4, $f5
 	lf    $f5, 2($10)
 	fmul  $f4, $f4, $f5
 	fadd  $f4, $f6, $f4
@@ -12663,31 +12663,31 @@ eq_else.95595:
 	lw    $7, 3001($7)
 	lw    $10, 5($7)
 	lf    $f4, 0($10)
+	lw    $10, 5($7)
 	fsub  $f4, $f1, $f4
-	lw    $10, 5($7)
 	lf    $f5, 1($10)
-	fsub  $f5, $f2, $f5
 	lw    $10, 5($7)
+	fsub  $f5, $f2, $f5
 	lf    $f6, 2($10)
-	fsub  $f6, $f3, $f6
 	lw    $10, 1($7)
+	fsub  $f6, $f3, $f6
 	bne   $10, $1, eq_else.95597
-	fabs  $f4, $f4
 	lw    $10, 4($7)
+	fabs  $f4, $f4
 	lf    $f7, 0($10)
 	bltf  $f4, $f7, fle.95599
 	mov   $10, $0
 	j     fle_cont.95600
 fle.95599:
-	fabs  $f4, $f5
 	lw    $10, 4($7)
+	fabs  $f4, $f5
 	lf    $f5, 1($10)
 	bltf  $f4, $f5, fle.95601
 	mov   $10, $0
 	j     fle_cont.95602
 fle.95601:
-	fabs  $f4, $f6
 	lw    $10, 4($7)
+	fabs  $f4, $f6
 	lf    $f5, 2($10)
 	bltf  $f4, $f5, fle.95603
 	mov   $10, $0
@@ -12718,8 +12718,8 @@ eq_else.95597:
 	fadd  $f4, $f4, $f5
 	lf    $f5, 2($10)
 	fmul  $f5, $f5, $f6
-	fadd  $f4, $f4, $f5
 	lw    $7, 6($7)
+	fadd  $f4, $f4, $f5
 	sltf  $10, $f4, $f30
 	xor  $7, $7, $10
 	bne   $7, $0, eq_else.95611
@@ -12729,37 +12729,37 @@ eq_else.95611:
 	mov   $7, $0
 	j     eq_cont.95610
 eq_else.95609:
-	fmul  $f7, $f4, $f4
 	lw    $10, 4($7)
+	fmul  $f7, $f4, $f4
 	lf    $f8, 0($10)
 	fmul  $f7, $f7, $f8
-	fmul  $f8, $f5, $f5
 	lw    $10, 4($7)
+	fmul  $f8, $f5, $f5
 	lf    $f9, 1($10)
 	fmul  $f8, $f8, $f9
 	fadd  $f7, $f7, $f8
-	fmul  $f8, $f6, $f6
 	lw    $10, 4($7)
+	fmul  $f8, $f6, $f6
 	lf    $f9, 2($10)
 	fmul  $f8, $f8, $f9
-	fadd  $f7, $f7, $f8
 	lw    $10, 3($7)
+	fadd  $f7, $f7, $f8
 	bne   $10, $0, eq_else.95613
 	movf  $f4, $f7
 	j     eq_cont.95614
 eq_else.95613:
-	fmul  $f8, $f5, $f6
 	lw    $10, 9($7)
+	fmul  $f8, $f5, $f6
 	lf    $f9, 0($10)
 	fmul  $f8, $f8, $f9
 	fadd  $f7, $f7, $f8
-	fmul  $f6, $f6, $f4
 	lw    $10, 9($7)
+	fmul  $f6, $f6, $f4
 	lf    $f8, 1($10)
 	fmul  $f6, $f6, $f8
 	fadd  $f6, $f7, $f6
-	fmul  $f4, $f4, $f5
 	lw    $10, 9($7)
+	fmul  $f4, $f4, $f5
 	lf    $f5, 2($10)
 	fmul  $f4, $f4, $f5
 	fadd  $f4, $f6, $f4
@@ -12790,31 +12790,31 @@ eq_else.95621:
 	lw    $7, 3001($7)
 	lw    $10, 5($7)
 	lf    $f4, 0($10)
+	lw    $10, 5($7)
 	fsub  $f4, $f1, $f4
-	lw    $10, 5($7)
 	lf    $f5, 1($10)
-	fsub  $f5, $f2, $f5
 	lw    $10, 5($7)
+	fsub  $f5, $f2, $f5
 	lf    $f6, 2($10)
-	fsub  $f6, $f3, $f6
 	lw    $10, 1($7)
+	fsub  $f6, $f3, $f6
 	bne   $10, $1, eq_else.95623
-	fabs  $f4, $f4
 	lw    $10, 4($7)
+	fabs  $f4, $f4
 	lf    $f7, 0($10)
 	bltf  $f4, $f7, fle.95625
 	mov   $10, $0
 	j     fle_cont.95626
 fle.95625:
-	fabs  $f4, $f5
 	lw    $10, 4($7)
+	fabs  $f4, $f5
 	lf    $f5, 1($10)
 	bltf  $f4, $f5, fle.95627
 	mov   $10, $0
 	j     fle_cont.95628
 fle.95627:
-	fabs  $f4, $f6
 	lw    $10, 4($7)
+	fabs  $f4, $f6
 	lf    $f5, 2($10)
 	bltf  $f4, $f5, fle.95629
 	mov   $10, $0
@@ -12845,8 +12845,8 @@ eq_else.95623:
 	fadd  $f4, $f4, $f5
 	lf    $f5, 2($10)
 	fmul  $f5, $f5, $f6
-	fadd  $f4, $f4, $f5
 	lw    $7, 6($7)
+	fadd  $f4, $f4, $f5
 	sltf  $10, $f4, $f30
 	xor  $7, $7, $10
 	bne   $7, $0, eq_else.95637
@@ -12856,37 +12856,37 @@ eq_else.95637:
 	mov   $7, $0
 	j     eq_cont.95636
 eq_else.95635:
-	fmul  $f7, $f4, $f4
 	lw    $10, 4($7)
+	fmul  $f7, $f4, $f4
 	lf    $f8, 0($10)
 	fmul  $f7, $f7, $f8
-	fmul  $f8, $f5, $f5
 	lw    $10, 4($7)
+	fmul  $f8, $f5, $f5
 	lf    $f9, 1($10)
 	fmul  $f8, $f8, $f9
 	fadd  $f7, $f7, $f8
-	fmul  $f8, $f6, $f6
 	lw    $10, 4($7)
+	fmul  $f8, $f6, $f6
 	lf    $f9, 2($10)
 	fmul  $f8, $f8, $f9
-	fadd  $f7, $f7, $f8
 	lw    $10, 3($7)
+	fadd  $f7, $f7, $f8
 	bne   $10, $0, eq_else.95639
 	movf  $f4, $f7
 	j     eq_cont.95640
 eq_else.95639:
-	fmul  $f8, $f5, $f6
 	lw    $10, 9($7)
+	fmul  $f8, $f5, $f6
 	lf    $f9, 0($10)
 	fmul  $f8, $f8, $f9
 	fadd  $f7, $f7, $f8
-	fmul  $f6, $f6, $f4
 	lw    $10, 9($7)
+	fmul  $f6, $f6, $f4
 	lf    $f8, 1($10)
 	fmul  $f6, $f6, $f8
 	fadd  $f6, $f7, $f6
-	fmul  $f4, $f4, $f5
 	lw    $10, 9($7)
+	fmul  $f4, $f4, $f5
 	lf    $f5, 2($10)
 	fmul  $f4, $f4, $f5
 	fadd  $f4, $f6, $f4
@@ -13227,8 +13227,8 @@ eq_else.95667:
 	lf    $f4, 1($10)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f1
-	fabs  $f4, $f4
 	lw    $11, 4($9)
+	fabs  $f4, $f4
 	lf    $f5, 1($11)
 	bltf  $f4, $f5, fle.95685
 	mov   $11, $0
@@ -13237,8 +13237,8 @@ fle.95685:
 	lf    $f4, 2($10)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f2
-	fabs  $f4, $f4
 	lw    $11, 4($9)
+	fabs  $f4, $f4
 	lf    $f5, 2($11)
 	bltf  $f4, $f5, fle.95687
 	mov   $11, $0
@@ -13267,8 +13267,8 @@ fle_cont.95686:
 	lf    $f4, 0($10)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f0
-	fabs  $f4, $f4
 	lw    $11, 4($9)
+	fabs  $f4, $f4
 	lf    $f5, 0($11)
 	bltf  $f4, $f5, fle.95695
 	mov   $11, $0
@@ -13277,8 +13277,8 @@ fle.95695:
 	lf    $f4, 2($10)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f2
-	fabs  $f4, $f4
 	lw    $11, 4($9)
+	fabs  $f4, $f4
 	lf    $f5, 2($11)
 	bltf  $f4, $f5, fle.95697
 	mov   $11, $0
@@ -13307,8 +13307,8 @@ fle_cont.95696:
 	lf    $f3, 0($10)
 	fmul  $f3, $f2, $f3
 	fadd  $f0, $f3, $f0
-	fabs  $f0, $f0
 	lw    $11, 4($9)
+	fabs  $f0, $f0
 	lf    $f3, 0($11)
 	bltf  $f0, $f3, fle.95705
 	mov   $8, $0
@@ -13317,8 +13317,8 @@ fle.95705:
 	lf    $f0, 1($10)
 	fmul  $f0, $f2, $f0
 	fadd  $f0, $f0, $f1
-	fabs  $f0, $f0
 	lw    $9, 4($9)
+	fabs  $f0, $f0
 	lf    $f1, 1($9)
 	bltf  $f0, $f1, fle.95707
 	mov   $8, $0
@@ -13649,8 +13649,8 @@ eq_else.95747:
 	lf    $f4, 1($9)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f1
-	fabs  $f4, $f4
 	lw    $11, 4($8)
+	fabs  $f4, $f4
 	lf    $f5, 1($11)
 	bltf  $f4, $f5, fle.95763
 	mov   $11, $0
@@ -13659,8 +13659,8 @@ fle.95763:
 	lf    $f4, 2($9)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f2
-	fabs  $f4, $f4
 	lw    $11, 4($8)
+	fabs  $f4, $f4
 	lf    $f5, 2($11)
 	bltf  $f4, $f5, fle.95765
 	mov   $11, $0
@@ -13689,8 +13689,8 @@ fle_cont.95764:
 	lf    $f4, 0($9)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f0
-	fabs  $f4, $f4
 	lw    $11, 4($8)
+	fabs  $f4, $f4
 	lf    $f5, 0($11)
 	bltf  $f4, $f5, fle.95773
 	mov   $11, $0
@@ -13699,8 +13699,8 @@ fle.95773:
 	lf    $f4, 2($9)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f2
-	fabs  $f4, $f4
 	lw    $11, 4($8)
+	fabs  $f4, $f4
 	lf    $f5, 2($11)
 	bltf  $f4, $f5, fle.95775
 	mov   $11, $0
@@ -13729,8 +13729,8 @@ fle_cont.95774:
 	lf    $f3, 0($9)
 	fmul  $f3, $f2, $f3
 	fadd  $f0, $f3, $f0
-	fabs  $f0, $f0
 	lw    $11, 4($8)
+	fabs  $f0, $f0
 	lf    $f3, 0($11)
 	bltf  $f0, $f3, fle.95783
 	mov   $7, $0
@@ -13739,8 +13739,8 @@ fle.95783:
 	lf    $f0, 1($9)
 	fmul  $f0, $f2, $f0
 	fadd  $f0, $f0, $f1
-	fabs  $f0, $f0
 	lw    $8, 4($8)
+	fabs  $f0, $f0
 	lf    $f1, 1($8)
 	bltf  $f0, $f1, fle.95785
 	mov   $7, $0
@@ -14031,8 +14031,8 @@ eq_else.95833:
 	lf    $f4, 1($9)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f1
-	fabs  $f4, $f4
 	lw    $10, 4($8)
+	fabs  $f4, $f4
 	lf    $f5, 1($10)
 	bltf  $f4, $f5, fle.95837
 	mov   $10, $0
@@ -14041,8 +14041,8 @@ fle.95837:
 	lf    $f4, 2($9)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f2
-	fabs  $f4, $f4
 	lw    $10, 4($8)
+	fabs  $f4, $f4
 	lf    $f5, 2($10)
 	bltf  $f4, $f5, fle.95839
 	mov   $10, $0
@@ -14071,8 +14071,8 @@ fle_cont.95838:
 	lf    $f4, 0($9)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f0
-	fabs  $f4, $f4
 	lw    $10, 4($8)
+	fabs  $f4, $f4
 	lf    $f5, 0($10)
 	bltf  $f4, $f5, fle.95847
 	mov   $10, $0
@@ -14081,8 +14081,8 @@ fle.95847:
 	lf    $f4, 2($9)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f2
-	fabs  $f4, $f4
 	lw    $10, 4($8)
+	fabs  $f4, $f4
 	lf    $f5, 2($10)
 	bltf  $f4, $f5, fle.95849
 	mov   $10, $0
@@ -14111,8 +14111,8 @@ fle_cont.95848:
 	lf    $f3, 0($9)
 	fmul  $f3, $f2, $f3
 	fadd  $f0, $f3, $f0
-	fabs  $f0, $f0
 	lw    $10, 4($8)
+	fabs  $f0, $f0
 	lf    $f3, 0($10)
 	bltf  $f0, $f3, fle.95857
 	mov   $7, $0
@@ -14121,8 +14121,8 @@ fle.95857:
 	lf    $f0, 1($9)
 	fmul  $f0, $f2, $f0
 	fadd  $f0, $f0, $f1
-	fabs  $f0, $f0
 	lw    $8, 4($8)
+	fabs  $f0, $f0
 	lf    $f1, 1($8)
 	bltf  $f0, $f1, fle.95859
 	mov   $7, $0
@@ -14193,37 +14193,37 @@ feq_cont.95872:
 	lf    $f5, 3($7)
 	fmul  $f5, $f5, $f2
 	fadd  $f4, $f4, $f5
-	fmul  $f5, $f0, $f0
 	lw    $9, 4($8)
+	fmul  $f5, $f0, $f0
 	lf    $f6, 0($9)
 	fmul  $f5, $f5, $f6
-	fmul  $f6, $f1, $f1
 	lw    $9, 4($8)
+	fmul  $f6, $f1, $f1
 	lf    $f7, 1($9)
 	fmul  $f6, $f6, $f7
 	fadd  $f5, $f5, $f6
-	fmul  $f6, $f2, $f2
 	lw    $9, 4($8)
+	fmul  $f6, $f2, $f2
 	lf    $f7, 2($9)
 	fmul  $f6, $f6, $f7
-	fadd  $f5, $f5, $f6
 	lw    $9, 3($8)
+	fadd  $f5, $f5, $f6
 	bne   $9, $0, eq_else.95875
 	movf  $f0, $f5
 	j     eq_cont.95876
 eq_else.95875:
-	fmul  $f6, $f1, $f2
 	lw    $9, 9($8)
+	fmul  $f6, $f1, $f2
 	lf    $f7, 0($9)
 	fmul  $f6, $f6, $f7
 	fadd  $f5, $f5, $f6
-	fmul  $f2, $f2, $f0
 	lw    $9, 9($8)
+	fmul  $f2, $f2, $f0
 	lf    $f6, 1($9)
 	fmul  $f2, $f2, $f6
 	fadd  $f2, $f5, $f2
-	fmul  $f0, $f0, $f1
 	lw    $9, 9($8)
+	fmul  $f0, $f0, $f1
 	lf    $f1, 2($9)
 	fmul  $f0, $f0, $f1
 	fadd  $f0, $f2, $f0
@@ -14540,13 +14540,13 @@ eq_cont.95832:
 	lf    $f1, 3129($26)
 	lf    $f2, 2($5)
 	fmul  $f1, $f1, $f2
-	fadd  $f0, $f0, $f1
 	lw    $5, 5($3)
+	fadd  $f0, $f0, $f1
 	lf    $f1, 2($5)
 	lf    $f2, 3($3)
 	fmul  $f3, $f1, $f2
-	fmul  $f0, $f3, $f0
 	lw    $2, 0($2)
+	fmul  $f0, $f3, $f0
 	lw    $5, 2($3)
 	lf    $f3, 0($5)
 	lf    $f4, 0($2)
@@ -14700,8 +14700,8 @@ eq_else.95951:
 	lf    $f4, 1($11)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f1
-	fabs  $f4, $f4
 	lw    $12, 4($10)
+	fabs  $f4, $f4
 	lf    $f5, 1($12)
 	bltf  $f4, $f5, fle.95963
 	mov   $12, $0
@@ -14710,8 +14710,8 @@ fle.95963:
 	lf    $f4, 2($11)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f2
-	fabs  $f4, $f4
 	lw    $12, 4($10)
+	fabs  $f4, $f4
 	lf    $f5, 2($12)
 	bltf  $f4, $f5, fle.95965
 	mov   $12, $0
@@ -14740,8 +14740,8 @@ fle_cont.95964:
 	lf    $f4, 0($11)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f0
-	fabs  $f4, $f4
 	lw    $12, 4($10)
+	fabs  $f4, $f4
 	lf    $f5, 0($12)
 	bltf  $f4, $f5, fle.95973
 	mov   $12, $0
@@ -14750,8 +14750,8 @@ fle.95973:
 	lf    $f4, 2($11)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f2
-	fabs  $f4, $f4
 	lw    $12, 4($10)
+	fabs  $f4, $f4
 	lf    $f5, 2($12)
 	bltf  $f4, $f5, fle.95975
 	mov   $12, $0
@@ -14780,8 +14780,8 @@ fle_cont.95974:
 	lf    $f3, 0($11)
 	fmul  $f3, $f2, $f3
 	fadd  $f0, $f3, $f0
-	fabs  $f0, $f0
 	lw    $12, 4($10)
+	fabs  $f0, $f0
 	lf    $f3, 0($12)
 	bltf  $f0, $f3, fle.95983
 	mov   $9, $0
@@ -14790,8 +14790,8 @@ fle.95983:
 	lf    $f0, 1($11)
 	fmul  $f0, $f2, $f0
 	fadd  $f0, $f0, $f1
-	fabs  $f0, $f0
 	lw    $10, 4($10)
+	fabs  $f0, $f0
 	lf    $f1, 1($10)
 	bltf  $f0, $f1, fle.95985
 	mov   $9, $0
@@ -15014,13 +15014,13 @@ eq_else.96021:
 	lf    $f1, 3129($26)
 	lf    $f2, 2($5)
 	fmul  $f1, $f1, $f2
-	fadd  $f0, $f0, $f1
 	lw    $5, 10($3)
+	fadd  $f0, $f0, $f1
 	lf    $f1, 2($5)
 	lf    $f2, 3($3)
 	fmul  $f3, $f1, $f2
-	fmul  $f0, $f3, $f0
 	lw    $2, 0($2)
+	fmul  $f0, $f3, $f0
 	lw    $5, 2($3)
 	lf    $f3, 0($5)
 	lf    $f4, 0($2)
@@ -15162,8 +15162,8 @@ eq_else.96037:
 	lw    $7, 7($5)
 	lf    $f0, 0($7)
 	lf    $f1, 2($3)
-	fmul  $f0, $f0, $f1
 	lw    $7, 1($5)
+	fmul  $f0, $f0, $f1
 	bne   $7, $1, eq_else.96043
 	lw    $7, 3123($0)
 	sf    $f30, 3129($0)
@@ -15219,17 +15219,17 @@ eq_else.96051:
 	lf    $f4, 3125($26)
 	lw    $7, 5($5)
 	lf    $f5, 2($7)
+	lw    $7, 4($5)
 	fsub  $f4, $f4, $f5
-	lw    $7, 4($5)
 	lf    $f5, 0($7)
+	lw    $7, 4($5)
 	fmul  $f5, $f2, $f5
-	lw    $7, 4($5)
 	lf    $f6, 1($7)
-	fmul  $f6, $f3, $f6
 	lw    $7, 4($5)
+	fmul  $f6, $f3, $f6
 	lf    $f7, 2($7)
-	fmul  $f7, $f4, $f7
 	lw    $7, 3($5)
+	fmul  $f7, $f4, $f7
 	bne   $7, $0, eq_else.96053
 	sf    $f5, 3129($0)
 	sf    $f6, 3129($1)
@@ -15238,8 +15238,8 @@ eq_else.96051:
 eq_else.96053:
 	lw    $7, 9($5)
 	lf    $f8, 2($7)
-	fmul  $f8, $f3, $f8
 	lw    $7, 9($5)
+	fmul  $f8, $f3, $f8
 	lf    $f9, 1($7)
 	fmul  $f9, $f4, $f9
 	fadd  $f8, $f8, $f9
@@ -15248,8 +15248,8 @@ eq_else.96053:
 	sf    $f5, 3129($0)
 	lw    $7, 9($5)
 	lf    $f5, 2($7)
-	fmul  $f5, $f2, $f5
 	lw    $7, 9($5)
+	fmul  $f5, $f2, $f5
 	lf    $f8, 0($7)
 	fmul  $f4, $f4, $f8
 	fadd  $f4, $f5, $f4
@@ -15258,8 +15258,8 @@ eq_else.96053:
 	sf    $f4, 3129($1)
 	lw    $7, 9($5)
 	lf    $f4, 1($7)
-	fmul  $f2, $f2, $f4
 	lw    $7, 9($5)
+	fmul  $f2, $f2, $f4
 	lf    $f4, 0($7)
 	fmul  $f3, $f3, $f4
 	fadd  $f2, $f2, $f3
@@ -16374,16 +16374,16 @@ eq_else.96087:
 	lf    $f2, 3125($0)
 	lw    $7, 5($5)
 	lf    $f3, 0($7)
-	fsub  $f2, $f2, $f3
 	lw    $7, 4($5)
+	fsub  $f2, $f2, $f3
 	lf    $f3, 0($7)
 	sqrt  $f3, $f3
 	fmul  $f2, $f2, $f3
 	lf    $f3, 3125($26)
 	lw    $7, 5($5)
 	lf    $f4, 2($7)
-	fsub  $f3, $f3, $f4
 	lw    $7, 4($5)
+	fsub  $f3, $f3, $f4
 	lf    $f4, 2($7)
 	sqrt  $f4, $f4
 	fmul  $f3, $f3, $f4
@@ -16725,8 +16725,8 @@ fle_cont.96108:
 	lw    $2, 8($3)
 	lw    $5, 5($2)
 	lf    $f2, 1($5)
-	fsub  $f1, $f1, $f2
 	lw    $5, 4($2)
+	fsub  $f1, $f1, $f2
 	lf    $f2, 1($5)
 	sqrt  $f2, $f2
 	fmul  $f1, $f1, $f2
@@ -17179,8 +17179,8 @@ fle_cont.96126:
 	lw    $9, 7($8)
 	lf    $f0, 1($9)
 	lf    $f1, 2($3)
-	fmul  $f0, $f1, $f0
 	lw    $9, 3121($0)
+	fmul  $f0, $f1, $f0
 	lw    $10, 0($9)
 	lw    $11, 0($10)
 	sf    $f0, 132($3)
@@ -17221,8 +17221,8 @@ eq_else.96129:
 	lf    $f6, 1($13)
 	fmul  $f6, $f5, $f6
 	fadd  $f6, $f6, $f3
-	fabs  $f6, $f6
 	lw    $14, 4($12)
+	fabs  $f6, $f6
 	lf    $f7, 1($14)
 	bltf  $f6, $f7, fle.96133
 	mov   $14, $0
@@ -17231,8 +17231,8 @@ fle.96133:
 	lf    $f6, 2($13)
 	fmul  $f6, $f5, $f6
 	fadd  $f6, $f6, $f4
-	fabs  $f6, $f6
 	lw    $14, 4($12)
+	fabs  $f6, $f6
 	lf    $f7, 2($14)
 	bltf  $f6, $f7, fle.96135
 	mov   $14, $0
@@ -17261,8 +17261,8 @@ fle_cont.96134:
 	lf    $f6, 0($13)
 	fmul  $f6, $f5, $f6
 	fadd  $f6, $f6, $f2
-	fabs  $f6, $f6
 	lw    $14, 4($12)
+	fabs  $f6, $f6
 	lf    $f7, 0($14)
 	bltf  $f6, $f7, fle.96143
 	mov   $14, $0
@@ -17271,8 +17271,8 @@ fle.96143:
 	lf    $f6, 2($13)
 	fmul  $f6, $f5, $f6
 	fadd  $f6, $f6, $f4
-	fabs  $f6, $f6
 	lw    $14, 4($12)
+	fabs  $f6, $f6
 	lf    $f7, 2($14)
 	bltf  $f6, $f7, fle.96145
 	mov   $14, $0
@@ -17301,8 +17301,8 @@ fle_cont.96144:
 	lf    $f5, 0($13)
 	fmul  $f5, $f4, $f5
 	fadd  $f2, $f5, $f2
-	fabs  $f2, $f2
 	lw    $14, 4($12)
+	fabs  $f2, $f2
 	lf    $f5, 0($14)
 	bltf  $f2, $f5, fle.96153
 	mov   $11, $0
@@ -17311,8 +17311,8 @@ fle.96153:
 	lf    $f2, 1($13)
 	fmul  $f2, $f4, $f2
 	fadd  $f2, $f2, $f3
-	fabs  $f2, $f2
 	lw    $12, 4($12)
+	fabs  $f2, $f2
 	lf    $f3, 1($12)
 	bltf  $f2, $f3, fle.96155
 	mov   $11, $0
@@ -17383,37 +17383,37 @@ feq_cont.96168:
 	lf    $f7, 3($11)
 	fmul  $f7, $f7, $f4
 	fadd  $f6, $f6, $f7
-	fmul  $f7, $f2, $f2
 	lw    $13, 4($12)
+	fmul  $f7, $f2, $f2
 	lf    $f8, 0($13)
 	fmul  $f7, $f7, $f8
-	fmul  $f8, $f3, $f3
 	lw    $13, 4($12)
+	fmul  $f8, $f3, $f3
 	lf    $f9, 1($13)
 	fmul  $f8, $f8, $f9
 	fadd  $f7, $f7, $f8
-	fmul  $f8, $f4, $f4
 	lw    $13, 4($12)
+	fmul  $f8, $f4, $f4
 	lf    $f9, 2($13)
 	fmul  $f8, $f8, $f9
-	fadd  $f7, $f7, $f8
 	lw    $13, 3($12)
+	fadd  $f7, $f7, $f8
 	bne   $13, $0, eq_else.96171
 	movf  $f2, $f7
 	j     eq_cont.96172
 eq_else.96171:
-	fmul  $f8, $f3, $f4
 	lw    $13, 9($12)
+	fmul  $f8, $f3, $f4
 	lf    $f9, 0($13)
 	fmul  $f8, $f8, $f9
 	fadd  $f7, $f7, $f8
-	fmul  $f4, $f4, $f2
 	lw    $13, 9($12)
+	fmul  $f4, $f4, $f2
 	lf    $f8, 1($13)
 	fmul  $f4, $f4, $f8
 	fadd  $f4, $f7, $f4
-	fmul  $f2, $f2, $f3
 	lw    $13, 9($12)
+	fmul  $f2, $f2, $f3
 	lf    $f3, 2($13)
 	fmul  $f2, $f2, $f3
 	fadd  $f2, $f4, $f2
@@ -17731,8 +17731,8 @@ eq_cont.96128:
 	fadd  $f0, $f0, $f1
 	fneg  $f0, $f0
 	lf    $f1, 7($3)
-	fmul  $f0, $f0, $f1
 	lw    $2, 3($3)
+	fmul  $f0, $f0, $f1
 	lf    $f2, 0($2)
 	lf    $f3, 3067($0)
 	fmul  $f2, $f2, $f3
@@ -17897,8 +17897,8 @@ eq_else.96247:
 	lf    $f4, 1($11)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f1
-	fabs  $f4, $f4
 	lw    $12, 4($10)
+	fabs  $f4, $f4
 	lf    $f5, 1($12)
 	bltf  $f4, $f5, fle.96259
 	mov   $12, $0
@@ -17907,8 +17907,8 @@ fle.96259:
 	lf    $f4, 2($11)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f2
-	fabs  $f4, $f4
 	lw    $12, 4($10)
+	fabs  $f4, $f4
 	lf    $f5, 2($12)
 	bltf  $f4, $f5, fle.96261
 	mov   $12, $0
@@ -17937,8 +17937,8 @@ fle_cont.96260:
 	lf    $f4, 0($11)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f0
-	fabs  $f4, $f4
 	lw    $12, 4($10)
+	fabs  $f4, $f4
 	lf    $f5, 0($12)
 	bltf  $f4, $f5, fle.96269
 	mov   $12, $0
@@ -17947,8 +17947,8 @@ fle.96269:
 	lf    $f4, 2($11)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f2
-	fabs  $f4, $f4
 	lw    $12, 4($10)
+	fabs  $f4, $f4
 	lf    $f5, 2($12)
 	bltf  $f4, $f5, fle.96271
 	mov   $12, $0
@@ -17977,8 +17977,8 @@ fle_cont.96270:
 	lf    $f3, 0($11)
 	fmul  $f3, $f2, $f3
 	fadd  $f0, $f3, $f0
-	fabs  $f0, $f0
 	lw    $12, 4($10)
+	fabs  $f0, $f0
 	lf    $f3, 0($12)
 	bltf  $f0, $f3, fle.96279
 	mov   $9, $0
@@ -17987,8 +17987,8 @@ fle.96279:
 	lf    $f0, 1($11)
 	fmul  $f0, $f2, $f0
 	fadd  $f0, $f0, $f1
-	fabs  $f0, $f0
 	lw    $10, 4($10)
+	fabs  $f0, $f0
 	lf    $f1, 1($10)
 	bltf  $f0, $f1, fle.96281
 	mov   $9, $0
@@ -18211,13 +18211,13 @@ eq_else.96317:
 	lf    $f1, 3129($26)
 	lf    $f2, 2($5)
 	fmul  $f1, $f1, $f2
-	fadd  $f0, $f0, $f1
 	lw    $5, 137($3)
+	fadd  $f0, $f0, $f1
 	lf    $f1, 2($5)
 	lf    $f2, 7($3)
 	fmul  $f3, $f1, $f2
-	fmul  $f0, $f3, $f0
 	lw    $2, 0($2)
+	fmul  $f0, $f3, $f0
 	lw    $5, 3($3)
 	lf    $f3, 0($5)
 	lf    $f4, 0($2)
@@ -18305,8 +18305,8 @@ ge_cont.96330:
 	addi $2, $2, 1
 	lf    $f1, 3124($0)
 	lf    $f2, 0($3)
-	fadd  $f1, $f2, $f1
 	lw    $5, 3($3)
+	fadd  $f1, $f2, $f1
 	lw    $6, 1($3)
 	j     trace_ray.3032
 eq_else.96331:
@@ -18399,17 +18399,17 @@ eq_else.96347:
 	lf    $f2, 3125($26)
 	lw    $5, 5($2)
 	lf    $f3, 2($5)
+	lw    $5, 4($2)
 	fsub  $f2, $f2, $f3
-	lw    $5, 4($2)
 	lf    $f3, 0($5)
+	lw    $5, 4($2)
 	fmul  $f3, $f0, $f3
-	lw    $5, 4($2)
 	lf    $f4, 1($5)
-	fmul  $f4, $f1, $f4
 	lw    $5, 4($2)
+	fmul  $f4, $f1, $f4
 	lf    $f5, 2($5)
-	fmul  $f5, $f2, $f5
 	lw    $5, 3($2)
+	fmul  $f5, $f2, $f5
 	bne   $5, $0, eq_else.96349
 	sf    $f3, 3129($0)
 	sf    $f4, 3129($1)
@@ -18418,8 +18418,8 @@ eq_else.96347:
 eq_else.96349:
 	lw    $5, 9($2)
 	lf    $f6, 2($5)
-	fmul  $f6, $f1, $f6
 	lw    $5, 9($2)
+	fmul  $f6, $f1, $f6
 	lf    $f7, 1($5)
 	fmul  $f7, $f2, $f7
 	fadd  $f6, $f6, $f7
@@ -18428,8 +18428,8 @@ eq_else.96349:
 	sf    $f3, 3129($0)
 	lw    $5, 9($2)
 	lf    $f3, 2($5)
-	fmul  $f3, $f0, $f3
 	lw    $5, 9($2)
+	fmul  $f3, $f0, $f3
 	lf    $f6, 0($5)
 	fmul  $f2, $f2, $f6
 	fadd  $f2, $f3, $f2
@@ -18438,8 +18438,8 @@ eq_else.96349:
 	sf    $f2, 3129($1)
 	lw    $5, 9($2)
 	lf    $f2, 1($5)
-	fmul  $f0, $f0, $f2
 	lw    $5, 9($2)
+	fmul  $f0, $f0, $f2
 	lf    $f2, 0($5)
 	fmul  $f1, $f1, $f2
 	fadd  $f0, $f0, $f1
@@ -19529,16 +19529,16 @@ eq_else.96383:
 	lf    $f0, 3125($0)
 	lw    $5, 5($2)
 	lf    $f1, 0($5)
-	fsub  $f0, $f0, $f1
 	lw    $5, 4($2)
+	fsub  $f0, $f0, $f1
 	lf    $f1, 0($5)
 	sqrt  $f1, $f1
 	fmul  $f0, $f0, $f1
 	lf    $f1, 3125($26)
 	lw    $5, 5($2)
 	lf    $f2, 2($5)
-	fsub  $f1, $f1, $f2
 	lw    $5, 4($2)
+	fsub  $f1, $f1, $f2
 	lf    $f2, 2($5)
 	sqrt  $f2, $f2
 	fmul  $f1, $f1, $f2
@@ -19877,8 +19877,8 @@ fle_cont.96404:
 	lw    $2, 2($3)
 	lw    $5, 5($2)
 	lf    $f2, 1($5)
-	fsub  $f1, $f1, $f2
 	lw    $5, 4($2)
+	fsub  $f1, $f1, $f2
 	lf    $f2, 1($5)
 	sqrt  $f2, $f2
 	fmul  $f1, $f1, $f2
@@ -20281,8 +20281,8 @@ eq_else.96423:
 	lf    $f4, 1($8)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f1
-	fabs  $f4, $f4
 	lw    $9, 4($7)
+	fabs  $f4, $f4
 	lf    $f5, 1($9)
 	bltf  $f4, $f5, fle.96427
 	mov   $9, $0
@@ -20291,8 +20291,8 @@ fle.96427:
 	lf    $f4, 2($8)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f2
-	fabs  $f4, $f4
 	lw    $9, 4($7)
+	fabs  $f4, $f4
 	lf    $f5, 2($9)
 	bltf  $f4, $f5, fle.96429
 	mov   $9, $0
@@ -20321,8 +20321,8 @@ fle_cont.96428:
 	lf    $f4, 0($8)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f0
-	fabs  $f4, $f4
 	lw    $9, 4($7)
+	fabs  $f4, $f4
 	lf    $f5, 0($9)
 	bltf  $f4, $f5, fle.96437
 	mov   $9, $0
@@ -20331,8 +20331,8 @@ fle.96437:
 	lf    $f4, 2($8)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f2
-	fabs  $f4, $f4
 	lw    $9, 4($7)
+	fabs  $f4, $f4
 	lf    $f5, 2($9)
 	bltf  $f4, $f5, fle.96439
 	mov   $9, $0
@@ -20361,8 +20361,8 @@ fle_cont.96438:
 	lf    $f3, 0($8)
 	fmul  $f3, $f2, $f3
 	fadd  $f0, $f3, $f0
-	fabs  $f0, $f0
 	lw    $9, 4($7)
+	fabs  $f0, $f0
 	lf    $f3, 0($9)
 	bltf  $f0, $f3, fle.96447
 	mov   $6, $0
@@ -20371,8 +20371,8 @@ fle.96447:
 	lf    $f0, 1($8)
 	fmul  $f0, $f2, $f0
 	fadd  $f0, $f0, $f1
-	fabs  $f0, $f0
 	lw    $7, 4($7)
+	fabs  $f0, $f0
 	lf    $f1, 1($7)
 	bltf  $f0, $f1, fle.96449
 	mov   $6, $0
@@ -20443,37 +20443,37 @@ feq_cont.96462:
 	lf    $f5, 3($6)
 	fmul  $f5, $f5, $f2
 	fadd  $f4, $f4, $f5
-	fmul  $f5, $f0, $f0
 	lw    $8, 4($7)
+	fmul  $f5, $f0, $f0
 	lf    $f6, 0($8)
 	fmul  $f5, $f5, $f6
-	fmul  $f6, $f1, $f1
 	lw    $8, 4($7)
+	fmul  $f6, $f1, $f1
 	lf    $f7, 1($8)
 	fmul  $f6, $f6, $f7
 	fadd  $f5, $f5, $f6
-	fmul  $f6, $f2, $f2
 	lw    $8, 4($7)
+	fmul  $f6, $f2, $f2
 	lf    $f7, 2($8)
 	fmul  $f6, $f6, $f7
-	fadd  $f5, $f5, $f6
 	lw    $8, 3($7)
+	fadd  $f5, $f5, $f6
 	bne   $8, $0, eq_else.96465
 	movf  $f0, $f5
 	j     eq_cont.96466
 eq_else.96465:
-	fmul  $f6, $f1, $f2
 	lw    $8, 9($7)
+	fmul  $f6, $f1, $f2
 	lf    $f7, 0($8)
 	fmul  $f6, $f6, $f7
 	fadd  $f5, $f5, $f6
-	fmul  $f2, $f2, $f0
 	lw    $8, 9($7)
+	fmul  $f2, $f2, $f0
 	lf    $f6, 1($8)
 	fmul  $f2, $f2, $f6
 	fadd  $f2, $f5, $f2
-	fmul  $f0, $f0, $f1
 	lw    $8, 9($7)
+	fmul  $f0, $f0, $f1
 	lf    $f1, 2($8)
 	fmul  $f0, $f0, $f1
 	fadd  $f0, $f2, $f0
@@ -20796,8 +20796,8 @@ eq_cont.96422:
 fle.96532:
 fle_cont.96533:
 	lf    $f1, 0($3)
-	fmul  $f0, $f1, $f0
 	lw    $2, 2($3)
+	fmul  $f0, $f1, $f0
 	lw    $2, 7($2)
 	lf    $f1, 0($2)
 	fmul  $f0, $f0, $f1
@@ -20936,8 +20936,8 @@ eq_else.96542:
 	lf    $f5, 1($13)
 	fmul  $f5, $f4, $f5
 	fadd  $f5, $f5, $f2
-	fabs  $f5, $f5
 	lw    $14, 4($12)
+	fabs  $f5, $f5
 	lf    $f6, 1($14)
 	bltf  $f5, $f6, fle.96554
 	mov   $14, $0
@@ -20946,8 +20946,8 @@ fle.96554:
 	lf    $f5, 2($13)
 	fmul  $f5, $f4, $f5
 	fadd  $f5, $f5, $f3
-	fabs  $f5, $f5
 	lw    $14, 4($12)
+	fabs  $f5, $f5
 	lf    $f6, 2($14)
 	bltf  $f5, $f6, fle.96556
 	mov   $14, $0
@@ -20976,8 +20976,8 @@ fle_cont.96555:
 	lf    $f5, 0($13)
 	fmul  $f5, $f4, $f5
 	fadd  $f5, $f5, $f1
-	fabs  $f5, $f5
 	lw    $14, 4($12)
+	fabs  $f5, $f5
 	lf    $f6, 0($14)
 	bltf  $f5, $f6, fle.96564
 	mov   $14, $0
@@ -20986,8 +20986,8 @@ fle.96564:
 	lf    $f5, 2($13)
 	fmul  $f5, $f4, $f5
 	fadd  $f5, $f5, $f3
-	fabs  $f5, $f5
 	lw    $14, 4($12)
+	fabs  $f5, $f5
 	lf    $f6, 2($14)
 	bltf  $f5, $f6, fle.96566
 	mov   $14, $0
@@ -21016,8 +21016,8 @@ fle_cont.96565:
 	lf    $f4, 0($13)
 	fmul  $f4, $f3, $f4
 	fadd  $f1, $f4, $f1
-	fabs  $f1, $f1
 	lw    $14, 4($12)
+	fabs  $f1, $f1
 	lf    $f4, 0($14)
 	bltf  $f1, $f4, fle.96574
 	mov   $11, $0
@@ -21026,8 +21026,8 @@ fle.96574:
 	lf    $f1, 1($13)
 	fmul  $f1, $f3, $f1
 	fadd  $f1, $f1, $f2
-	fabs  $f1, $f1
 	lw    $12, 4($12)
+	fabs  $f1, $f1
 	lf    $f2, 1($12)
 	bltf  $f1, $f2, fle.96576
 	mov   $11, $0
@@ -21282,17 +21282,17 @@ eq_else.96622:
 	lf    $f2, 3125($26)
 	lw    $5, 5($2)
 	lf    $f3, 2($5)
+	lw    $5, 4($2)
 	fsub  $f2, $f2, $f3
-	lw    $5, 4($2)
 	lf    $f3, 0($5)
+	lw    $5, 4($2)
 	fmul  $f3, $f0, $f3
-	lw    $5, 4($2)
 	lf    $f4, 1($5)
-	fmul  $f4, $f1, $f4
 	lw    $5, 4($2)
+	fmul  $f4, $f1, $f4
 	lf    $f5, 2($5)
-	fmul  $f5, $f2, $f5
 	lw    $5, 3($2)
+	fmul  $f5, $f2, $f5
 	bne   $5, $0, eq_else.96624
 	sf    $f3, 3129($0)
 	sf    $f4, 3129($1)
@@ -21301,8 +21301,8 @@ eq_else.96622:
 eq_else.96624:
 	lw    $5, 9($2)
 	lf    $f6, 2($5)
-	fmul  $f6, $f1, $f6
 	lw    $5, 9($2)
+	fmul  $f6, $f1, $f6
 	lf    $f7, 1($5)
 	fmul  $f7, $f2, $f7
 	fadd  $f6, $f6, $f7
@@ -21311,8 +21311,8 @@ eq_else.96624:
 	sf    $f3, 3129($0)
 	lw    $5, 9($2)
 	lf    $f3, 2($5)
-	fmul  $f3, $f0, $f3
 	lw    $5, 9($2)
+	fmul  $f3, $f0, $f3
 	lf    $f6, 0($5)
 	fmul  $f2, $f2, $f6
 	fadd  $f2, $f3, $f2
@@ -21321,8 +21321,8 @@ eq_else.96624:
 	sf    $f2, 3129($1)
 	lw    $5, 9($2)
 	lf    $f2, 1($5)
-	fmul  $f0, $f0, $f2
 	lw    $5, 9($2)
+	fmul  $f0, $f0, $f2
 	lf    $f2, 0($5)
 	fmul  $f1, $f1, $f2
 	fadd  $f0, $f0, $f1
@@ -22332,16 +22332,16 @@ eq_else.96658:
 	lf    $f0, 3125($0)
 	lw    $5, 5($2)
 	lf    $f1, 0($5)
-	fsub  $f0, $f0, $f1
 	lw    $5, 4($2)
+	fsub  $f0, $f0, $f1
 	lf    $f1, 0($5)
 	sqrt  $f1, $f1
 	fmul  $f0, $f0, $f1
 	lf    $f1, 3125($26)
 	lw    $5, 5($2)
 	lf    $f2, 2($5)
-	fsub  $f1, $f1, $f2
 	lw    $5, 4($2)
+	fsub  $f1, $f1, $f2
 	lf    $f2, 2($5)
 	sqrt  $f2, $f2
 	fmul  $f1, $f1, $f2
@@ -22722,8 +22722,8 @@ fle_cont.96679:
 	lw    $2, 8($3)
 	lw    $5, 5($2)
 	lf    $f2, 1($5)
-	fsub  $f1, $f1, $f2
 	lw    $5, 4($2)
+	fsub  $f1, $f1, $f2
 	lf    $f2, 1($5)
 	sqrt  $f2, $f2
 	fmul  $f1, $f1, $f2
@@ -23154,8 +23154,8 @@ eq_cont.96633:
 fle.96698:
 fle_cont.96699:
 	lf    $f1, 4($3)
-	fmul  $f0, $f1, $f0
 	lw    $2, 8($3)
+	fmul  $f0, $f1, $f0
 	lw    $2, 7($2)
 	lf    $f1, 0($2)
 	fmul  $f0, $f0, $f1
@@ -23273,8 +23273,8 @@ eq_else.96702:
 	lf    $f5, 1($13)
 	fmul  $f5, $f4, $f5
 	fadd  $f5, $f5, $f2
-	fabs  $f5, $f5
 	lw    $14, 4($12)
+	fabs  $f5, $f5
 	lf    $f6, 1($14)
 	bltf  $f5, $f6, fle.96714
 	mov   $14, $0
@@ -23283,8 +23283,8 @@ fle.96714:
 	lf    $f5, 2($13)
 	fmul  $f5, $f4, $f5
 	fadd  $f5, $f5, $f3
-	fabs  $f5, $f5
 	lw    $14, 4($12)
+	fabs  $f5, $f5
 	lf    $f6, 2($14)
 	bltf  $f5, $f6, fle.96716
 	mov   $14, $0
@@ -23313,8 +23313,8 @@ fle_cont.96715:
 	lf    $f5, 0($13)
 	fmul  $f5, $f4, $f5
 	fadd  $f5, $f5, $f1
-	fabs  $f5, $f5
 	lw    $14, 4($12)
+	fabs  $f5, $f5
 	lf    $f6, 0($14)
 	bltf  $f5, $f6, fle.96724
 	mov   $14, $0
@@ -23323,8 +23323,8 @@ fle.96724:
 	lf    $f5, 2($13)
 	fmul  $f5, $f4, $f5
 	fadd  $f5, $f5, $f3
-	fabs  $f5, $f5
 	lw    $14, 4($12)
+	fabs  $f5, $f5
 	lf    $f6, 2($14)
 	bltf  $f5, $f6, fle.96726
 	mov   $14, $0
@@ -23353,8 +23353,8 @@ fle_cont.96725:
 	lf    $f4, 0($13)
 	fmul  $f4, $f3, $f4
 	fadd  $f1, $f4, $f1
-	fabs  $f1, $f1
 	lw    $14, 4($12)
+	fabs  $f1, $f1
 	lf    $f4, 0($14)
 	bltf  $f1, $f4, fle.96734
 	mov   $11, $0
@@ -23363,8 +23363,8 @@ fle.96734:
 	lf    $f1, 1($13)
 	fmul  $f1, $f3, $f1
 	fadd  $f1, $f1, $f2
-	fabs  $f1, $f1
 	lw    $12, 4($12)
+	fabs  $f1, $f1
 	lf    $f2, 1($12)
 	bltf  $f1, $f2, fle.96736
 	mov   $11, $0
@@ -23619,17 +23619,17 @@ eq_else.96782:
 	lf    $f2, 3125($26)
 	lw    $5, 5($2)
 	lf    $f3, 2($5)
+	lw    $5, 4($2)
 	fsub  $f2, $f2, $f3
-	lw    $5, 4($2)
 	lf    $f3, 0($5)
+	lw    $5, 4($2)
 	fmul  $f3, $f0, $f3
-	lw    $5, 4($2)
 	lf    $f4, 1($5)
-	fmul  $f4, $f1, $f4
 	lw    $5, 4($2)
+	fmul  $f4, $f1, $f4
 	lf    $f5, 2($5)
-	fmul  $f5, $f2, $f5
 	lw    $5, 3($2)
+	fmul  $f5, $f2, $f5
 	bne   $5, $0, eq_else.96784
 	sf    $f3, 3129($0)
 	sf    $f4, 3129($1)
@@ -23638,8 +23638,8 @@ eq_else.96782:
 eq_else.96784:
 	lw    $5, 9($2)
 	lf    $f6, 2($5)
-	fmul  $f6, $f1, $f6
 	lw    $5, 9($2)
+	fmul  $f6, $f1, $f6
 	lf    $f7, 1($5)
 	fmul  $f7, $f2, $f7
 	fadd  $f6, $f6, $f7
@@ -23648,8 +23648,8 @@ eq_else.96784:
 	sf    $f3, 3129($0)
 	lw    $5, 9($2)
 	lf    $f3, 2($5)
-	fmul  $f3, $f0, $f3
 	lw    $5, 9($2)
+	fmul  $f3, $f0, $f3
 	lf    $f6, 0($5)
 	fmul  $f2, $f2, $f6
 	fadd  $f2, $f3, $f2
@@ -23658,8 +23658,8 @@ eq_else.96784:
 	sf    $f2, 3129($1)
 	lw    $5, 9($2)
 	lf    $f2, 1($5)
-	fmul  $f0, $f0, $f2
 	lw    $5, 9($2)
+	fmul  $f0, $f0, $f2
 	lf    $f2, 0($5)
 	fmul  $f1, $f1, $f2
 	fadd  $f0, $f0, $f1
@@ -24669,16 +24669,16 @@ eq_else.96818:
 	lf    $f0, 3125($0)
 	lw    $5, 5($2)
 	lf    $f1, 0($5)
-	fsub  $f0, $f0, $f1
 	lw    $5, 4($2)
+	fsub  $f0, $f0, $f1
 	lf    $f1, 0($5)
 	sqrt  $f1, $f1
 	fmul  $f0, $f0, $f1
 	lf    $f1, 3125($26)
 	lw    $5, 5($2)
 	lf    $f2, 2($5)
-	fsub  $f1, $f1, $f2
 	lw    $5, 4($2)
+	fsub  $f1, $f1, $f2
 	lf    $f2, 2($5)
 	sqrt  $f2, $f2
 	fmul  $f1, $f1, $f2
@@ -25059,8 +25059,8 @@ fle_cont.96839:
 	lw    $2, 147($3)
 	lw    $5, 5($2)
 	lf    $f2, 1($5)
-	fsub  $f1, $f1, $f2
 	lw    $5, 4($2)
+	fsub  $f1, $f1, $f2
 	lf    $f2, 1($5)
 	sqrt  $f2, $f2
 	fmul  $f1, $f1, $f2
@@ -25491,8 +25491,8 @@ eq_cont.96793:
 fle.96858:
 fle_cont.96859:
 	lf    $f1, 143($3)
-	fmul  $f0, $f1, $f0
 	lw    $2, 147($3)
+	fmul  $f0, $f1, $f0
 	lw    $2, 7($2)
 	lf    $f1, 0($2)
 	fmul  $f0, $f0, $f1
@@ -25627,17 +25627,17 @@ eq_else.96878:
 	lf    $f2, 3125($26)
 	lw    $5, 5($2)
 	lf    $f3, 2($5)
+	lw    $5, 4($2)
 	fsub  $f2, $f2, $f3
-	lw    $5, 4($2)
 	lf    $f3, 0($5)
+	lw    $5, 4($2)
 	fmul  $f3, $f0, $f3
-	lw    $5, 4($2)
 	lf    $f4, 1($5)
-	fmul  $f4, $f1, $f4
 	lw    $5, 4($2)
+	fmul  $f4, $f1, $f4
 	lf    $f5, 2($5)
-	fmul  $f5, $f2, $f5
 	lw    $5, 3($2)
+	fmul  $f5, $f2, $f5
 	bne   $5, $0, eq_else.96880
 	sf    $f3, 3129($0)
 	sf    $f4, 3129($1)
@@ -25646,8 +25646,8 @@ eq_else.96878:
 eq_else.96880:
 	lw    $5, 9($2)
 	lf    $f6, 2($5)
-	fmul  $f6, $f1, $f6
 	lw    $5, 9($2)
+	fmul  $f6, $f1, $f6
 	lf    $f7, 1($5)
 	fmul  $f7, $f2, $f7
 	fadd  $f6, $f6, $f7
@@ -25656,8 +25656,8 @@ eq_else.96880:
 	sf    $f3, 3129($0)
 	lw    $5, 9($2)
 	lf    $f3, 2($5)
-	fmul  $f3, $f0, $f3
 	lw    $5, 9($2)
+	fmul  $f3, $f0, $f3
 	lf    $f6, 0($5)
 	fmul  $f2, $f2, $f6
 	fadd  $f2, $f3, $f2
@@ -25666,8 +25666,8 @@ eq_else.96880:
 	sf    $f2, 3129($1)
 	lw    $5, 9($2)
 	lf    $f2, 1($5)
-	fmul  $f0, $f0, $f2
 	lw    $5, 9($2)
+	fmul  $f0, $f0, $f2
 	lf    $f2, 0($5)
 	fmul  $f1, $f1, $f2
 	fadd  $f0, $f0, $f1
@@ -26365,16 +26365,16 @@ eq_else.96914:
 	lf    $f0, 3125($0)
 	lw    $5, 5($2)
 	lf    $f1, 0($5)
-	fsub  $f0, $f0, $f1
 	lw    $5, 4($2)
+	fsub  $f0, $f0, $f1
 	lf    $f1, 0($5)
 	sqrt  $f1, $f1
 	fmul  $f0, $f0, $f1
 	lf    $f1, 3125($26)
 	lw    $5, 5($2)
 	lf    $f2, 2($5)
-	fsub  $f1, $f1, $f2
 	lw    $5, 4($2)
+	fsub  $f1, $f1, $f2
 	lf    $f2, 2($5)
 	sqrt  $f2, $f2
 	fmul  $f1, $f1, $f2
@@ -26755,8 +26755,8 @@ fle_cont.96935:
 	lw    $2, 285($3)
 	lw    $5, 5($2)
 	lf    $f2, 1($5)
-	fsub  $f1, $f1, $f2
 	lw    $5, 4($2)
+	fsub  $f1, $f1, $f2
 	lf    $f2, 1($5)
 	sqrt  $f2, $f2
 	fmul  $f1, $f1, $f2
@@ -27201,8 +27201,8 @@ eq_else.96954:
 	lf    $f4, 1($8)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f1
-	fabs  $f4, $f4
 	lw    $9, 4($7)
+	fabs  $f4, $f4
 	lf    $f5, 1($9)
 	bltf  $f4, $f5, fle.96958
 	mov   $9, $0
@@ -27211,8 +27211,8 @@ fle.96958:
 	lf    $f4, 2($8)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f2
-	fabs  $f4, $f4
 	lw    $9, 4($7)
+	fabs  $f4, $f4
 	lf    $f5, 2($9)
 	bltf  $f4, $f5, fle.96960
 	mov   $9, $0
@@ -27241,8 +27241,8 @@ fle_cont.96959:
 	lf    $f4, 0($8)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f0
-	fabs  $f4, $f4
 	lw    $9, 4($7)
+	fabs  $f4, $f4
 	lf    $f5, 0($9)
 	bltf  $f4, $f5, fle.96968
 	mov   $9, $0
@@ -27251,8 +27251,8 @@ fle.96968:
 	lf    $f4, 2($8)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f2
-	fabs  $f4, $f4
 	lw    $9, 4($7)
+	fabs  $f4, $f4
 	lf    $f5, 2($9)
 	bltf  $f4, $f5, fle.96970
 	mov   $9, $0
@@ -27281,8 +27281,8 @@ fle_cont.96969:
 	lf    $f3, 0($8)
 	fmul  $f3, $f2, $f3
 	fadd  $f0, $f3, $f0
-	fabs  $f0, $f0
 	lw    $9, 4($7)
+	fabs  $f0, $f0
 	lf    $f3, 0($9)
 	bltf  $f0, $f3, fle.96978
 	mov   $6, $0
@@ -27291,8 +27291,8 @@ fle.96978:
 	lf    $f0, 1($8)
 	fmul  $f0, $f2, $f0
 	fadd  $f0, $f0, $f1
-	fabs  $f0, $f0
 	lw    $7, 4($7)
+	fabs  $f0, $f0
 	lf    $f1, 1($7)
 	bltf  $f0, $f1, fle.96980
 	mov   $6, $0
@@ -27363,37 +27363,37 @@ feq_cont.96993:
 	lf    $f5, 3($6)
 	fmul  $f5, $f5, $f2
 	fadd  $f4, $f4, $f5
-	fmul  $f5, $f0, $f0
 	lw    $8, 4($7)
+	fmul  $f5, $f0, $f0
 	lf    $f6, 0($8)
 	fmul  $f5, $f5, $f6
-	fmul  $f6, $f1, $f1
 	lw    $8, 4($7)
+	fmul  $f6, $f1, $f1
 	lf    $f7, 1($8)
 	fmul  $f6, $f6, $f7
 	fadd  $f5, $f5, $f6
-	fmul  $f6, $f2, $f2
 	lw    $8, 4($7)
+	fmul  $f6, $f2, $f2
 	lf    $f7, 2($8)
 	fmul  $f6, $f6, $f7
-	fadd  $f5, $f5, $f6
 	lw    $8, 3($7)
+	fadd  $f5, $f5, $f6
 	bne   $8, $0, eq_else.96996
 	movf  $f0, $f5
 	j     eq_cont.96997
 eq_else.96996:
-	fmul  $f6, $f1, $f2
 	lw    $8, 9($7)
+	fmul  $f6, $f1, $f2
 	lf    $f7, 0($8)
 	fmul  $f6, $f6, $f7
 	fadd  $f5, $f5, $f6
-	fmul  $f2, $f2, $f0
 	lw    $8, 9($7)
+	fmul  $f2, $f2, $f0
 	lf    $f6, 1($8)
 	fmul  $f2, $f2, $f6
 	fadd  $f2, $f5, $f2
-	fmul  $f0, $f0, $f1
 	lw    $8, 9($7)
+	fmul  $f0, $f0, $f1
 	lf    $f1, 2($8)
 	fmul  $f0, $f0, $f1
 	fadd  $f0, $f2, $f0
@@ -27648,8 +27648,8 @@ eq_cont.96953:
 fle.97048:
 fle_cont.97049:
 	lf    $f1, 283($3)
-	fmul  $f0, $f1, $f0
 	lw    $2, 285($3)
+	fmul  $f0, $f1, $f0
 	lw    $2, 7($2)
 	lf    $f1, 0($2)
 	fmul  $f0, $f0, $f1
@@ -27761,17 +27761,17 @@ eq_else.97064:
 	lf    $f2, 3125($26)
 	lw    $5, 5($2)
 	lf    $f3, 2($5)
+	lw    $5, 4($2)
 	fsub  $f2, $f2, $f3
-	lw    $5, 4($2)
 	lf    $f3, 0($5)
+	lw    $5, 4($2)
 	fmul  $f3, $f0, $f3
-	lw    $5, 4($2)
 	lf    $f4, 1($5)
-	fmul  $f4, $f1, $f4
 	lw    $5, 4($2)
+	fmul  $f4, $f1, $f4
 	lf    $f5, 2($5)
-	fmul  $f5, $f2, $f5
 	lw    $5, 3($2)
+	fmul  $f5, $f2, $f5
 	bne   $5, $0, eq_else.97066
 	sf    $f3, 3129($0)
 	sf    $f4, 3129($1)
@@ -27780,8 +27780,8 @@ eq_else.97064:
 eq_else.97066:
 	lw    $5, 9($2)
 	lf    $f6, 2($5)
-	fmul  $f6, $f1, $f6
 	lw    $5, 9($2)
+	fmul  $f6, $f1, $f6
 	lf    $f7, 1($5)
 	fmul  $f7, $f2, $f7
 	fadd  $f6, $f6, $f7
@@ -27790,8 +27790,8 @@ eq_else.97066:
 	sf    $f3, 3129($0)
 	lw    $5, 9($2)
 	lf    $f3, 2($5)
-	fmul  $f3, $f0, $f3
 	lw    $5, 9($2)
+	fmul  $f3, $f0, $f3
 	lf    $f6, 0($5)
 	fmul  $f2, $f2, $f6
 	fadd  $f2, $f3, $f2
@@ -27800,8 +27800,8 @@ eq_else.97066:
 	sf    $f2, 3129($1)
 	lw    $5, 9($2)
 	lf    $f2, 1($5)
-	fmul  $f0, $f0, $f2
 	lw    $5, 9($2)
+	fmul  $f0, $f0, $f2
 	lf    $f2, 0($5)
 	fmul  $f1, $f1, $f2
 	fadd  $f0, $f0, $f1
@@ -28499,16 +28499,16 @@ eq_else.97100:
 	lf    $f0, 3125($0)
 	lw    $5, 5($2)
 	lf    $f1, 0($5)
-	fsub  $f0, $f0, $f1
 	lw    $5, 4($2)
+	fsub  $f0, $f0, $f1
 	lf    $f1, 0($5)
 	sqrt  $f1, $f1
 	fmul  $f0, $f0, $f1
 	lf    $f1, 3125($26)
 	lw    $5, 5($2)
 	lf    $f2, 2($5)
-	fsub  $f1, $f1, $f2
 	lw    $5, 4($2)
+	fsub  $f1, $f1, $f2
 	lf    $f2, 2($5)
 	sqrt  $f2, $f2
 	fmul  $f1, $f1, $f2
@@ -28889,8 +28889,8 @@ fle_cont.97121:
 	lw    $2, 334($3)
 	lw    $5, 5($2)
 	lf    $f2, 1($5)
-	fsub  $f1, $f1, $f2
 	lw    $5, 4($2)
+	fsub  $f1, $f1, $f2
 	lf    $f2, 1($5)
 	sqrt  $f2, $f2
 	fmul  $f1, $f1, $f2
@@ -29335,8 +29335,8 @@ eq_else.97140:
 	lf    $f4, 1($8)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f1
-	fabs  $f4, $f4
 	lw    $9, 4($7)
+	fabs  $f4, $f4
 	lf    $f5, 1($9)
 	bltf  $f4, $f5, fle.97144
 	mov   $9, $0
@@ -29345,8 +29345,8 @@ fle.97144:
 	lf    $f4, 2($8)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f2
-	fabs  $f4, $f4
 	lw    $9, 4($7)
+	fabs  $f4, $f4
 	lf    $f5, 2($9)
 	bltf  $f4, $f5, fle.97146
 	mov   $9, $0
@@ -29375,8 +29375,8 @@ fle_cont.97145:
 	lf    $f4, 0($8)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f0
-	fabs  $f4, $f4
 	lw    $9, 4($7)
+	fabs  $f4, $f4
 	lf    $f5, 0($9)
 	bltf  $f4, $f5, fle.97154
 	mov   $9, $0
@@ -29385,8 +29385,8 @@ fle.97154:
 	lf    $f4, 2($8)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f2
-	fabs  $f4, $f4
 	lw    $9, 4($7)
+	fabs  $f4, $f4
 	lf    $f5, 2($9)
 	bltf  $f4, $f5, fle.97156
 	mov   $9, $0
@@ -29415,8 +29415,8 @@ fle_cont.97155:
 	lf    $f3, 0($8)
 	fmul  $f3, $f2, $f3
 	fadd  $f0, $f3, $f0
-	fabs  $f0, $f0
 	lw    $9, 4($7)
+	fabs  $f0, $f0
 	lf    $f3, 0($9)
 	bltf  $f0, $f3, fle.97164
 	mov   $6, $0
@@ -29425,8 +29425,8 @@ fle.97164:
 	lf    $f0, 1($8)
 	fmul  $f0, $f2, $f0
 	fadd  $f0, $f0, $f1
-	fabs  $f0, $f0
 	lw    $7, 4($7)
+	fabs  $f0, $f0
 	lf    $f1, 1($7)
 	bltf  $f0, $f1, fle.97166
 	mov   $6, $0
@@ -29497,37 +29497,37 @@ feq_cont.97179:
 	lf    $f5, 3($6)
 	fmul  $f5, $f5, $f2
 	fadd  $f4, $f4, $f5
-	fmul  $f5, $f0, $f0
 	lw    $8, 4($7)
+	fmul  $f5, $f0, $f0
 	lf    $f6, 0($8)
 	fmul  $f5, $f5, $f6
-	fmul  $f6, $f1, $f1
 	lw    $8, 4($7)
+	fmul  $f6, $f1, $f1
 	lf    $f7, 1($8)
 	fmul  $f6, $f6, $f7
 	fadd  $f5, $f5, $f6
-	fmul  $f6, $f2, $f2
 	lw    $8, 4($7)
+	fmul  $f6, $f2, $f2
 	lf    $f7, 2($8)
 	fmul  $f6, $f6, $f7
-	fadd  $f5, $f5, $f6
 	lw    $8, 3($7)
+	fadd  $f5, $f5, $f6
 	bne   $8, $0, eq_else.97182
 	movf  $f0, $f5
 	j     eq_cont.97183
 eq_else.97182:
-	fmul  $f6, $f1, $f2
 	lw    $8, 9($7)
+	fmul  $f6, $f1, $f2
 	lf    $f7, 0($8)
 	fmul  $f6, $f6, $f7
 	fadd  $f5, $f5, $f6
-	fmul  $f2, $f2, $f0
 	lw    $8, 9($7)
+	fmul  $f2, $f2, $f0
 	lf    $f6, 1($8)
 	fmul  $f2, $f2, $f6
 	fadd  $f2, $f5, $f2
-	fmul  $f0, $f0, $f1
 	lw    $8, 9($7)
+	fmul  $f0, $f0, $f1
 	lf    $f1, 2($8)
 	fmul  $f0, $f0, $f1
 	fadd  $f0, $f2, $f0
@@ -29782,8 +29782,8 @@ eq_cont.97139:
 fle.97234:
 fle_cont.97235:
 	lf    $f1, 332($3)
-	fmul  $f0, $f1, $f0
 	lw    $2, 334($3)
+	fmul  $f0, $f1, $f0
 	lw    $2, 7($2)
 	lf    $f1, 0($2)
 	fmul  $f0, $f0, $f1
@@ -29938,17 +29938,17 @@ eq_else.97252:
 	lf    $f2, 3125($26)
 	lw    $5, 5($2)
 	lf    $f3, 2($5)
+	lw    $5, 4($2)
 	fsub  $f2, $f2, $f3
-	lw    $5, 4($2)
 	lf    $f3, 0($5)
+	lw    $5, 4($2)
 	fmul  $f3, $f0, $f3
-	lw    $5, 4($2)
 	lf    $f4, 1($5)
-	fmul  $f4, $f1, $f4
 	lw    $5, 4($2)
+	fmul  $f4, $f1, $f4
 	lf    $f5, 2($5)
-	fmul  $f5, $f2, $f5
 	lw    $5, 3($2)
+	fmul  $f5, $f2, $f5
 	bne   $5, $0, eq_else.97254
 	sf    $f3, 3129($0)
 	sf    $f4, 3129($1)
@@ -29957,8 +29957,8 @@ eq_else.97252:
 eq_else.97254:
 	lw    $5, 9($2)
 	lf    $f6, 2($5)
-	fmul  $f6, $f1, $f6
 	lw    $5, 9($2)
+	fmul  $f6, $f1, $f6
 	lf    $f7, 1($5)
 	fmul  $f7, $f2, $f7
 	fadd  $f6, $f6, $f7
@@ -29967,8 +29967,8 @@ eq_else.97254:
 	sf    $f3, 3129($0)
 	lw    $5, 9($2)
 	lf    $f3, 2($5)
-	fmul  $f3, $f0, $f3
 	lw    $5, 9($2)
+	fmul  $f3, $f0, $f3
 	lf    $f6, 0($5)
 	fmul  $f2, $f2, $f6
 	fadd  $f2, $f3, $f2
@@ -29977,8 +29977,8 @@ eq_else.97254:
 	sf    $f2, 3129($1)
 	lw    $5, 9($2)
 	lf    $f2, 1($5)
-	fmul  $f0, $f0, $f2
 	lw    $5, 9($2)
+	fmul  $f0, $f0, $f2
 	lf    $f2, 0($5)
 	fmul  $f1, $f1, $f2
 	fadd  $f0, $f0, $f1
@@ -30676,16 +30676,16 @@ eq_else.97288:
 	lf    $f0, 3125($0)
 	lw    $5, 5($2)
 	lf    $f1, 0($5)
-	fsub  $f0, $f0, $f1
 	lw    $5, 4($2)
+	fsub  $f0, $f0, $f1
 	lf    $f1, 0($5)
 	sqrt  $f1, $f1
 	fmul  $f0, $f0, $f1
 	lf    $f1, 3125($26)
 	lw    $5, 5($2)
 	lf    $f2, 2($5)
-	fsub  $f1, $f1, $f2
 	lw    $5, 4($2)
+	fsub  $f1, $f1, $f2
 	lf    $f2, 2($5)
 	sqrt  $f2, $f2
 	fmul  $f1, $f1, $f2
@@ -31066,8 +31066,8 @@ fle_cont.97309:
 	lw    $2, 5($3)
 	lw    $5, 5($2)
 	lf    $f2, 1($5)
-	fsub  $f1, $f1, $f2
 	lw    $5, 4($2)
+	fsub  $f1, $f1, $f2
 	lf    $f2, 1($5)
 	sqrt  $f2, $f2
 	fmul  $f1, $f1, $f2
@@ -31512,8 +31512,8 @@ eq_else.97328:
 	lf    $f4, 1($8)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f1
-	fabs  $f4, $f4
 	lw    $9, 4($7)
+	fabs  $f4, $f4
 	lf    $f5, 1($9)
 	bltf  $f4, $f5, fle.97332
 	mov   $9, $0
@@ -31522,8 +31522,8 @@ fle.97332:
 	lf    $f4, 2($8)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f2
-	fabs  $f4, $f4
 	lw    $9, 4($7)
+	fabs  $f4, $f4
 	lf    $f5, 2($9)
 	bltf  $f4, $f5, fle.97334
 	mov   $9, $0
@@ -31552,8 +31552,8 @@ fle_cont.97333:
 	lf    $f4, 0($8)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f0
-	fabs  $f4, $f4
 	lw    $9, 4($7)
+	fabs  $f4, $f4
 	lf    $f5, 0($9)
 	bltf  $f4, $f5, fle.97342
 	mov   $9, $0
@@ -31562,8 +31562,8 @@ fle.97342:
 	lf    $f4, 2($8)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f2
-	fabs  $f4, $f4
 	lw    $9, 4($7)
+	fabs  $f4, $f4
 	lf    $f5, 2($9)
 	bltf  $f4, $f5, fle.97344
 	mov   $9, $0
@@ -31592,8 +31592,8 @@ fle_cont.97343:
 	lf    $f3, 0($8)
 	fmul  $f3, $f2, $f3
 	fadd  $f0, $f3, $f0
-	fabs  $f0, $f0
 	lw    $9, 4($7)
+	fabs  $f0, $f0
 	lf    $f3, 0($9)
 	bltf  $f0, $f3, fle.97352
 	mov   $6, $0
@@ -31602,8 +31602,8 @@ fle.97352:
 	lf    $f0, 1($8)
 	fmul  $f0, $f2, $f0
 	fadd  $f0, $f0, $f1
-	fabs  $f0, $f0
 	lw    $7, 4($7)
+	fabs  $f0, $f0
 	lf    $f1, 1($7)
 	bltf  $f0, $f1, fle.97354
 	mov   $6, $0
@@ -31674,37 +31674,37 @@ feq_cont.97367:
 	lf    $f5, 3($6)
 	fmul  $f5, $f5, $f2
 	fadd  $f4, $f4, $f5
-	fmul  $f5, $f0, $f0
 	lw    $8, 4($7)
+	fmul  $f5, $f0, $f0
 	lf    $f6, 0($8)
 	fmul  $f5, $f5, $f6
-	fmul  $f6, $f1, $f1
 	lw    $8, 4($7)
+	fmul  $f6, $f1, $f1
 	lf    $f7, 1($8)
 	fmul  $f6, $f6, $f7
 	fadd  $f5, $f5, $f6
-	fmul  $f6, $f2, $f2
 	lw    $8, 4($7)
+	fmul  $f6, $f2, $f2
 	lf    $f7, 2($8)
 	fmul  $f6, $f6, $f7
-	fadd  $f5, $f5, $f6
 	lw    $8, 3($7)
+	fadd  $f5, $f5, $f6
 	bne   $8, $0, eq_else.97370
 	movf  $f0, $f5
 	j     eq_cont.97371
 eq_else.97370:
-	fmul  $f6, $f1, $f2
 	lw    $8, 9($7)
+	fmul  $f6, $f1, $f2
 	lf    $f7, 0($8)
 	fmul  $f6, $f6, $f7
 	fadd  $f5, $f5, $f6
-	fmul  $f2, $f2, $f0
 	lw    $8, 9($7)
+	fmul  $f2, $f2, $f0
 	lf    $f6, 1($8)
 	fmul  $f2, $f2, $f6
 	fadd  $f2, $f5, $f2
-	fmul  $f0, $f0, $f1
 	lw    $8, 9($7)
+	fmul  $f0, $f0, $f1
 	lf    $f1, 2($8)
 	fmul  $f0, $f0, $f1
 	fadd  $f0, $f2, $f0
@@ -31959,8 +31959,8 @@ eq_cont.97327:
 fle.97422:
 fle_cont.97423:
 	lf    $f1, 3($3)
-	fmul  $f0, $f1, $f0
 	lw    $2, 5($3)
+	fmul  $f0, $f1, $f0
 	lw    $2, 7($2)
 	lf    $f1, 0($2)
 	fmul  $f0, $f0, $f1
@@ -32072,17 +32072,17 @@ eq_else.97438:
 	lf    $f2, 3125($26)
 	lw    $5, 5($2)
 	lf    $f3, 2($5)
+	lw    $5, 4($2)
 	fsub  $f2, $f2, $f3
-	lw    $5, 4($2)
 	lf    $f3, 0($5)
+	lw    $5, 4($2)
 	fmul  $f3, $f0, $f3
-	lw    $5, 4($2)
 	lf    $f4, 1($5)
-	fmul  $f4, $f1, $f4
 	lw    $5, 4($2)
+	fmul  $f4, $f1, $f4
 	lf    $f5, 2($5)
-	fmul  $f5, $f2, $f5
 	lw    $5, 3($2)
+	fmul  $f5, $f2, $f5
 	bne   $5, $0, eq_else.97440
 	sf    $f3, 3129($0)
 	sf    $f4, 3129($1)
@@ -32091,8 +32091,8 @@ eq_else.97438:
 eq_else.97440:
 	lw    $5, 9($2)
 	lf    $f6, 2($5)
-	fmul  $f6, $f1, $f6
 	lw    $5, 9($2)
+	fmul  $f6, $f1, $f6
 	lf    $f7, 1($5)
 	fmul  $f7, $f2, $f7
 	fadd  $f6, $f6, $f7
@@ -32101,8 +32101,8 @@ eq_else.97440:
 	sf    $f3, 3129($0)
 	lw    $5, 9($2)
 	lf    $f3, 2($5)
-	fmul  $f3, $f0, $f3
 	lw    $5, 9($2)
+	fmul  $f3, $f0, $f3
 	lf    $f6, 0($5)
 	fmul  $f2, $f2, $f6
 	fadd  $f2, $f3, $f2
@@ -32111,8 +32111,8 @@ eq_else.97440:
 	sf    $f2, 3129($1)
 	lw    $5, 9($2)
 	lf    $f2, 1($5)
-	fmul  $f0, $f0, $f2
 	lw    $5, 9($2)
+	fmul  $f0, $f0, $f2
 	lf    $f2, 0($5)
 	fmul  $f1, $f1, $f2
 	fadd  $f0, $f0, $f1
@@ -32810,16 +32810,16 @@ eq_else.97474:
 	lf    $f0, 3125($0)
 	lw    $5, 5($2)
 	lf    $f1, 0($5)
-	fsub  $f0, $f0, $f1
 	lw    $5, 4($2)
+	fsub  $f0, $f0, $f1
 	lf    $f1, 0($5)
 	sqrt  $f1, $f1
 	fmul  $f0, $f0, $f1
 	lf    $f1, 3125($26)
 	lw    $5, 5($2)
 	lf    $f2, 2($5)
-	fsub  $f1, $f1, $f2
 	lw    $5, 4($2)
+	fsub  $f1, $f1, $f2
 	lf    $f2, 2($5)
 	sqrt  $f2, $f2
 	fmul  $f1, $f1, $f2
@@ -33200,8 +33200,8 @@ fle_cont.97495:
 	lw    $2, 54($3)
 	lw    $5, 5($2)
 	lf    $f2, 1($5)
-	fsub  $f1, $f1, $f2
 	lw    $5, 4($2)
+	fsub  $f1, $f1, $f2
 	lf    $f2, 1($5)
 	sqrt  $f2, $f2
 	fmul  $f1, $f1, $f2
@@ -33646,8 +33646,8 @@ eq_else.97514:
 	lf    $f4, 1($8)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f1
-	fabs  $f4, $f4
 	lw    $9, 4($7)
+	fabs  $f4, $f4
 	lf    $f5, 1($9)
 	bltf  $f4, $f5, fle.97518
 	mov   $9, $0
@@ -33656,8 +33656,8 @@ fle.97518:
 	lf    $f4, 2($8)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f2
-	fabs  $f4, $f4
 	lw    $9, 4($7)
+	fabs  $f4, $f4
 	lf    $f5, 2($9)
 	bltf  $f4, $f5, fle.97520
 	mov   $9, $0
@@ -33686,8 +33686,8 @@ fle_cont.97519:
 	lf    $f4, 0($8)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f0
-	fabs  $f4, $f4
 	lw    $9, 4($7)
+	fabs  $f4, $f4
 	lf    $f5, 0($9)
 	bltf  $f4, $f5, fle.97528
 	mov   $9, $0
@@ -33696,8 +33696,8 @@ fle.97528:
 	lf    $f4, 2($8)
 	fmul  $f4, $f3, $f4
 	fadd  $f4, $f4, $f2
-	fabs  $f4, $f4
 	lw    $9, 4($7)
+	fabs  $f4, $f4
 	lf    $f5, 2($9)
 	bltf  $f4, $f5, fle.97530
 	mov   $9, $0
@@ -33726,8 +33726,8 @@ fle_cont.97529:
 	lf    $f3, 0($8)
 	fmul  $f3, $f2, $f3
 	fadd  $f0, $f3, $f0
-	fabs  $f0, $f0
 	lw    $9, 4($7)
+	fabs  $f0, $f0
 	lf    $f3, 0($9)
 	bltf  $f0, $f3, fle.97538
 	mov   $6, $0
@@ -33736,8 +33736,8 @@ fle.97538:
 	lf    $f0, 1($8)
 	fmul  $f0, $f2, $f0
 	fadd  $f0, $f0, $f1
-	fabs  $f0, $f0
 	lw    $7, 4($7)
+	fabs  $f0, $f0
 	lf    $f1, 1($7)
 	bltf  $f0, $f1, fle.97540
 	mov   $6, $0
@@ -33808,37 +33808,37 @@ feq_cont.97553:
 	lf    $f5, 3($6)
 	fmul  $f5, $f5, $f2
 	fadd  $f4, $f4, $f5
-	fmul  $f5, $f0, $f0
 	lw    $8, 4($7)
+	fmul  $f5, $f0, $f0
 	lf    $f6, 0($8)
 	fmul  $f5, $f5, $f6
-	fmul  $f6, $f1, $f1
 	lw    $8, 4($7)
+	fmul  $f6, $f1, $f1
 	lf    $f7, 1($8)
 	fmul  $f6, $f6, $f7
 	fadd  $f5, $f5, $f6
-	fmul  $f6, $f2, $f2
 	lw    $8, 4($7)
+	fmul  $f6, $f2, $f2
 	lf    $f7, 2($8)
 	fmul  $f6, $f6, $f7
-	fadd  $f5, $f5, $f6
 	lw    $8, 3($7)
+	fadd  $f5, $f5, $f6
 	bne   $8, $0, eq_else.97556
 	movf  $f0, $f5
 	j     eq_cont.97557
 eq_else.97556:
-	fmul  $f6, $f1, $f2
 	lw    $8, 9($7)
+	fmul  $f6, $f1, $f2
 	lf    $f7, 0($8)
 	fmul  $f6, $f6, $f7
 	fadd  $f5, $f5, $f6
-	fmul  $f2, $f2, $f0
 	lw    $8, 9($7)
+	fmul  $f2, $f2, $f0
 	lf    $f6, 1($8)
 	fmul  $f2, $f2, $f6
 	fadd  $f2, $f5, $f2
-	fmul  $f0, $f0, $f1
 	lw    $8, 9($7)
+	fmul  $f0, $f0, $f1
 	lf    $f1, 2($8)
 	fmul  $f0, $f0, $f1
 	fadd  $f0, $f2, $f0
@@ -34093,8 +34093,8 @@ eq_cont.97513:
 fle.97608:
 fle_cont.97609:
 	lf    $f1, 52($3)
-	fmul  $f0, $f1, $f0
 	lw    $2, 54($3)
+	fmul  $f0, $f1, $f0
 	lw    $2, 7($2)
 	lf    $f1, 0($2)
 	fmul  $f0, $f0, $f1
@@ -39384,8 +39384,8 @@ scan_line.3112:
 	lf    $f3, 3155($26)
 	fmul  $f0, $f0, $f3
 	lf    $f3, 3158($26)
-	fadd  $f0, $f0, $f3
 	lw    $9, 3141($0)
+	fadd  $f0, $f0, $f3
 	addi $9, $9, -1
 	mov   $6, $8
 	mov   $5, $9
@@ -40131,8 +40131,8 @@ ge_cont.98096:
 	lf    $f3, 3155($26)
 	fmul  $f0, $f0, $f3
 	lf    $f3, 3158($26)
-	fadd  $f0, $f0, $f3
 	lw    $2, 3141($0)
+	fadd  $f0, $f0, $f3
 	addi $2, $2, -1
 	lw    $7, 2($3)
 	mov   $5, $2
@@ -42428,8 +42428,8 @@ fle_cont.98134:
 	lf    $f1, 68($3)
 	fdiv  $f0, $f1, $f0
 	lf    $f1, 4($3)
-	fmul  $f0, $f0, $f1
 	lw    $2, 3($3)
+	fmul  $f0, $f0, $f1
 	addi $2, $2, 1
 	fmul  $f1, $f0, $f0
 	fadd  $f1, $f1, $f25
@@ -43638,8 +43638,8 @@ ge.98108:
 	sqrt  $f2, $f2
 	fdiv  $f0, $f0, $f2
 	fdiv  $f1, $f1, $f2
-	fdiv  $f2, $f28, $f2
 	lw    $2, 3164($5)
+	fdiv  $f2, $f28, $f2
 	addlw $5, $2, $6
 	lw    $5, 0($5)
 	sf    $f0, 0($5)
@@ -43712,8 +43712,8 @@ ge.98186:
 	lf    $f1, 3375($0)
 # 0.200000
 	fmul  $f0, $f0, $f1
-	fadd  $f2, $f0, $f25
 	lw    $5, 2($3)
+	fadd  $f2, $f0, $f25
 	addi $6, $5, 2
 	lf    $f3, 0($3)
 	lw    $7, 1($3)
@@ -43760,8 +43760,8 @@ ge.98190:
 	lf    $f1, 3375($0)
 # 0.200000
 	fmul  $f0, $f0, $f1
-	fadd  $f2, $f0, $f25
 	lw    $5, 2($3)
+	fadd  $f2, $f0, $f25
 	addi $6, $5, 2
 	lf    $f3, 0($3)
 	lw    $7, 4($3)
@@ -45025,38 +45025,38 @@ eq_else.98254:
 	lf    $f0, 0($5)
 	lf    $f1, 1($5)
 	lf    $f2, 2($5)
-	fmul  $f3, $f0, $f0
 	lw    $6, 6($3)
+	fmul  $f3, $f0, $f0
 	lw    $7, 4($6)
 	lf    $f4, 0($7)
 	fmul  $f3, $f3, $f4
-	fmul  $f4, $f1, $f1
 	lw    $7, 4($6)
+	fmul  $f4, $f1, $f1
 	lf    $f5, 1($7)
 	fmul  $f4, $f4, $f5
 	fadd  $f3, $f3, $f4
-	fmul  $f4, $f2, $f2
 	lw    $7, 4($6)
+	fmul  $f4, $f2, $f2
 	lf    $f5, 2($7)
 	fmul  $f4, $f4, $f5
-	fadd  $f3, $f3, $f4
 	lw    $7, 3($6)
+	fadd  $f3, $f3, $f4
 	bne   $7, $0, eq_else.98258
 	movf  $f0, $f3
 	j     eq_cont.98259
 eq_else.98258:
-	fmul  $f4, $f1, $f2
 	lw    $7, 9($6)
+	fmul  $f4, $f1, $f2
 	lf    $f5, 0($7)
 	fmul  $f4, $f4, $f5
 	fadd  $f3, $f3, $f4
-	fmul  $f2, $f2, $f0
 	lw    $7, 9($6)
+	fmul  $f2, $f2, $f0
 	lf    $f4, 1($7)
 	fmul  $f2, $f2, $f4
 	fadd  $f2, $f3, $f2
-	fmul  $f0, $f0, $f1
 	lw    $7, 9($6)
+	fmul  $f0, $f0, $f1
 	lf    $f1, 2($7)
 	fmul  $f0, $f0, $f1
 	fadd  $f0, $f2, $f0
@@ -45357,38 +45357,38 @@ eq_else.98292:
 	lf    $f0, 0($5)
 	lf    $f1, 1($5)
 	lf    $f2, 2($5)
-	fmul  $f3, $f0, $f0
 	lw    $6, 13($3)
+	fmul  $f3, $f0, $f0
 	lw    $7, 4($6)
 	lf    $f4, 0($7)
 	fmul  $f3, $f3, $f4
-	fmul  $f4, $f1, $f1
 	lw    $7, 4($6)
+	fmul  $f4, $f1, $f1
 	lf    $f5, 1($7)
 	fmul  $f4, $f4, $f5
 	fadd  $f3, $f3, $f4
-	fmul  $f4, $f2, $f2
 	lw    $7, 4($6)
+	fmul  $f4, $f2, $f2
 	lf    $f5, 2($7)
 	fmul  $f4, $f4, $f5
-	fadd  $f3, $f3, $f4
 	lw    $7, 3($6)
+	fadd  $f3, $f3, $f4
 	bne   $7, $0, eq_else.98296
 	movf  $f0, $f3
 	j     eq_cont.98297
 eq_else.98296:
-	fmul  $f4, $f1, $f2
 	lw    $7, 9($6)
+	fmul  $f4, $f1, $f2
 	lf    $f5, 0($7)
 	fmul  $f4, $f4, $f5
 	fadd  $f3, $f3, $f4
-	fmul  $f2, $f2, $f0
 	lw    $7, 9($6)
+	fmul  $f2, $f2, $f0
 	lf    $f4, 1($7)
 	fmul  $f2, $f2, $f4
 	fadd  $f2, $f3, $f2
-	fmul  $f0, $f0, $f1
 	lw    $7, 9($6)
+	fmul  $f0, $f0, $f1
 	lf    $f1, 2($7)
 	fmul  $f0, $f0, $f1
 	fadd  $f0, $f2, $f0
@@ -45676,38 +45676,38 @@ eq_else.98328:
 	lf    $f0, 0($5)
 	lf    $f1, 1($5)
 	lf    $f2, 2($5)
-	fmul  $f3, $f0, $f0
 	lw    $6, 5($3)
+	fmul  $f3, $f0, $f0
 	lw    $7, 4($6)
 	lf    $f4, 0($7)
 	fmul  $f3, $f3, $f4
-	fmul  $f4, $f1, $f1
 	lw    $7, 4($6)
+	fmul  $f4, $f1, $f1
 	lf    $f5, 1($7)
 	fmul  $f4, $f4, $f5
 	fadd  $f3, $f3, $f4
-	fmul  $f4, $f2, $f2
 	lw    $7, 4($6)
+	fmul  $f4, $f2, $f2
 	lf    $f5, 2($7)
 	fmul  $f4, $f4, $f5
-	fadd  $f3, $f3, $f4
 	lw    $7, 3($6)
+	fadd  $f3, $f3, $f4
 	bne   $7, $0, eq_else.98332
 	movf  $f0, $f3
 	j     eq_cont.98333
 eq_else.98332:
-	fmul  $f4, $f1, $f2
 	lw    $7, 9($6)
+	fmul  $f4, $f1, $f2
 	lf    $f5, 0($7)
 	fmul  $f4, $f4, $f5
 	fadd  $f3, $f3, $f4
-	fmul  $f2, $f2, $f0
 	lw    $7, 9($6)
+	fmul  $f2, $f2, $f0
 	lf    $f4, 1($7)
 	fmul  $f2, $f2, $f4
 	fadd  $f2, $f3, $f2
-	fmul  $f0, $f0, $f1
 	lw    $7, 9($6)
+	fmul  $f0, $f0, $f1
 	lf    $f1, 2($7)
 	fmul  $f0, $f0, $f1
 	fadd  $f0, $f2, $f0
@@ -45996,38 +45996,38 @@ eq_else.98362:
 	lf    $f0, 0($5)
 	lf    $f1, 1($5)
 	lf    $f2, 2($5)
-	fmul  $f3, $f0, $f0
 	lw    $6, 10($3)
+	fmul  $f3, $f0, $f0
 	lw    $7, 4($6)
 	lf    $f4, 0($7)
 	fmul  $f3, $f3, $f4
-	fmul  $f4, $f1, $f1
 	lw    $7, 4($6)
+	fmul  $f4, $f1, $f1
 	lf    $f5, 1($7)
 	fmul  $f4, $f4, $f5
 	fadd  $f3, $f3, $f4
-	fmul  $f4, $f2, $f2
 	lw    $7, 4($6)
+	fmul  $f4, $f2, $f2
 	lf    $f5, 2($7)
 	fmul  $f4, $f4, $f5
-	fadd  $f3, $f3, $f4
 	lw    $7, 3($6)
+	fadd  $f3, $f3, $f4
 	bne   $7, $0, eq_else.98366
 	movf  $f0, $f3
 	j     eq_cont.98367
 eq_else.98366:
-	fmul  $f4, $f1, $f2
 	lw    $7, 9($6)
+	fmul  $f4, $f1, $f2
 	lf    $f5, 0($7)
 	fmul  $f4, $f4, $f5
 	fadd  $f3, $f3, $f4
-	fmul  $f2, $f2, $f0
 	lw    $7, 9($6)
+	fmul  $f2, $f2, $f0
 	lf    $f4, 1($7)
 	fmul  $f2, $f2, $f4
 	fadd  $f2, $f3, $f2
-	fmul  $f0, $f0, $f1
 	lw    $7, 9($6)
+	fmul  $f0, $f0, $f1
 	lf    $f1, 2($7)
 	fmul  $f0, $f0, $f1
 	fadd  $f0, $f2, $f0
@@ -46330,38 +46330,38 @@ eq_else.98398:
 	lf    $f0, 0($5)
 	lf    $f1, 1($5)
 	lf    $f2, 2($5)
-	fmul  $f3, $f0, $f0
 	lw    $6, 17($3)
+	fmul  $f3, $f0, $f0
 	lw    $7, 4($6)
 	lf    $f4, 0($7)
 	fmul  $f3, $f3, $f4
-	fmul  $f4, $f1, $f1
 	lw    $7, 4($6)
+	fmul  $f4, $f1, $f1
 	lf    $f5, 1($7)
 	fmul  $f4, $f4, $f5
 	fadd  $f3, $f3, $f4
-	fmul  $f4, $f2, $f2
 	lw    $7, 4($6)
+	fmul  $f4, $f2, $f2
 	lf    $f5, 2($7)
 	fmul  $f4, $f4, $f5
-	fadd  $f3, $f3, $f4
 	lw    $7, 3($6)
+	fadd  $f3, $f3, $f4
 	bne   $7, $0, eq_else.98402
 	movf  $f0, $f3
 	j     eq_cont.98403
 eq_else.98402:
-	fmul  $f4, $f1, $f2
 	lw    $7, 9($6)
+	fmul  $f4, $f1, $f2
 	lf    $f5, 0($7)
 	fmul  $f4, $f4, $f5
 	fadd  $f3, $f3, $f4
-	fmul  $f2, $f2, $f0
 	lw    $7, 9($6)
+	fmul  $f2, $f2, $f0
 	lf    $f4, 1($7)
 	fmul  $f2, $f2, $f4
 	fadd  $f2, $f3, $f2
-	fmul  $f0, $f0, $f1
 	lw    $7, 9($6)
+	fmul  $f0, $f0, $f1
 	lf    $f1, 2($7)
 	fmul  $f0, $f0, $f1
 	fadd  $f0, $f2, $f0
@@ -46653,38 +46653,38 @@ eq_else.98434:
 	lf    $f0, 0($5)
 	lf    $f1, 1($5)
 	lf    $f2, 2($5)
-	fmul  $f3, $f0, $f0
 	lw    $6, 24($3)
+	fmul  $f3, $f0, $f0
 	lw    $7, 4($6)
 	lf    $f4, 0($7)
 	fmul  $f3, $f3, $f4
-	fmul  $f4, $f1, $f1
 	lw    $7, 4($6)
+	fmul  $f4, $f1, $f1
 	lf    $f5, 1($7)
 	fmul  $f4, $f4, $f5
 	fadd  $f3, $f3, $f4
-	fmul  $f4, $f2, $f2
 	lw    $7, 4($6)
+	fmul  $f4, $f2, $f2
 	lf    $f5, 2($7)
 	fmul  $f4, $f4, $f5
-	fadd  $f3, $f3, $f4
 	lw    $7, 3($6)
+	fadd  $f3, $f3, $f4
 	bne   $7, $0, eq_else.98438
 	movf  $f0, $f3
 	j     eq_cont.98439
 eq_else.98438:
-	fmul  $f4, $f1, $f2
 	lw    $7, 9($6)
+	fmul  $f4, $f1, $f2
 	lf    $f5, 0($7)
 	fmul  $f4, $f4, $f5
 	fadd  $f3, $f3, $f4
-	fmul  $f2, $f2, $f0
 	lw    $7, 9($6)
+	fmul  $f2, $f2, $f0
 	lf    $f4, 1($7)
 	fmul  $f2, $f2, $f4
 	fadd  $f2, $f3, $f2
-	fmul  $f0, $f0, $f1
 	lw    $7, 9($6)
+	fmul  $f0, $f0, $f1
 	lf    $f1, 2($7)
 	fmul  $f0, $f0, $f1
 	fadd  $f0, $f2, $f0
@@ -51630,38 +51630,38 @@ eq_else.98640:
 	lf    $f0, 0($5)
 	lf    $f1, 1($5)
 	lf    $f2, 2($5)
-	fmul  $f3, $f0, $f0
 	lw    $6, 83($3)
+	fmul  $f3, $f0, $f0
 	lw    $7, 4($6)
 	lf    $f4, 0($7)
 	fmul  $f3, $f3, $f4
-	fmul  $f4, $f1, $f1
 	lw    $7, 4($6)
+	fmul  $f4, $f1, $f1
 	lf    $f5, 1($7)
 	fmul  $f4, $f4, $f5
 	fadd  $f3, $f3, $f4
-	fmul  $f4, $f2, $f2
 	lw    $7, 4($6)
+	fmul  $f4, $f2, $f2
 	lf    $f5, 2($7)
 	fmul  $f4, $f4, $f5
-	fadd  $f3, $f3, $f4
 	lw    $7, 3($6)
+	fadd  $f3, $f3, $f4
 	bne   $7, $0, eq_else.98644
 	movf  $f0, $f3
 	j     eq_cont.98645
 eq_else.98644:
-	fmul  $f4, $f1, $f2
 	lw    $7, 9($6)
+	fmul  $f4, $f1, $f2
 	lf    $f5, 0($7)
 	fmul  $f4, $f4, $f5
 	fadd  $f3, $f3, $f4
-	fmul  $f2, $f2, $f0
 	lw    $7, 9($6)
+	fmul  $f2, $f2, $f0
 	lf    $f4, 1($7)
 	fmul  $f2, $f2, $f4
 	fadd  $f2, $f3, $f2
-	fmul  $f0, $f0, $f1
 	lw    $7, 9($6)
+	fmul  $f0, $f0, $f1
 	lf    $f1, 2($7)
 	fmul  $f0, $f0, $f1
 	fadd  $f0, $f2, $f0
@@ -51955,8 +51955,8 @@ eq_else.98658:
 	lw    $6, 3351($0)
 	lw    $7, 7($5)
 	lf    $f0, 0($7)
-	fsub  $f0, $f28, $f0
 	lw    $7, 4($5)
+	fsub  $f0, $f28, $f0
 	lf    $f1, 3067($0)
 	lf    $f2, 0($7)
 	fmul  $f1, $f1, $f2
@@ -52068,8 +52068,8 @@ ge_cont.98653:
 	lf    $f3, 3157($0)
 	fmul  $f0, $f0, $f3
 	lf    $f3, 3160($0)
-	fadd  $f0, $f0, $f3
 	lw    $2, 3141($0)
+	fadd  $f0, $f0, $f3
 	addi $5, $2, -1
 	lw    $2, 44($3)
 	mov   $6, $0
