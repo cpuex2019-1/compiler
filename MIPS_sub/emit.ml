@@ -179,11 +179,11 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   | NonTail(x), Xor(y, V(z)) -> Printf.fprintf oc "\txor\t%s, %s, %s\n" (reg x) (reg y) (reg z)
   | NonTail(x), Xor(y, C(z)) -> Printf.fprintf oc "\txori\t%s, %s, %d\n" (reg x) (reg y) (z)
   | NonTail(x), Lwz(y, V(z)) -> 
+(*
       Printf.fprintf oc "\tadd\t%s, %s, %s\n" (reg reg_tmp) (reg y) (reg z);
       Printf.fprintf oc "\tlw\t%s, 0(%s)\n" (reg x) (reg reg_tmp)
-(*
-      Printf.fprintf oc "\taddlw\t%s, %s, %s\n" x y z
 *)
+      Printf.fprintf oc "\taddlw\t%s, %s, %s\n" x y z
   | NonTail(x), Lwz(y, C(z)) -> Printf.fprintf oc "\tlw\t%s, %d(%s)\n" (reg x) z (reg y)
   | NonTail(_), Stw(x, y, V(z)) -> 
       (* oukyu shochi *)
@@ -200,10 +200,10 @@ and g' oc = function (* 各命令のアセンブリ生成 (caml2html: emit_gprime) *)
   | NonTail(x), Sltf(y, z) -> Printf.fprintf oc "\tsltf\t%s, %s, %s\n" (reg x) (reg y) (reg z)
   | NonTail(x), Slt(y, z) -> Printf.fprintf oc "\tslt\t%s, %s, %s\n" (reg x) (reg y) (reg z)
   | NonTail(x), Lfd(y, V(z)) -> 
-      Printf.fprintf oc "\tadd\t%s, %s, %s\n\tlf\t%s, 0(%s)\n" (reg reg_tmp) (reg y) (reg z) (reg x) (reg reg_tmp)
 (*
-      Printf.fprintf oc "\taddlf\t%s, %s, %s\n" x y z
+      Printf.fprintf oc "\tadd\t%s, %s, %s\n\tlf\t%s, 0(%s)\n" (reg reg_tmp) (reg y) (reg z) (reg x) (reg reg_tmp)
 *)
+      Printf.fprintf oc "\taddlf\t%s, %s, %s\n" x y z
   | NonTail(x), Lfd(y, C(z)) -> Printf.fprintf oc "\tlf\t%s, %d(%s)\n" (reg x) z (reg y)
   | NonTail(_), Stfd(x, y, V(z))
   -> Printf.fprintf oc "\tadd\t%s, %s, %s\n\tsf\t%s, 0(%s)\n" (reg reg_tmp) (reg y) (reg z) (reg x) (reg reg_tmp)

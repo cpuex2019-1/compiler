@@ -29,6 +29,14 @@ let rec iter_asm3 n e = (* 最適化処理をくりかえす (caml2html: main_iter) *)
   if e = e' then e else
   iter_asm (n - 1) e'
 
+let rec iterAssem n prog =
+  Format.eprintf "iterAssem %d.\n" n;
+  if n = 0 then prog else begin
+    let prog' = ElimJumpChain.f prog in
+    if prog = prog' then prog' else
+    iterAssem (n-1) prog'
+  end
+
 let lexbuf outchan l = (* バッファをコンパイルしてチャンネルへ出力する (caml2html: main_lexbuf) *)
   Id.counter := 0;
   Typing.extenv := M.empty;
@@ -62,12 +70,20 @@ let lexbuf outchan l = (* バッファをコンパイルしてチャンネルへ出力する (caml2htm
          (MapConstToUnusedreg.f
            (RegCollect.f
               (RegAlloc.f opt_asm))) in
-      Emit.f outchan
-       (*(iter_asm2 !limit *) (
+      EmitAssem.f outchan
+        (iterAssem !limit
+          (AsmToAssem.f outchan
+            (iter_asm2 !limit
+              (RegAllocSecond.f 
+                (iter_asm3 !limit
+                  (UnusedConstreg.f opt_asm))))))
+(*
+     (Emit.f outchan
+       (iter_asm2 !limit
          (RegAllocSecond.f 
-           ((*iter_asm3 !limit *)
-             UnusedConstreg.f 
-             opt_asm)))
+           (iter_asm3 !limit
+             (UnusedConstreg.f opt_asm)))))
+*)
     end
 (*
     begin

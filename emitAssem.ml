@@ -37,33 +37,35 @@ let g outchan = function
 
   | Lw   (x,y,z) -> fprintf outchan "\tlw    %s, %d(%s)\n" x y z
   | Sw   (x,y,z) -> fprintf outchan "\tsw    %s, %d(%s)\n" x y z
+  | Addlw(x,y,z) -> fprintf outchan "\taddlw %s, %s, %s\n" x y z
   | Mov  (x,y)   -> fprintf outchan "\tmov   %s, %s\n" x y
 
   | Lf   (x,y,z) -> fprintf outchan "\tlf    %s, %d(%s)\n" x y z
   | Sf   (x,y,z) -> fprintf outchan "\tsf    %s, %d(%s)\n" x y z
+  | Addlf(x,y,z) -> fprintf outchan "\taddlf %s, %s, %s\n" x y z
   | Movf (x,y)   -> fprintf outchan "\tmovf  %s, %s\n" x y
 
-  | Beq  (x,y,Id.L(z)) -> fprintf outchan "\tbeq   %s, %s, %s\n" x y z
-  | Bne  (x,y,Id.L(z)) -> fprintf outchan "\tbne   %s, %s, %s\n" x y z
-  | Ble  (x,y,Id.L(z)) -> fprintf outchan "\tble   %s, %s, %s\n" x y z
-  | Bge  (x,y,Id.L(z)) -> fprintf outchan "\tbge   %s, %s, %s\n" x y z
+  | Beq  (x,y,z) -> fprintf outchan "\tbeq   %s, %s, %s\n" x y z
+  | Bne  (x,y,z) -> fprintf outchan "\tbne   %s, %s, %s\n" x y z
+  | Ble  (x,y,z) -> fprintf outchan "\tble   %s, %s, %s\n" x y z
+  | Bge  (x,y,z) -> fprintf outchan "\tbge   %s, %s, %s\n" x y z
 
-  | J    (Id.L(x))     -> fprintf outchan "\tj     %s\n" x
+  | J    (x)     -> fprintf outchan "\tj     %s\n" x
   | Jr   (x)     -> fprintf outchan "\tjr    %s\n" x
-  | Jal  (Id.L(x))     -> fprintf outchan "\tjal   %s\n" x
+  | Jal  (x)     -> fprintf outchan "\tjal   %s\n" x
   | Jalr (x,y)   -> fprintf outchan "\tjalr  %s, %s\n" x y
 
-  | Bltf (x,y,Id.L(z)) -> fprintf outchan "\tbltf  %s, %s, %s\n" x y z
-  | Beqf (x,y,Id.L(z)) -> fprintf outchan "\tbeqf  %s, %s, %s\n" x y z
+  | Bltf (x,y,z) -> fprintf outchan "\tbltf  %s, %s, %s\n" x y z
+  | Beqf (x,y,z) -> fprintf outchan "\tbeqf  %s, %s, %s\n" x y z
 
-  | Label (Id.L(x))    -> fprintf outchan "%s:\n" x
+  | Label (x)    -> fprintf outchan "%s:\n" x
   | Comment (x)  -> fprintf outchan "# %s\n" x
 
-  | In   (x)     -> fprintf outchan "\tin   %s\n" x
-  | Inf  (x)     -> fprintf outchan "\tinf  %s\n" x
-  | Outb (x)     -> fprintf outchan "\toutb %s\n" x
+  | In   (x)     -> fprintf outchan "\tin    %s\n" x
+  | Inf  (x)     -> fprintf outchan "\tinf   %s\n" x
+  | Outb (x)     -> fprintf outchan "\toutb  %s\n" x
 
-  | OriLabel (x,y,Id.L(z)) -> fprintf outchan "\tori  %s, %s, %s\n" x y z 
+  | OriLabel (x,y,z) -> fprintf outchan "\tori  %s, %s, %s\n" x y z 
   | Library(s) -> fprintf outchan "%s\n" s
 
   | _ -> assert false

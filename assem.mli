@@ -34,31 +34,32 @@ type t =
 
   | Lw    of Id.t * int * Id.t
   | Sw    of Id.t * int * Id.t
+  | Addlw of Id.t * Id.t * Id.t
   | Mov   of Id.t * Id.t
 
   | Lf    of Id.t * int * Id.t
   | Sf    of Id.t * int * Id.t
+  | Addlf of Id.t * Id.t * Id.t
   | Movf  of Id.t * Id.t
 
-  | Beq   of Id.t * Id.t * Id.l
-  | Bne   of Id.t * Id.t * Id.l
-  | Ble   of Id.t * Id.t * Id.l
-  | Bge   of Id.t * Id.t * Id.l
+  | Beq   of Id.t * Id.t * string
+  | Bne   of Id.t * Id.t * string
+  | Ble   of Id.t * Id.t * string
+  | Bge   of Id.t * Id.t * string
 
-  | J     of Id.l
+  | J     of string
   | Jr    of Id.t
-  | Jal   of Id.l
+  | Jal   of string
   | Jalr  of Id.t * Id.t
 
-  | Bltf  of Id.t * Id.t * Id.l
-  | Beqf  of Id.t * Id.t * Id.l
+  | Bltf  of Id.t * Id.t * string
+  | Beqf  of Id.t * Id.t * string 
 
   | In    of Id.t
   | Inf   of Id.t
   | Outb  of Id.t
 
-  | Label of Id.l
+  | Label of string
   | Comment of string
-  | OriLabel of Id.t * Id.t * Id.l
+  | OriLabel of Id.t * Id.t * string
   | Library of string
-
