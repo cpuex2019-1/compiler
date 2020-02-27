@@ -604,7 +604,7 @@ let file_to_string fname =
 let f oc (Prog(data, fundefs, e)) = 
   (* let _ = ToBasicBlock.f (Prog(data, fundefs, e)) in *)
   Printf.eprintf "[emit]\n";
-  (* print_prog stdout (Prog(data,fundefs,e)); *)
+  print_prog stderr (Prog(data,fundefs,e));
   Format.eprintf "generating assembly...@.";
   Printf.fprintf oc "Init: # initialize float value and heap pointer\n";
 

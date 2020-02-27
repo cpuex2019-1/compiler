@@ -24,12 +24,12 @@ clean:: nobackup
 	rm -rf mytest/*.closureast
 
 # ↓もし実装を改造したら、それに合わせて変える
-SOURCES = float.c type.ml id.ml m.ml s.ml \
+SOURCES = float.c type.ml id.ml m.ml s.ml intSet.ml\
 syntax.ml parser.mly lexer.mll typing.mli typing.ml globalArray.mli globalArray.ml kNormal.mli kNormal.ml \
 setGlobalArray.mli setGlobalArray.ml alpha.mli alpha.ml  beta.mli beta.ml assoc.mli assoc.ml \
 inline.mli inline.ml constFold.mli constFold.ml elim.mli elim.ml \
 closure.mli closure.ml asm.mli asm.ml virtual.mli virtual.ml \
-g.ml color.ml block.mli block.ml toBasicBlock.mli toBasicBlock.ml liveness.mli liveness.ml interferenceGraph.ml optimistic.mli optimistic.ml regAllocByColor.mli regAllocByColor.ml assem.mli assem.ml toAssem.mli toAssem.ml toAsm.mli toAsm.ml emitAssem.mli emitAssem.ml simm.mli simm.ml elim_asm.mli elim_asm.ml constFoldAsm.mli constFoldAsm.ml regAlloc.mli regAlloc.ml constreg.ml constreg.mli peephole.mli peephole.ml emit.mli emit.ml \
+g.ml color.ml block.mli block.ml toBasicBlock.mli toBasicBlock.ml liveness.mli liveness.ml interferenceGraph.ml optimistic.mli optimistic.ml regAllocByColor.mli regAllocByColor.ml assem.mli assem.ml toAssem.mli toAssem.ml toAsm.mli toAsm.ml emitAssem.mli emitAssem.ml simm.mli simm.ml elim_asm.mli elim_asm.ml constFoldAsm.mli constFoldAsm.ml regAlloc.mli regAlloc.ml regCollect.ml mapConstToUnusedreg.ml constreg.ml constreg.mli unusedConstreg.ml peephole.mli peephole.ml regAllocSecond.ml emit.mli emit.ml \
 main.mli main.ml
 
 # ↓テストプログラムが増えたら、これも増やす
