@@ -21,6 +21,8 @@ let rec schedule = function
       (Lw(a,b,c))::(Fabs(x,y))::(schedule rest)
   | (Movf(x,y))::(Lw(a,b,c))::rest ->
       (Lw(a,b,c))::(Movf(x,y))::(schedule rest)
+  | (Lf(x,y,z))::(Lw(a,b,c))::rest when z <> a ->
+      (Lw(a,b,c))::(Lf(x,y,z))::(schedule rest)
   | inst::rest -> inst::(schedule rest)
 
 
